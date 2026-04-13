@@ -1,10 +1,5 @@
-// Local theme wrapper for app-react:
-// - sets $asset-base-path for hosted assets
-// - pulls in slotted styles needed by React demos
-@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+// App-level theme wrapper for the React component-library Sass entrypoint.
+// `$asset-base-path` sets where fonts/icons are loaded from at runtime.
+@forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
 	$asset-base-path: '/assets'
 );
-
-// Include slotted styles used by React demos.
-@use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/callouts-asides.scss';
-@use 'pkg:@ongov/ontario-design-system-component-library-react/styles/slotted-styles/page-alerts.scss';

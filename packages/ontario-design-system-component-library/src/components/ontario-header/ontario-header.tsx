@@ -518,7 +518,10 @@ export class OntarioHeader {
 			this.signInButton.focus();
 			// Emit event so menu knows button is focused (prevents auto-close)
 			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
-		} else if (this.menuToggled && this.menuButton) {
+			return;
+		}
+
+		if (this.menuToggled && this.menuButton) {
 			this.menuButton.focus();
 			window.dispatchEvent(new CustomEvent('menuButtonFocused', { bubbles: true, composed: true }));
 		}
@@ -589,16 +592,6 @@ export class OntarioHeader {
 	}
 
 	/**
-	 * Handle the focus for the next element in the header once overflow menu is closed
-	 * This is only called when there's another menu to focus (isLastMenu=false)
-	 */
-	@Listen('focusNextElement', { target: 'window' })
-	handleFocusNextElement() {
-		// Focus the menu button (next menu in sequence)
-		if (this.menuButton) {
-			this.menuButton.focus();
-		}
-	} /**
 	 * Call to Ontario Menu API to fetch linksets to populate header component
 	 */
 	async fetchOntarioMenu() {
@@ -937,8 +930,8 @@ export class OntarioHeader {
 											{this.translations.header.search[`${this.language}`]}
 										</span>
 									</button>
-									{this.renderSignInButton()}
 									{this.renderMenuButton()}
+									{this.renderSignInButton()}
 								</div>
 								<div class="ontario-header__search-close-container ontario-columns ontario-small-2 ontario-medium-3">
 									<button
@@ -971,7 +964,8 @@ export class OntarioHeader {
 							// Desktop OR no sign-in items → Use simple overflow menu
 							<ontario-header-overflow-menu
 								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
-								isLastMenu={!this.signInToggled || !this.signInMenuItemsState?.length}
+								isLastMenu={false}
+								returnFocusToTriggerOnLastTab={true}
 								language={this.language || 'en'}
 							/>
 						)}
@@ -1039,7 +1033,15 @@ export class OntarioHeader {
 													{this.menuItemState
 														?.slice(0, this.applicationHeaderInfoState?.maxSubheaderLinks?.[this.breakpointDeviceState])
 														.map((item) =>
-															generateMenuItem(item.href, item.title, item.linkIsActive ?? false, item.description),
+															generateMenuItem(
+																item.href,
+																item.title,
+																item.linkIsActive ?? false,
+																item.description,
+																this.language,
+																undefined,
+																item.onClickHandler,
+															),
 														)}
 												</ul>
 											)}

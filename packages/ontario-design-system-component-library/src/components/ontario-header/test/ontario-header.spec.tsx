@@ -199,4 +199,68 @@ describe('ontario-header', () => {
 		expect(hostShadow).not.toBeNull();
 		expect(hostShadow?.querySelectorAll('.ontario-service-subheader').length).toBe(1);
 	});
+
+	it('should call menu item onClickHandler for subheader menu item', async () => {
+		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+
+		host.type = 'application';
+		host.applicationHeaderInfo = {
+			title: 'Application',
+			href: '/application',
+			maxSubheaderLinks: { desktop: 1, tablet: 1, mobile: 1 },
+		};
+		host.menuItems = [
+			{ title: 'Subheader Item', href: '/subheader-item', onClickHandler },
+			{ title: 'Overflow Item', href: '/overflow-item' },
+		];
+
+		await page.waitForChanges();
+
+		const subheaderItem = hostShadow.querySelector(
+			'.ontario-application-subheader__menu a.ontario-menu-item',
+		) as HTMLAnchorElement;
+		expect(subheaderItem).not.toBeNull();
+
+		subheaderItem.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
+	});
+
+	it('should call menu item onClickHandler for overflow menu item', async () => {
+		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+
+		const page = await newSpecPage({
+			components: [OntarioHeader, OntarioHeaderOverflowMenu],
+			html: `<ontario-header></ontario-header>`,
+		});
+
+		const host = page.root as HTMLOntarioHeaderElement;
+		const hostShadow = host.shadowRoot as ShadowRoot;
+
+		host.type = 'application';
+		host.applicationHeaderInfo = {
+			title: 'Application',
+			href: '/application',
+			maxSubheaderLinks: { desktop: 1, tablet: 1, mobile: 1 },
+		};
+		host.menuItems = [
+			{ title: 'Subheader Item', href: '/subheader-item' },
+			{ title: 'Overflow Item', href: '/overflow-item', onClickHandler },
+		];
+
+		await page.waitForChanges();
+
+		const childOverflowMenu = hostShadow.querySelector(
+			'ontario-header-overflow-menu',
+		) as HTMLOntarioHeaderOverflowMenuElement;
+		expect(childOverflowMenu).not.toBeNull();
+
+		const childOverflowMenuShadow = childOverflowMenu.shadowRoot as ShadowRoot;
+		const overflowItem = childOverflowMenuShadow.querySelector('a.ontario-menu-item') as HTMLAnchorElement;
+		expect(overflowItem).not.toBeNull();
+
+		overflowItem.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
+	});
 });

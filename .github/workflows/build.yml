@@ -3,9 +3,6 @@ name: Build
 on:
   workflow_call:
     inputs:
-      node-version:
-        required: true
-        type: number
       build-artifacts-name:
         required: true
         type: string
@@ -25,17 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the repo
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
       # Setup Node.js
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js from .nvmrc
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
@@ -49,11 +46,13 @@ jobs:
 
       # Build the project
       - name: Build the project
+        id: build_project
         run: pnpm run build-libs
 
       # Upload build artifacts
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        id: upload_build_artifacts
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
           compression-level: 9 # Best compression
@@ -64,8 +63,30 @@ jobs:
 
       # Upload docs artifact
       - name: Upload docs artifact
-        uses: actions/upload-artifact@v4
+        id: upload_docs_artifact
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
           path: packages/docusaurus/docs/
+
+      - name: Summarise build outputs
+        if: ${{ always() }}
+        run: |
+          build_size="$(du -sh --exclude docusaurus packages 2>/dev/null | cut -f1)"
+          docs_size="$(du -sh packages/docusaurus/docs 2>/dev/null | cut -f1)"
+
+          {
+            echo '## Build'
+            echo ''
+            echo "| Repository | Event | Ref | SHA | Run | Build Step |"
+            echo "| --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` |"
+            echo ''
+            echo '### Artifacts'
+            echo ''
+            echo "| Artifact | Name | Size | Upload |"
+            echo "| --- | --- | --- | --- |"
+            echo "| Build | \`${{ inputs.build-artifacts-name }}\` | \`${build_size:-unknown}\` | \`${{ steps.upload_build_artifacts.outcome }}\` |"
+            echo "| Docs | \`${{ inputs.docs-artifacts-name }}\` | \`${docs_size:-unknown}\` | \`${{ steps.upload_docs_artifact.outcome }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"

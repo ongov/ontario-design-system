@@ -111,11 +111,12 @@ Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel
 
 ## Properties
 
-| Property     | Attribute      | Description                                                                                                                                                                                                  | Type                        | Default     |
-| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
-| `isLastMenu` | `is-last-menu` | Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.                      | `boolean \| undefined`      | `true`      |
-| `language`   | `language`     | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
-| `menuItems`  | `menu-items`   | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu.                                                                                         | `MenuItem[] \| string`      | `undefined` |
+| Property                        | Attribute                             | Description                                                                                                                                                                                                  | Type                        | Default     |
+| ------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `isLastMenu`                    | `is-last-menu`                        | Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.                      | `boolean \| undefined`      | `true`      |
+| `language`                      | `language`                            | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
+| `menuItems`                     | `menu-items`                          | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu.                                                                                         | `MenuItem[] \| string`      | `undefined` |
+| `returnFocusToTriggerOnLastTab` | `return-focus-to-trigger-on-last-tab` | Whether Tab from the last menu item should return focus to the trigger button instead of moving to the next menu or next page element.                                                                       | `boolean \| undefined`      | `false`     |
 
 ## Events
 

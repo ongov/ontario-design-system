@@ -15,6 +15,7 @@
 		[
 			"@semantic-release/exec",
 			{
+				"verifyReleaseCmd": "echo \"release_tag=${nextRelease.gitTag}\" >> $GITHUB_OUTPUT",
 				"successCmd": "echo \"release_tag=${nextRelease.gitTag}\" >> $GITHUB_OUTPUT"
 			}
 		]

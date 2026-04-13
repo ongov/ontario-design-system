@@ -706,7 +706,7 @@
 					</ontario-form-container>
 					<hr />
 
-					<!-- Buttons -->
+					<!-- Header -->
 					<div>
 						<h2 id="header">Header</h2>
 						<div>
@@ -721,6 +721,84 @@
 						</div>
 						<hr />
 					</div>
+					<script>
+						const getMenuItemsForDemo = () => [
+							{
+								title: 'Demo menu item 1',
+								href: '#menu-item-1',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Menu click handler fired for demo menu item 1');
+								},
+							},
+							{
+								title: 'Demo menu item 2',
+								href: '#menu-item-2',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Menu click handler fired for demo menu item 2');
+								},
+							},
+							{
+								title: 'Demo menu item 3',
+								href: '#menu-item-3',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Menu click handler fired for demo menu item 3');
+								},
+							},
+							{
+								title: 'Demo overflow item',
+								href: '#menu-item-overflow',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Menu click handler fired for demo overflow item');
+								},
+							},
+						];
+
+						const getSignInMenuItemsForDemo = () => [
+							{
+								title: { en: 'Sign in (demo)', fr: 'Se connecter (démo)' },
+								description: { en: 'Demo click handler', fr: 'Gestionnaire de clic de démo' },
+								href: '#sign-in-demo',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Sign-in menu click handler fired for demo sign-in link');
+								},
+							},
+							{
+								title: { en: 'Register (demo)', fr: "S'inscrire (démo)" },
+								description: { en: 'Demo click handler', fr: 'Gestionnaire de clic de démo' },
+								href: '#register-demo',
+								onClickHandler: (event) => {
+									event.preventDefault();
+									console.log('Sign-in menu click handler fired for demo register link');
+								},
+							},
+						];
+
+						const applyDemoMenuHandlers = (headerElement, headerType) => {
+							if (!headerElement) return;
+
+							headerElement.menuItems = getMenuItemsForDemo();
+
+							if (headerType === 'ontario') {
+								headerElement.signInMenuItems = getSignInMenuItemsForDemo();
+							}
+						};
+
+						window.addEventListener('load', () => {
+							const ontarioHeaderElement = document.querySelector('ontario-header');
+							applyDemoMenuHandlers(ontarioHeaderElement, ontarioHeaderElement?.type);
+						});
+
+						function activateHeaderType(headerType) {
+							const ontarioHeaderElement = document.querySelector('ontario-header');
+							ontarioHeaderElement.type = headerType;
+							applyDemoMenuHandlers(ontarioHeaderElement, headerType);
+						}
+					</script>
 
 					<!-- Icons -->
 					<div>
@@ -1556,12 +1634,5 @@
 		>
 		</ontario-footer>
 		<ontario-back-to-top />
-
-		<script>
-			function activateHeaderType(headerType) {
-				const ontarioHeaderElement = document.querySelector('ontario-header');
-				ontarioHeaderElement.type = headerType;
-			}
-		</script>
 	</body>
 </html>

@@ -73,6 +73,12 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() isLastMenu?: boolean = true;
 
 	/**
+	 * Whether Tab from the last menu item should return focus to the trigger button
+	 * instead of moving to the next menu or next page element.
+	 */
+	@Prop() returnFocusToTriggerOnLastTab?: boolean = false;
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
@@ -112,6 +118,12 @@ export class OntarioHeaderOverflowMenu {
 	 * Reference to the ARIA live region for screen reader announcements.
 	 */
 	private ariaLiveRegion!: HTMLElement;
+
+	/**
+	 * Prevent the same Arrow key event that opened/focused the embedded menu
+	 * from immediately advancing to the next item.
+	 */
+	private suppressNextArrowNavigation = false;
 
 	/**
 	 * Runtime mode detection.
@@ -195,6 +207,7 @@ export class OntarioHeaderOverflowMenu {
 	@Listen('focusFirstItem', { target: 'window' })
 	handleFocusFirstItem() {
 		if (!this.isStandalone) {
+			this.suppressNextArrowNavigation = true;
 			this.focusFirstMenuItem();
 		}
 	}
@@ -356,6 +369,17 @@ export class OntarioHeaderOverflowMenu {
 		// Handle Tab from last item
 		if (event.key === 'Tab' && !event.shiftKey) {
 			if (focusable.length && shadowActive === focusable[focusable.length - 1]) {
+				if (this.returnFocusToTriggerOnLastTab) {
+					event.preventDefault();
+					this.focusMenuButtonEvent.emit();
+					requestAnimationFrame(() => {
+						this.menuIsOpen = false;
+						this.resetState();
+						this.menuClosed.emit();
+					});
+					return;
+				}
+
 				if (this.isLastMenu) {
 					// Last menu: let browser focus next tabbable element
 					this.menuIsOpen = false;
@@ -421,6 +445,11 @@ export class OntarioHeaderOverflowMenu {
 	private handleArrowNavigation(event: KeyboardEvent) {
 		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
 
+		if (this.suppressNextArrowNavigation) {
+			this.suppressNextArrowNavigation = false;
+			return;
+		}
+
 		const focusable = this.getFocusableElements();
 		if (!focusable.length) return;
 
@@ -467,6 +496,7 @@ export class OntarioHeaderOverflowMenu {
 	private resetState() {
 		this.currentIndex = undefined;
 		this.shouldCheckAutoClose = true;
+		this.suppressNextArrowNavigation = false;
 	}
 
 	/**
@@ -566,7 +596,13 @@ export class OntarioHeaderOverflowMenu {
 
 							return (
 								<li>
-									<a class={anchorClass} href={item.href} role="menuitem" tabIndex={isDisabled ? -1 : 0}>
+									<a
+										class={anchorClass}
+										href={item.href}
+										role="menuitem"
+										tabIndex={isDisabled ? -1 : 0}
+										onClick={item.onClickHandler}
+									>
 										{hasIcon && IconComponent ? (
 											<span class="ontario-menu-item__label-container">
 												<IconComponent />
