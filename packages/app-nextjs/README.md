@@ -26,6 +26,34 @@ This project is designed to:
 
 ---
 
+## File Structure and Code Walkthrough
+
+This application is intentionally small so it can act as a reference implementation for Next.js SSR and as a stable test harness for component coverage.
+
+### Key Files and Directories
+
+- `src/app/layout.tsx`: The App Router root layout. This is where the global Ontario Design System theme is imported so the app renders with the expected styles during SSR and after hydration.
+- `src/app/page.tsx`: The landing page for the PoC. It acts as the starting point for navigating to component examples.
+- `src/app/components/*/page.tsx`: Individual component example pages used to exercise components in realistic states. These pages are also the primary targets for Playwright E2E and VRT coverage.
+- `src/app/ssr-test/page.tsx`: A focused SSR test page used to verify server-rendered component output and hydration behaviour.
+- `src/app/client-test/page.tsx`: A client-side comparison page used when validating behaviour that only becomes available after hydration.
+- `src/app/grid.tsx`: Shared layout helper used by example pages to keep demo content consistent.
+- `next.config.mjs`: Configures Next.js SSR for the Stencil-generated React package through `@stencil/ssr/next`, including the hydrate module and shadow-root serialisation strategy.
+- `package.json`: Defines the asset-copy workflow and the local, Docker, E2E, and VRT scripts used by the app.
+- `playwright.config.ts`: Central Playwright configuration for browser coverage, snapshot paths, and the local web server used during tests.
+- `public/assets`: Static Ontario Design System assets copied from the React package before build and start, including fonts, favicons, and shared images used by components.
+- `tests`: Playwright coverage for the PoC. E2E tests verify behaviour, while VRT tests and `vrt-snapshots` capture rendering regressions.
+
+### How the Pieces Fit Together
+
+1. The app imports Ontario Design System global styles in `src/app/layout.tsx` so the server-rendered output and hydrated client output share the same theme baseline.
+2. `next.config.mjs` wraps the app with Stencil SSR support so React wrappers can render component markup on the server using the hydrate module.
+3. Before `build` and `start`, the scripts in `package.json` copy required fonts, favicons, and images into `public/assets` so component asset paths resolve correctly.
+4. Example routes under `src/app/components` provide a living catalogue of component usage patterns and double as test fixtures for automation.
+5. Playwright uses those routes to run E2E and VRT coverage, with Docker-based scripts available to keep snapshot generation aligned with CI.
+
+---
+
 # Running the Project Locally
 
 To run the project with all required assets (fonts, images, favicons), after installing all use the **build and start flow**:
