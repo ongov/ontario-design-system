@@ -67,11 +67,62 @@ Default output goes to `generated-samples/` (or a custom `--outputDirectory`):
 ## Runtime Flow (Where the logic lives)
 
 - `src/cli.ts` is the command entrypoint.
-- `src/cli.ts` calls `generateSamples()` from `src/index.ts`.
-- `src/index.ts` loads sample data from `src/sample-config.ts`.
-- `src/index.ts` renders + cleans HTML and writes output files.
+- `src/cli.ts` loads sample data from `src/sample-config.ts`.
+- `src/cli.ts` calls `generateSamples({ samples })` from `src/index.ts`.
+- `src/index.ts` is library-first: config in, deterministic result object out.
+- `src/cli.ts` handles batch orchestration and file writes.
 - `pnpm build` compiles all of this to `dist/*`.
 - `pnpm start` runs `dist/cli.js`.
+
+## Real-World Usage
+
+If you want to generate files quickly from the default sample list, use the CLI.
+
+From `packages/app-sample-generator`, update `src/sample-config.ts`, then run:
+
+```bash
+pnpm build
+pnpm start -- --outputDirectory ./generated-samples-team
+```
+
+This reads `samples` from `src/sample-config.ts`, runs the generator, and writes one HTML file per successful sample.
+
+If you want full control (for example, storing `markup` and `styles` separately, or sending output to another system), use the library API.
+
+```typescript
+import { mkdirSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { generateSamples } from '@ongov/app-sample-generator';
+
+const samples = [
+	{
+		component: 'ontario-button',
+		html: '<ontario-button type="primary" label="Save"></ontario-button>',
+		outputFile: 'ontario-button.html',
+		includeStyles: true,
+	},
+];
+
+const result = await generateSamples({ samples });
+mkdirSync('./out', { recursive: true });
+
+for (const item of result.items) {
+	if (!item.success) {
+		console.error(`Failed: ${item.sample.component} -> ${item.error}`);
+		continue;
+	}
+
+	writeFileSync(path.join('./out', item.sample.outputFile), `${item.renderedHtml}\n`, 'utf8');
+
+	// Also available for custom workflows:
+	// item.markup
+	// item.styles
+}
+
+console.log(result.summary);
+```
+
+Use CLI when you want fast file generation from local config. Use the library when you need to control where and how generated output is consumed.
 
 ## Programmatic Usage (Library mode)
 
@@ -80,14 +131,24 @@ Once installed, you can import and call the generator directly from your own scr
 ```typescript
 import { generateSamples } from '@ongov/app-sample-generator';
 
-// Uses generated-samples/ by default
-await generateSamples();
+const samples = [
+	{
+		component: 'ontario-button',
+		html: '<ontario-button type="primary" label="Click me"></ontario-button>',
+		outputFile: 'ontario-button.html',
+	},
+];
 
-// Or write to a custom directory
-await generateSamples({ outputDirectory: 'path/to/output' });
+const result = await generateSamples({ samples });
+
+const succeededSamples = result.items.filter((item) => item.success && item.renderedHtml);
+
+for (const item of succeededSamples) {
+	console.log(item.sample.outputFile, item.renderedHtml);
+}
 ```
 
-This is useful if you want to run generation as part of a larger build step rather than invoking it from the terminal.
+This is useful when you want the library to stay transport-agnostic and control your own output targets.
 
 ## Features
 
@@ -301,7 +362,6 @@ pnpm start
 
 ## Future Enhancements
 
-- [ ] Extract into reusable library package
 - [ ] Support dynamic Fractal rendering
 - [ ] Add batch processing for entire component library
 - [ ] Generate index page with sample browser

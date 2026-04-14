@@ -1,28 +1,12 @@
-// Sample config for Stencil component sample generation
-// Each entry defines the tag name and sample HTML (or props/variants) for a component
+/**
+ * Default sample definitions used by the package CLI.
+ *
+ * This file intentionally contains data only. Consumers using the library API
+ * can provide their own `ComponentSample[]` instead of relying on this default set.
+ */
+import type { ComponentSample } from './types.js';
 
-export interface ComponentSample {
-	/**
-	 * Component tag name used to resolve the Stencil component class.
-	 */
-	component: string;
-	/**
-	 * HTML snippet that represents the component in the docs.
-	 */
-	html: string;
-	/**
-	 * Output filename for the generated sample document.
-	 */
-	outputFile: string;
-	/**
-	 * Optional short description that will be included in the generated page.
-	 */
-	description?: string;
-	/**
-	 * Whether to include component CSS inline (default: true)
-	 */
-	includeStyles?: boolean;
-}
+export type { ComponentSample } from './types.js';
 
 export const samples: ComponentSample[] = [
 	{
