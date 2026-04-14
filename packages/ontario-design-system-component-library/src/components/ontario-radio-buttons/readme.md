@@ -410,18 +410,16 @@ visible when the hint expander title (hint) is toggled" }'
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
 
-## Technical Note: SSR (Server-Side Rendering) and form behaviour
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
+The Ontario Radio Buttons component supports server-side rendering, with a few considerations:
 
-| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                           |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Server-rendered shape            | Renders the `ontario-radio-buttons` host with a fieldset, legend, option labels, and optional hint content. The interaction model maps to a grouped radio-button pattern.                                                                                                                                                          |
-| Pre-hydration form participation | Treat this component as suitable for native radio-group submission when each option has a stable `elementId` and the group has a stable `name` and `language`. Do not rely on runtime language-toggle events before hydration.                                                                                                     |
-| Hydrated form participation      | After hydration, the component participates in form submission through the form-associated custom elements API and emits group-level change and focus events for client-managed updates.                                                                                                                                           |
-| Validation timing                | Required-state messaging, group-level error messaging, and synthetic change-event behavior should be treated as hydrated behavior. Keep server-side validation authoritative for submitted data.                                                                                                                                   |
-| No-JS fallback                   | A simple grouped-radio submit flow is appropriate when option ids and names are stable, but progressive-enhancement behavior should still be verified in the consuming app.                                                                                                                                                        |
-| Framework notes                  | Use the HTML `<form>` example above for native submit or Next.js server-action style flows. Use the event-model examples below for client-managed flows after hydration. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/). |
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** Each radio option should use a stable `elementId` so the server-rendered markup and hydrated markup stay aligned.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders a radio-group structure that can support straightforward form submission when the group `name`, `language`, and option ids are stable. Group-level error messaging and emitted events become available after hydration.
+- **Progressive enhancement:** Keep the group `name` stable and verify the full submit flow in the consuming application if you depend on hydrated validation or custom event handling.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For client-managed integrations, use the event examples below. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 <!-- Auto Generated Below -->
 

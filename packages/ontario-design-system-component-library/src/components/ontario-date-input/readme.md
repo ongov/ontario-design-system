@@ -273,18 +273,22 @@ The `caption` property is used to render the label for the ontario-input. It can
 caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 ```
 
-## Technical Note: SSR (Server-Side Rendering) and form behaviour
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
+The Ontario Date Input component is compatible with server-side rendering, with a few additional considerations:
 
-| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                                     |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Server-rendered shape            | Renders the `ontario-date-input` host with caption, hint, and segmented day, month, and year fields. The component can render server-side, but its aggregate value contract is still a hydrated behavior.                                                                                                                                    |
-| Pre-hydration form participation | Do not assume the aggregate ISO date value will participate in native form submission before hydration. If submission before hydration or without JavaScript is required, provide a native fallback pattern in the consuming app.                                                                                                            |
-| Hydrated form participation      | After hydration, the component assembles the segmented inputs into a single ISO 8601 value, participates in form submission through the form-associated custom elements API, and emits both field-level and aggregate host events.                                                                                                           |
-| Validation timing                | Date validation, aggregate value normalization, and synthetic host `input` and `change` events should be treated as hydrated behavior. Keep server-side validation authoritative for submitted data.                                                                                                                                         |
-| No-JS fallback                   | A no-JS submit path is not provided by the component on its own. Use explicit fallback markup if the flow must work before hydration.                                                                                                                                                                                                        |
-| Framework notes                  | Use the HTML `<form>` example above for native submit or progressive-enhancement flows once hydrated. Use the event-model examples below for client-managed flows after hydration. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/). |
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Rendered structure vs submitted value:** During SSR, the component renders the expected day, month, and year inputs. The aggregated ISO 8601 value is assembled after hydration, so do not assume that aggregate value will participate in native form submission before hydration.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. Full date normalization, aggregate host `input` and `change` events, and component-managed date validation become available after hydration.
+- **No-JavaScript fallback:** If a flow must submit before hydration or without JavaScript, provide explicit native fallback markup in the consuming application.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or progressive-enhancement flows once hydrated. For client-managed integrations, use the event examples below. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
+
+> **Recommended for SSR:**
+>
+> ```tsx
+> <OntarioDateInput elementId="my-date-input" language="en"></OntarioDateInput>
+> ```
 
 <!-- Auto Generated Below -->
 
