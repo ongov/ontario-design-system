@@ -1,6 +1,6 @@
 # Ontario Design System – Next.js Visual Testing App
 
-This project is a **Next.js application** that integrates the [Ontario Design System](https://designsystem.ontario.ca) component library, which is built using [Stencil](https://stenciljs.com/) and distributed as React components.
+This project is a **Next.js application** that integrates the [Ontario Design System](https://designsystem.ontario.ca) component library, which is built using [Stencil](https://stenciljs.com/) and distributed through the [`@ongov/ontario-design-system-component-library-react`](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react) npm package.
 
 It is primarily used to enable **visual regression testing (VRT)** of the component library and ensure rendering consistency in different states.
 
