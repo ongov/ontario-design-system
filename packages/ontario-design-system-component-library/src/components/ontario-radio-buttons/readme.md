@@ -410,11 +410,11 @@ visible when the hint expander title (hint) is toggled" }'
 
 - Do not pre-select radio buttons (there should be no checked attribute by default on the radio button)
 
-## Lifecycle contract
+## Technical Note: SSR (Server-Side Rendering) and form behaviour
 
-Use the same lifecycle contract structure for form-component docs so teams can compare SSR, hydration, and fallback behavior quickly.
+If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
 
-| Lifecycle state                  | Contract                                                                                                                                                                                                                                                                                                                           |
+| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                           |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Server-rendered shape            | Renders the `ontario-radio-buttons` host with a fieldset, legend, option labels, and optional hint content. The interaction model maps to a grouped radio-button pattern.                                                                                                                                                          |
 | Pre-hydration form participation | Treat this component as suitable for native radio-group submission when each option has a stable `elementId` and the group has a stable `name` and `language`. Do not rely on runtime language-toggle events before hydration.                                                                                                     |

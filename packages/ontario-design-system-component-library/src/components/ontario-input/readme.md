@@ -364,11 +364,11 @@ An `element-id` attribute is necessary to allow the input to be associated with 
 
 A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 
-## Lifecycle contract
+## Technical Note: SSR (Server-Side Rendering) and form behaviour
 
-Use the same lifecycle contract structure for form-component docs so teams can compare SSR, hydration, and fallback behavior quickly.
+If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
 
-| Lifecycle state                  | Contract                                                                                                                                                                                                                                                                                                                           |
+| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                           |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Server-rendered shape            | Renders the `ontario-input` host with label, hint, and error-message structure. The interaction model maps to a standard text input pattern.                                                                                                                                                                                       |
 | Pre-hydration form participation | Treat this component as suitable for native form submission when `name`, `language`, and a stable `elementId` are provided. Do not rely on runtime language-toggle events before hydration.                                                                                                                                        |

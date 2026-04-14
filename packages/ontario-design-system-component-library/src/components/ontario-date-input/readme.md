@@ -273,11 +273,11 @@ The `caption` property is used to render the label for the ontario-input. It can
 caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 ```
 
-## Lifecycle contract
+## Technical Note: SSR (Server-Side Rendering) and form behaviour
 
-Use the same lifecycle contract structure for form-component docs so teams can compare SSR, hydration, and fallback behavior quickly.
+If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
 
-| Lifecycle state                  | Contract                                                                                                                                                                                                                                                                                                                                     |
+| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                                     |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Server-rendered shape            | Renders the `ontario-date-input` host with caption, hint, and segmented day, month, and year fields. The component can render server-side, but its aggregate value contract is still a hydrated behavior.                                                                                                                                    |
 | Pre-hydration form participation | Do not assume the aggregate ISO date value will participate in native form submission before hydration. If submission before hydration or without JavaScript is required, provide a native fallback pattern in the consuming app.                                                                                                            |

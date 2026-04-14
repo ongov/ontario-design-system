@@ -431,11 +431,11 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 - A `name` attribute needs to be set to be submitted to the server when the form is submitted.
 - Do not add any customized styles to dropdown lists - the browser's default is the most accessible.
 
-## Lifecycle contract
+## Technical Note: SSR (Server-Side Rendering) and form behaviour
 
-Use the same lifecycle contract structure for form-component docs so teams can compare SSR, hydration, and fallback behavior quickly.
+If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
 
-| Lifecycle state                  | Contract                                                                                                                                                                                                                                                                                                                           |
+| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                           |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Server-rendered shape            | Renders the `ontario-dropdown-list` host with label, hint, option markup, and empty-start option behavior when configured. The interaction model maps to a standard `<select>` pattern.                                                                                                                                            |
 | Pre-hydration form participation | Treat this component as suitable for native form submission when `name`, `language`, and a stable `elementId` are provided. Do not rely on runtime language-toggle events before hydration.                                                                                                                                        |

@@ -386,11 +386,11 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 - Do not preselect checkboxes (there should be no checked attribute by default on the checkbox)
 - All checkboxes in a group should have the same name value to associate them as a group of options
 
-## Lifecycle contract
+## Technical Note: SSR (Server-Side Rendering) and form behaviour
 
-Use the same lifecycle contract structure for form-component docs so teams can compare SSR, hydration, and fallback behavior quickly.
+If you are rendering this component on the server, use the notes below to understand what works before hydration, what becomes available after hydration, and what to verify in no-JavaScript or progressively enhanced form flows.
 
-| Lifecycle state                  | Contract                                                                                                                                                                                                                                                                                                                           |
+| What to check                    | Guidance                                                                                                                                                                                                                                                                                                                           |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Server-rendered shape            | Renders the `ontario-checkboxes` host with a fieldset, legend, option labels, and optional hint content. The interaction model maps to a grouped checkbox pattern.                                                                                                                                                                 |
 | Pre-hydration form participation | Treat this component as suitable for native checkbox-group submission when every option has a stable `elementId` and the group has a stable `name` and `language`. Do not rely on runtime language-toggle events before hydration.                                                                                                 |
