@@ -37,9 +37,15 @@ export class OntarioCallout implements CalloutAside {
 	@Prop() headingContent?: string;
 
 	/**
-	 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.
+	 * Optional text to be displayed as the content for the callout component.
+	 * Use a callout for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
 	 * HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
+	 *
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
 	 *
 	 * @example
 	 * <ontario-callout headingType='h3' headingContent='This is the callout heading'><p>This is the first sentence of the callout content.</p><p>This is the second sentence of the callout content.</p></ontario-callout>

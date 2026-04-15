@@ -37,9 +37,15 @@ export class OntarioAside implements CalloutAside {
 	@Prop() headingContent?: string;
 
 	/**
-	 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.
+	 * Optional text to be displayed as the content for the aside component.
+	 * Use an aside for related, non-essential information that sits alongside the main task flow.
+	 * If a string is passed, it will automatically be nested in a paragraph tag.
 	 *
 	 * HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
+	 *
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
 	 *
 	 * @example
 	 * <ontario-aside headingType='h3' headingContent='This is the aside heading'><p>This is the first sentence of the aside content.</p><p>This is the second sentence of the aside content.</p></ontario-aside>
