@@ -498,7 +498,7 @@ To ensure best practices, it is important to limit the number of navigation link
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Header component is partially SSR-compatible. It supports static HTML rendering on the server but defers most dynamic behavior to the browser after hydration.
+The Ontario Header component is partially SSR-compatible. It supports static HTML rendering on the server but defers most dynamic behaviour to the browser after hydration.
 
 Important considerations:
 
