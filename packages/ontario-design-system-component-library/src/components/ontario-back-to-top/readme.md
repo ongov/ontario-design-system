@@ -114,10 +114,11 @@ Otherwise, a default Back to Top button can be used as follows:
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Back to Top component is SSR-compatible and renders static markup during server-side rendering. For full functionality, client-side hydration is required. To ensure consistency:
+The Ontario Back to Top component supports server-side rendering, with a few considerations:
 
-- **Scroll behavior and visibility toggling** rely on window and scroll position, which are only available in the browser. These features activate after hydration.
-- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired language explicitly as a prop (e.g., `<ontario-back-to-top language="fr"></ontario-back-to-top>`).
+- **Scroll behaviour and visibility toggling:** These rely on window and scroll position, which are only available in the browser. These features activate after hydration.
+- **Language prop:** Pass `language` explicitly during SSR.
+- **Hydrated-only language events:** Language change events only fire after hydration.
 
 <!-- Auto Generated Below -->
 

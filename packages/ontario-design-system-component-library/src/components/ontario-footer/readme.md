@@ -961,11 +961,11 @@ two-column-options='{
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Footer component supports multiple languages via the `language` prop, which controls the text used in translatable UI elements (e.g., links). If no language is explicitly passed, it defaults to English (`'en'`).
+The Ontario Footer component supports server-side rendering, with a few considerations:
 
-On the client side, the component also listens for global language change events such as `setAppLanguage` and `headerLanguageToggled`, allowing it to update dynamically when used in conjunction with shared application-level language controls (like `<ontario-header>`).
-
-These language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-footer language="fr"></ontario-footer`).
+- **Language prop:** Pass `language` explicitly during SSR. If not provided, the component defaults to English (`'en'`).
+- **Hydrated-only language events:** Global language events such as `setAppLanguage` and `headerLanguageToggled` only fire after hydration.
+- **Framework guidance:** For deterministic SSR output, set `language` directly in markup (for example, `<ontario-footer language="fr"></ontario-footer>`).
 
 <!-- Auto Generated Below -->
 

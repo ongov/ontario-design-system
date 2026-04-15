@@ -333,16 +333,13 @@ It can be confusing and frustrating for users to expect a button to trigger an a
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Button component supports two ways of defining labels:
+The Ontario Button component supports server-side rendering, with a few considerations:
 
-- Via the `label` prop (as a string)
-- Via slotted children placed between the component's opening and closing tags
+- **Preferred content source:** Pass button text through the `label` prop.
+- **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
+- **Framework guidance:** For deterministic SSR output, prefer `label` over slotted children.
 
-While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
-
-### SSR-safe Example
-
-During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the button content through the `label` prop. Eg:
+### SSR-safe example:
 
 ```html
 <ontario-button label="Click me"></ontario-button>

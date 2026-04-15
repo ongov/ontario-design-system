@@ -150,16 +150,13 @@ This is another example of a long blockquote. The component calculates the lengt
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Blockquote component supports two ways of defining quotes:
+The Ontario Blockquote component supports server-side rendering, with a few considerations:
 
-- Via the `quote` prop (as a string)
-- Via slotted children placed between the component's opening and closing tags
+- **Preferred content source:** Pass blockquote text through the `quote` prop.
+- **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR and can produce empty quotes.
+- **Framework guidance:** For deterministic SSR output, prefer `quote` over slotted children.
 
-While both approaches work in the browser, only the `quote` prop is reliably rendered during Server-Side Rendering (SSR).
-
-### SSR-safe example
-
-During SSR, fallback content using `host.textContent` is not reliably available, which can result in empty quotes in the rendered output. This is why it is recommended to pass the blockquote quote through the `quote` prop. Eg:
+### SSR-safe example:
 
 ```tsx
 <OntarioBlockquote quote="Courage is resistance to fear, mastery of fear—not absence of fear."></OntarioBlockquote>
