@@ -135,6 +135,13 @@ export namespace Components {
 		 */
 		name: string;
 	}
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -234,6 +241,13 @@ export namespace Components {
 		 */
 		type: ButtonType;
 	}
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface OntarioCallout {
 		/**
 		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
@@ -2793,6 +2807,13 @@ export namespace Components {
 		 */
 		type: 'small' | 'large';
 	}
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 */
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
@@ -3192,6 +3213,13 @@ declare global {
 		prototype: HTMLOntarioAccordionElement;
 		new (): HTMLOntarioAccordionElement;
 	};
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {}
 	var HTMLOntarioAsideElement: {
 		prototype: HTMLOntarioAsideElement;
@@ -3217,6 +3245,13 @@ declare global {
 		prototype: HTMLOntarioButtonElement;
 		new (): HTMLOntarioButtonElement;
 	};
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface HTMLOntarioCalloutElement extends Components.OntarioCallout, HTMLStencilElement {}
 	var HTMLOntarioCalloutElement: {
 		prototype: HTMLOntarioCalloutElement;
@@ -4407,6 +4442,13 @@ declare global {
 		prototype: HTMLOntarioLoadingIndicatorElement;
 		new (): HTMLOntarioLoadingIndicatorElement;
 	};
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 */
 	interface HTMLOntarioPageAlertElement extends Components.OntarioPageAlert, HTMLStencilElement {}
 	var HTMLOntarioPageAlertElement: {
 		prototype: HTMLOntarioPageAlertElement;
@@ -4788,6 +4830,13 @@ declare namespace LocalJSX {
 		 */
 		onAccordionChange?: (event: OntarioAccordionCustomEvent<AccordionChangeDetail>) => void;
 	}
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -4887,6 +4936,13 @@ declare namespace LocalJSX {
 		 */
 		type?: ButtonType;
 	}
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface OntarioCallout {
 		/**
 		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
@@ -7571,6 +7627,13 @@ declare namespace LocalJSX {
 		 */
 		type?: 'small' | 'large';
 	}
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 */
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
@@ -8077,11 +8140,25 @@ declare module '@stencil/core' {
 	export namespace JSX {
 		interface IntrinsicElements {
 			'ontario-accordion': LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
+			/**
+			 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+			 */
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
 			'ontario-back-to-top': LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
 			'ontario-badge': LocalJSX.OntarioBadge & JSXBase.HTMLAttributes<HTMLOntarioBadgeElement>;
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+			/**
+			 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+			 */
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
 			'ontario-card': LocalJSX.OntarioCard & JSXBase.HTMLAttributes<HTMLOntarioCardElement>;
 			'ontario-card-collection': LocalJSX.OntarioCardCollection &
@@ -8315,6 +8392,13 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioLanguageToggleElement>;
 			'ontario-loading-indicator': LocalJSX.OntarioLoadingIndicator &
 				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
+			/**
+			 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+			 * (for example informational, warning, success, or error outcomes).
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 */
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;

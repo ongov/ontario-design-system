@@ -22,13 +22,7 @@ export interface PageAlert {
 	heading: string;
 
 	/**
-	 * The main content for the page alert.
-	 * Use page alerts for high-importance status messages that apply to the whole page (for example success, warning, or error outcomes).
-	 * This can be rendered as either string or HTML content.
-	 *
-	 * For component selection guidance, see:
-	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
-	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * The main content for the page alert. This can be rendered as either string or HTML content.
 	 *
 	 * @example
 	 * <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number.">
