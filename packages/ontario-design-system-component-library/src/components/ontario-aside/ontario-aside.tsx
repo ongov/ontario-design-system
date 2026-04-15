@@ -46,6 +46,7 @@ export class OntarioAside implements CalloutAside {
 	 * For component selection guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
 	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
 	 *
 	 * @example
 	 * <ontario-aside headingType='h3' headingContent='This is the aside heading'><p>This is the first sentence of the aside content.</p><p>This is the second sentence of the aside content.</p></ontario-aside>
