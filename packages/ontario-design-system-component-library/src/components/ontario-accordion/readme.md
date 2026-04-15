@@ -167,6 +167,15 @@ These language change events only fire in the browser after hydration. To ensure
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Accordion presents collapsible sections of content.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/accordions.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                                                                                                                                             | Type                                                 | Default     |

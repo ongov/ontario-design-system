@@ -27,6 +27,13 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 
 import { default as translations } from '../../translations/global.i18n.json';
 
+/**
+ * Ontario Radio Buttons captures a single choice from a defined option set.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+ */
 @Component({
 	tag: 'ontario-radio-buttons',
 	styleUrl: 'ontario-radio-buttons.scss',

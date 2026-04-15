@@ -681,6 +681,15 @@ Props such as `tableColumns` and `tableData` are parsed from JSON. To avoid hydr
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Table presents structured tabular data with accessible semantics.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/tables.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                         | Type                                             | Default     |

@@ -14,6 +14,13 @@ import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { emitEvent } from '../../utils/events/event-handler';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Date Input captures day, month, and year values as a single date field.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/dates.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+ */
 @Component({
 	tag: 'ontario-date-input',
 	styleUrl: 'ontario-date-input.scss',

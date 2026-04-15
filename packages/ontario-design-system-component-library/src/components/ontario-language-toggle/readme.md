@@ -14,6 +14,14 @@ To ensure the correct language is rendered during SSR, explicitly pass the langu
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Language Toggle switches the interface between supported languages.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                                                                      | Type                                    | Default     |

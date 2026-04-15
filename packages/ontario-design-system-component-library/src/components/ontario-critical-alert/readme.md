@@ -135,6 +135,15 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Critical Alert communicates urgent, high-priority emergency information.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/critical-alerts.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                                  | Type                    | Default     |

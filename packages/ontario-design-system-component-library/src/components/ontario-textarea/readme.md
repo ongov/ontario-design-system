@@ -229,6 +229,15 @@ The Ontario Textarea component supports server-side rendering, with a few consid
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Textarea captures multi-line text input.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/text-areas.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                    | Type                                    | Default     |

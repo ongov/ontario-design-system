@@ -139,7 +139,14 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 ## Overview
 
+Ontario Hint Text provides concise supporting instructions for form controls.
+
 Use hint text to help users understand how to complete fields in a form.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/hint-text.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 
 ## Properties
 

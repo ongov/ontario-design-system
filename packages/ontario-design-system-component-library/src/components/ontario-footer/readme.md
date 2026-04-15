@@ -969,6 +969,16 @@ These language change events only fire in the browser after hydration. To ensure
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/simple-footer.html
+- https://designsystem.ontario.ca/components/detail/expanded-footer.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+
 ## Properties
 
 | Property             | Attribute              | Description                                                                                                                                                                                                         | Type                                                                                                                                           | Default     |

@@ -135,6 +135,15 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Badge displays concise status labels and metadata.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/badges.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                               | Type                                                                                                    | Default     |

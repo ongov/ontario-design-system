@@ -121,6 +121,15 @@ The Ontario Back to Top component is SSR-compatible and renders static markup du
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Back to Top helps users quickly return to the top of long pages.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/back-to-top.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+
 ## Properties
 
 | Property   | Attribute  | Description                                                                                                                                                                                                              | Type                        | Default     |

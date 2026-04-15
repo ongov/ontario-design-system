@@ -25,6 +25,13 @@ import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Dropdown List presents a selectable list of predefined options.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+ */
 @Component({
 	tag: 'ontario-dropdown-list',
 	styleUrl: 'ontario-dropdown-list.scss',

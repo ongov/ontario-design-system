@@ -350,6 +350,15 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Button triggers actions and supports button or link behavior.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                                                                                                                                                                                          | Type                                                            | Default       |

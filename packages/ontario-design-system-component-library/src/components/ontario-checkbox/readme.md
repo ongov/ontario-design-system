@@ -397,6 +397,15 @@ The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensu
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Checkboxes collects one or more selections from a defined option set.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/checkboxes.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Type                                    | Default     |

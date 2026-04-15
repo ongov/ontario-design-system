@@ -164,6 +164,15 @@ The Ontario Task component is SSR-compatible and renders predictably during hydr
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Task represents an individual task item and status within a task list.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/task-list.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                                                                                                                         | Type                                                                                                                                                         | Default                   |

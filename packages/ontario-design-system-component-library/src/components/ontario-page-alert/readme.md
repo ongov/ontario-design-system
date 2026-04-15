@@ -168,6 +168,7 @@ For component selection guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/page-alerts.html
 - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
 
 ## Properties
 
