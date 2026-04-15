@@ -278,7 +278,7 @@ caption='{ "captionText": "Exact Date", "captionType": "heading" }'
 The Ontario Date Input component is compatible with server-side rendering, with a few additional considerations:
 
 - **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Stable IDs:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
 - **Rendered structure vs submitted value:** During SSR, the component renders the expected day, month, and year inputs. The aggregated ISO 8601 value is assembled after hydration, so do not assume that aggregate value will participate in native form submission before hydration.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. Full date normalization, aggregate host `input` and `change` events, and component-managed date validation become available after hydration.
 - **No-JavaScript fallback:** If a flow must submit before hydration or without JavaScript, provide explicit native fallback markup in the consuming application.

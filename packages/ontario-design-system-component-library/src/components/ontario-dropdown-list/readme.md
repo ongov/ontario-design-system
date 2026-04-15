@@ -436,10 +436,10 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 The Ontario Dropdown List component supports server-side rendering, with a few considerations:
 
 - **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Stable IDs:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders with the expected select structure and can support straightforward form submission when `name`, `language`, and `elementId` are stable. Required-state messaging and the component's event model become available after hydration.
-- **Client-managed behaviour:** If your application depends on emitted events or hydrated validation behaviour, use the event examples below and verify the full submit flow in the consuming application.
+- **Hydrated-only behaviour:** If your application depends on emitted events or hydrated validation behaviour, use the event examples below and verify the full submit flow in the consuming application.
 - **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 ### SSR-safe example:
