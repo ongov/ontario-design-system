@@ -391,7 +391,7 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 The Ontario Checkboxes component supports server-side rendering, with a few considerations:
 
 - **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
-- **Stable IDs:** Each checkbox option should use a stable `elementId`. If option IDs are generated differently between server and client, hydration mismatches are more likely.
+- **Dynamic ID generation:** Each checkbox option should use a stable `elementId`. If option IDs are generated differently between server and client, hydration mismatches are more likely.
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders a checkbox-group structure that can support straightforward form submission when the group `name`, `language`, and option ids are stable. Group-level error messaging and emitted events become available after hydration.
 - **Hydrated-only behaviour:** Group-level error messaging and custom event handling should be treated as hydrated behaviour. Keep the group `name` stable across all options and verify the full submit flow in the consuming application.

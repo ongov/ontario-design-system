@@ -415,7 +415,7 @@ visible when the hint expander title (hint) is toggled" }'
 The Ontario Radio Buttons component supports server-side rendering, with a few considerations:
 
 - **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
-- **Stable IDs:** Each radio option should use a stable `elementId` so the server-rendered markup and hydrated markup stay aligned.
+- **Dynamic ID generation:** Each radio option should use a stable `elementId` so the server-rendered markup and hydrated markup stay aligned.
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders a radio-group structure that can support straightforward form submission when the group `name`, `language`, and option ids are stable. Group-level error messaging and emitted events become available after hydration.
 - **Hydrated-only behaviour:** Group-level error messaging, hydrated validation, and custom event handling should be treated as hydrated behaviour. Keep the group `name` stable and verify the full submit flow in the consuming application.

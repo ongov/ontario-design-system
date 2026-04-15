@@ -369,7 +369,7 @@ A `name` attribute needs to be set to be submitted to the server when the form i
 The Ontario Input component supports server-side rendering, with a few considerations:
 
 - **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
-- **Stable IDs:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
 - **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
 - **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders with the expected text-input structure and can support straightforward form submission when `name`, `language`, and `elementId` are stable. Enhanced validation, custom validators, and the component's event model become available after hydration.
 - **Hydrated-only behaviour:** If your application depends on custom events or runtime validation, use the event examples below and treat that behaviour as hydrated-only.
