@@ -398,6 +398,19 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and surface message text through `errorMessage`.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-date-input id="date-of-birth" caption="Date of birth" required></ontario-date-input>
 <script>
@@ -414,6 +427,11 @@ Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and 
 		};
 	});
 </script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
 ```
 
 ```tsx
@@ -433,6 +451,11 @@ Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and 
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-date-input
 	[elementId]="'date-of-birth'"
@@ -440,6 +463,11 @@ Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and 
 	[required]="true"
 	[dateValidator]="validateDateOfBirth"
 ></ontario-date-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Live validation

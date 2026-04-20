@@ -534,6 +534,19 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set `errorMessage` when required selection rules are not met, and keep options available for correction.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-radio-buttons
 	id="contact-preference"
@@ -556,6 +569,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
 ```tsx
 <OntarioRadioButtons
 	elementId="contact-preference"
@@ -570,6 +588,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-radio-buttons
 	[elementId]="'contact-preference'"
@@ -579,6 +602,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 	[options]="contactPreferenceOptions"
 	[errorMessage]="'Select one option to continue.'"
 ></ontario-radio-buttons>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Live validation

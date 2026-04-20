@@ -219,6 +219,19 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set the `errorMessage` property on `ontario-textarea` to display an error state and message. You can also listen for `inputErrorOccurred` to react to error updates in application code.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-textarea id="comments" name="comments" caption="Comments" required></ontario-textarea>
 <script>
@@ -231,6 +244,11 @@ Set the `errorMessage` property on `ontario-textarea` to display an error state 
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
 ```tsx
 <OntarioTextarea
 	elementId="comments"
@@ -241,6 +259,11 @@ Set the `errorMessage` property on `ontario-textarea` to display an error state 
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-textarea
 	[elementId]="'comments'"
@@ -249,6 +272,11 @@ Set the `errorMessage` property on `ontario-textarea` to display an error state 
 	[required]="true"
 	[errorMessage]="'Enter your comments before continuing.'"
 ></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Live validation

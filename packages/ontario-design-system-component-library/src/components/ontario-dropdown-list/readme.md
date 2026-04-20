@@ -532,6 +532,19 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set `errorMessage` when selection is missing or invalid, and keep the list enabled so users can correct their choice.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-dropdown-list
 	id="service-selection"
@@ -553,6 +566,11 @@ Set `errorMessage` when selection is missing or invalid, and keep the list enabl
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
 ```tsx
 <OntarioDropdownList
 	elementId="service-selection"
@@ -567,6 +585,11 @@ Set `errorMessage` when selection is missing or invalid, and keep the list enabl
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-dropdown-list
 	[elementId]="'service-selection'"
@@ -576,6 +599,11 @@ Set `errorMessage` when selection is missing or invalid, and keep the list enabl
 	[options]="serviceOptions"
 	[errorMessage]="'Select a service to continue.'"
 ></ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Live validation

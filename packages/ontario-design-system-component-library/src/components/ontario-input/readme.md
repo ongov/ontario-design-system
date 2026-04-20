@@ -235,6 +235,19 @@ When using libraries that listen for events, this process may not work with them
 
 An error message can be displayed on an input by setting the `errorMessage` property. This will display a message to the user along with broadcasting an event, called `inputErrorOccurred`, that can be listened for by other components or custom event handlers.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-input id="input-1" name="input-1" caption="What is your name?" required></ontario-input>
 <script>
@@ -249,7 +262,10 @@ An error message can be displayed on an input by setting the `errorMessage` prop
 </script>
 ```
 
-_Note: to test the above code sample either set an `errorMessage` on `input-1` or add the `enable-live-validation` attribute._
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
 
 ```tsx
 <OntarioInput
@@ -261,6 +277,11 @@ _Note: to test the above code sample either set an `errorMessage` on `input-1` o
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-input
 	[elementId]="'input-1'"
@@ -270,6 +291,13 @@ _Note: to test the above code sample either set an `errorMessage` on `input-1` o
 	[errorMessage]="'Enter your first name'"
 ></ontario-input>
 ```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+_Note: to test the above code sample either set an `errorMessage` on `input-1` or add the `enable-live-validation` attribute._
 
 ### Live validation
 

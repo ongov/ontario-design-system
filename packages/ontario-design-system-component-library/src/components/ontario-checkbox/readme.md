@@ -500,6 +500,19 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set `errorMessage` when required selection rules are not met, and keep options available for correction.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-checkboxes
 	id="contact-methods"
@@ -522,6 +535,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
 ```tsx
 <OntarioCheckboxes
 	elementId="contact-methods"
@@ -536,6 +554,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 />
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
 ```html
 <ontario-checkboxes
 	[elementId]="'contact-methods'"
@@ -545,6 +568,11 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 	[options]="contactMethodOptions"
 	[errorMessage]="'Select at least one contact method.'"
 ></ontario-checkboxes>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ### Live validation
