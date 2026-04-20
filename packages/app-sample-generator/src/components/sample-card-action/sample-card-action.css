@@ -1,0 +1,63 @@
+:host {
+	display: inline-block;
+	font-family:
+		'Segoe UI',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		sans-serif;
+}
+
+.action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 9999px;
+	padding: 0.45rem 0.95rem;
+	border: 1px solid transparent;
+	font-size: 0.88rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	cursor: pointer;
+	text-decoration: none;
+	transition:
+		transform 120ms ease,
+		box-shadow 150ms ease,
+		background 150ms ease,
+		border-color 150ms ease,
+		color 150ms ease;
+}
+
+.action.primary {
+	background: linear-gradient(135deg, #1a4bff 0%, #0d6efd 100%);
+	color: #ffffff;
+	border-color: #0b5ed7;
+	box-shadow:
+		0 10px 26px rgba(13, 110, 253, 0.22),
+		0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.action.primary:hover {
+	background: linear-gradient(135deg, #0f5dff 0%, #0a58ca 100%);
+	transform: translateY(-1px);
+	box-shadow:
+		0 12px 30px rgba(13, 110, 253, 0.26),
+		0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.action.primary:active {
+	transform: translateY(0);
+	box-shadow:
+		0 8px 22px rgba(13, 110, 253, 0.2),
+		0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.action.ghost {
+	background-color: #ffffff;
+	color: #1f2933;
+	border-color: #cbd5e1;
+}
+
+.action.ghost:hover {
+	background-color: #eef2f7;
+}

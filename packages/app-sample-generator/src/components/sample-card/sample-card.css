@@ -1,0 +1,75 @@
+:host {
+	display: block;
+	font-family:
+		'Segoe UI',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		sans-serif;
+	color: #1f2933;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+	padding: 1.2rem 1.4rem;
+	border-radius: 18px;
+	border: 1px solid #d7e3f4;
+	background: linear-gradient(135deg, #ffffff 0%, #f3f7ff 100%);
+	box-shadow:
+		0 14px 32px rgba(13, 110, 253, 0.1),
+		0 4px 12px rgba(31, 41, 51, 0.06);
+	min-width: 280px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+}
+
+.heading {
+	margin: 0;
+	font-weight: 650;
+	font-size: 1.05rem;
+	color: #1f2b3a;
+}
+
+.summary {
+	margin: 0.3rem 0 0;
+	font-size: 0.92rem;
+	color: #52616b;
+}
+
+.status {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.25rem 0.65rem;
+	border-radius: 9999px;
+	border: 1px solid #bcd4ff;
+	background-color: #eef4ff;
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: #1b4bbd;
+	text-transform: uppercase;
+}
+
+.body {
+	font-size: 0.95rem;
+	line-height: 1.5;
+	color: #1f2933;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}

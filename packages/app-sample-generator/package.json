@@ -1,0 +1,31 @@
+{
+	"name": "stencil-sample-generator",
+	"version": "1.0.0",
+	"description": "Automated HTML sample generator for Stencil components.",
+	"main": "index.js",
+	"scripts": {
+		"build-components": "stencil build --dev",
+		"generate-samples": "npm run build-components && tsx scripts/generate-samples.ts",
+		"screenshot:sample-button": "node scripts/capture-sample-button.mjs",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"stencil",
+		"docs",
+		"samples"
+	],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"devDependencies": {
+		"@jest/globals": "^30.2.0",
+		"@ongov/ontario-design-system-component-library": "workspace:*",
+		"@stencil/core": "^4.38.3",
+		"@types/node": "^24.10.1",
+		"jest": "^30.2.0",
+		"jest-environment-node": "^30.2.0",
+		"puppeteer": "^24.30.0",
+		"tsx": "^4.20.5",
+		"typescript": "^5.9.3"
+	}
+}
