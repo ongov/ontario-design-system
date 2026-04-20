@@ -1,26 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-//import translations from '../../../translations/global.i18n.json' assert { type: 'json' };
-
-/**
- * ***** DEVELOPER NOTES *****
- *
- * TESTING EVENTS
- *
- * By default, Stencil's `toHaveReceivedEventDetail({})` method will grab the details
- * from the latest fired event of the specified type.
- *
- * This is powerful, but can be cumbersome in medium to large events, especially if
- * you only care about a sub-set of values within an Event's details.
- *
- * If you only want to check a subset of event details, you can do:
- *
- * expect(eventSpy.events[eventSpy.events.length - 1].detail)
- *   .toEqual(expect.objectContaining({ changedIndex: 0 }));
- *
- */
-
 test.describe('ontario-aside', () => {
 	let host: Locator;
 
@@ -30,7 +10,7 @@ test.describe('ontario-aside', () => {
               heading-type="h4"
               heading-content-type="string"
               heading-content="This is an aside heading"
-              highlight-colour="purple"
+              highlight-color="purple"
       >
               <p>
                   As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
@@ -50,40 +30,38 @@ test.describe('ontario-aside', () => {
 		await expect(host).toHaveClass('hydrated');
 	});
 
-	test('renders correct initial highlight colour', async () => {
+	test('renders correct initial highlight-color', async () => {
 		const aside = host;
-		await expect(aside).toHaveAttribute('highlight-colour', 'purple');
+		await expect(aside).toHaveAttribute('highlight-color', 'purple');
 	});
 
-	test('applies and updates border-highlight class when highlight-colour changes', async ({ page }) => {
+	test('applies and updates border-highlight class when highlight-color changes', async ({ page }) => {
 		// initial class on inner <aside>
 		const hasPurple = await host.evaluate(
-			(el: any) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--purple'),
+			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--purple'),
 		);
 		expect(hasPurple).toBe(true);
 
 		// update prop to lime and wait for component to re-render
-		await host.evaluate(() => {
-			document.querySelector('ontario-aside')?.setAttribute('highlight-colour', 'lime');
-		});
+
+		await host.evaluate((el) => el.setAttribute('highlight-color', 'lime'));
 		await page.waitForChanges();
 
 		const hasLime = await host.evaluate(
-			(el: any) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--lime'),
+			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--lime'),
 		);
 		expect(hasLime).toBe(true);
 	});
 
-	test('invalid highlight-colour falls back to teal', async ({ page }) => {
-		// Set invalid highlight-colour via attribute (this will trigger validation better than property assignment)
-		await page.evaluate(() => {
-			const el = document.querySelector('ontario-aside') as any;
-			el.setAttribute('highlight-colour', 'banana');
+	test('invalid highlight-color falls back to teal', async ({ page }) => {
+		// Set invalid highlight-color via attribute (this will trigger validation better than property assignment)
+		await host.evaluate((el) => {
+			el.setAttribute('highlight-color', 'banana');
 		});
 		await page.waitForChanges();
 
 		// Check the rendered border color - should still be teal (default) since 'banana' class doesn't exist in CSS
-		const borderColor = await host.evaluate((el: any) => {
+		const borderColour = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
 			if (!aside) return null;
 			return {
@@ -93,9 +71,9 @@ test.describe('ontario-aside', () => {
 		});
 
 		// The border should be teal (the invalid class won't match CSS rules, so default teal border is shown)
-		expect(borderColor?.borderLeftColor).toBeTruthy();
+		expect(borderColour?.borderLeftColor).toBeTruthy();
 		// Since 'banana' is invalid, the component either doesn't apply that class or default style applies
-		expect(borderColor?.className).toContain('ontario-aside');
+		expect(borderColour?.className).toContain('ontario-aside');
 	});
 
 	test('updates heading level when heading-type changes', async ({ page }) => {
@@ -103,8 +81,8 @@ test.describe('ontario-aside', () => {
 		await expect(host.locator('h4')).toHaveCount(1);
 
 		// change heading-type to h3
-		await host.evaluate(() => {
-			document.querySelector('ontario-aside')?.setAttribute('heading-type', 'h3');
+		await host.evaluate((el) => {
+			el.setAttribute('heading-type', 'h3');
 		});
 		await page.waitForChanges();
 
@@ -112,27 +90,24 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('renders content prop inside a paragraph when content is provided', async ({ page }) => {
-		await host.evaluate(() => {
-			document.querySelector('ontario-aside')?.setAttribute('content', 'This is content passed via prop');
+		await host.evaluate((el) => {
+			el.setAttribute('content', 'This is content passed via prop');
 		});
 		await page.waitForChanges();
 
 		await expect(host.locator('p').filter({ hasText: 'This is content passed via prop' })).toBeVisible();
 	});
 
-	test('updates heading content when headingContentType changes', async ({ page }) => {
+	test('updates heading content when heading-content-type changes', async ({ page }) => {
 		const heading = host.locator('h4');
 
 		// Initial state (matches fixture heading-content)
 		await expect(heading).toHaveText('This is an aside heading');
 
 		// Switch to HTML content via attributes
-		await host.evaluate(() => {
-			const el = document.querySelector('ontario-aside') as any;
-			if (el) {
-				el.setAttribute('heading-content-type', 'html');
-				el.setAttribute('heading-content', '<a href="#">Quick fact:</a>');
-			}
+		await host.evaluate((el: HTMLElement) => {
+			el.setAttribute('heading-content-type', 'html');
+			el.setAttribute('heading-content', '<a href="#">Quick fact:</a>');
 		});
 		await page.waitForChanges();
 
@@ -144,7 +119,7 @@ test.describe('ontario-aside', () => {
 	// ============== CSS VALIDATION TESTS ==============
 
 	test('applies correct base styles to aside element', async () => {
-		const asideElement = host.evaluate((el: any) => {
+		const asideElement = host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
 			if (!aside) return null;
 			const computedStyle = window.getComputedStyle(aside);
@@ -152,13 +127,7 @@ test.describe('ontario-aside', () => {
 				borderLeftWidth: computedStyle.borderLeftWidth,
 				borderLeftStyle: computedStyle.borderLeftStyle,
 				paddingTop: computedStyle.paddingTop,
-				paddingRight: computedStyle.paddingRight,
-				paddingBottom: computedStyle.paddingBottom,
 				paddingLeft: computedStyle.paddingLeft,
-				marginTop: computedStyle.marginTop,
-				marginRight: computedStyle.marginRight,
-				marginBottom: computedStyle.marginBottom,
-				marginLeft: computedStyle.marginLeft,
 			};
 		});
 
@@ -169,43 +138,39 @@ test.describe('ontario-aside', () => {
 		expect(styles?.paddingLeft).not.toBe('0px');
 	});
 
-	test('combines all highlight colour classes correctly', async ({ page }) => {
-		const colours = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'];
+	test('combines all highlight color classes correctly', async ({ page }) => {
+		const colors = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'];
 
-		for (const colour of colours) {
-			await page.evaluate((col) => {
-				document.querySelector('ontario-aside')?.setAttribute('highlight-colour', col);
-			}, colour);
+		for (const color of colors) {
+			await host.evaluate((el: HTMLElement, col: string) => {
+				el.setAttribute('highlight-color', col);
+			}, color);
 			await page.waitForChanges();
 
-			const hasColourClass = await page.evaluate((col) => {
-				return !!document
-					.querySelector('ontario-aside')
-					?.shadowRoot?.querySelector(`aside.ontario-border-highlight--${col}`);
-			}, colour);
+			const hasColourClass = await host.evaluate((el: Element, col: string) => {
+				return !!el.shadowRoot?.querySelector(`aside.ontario-border-highlight--${col}`);
+			}, color);
 			expect(hasColourClass).toBe(true);
 		}
 	});
 
-	test('applies teal border colour by default', async () => {
-		await host.evaluate(() => {
-			const el = document.querySelector('ontario-aside') as any;
+	test('applies teal border color by default', async () => {
+		await host.evaluate((el: HTMLElement) => {
 			const newAside = document.createElement('ontario-aside');
 			newAside.setAttribute('heading-type', 'h4');
 			newAside.setAttribute('heading-content-type', 'string');
-			newAside.setAttribute('heading-content', 'Default colour test');
+			newAside.setAttribute('heading-content', 'Default color test');
 			el.parentNode?.replaceChild(newAside, el);
 		});
 
 		const hasTealClass = await host.evaluate(
-			() =>
-				!!document.querySelector('ontario-aside')?.shadowRoot?.querySelector('aside.ontario-border-highlight--teal'),
+			(el: Element) => !!el.shadowRoot?.querySelector('aside.ontario-border-highlight--teal'),
 		);
 		expect(hasTealClass).toBe(true);
 	});
 
 	test('applies correct padding and margin to heading element', async () => {
-		const headingStyles = await host.evaluate((el: any) => {
+		const headingStyles = await host.evaluate((el: Element) => {
 			const heading = el.shadowRoot?.querySelector('.ontario-aside__title');
 			if (!heading) return null;
 			const computedStyle = window.getComputedStyle(heading);
@@ -224,11 +189,11 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('applies correct max-width to child elements', async () => {
-		const childWidths = await host.evaluate((el: any) => {
+		const childWidths = await host.evaluate((el: Element) => {
 			const children = el.shadowRoot?.querySelectorAll('.ontario-aside *');
 			if (!children || children.length === 0) return null;
-			const maxWidths = Array.from(children).map((child: Element) => {
-				return window.getComputedStyle(child).maxWidth;
+			const maxWidths = Array.from(children).map((child) => {
+				return window.getComputedStyle(child as Element).maxWidth;
 			});
 			return maxWidths;
 		});
@@ -243,7 +208,7 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('removes margin-bottom from last child element', async () => {
-		const lastChildStyle = await host.evaluate((el: any) => {
+		const lastChildStyle = await host.evaluate((el: Element) => {
 			const lastChild = el.shadowRoot?.querySelector('.ontario-aside :last-child');
 			if (!lastChild) return null;
 			const computedStyle = window.getComputedStyle(lastChild);
@@ -255,27 +220,29 @@ test.describe('ontario-aside', () => {
 		expect(lastChildStyle?.marginBottom).toBe('8px');
 	});
 
-	test('border colour changes immediately when highlight-colour prop updates', async ({ page }) => {
-		// Get initial border colour (should be purple from fixture)
-		let borderColour = await host.evaluate((el: any) => {
+	test('border color changes immediately when highlight-color prop updates', async ({ page }) => {
+		// Get initial border color (should be purple from fixture)
+		let borderColour = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
+			if (!aside) return null;
 			return window.getComputedStyle(aside).borderLeftColor;
 		});
 		expect(borderColour).toBeTruthy();
 		const initialColour = borderColour;
 
 		// Change to gold
-		await host.evaluate(() => {
-			document.querySelector('ontario-aside')?.setAttribute('highlight-colour', 'gold');
+		await host.evaluate((el) => {
+			el.setAttribute('highlight-color', 'gold');
 		});
 		await page.waitForChanges();
 
-		borderColour = await host.evaluate((el: any) => {
+		borderColour = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
+			if (!aside) return null;
 			return window.getComputedStyle(aside).borderLeftColor;
 		});
 
-		// Verify the colour has changed
+		// Verify the color has changed
 		expect(borderColour).not.toBe(initialColour);
 	});
 
@@ -284,7 +251,7 @@ test.describe('ontario-aside', () => {
 		await page.setViewportSize({ width: 480, height: 640 });
 		await page.waitForLoadState('networkidle');
 
-		const marginStyles = await host.evaluate((el: any) => {
+		const marginStyles = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('.ontario-aside');
 			if (!aside) return null;
 			const computedStyle = window.getComputedStyle(aside);
@@ -300,7 +267,7 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('border is solid left border only', async () => {
-		const borderStyles = await host.evaluate((el: any) => {
+		const borderStyles = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
 			if (!aside) return null;
 			const computedStyle = window.getComputedStyle(aside);
@@ -334,10 +301,8 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('respects ::last-child and ::last-of-type selectors for margin override', async () => {
-		await host.evaluate(() => {
-			document
-				.querySelector('ontario-aside')
-				?.setAttribute('content', 'First paragraph of content that should have margin.');
+		await host.evaluate((el) => {
+			el.setAttribute('content', 'First paragraph of content that should have margin.');
 		});
 
 		const paragraphs = host.locator('p');
@@ -353,7 +318,7 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('maintains proper text contrast within aside container', async () => {
-		const textStyles = await host.evaluate((el: any) => {
+		const textStyles = await host.evaluate((el: Element) => {
 			const content = el.shadowRoot?.querySelector('aside');
 			if (!content) return null;
 			const computedStyle = window.getComputedStyle(content);
@@ -363,13 +328,15 @@ test.describe('ontario-aside', () => {
 			};
 		});
 
-		// Verify text colour and background are defined
+		// Verify text color and background are defined
 		expect(textStyles?.color).toBeTruthy();
 		expect(textStyles?.color).not.toBe('rgba(0, 0, 0, 0)');
+		expect(textStyles?.backgroundColor).toBeTruthy();
+		expect(textStyles?.backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
 	});
 
 	test('padding is applied consistently on all sides', async () => {
-		const paddingStyles = await host.evaluate((el: any) => {
+		const paddingStyles = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
 			if (!aside) return null;
 			const computedStyle = window.getComputedStyle(aside);
@@ -388,12 +355,12 @@ test.describe('ontario-aside', () => {
 		expect(paddingStyles?.paddingRight).not.toBe('0px');
 	});
 
-	test('highlight colour class uses !important to override border-left-color', async () => {
+	test('highlight color class uses !important to override border-left-color', async () => {
 		// Get computed style for border-left-color which should respect !important
-		const borderColour = await host.evaluate((el: any) => {
+		const borderColour = await host.evaluate((el: Element) => {
 			const asideEl = el.shadowRoot?.querySelector('aside');
 			if (!asideEl) return null;
-			// Get the actual computed border colour
+			// Get the actual computed border color
 			return window.getComputedStyle(asideEl).borderLeftColor;
 		});
 
