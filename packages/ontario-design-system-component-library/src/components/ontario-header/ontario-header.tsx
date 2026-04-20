@@ -233,6 +233,8 @@ export class OntarioHeader {
 	 */
 	@State() private searchBoxTextState: string = '';
 
+	private shouldFocusMenuOnOpen = false;
+
 	/**
 	 * Header-specific device detection.
 	 */
@@ -724,6 +726,14 @@ export class OntarioHeader {
 				onClick={this.handlemenuToggled}
 				type="button"
 				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
+				onKeyDown={(event: KeyboardEvent) => {
+					if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+						this.shouldFocusMenuOnOpen = true;
+					}
+				}}
+				onMouseDown={() => {
+					this.shouldFocusMenuOnOpen = false;
+				}}
 			>
 				{getButtonContent()}
 			</button>
@@ -754,6 +764,14 @@ export class OntarioHeader {
 				onClick={this.handleSignInToggled}
 				type="button"
 				ref={(el) => (this.signInButton = el as HTMLElement)}
+				onKeyDown={(event: KeyboardEvent) => {
+					if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+						this.shouldFocusMenuOnOpen = true;
+					}
+				}}
+				onMouseDown={() => {
+					this.shouldFocusMenuOnOpen = false;
+				}}
 			>
 				<span>{this.translations.header.signIn[`${this.language}`]}</span>
 				<span
@@ -958,6 +976,7 @@ export class OntarioHeader {
 							<ontario-header-menu-tabs
 								topicsMenuItems={this.menuItemState}
 								signInMenuItems={this.signInMenuItemsState}
+								focusActiveTabOnOpen={this.shouldFocusMenuOnOpen}
 								language={this.language || 'en'}
 							/>
 						) : (
@@ -966,6 +985,7 @@ export class OntarioHeader {
 								menuItems={this.signInToggled ? this.signInMenuItemsState || [] : this.menuItemState}
 								isLastMenu={false}
 								returnFocusToTriggerOnLastTab={true}
+								focusFirstItemOnOpen={this.shouldFocusMenuOnOpen}
 								language={this.language || 'en'}
 							/>
 						)}

@@ -465,6 +465,7 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
         topicsMenuItems: 'topics-menu-items',
         signInMenuItems: 'sign-in-menu-items',
         autoDetectMode: 'auto-detect-mode',
+        focusActiveTabOnOpen: 'focus-active-tab-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -486,6 +487,7 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
         menuItems: 'menu-items',
         isLastMenu: 'is-last-menu',
         returnFocusToTriggerOnLastTab: 'return-focus-to-trigger-on-last-tab',
+        focusFirstItemOnOpen: 'focus-first-item-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,

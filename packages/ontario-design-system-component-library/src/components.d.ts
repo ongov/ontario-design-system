@@ -532,6 +532,11 @@ export namespace Components {
          */
         "autoDetectMode"?: boolean;
         /**
+          * Whether focus should move to the active tab when the menu opens. This should only be true for keyboard-triggered opens.
+          * @default false
+         */
+        "focusActiveTabOnOpen": boolean;
+        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -565,6 +570,11 @@ export namespace Components {
      * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
      */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * Whether the standalone menu should move focus to the first item when opened. This should only be true for keyboard-triggered opens.
+          * @default false
+         */
+        "focusFirstItemOnOpen"?: boolean;
         /**
           * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
           * @default true
@@ -4878,6 +4888,11 @@ declare namespace LocalJSX {
          */
         "autoDetectMode"?: boolean;
         /**
+          * Whether focus should move to the active tab when the menu opens. This should only be true for keyboard-triggered opens.
+          * @default false
+         */
+        "focusActiveTabOnOpen"?: boolean;
+        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -4923,6 +4938,11 @@ declare namespace LocalJSX {
      * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
      */
     interface OntarioHeaderOverflowMenu {
+        /**
+          * Whether the standalone menu should move focus to the first item when opened. This should only be true for keyboard-triggered opens.
+          * @default false
+         */
+        "focusFirstItemOnOpen"?: boolean;
         /**
           * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
           * @default true
