@@ -344,10 +344,21 @@ The Ontario Textarea component supports server-side rendering, with a few consid
 
 Ontario Textarea captures multi-line text input.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/text-areas.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

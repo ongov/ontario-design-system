@@ -152,10 +152,21 @@ The Ontario Search Box component supports server-side rendering, with a few cons
 
 Ontario Search Box captures and submits search queries.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/search-box.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

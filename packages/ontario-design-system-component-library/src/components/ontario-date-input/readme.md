@@ -535,10 +535,21 @@ The Ontario Date Input component is compatible with server-side rendering, with 
 
 Ontario Date Input captures day, month, and year values as a single date field.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/dates.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

@@ -676,10 +676,21 @@ The Ontario Radio Buttons component supports server-side rendering, with a few c
 
 Ontario Radio Buttons captures a single choice from a defined option set.
 
+This component intentionally does not expose group-level `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep options and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/radio-buttons.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

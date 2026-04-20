@@ -679,10 +679,21 @@ The Ontario Dropdown List component supports server-side rendering, with a few c
 
 Ontario Dropdown List presents a selectable list of predefined options.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 
