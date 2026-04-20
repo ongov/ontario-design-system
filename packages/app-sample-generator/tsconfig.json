@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "es2019",
-		"module": "esnext",
-		"moduleResolution": "node",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"lib": ["es2019", "dom"],
 		"types": ["node"],
 		"typeRoots": ["./node_modules/@types", "./"],
@@ -14,8 +14,11 @@
 		"jsxFragmentFactory": "Fragment",
 		"strict": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"rootDir": "src",
+		"outDir": "dist",
+		"declaration": true
 	},
-	"include": ["src", "scripts", "stencil.internal.d.ts"],
+	"include": ["src", "stencil.internal.d.ts"],
 	"exclude": ["node_modules", "src/**/test/**/*"]
 }
