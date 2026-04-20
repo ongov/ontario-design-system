@@ -1,16 +1,17 @@
 {
-	"name": "@ongov/app-sample-generator",
+	"name": "@ongov/ontario-design-system-component-html-generator",
 	"version": "1.0.0",
-	"description": "Automated HTML sample generator for Ontario Design System components.",
+	"description": "Generates static HTML samples for Ontario Design System web components.",
 	"private": false,
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"bin": {
-		"app-sample-generator": "dist/cli.js"
+		"ontario-design-system-component-html-generator": "dist/cli.js"
 	},
 	"scripts": {
 		"build": "tsc",
-		"start": "node dist/cli.js"
+		"start": "node dist/cli.js",
+		"test": "jest"
 	},
 	"keywords": [
 		"ontario",
@@ -31,15 +32,18 @@
 		}
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "^6.0.0-alpha.1"
+		"@ongov/ontario-design-system-component-library": "^6.0.0-alpha.1",
+		"commander": "^11.0.0"
 	},
 	"devDependencies": {
 		"@jest/globals": "^30.2.0",
 		"@stencil/core": "^4.38.3",
+		"@types/jest": "^30.0.0",
 		"@types/node": "^24.10.1",
 		"jest": "^30.2.0",
 		"jest-environment-node": "^30.2.0",
 		"puppeteer": "^24.30.0",
+		"ts-jest": "^29.4.9",
 		"tsx": "^4.20.5",
 		"typescript": "^5.9.3"
 	}

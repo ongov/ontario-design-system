@@ -38,6 +38,11 @@ export interface SampleGeneratorConfig {
 	/** List of samples to process in this invocation. */
 	samples: ComponentSample[];
 	/**
+	 * Optional formatter behavior used when cleaning rendered HTML.
+	 * Defaults preserve existing CLI behavior when omitted.
+	 */
+	formatterOptions?: SampleFormatterOptions;
+	/**
 	 * Optional rendering strategy override.
 	 * Use this to plug in a custom renderer instead of the default hydrate renderer.
 	 */
@@ -47,6 +52,22 @@ export interface SampleGeneratorConfig {
 	 * Use this to source CSS from custom locations or pipelines.
 	 */
 	styleLoader?: (tagName: string) => string | Promise<string>;
+}
+
+/**
+ * Controls post-render HTML cleanup behavior.
+ */
+export interface SampleFormatterOptions {
+	/**
+	 * When true, unwraps the outer Ontario component and returns only inner content.
+	 * Defaults to `true`.
+	 */
+	stripOuterComponent?: boolean;
+	/**
+	 * When true, removes `<style>` tags from rendered markup before formatting.
+	 * Defaults to `true`.
+	 */
+	removeStyles?: boolean;
 }
 
 /**

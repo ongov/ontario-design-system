@@ -1,4 +1,4 @@
-# @ongov/app-sample-generator
+# @ongov/ontario-design-system-component-html-generator
 
 Automated HTML sample generation for Ontario Design System components with **automatic CSS inlining**.
 
@@ -19,7 +19,7 @@ Takes your Web Components and generates clean, standalone HTML samples with:
 ### Install (when using as a library)
 
 ```bash
-pnpm add @ongov/app-sample-generator
+pnpm add @ongov/ontario-design-system-component-html-generator
 ```
 
 ### 1. Define your samples
@@ -78,7 +78,7 @@ Default output goes to `generated-samples/` (or a custom `--outputDirectory`):
 
 If you want to generate files quickly from the default sample list, use the CLI.
 
-From `packages/app-sample-generator`, update `src/sample-config.ts`, then run:
+From `packages/ontario-design-system-component-html-generator`, update `src/sample-config.ts`, then run:
 
 ```bash
 pnpm build
@@ -92,7 +92,7 @@ If you want full control (for example, storing `markup` and `styles` separately,
 ```typescript
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { generateSamples } from '@ongov/app-sample-generator';
+import { generateSamples } from '@ongov/ontario-design-system-component-html-generator';
 
 const samples = [
 	{
@@ -129,7 +129,7 @@ Use CLI when you want fast file generation from local config. Use the library wh
 Once installed, you can import and call the generator directly from your own scripts or build pipeline:
 
 ```typescript
-import { generateSamples } from '@ongov/app-sample-generator';
+import { generateSamples } from '@ongov/ontario-design-system-component-html-generator';
 
 const samples = [
 	{
