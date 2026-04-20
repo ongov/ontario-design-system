@@ -27,9 +27,18 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 /**
  * Ontario Input captures single-line text input.
  *
+ * This component intentionally does not expose `readOnly` or `disabled` props.
+ *
+ * To support accessible and understandable form completion:
+ * - keep form fields and submission actions available
+ * - use validation and error messaging to guide corrections
+ *
  * For component guidance, see:
  * - https://designsystem.ontario.ca/components/detail/text-inputs.html
  * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+ *
+ * Disabled/read-only policy source:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
  */
 @Component({
 	tag: 'ontario-input',
@@ -121,7 +130,7 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
-	 * Set this to display an
+	 * Set this to display an error message.
 	 */
 	@Prop({ mutable: true }) errorMessage?: string;
 
