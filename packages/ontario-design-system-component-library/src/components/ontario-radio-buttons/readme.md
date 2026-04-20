@@ -10,6 +10,21 @@ Use radio buttons when you want the user to select only one option from a list.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/radio-buttons.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide group-level `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the radio button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -510,6 +525,69 @@ control. The current selection is available through `event.target.value`, and a
 convenience copy is also included in `event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when required selection rules are not met, and keep options available for correction.
+
+```html
+<ontario-radio-buttons
+	id="contact-preference"
+	name="contact-preference"
+	caption="Preferred contact method"
+	required
+	options='[
+		{ "elementId": "pref-email", "label": "Email", "value": "email" },
+		{ "elementId": "pref-phone", "label": "Phone", "value": "phone" }
+	]'
+></ontario-radio-buttons>
+<script>
+	window.addEventListener('load', () => {
+		const radios = document.getElementById('contact-preference');
+		radios.addEventListener('radioOnBlur', () => {
+			const selected = radios.querySelector('input[type=\"radio\"]:checked');
+			radios.errorMessage = selected ? '' : 'Select one option to continue.';
+		});
+	});
+</script>
+```
+
+```tsx
+<OntarioRadioButtons
+	elementId="contact-preference"
+	name="contact-preference"
+	caption="Preferred contact method"
+	required
+	options={[
+		{ elementId: 'pref-email', label: 'Email', value: 'email' },
+		{ elementId: 'pref-phone', label: 'Phone', value: 'phone' },
+	]}
+	errorMessage="Select one option to continue."
+/>
+```
+
+```html
+<ontario-radio-buttons
+	[elementId]="'contact-preference'"
+	[name]="'contact-preference'"
+	[caption]="'Preferred contact method'"
+	[required]="true"
+	[options]="contactPreferenceOptions"
+	[errorMessage]="'Select one option to continue.'"
+></ontario-radio-buttons>
+```
+
+### Live validation
+
+Keep the control available and validate selections on interaction (for example, on change, blur, or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
+See the Ontario Design System guidance:
+
+- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

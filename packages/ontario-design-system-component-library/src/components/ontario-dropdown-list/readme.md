@@ -10,6 +10,21 @@ Only use a dropdown (select) list if you cannot use other form components to cap
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/dropdown-lists.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the dropdown list component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for dropdown list properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -508,6 +523,68 @@ internal control. The current selection is available through
 `event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when selection is missing or invalid, and keep the list enabled so users can correct their choice.
+
+```html
+<ontario-dropdown-list
+	id="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options='[
+		{ "label": "Health card", "value": "health-card" },
+		{ "label": "Driver licence", "value": "driver-licence" }
+	]'
+></ontario-dropdown-list>
+<script>
+	window.addEventListener('load', () => {
+		const dropdown = document.getElementById('service-selection');
+		dropdown.addEventListener('inputOnBlur', () => {
+			dropdown.errorMessage = dropdown.value ? '' : 'Select a service to continue.';
+		});
+	});
+</script>
+```
+
+```tsx
+<OntarioDropdownList
+	elementId="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options={[
+		{ label: 'Health card', value: 'health-card' },
+		{ label: 'Driver licence', value: 'driver-licence' },
+	]}
+	errorMessage="Select a service to continue."
+/>
+```
+
+```html
+<ontario-dropdown-list
+	[elementId]="'service-selection'"
+	[name]="'service-selection'"
+	[caption]="'Select a service'"
+	[required]="true"
+	[options]="serviceOptions"
+	[errorMessage]="'Select a service to continue.'"
+></ontario-dropdown-list>
+```
+
+### Live validation
+
+Keep the control available and validate selection on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
+See the Ontario Design System guidance:
+
+- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

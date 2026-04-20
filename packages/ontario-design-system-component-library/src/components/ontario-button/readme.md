@@ -10,6 +10,21 @@ Use buttons to help the user carry out an important action such as starting a tr
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/buttons.html) for current documentation guidance.
 
+### Disabled state
+
+This component intentionally does not provide a `disabled` prop.
+
+Disabling action controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+When used in forms, pair button behavior with component-level error handling guidance in related form fields.
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the button component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
