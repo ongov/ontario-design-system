@@ -106,8 +106,7 @@ function loadComponentStyles(tagName: string): string {
 		const css = readFileSync(cssPath, 'utf8');
 		const transformed = transformHostSelectors(css, tagName);
 		return stripCssComments(transformed);
-	} catch (error) {
-		console.warn(`Warning: unable to read styles for ${tagName} at ${cssPath}:`, error);
+	} catch {
 		return '';
 	}
 }
@@ -224,41 +223,28 @@ async function generateSamples(): Promise<void> {
 	const outputDir = path.resolve(process.cwd(), 'docs', 'samples');
 	mkdirSync(outputDir, { recursive: true });
 
-	console.log('\nGenerating component samples...\n');
-
-	let successCount = 0;
-	let failCount = 0;
+	const failures: Error[] = [];
 
 	for (const sample of samples) {
 		try {
-			console.log(`Rendering ${sample.component}...`);
 			const html = await renderSample(sample);
 			const outputPath = path.join(outputDir, sample.outputFile);
 			writeFileSync(outputPath, `${html}\n`, 'utf8');
-
-			const hasStyles = sample.includeStyles !== false;
-			const styleMsg = hasStyles ? '(with CSS)' : '';
-			console.log(`   ${sample.outputFile} ${styleMsg}`);
-			successCount++;
 		} catch (error) {
-			console.error(`   Failed: ${error instanceof Error ? error.message : String(error)}`);
-			failCount++;
+			const message = `Failed to render ${sample.component}`;
+			failures.push(error instanceof Error ? new Error(message, { cause: error }) : new Error(message));
 		}
 	}
 
-	console.log('\nSummary:');
-	console.log(`   ${successCount} samples generated`);
-	if (failCount > 0) {
-		console.log(`   ${failCount} failed`);
+	if (failures.length > 0) {
+		throw new AggregateError(failures, `Sample generation failed for ${failures.length} component(s).`);
 	}
-	console.log(`   Output: ${outputDir}\n`);
 }
 
 /**
  * Run the sample generator and handle errors.
  */
 generateSamples().catch((error) => {
-	console.error('Failed to generate samples:', error);
 	process.exitCode = 1;
 });
 
