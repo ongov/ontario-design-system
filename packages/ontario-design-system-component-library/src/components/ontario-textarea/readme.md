@@ -10,6 +10,21 @@ Use a text area when you want the user to enter **more than** a single line of i
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/text-areas.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -195,6 +210,54 @@ document.querySelector('ontario-textarea').addEventListener('change', (event) =>
 ```
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set the `errorMessage` property on `ontario-textarea` to display an error state and message. You can also listen for `inputErrorOccurred` to react to error updates in application code.
+
+```html
+<ontario-textarea id="comments" name="comments" caption="Comments" required></ontario-textarea>
+<script>
+	window.addEventListener('load', () => {
+		const textarea = document.getElementById('comments');
+		textarea.addEventListener('inputOnBlur', () => {
+			textarea.errorMessage = textarea.value?.trim() ? '' : 'Enter your comments before continuing.';
+		});
+	});
+</script>
+```
+
+```tsx
+<OntarioTextarea
+	elementId="comments"
+	name="comments"
+	caption="Comments"
+	required
+	errorMessage="Enter your comments before continuing."
+/>
+```
+
+```html
+<ontario-textarea
+	[elementId]="'comments'"
+	[name]="'comments'"
+	[caption]="'Comments'"
+	[required]="true"
+	[errorMessage]="'Enter your comments before continuing.'"
+></ontario-textarea>
+```
+
+### Live validation
+
+Keep the control available and validate content on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
+See the Ontario Design System guidance:
+
+- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

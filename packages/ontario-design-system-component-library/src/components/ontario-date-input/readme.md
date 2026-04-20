@@ -10,6 +10,21 @@ Use this component for user-friendly date input and display.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/dates.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the date input component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for the date input properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -374,6 +389,66 @@ The same aggregate value is also included in `event.detail.value` for consumers 
 The field-level `inputOnInput` and `inputOnChange` custom events remain available when you need to know which sub-field changed.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and surface message text through `errorMessage`.
+
+```html
+<ontario-date-input id="date-of-birth" caption="Date of birth" required></ontario-date-input>
+<script>
+	window.addEventListener('load', () => {
+		const dateInput = document.getElementById('date-of-birth');
+		dateInput.dateValidator = (day, month, year) => {
+			const allPartsPresent = !!day && !!month && !!year;
+			return {
+				errorMessage: allPartsPresent ? '' : 'Enter a complete date of birth.',
+				dayInvalid: !day,
+				monthInvalid: !month,
+				yearInvalid: !year,
+			};
+		};
+	});
+</script>
+```
+
+```tsx
+<OntarioDateInput
+	elementId="date-of-birth"
+	caption="Date of birth"
+	required
+	dateValidator={(day, month, year) => {
+		const allPartsPresent = !!day && !!month && !!year;
+		return {
+			errorMessage: allPartsPresent ? '' : 'Enter a complete date of birth.',
+			dayInvalid: !day,
+			monthInvalid: !month,
+			yearInvalid: !year,
+		};
+	}}
+/>
+```
+
+```html
+<ontario-date-input
+	[elementId]="'date-of-birth'"
+	[caption]="'Date of birth'"
+	[required]="true"
+	[dateValidator]="validateDateOfBirth"
+></ontario-date-input>
+```
+
+### Live validation
+
+Keep the control available and validate date fields on interaction (for example, on blur or submit). Return contextual error guidance from `dateValidator` so users can correct incomplete or invalid values.
+
+See the Ontario Design System guidance:
+
+- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

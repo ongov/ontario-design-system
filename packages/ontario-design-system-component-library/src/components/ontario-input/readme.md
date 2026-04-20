@@ -10,6 +10,21 @@ Use a text input when you want the user to enter no more than a single line of i
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/text-inputs.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the input component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -236,7 +251,27 @@ An error message can be displayed on an input by setting the `errorMessage` prop
 
 _Note: to test the above code sample either set an `errorMessage` on `input-1` or add the `enable-live-validation` attribute._
 
-### Input live validation
+```tsx
+<OntarioInput
+	elementId="input-1"
+	name="input-1"
+	caption="What is your name?"
+	required
+	errorMessage="Enter your first name"
+/>
+```
+
+```html
+<ontario-input
+	[elementId]="'input-1'"
+	[name]="'input-1'"
+	[caption]="'What is your name?'"
+	[required]="true"
+	[errorMessage]="'Enter your first name'"
+></ontario-input>
+```
+
+### Live validation
 
 By setting the `enableLiveValidation` property the value of an input can be validated by using the custom `inputValidator` function. This function notifies the component if there is an error based on the custom logic that fits your application. On the `blur` event of the component, it will pass over the `value` of the input and if an `errorMessage` is returned it will instruct the component to display it. To clear the error message displayed return `undefined` or `null`.
 
