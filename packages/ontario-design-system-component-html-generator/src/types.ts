@@ -68,6 +68,12 @@ export interface SampleFormatterOptions {
 	 * Defaults to `true`.
 	 */
 	removeStyles?: boolean;
+	/**
+	 * When true, wraps output in a full HTML document for browser preview:
+	 * `<!DOCTYPE html>`, `<html>`, `<head>`, and `<body>`.
+	 * Defaults to `false`.
+	 */
+	fullDocument?: boolean;
 }
 
 /**

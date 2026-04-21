@@ -46,6 +46,9 @@ pnpm start
 
 # Or specify a custom output directory
 pnpm start -- --outputDirectory path/to/output
+
+# Or generate preview-ready full HTML documents
+pnpm start -- --full-document
 ```
 
 ### 3. Get clean HTML output
@@ -62,6 +65,24 @@ Default output goes to `generated-samples/` (or a custom `--outputDirectory`):
 	}
 </style>
 <button class="button primary" type="button">Click me</button>
+```
+
+When using `--full-document`, output is wrapped for direct browser preview:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			/* inlined component styles */
+		</style>
+	</head>
+	<body>
+		<button class="button primary" type="button">Click me</button>
+	</body>
+</html>
 ```
 
 ## Runtime Flow (Where the logic lives)

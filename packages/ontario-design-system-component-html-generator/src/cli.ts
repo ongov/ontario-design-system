@@ -111,12 +111,14 @@ program
 	)
 	.option('--no-strip-outer-component', 'Keep the outer component tag in formatted markup')
 	.option('--no-remove-styles', 'Keep inline <style> tags from renderer output during formatting')
+	.option('--full-document', 'Wrap generated output in a full HTML document with DOCTYPE/html/head/body')
 	.action(
 		async (options: {
 			outputDirectory: string;
 			samplesFile: string;
 			stripOuterComponent: boolean;
 			removeStyles: boolean;
+			fullDocument: boolean;
 		}) => {
 			const outputDirectory = path.resolve(options.outputDirectory);
 			mkdirSync(outputDirectory, { recursive: true });
@@ -134,6 +136,7 @@ program
 			const formatterOptions: SampleFormatterOptions = {
 				stripOuterComponent: options.stripOuterComponent,
 				removeStyles: options.removeStyles,
+				fullDocument: options.fullDocument,
 			};
 
 			const result = await generateSamples({ samples, formatterOptions });

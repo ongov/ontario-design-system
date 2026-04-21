@@ -169,6 +169,16 @@ describe('buildDocument', () => {
 	it('returns bare markup when styles are empty', () => {
 		expect(buildDocument('<p>hello</p>', '')).toBe('<p>hello</p>');
 	});
+
+	it('returns a complete HTML document when fullDocument is true', () => {
+		const result = buildDocument('<main><p>hello</p></main>', 'p { color: red; }', true);
+		expect(result).toContain('<!DOCTYPE html>');
+		expect(result).toContain('<html lang="en">');
+		expect(result).toContain('<head>');
+		expect(result).toContain('<body>');
+		expect(result).toContain('<style>');
+		expect(result).toContain('<main><p>hello</p></main>');
+	});
 });
 
 // ─── formatHtml ──────────────────────────────────────────────────────────────

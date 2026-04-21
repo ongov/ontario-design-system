@@ -87,8 +87,15 @@ export function extractOntarioComponents(markup: string): string[] {
 /**
  * Wraps markup in a `<style>` block when styles are provided.
  * Returns bare markup when there are no styles.
+ * Optionally emits a complete HTML document when `fullDocument` is true.
  */
-export function buildDocument(markup: string, styles: string): string {
+export function buildDocument(markup: string, styles: string, fullDocument = false): string {
+	if (fullDocument) {
+		const styleBlock = styles ? `\n\t\t<style>\n${styles}\n\t\t</style>` : '';
+
+		return `<!DOCTYPE html>\n<html lang="en">\n\t<head>\n\t\t<meta charset="utf-8">\n\t\t<meta name="viewport" content="width=device-width, initial-scale=1">${styleBlock}\n\t</head>\n\t<body>\n${markup}\n\t</body>\n</html>`;
+	}
+
 	if (!styles) {
 		return markup;
 	}

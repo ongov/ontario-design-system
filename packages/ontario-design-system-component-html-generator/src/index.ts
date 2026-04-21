@@ -148,7 +148,7 @@ async function renderSample(
 		formatterOptions.removeStyles ?? true,
 	);
 	const styles = await buildStyles(sample, markup, styleLoader);
-	const renderedHtml = buildDocument(markup, styles);
+	const renderedHtml = buildDocument(markup, styles, formatterOptions.fullDocument ?? false);
 
 	return {
 		markup,
