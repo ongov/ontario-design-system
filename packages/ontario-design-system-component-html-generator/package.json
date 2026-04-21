@@ -9,7 +9,8 @@
 		"ontario-design-system-component-html-generator": "dist/cli.js"
 	},
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc && pnpm run docs:copy:readme",
+		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: HTML Sample Generator\n---\n\" -df ../docusaurus/docs/07-readme-html-sample-generator.md",
 		"start": "node dist/cli.js",
 		"test": "jest"
 	},
