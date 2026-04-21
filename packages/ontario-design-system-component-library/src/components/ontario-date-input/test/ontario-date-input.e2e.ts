@@ -17,17 +17,14 @@ test.describe('ontario-date-input', () => {
 		fieldInputSpy = await page.spyOnEvent('inputOnInput');
 	});
 
-	test('normalizes the component value after a complete date is entered', async ({ page }) => {
+	test('normalizes the component value after a complete date is entered', async () => {
 		const yearInput = host.locator('input').nth(0);
 		const monthInput = host.locator('input').nth(1);
 		const dayInput = host.locator('input').nth(2);
 
 		await yearInput.fill('2024');
-		await page.waitForChanges();
 		await monthInput.fill('02');
-		await page.waitForChanges();
 		await dayInput.fill('20');
-		await page.waitForChanges();
 
 		await expect(aggregateInputSpy).toHaveReceivedEvent();
 		await expect(aggregateInputSpy).toHaveReceivedEventDetail({
@@ -48,13 +45,10 @@ test.describe('ontario-date-input', () => {
 		await yearInput.click();
 		await yearInput.pressSequentially('2024');
 		await monthInput.click();
-		await page.waitForChanges();
 		await monthInput.pressSequentially('02');
 		await dayInput.click();
-		await page.waitForChanges();
 		await dayInput.pressSequentially('20');
 		await page.locator('body').click();
-		await page.waitForChanges();
 
 		await expect(aggregateChangeSpy).toHaveReceivedEvent();
 		await expect(aggregateChangeSpy).toHaveReceivedEventDetail({

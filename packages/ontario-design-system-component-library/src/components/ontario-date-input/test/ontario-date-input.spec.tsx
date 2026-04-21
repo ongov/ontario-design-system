@@ -3,6 +3,14 @@ import { OntarioDateInput } from '../ontario-date-input';
 import { isInvalidYear } from '../utils';
 
 describe('ontario-date-input', () => {
+	const dispatchInputEvent = (input: HTMLInputElement) => {
+		const event =
+			typeof InputEvent === 'function'
+				? new InputEvent('input', { bubbles: true, composed: true })
+				: new Event('input', { bubbles: true, composed: true });
+		input.dispatchEvent(event);
+	};
+
 	it('renders deafult state', async () => {
 		const page = await newSpecPage({
 			components: [OntarioDateInput],
@@ -155,11 +163,11 @@ describe('ontario-date-input', () => {
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
 
 		yearInput.value = '2024';
-		yearInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(yearInput);
 		monthInput.value = '02';
-		monthInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(monthInput);
 		dayInput.value = '20';
-		dayInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(dayInput);
 
 		await page.waitForChanges();
 
@@ -178,11 +186,11 @@ describe('ontario-date-input', () => {
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
 
 		yearInput.value = '2024';
-		yearInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(yearInput);
 		monthInput.value = '02';
-		monthInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(monthInput);
 		dayInput.value = '20';
-		dayInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(dayInput);
 
 		await page.waitForChanges();
 
@@ -205,11 +213,11 @@ describe('ontario-date-input', () => {
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
 
 		yearInput.value = '2024';
-		yearInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(yearInput);
 		monthInput.value = '02';
-		monthInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(monthInput);
 		dayInput.value = '20';
-		dayInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(dayInput);
 
 		await page.waitForChanges();
 
@@ -258,11 +266,11 @@ describe('ontario-date-input', () => {
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
 
 		yearInput.value = '2024';
-		yearInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(yearInput);
 		monthInput.value = '02';
-		monthInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(monthInput);
 		dayInput.value = '20';
-		dayInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(dayInput);
 		await page.waitForChanges();
 
 		dayInput.dispatchEvent(new Event('change'));
@@ -285,7 +293,7 @@ describe('ontario-date-input', () => {
 		const [yearInput] = Array.from(inputs ?? []);
 
 		yearInput.value = '';
-		yearInput.dispatchEvent(new Event('input'));
+		dispatchInputEvent(yearInput);
 
 		await page.waitForChanges();
 
