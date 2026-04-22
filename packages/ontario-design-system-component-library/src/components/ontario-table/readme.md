@@ -668,16 +668,11 @@ Used to define the table body data. Note that the keys passed to the `data` obje
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Table component is generally safe for server-side rendering (SSR) when used with valid, static data.
+The Ontario Table component supports server-side rendering, with a few considerations:
 
-However, **it's important to note** that the component dynamically calculates and applies a top scrollbar based on the rendered width of the table. Because this calculation depends on browser-specific layout measurements, the scrollbar will not be visible during SSR. It will appear after hydration, once the component finishes rendering in the client.
-
-### Best Practices
-
-Props such as `tableColumns` and `tableData` are parsed from JSON. To avoid hydration mismatch:
-
-- Pass structured arrays directly instead of JSON strings when using JSX.
-- Ensure any JSON strings are valid and match the server-rendered data exactly.
+- **Hydrated-only layout behaviour:** The top scrollbar is calculated from rendered layout width, so it appears after hydration and is not visible in SSR HTML.
+- **Data consistency:** `tableColumns` and `tableData` are JSON-parsed. Keep server and client values identical to avoid hydration mismatch.
+- **Framework guidance:** In JSX, prefer structured arrays over JSON strings when possible.
 
 <!-- Auto Generated Below -->
 

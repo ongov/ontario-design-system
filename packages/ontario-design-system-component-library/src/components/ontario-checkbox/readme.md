@@ -530,12 +530,14 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
+The Ontario Checkboxes component supports server-side rendering, with a few considerations:
 
-- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
-- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
-- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input type="checkbox">`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** Each checkbox option should use a stable `elementId`. If option IDs are generated differently between server and client, hydration mismatches are more likely.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders a checkbox-group structure that can support straightforward form submission when the group `name`, `language`, and option ids are stable. Group-level error messaging and emitted events become available after hydration.
+- **Hydrated-only behaviour:** Group-level error messaging and custom event handling should be treated as hydrated behaviour. Keep the group `name` stable across all options and verify the full submit flow in the consuming application.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For client-managed integrations, use the event examples below. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 <!-- Auto Generated Below -->
 
