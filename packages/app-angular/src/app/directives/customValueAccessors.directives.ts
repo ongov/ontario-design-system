@@ -13,7 +13,7 @@ import { BaseCustomValueAccessor } from './baseCustomValueAccessor.directives';
 	],
 	standalone: false,
 })
-export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
+export class OntarioInputValueAccessor extends BaseCustomValueAccessor<string> {
 	@HostListener('inputOnChange', ['$event.detail.value'])
 	_handleChange(value?: string) {
 		this.onChange(value ?? '');
@@ -36,7 +36,7 @@ export class OntarioInputValueAccessor extends BaseCustomValueAccessor {
 	],
 	standalone: false,
 })
-export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
+export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor<string> {
 	@HostListener('inputOnChange', ['$event.detail.value'])
 	_handleChange(value?: string) {
 		this.onChange(value ?? '');
@@ -59,10 +59,11 @@ export class OntarioTextareaValueAccessor extends BaseCustomValueAccessor {
 	],
 	standalone: false,
 })
-export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
-	@HostListener('checkboxOnChange', ['$event.detail'])
-	_handleChange(event: any) {
-		this.onChange(event);
+export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor<string[]> {
+	@HostListener('change', ['$event'])
+	_handleChange(event: Event) {
+		const value = (event.target as { value?: string[] } | null)?.value;
+		this.onChange(value ?? []);
 	}
 
 	@HostListener('checkboxOnBlur')
@@ -82,10 +83,11 @@ export class OntarioCheckboxesValueAccessor extends BaseCustomValueAccessor {
 	],
 	standalone: false,
 })
-export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor {
-	@HostListener('radioOnChange', ['$event.detail'])
-	_handleChange(event: any) {
-		this.onChange(event.detail);
+export class OntarioRadioButtonsValueAccessor extends BaseCustomValueAccessor<string> {
+	@HostListener('change', ['$event'])
+	_handleChange(event: Event) {
+		const value = (event.target as { value?: string } | null)?.value;
+		this.onChange(value ?? '');
 	}
 
 	@HostListener('radioOnBlur')

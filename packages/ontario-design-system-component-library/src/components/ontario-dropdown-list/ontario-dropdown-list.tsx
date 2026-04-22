@@ -71,6 +71,14 @@ export class OntarioDropdownList implements Dropdown {
 	@Prop({ mutable: true }) elementId?: string;
 
 	/**
+	 * The currently selected dropdown value.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the dropdown.
+	 * If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+	 */
+	@Prop({ mutable: true }) value?: string;
+
+	/**
 	 * The options for dropdown list.
 	 *
 	 * Each option will be passed in through an object in the options array.
@@ -324,6 +332,7 @@ export class OntarioDropdownList implements Dropdown {
 
 		// Check selected status of options and set the selectedValue
 		this.validateSelectedOption(this.internalOptions);
+		this.syncValueFromOptions();
 	}
 
 	/**
@@ -396,13 +405,25 @@ export class OntarioDropdownList implements Dropdown {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (this.internalOptions) {
+			this.syncValueFromOptions();
+		}
+	}
+
 	/**
 	 * Function to handle dropdown list events and the information pertaining to the dropdown list to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
-		const input = event.target as HTMLSelectElement | null;
+		if (eventType === EventType.Change) {
+			event.stopPropagation();
+		}
 
-		this.internals?.setFormValue?.(input?.value ?? '');
+		const input = event.target as HTMLSelectElement | null;
+		this.value = input?.value ?? '';
+
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,
@@ -417,7 +438,32 @@ export class OntarioDropdownList implements Dropdown {
 			this.customOnFocus,
 			this.customOnBlur,
 			undefined,
-			this.element,
+			undefined,
+		);
+
+		if (eventType === EventType.Change) {
+			this.emitHostValueEvent('change');
+		}
+	}
+
+	private handleInput(event: Event) {
+		event.stopPropagation();
+
+		const input = event.target as HTMLSelectElement | null;
+		this.value = input?.value ?? '';
+		this.internals?.setFormValue?.(this.value ?? '');
+		this.emitHostValueEvent('input');
+	}
+
+	private emitHostValueEvent(name: 'input' | 'change') {
+		this.element.dispatchEvent(
+			new CustomEvent(name, {
+				bubbles: true,
+				composed: true,
+				detail: {
+					value: this.value ?? '',
+				},
+			}),
 		);
 	}
 
@@ -455,6 +501,49 @@ export class OntarioDropdownList implements Dropdown {
 		}
 
 		return options;
+	}
+
+	private syncValueFromOptions() {
+		if (this.value === '' && this.hasEmptyStartOption()) {
+			this.internals?.setFormValue?.(this.value ?? '');
+			return;
+		}
+
+		const hasMatchingValue = this.value && this.internalOptions?.some((option) => option.value === this.value);
+		if (hasMatchingValue) {
+			this.internals?.setFormValue?.(this.value ?? '');
+			return;
+		}
+
+		if (this.value) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' value ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText(
+					'did not match any option values. Falling back to the selected option, empty start option, or first available option.',
+				)
+				.printMessage();
+		}
+
+		const selectedOption = this.internalOptions?.find((option) => option.selected);
+		const firstOption = this.internalOptions?.[0];
+		this.value = selectedOption?.value ?? (this.hasEmptyStartOption() ? '' : (firstOption?.value ?? ''));
+		this.internals?.setFormValue?.(this.value ?? '');
+	}
+
+	private isOptionSelected(option: DropdownOption) {
+		return this.value ? option.value === this.value : !!option.selected;
+	}
+
+	private hasEmptyStartOption() {
+		return (
+			this.isEmptyStartOption === true ||
+			this.isEmptyStartOption === 'true' ||
+			typeof this.isEmptyStartOption === 'string'
+		);
 	}
 
 	private getDropdownArrow() {
@@ -506,20 +595,21 @@ export class OntarioDropdownList implements Dropdown {
 					id={this.getId()}
 					name={this.name}
 					style={this.getDropdownArrow()}
+					onInput={(e) => this.handleInput(e)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 					onFocus={(e) => this.handleEvent(e, EventType.Focus)}
 					required={!!this.required}
 				>
-					{this.isEmptyStartOption &&
+					{this.hasEmptyStartOption() &&
 						(this.isEmptyStartOption === true || this.isEmptyStartOption === 'true' ? (
-							<option>{this.translations.dropdownList.select[`${this.language}`]}</option>
+							<option value="">{this.translations.dropdownList.select[`${this.language}`]}</option>
 						) : (
-							<option>{this.isEmptyStartOption}</option>
+							<option value="">{this.isEmptyStartOption}</option>
 						))}
 
 					{this.internalOptions?.map((dropdown) => (
-						<option value={dropdown.value} selected={dropdown.selected}>
+						<option value={dropdown.value} selected={this.isOptionSelected(dropdown)}>
 							{dropdown.label}
 						</option>
 					)) ?? ''}

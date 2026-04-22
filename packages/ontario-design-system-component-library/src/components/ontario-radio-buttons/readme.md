@@ -278,9 +278,109 @@ Example of a radio button component with multiple options, a hint text and hint 
 	></OntarioRadioButtons>
 </div>
 
+In the following example, the selected radio option is set using the
+component's `value`. Listen for the component `change` event to read the
+current selection.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-radio-buttons
+	id="radio-value-example"
+	caption="Radio legend"
+	name="radios"
+	value="radio-option-2"
+	options='[
+		{
+			"value": "radio-option-1",
+			"elementId": "radio-1",
+			"label": "Radio option 1 label"
+		},
+		{
+			"value": "radio-option-2",
+			"elementId": "radio-2",
+			"label": "Radio option 2 label"
+		}
+	]'
+></ontario-radio-buttons>
+<script>
+	document.getElementById('radio-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioRadioButtons
+	caption="Radio legend"
+	name="radios"
+	value="radio-option-2"
+	options={[
+		{ value: 'radio-option-1', elementId: 'radio-1', label: 'Radio option 1 label' },
+		{ value: 'radio-option-2', elementId: 'radio-2', label: 'Radio option 2 label' },
+	]}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioRadioButtonsElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-radio-buttons
+	[caption]="'Radio legend'"
+	[name]="'radios'"
+	[value]="'radio-option-2'"
+	[options]="[
+		{ value: 'radio-option-1', elementId: 'radio-1', label: 'Radio option 1 label' },
+		{ value: 'radio-option-2', elementId: 'radio-2', label: 'Radio option 2 label' }
+	]"
+	(change)="handleRadioChange($event)"
+></ontario-radio-buttons>
+```
+
+```ts
+handleRadioChange(event: Event) {
+	console.log((event.target as HTMLOntarioRadioButtonsElement).value);
+	console.log((event as CustomEvent<{ value: string }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Forms
 
 The `ontario-radio-buttons` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="radio">` elements.
+
+The component keeps its `value` in sync with the currently checked radio
+option. That same `value` is used for native form submission and for the
+component `change` event. If a provided `value` does not match any option, the
+component emits a warning and falls back to the checked option.
 
 ```html
 <form>
@@ -317,9 +417,49 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 ## Event model
 
-Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+Each custom event emitted by the component uses the
+[`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
+type. To access the data emitted by the component within the `CustomEvent` type
+use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+property.
 
-Eg. To access the value of any change made to this component from the `radioOnChange` event, use the following code to wire up to listen for the the `radioOnChange` event.
+For most integrations, prefer the component `change` event and read the
+selected option from `event.target.value`. That event also includes
+`event.detail.value` as a convenience. Use `radioOnChange` when you
+specifically want the component's custom event payload.
+
+Example of the component `change` event:
+
+```html
+<ontario-radio-buttons
+	id="radio-change-example"
+	name="radio-buttons-1"
+	caption="Radio buttons"
+	options='[
+		{
+			"value": "radio-option-1",
+			"elementId": "radio-1",
+			"label": "Radio option 1 label"
+		},
+		{
+			"value": "radio-option-2",
+			"elementId": "radio-2",
+			"label": "Radio option 2 label"
+		}
+	]'
+></ontario-radio-buttons>
+<script>
+	window.onload = () => {
+		const radioButtons1 = document.getElementById('radio-change-example');
+		radioButtons1.addEventListener('change', (event) => {
+			console.log(event.target.value);
+			console.log(event.detail.value);
+		});
+	};
+</script>
+```
+
+Example `radioOnChange` usage when you need the custom option-level detail:
 
 ```html
 <ontario-radio-buttons
@@ -364,7 +504,10 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component handles the internal radio input changes and re-emits a `change`
+event so consumers can listen on the component instead of the internal
+control. The current selection is available through `event.target.value`, and a
+convenience copy is also included in `event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
@@ -435,6 +578,7 @@ The Ontario Radio Button component supports server-side rendering, with a few co
 | `name`           | `name`             | The name assigned to the radio button. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                                                                                                                                                | `string`                                | `undefined` |
 | `options`        | `options`          | The options for the radio button group. Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple radio buttons in a group, each radio button will be displayed as an option. In the example below, the options are being passed in as a string and there are two radio buttons to be displayed in the group. | `RadioOption[] \| string`               | `undefined` |
 | `required`       | `required`         | This is used to determine whether the radio button is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                                                                                                                                             | `boolean \| undefined`                  | `false`     |
+| `value`          | `value`            | The currently selected radio option value. The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.                                                                                                                                                                                                                 | `string \| undefined`                   | `undefined` |
 
 ## Events
 

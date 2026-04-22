@@ -82,6 +82,14 @@ export interface RadioButtons extends Base {
 	required?: boolean;
 
 	/**
+	 * The currently selected radio option value.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the radio group.
+	 * If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+	 */
+	value?: string;
+
+	/**
 	 * The options for the radio button group.
 	 *
 	 * Each property will be passed in through an object in the options array.

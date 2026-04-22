@@ -14,6 +14,7 @@ import {
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
@@ -38,6 +39,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	@AttachInternals() internals: ElementInternals;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
+	private isSyncingValue = false;
 
 	/**
 	 * The text to display for the checkbox legend.
@@ -99,6 +101,22 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * </ontario-checkboxes>
 	 */
 	@Prop() hintExpander?: HintExpander | string;
+
+	/**
+	 * The currently selected checkbox option values.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the checkbox group.
+	 * If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+	 *
+	 * In HTML, pass `value` as a JSON string array.
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   value='["checkbox-option-1", "checkbox-option-2"]'
+	 *   ...>
+	 * </ontario-checkboxes>
+	 */
+	@Prop({ mutable: true }) value?: string[] | string;
 
 	/**
 	 * The options for the checkbox group.
@@ -297,6 +315,15 @@ export class OntarioCheckboxes implements Checkboxes {
 					.printMessage();
 			}
 		}
+
+		this.syncValueFromOptions();
+	}
+
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (!this.isSyncingValue && this.internalOptions) {
+			this.syncValueFromOptions();
+		}
 	}
 
 	/**
@@ -374,6 +401,10 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
+		if (eventType === EventType.Change) {
+			event.stopPropagation();
+		}
+
 		const input = event.target as HTMLInputElement | null;
 
 		if (input) {
@@ -381,18 +412,14 @@ export class OntarioCheckboxes implements Checkboxes {
 		}
 
 		// Update internalOptions checked state
-		const changedOption = this.internalOptions.find((x) => x.value === input?.value);
-		if (changedOption) changedOption.checked = !changedOption?.checked;
+		this.internalOptions = this.internalOptions.map((option) => ({
+			...option,
+			checked: option.value === input?.value ? !!input?.checked : !!option.checked,
+		}));
+		this.updateHostValue(this.getSelectedValues());
 
 		// Set the value within the form
-		this.internals?.setFormValue?.(
-			this.internalOptions
-				.filter((x) => !!x.checked)
-				.reduce((formData, currentValue) => {
-					formData.append(this.name, currentValue.value);
-					return formData;
-				}, new FormData()),
-		);
+		this.setFormValue();
 
 		handleInputEvent(
 			event,
@@ -407,8 +434,117 @@ export class OntarioCheckboxes implements Checkboxes {
 			this.customOnFocus,
 			this.customOnBlur,
 			undefined,
-			this.element,
+			undefined,
 		);
+
+		if (eventType === EventType.Change) {
+			this.emitHostValueEvent('change');
+		}
+	}
+
+	private emitHostValueEvent(name: 'change') {
+		this.element.dispatchEvent(
+			new CustomEvent(name, {
+				bubbles: true,
+				composed: true,
+				detail: {
+					value: this.value ?? [],
+				},
+			}),
+		);
+	}
+
+	private updateHostValue(nextValue: string[]) {
+		this.isSyncingValue = true;
+		this.value = nextValue;
+		this.isSyncingValue = false;
+	}
+
+	private setFormValue() {
+		const selectedValues = this.getSelectedValues();
+		const formData = selectedValues.reduce((data, currentValue) => {
+			data.append(this.name, currentValue);
+			return data;
+		}, new FormData());
+
+		this.internals?.setFormValue?.(selectedValues.length ? formData : null);
+	}
+
+	private getSelectedValues() {
+		return this.internalOptions?.filter((option) => !!option.checked).map((option) => option.value) ?? [];
+	}
+
+	private normalizeValue() {
+		if (Array.isArray(this.value)) {
+			return this.value.filter((entry): entry is string => typeof entry === 'string');
+		}
+
+		if (typeof this.value === 'undefined') {
+			return undefined;
+		}
+
+		if (this.value === '') {
+			return [];
+		}
+
+		try {
+			const parsedValue = JSON.parse(this.value);
+			if (Array.isArray(parsedValue) && parsedValue.every((entry) => typeof entry === 'string')) {
+				return parsedValue;
+			}
+		} catch (error) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' value ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-checkboxes> ')
+				.addRegularText('was not provided in a valid format. Expected a string array or JSON string array.')
+				.addMonospaceText(error instanceof Error ? (error.stack ?? error.message) : '')
+				.printMessage(ConsoleType.Error);
+			return [];
+		}
+
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' value ')
+			.addRegularText('for')
+			.addMonospaceText(' <ontario-checkboxes> ')
+			.addRegularText('was not provided in a valid format. Expected a string array or JSON string array.')
+			.printMessage();
+
+		return [];
+	}
+
+	private syncValueFromOptions() {
+		const requestedValues = this.normalizeValue();
+		const optionValues = new Set(this.internalOptions?.map((option) => option.value) ?? []);
+
+		if (typeof requestedValues !== 'undefined') {
+			const selectedValues = requestedValues.filter((requestedValue) => optionValues.has(requestedValue));
+			if (selectedValues.length !== requestedValues.length) {
+				const message = new ConsoleMessageClass();
+				message
+					.addDesignSystemTag()
+					.addMonospaceText(' value ')
+					.addRegularText('for')
+					.addMonospaceText(' <ontario-checkboxes> ')
+					.addRegularText('included values that did not match any option values. Those values were ignored.')
+					.printMessage();
+			}
+
+			this.internalOptions = this.internalOptions?.map((option) => ({
+				...option,
+				checked: selectedValues.includes(option.value),
+			}));
+			this.updateHostValue(selectedValues);
+			this.setFormValue();
+			return;
+		}
+
+		this.updateHostValue(this.getSelectedValues());
+		this.setFormValue();
 	}
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the fieldset `aria-describedBy` attribute.

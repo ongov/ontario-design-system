@@ -122,6 +122,99 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 	></OntarioDropdownList>
 </div>
 
+In the following example, the selected option is set using the component's
+`value`. Listen for the component `input` or `change` event to read the current
+selection.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	id="dropdown-value-example"
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options='[
+		{ "value": "netflix", "label": "Netflix" },
+		{ "value": "disney-plus", "label": "Disney Plus" },
+		{ "value": "crave", "label": "Crave" }
+	]'
+></ontario-dropdown-list>
+<script>
+	document.getElementById('dropdown-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options={[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' },
+	]}
+	onInput={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+	}}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="'Select a streaming service'"
+	[value]="'crave'"
+	[options]="[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' }
+	]"
+	(change)="handleDropdownChange($event)"
+></ontario-dropdown-list>
+```
+
+```ts
+handleDropdownChange(event: Event) {
+	console.log((event.target as HTMLOntarioDropdownListElement).value);
+	console.log((event as CustomEvent<{ value: string }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 In the following example, all available props are passed through.
 
 ```mdx-code-block
@@ -312,6 +405,14 @@ In the following example, all available props are passed through.
 
 The `ontario-dropdown-list` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as an `<select>`.
 
+The component keeps its `value` in sync as users interact with the internal
+`<select>`. That same `value` is used for native form submission and for the
+component `input` and `change` events. When `isEmptyStartOption` is enabled,
+the start option uses an empty string value until a real option is selected. If
+a provided `value` does not match any option, the component emits a warning and
+falls back to the selected option, empty start option, or first available
+option.
+
 ```html
 <form>
 	<!-- Add an ontario-dropdown-list -->
@@ -352,6 +453,11 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
 
+For most integrations, prefer the component `input` and `change` events and
+read the selected option from `event.target.value`. Those events also include
+`event.detail.value` as a convenience. Use `dropdownOnChange` when you
+specifically want the component's custom event payload.
+
 Eg. To access the value of any change made to this component from the `dropdownOnChange` event, use the following code to wire up to listen for the the `dropdownOnChange` event.
 
 ```html
@@ -391,11 +497,15 @@ If an option is selected from `dropdown-1`, the value of `event.detail` is the o
 
 See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
 
-### Native `change` events
+### Native `input` and `change` events
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component handles the internal `<select>` events and re-emits `input` and
+`change` events so consumers can listen on the component instead of the
+internal control. The current selection is available through
+`event.target.value`, and a convenience copy is also included in
+`event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
@@ -475,6 +585,7 @@ The Ontario Dropdown List component supports full server-side rendering, with a 
 | `name`               | `name`                  | The name for the dropdown list. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                            | `string`                                | `undefined` |
 | `options`            | `options`               | The options for dropdown list. Each option will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options displayed. | `DropdownOption[] \| string`            | `undefined` |
 | `required`           | `required`              | This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                 | `boolean \| undefined`                  | `false`     |
+| `value`              | `value`                 | The currently selected dropdown value. The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.                                                                                            | `string \| undefined`                   | `undefined` |
 
 ## Events
 

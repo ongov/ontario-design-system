@@ -224,14 +224,14 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-checkboxes',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -295,14 +295,14 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 
 
 @ProxyCmp({
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required']
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value']
 })
 @Component({
   selector: 'ontario-date-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required'],
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -347,14 +347,14 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-dropdown-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -3523,14 +3523,14 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-radio-buttons',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

@@ -112,6 +112,14 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Prop() required?: boolean = false;
 
 	/**
+	 * The currently selected radio option value.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the radio group.
+	 * If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+	 */
+	@Prop({ mutable: true }) value?: string;
+
+	/**
 	 * The options for the radio button group.
 	 *
 	 * Each property will be passed in through an object in the options array.
@@ -299,6 +307,8 @@ export class OntarioRadioButtons implements RadioButtons {
 					.printMessage(ConsoleType.Error);
 			}
 		}
+
+		this.syncValueFromOptions();
 	}
 
 	/*
@@ -373,10 +383,21 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (this.internalOptions) {
+			this.syncValueFromOptions();
+		}
+	}
+
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
+		if (eventType === EventType.Change) {
+			event.stopPropagation();
+		}
+
 		const input = event.target as HTMLInputElement | null;
 
 		// Reset all internalOptions checked states
@@ -388,16 +409,10 @@ export class OntarioRadioButtons implements RadioButtons {
 			.find((x) => x.value === input?.value);
 		// Set the new checked state for the selected value
 		if (changedOption) changedOption.checked = !changedOption?.checked;
+		this.value = this.internalOptions.find((x) => !!x.checked)?.value ?? '';
 
 		// Set the value within the form
-		this.internals?.setFormValue?.(
-			this.internalOptions
-				.filter((x) => !!x.checked)
-				.reduce((formData, currentValue) => {
-					formData.append(this.name, currentValue.value);
-					return formData;
-				}, new FormData()),
-		);
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,
@@ -412,8 +427,55 @@ export class OntarioRadioButtons implements RadioButtons {
 			this.customOnFocus,
 			this.customOnBlur,
 			undefined,
-			this.element,
+			undefined,
 		);
+
+		if (eventType === EventType.Change) {
+			this.emitHostValueEvent('change');
+		}
+	}
+
+	private emitHostValueEvent(name: 'change') {
+		this.element.dispatchEvent(
+			new CustomEvent(name, {
+				bubbles: true,
+				composed: true,
+				detail: {
+					value: this.value ?? '',
+				},
+			}),
+		);
+	}
+
+	private syncValueFromOptions() {
+		const hasMatchingValue = this.value && this.internalOptions?.some((option) => option.value === this.value);
+		if (hasMatchingValue) {
+			this.internalOptions = this.internalOptions.map((option) => ({
+				...option,
+				checked: option.value === this.value,
+			}));
+			this.internals?.setFormValue?.(this.value ?? '');
+			return;
+		}
+
+		if (this.value) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' value ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-radio-buttons> ')
+				.addRegularText('did not match any option values. Falling back to the checked option.')
+				.printMessage();
+		}
+
+		const checkedOption = this.internalOptions?.find((option) => option.checked);
+		this.value = checkedOption?.value ?? '';
+		this.internalOptions = this.internalOptions?.map((option) => ({
+			...option,
+			checked: option.value === this.value,
+		}));
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	/**

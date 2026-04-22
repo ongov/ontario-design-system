@@ -370,6 +370,11 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
 	interface OntarioCriticalAlert {
 		/**
@@ -422,6 +427,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
 	interface OntarioDropdownList {
 		/**
@@ -482,6 +491,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioFieldset {
 		/**
@@ -2860,6 +2873,10 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioSearchBox {
 		/**
@@ -5039,6 +5056,11 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
 	interface OntarioCriticalAlert {
 		/**
@@ -5121,6 +5143,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
 	interface OntarioDropdownList {
 		/**
@@ -5197,6 +5223,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioFieldset {
 		/**
@@ -7654,6 +7684,10 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
 	interface OntarioSearchBox {
 		/**
