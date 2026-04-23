@@ -1,11 +1,10 @@
-/**
+/*
  * Public type contracts for `@ongov/app-sample-generator`.
  *
  * These interfaces define the library-first API:
  * callers provide a configuration object and receive a deterministic result object,
  * while transport concerns (filesystem, HTTP, etc.) are handled by consumers.
  */
-
 /**
  * A single sample definition provided to the generator.
  *

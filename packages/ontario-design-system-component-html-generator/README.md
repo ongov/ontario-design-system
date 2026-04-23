@@ -4,6 +4,8 @@ Automated HTML sample generation for Ontario Design System components with **aut
 
 Works as both a **CLI tool** (run it directly from the terminal) and a **library** (import `generateSamples()` into your own scripts or build pipeline).
 
+The preferred CLI command is `odscompgen`.
+
 ## What it does
 
 Takes your Web Components and generates clean, standalone HTML samples with:
@@ -20,6 +22,12 @@ Takes your Web Components and generates clean, standalone HTML samples with:
 
 ```bash
 pnpm add @ongov/ontario-design-system-component-html-generator
+```
+
+### CLI command
+
+```bash
+odscompgen --help
 ```
 
 ### 1. Define your samples

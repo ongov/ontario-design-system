@@ -1,4 +1,4 @@
-/**
+/*
  * Default sample definitions used by the package CLI.
  *
  * This file intentionally contains data only. Consumers using the library API

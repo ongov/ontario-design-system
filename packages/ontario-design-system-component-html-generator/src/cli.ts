@@ -8,15 +8,13 @@ import { Command } from 'commander';
 import { generateSamples } from './index.js';
 import type { ComponentSample, SampleFormatterOptions } from './types.js';
 
-const INIT_TEMPLATE = `/**
+const INIT_TEMPLATE = `/*
  * Ontario Design System — Sample Generator config
  *
  * Each entry in the \`samples\` array defines one HTML sample to generate.
  * Run the generator with:
  *
- *   ontario-design-system-component-html-generator --samplesFile ./samples.config.js --outputDirectory ./output
- *
- * @type {import('@ongov/ontario-design-system-component-html-generator').ComponentSample[]}
+ *   odscompgen --samplesFile ./samples.config.js --outputDirectory ./output
  */
 
 export const samples = [
@@ -72,7 +70,7 @@ async function loadSamples(samplesFilePath: string): Promise<ComponentSample[] |
 const program = new Command();
 
 program
-	.name('ontario-design-system-component-html-generator')
+	.name('odscompgen')
 	.description('Generate static HTML samples for Ontario Design System web components.')
 	.version('1.0.0');
 
@@ -93,7 +91,7 @@ program
 		mkdirSync(path.dirname(dest), { recursive: true });
 		writeFileSync(dest, INIT_TEMPLATE, 'utf8');
 		console.info(`Created samples config: ${dest}`);
-		console.info(`Edit it, then run:\n  ontario-design-system-component-html-generator --samplesFile ${output}`);
+		console.info(`Edit it, then run:\n  odscompgen --samplesFile ${output}`);
 	});
 
 program

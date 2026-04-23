@@ -1,10 +1,9 @@
-/**
+/*
  * Pure utility functions for HTML and CSS processing.
  *
  * These are isolated from I/O and rendering so they can be unit-tested directly.
  * All functions are stateless and deterministic.
  */
-
 /**
  * Removes Stencil hydration artifacts from rendered markup:
  * - `data-*` attributes

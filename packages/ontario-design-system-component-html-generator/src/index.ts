@@ -18,7 +18,7 @@ import {
 	transformHostSelectors,
 } from './utils.js';
 
-/**
+/*
  * Library entrypoint for sample generation.
  *
  * Responsibilities:
@@ -29,7 +29,6 @@ import {
  *
  * Filesystem writes and batch orchestration are intentionally handled by the CLI layer.
  */
-
 export type {
 	ComponentSample,
 	GeneratedSampleItem,
