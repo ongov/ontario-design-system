@@ -10,7 +10,8 @@
 	"files": [
 		"dist/",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"scripts": {
 		"exports:generate": "node ./scripts/generate-scss-exports.mjs",

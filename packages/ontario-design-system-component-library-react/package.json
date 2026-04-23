@@ -40,7 +40,8 @@
 		"dist/",
 		"src/",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"scripts": {
 		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme && pnpm run docs:copy:docs",

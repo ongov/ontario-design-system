@@ -1,0 +1,20 @@
+# Ontario Design System Angular Wrappers
+
+Use this package for Angular bindings around ODS web components.
+
+## Integration Rules
+- Consume the Angular component library outputs as documented.
+- Use package-provided asset and styles paths.
+- Prefer documented Angular wrapper patterns over custom shims.
+
+## Angular Notes
+- Follow Angular integration guidance for wrapper imports and asset wiring.
+- Keep framework setup consistent with package README instructions.
+
+## Guidance Links
+- https://designsystem.ontario.ca/developer-docs/
+- https://designsystem.ontario.ca/components/
+
+## Related Packages
+- @ongov/ontario-design-system-component-library
+- @ongov/ontario-design-system-global-styles
