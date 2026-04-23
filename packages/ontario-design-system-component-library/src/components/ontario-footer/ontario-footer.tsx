@@ -19,6 +19,14 @@ import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import translations from '../../translations/global.i18n.json';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/simple-footer.html
+ * - https://designsystem.ontario.ca/components/detail/expanded-footer.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+ */
 @Component({
 	tag: 'ontario-footer',
 	styleUrl: 'ontario-footer.scss',

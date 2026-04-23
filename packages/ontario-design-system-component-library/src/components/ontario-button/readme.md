@@ -347,6 +347,15 @@ The Ontario Button component supports server-side rendering, with a few consider
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Button triggers actions and supports button or link behavior.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                                                                                                                                                                                          | Type                                                            | Default       |

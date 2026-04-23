@@ -164,6 +164,15 @@ The Ontario Blockquote component supports server-side rendering, with a few cons
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Blockquote displays quoted content with optional attribution.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/blockquote.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                                                                                 | Type                  | Default     |

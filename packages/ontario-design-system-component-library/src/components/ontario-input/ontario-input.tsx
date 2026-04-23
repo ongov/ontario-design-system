@@ -24,6 +24,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Input captures single-line text input.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/text-inputs.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+ */
 @Component({
 	tag: 'ontario-input',
 	styleUrl: 'ontario-input.scss',

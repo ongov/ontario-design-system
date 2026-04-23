@@ -411,6 +411,15 @@ The Ontario Step Indicator component supports server-side rendering, with a few 
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Step Indicator communicates progress through multi-step flows.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/step-indicator.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-step-indicator/
+
 ## Properties
 
 | Property             | Attribute             | Description                                                                                                                                                                                                                                                                              | Type                                    | Default     |

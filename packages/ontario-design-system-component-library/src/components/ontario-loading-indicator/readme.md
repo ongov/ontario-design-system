@@ -149,6 +149,15 @@ The Ontario Loading Indicator component supports server-side rendering, with a f
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Loading Indicator communicates in-progress loading states.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/loading-indicator.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+
 ## Properties
 
 | Property            | Attribute             | Description                                                                                                                                                                                                                                                                                                                                                      | Type                        | Default     |

@@ -132,6 +132,15 @@ The Ontario Badge component supports server-side rendering, with a few considera
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Badge displays concise status labels and metadata.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/badges.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                               | Type                                                                                                    | Default     |

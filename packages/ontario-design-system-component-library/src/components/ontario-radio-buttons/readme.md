@@ -566,6 +566,15 @@ The Ontario Radio Buttons component supports server-side rendering, with a few c
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Radio Buttons captures a single choice from a defined option set.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/radio-buttons.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                    | Type                                    | Default     |

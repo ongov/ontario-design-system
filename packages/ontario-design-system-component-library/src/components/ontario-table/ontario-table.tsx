@@ -8,6 +8,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { extractValuesByKey, organizeObjectKeys, removeObjectsBySpecificKey } from '../../utils/helper/utils';
 
+/**
+ * Ontario Table presents structured tabular data with accessible semantics.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/tables.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+ */
 @Component({
 	tag: 'ontario-table',
 	styleUrl: 'ontario-table.scss',

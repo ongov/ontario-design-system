@@ -28,6 +28,13 @@ import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Checkboxes collects one or more selections from a defined option set.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+ */
 @Component({
 	tag: 'ontario-checkboxes',
 	styleUrl: 'ontario-checkboxes.scss',

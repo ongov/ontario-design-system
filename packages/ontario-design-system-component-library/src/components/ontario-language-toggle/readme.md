@@ -16,6 +16,14 @@ The Ontario Language Toggle component supports server-side rendering, with a few
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Language Toggle switches the interface between supported languages.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                                                                      | Type                                    | Default     |

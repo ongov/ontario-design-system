@@ -507,6 +507,17 @@ The Ontario Header component supports server-side rendering, with a few importan
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/ontario-header.html
+- https://designsystem.ontario.ca/components/detail/application-header.html
+- https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+
 ## Properties
 
 | Property                | Attribute                 | Description                                                                                                                                                                                                                                                                                                                                                                                                        | Type                                                          | Default         |

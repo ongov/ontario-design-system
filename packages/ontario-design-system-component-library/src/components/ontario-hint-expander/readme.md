@@ -159,6 +159,15 @@ The Ontario Hint Expander component supports server-side rendering, with a few c
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Hint Expander reveals optional supporting guidance on demand.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/hint-text.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+
 ## Properties
 
 | Property          | Attribute           | Description                                                                                                                                                                                                                                     | Type                              | Default     |

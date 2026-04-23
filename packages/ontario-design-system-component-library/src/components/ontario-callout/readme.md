@@ -174,6 +174,16 @@ The Ontario Callout component supports server-side rendering, with a few conside
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+
+For component selection guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/callouts-asides.html
+- https://designsystem.ontario.ca/components/detail/page-alerts.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+
 ## Properties
 
 | Property             | Attribute              | Description                                                                                                                                                                                                                                                                                    | Type                                                                                                       | Default     |

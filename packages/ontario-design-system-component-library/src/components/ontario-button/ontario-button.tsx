@@ -7,6 +7,13 @@ import { validatePropExists, validateValueAgainstArray } from '../../utils/valid
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { isServerSideRendering } from '../../utils/common/environment';
 
+/**
+ * Ontario Button triggers actions and supports button or link behavior.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+ */
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',

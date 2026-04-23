@@ -570,6 +570,15 @@ The Ontario Dropdown List component supports server-side rendering, with a few c
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Dropdown List presents a selectable list of predefined options.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+
 ## Properties
 
 | Property             | Attribute               | Description                                                                                                                                                                                                                                                                                                         | Type                                    | Default     |

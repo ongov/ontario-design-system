@@ -3,6 +3,15 @@ import { PageAlert, PageAlertType } from './ontario-page-alert.interface';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+ * (for example informational, warning, success, or error outcomes).
+ *
+ * For component selection guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+ * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+ */
 @Component({
 	tag: 'ontario-page-alert',
 	styleUrl: 'ontario-page-alert.scss',

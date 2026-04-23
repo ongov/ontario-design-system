@@ -377,6 +377,14 @@ Once the component package has been installed (see the Ontario Design System Com
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Form Container applies consistent spacing between grouped form elements.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+
 ## Properties
 
 | Property | Attribute | Description                                                                                                              | Type                       | Default     |

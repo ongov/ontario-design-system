@@ -147,6 +147,15 @@ The Ontario Task List component supports server-side rendering, with a few consi
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Task List groups and summarizes related tasks.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/task-list.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                   | Type                                   | Default     |

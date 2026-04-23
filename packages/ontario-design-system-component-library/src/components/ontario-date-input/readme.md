@@ -428,6 +428,15 @@ The Ontario Date Input component is compatible with server-side rendering, with 
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Date Input captures day, month, and year values as a single date field.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/dates.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                                                                                                                             | Type                                                                                                             | Default                    |

@@ -541,6 +541,15 @@ The Ontario Checkboxes component supports server-side rendering, with a few cons
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Checkboxes collects one or more selections from a defined option set.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/checkboxes.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Type                                    | Default     |

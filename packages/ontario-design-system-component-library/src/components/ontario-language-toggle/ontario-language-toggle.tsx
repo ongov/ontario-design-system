@@ -9,6 +9,12 @@ import { validateValueAgainstArray } from '../../utils/validation/validation-fun
 
 import { default as translations } from '../../translations/global.i18n.json';
 
+/**
+ * Ontario Language Toggle switches the interface between supported languages.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+ */
 @Component({
 	tag: 'ontario-language-toggle',
 	styleUrl: 'ontario-language-toggle.scss',

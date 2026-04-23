@@ -22,6 +22,13 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
+/**
+ * Ontario Textarea captures multi-line text input.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/text-areas.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+ */
 @Component({
 	tag: 'ontario-textarea',
 	styleUrl: 'ontario-textarea.scss',

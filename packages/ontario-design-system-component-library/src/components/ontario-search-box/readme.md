@@ -133,6 +133,15 @@ The Ontario Search Box component supports server-side rendering, with a few cons
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Search Box captures and submits search queries.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/search-box.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                            | Type                                                            | Default     |

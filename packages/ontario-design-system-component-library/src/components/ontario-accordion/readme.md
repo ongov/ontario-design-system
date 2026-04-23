@@ -167,6 +167,15 @@ The Ontario Accordion component supports server-side rendering, with a few consi
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Accordion presents collapsible sections of content.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/accordions.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                                                                                                                                             | Type                                                 | Default     |

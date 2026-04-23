@@ -263,6 +263,15 @@ The Ontario Card component supports server-side rendering, with a few considerat
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Card displays linked content summaries with optional media and metadata.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/cards.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+
 ## Properties
 
 | Property                      | Attribute                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                                     | Default       |

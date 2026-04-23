@@ -404,6 +404,15 @@ The Ontario Input component supports server-side rendering, with a few considera
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Input captures single-line text input.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/text-inputs.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+
 ## Properties
 
 | Property                    | Attribute                     | Description                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                        | Default     |

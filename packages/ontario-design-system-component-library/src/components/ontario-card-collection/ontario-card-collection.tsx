@@ -2,6 +2,12 @@ import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { CardsPerRow } from './ontario-collection-card-types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Ontario Card Collection lays out multiple cards in a responsive grid.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+ */
 @Component({
 	tag: 'ontario-card-collection',
 	styleUrl: 'ontario-card-collection.scss',

@@ -156,6 +156,17 @@ The Ontario Page Alert component supports server-side rendering, with a few cons
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Page Alert is used for high-importance status messages that apply to the whole page
+(for example informational, warning, success, or error outcomes).
+
+For component selection guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/page-alerts.html
+- https://designsystem.ontario.ca/components/detail/callouts-asides.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                                                   | Type                                                   | Default           |

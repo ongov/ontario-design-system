@@ -132,6 +132,15 @@ The Ontario Critical Alert component supports server-side rendering, with a few 
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Critical Alert communicates urgent, high-priority emergency information.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/critical-alerts.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                                                                  | Type                    | Default     |
