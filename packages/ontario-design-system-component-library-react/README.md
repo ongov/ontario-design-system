@@ -18,6 +18,8 @@ This package targets React 19 and ships bindings that align with React 19's JSX/
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
 
+For framework-specific setup guidance, refer to the [Next.js Server-Side Rendering (SSR) guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
+
 To use the Ontario Design System React component library, follow these steps:
 
 1. Install the npm package.
