@@ -1,3 +1,15 @@
+/*
+ * Library entrypoint for sample generation.
+ *
+ * Responsibilities:
+ * - Render input sample HTML using a pluggable renderer.
+ * - Normalize/clean the rendered markup.
+ * - Resolve and transform component styles.
+ * - Return a deterministic result object (`items` + `summary`) without doing filesystem I/O.
+ *
+ * Filesystem writes and batch orchestration are intentionally handled by the CLI layer.
+ */
+
 import { readFileSync } from 'fs';
 import path from 'path';
 import { renderToString } from '@ongov/ontario-design-system-component-library/hydrate';
@@ -18,17 +30,6 @@ import {
 	transformHostSelectors,
 } from './utils.js';
 
-/*
- * Library entrypoint for sample generation.
- *
- * Responsibilities:
- * - Render input sample HTML using a pluggable renderer.
- * - Normalize/clean the rendered markup.
- * - Resolve and transform component styles.
- * - Return a deterministic result object (`items` + `summary`) without doing filesystem I/O.
- *
- * Filesystem writes and batch orchestration are intentionally handled by the CLI layer.
- */
 export type {
 	ComponentSample,
 	GeneratedSampleItem,

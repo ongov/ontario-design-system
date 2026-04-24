@@ -36,6 +36,19 @@ export const samples = [
 ];
 `;
 
+const INIT_TEMPLATE_JSON = `{
+  "samples": [
+    {
+      "component": "ontario-button",
+      "html": "<ontario-button type=\\"primary\\" label=\\"Click me\\"></ontario-button>",
+      "outputFile": "ontario-button.html",
+      "description": "Primary button from Ontario Design System",
+      "includeStyles": true
+    }
+  ]
+}
+`;
+
 const DEFAULT_SAMPLES_PATH = fileURLToPath(new URL('./sample-config.js', import.meta.url));
 
 async function loadSamples(samplesFilePath: string): Promise<ComponentSample[] | null> {
@@ -77,10 +90,14 @@ program
 program
 	.command('init')
 	.description('Scaffold a starter samples config file that you can customise and expand upon.')
-	.argument('[output]', 'Path to write the config file to', 'samples.config.js')
+	.argument('[output]', 'Path to write the config file to')
 	.option('-f, --force', 'Overwrite the file if it already exists')
-	.action((output: string, options: { force: boolean }) => {
-		const dest = path.resolve(output);
+	.option('--format <format>', 'Output format: "js" or "json"', 'js')
+	.action((output: string | undefined, options: { force: boolean; format: string }) => {
+		const format = options.format === 'json' ? 'json' : 'js';
+		const defaultFilename = format === 'json' ? 'samples.json' : 'samples.config.js';
+		const resolvedOutput = output ?? defaultFilename;
+		const dest = path.resolve(resolvedOutput);
 
 		if (existsSync(dest) && !options.force) {
 			console.error(`File already exists: ${dest}\nUse --force to overwrite.`);
@@ -88,10 +105,11 @@ program
 			return;
 		}
 
+		const template = format === 'json' ? INIT_TEMPLATE_JSON : INIT_TEMPLATE;
 		mkdirSync(path.dirname(dest), { recursive: true });
-		writeFileSync(dest, INIT_TEMPLATE, 'utf8');
+		writeFileSync(dest, template, 'utf8');
 		console.info(`Created samples config: ${dest}`);
-		console.info(`Edit it, then run:\n  odscompgen --samplesFile ${output}`);
+		console.info(`Edit it, then run:\n  odscompgen --samplesFile ${resolvedOutput}`);
 	});
 
 program
