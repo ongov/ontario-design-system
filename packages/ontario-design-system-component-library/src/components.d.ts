@@ -229,9 +229,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioButton {
 		/**
@@ -378,9 +384,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioCheckboxes {
 		/**
@@ -452,9 +464,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dates.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioDateInput {
 		/**
@@ -507,9 +525,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioDropdownList {
 		/**
@@ -2799,9 +2823,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioInput {
 		/**
@@ -2835,7 +2865,7 @@ export namespace Components {
 		 */
 		enableLiveValidation: boolean;
 		/**
-		 * Set this to display an
+		 * Set this to display an error message.
 		 */
 		errorMessage?: string;
 		/**
@@ -2976,9 +3006,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioRadioButtons {
 		/**
@@ -3036,9 +3072,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/search-box.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioSearchBox {
 		/**
@@ -3231,9 +3273,15 @@ export namespace Components {
 	}
 	/**
 	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioTextarea {
 		/**
@@ -3454,9 +3502,15 @@ declare global {
 	};
 	/**
 	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {}
 	var HTMLOntarioButtonElement: {
@@ -3504,9 +3558,15 @@ declare global {
 	}
 	/**
 	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioCheckboxesElementEventMap>(
@@ -3586,9 +3646,15 @@ declare global {
 	}
 	/**
 	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dates.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDateInputElementEventMap>(
@@ -3650,9 +3716,15 @@ declare global {
 	}
 	/**
 	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDropdownListElementEventMap>(
@@ -4636,9 +4708,15 @@ declare global {
 	}
 	/**
 	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioInputElementEventMap>(
@@ -4779,9 +4857,15 @@ declare global {
 	}
 	/**
 	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioRadioButtonsElementEventMap>(
@@ -4844,9 +4928,15 @@ declare global {
 	}
 	/**
 	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/search-box.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioSearchBoxElement extends Components.OntarioSearchBox, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
@@ -4953,9 +5043,15 @@ declare global {
 	}
 	/**
 	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioTextareaElementEventMap>(
@@ -5283,9 +5379,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioButton {
 		/**
@@ -5432,9 +5534,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioCheckboxes {
 		/**
@@ -5522,9 +5630,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dates.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioDateInput {
 		/**
@@ -5607,9 +5721,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioDropdownList {
 		/**
@@ -7950,9 +8070,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioInput {
 		/**
@@ -7986,7 +8112,7 @@ declare namespace LocalJSX {
 		 */
 		enableLiveValidation?: boolean;
 		/**
-		 * Set this to display an
+		 * Set this to display an error message.
 		 */
 		errorMessage?: string;
 		/**
@@ -8155,9 +8281,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioRadioButtons {
 		/**
@@ -8231,9 +8363,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/search-box.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioSearchBox {
 		/**
@@ -8447,9 +8585,15 @@ declare namespace LocalJSX {
 	}
 	/**
 	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 	 */
 	interface OntarioTextarea {
 		/**
@@ -8724,9 +8868,15 @@ declare module '@stencil/core' {
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
 			/**
 			 * Ontario Button triggers actions and supports button or link behavior.
+			 * This component intentionally does not expose a `disabled` prop.
+			 * To support accessible and understandable form completion:
+			 * - keep actions available
+			 * - use validation and error messaging to guide corrections instead of disabling
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/buttons.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
 			/**
@@ -8753,9 +8903,15 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
 			/**
 			 * Ontario Checkboxes collects one or more selections from a defined option set.
+			 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep options and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
 			/**
@@ -8767,16 +8923,28 @@ declare module '@stencil/core' {
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
 			/**
 			 * Ontario Date Input captures day, month, and year values as a single date field.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/dates.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;
 			/**
 			 * Ontario Dropdown List presents a selectable list of predefined options.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
 			/**
@@ -9047,9 +9215,15 @@ declare module '@stencil/core' {
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
 			/**
 			 * Ontario Input captures single-line text input.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
 			/**
@@ -9078,16 +9252,28 @@ declare module '@stencil/core' {
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
 			/**
 			 * Ontario Radio Buttons captures a single choice from a defined option set.
+			 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep options and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
 			/**
 			 * Ontario Search Box captures and submits search queries.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/search-box.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
 			/**
@@ -9120,9 +9306,15 @@ declare module '@stencil/core' {
 			'ontario-task-list': LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
 			/**
 			 * Ontario Textarea captures multi-line text input.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
 			 * For component guidance, see:
 			 * - https://designsystem.ontario.ca/components/detail/text-areas.html
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
 		}

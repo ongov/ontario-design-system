@@ -10,9 +10,18 @@ import { isServerSideRendering } from '../../utils/common/environment';
 /**
  * Ontario Button triggers actions and supports button or link behavior.
  *
+ * This component intentionally does not expose a `disabled` prop.
+ *
+ * To support accessible and understandable form completion:
+ * - keep actions available
+ * - use validation and error messaging to guide corrections instead of disabling
+ *
  * For component guidance, see:
  * - https://designsystem.ontario.ca/components/detail/buttons.html
  * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+ *
+ * Disabled/read-only policy source:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
  */
 @Component({
 	tag: 'ontario-button',

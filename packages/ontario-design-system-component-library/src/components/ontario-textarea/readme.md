@@ -10,6 +10,21 @@ Use a text area when you want the user to enter **more than** a single line of i
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/text-areas.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -196,6 +211,86 @@ document.querySelector('ontario-textarea').addEventListener('change', (event) =>
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set the `errorMessage` property on `ontario-textarea` to display an error state and message. You can also listen for `inputErrorOccurred` to react to error updates in application code.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-textarea id="comments" name="comments" caption="Comments" required></ontario-textarea>
+<script>
+	window.addEventListener('load', () => {
+		const textarea = document.getElementById('comments');
+		textarea.addEventListener('inputOnBlur', () => {
+			textarea.errorMessage = textarea.value?.trim() ? '' : 'Enter your comments before continuing.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea
+	elementId="comments"
+	name="comments"
+	caption="Comments"
+	required
+	errorMessage="Enter your comments before continuing."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[elementId]="'comments'"
+	[name]="'comments'"
+	[caption]="'Comments'"
+	[required]="true"
+	[errorMessage]="'Enter your comments before continuing.'"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate content on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
 ## Custom property types
 
 ### caption
@@ -253,10 +348,21 @@ The Ontario Textarea component supports server-side rendering, with a few consid
 
 Ontario Textarea captures multi-line text input.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/text-areas.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

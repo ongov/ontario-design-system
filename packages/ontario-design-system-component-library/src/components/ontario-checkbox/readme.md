@@ -10,6 +10,21 @@ Use checkboxes when you want the user to select one or more options from a list.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/checkboxes.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide group-level `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the checkbox component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -477,6 +492,101 @@ property on the emitted event.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when required selection rules are not met, and keep options available for correction.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-checkboxes
+	id="contact-methods"
+	name="contact-methods"
+	caption="How should we contact you?"
+	required
+	options='[
+		{ "elementId": "email", "label": "Email", "value": "email" },
+		{ "elementId": "phone", "label": "Phone", "value": "phone" }
+	]'
+></ontario-checkboxes>
+<script>
+	window.addEventListener('load', () => {
+		const checkboxes = document.getElementById('contact-methods');
+		checkboxes.addEventListener('checkboxOnChange', () => {
+			const checked = checkboxes.querySelectorAll('input[type=\"checkbox\"]:checked').length;
+			checkboxes.errorMessage = checked > 0 ? '' : 'Select at least one contact method.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	elementId="contact-methods"
+	name="contact-methods"
+	caption="How should we contact you?"
+	required
+	options={[
+		{ elementId: 'email', label: 'Email', value: 'email' },
+		{ elementId: 'phone', label: 'Phone', value: 'phone' },
+	]}
+	errorMessage="Select at least one contact method."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[elementId]="'contact-methods'"
+	[name]="'contact-methods'"
+	[caption]="'How should we contact you?'"
+	[required]="true"
+	[options]="contactMethodOptions"
+	[errorMessage]="'Select at least one contact method.'"
+></ontario-checkboxes>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate selections on interaction (for example, on change, blur, or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
 ## Custom property types
 
 ### caption
@@ -545,10 +655,21 @@ The Ontario Checkboxes component supports server-side rendering, with a few cons
 
 Ontario Checkboxes collects one or more selections from a defined option set.
 
+This component intentionally does not expose group-level `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep options and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/checkboxes.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

@@ -10,6 +10,21 @@ Use a text input when you want the user to enter no more than a single line of i
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/text-inputs.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the input component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -220,6 +235,27 @@ When using libraries that listen for events, this process may not work with them
 
 An error message can be displayed on an input by setting the `errorMessage` property. This will display a message to the user along with broadcasting an event, called `inputErrorOccurred`, that can be listened for by other components or custom event handlers.
 
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-input id="input-1" name="input-1" caption="What is your name?" required></ontario-input>
 <script>
@@ -234,9 +270,44 @@ An error message can be displayed on an input by setting the `errorMessage` prop
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioInput
+	elementId="input-1"
+	name="input-1"
+	caption="What is your name?"
+	required
+	errorMessage="Enter your first name"
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input
+	[elementId]="'input-1'"
+	[name]="'input-1'"
+	[caption]="'What is your name?'"
+	[required]="true"
+	[errorMessage]="'Enter your first name'"
+></ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 _Note: to test the above code sample either set an `errorMessage` on `input-1` or add the `enable-live-validation` attribute._
 
-### Input live validation
+### Live validation
 
 By setting the `enableLiveValidation` property the value of an input can be validated by using the custom `inputValidator` function. This function notifies the component if there is an error based on the custom logic that fits your application. On the `blur` event of the component, it will pass over the `value` of the input and if an `errorMessage` is returned it will instruct the component to display it. To clear the error message displayed return `undefined` or `null`.
 
@@ -344,12 +415,6 @@ For example,
 	</OntarioInput>
 </div>
 
-### Learn more
-
-Error messaging best practices are based off the Ontario Design System [Error messaging guidance](https://designsystem.ontario.ca/components/detail/error-messaging.html).
-
-Visit the [Live validation](https://designsystem.ontario.ca/components/detail/error-messaging.html) guidance page for more information about live validation.
-
 ## Custom property types
 
 ### caption
@@ -408,10 +473,21 @@ The Ontario Input component supports server-side rendering, with a few considera
 
 Ontario Input captures single-line text input.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/text-inputs.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 
@@ -424,7 +500,7 @@ For component guidance, see:
 | `customOnInput`             | `custom-on-input`             | Used to add a custom function to the input onInput event.                                                                                                                                                                                                                                                                                   | `((event: Event) => void) \| undefined`                                                                                                     | `undefined` |
 | `elementId`                 | `element-id`                  | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                                           | `string \| undefined`                                                                                                                       | `undefined` |
 | `enableLiveValidation`      | `enable-live-validation`      | Enable live validation on the input. Custom live validation can be performed using an `inputValidator` validation function. It will also validate the `required` state if no errors are returned from the `inputValidator`. Please set a `requiredValidationMessage` to report concisely to the end user what they are required to set.     | `boolean`                                                                                                                                   | `false`     |
-| `errorMessage`              | `error-message`               | Set this to display an                                                                                                                                                                                                                                                                                                                      | `string \| undefined`                                                                                                                       | `undefined` |
+| `errorMessage`              | `error-message`               | Set this to display an error message.                                                                                                                                                                                                                                                                                                       | `string \| undefined`                                                                                                                       | `undefined` |
 | `hintExpander`              | `hint-expander`               | Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs. This is optional.                                                                                                                                                                                         | `HintExpander \| string \| undefined`                                                                                                       | `undefined` |
 | `hintText`                  | `hint-text`                   | Used to include the ontario-hint-text component for the input. This is optional.                                                                                                                                                                                                                                                            | `Hint \| string \| undefined`                                                                                                               | `undefined` |
 | `inputValidator`            | `input-validator`             | Validate the validity of the input value `onBlur`. This `async` function should return a result to trigger an error message. Returning `undefined` or `null` will clear it.                                                                                                                                                                 | `((value?: string \| undefined) => Promise<{ errorMessage?: string \| undefined; } \| null \| undefined>) \| undefined`                     | `undefined` |

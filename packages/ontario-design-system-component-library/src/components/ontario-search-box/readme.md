@@ -10,6 +10,21 @@ Use a search box to let users complete keyword-based searches.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/search-box.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- validate search requirements in your integration logic and provide contextual feedback
+
+For field-level validation patterns, see the input component [Error messaging](../ontario-input/#error-messaging) guidance.
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the search box component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -137,10 +152,21 @@ The Ontario Search Box component supports server-side rendering, with a few cons
 
 Ontario Search Box captures and submits search queries.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/search-box.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

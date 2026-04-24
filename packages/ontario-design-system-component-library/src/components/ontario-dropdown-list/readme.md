@@ -10,6 +10,21 @@ Only use a dropdown (select) list if you cannot use other form components to cap
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/dropdown-lists.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the dropdown list component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for dropdown list properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -509,6 +524,100 @@ internal control. The current selection is available through
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when selection is missing or invalid, and keep the list enabled so users can correct their choice.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	id="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options='[
+		{ "label": "Health card", "value": "health-card" },
+		{ "label": "Driver licence", "value": "driver-licence" }
+	]'
+></ontario-dropdown-list>
+<script>
+	window.addEventListener('load', () => {
+		const dropdown = document.getElementById('service-selection');
+		dropdown.addEventListener('inputOnBlur', () => {
+			dropdown.errorMessage = dropdown.value ? '' : 'Select a service to continue.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	elementId="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options={[
+		{ label: 'Health card', value: 'health-card' },
+		{ label: 'Driver licence', value: 'driver-licence' },
+	]}
+	errorMessage="Select a service to continue."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[elementId]="'service-selection'"
+	[name]="'service-selection'"
+	[caption]="'Select a service'"
+	[required]="true"
+	[options]="serviceOptions"
+	[errorMessage]="'Select a service to continue.'"
+></ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate selection on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
+
 ## Custom property types
 
 ### Caption
@@ -574,10 +683,21 @@ The Ontario Dropdown List component supports server-side rendering, with a few c
 
 Ontario Dropdown List presents a selectable list of predefined options.
 
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
 For component guidance, see:
 
 - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
 - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 
