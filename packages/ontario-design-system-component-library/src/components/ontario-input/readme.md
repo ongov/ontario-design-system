@@ -235,6 +235,14 @@ When using libraries that listen for events, this process may not work with them
 
 An error message can be displayed on an input by setting the `errorMessage` property. This will display a message to the user along with broadcasting an event, called `inputErrorOccurred`, that can be listened for by other components or custom event handlers.
 
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
 ```mdx-code-block
 <Tabs
 	defaultValue="html"
@@ -406,12 +414,6 @@ For example,
 		requiredValidationMessage="Enter your first name">
 	</OntarioInput>
 </div>
-
-### Learn more
-
-Error messaging best practices are based off the Ontario Design System [Error messaging guidance](https://designsystem.ontario.ca/components/detail/error-messaging.html).
-
-Visit the [Live validation](https://designsystem.ontario.ca/components/detail/error-messaging.html) guidance page for more information about live validation.
 
 ## Custom property types
 

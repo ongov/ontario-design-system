@@ -219,6 +219,14 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set the `errorMessage` property on `ontario-textarea` to display an error state and message. You can also listen for `inputErrorOccurred` to react to error updates in application code.
 
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
 ```mdx-code-block
 <Tabs
 	defaultValue="html"
@@ -282,10 +290,6 @@ Set the `errorMessage` property on `ontario-textarea` to display an error state 
 ### Live validation
 
 Keep the control available and validate content on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
-
-See the Ontario Design System guidance:
-
-- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

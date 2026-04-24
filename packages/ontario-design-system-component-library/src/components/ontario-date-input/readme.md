@@ -398,6 +398,14 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and surface message text through `errorMessage`.
 
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
 ```mdx-code-block
 <Tabs
 	defaultValue="html"
@@ -473,10 +481,6 @@ Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and 
 ### Live validation
 
 Keep the control available and validate date fields on interaction (for example, on blur or submit). Return contextual error guidance from `dateValidator` so users can correct incomplete or invalid values.
-
-See the Ontario Design System guidance:
-
-- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 

@@ -500,6 +500,14 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Set `errorMessage` when required selection rules are not met, and keep options available for correction.
 
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
 ```mdx-code-block
 <Tabs
 	defaultValue="html"
@@ -578,10 +586,6 @@ Set `errorMessage` when required selection rules are not met, and keep options a
 ### Live validation
 
 Keep the control available and validate selections on interaction (for example, on change, blur, or submit). When validation fails, set a contextual error message that explains how to fix the issue.
-
-See the Ontario Design System guidance:
-
-- https://designsystem.ontario.ca/components/detail/error-messaging.html
 
 ## Custom property types
 
