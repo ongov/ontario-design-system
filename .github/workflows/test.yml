@@ -25,7 +25,7 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages
@@ -72,7 +72,7 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.build-artifacts-name }}
           path: ./packages
@@ -85,21 +85,21 @@ jobs:
 
       - name: Upload Stencil E2E Test Results
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: stencil-e2e-test-results
           path: packages/ontario-design-system-component-library/test-results
 
       - name: Upload Stencil E2E JUnit results for GitHub integration
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: stencil-e2e-junit-results
           path: packages/ontario-design-system-component-library/test-results/playwright/results.xml
 
       - name: Upload Stencil Playwright HTML report
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: stencil-playwright-html-report-e2e
           path: packages/ontario-design-system-component-library/playwright-report
@@ -141,7 +141,7 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.build-artifacts-name }}
           path: ./packages
@@ -154,21 +154,21 @@ jobs:
 
       - name: Upload Next.js VRT Test Results
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-vrt-test-results
           path: packages/app-nextjs/test-results
 
       - name: Upload Next.js VRT JUnit results for GitHub integration
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-vrt-junit-results
           path: packages/app-nextjs/test-results/playwright/results.xml
 
       - name: Upload Next.js Playwright HTML report
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-playwright-html-report-vrt
           path: packages/app-nextjs/playwright-report
@@ -210,7 +210,7 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.build-artifacts-name }}
           path: ./packages
@@ -223,21 +223,21 @@ jobs:
 
       - name: Upload Next.js E2E Apps Test Results
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-e2e-test-results
           path: packages/app-nextjs/test-results
 
       - name: Upload Next.js E2E Apps JUnit results for GitHub integration
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-e2e-junit-results
           path: packages/app-nextjs/test-results/playwright/results.xml
 
       - name: Upload Next.js Playwright HTML report
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nextjs-playwright-html-report-e2e
           path: packages/app-nextjs/playwright-report
