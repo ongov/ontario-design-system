@@ -18,6 +18,14 @@ This package targets React 19 and ships bindings that align with React 19's JSX/
 
 For Next.js-specific setup guidance, including SSR configuration and asset handling, use the official [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library`
+- `@ongov/ontario-design-system-global-styles`
+
 ## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).

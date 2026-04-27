@@ -11,6 +11,14 @@
 
 This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 20+. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library`
+- `@ongov/ontario-design-system-global-styles`
+
 ## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).

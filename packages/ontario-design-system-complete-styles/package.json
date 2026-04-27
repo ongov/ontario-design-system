@@ -9,7 +9,8 @@
 	"files": [
 		"dist/",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"scripts": {
 		"build": "gulp deploy && pnpm run docs:copy:readme",
