@@ -118,22 +118,28 @@ This is another example of a badge. This time, the content is passed as a child 
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Badge component supports two ways of defining labels:
+The Ontario Badge component supports server-side rendering, with a few considerations:
 
-- Via the `label` prop (as a string)
-- Via slotted children placed between the component's opening and closing tags
-
-While both approaches work in the browser, only the `label` prop is reliably rendered during Server-Side Rendering (SSR).
+- **Preferred content source:** Pass badge text through the `label` prop.
+- **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
+- **Framework guidance:** For deterministic SSR output, prefer `label` over slotted children.
 
 ### SSR-safe example:
-
-During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the badge label through the `label` prop.
 
 ```tsx
 <OntarioBadge label="In progress"></OntarioBadge>
 ```
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Badge displays concise status labels and metadata.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/badges.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
 
 ## Properties
 

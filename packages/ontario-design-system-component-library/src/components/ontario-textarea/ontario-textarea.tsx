@@ -22,6 +22,22 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 import { default as translations } from '../../translations/global.i18n.json';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 
+/**
+ * Ontario Textarea captures multi-line text input.
+ *
+ * This component intentionally does not expose `readOnly` or `disabled` props.
+ *
+ * To support accessible and understandable form completion:
+ * - keep form fields and submission actions available
+ * - use validation and error messaging to guide corrections
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/text-areas.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+ *
+ * Disabled/read-only policy source:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+ */
 @Component({
 	tag: 'ontario-textarea',
 	styleUrl: 'ontario-textarea.scss',
@@ -280,11 +296,12 @@ export class OntarioTextarea implements Input {
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
 		const input = event.target as HTMLTextAreaElement | null;
+		this.value = input?.value;
 
 		// Guard usage of `this.internals` to ensure this logic only runs in the browser.
 		// `ElementInternals` is not available during SSR, and unguarded access can cause hydration errors.
 		if (typeof this.internals?.setFormValue === 'function') {
-			this.internals.setFormValue(input?.value ?? '');
+			this.internals.setFormValue(this.value ?? '');
 		}
 
 		handleInputEvent(

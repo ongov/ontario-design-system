@@ -43,7 +43,8 @@
 		"dist/",
 		"projects/component-library/src",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",

@@ -122,7 +122,7 @@ The Ontario Design System provides a global stylesheet that includes foundationa
 
 ### Install Global Styles Package (If Not Already Installed)
 
-The global styles package is typically installed as a transitive dependency of the component library. It its missing or you encounter style-related errors, install it directly:
+The global styles package is typically installed as a transitive dependency of the component library. If it is missing or you encounter style-related errors, install it directly:
 
 ```bash
 npm add @ongov/ontario-design-system-global-styles
@@ -157,6 +157,15 @@ function MyApp({ Component, pageProps }) {
 	return <Component {...pageProps} />;
 }
 export default MyApp;
+```
+
+If you need to override the asset base path used by the theme, create a local Sass wrapper and forward the global styles theme with a custom `$asset-base-path`.
+
+```scss
+// src/styles/ontario-theme.scss
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/theme.scss' with (
+	$asset-base-path: '/assets'
+);
 ```
 
 ---

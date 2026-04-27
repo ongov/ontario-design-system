@@ -10,6 +10,21 @@ Use checkboxes when you want the user to select one or more options from a list.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/checkboxes.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide group-level `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the checkbox component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -248,6 +263,101 @@ Example of a checkbox component with multiple options, a hint text and hint expa
 	></OntarioCheckboxes>
 </div>
 
+In the following example, the selected checkbox options are set using the
+component's `value`. Listen for the component `change` event to read the
+current selected values.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-checkboxes
+	id="checkboxes-value-example"
+	caption="Checkbox legend"
+	name="checkboxes"
+	value='["checkbox-option-2"]'
+	options='[
+		{
+			"value": "checkbox-option-1",
+			"label": "Checkbox option 1 label",
+			"elementId": "checkbox-1"
+		},
+		{
+			"value": "checkbox-option-2",
+			"label": "Checkbox option 2 label",
+			"elementId": "checkbox-2"
+		}
+	]'
+></ontario-checkboxes>
+<script>
+	document.getElementById('checkboxes-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	caption="Checkbox legend"
+	name="checkboxes"
+	value={['checkbox-option-2']}
+	options={[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{ value: 'checkbox-option-2', label: 'Checkbox option 2 label', elementId: 'checkbox-2' },
+	]}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioCheckboxesElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[caption]="'Checkbox legend'"
+	[name]="'checkboxes'"
+	[value]="['checkbox-option-2']"
+	[options]="[
+		{ value: 'checkbox-option-1', label: 'Checkbox option 1 label', elementId: 'checkbox-1' },
+		{ value: 'checkbox-option-2', label: 'Checkbox option 2 label', elementId: 'checkbox-2' }
+	]"
+	(change)="handleCheckboxChange($event)"
+></ontario-checkboxes>
+```
+
+```ts
+handleCheckboxChange(event: Event) {
+	console.log((event.target as HTMLOntarioCheckboxesElement).value);
+	console.log((event as CustomEvent<{ value: string[] }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Forms
 
 The `ontario-checkboxes` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a a group of `<input type="checkbox">` elements.
@@ -283,9 +393,49 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 ## Event model
 
-Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
+For most integrations, prefer the component `change` event and read the
+selected values from `event.target.value`. That event also includes
+`event.detail.value` as a convenience. Use `checkboxOnChange` when you
+specifically want the component's per-option custom event payload.
 
-Eg. To access the value of any change made to this component from the `checkboxOnChange` event, use the following code to wire up to listen for the the `checkboxOnChange` event.
+Each custom event emitted by the component uses the
+[`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
+type. To access the data emitted by the component within the `CustomEvent` type
+use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+property.
+
+Example of the component `change` event:
+
+```html
+<ontario-checkboxes
+	id="checkboxes-change-example"
+	caption="Checkboxes"
+	name="checkboxes-1"
+	options='[
+		{
+			"value": "checkbox-option-1",
+			"label": "Checkbox option 1 label",
+			"elementId": "checkbox-1"
+		},
+		{
+			"value": "checkbox-option-2",
+			"label": "Checkbox option 2 label",
+			"elementId": "checkbox-2"
+		}
+	]'
+></ontario-checkboxes>
+<script>
+	window.onload = () => {
+		const checkboxes1 = document.getElementById('checkboxes-change-example');
+		checkboxes1.addEventListener('change', (event) => {
+			console.log(event.target.value);
+			console.log(event.detail.value);
+		});
+	};
+</script>
+```
+
+Example `checkboxOnChange` usage when you need per-option detail:
 
 ```html
 <ontario-checkboxes
@@ -331,9 +481,111 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component keeps its `value` in sync with the currently selected checkbox
+options.
+
+The native `change` event hits the ShadowDOM boundary and stops propagating.
+The implication of this is that it can't be listened for outside the
+component. To attempt to overcome this, a synthetic change event is generated
+and emitted. The original `change` event is available via the `detail`
+property on the emitted event.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when required selection rules are not met, and keep options available for correction.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-checkboxes
+	id="contact-methods"
+	name="contact-methods"
+	caption="How should we contact you?"
+	required
+	options='[
+		{ "elementId": "email", "label": "Email", "value": "email" },
+		{ "elementId": "phone", "label": "Phone", "value": "phone" }
+	]'
+></ontario-checkboxes>
+<script>
+	window.addEventListener('load', () => {
+		const checkboxes = document.getElementById('contact-methods');
+		checkboxes.addEventListener('checkboxOnChange', () => {
+			const checked = checkboxes.querySelectorAll('input[type=\"checkbox\"]:checked').length;
+			checkboxes.errorMessage = checked > 0 ? '' : 'Select at least one contact method.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioCheckboxes
+	elementId="contact-methods"
+	name="contact-methods"
+	caption="How should we contact you?"
+	required
+	options={[
+		{ elementId: 'email', label: 'Email', value: 'email' },
+		{ elementId: 'phone', label: 'Phone', value: 'phone' },
+	]}
+	errorMessage="Select at least one contact method."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-checkboxes
+	[elementId]="'contact-methods'"
+	[name]="'contact-methods'"
+	[caption]="'How should we contact you?'"
+	[required]="true"
+	[options]="contactMethodOptions"
+	[errorMessage]="'Select at least one contact method.'"
+></ontario-checkboxes>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate selections on interaction (for example, on change, blur, or submit). When validation fails, set a contextual error message that explains how to fix the issue.
 
 ## Custom property types
 
@@ -388,14 +640,36 @@ expander for checkbox option 2", "content": "Example hint expander content for c
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensure correct rendering and prevent hydration mismatches, keep the following in mind:
+The Ontario Checkboxes component supports server-side rendering, with a few considerations:
 
-- **Langauge-Props**: Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-checkbox language="fr"></ontario-checkbox>`).
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
-- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
-- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<input type="checkbox">`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behaviour (like validation or custom value handling) only becomes active after hydration in the browser.
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** Each checkbox option should use a stable `elementId`. If option IDs are generated differently between server and client, hydration mismatches are more likely.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders a checkbox-group structure that can support straightforward form submission when the group `name`, `language`, and option ids are stable. Group-level error messaging and emitted events become available after hydration.
+- **Hydrated-only behaviour:** Group-level error messaging and custom event handling should be treated as hydrated behaviour. Keep the group `name` stable across all options and verify the full submit flow in the consuming application.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For client-managed integrations, use the event examples below. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Checkboxes collects one or more selections from a defined option set.
+
+This component intentionally does not expose group-level `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep options and submission actions available
+- use validation and error messaging to guide corrections
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/checkboxes.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 
@@ -412,6 +686,7 @@ The Ontario Checkbox component supports Server-Side Rendering (SSR), but to ensu
 | `name`           | `name`             | The name for the checkboxes. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                                                                                                                                                  | `string`                                | `undefined` |
 | `options`        | `options`          | The options for the checkbox group. Each property will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. If there are multiple checkboxes in a fieldset, each checkbox will be displayed as an option. In the example below, the options are being passed in as a string and there are two checkboxes to be displayed in the fieldset. | `CheckboxOption[] \| string`            | `undefined` |
 | `required`       | `required`         | This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                                                                                                                                         | `boolean \| undefined`                  | `false`     |
+| `value`          | `value`            | The currently selected checkbox option values. The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`. In HTML, pass `value` as a JSON string array.                                                                                                                                                    | `string \| string[] \| undefined`       | `undefined` |
 
 ## Events
 

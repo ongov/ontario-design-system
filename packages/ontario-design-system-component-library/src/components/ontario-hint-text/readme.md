@@ -118,18 +118,15 @@ Example of a hint text that includes the `hint` property, which will override th
   </OntarioHintText>
 </div>
 
-## Technical Note: Content Rendering and SSR (Server-Side Rendering)
+## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Hint component supports two ways of defining hints:
+The Ontario Hint Text component supports server-side rendering, with a few considerations:
 
-- Via the `hint` prop (as a string)
-- Via slotted children placed between the component's opening and closing tags
-
-While both approaches work in the browser, only the `hint` prop is reliably rendered during Server-Side Rendering (SSR).
+- **Preferred content source:** Pass hint content through the `hint` prop.
+- **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
+- **Framework guidance:** For deterministic SSR output, prefer `hint` over slotted children.
 
 ### SSR-safe example:
-
-During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the hint through the `hint` prop. Eg:
 
 ```tsx
 <OntarioHintText hint="Provide a detailed street address."></OntarioHintText>
@@ -139,7 +136,14 @@ During SSR, fallback content using `host.textContent` is not reliably available.
 
 ## Overview
 
+Ontario Hint Text provides concise supporting instructions for form controls.
+
 Use hint text to help users understand how to complete fields in a form.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/hint-text.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 
 ## Properties
 

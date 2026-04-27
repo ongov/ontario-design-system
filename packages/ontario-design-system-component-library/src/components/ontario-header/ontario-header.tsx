@@ -30,6 +30,15 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
 
+/**
+ * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+ * - https://designsystem.ontario.ca/components/detail/application-header.html
+ * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+ */
 @Component({
 	tag: 'ontario-header',
 	styleUrls: ['ontario-header.scss', 'ontario-application-header.scss', 'service-ontario-header.scss'],

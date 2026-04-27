@@ -12,6 +12,14 @@ The Ontario Design System complete styles package can be used in place of the On
 
 The complete styles package includes the [Ontario Design System global styles](https://www.npmjs.com/package/@ongov/ontario-design-system-global-styles), along with component styles, assets, fonts, favicons and scripts that will provide all the necessary styles and functionality of the Ontario Design System.
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-global-styles`
+- `@ongov/ontario-design-system-component-library`
+
 ## Installation and usage
 
 To install the Ontario Design System complete styles package, run the following command:

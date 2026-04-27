@@ -141,6 +141,14 @@ Example of a bare-bones `ontario-card-collection` component, with a `cardsPerRow
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Card Collection lays out multiple cards in a responsive grid.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+
 ## Properties
 
 | Property      | Attribute       | Description                                                                           | Type          | Default |

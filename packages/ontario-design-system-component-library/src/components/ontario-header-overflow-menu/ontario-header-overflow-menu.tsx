@@ -6,11 +6,12 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
 /**
- * Overflow Menu Component
+ * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
  *
- * Displays a dropdown menu of links. Can operate in two modes:
+ * It can operate in two modes:
  *
- * ## Standalone Mode
+ * ### Standalone Mode
+ *
  * Used when placed directly in the header (desktop view).
  * - Manages its own open/close state via `menuButtonToggled` event
  * - Automatically focuses first menu item when opened
@@ -18,15 +19,24 @@ import { HeaderKeyboardNavigation } from '../../utils/components/header/header-k
  * - Auto-closes when focus leaves the menu area
  * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
  *
- * ## Embedded Mode
+ * ### Embedded Mode
+ *
  * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
  * - Parent component controls open/close state
  * - Parent component manages focus trap
  * - Menu is always visible when parent tab is active
  * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
  *
- * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
- * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ * ### Mode Detection
+ *
+ * - Auto-detected based on DOM position (no prop needed).
+ * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+ * - https://designsystem.ontario.ca/components/detail/application-header.html
+ * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
  */
 @Component({
 	tag: 'ontario-header-overflow-menu',

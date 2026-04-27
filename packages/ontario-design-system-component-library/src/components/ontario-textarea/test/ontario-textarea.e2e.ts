@@ -1,3 +1,76 @@
+import { expect, Locator } from '@playwright/test';
+import { test, EventSpy } from '@stencil/playwright';
+
+test.describe('ontario-textarea', () => {
+	let host: Locator;
+	let textarea: Locator;
+	let inputSpy: EventSpy;
+	let changeSpy: EventSpy;
+	let inputOnInputSpy: EventSpy;
+	let inputOnChangeSpy: EventSpy;
+
+	test.beforeEach(async ({ page }) => {
+		await page.setContent(`
+			<ontario-textarea
+				name="ontario-textarea"
+				element-id="ontario-textarea"
+				caption='{"captionText": "Ontario Textarea"}'
+			></ontario-textarea>
+		`);
+		await page.waitForChanges();
+
+		host = page.locator('ontario-textarea').first();
+		textarea = host.locator('textarea').first();
+		inputSpy = await page.spyOnEvent('input');
+		changeSpy = await page.spyOnEvent('change');
+		inputOnInputSpy = await page.spyOnEvent('inputOnInput');
+		inputOnChangeSpy = await page.spyOnEvent('inputOnChange');
+	});
+
+	test('keeps the host value in sync and emits input detail while typing', async ({ page }) => {
+		await textarea.click();
+		await textarea.pressSequentially('Typed into the textarea');
+		await page.waitForChanges();
+
+		await expect(inputSpy).toHaveReceivedEvent();
+		await expect(inputOnInputSpy).toHaveReceivedEvent();
+		expect(inputOnInputSpy.events.length).toBeGreaterThan(0);
+		expect(inputOnInputSpy.events[inputOnInputSpy.events.length - 1].detail).toEqual(
+			expect.objectContaining({
+				inputType: 'insertText',
+			}),
+		);
+		expect(await host.evaluate((element: HTMLOntarioTextareaElement) => element.value)).toBe('Typed into the textarea');
+	});
+
+	test('emits a host change event with the committed value', async ({ page }) => {
+		await textarea.click();
+		await textarea.pressSequentially('Committed textarea value');
+		await page.keyboard.press('Tab');
+		await page.waitForChanges();
+
+		await expect(changeSpy).toHaveReceivedEvent();
+		await expect(inputOnChangeSpy).toHaveReceivedEvent();
+		expect(inputOnChangeSpy.events[inputOnChangeSpy.events.length - 1].detail).toEqual({
+			id: 'ontario-textarea',
+			value: 'Committed textarea value',
+		});
+		expect(await host.evaluate((element: HTMLOntarioTextareaElement) => element.value)).toBe(
+			'Committed textarea value',
+		);
+	});
+
+	test('applies external value updates to the rendered textarea', async ({ page }) => {
+		await host.evaluate((element: HTMLOntarioTextareaElement) => {
+			element.value = 'Updated externally';
+		});
+		await page.waitForChanges();
+
+		await expect(textarea).toHaveValue('Updated externally');
+		expect(await host.evaluate((element: HTMLOntarioTextareaElement) => element.value)).toBe('Updated externally');
+	});
+});
+
 // import { newE2EPage } from '@stencil/core/testing';
 
 // describe('ontario-textarea', () => {

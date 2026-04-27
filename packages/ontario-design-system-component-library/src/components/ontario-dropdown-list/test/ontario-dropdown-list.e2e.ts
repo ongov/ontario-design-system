@@ -1,3 +1,51 @@
+import { expect, Locator } from '@playwright/test';
+import { test, EventSpy } from '@stencil/playwright';
+
+test.describe('ontario-dropdown-list', () => {
+	let host: Locator;
+	let select: Locator;
+	let changeSpy: EventSpy;
+
+	test.beforeEach(async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list
+				name="dropdown-options"
+				element-id="dropdown-list"
+				options='[
+					{ "value": "dropdown-option-1", "label": "Option 1" },
+					{ "value": "dropdown-option-2", "label": "Option 2" }
+				]'
+			></ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		host = page.locator('ontario-dropdown-list').first();
+		select = host.locator('select').first();
+		changeSpy = await page.spyOnEvent('change');
+	});
+
+	test('updates the component value and emits change detail when an option is selected', async ({ page }) => {
+		await select.selectOption('dropdown-option-2');
+		await page.waitForChanges();
+
+		await expect(changeSpy).toHaveReceivedEvent();
+		await expect(changeSpy).toHaveReceivedEventDetail({
+			value: 'dropdown-option-2',
+		});
+		expect(await host.evaluate((element: HTMLOntarioDropdownListElement) => element.value)).toBe('dropdown-option-2');
+	});
+
+	test('applies external value updates to the rendered selection', async ({ page }) => {
+		await host.evaluate((element: HTMLOntarioDropdownListElement) => {
+			element.value = 'dropdown-option-2';
+		});
+		await page.waitForChanges();
+
+		await expect(select).toHaveValue('dropdown-option-2');
+		expect(await host.evaluate((element: HTMLOntarioDropdownListElement) => element.value)).toBe('dropdown-option-2');
+	});
+});
+
 // import { newE2EPage } from '@stencil/core/testing';
 
 // describe('ontario-dropdown-list', () => {

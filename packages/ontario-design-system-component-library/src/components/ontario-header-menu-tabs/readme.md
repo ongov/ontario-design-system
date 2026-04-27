@@ -4,11 +4,17 @@
 
 ## Overview
 
-Ontario Header Menu Tabs Component
+Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
 
-Provides a tabbed navigation interface for mobile/tablet views.
-Displays two tabs (Topics and Sign In) with overflow menu content.
-Manages keyboard navigation, focus trapping, and accessibility.
+- Displays two tabs (Topics and Sign In) with overflow menu content.
+- Manages keyboard navigation, focus trapping, and accessibility.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/ontario-header.html
+- https://designsystem.ontario.ca/components/detail/application-header.html
+- https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 
 ## Properties
 

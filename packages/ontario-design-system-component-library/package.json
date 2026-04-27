@@ -18,7 +18,8 @@
 		"www/",
 		"LICENSE",
 		"package.json",
-		"readme.md"
+		"readme.md",
+		"llms.txt"
 	],
 	"exports": {
 		".": {

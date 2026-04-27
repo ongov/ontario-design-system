@@ -6,6 +6,13 @@ import OntarioIconCriticalAlertWarning from '../ontario-icon/assets/ontario-icon
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Ontario Critical Alert communicates urgent, high-priority emergency information.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/critical-alerts.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+ */
 @Component({
 	tag: 'ontario-critical-alert',
 	styleUrl: 'ontario-critical-alert.scss',
