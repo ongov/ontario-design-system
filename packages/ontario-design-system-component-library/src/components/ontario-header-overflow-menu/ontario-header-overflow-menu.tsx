@@ -89,6 +89,12 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() returnFocusToTriggerOnLastTab?: boolean = false;
 
 	/**
+	 * Whether the standalone menu should move focus to the first item when opened.
+	 * This should only be true for keyboard-triggered opens.
+	 */
+	@Prop() focusFirstItemOnOpen?: boolean = false;
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
@@ -160,10 +166,11 @@ export class OntarioHeaderOverflowMenu {
 	 * Focuses first menu item when menu opens in standalone mode.
 	 */
 	componentDidUpdate() {
-		if (this.menuIsOpen && this.isStandalone && !this.hasInitializedFocus) {
+		if (this.menuIsOpen && this.isStandalone && this.focusFirstItemOnOpen && !this.hasInitializedFocus) {
 			this.focusFirstMenuItem();
 			this.hasInitializedFocus = true;
 		}
+
 		if (!this.menuIsOpen) {
 			this.hasInitializedFocus = false;
 		}

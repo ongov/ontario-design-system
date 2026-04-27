@@ -9,12 +9,22 @@ on:
       release_tag:
         required: true
         type: string
+    outputs:
+      pull-request-number:
+        description: 'The created or updated docs pull request number'
+        value: ${{ jobs.sync-docs.outputs.pull-request-number }}
+      pull-request-operation:
+        description: 'The docs pull request operation performed'
+        value: ${{ jobs.sync-docs.outputs.pull-request-operation }}
 
 jobs:
   # Note: Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs:
     runs-on: ubuntu-latest
     if: ${{ inputs.release_tag != '' }}
+    outputs:
+      pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
+      pull-request-operation: ${{ steps.create_pr.outputs.pull-request-operation }}
     concurrency:
       group: docs-update
       cancel-in-progress: true
@@ -25,6 +35,7 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history to ensure tagged commits are available
           fetch-tags: true # Ensure tags are fetched as well
+          persist-credentials: false
 
       - name: Checkout Docusaurus repo
         uses: actions/checkout@v6
@@ -33,6 +44,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           ref: main
           path: packages/docusaurus
+          persist-credentials: false
 
       # Install pnpm
       - name: Install pnpm
@@ -42,7 +54,7 @@ jobs:
 
       # Setup Node.js
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -77,6 +89,7 @@ jobs:
         run: pnpm exec docusaurus docs:version ${{ inputs.release_tag }}
 
       - name: Create Pull Request
+        id: create_pr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GH_TOKEN }}
@@ -87,3 +100,30 @@ jobs:
             This PR updates the documentation site for version `${{ inputs.release_tag }}`.
           branch: docs/update-${{ inputs.release_tag }}
           labels: docs-update
+
+      - name: Summarise docs sync
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Sync Docs to Docusaurus'
+            echo ''
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Source repository | \`${{ github.repository }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Release tag | \`${{ inputs.release_tag }}\` |"
+            echo "| Docs artifacts input | \`${{ inputs.docs-artifacts-name }}\` |"
+            echo "| Target docs branch | \`docs/update-${{ inputs.release_tag }}\` |"
+            echo "| Target repository | \`ongov/design-system-developer-documentation-site\` |"
+            echo "| Create PR step | \`${{ steps.create_pr.outcome }}\` |"
+            if [ -n "${{ steps.create_pr.outputs.pull-request-number }}" ]; then
+              echo "| Docs PR | [#${{ steps.create_pr.outputs.pull-request-number }}](${{ github.server_url }}/ongov/design-system-developer-documentation-site/pull/${{ steps.create_pr.outputs.pull-request-number }}) |"
+            else
+              echo '| Docs PR | No docs PR number returned |'
+            fi
+            if [ -n "${{ steps.create_pr.outputs.pull-request-operation }}" ]; then
+              echo "| PR result | \`${{ steps.create_pr.outputs.pull-request-operation }}\` |"
+            else
+              echo '| PR result | No docs PR operation reported |'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

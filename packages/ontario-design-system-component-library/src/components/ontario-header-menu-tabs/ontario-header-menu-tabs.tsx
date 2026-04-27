@@ -45,6 +45,12 @@ export class OntarioHeaderMenuTabs {
 	@Prop() autoDetectMode?: boolean = false;
 
 	/**
+	 * Whether focus should move to the active tab when the menu opens.
+	 * This should only be true for keyboard-triggered opens.
+	 */
+	@Prop() focusActiveTabOnOpen: boolean = false;
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
@@ -84,6 +90,8 @@ export class OntarioHeaderMenuTabs {
 	 * Whether the focus trap has been installed for the current panel.
 	 */
 	private trapInstalled = false;
+
+	private hasInitializedOpenFocus = false;
 
 	/**
 	 * Event emitted when ownership handoff is triggered in auto-detect mode.
@@ -163,6 +171,11 @@ export class OntarioHeaderMenuTabs {
 	 * After each render, try to install the focus trap if menu is open.
 	 */
 	componentDidRender() {
+		if (this.menuIsOpen && this.focusActiveTabOnOpen && !this.hasInitializedOpenFocus) {
+			this.setupInitialFocus();
+			this.hasInitializedOpenFocus = true;
+		}
+
 		if (this.menuIsOpen && !this.trapInstalled) {
 			this.tryInstallTrap();
 		}
@@ -179,10 +192,9 @@ export class OntarioHeaderMenuTabs {
 	handleMenuButtonToggled(event: CustomEvent<boolean>) {
 		this.menuIsOpen = event.detail;
 
-		if (this.menuIsOpen) {
-			this.setupInitialFocus();
-		} else {
+		if (!this.menuIsOpen) {
 			this.resetState();
+			this.hasInitializedOpenFocus = false;
 		}
 	}
 
@@ -380,6 +392,7 @@ export class OntarioHeaderMenuTabs {
 	private resetState() {
 		this.clearFocusTrap();
 		this.trapInstalled = false;
+		this.hasInitializedOpenFocus = false;
 	}
 
 	/**

@@ -496,14 +496,14 @@ To trigger the showing and hiding of the overflow menu.
 
 
 @ProxyCmp({
-  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems']
+  inputs: ['autoDetectMode', 'focusActiveTabOnOpen', 'language', 'signInMenuItems', 'topicsMenuItems']
 })
 @Component({
   selector: 'ontario-header-menu-tabs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+  inputs: ['autoDetectMode', 'focusActiveTabOnOpen', 'language', 'signInMenuItems', 'topicsMenuItems'],
   outputs: ['takeOwnership', 'focusFirstItem', 'focusMenuButton'],
   standalone: false
 })
@@ -537,14 +537,14 @@ Triggered when Shift+Tab is pressed on the first tab.
 
 
 @ProxyCmp({
-  inputs: ['isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab']
+  inputs: ['focusFirstItemOnOpen', 'isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab']
 })
 @Component({
   selector: 'ontario-header-overflow-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab'],
+  inputs: ['focusFirstItemOnOpen', 'isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab'],
   outputs: ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed'],
   standalone: false
 })
