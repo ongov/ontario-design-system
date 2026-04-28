@@ -80,7 +80,7 @@ jobs:
           gh pr merge
           --repo ongov/design-system-developer-documentation-site
           --auto
-          --rebase
+          --merge
           ${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}
 
       - name: Summarise docs auto-merge handoff
@@ -98,5 +98,5 @@ jobs:
             echo "| Docs PR | [#${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}](${{ github.server_url }}/ongov/design-system-developer-documentation-site/pull/${{ needs.sync-docs-to-docusaurus.outputs.pull-request-number }}) |"
             echo "| PR operation | \`${{ needs.sync-docs-to-docusaurus.outputs.pull-request-operation }}\` |"
             echo "| Auto-merge step | \`${{ steps.enable_automerge.outcome }}\` |"
-            echo "| Merge method | \`rebase\` |"
+            echo "| Merge method | \`merge\` |"
           } >> "$GITHUB_STEP_SUMMARY"
