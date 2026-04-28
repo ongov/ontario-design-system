@@ -1,3 +1,34 @@
+# 8.1.0-alpha.1 (2026-04-28)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-html-generator:** align html-generator jest versions with workspace dd11095
+- **@ongov/ontario-design-system-component-library:** address date input and checkbox review feedback bcf6d5f
+- **ci:** resolve publish and sync-docs workflow failures 9d859a2
+- **deps:** update dependency next to v15.5.10 [security] 2990369
+- **deps:** update dependency next to v15.5.10 [security] ([#118](undefined/ongov/ontario-design-system/issues/118)) 47ee234
+- **forms:** align committed change handling in browser flows bf081e3
+- replace workspace:\* with ^6.0.0-alpha.1 for @ongov/ontario-design-system-component-library 6580723
+
+### Features
+
+- app can now be used as a CLI tool and a library, removed unecessary code and file aad8f32
+- **app-angular:** align group value accessors with host value 8cd1517
+- basics for the component sample generator fd55069
+- **button:** add native link mode 838e0a6
+- **checkboxes:** align host value with native events 4f2bdce
+- **date-input:** add aggregate value api 723ddfe
+- **date-input:** add aggregate value event 852a8d3
+- **date-input:** align aggregate updates with host events 9f7894a
+- **date-input:** include aggregate value in host event detail 7613b86
+- **dropdown-list:** align host value with native events a46ab4b
+- **header:** swap Topics and Sign-in order and improve menu accessibility b8cc267
+- **header:** update topics/sign-in order and fix keyboard focus behavior across header menus 039d097
+- **radio-buttons:** align host value with native events 840ad41
+- **react:** export package metadata and improve next.js onboarding b92011a
+- **step-indicator:** clarify mode precedence and warnings 188a515
+- **textarea:** align host value with native events 5c50d24
+
 # 8.0.0 (2026-04-01)
 
 - **@ongov/ontario-design-system-component-library-angular:** feat(angular)!: expose package-root entry and style subpath exports f963cc5
