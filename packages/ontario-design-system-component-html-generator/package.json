@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-html-generator",
-	"version": "8.1.0-alpha.1",
+	"version": "8.1.0-alpha.2",
 	"description": "Generates static HTML samples for Ontario Design System web components.",
 	"private": false,
 	"main": "dist/index.js",

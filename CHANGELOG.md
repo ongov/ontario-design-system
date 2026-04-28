@@ -1,3 +1,9 @@
+# 8.1.0-alpha.2 (2026-04-28)
+
+### Bug Fixes
+
+- **ci:** wait for packages to publish before syncing docs 0da8996
+
 # 8.1.0-alpha.1 (2026-04-28)
 
 ### Bug Fixes
