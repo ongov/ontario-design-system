@@ -79,6 +79,15 @@ Example of a fieldset component.
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Fieldset groups related form controls under a shared legend.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/fieldsets.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                  | Type                                | Default     |

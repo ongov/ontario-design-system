@@ -49,3 +49,6 @@ packages/docusaurus
 packages/app-angular/src/assets/fonts
 packages/app-nextjs/public/assets/fonts
 
+# Sample generator outputs
+packages/app-sample-generator/docs/samples/
+packages/app-sample-generator/generated-samples/

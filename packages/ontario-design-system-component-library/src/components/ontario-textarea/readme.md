@@ -10,6 +10,21 @@ Use a text area when you want the user to enter **more than** a single line of i
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/text-areas.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the textarea component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for header properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -128,6 +143,8 @@ To mark a textarea as required, add the `required` attribute to the component.
 
 The `ontario-textarea` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as a `<textarea>`.
 
+The component's host `value` stays in sync as users interact with the textarea. The component updates that `value`, updates the form value, and exposes the current content through host-native events.
+
 ```html
 <form>
 	<!-- Add an ontario-textarea -->
@@ -172,11 +189,107 @@ See the [Events](#events) table to learn more about the available custom events 
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-Events, such as the native `input` event, deliver data from inside of the component and flow up the event stack as expected.
+The component keeps its `value` in sync as the internal `<textarea>`
+changes.
+
+Events, such as the native `input` event, deliver data from inside of the
+component and flow up the event stack as expected.
 
 This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
 
+If you are observing the component from the outside, prefer reading the current textarea content from `event.target.value` on the host `input` or `change` event. Use `inputOnInput` and `inputOnChange` when you specifically want the component's richer custom event detail.
+
+```js
+document.querySelector('ontario-textarea').addEventListener('input', (event) => {
+	console.log(event.target.value);
+});
+
+document.querySelector('ontario-textarea').addEventListener('change', (event) => {
+	console.log(event.target.value);
+});
+```
+
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set the `errorMessage` property on `ontario-textarea` to display an error state and message. You can also listen for `inputErrorOccurred` to react to error updates in application code.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-textarea id="comments" name="comments" caption="Comments" required></ontario-textarea>
+<script>
+	window.addEventListener('load', () => {
+		const textarea = document.getElementById('comments');
+		textarea.addEventListener('inputOnBlur', () => {
+			textarea.errorMessage = textarea.value?.trim() ? '' : 'Enter your comments before continuing.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTextarea
+	elementId="comments"
+	name="comments"
+	caption="Comments"
+	required
+	errorMessage="Enter your comments before continuing."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[elementId]="'comments'"
+	[name]="'comments'"
+	[caption]="'Comments'"
+	[required]="true"
+	[errorMessage]="'Enter your comments before continuing.'"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate content on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
 
 ## Custom property types
 
@@ -216,10 +329,12 @@ hintExpander='{ "hint": "This is the hint expander title", "content": "This is t
 
 The Ontario Textarea component supports server-side rendering, with a few considerations:
 
-- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-textarea language="fr"></ontario-textarea>`).
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
-- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
-- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<textarea>`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders with the expected `<textarea>` structure and can support straightforward form submission when `name`, `language`, and `elementId` are stable. Enhanced validation, custom validators, and the component's event model become available after hydration.
+- **Hydrated-only behaviour:** If your application depends on custom events or runtime validation, use the event examples below and treat that behaviour as hydrated-only.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 ### SSR-safe example:
 
@@ -228,6 +343,26 @@ The Ontario Textarea component supports server-side rendering, with a few consid
 ```
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Textarea captures multi-line text input.
+
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/text-areas.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
 ## Properties
 

@@ -1,0 +1,20 @@
+# Ontario Design System React Wrappers
+
+Use this package for React bindings around ODS web components.
+
+## Integration Rules
+- Import components from this package for React applications.
+- Keep usage aligned with documented SSR patterns.
+- Use package-exported styles and assets.
+
+## Next.js Notes
+- Follow ODS Next.js setup guidance for React wrapper usage.
+- Keep server and client component boundaries explicit.
+
+## Guidance Links
+- https://designsystem.ontario.ca/developer-docs/
+- https://designsystem.ontario.ca/components/
+
+## Related Packages
+- @ongov/ontario-design-system-component-library
+- @ongov/ontario-design-system-global-styles

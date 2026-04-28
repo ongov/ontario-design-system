@@ -71,14 +71,12 @@ describe('ontario-textarea', () => {
 			});
 
 			const emitSpy = jest.fn();
-			const leftArrowKeyCode = 37;
 			page.doc.addEventListener('inputOnChange', emitSpy);
-			page.rootInstance.handleEvent(
-				new KeyboardEvent('keydown', {
-					keyCode: leftArrowKeyCode,
-				}),
-				'change',
-			);
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+
+			textarea.value = 'Changed via textarea';
+			textarea.dispatchEvent(new Event('change'));
 			await page.waitForChanges();
 			expect(emitSpy).toHaveBeenCalled();
 		});
@@ -96,17 +94,81 @@ describe('ontario-textarea', () => {
 
 			const emitSpy = jest.fn();
 			const testValue = 'This is a test';
-			const leftArrowKeyCode = 37;
 			page.doc.addEventListener('inputOnChange', emitSpy);
-			page.rootInstance.value = testValue;
-			page.rootInstance.handleEvent(
-				new KeyboardEvent('keydown', {
-					keyCode: leftArrowKeyCode,
-				}),
-				'change',
-			);
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+
+			textarea.value = testValue;
+			textarea.dispatchEvent(new Event('change'));
 			await page.waitForChanges();
 			expect(page.rootInstance.value).toBe(testValue);
+		});
+
+		it('should keep the host value in sync on input events', async () => {
+			const page = await newSpecPage({
+				components: [OntarioTextarea],
+				html: `<ontario-textarea
+					name="textarea-name"
+					element-id="textarea-id"
+					caption="Ontario Textarea"
+				></ontario-textarea>`,
+			});
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+
+			textarea.value = 'Typing into the textarea';
+			textarea.dispatchEvent(new Event('input'));
+
+			await page.waitForChanges();
+
+			expect(page.rootInstance.value).toBe('Typing into the textarea');
+			expect((page.root as HTMLOntarioTextareaElement).value).toBe('Typing into the textarea');
+		});
+
+		it('should reflect external value updates in the rendered textarea', async () => {
+			const page = await newSpecPage({
+				components: [OntarioTextarea],
+				html: `<ontario-textarea
+					name="textarea-name"
+					element-id="textarea-id"
+					value="Initial value"
+					caption="Ontario Textarea"
+				></ontario-textarea>`,
+			});
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+			expect(textarea.getAttribute('value')).toBe('Initial value');
+
+			(page.root as HTMLOntarioTextareaElement).value = 'Updated externally';
+			await page.waitForChanges();
+
+			expect(textarea.getAttribute('value')).toBe('Updated externally');
+		});
+
+		it('should expose the updated host value from the synthetic change event', async () => {
+			const page = await newSpecPage({
+				components: [OntarioTextarea],
+				html: `<ontario-textarea
+					name="textarea-name"
+					element-id="textarea-id"
+					caption="Ontario Textarea"
+				></ontario-textarea>`,
+			});
+
+			const emitSpy = jest.fn();
+			page.root?.addEventListener('change', emitSpy);
+
+			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+
+			textarea.value = 'Committed textarea value';
+			textarea.dispatchEvent(new Event('change'));
+
+			await page.waitForChanges();
+
+			expect(page.rootInstance.value).toBe('Committed textarea value');
+			expect((page.root as HTMLOntarioTextareaElement).value).toBe('Committed textarea value');
+			expect(emitSpy).toHaveBeenCalledTimes(1);
+			expect((emitSpy.mock.calls[0][0].target as HTMLOntarioTextareaElement).value).toBe('Committed textarea value');
 		});
 
 		it('should return the textarea id when using the getId method', async () => {

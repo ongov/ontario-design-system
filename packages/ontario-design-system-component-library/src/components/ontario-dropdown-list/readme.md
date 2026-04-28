@@ -10,6 +10,21 @@ Only use a dropdown (select) list if you cannot use other form components to cap
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/dropdown-lists.html) for current documentation guidance.
 
+### Disabled and read-only states
+
+This component intentionally does not provide `readOnly` or `disabled` props.
+
+Disabling form controls can create accessibility and usability barriers, and often does not explain what the user needs to fix.
+
+Instead:
+
+- keep controls and submission actions available
+- use validation and error messaging to clearly identify missing or invalid input
+
+For implementation examples, see [Error messaging](#error-messaging).
+
+Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the dropdown list component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for dropdown list properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.
@@ -121,6 +136,99 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 		]}
 	></OntarioDropdownList>
 </div>
+
+In the following example, the selected option is set using the component's
+`value`. Listen for the component `input` or `change` event to read the current
+selection.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	id="dropdown-value-example"
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options='[
+		{ "value": "netflix", "label": "Netflix" },
+		{ "value": "disney-plus", "label": "Disney Plus" },
+		{ "value": "crave", "label": "Crave" }
+	]'
+></ontario-dropdown-list>
+<script>
+	document.getElementById('dropdown-value-example')?.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		console.log(event.detail.value);
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption="Select a streaming service"
+	value="crave"
+	options={[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' },
+	]}
+	onInput={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+	}}
+	onChange={(event) => {
+		console.log((event.target as HTMLOntarioDropdownListElement).value);
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="'Select a streaming service'"
+	[value]="'crave'"
+	[options]="[
+		{ value: 'netflix', label: 'Netflix' },
+		{ value: 'disney-plus', label: 'Disney Plus' },
+		{ value: 'crave', label: 'Crave' }
+	]"
+	(change)="handleDropdownChange($event)"
+></ontario-dropdown-list>
+```
+
+```ts
+handleDropdownChange(event: Event) {
+	console.log((event.target as HTMLOntarioDropdownListElement).value);
+	console.log((event as CustomEvent<{ value: string }>).detail.value);
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 In the following example, all available props are passed through.
 
@@ -312,6 +420,14 @@ In the following example, all available props are passed through.
 
 The `ontario-dropdown-list` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as an `<select>`.
 
+The component keeps its `value` in sync as users interact with the internal
+`<select>`. That same `value` is used for native form submission and for the
+component `input` and `change` events. When `isEmptyStartOption` is enabled,
+the start option uses an empty string value until a real option is selected. If
+a provided `value` does not match any option, the component emits a warning and
+falls back to the selected option, empty start option, or first available
+option.
+
 ```html
 <form>
 	<!-- Add an ontario-dropdown-list -->
@@ -352,6 +468,11 @@ Remember to set the `name` attribute as this is used to identify the field when 
 
 Each event emitted by the component uses the [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) type to emit a custom event to help communicate what the component is doing. To access the data emitted by the component within the `CustomEvent` type use the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property.
 
+For most integrations, prefer the component `input` and `change` events and
+read the selected option from `event.target.value`. Those events also include
+`event.detail.value` as a convenience. Use `dropdownOnChange` when you
+specifically want the component's custom event payload.
+
 Eg. To access the value of any change made to this component from the `dropdownOnChange` event, use the following code to wire up to listen for the the `dropdownOnChange` event.
 
 ```html
@@ -391,13 +512,111 @@ If an option is selected from `dropdown-1`, the value of `event.detail` is the o
 
 See the [Events](#events) table to learn more about the available custom events from the component and what the type of `CustomEvent.detail` will be.
 
-### Native `change` events
+### Native `input` and `change` events
 
 The component uses a ShadowDOM to maintain encapsulation, however, this changes how the events flow from the inside of the component to the outside in the DOM.
 
-The native `change` event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
+The component handles the internal `<select>` events and re-emits `input` and
+`change` events so consumers can listen on the component instead of the
+internal control. The current selection is available through
+`event.target.value`, and a convenience copy is also included in
+`event.detail.value`.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
+
+## Error messaging
+
+Use validation and error messaging to help users understand what needs to be corrected.
+
+### Setting an error message
+
+Set `errorMessage` when selection is missing or invalid, and keep the list enabled so users can correct their choice.
+
+### Static vs live validation
+
+Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
+
+Use live validation when you want real-time feedback as users interact (for example, on change or blur).
+
+For more guidance, visit the [Error messaging guidance page](https://designsystem.ontario.ca/components/detail/error-messaging.html).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	id="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options='[
+		{ "label": "Health card", "value": "health-card" },
+		{ "label": "Driver licence", "value": "driver-licence" }
+	]'
+></ontario-dropdown-list>
+<script>
+	window.addEventListener('load', () => {
+		const dropdown = document.getElementById('service-selection');
+		dropdown.addEventListener('inputOnBlur', () => {
+			dropdown.errorMessage = dropdown.value ? '' : 'Select a service to continue.';
+		});
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	elementId="service-selection"
+	name="service-selection"
+	caption="Select a service"
+	required
+	options={[
+		{ label: 'Health card', value: 'health-card' },
+		{ label: 'Driver licence', value: 'driver-licence' },
+	]}
+	errorMessage="Select a service to continue."
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[elementId]="'service-selection'"
+	[name]="'service-selection'"
+	[caption]="'Select a service'"
+	[required]="true"
+	[options]="serviceOptions"
+	[errorMessage]="'Select a service to continue.'"
+></ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Live validation
+
+Keep the control available and validate selection on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
 
 ## Custom property types
 
@@ -433,12 +652,14 @@ options='[ { "value": "netflix", "label": "Netflix" }, { "value": "disney-plus",
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Dropdown List component supports full server-side rendering, with a few considerations:
+The Ontario Dropdown List component supports server-side rendering, with a few considerations:
 
-- **Language Prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-dropdown-list language="fr"></ontario-dropdown-list>`).
-- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, you should explicitly pass a stable `elementId`.
-- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Ensure this does not impact critical accessibility paths.
-- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR (before hydration), the component will render as a standard `<select>`, meaning it can still function inside a `<form>` and be submitted normally. However, enhanced form behavior (like validation or custom value handling) only becomes active after hydration in the browser.
+- **Language prop:** Language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, pass the desired `language` explicitly as a prop.
+- **Dynamic ID generation:** If `elementId` is not passed, a UUID is generated at runtime. To prevent hydration mismatches between server and client, explicitly pass a stable `elementId`.
+- **Hint text and accessibility IDs:** If using `ontario-hint-text`, note that the `aria-describedby` reference is resolved after hydration. Make sure this does not impact critical accessibility paths in your application.
+- **Form participation:** This component uses the [Form-Associated Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API (`@AttachInternals`) to participate in native form submission. During SSR, it renders with the expected select structure and can support straightforward form submission when `name`, `language`, and `elementId` are stable. Required-state messaging and the component's event model become available after hydration.
+- **Hydrated-only behaviour:** If your application depends on emitted events or hydrated validation behaviour, use the event examples below and verify the full submit flow in the consuming application.
+- **Framework guidance:** Use the HTML `<form>` example above for native submit or Next.js server-action style flows. For App Router setup details, follow the [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
 
 ### SSR-safe example:
 
@@ -458,6 +679,26 @@ The Ontario Dropdown List component supports full server-side rendering, with a 
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario Dropdown List presents a selectable list of predefined options.
+
+This component intentionally does not expose `readOnly` or `disabled` props.
+
+To support accessible and understandable form completion:
+
+- keep form fields and submission actions available
+- use validation and error messaging to guide corrections
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+
+Disabled/read-only policy source:
+
+- https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+
 ## Properties
 
 | Property             | Attribute               | Description                                                                                                                                                                                                                                                                                                         | Type                                    | Default     |
@@ -475,6 +716,7 @@ The Ontario Dropdown List component supports full server-side rendering, with a 
 | `name`               | `name`                  | The name for the dropdown list. The name value is used to reference form data after a form is submitted.                                                                                                                                                                                                            | `string`                                | `undefined` |
 | `options`            | `options`               | The options for dropdown list. Each option will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML. In the example below, the options are being passed in as a string and there are three dropdown options displayed. | `DropdownOption[] \| string`            | `undefined` |
 | `required`           | `required`              | This is used to determine whether the dropdown list is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                 | `boolean \| undefined`                  | `false`     |
+| `value`              | `value`                 | The currently selected dropdown value. The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.                                                                                            | `string \| undefined`                   | `undefined` |
 
 ## Events
 

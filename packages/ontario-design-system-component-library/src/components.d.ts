@@ -114,6 +114,12 @@ export { TaskStatuses } from './utils/common/task-statuses.enum';
 export { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export namespace Components {
+	/**
+	 * Ontario Accordion presents collapsible sections of content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/accordions.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+	 */
 	interface OntarioAccordion {
 		/**
 		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
@@ -135,6 +141,13 @@ export namespace Components {
 		 */
 		name: string;
 	}
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -160,12 +173,24 @@ export namespace Components {
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
+	/**
+	 * Ontario Back to Top helps users quickly return to the top of long pages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-to-top.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+	 */
 	interface OntarioBackToTop {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 		 */
 		language?: Language;
 	}
+	/**
+	 * Ontario Badge displays concise status labels and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/badges.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+	 */
 	interface OntarioBadge {
 		/**
 		 * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
@@ -182,6 +207,12 @@ export namespace Components {
 		 */
 		label: string;
 	}
+	/**
+	 * Ontario Blockquote displays quoted content with optional attribution.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/blockquote.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+	 */
 	interface OntarioBlockquote {
 		/**
 		 * Optional text to be displayed as the attribution (the author) of the quote.
@@ -196,6 +227,18 @@ export namespace Components {
 		 */
 		quote: string;
 	}
+	/**
+	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioButton {
 		/**
 		 * Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides.   This is optional.
@@ -207,7 +250,11 @@ export namespace Components {
 		 */
 		elementId?: string;
 		/**
-		 * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
+		 * When provided, the component renders as a native anchor for navigation use cases. This takes precedence over `htmlType`, so form-submission behaviour is disabled in link mode.
+		 */
+		href?: string;
+		/**
+		 * The native HTML button type the button should use.  If no `htmlType` is passed, it will default to `'button'`. This prop only affects the component when it renders as a native `<button>`. If `href` is provided, the component renders as a native `<a>` and `htmlType` is ignored.
 		 * @default 'button'
 		 */
 		htmlType: HtmlType;
@@ -217,11 +264,26 @@ export namespace Components {
 		 */
 		label?: string;
 		/**
+		 * Specifies the relationship of the linked document to the current document when `href` is provided. This prop has no effect unless the component is in link mode.
+		 */
+		rel?: string;
+		/**
+		 * Specifies where to open the linked document when `href` is provided. This prop has no effect unless the component is in link mode.
+		 */
+		target?: string;
+		/**
 		 * The type of button to render.  If no type is passed, it will default to 'secondary'.
 		 * @default 'secondary'
 		 */
 		type: ButtonType;
 	}
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface OntarioCallout {
 		/**
 		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
@@ -247,6 +309,12 @@ export namespace Components {
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
+	/**
+	 * Ontario Card displays linked content summaries with optional media and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/cards.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+	 */
 	interface OntarioCard {
 		/**
 		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
@@ -302,6 +370,11 @@ export namespace Components {
 		 */
 		layoutDirection?: LayoutDirection;
 	}
+	/**
+	 * Ontario Card Collection lays out multiple cards in a responsive grid.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+	 */
 	interface OntarioCardCollection {
 		/**
 		 * The number of cards to display per row.  If no number is passed, it will default to 3.
@@ -309,6 +382,18 @@ export namespace Components {
 		 */
 		cardsPerRow: CardsPerRow;
 	}
+	/**
+	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioCheckboxes {
 		/**
 		 * The text to display for the checkbox legend.
@@ -358,7 +443,18 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
+	/**
+	 * Ontario Critical Alert communicates urgent, high-priority emergency information.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/critical-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+	 */
 	interface OntarioCriticalAlert {
 		/**
 		 * Content for critical alert message. It can be either string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
@@ -366,6 +462,18 @@ export namespace Components {
 		 */
 		content: string | HTMLElement;
 	}
+	/**
+	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dates.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioDateInput {
 		/**
 		 * The text to display as the input label
@@ -410,7 +518,23 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioDropdownList {
 		/**
 		 * The text to display for the dropdown list label.
@@ -470,7 +594,17 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Fieldset groups related form controls under a shared legend.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/fieldsets.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+	 */
 	interface OntarioFieldset {
 		/**
 		 * The text value used for the legend of the fieldset.
@@ -482,6 +616,13 @@ export namespace Components {
 		 */
 		legendSize: CaptionType;
 	}
+	/**
+	 * Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/simple-footer.html
+	 * - https://designsystem.ontario.ca/components/detail/expanded-footer.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+	 */
 	interface OntarioFooter {
 		/**
 		 * The base path to an assets folder containing the Design System assets
@@ -518,6 +659,11 @@ export namespace Components {
 		 */
 		type: OntarioFooterType;
 	}
+	/**
+	 * Ontario Form Container applies consistent spacing between grouped form elements.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+	 */
 	interface OntarioFormContainer {
 		/**
 		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
@@ -525,6 +671,14 @@ export namespace Components {
 		 */
 		gap: 'default' | 'condensed';
 	}
+	/**
+	 * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+	 */
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
@@ -574,10 +728,14 @@ export namespace Components {
 		type?: OntarioHeaderType;
 	}
 	/**
-	 * Ontario Header Menu Tabs Component
-	 * Provides a tabbed navigation interface for mobile/tablet views.
-	 * Displays two tabs (Topics and Sign In) with overflow menu content.
-	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 * Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
+	 * - Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * - Manages keyboard navigation, focus trapping, and accessibility.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 	 */
 	interface OntarioHeaderMenuTabs {
 		/**
@@ -585,6 +743,11 @@ export namespace Components {
 		 * @default false
 		 */
 		autoDetectMode?: boolean;
+		/**
+		 * Whether focus should move to the active tab when the menu opens. This should only be true for keyboard-triggered opens.
+		 * @default false
+		 */
+		focusActiveTabOnOpen: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 * @default 'en'
@@ -600,25 +763,36 @@ export namespace Components {
 		topicsMenuItems: MenuItem[] | string;
 	}
 	/**
-	 * Overflow Menu Component
-	 * Displays a dropdown menu of links. Can operate in two modes:
-	 * ## Standalone Mode
+	 * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
+	 * It can operate in two modes:
+	 * ### Standalone Mode
 	 * Used when placed directly in the header (desktop view).
 	 * - Manages its own open/close state via `menuButtonToggled` event
 	 * - Automatically focuses first menu item when opened
 	 * - Sets up focus trap to keep keyboard navigation within menu
 	 * - Auto-closes when focus leaves the menu area
 	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
-	 * ## Embedded Mode
+	 * ### Embedded Mode
 	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 	 * - Parent component controls open/close state
 	 * - Parent component manages focus trap
 	 * - Menu is always visible when parent tab is active
 	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
-	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
-	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * ### Mode Detection
+	 * - Auto-detected based on DOM position (no prop needed).
+	 * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
 	 */
 	interface OntarioHeaderOverflowMenu {
+		/**
+		 * Whether the standalone menu should move focus to the first item when opened. This should only be true for keyboard-triggered opens.
+		 * @default false
+		 */
+		focusFirstItemOnOpen?: boolean;
 		/**
 		 * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
 		 * @default true
@@ -634,7 +808,18 @@ export namespace Components {
 		 * @example <ontario-header-overflow-menu 	menu-items='[{ 		"title": "Link 1", 		"href": "/link-1" 		"linkIsActive": "false" 	},{ 		"title": "Link 2", 		"href": "/link-2" 		"linkIsActive": "false" 	},{ 		"title": "Link 3", 		"href": "/link-3" 		"linkIsActive": "false" 	},{ 		"title": "Link 4", 		"href": "/link-4" 		"linkIsActive": "false" 	}]'> </ontario-header-overflow-menu>
 		 */
 		menuItems: MenuItem[] | string;
+		/**
+		 * Whether Tab from the last menu item should return focus to the trigger button instead of moving to the next menu or next page element.
+		 * @default false
+		 */
+		returnFocusToTriggerOnLastTab?: boolean;
 	}
+	/**
+	 * Ontario Hint Expander reveals optional supporting guidance on demand.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+	 */
 	interface OntarioHintExpander {
 		/**
 		 * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
@@ -656,7 +841,11 @@ export namespace Components {
 		hintContentType?: HintContentType;
 	}
 	/**
+	 * Ontario Hint Text provides concise supporting instructions for form controls.
 	 * Use hint text to help users understand how to complete fields in a form.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 	 */
 	interface OntarioHintText {
 		/**
@@ -2642,6 +2831,18 @@ export namespace Components {
 		 */
 		isDecorative: boolean;
 	}
+	/**
+	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioInput {
 		/**
 		 * The text to display as the input label
@@ -2674,7 +2875,7 @@ export namespace Components {
 		 */
 		enableLiveValidation: boolean;
 		/**
-		 * Set this to display an
+		 * Set this to display an error message.
 		 */
 		errorMessage?: string;
 		/**
@@ -2732,6 +2933,11 @@ export namespace Components {
 		 */
 		value?: string;
 	}
+	/**
+	 * Ontario Language Toggle switches the interface between supported languages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+	 */
 	interface OntarioLanguageToggle {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
@@ -2751,6 +2957,12 @@ export namespace Components {
 		 */
 		url?: string;
 	}
+	/**
+	 * Ontario Loading Indicator communicates in-progress loading states.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/loading-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+	 */
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to `true`.  If set to `false`, the loading indicator overlay will be positioned absolutely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
@@ -2776,6 +2988,14 @@ export namespace Components {
 		 */
 		type: 'small' | 'large';
 	}
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+	 */
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
@@ -2794,6 +3014,18 @@ export namespace Components {
 		 */
 		type: PageAlertType;
 	}
+	/**
+	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioRadioButtons {
 		/**
 		 * The text to display for the radio button legend.
@@ -2843,7 +3075,23 @@ export namespace Components {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/search-box.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
@@ -2894,6 +3142,12 @@ export namespace Components {
 		 */
 		value?: string;
 	}
+	/**
+	 * Ontario Step Indicator communicates progress through multi-step flows.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-step-indicator/
+	 */
 	interface OntarioStepIndicator {
 		/**
 		 * URL for the back element to set a path for where the link will lead.  If a URL is passed in, the back element will display as an anchor tag. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
@@ -2925,6 +3179,12 @@ export namespace Components {
 		 */
 		showBackButton?: boolean;
 	}
+	/**
+	 * Ontario Table presents structured tabular data with accessible semantics.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/tables.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+	 */
 	interface OntarioTable {
 		/**
 		 * Specifies the caption (or title) of the table.  This is optional.
@@ -2956,6 +3216,12 @@ export namespace Components {
 		 */
 		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
 	}
+	/**
+	 * Ontario Task represents an individual task item and status within a task list.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+	 */
 	interface OntarioTask {
 		/**
 		 * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
@@ -2993,6 +3259,12 @@ export namespace Components {
 		 */
 		taskStatus: TaskStatuses;
 	}
+	/**
+	 * Ontario Task List groups and summarizes related tasks.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+	 */
 	interface OntarioTaskList {
 		/**
 		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
@@ -3009,6 +3281,18 @@ export namespace Components {
 		 */
 		language?: Language;
 	}
+	/**
+	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioTextarea {
 		/**
 		 * The text to display as the textarea label.
@@ -3123,6 +3407,12 @@ declare global {
 	interface HTMLOntarioAccordionElementEventMap {
 		accordionChange: AccordionChangeDetail;
 	}
+	/**
+	 * Ontario Accordion presents collapsible sections of content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/accordions.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+	 */
 	interface HTMLOntarioAccordionElement extends Components.OntarioAccordion, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioAccordionElementEventMap>(
 			type: K,
@@ -3175,41 +3465,96 @@ declare global {
 		prototype: HTMLOntarioAccordionElement;
 		new (): HTMLOntarioAccordionElement;
 	};
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface HTMLOntarioAsideElement extends Components.OntarioAside, HTMLStencilElement {}
 	var HTMLOntarioAsideElement: {
 		prototype: HTMLOntarioAsideElement;
 		new (): HTMLOntarioAsideElement;
 	};
+	/**
+	 * Ontario Back to Top helps users quickly return to the top of long pages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-to-top.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+	 */
 	interface HTMLOntarioBackToTopElement extends Components.OntarioBackToTop, HTMLStencilElement {}
 	var HTMLOntarioBackToTopElement: {
 		prototype: HTMLOntarioBackToTopElement;
 		new (): HTMLOntarioBackToTopElement;
 	};
+	/**
+	 * Ontario Badge displays concise status labels and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/badges.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+	 */
 	interface HTMLOntarioBadgeElement extends Components.OntarioBadge, HTMLStencilElement {}
 	var HTMLOntarioBadgeElement: {
 		prototype: HTMLOntarioBadgeElement;
 		new (): HTMLOntarioBadgeElement;
 	};
+	/**
+	 * Ontario Blockquote displays quoted content with optional attribution.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/blockquote.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+	 */
 	interface HTMLOntarioBlockquoteElement extends Components.OntarioBlockquote, HTMLStencilElement {}
 	var HTMLOntarioBlockquoteElement: {
 		prototype: HTMLOntarioBlockquoteElement;
 		new (): HTMLOntarioBlockquoteElement;
 	};
+	/**
+	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {}
 	var HTMLOntarioButtonElement: {
 		prototype: HTMLOntarioButtonElement;
 		new (): HTMLOntarioButtonElement;
 	};
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface HTMLOntarioCalloutElement extends Components.OntarioCallout, HTMLStencilElement {}
 	var HTMLOntarioCalloutElement: {
 		prototype: HTMLOntarioCalloutElement;
 		new (): HTMLOntarioCalloutElement;
 	};
+	/**
+	 * Ontario Card displays linked content summaries with optional media and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/cards.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+	 */
 	interface HTMLOntarioCardElement extends Components.OntarioCard, HTMLStencilElement {}
 	var HTMLOntarioCardElement: {
 		prototype: HTMLOntarioCardElement;
 		new (): HTMLOntarioCardElement;
 	};
+	/**
+	 * Ontario Card Collection lays out multiple cards in a responsive grid.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+	 */
 	interface HTMLOntarioCardCollectionElement extends Components.OntarioCardCollection, HTMLStencilElement {}
 	var HTMLOntarioCardCollectionElement: {
 		prototype: HTMLOntarioCardCollectionElement;
@@ -3221,6 +3566,18 @@ declare global {
 		checkboxOnFocus: InputFocusBlurEvent;
 		inputErrorOccurred: { errorMessage: string };
 	}
+	/**
+	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioCheckboxesElement extends Components.OntarioCheckboxes, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioCheckboxesElementEventMap>(
 			type: K,
@@ -3273,6 +3630,12 @@ declare global {
 		prototype: HTMLOntarioCheckboxesElement;
 		new (): HTMLOntarioCheckboxesElement;
 	};
+	/**
+	 * Ontario Critical Alert communicates urgent, high-priority emergency information.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/critical-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+	 */
 	interface HTMLOntarioCriticalAlertElement extends Components.OntarioCriticalAlert, HTMLStencilElement {}
 	var HTMLOntarioCriticalAlertElement: {
 		prototype: HTMLOntarioCriticalAlertElement;
@@ -3291,6 +3654,18 @@ declare global {
 		inputOnFocus: DateInputFieldType;
 		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
+	/**
+	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dates.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioDateInputElement extends Components.OntarioDateInput, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDateInputElementEventMap>(
 			type: K,
@@ -3349,6 +3724,18 @@ declare global {
 		dropdownOnFocus: InputFocusBlurEvent;
 		inputErrorOccurred: { errorMessage: string };
 	}
+	/**
+	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioDropdownListElement extends Components.OntarioDropdownList, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioDropdownListElementEventMap>(
 			type: K,
@@ -3401,16 +3788,34 @@ declare global {
 		prototype: HTMLOntarioDropdownListElement;
 		new (): HTMLOntarioDropdownListElement;
 	};
+	/**
+	 * Ontario Fieldset groups related form controls under a shared legend.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/fieldsets.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+	 */
 	interface HTMLOntarioFieldsetElement extends Components.OntarioFieldset, HTMLStencilElement {}
 	var HTMLOntarioFieldsetElement: {
 		prototype: HTMLOntarioFieldsetElement;
 		new (): HTMLOntarioFieldsetElement;
 	};
+	/**
+	 * Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/simple-footer.html
+	 * - https://designsystem.ontario.ca/components/detail/expanded-footer.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+	 */
 	interface HTMLOntarioFooterElement extends Components.OntarioFooter, HTMLStencilElement {}
 	var HTMLOntarioFooterElement: {
 		prototype: HTMLOntarioFooterElement;
 		new (): HTMLOntarioFooterElement;
 	};
+	/**
+	 * Ontario Form Container applies consistent spacing between grouped form elements.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+	 */
 	interface HTMLOntarioFormContainerElement extends Components.OntarioFormContainer, HTMLStencilElement {}
 	var HTMLOntarioFormContainerElement: {
 		prototype: HTMLOntarioFormContainerElement;
@@ -3419,6 +3824,14 @@ declare global {
 	interface HTMLOntarioHeaderElementEventMap {
 		menuButtonToggled: boolean;
 	}
+	/**
+	 * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+	 */
 	interface HTMLOntarioHeaderElement extends Components.OntarioHeader, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioHeaderElementEventMap>(
 			type: K,
@@ -3477,10 +3890,14 @@ declare global {
 		focusMenuButton: void;
 	}
 	/**
-	 * Ontario Header Menu Tabs Component
-	 * Provides a tabbed navigation interface for mobile/tablet views.
-	 * Displays two tabs (Topics and Sign In) with overflow menu content.
-	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 * Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
+	 * - Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * - Manages keyboard navigation, focus trapping, and accessibility.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 	 */
 	interface HTMLOntarioHeaderMenuTabsElement extends Components.OntarioHeaderMenuTabs, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioHeaderMenuTabsElementEventMap>(
@@ -3542,23 +3959,29 @@ declare global {
 		menuButtonTabPressed: void;
 	}
 	/**
-	 * Overflow Menu Component
-	 * Displays a dropdown menu of links. Can operate in two modes:
-	 * ## Standalone Mode
+	 * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
+	 * It can operate in two modes:
+	 * ### Standalone Mode
 	 * Used when placed directly in the header (desktop view).
 	 * - Manages its own open/close state via `menuButtonToggled` event
 	 * - Automatically focuses first menu item when opened
 	 * - Sets up focus trap to keep keyboard navigation within menu
 	 * - Auto-closes when focus leaves the menu area
 	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
-	 * ## Embedded Mode
+	 * ### Embedded Mode
 	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 	 * - Parent component controls open/close state
 	 * - Parent component manages focus trap
 	 * - Menu is always visible when parent tab is active
 	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
-	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
-	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * ### Mode Detection
+	 * - Auto-detected based on DOM position (no prop needed).
+	 * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
 	 */
 	interface HTMLOntarioHeaderOverflowMenuElement extends Components.OntarioHeaderOverflowMenu, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioHeaderOverflowMenuElementEventMap>(
@@ -3615,6 +4038,12 @@ declare global {
 	interface HTMLOntarioHintExpanderElementEventMap {
 		toggleExpanderEvent: MouseEvent | KeyboardEvent;
 	}
+	/**
+	 * Ontario Hint Expander reveals optional supporting guidance on demand.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+	 */
 	interface HTMLOntarioHintExpanderElement extends Components.OntarioHintExpander, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioHintExpanderElementEventMap>(
 			type: K,
@@ -3668,7 +4097,11 @@ declare global {
 		new (): HTMLOntarioHintExpanderElement;
 	};
 	/**
+	 * Ontario Hint Text provides concise supporting instructions for form controls.
 	 * Use hint text to help users understand how to complete fields in a form.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 	 */
 	interface HTMLOntarioHintTextElement extends Components.OntarioHintText, HTMLStencilElement {}
 	var HTMLOntarioHintTextElement: {
@@ -4283,6 +4716,18 @@ declare global {
 		inputOnFocus: InputFocusBlurEvent;
 		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
+	/**
+	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioInputElement extends Components.OntarioInput, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioInputElementEventMap>(
 			type: K,
@@ -4333,6 +4778,11 @@ declare global {
 		setAppLanguage: Language;
 		headerLanguageToggled: HeaderLanguageToggleEventDetails;
 	}
+	/**
+	 * Ontario Language Toggle switches the interface between supported languages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+	 */
 	interface HTMLOntarioLanguageToggleElement extends Components.OntarioLanguageToggle, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioLanguageToggleElementEventMap>(
 			type: K,
@@ -4385,11 +4835,25 @@ declare global {
 		prototype: HTMLOntarioLanguageToggleElement;
 		new (): HTMLOntarioLanguageToggleElement;
 	};
+	/**
+	 * Ontario Loading Indicator communicates in-progress loading states.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/loading-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+	 */
 	interface HTMLOntarioLoadingIndicatorElement extends Components.OntarioLoadingIndicator, HTMLStencilElement {}
 	var HTMLOntarioLoadingIndicatorElement: {
 		prototype: HTMLOntarioLoadingIndicatorElement;
 		new (): HTMLOntarioLoadingIndicatorElement;
 	};
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+	 */
 	interface HTMLOntarioPageAlertElement extends Components.OntarioPageAlert, HTMLStencilElement {}
 	var HTMLOntarioPageAlertElement: {
 		prototype: HTMLOntarioPageAlertElement;
@@ -4401,6 +4865,18 @@ declare global {
 		radioOnFocus: InputFocusBlurEvent;
 		inputErrorOccurred: { errorMessage: string };
 	}
+	/**
+	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioRadioButtonsElement extends Components.OntarioRadioButtons, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioRadioButtonsElementEventMap>(
 			type: K,
@@ -4460,6 +4936,18 @@ declare global {
 		inputOnBlur: InputFocusBlurEvent;
 		inputOnFocus: InputFocusBlurEvent;
 	}
+	/**
+	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/search-box.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioSearchBoxElement extends Components.OntarioSearchBox, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioSearchBoxElementEventMap>(
 			type: K,
@@ -4512,21 +5000,45 @@ declare global {
 		prototype: HTMLOntarioSearchBoxElement;
 		new (): HTMLOntarioSearchBoxElement;
 	};
+	/**
+	 * Ontario Step Indicator communicates progress through multi-step flows.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-step-indicator/
+	 */
 	interface HTMLOntarioStepIndicatorElement extends Components.OntarioStepIndicator, HTMLStencilElement {}
 	var HTMLOntarioStepIndicatorElement: {
 		prototype: HTMLOntarioStepIndicatorElement;
 		new (): HTMLOntarioStepIndicatorElement;
 	};
+	/**
+	 * Ontario Table presents structured tabular data with accessible semantics.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/tables.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+	 */
 	interface HTMLOntarioTableElement extends Components.OntarioTable, HTMLStencilElement {}
 	var HTMLOntarioTableElement: {
 		prototype: HTMLOntarioTableElement;
 		new (): HTMLOntarioTableElement;
 	};
+	/**
+	 * Ontario Task represents an individual task item and status within a task list.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+	 */
 	interface HTMLOntarioTaskElement extends Components.OntarioTask, HTMLStencilElement {}
 	var HTMLOntarioTaskElement: {
 		prototype: HTMLOntarioTaskElement;
 		new (): HTMLOntarioTaskElement;
 	};
+	/**
+	 * Ontario Task List groups and summarizes related tasks.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+	 */
 	interface HTMLOntarioTaskListElement extends Components.OntarioTaskList, HTMLStencilElement {}
 	var HTMLOntarioTaskListElement: {
 		prototype: HTMLOntarioTaskListElement;
@@ -4539,6 +5051,18 @@ declare global {
 		inputOnFocus: InputFocusBlurEvent;
 		inputErrorOccurred: { inputId: string; errorMessage: string };
 	}
+	/**
+	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface HTMLOntarioTextareaElement extends Components.OntarioTextarea, HTMLStencilElement {
 		addEventListener<K extends keyof HTMLOntarioTextareaElementEventMap>(
 			type: K,
@@ -4746,6 +5270,12 @@ declare global {
 	}
 }
 declare namespace LocalJSX {
+	/**
+	 * Ontario Accordion presents collapsible sections of content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/accordions.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+	 */
 	interface OntarioAccordion {
 		/**
 		 * Used to include individual accordion data for the accordion component. Accepts an array of Accordion (@see Accordion) items or a JSON string of that array.  The `content` is rendered either as plain text or HTML depending on `accordionContentType`.
@@ -4771,6 +5301,13 @@ declare namespace LocalJSX {
 		 */
 		onAccordionChange?: (event: OntarioAccordionCustomEvent<AccordionChangeDetail>) => void;
 	}
+	/**
+	 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+	 */
 	interface OntarioAside {
 		/**
 		 * Optional text to be displayed as the content for the aside component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the aside component if additional/different elements for the content are needed.
@@ -4796,12 +5333,24 @@ declare namespace LocalJSX {
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
+	/**
+	 * Ontario Back to Top helps users quickly return to the top of long pages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-to-top.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+	 */
 	interface OntarioBackToTop {
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 		 */
 		language?: Language;
 	}
+	/**
+	 * Ontario Badge displays concise status labels and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/badges.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+	 */
 	interface OntarioBadge {
 		/**
 		 * An aria label for screen readers.  Used to provide more context to screen readers if necessary.  This property is optional.
@@ -4818,6 +5367,12 @@ declare namespace LocalJSX {
 		 */
 		label?: string;
 	}
+	/**
+	 * Ontario Blockquote displays quoted content with optional attribution.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/blockquote.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+	 */
 	interface OntarioBlockquote {
 		/**
 		 * Optional text to be displayed as the attribution (the author) of the quote.
@@ -4832,6 +5387,18 @@ declare namespace LocalJSX {
 		 */
 		quote?: string;
 	}
+	/**
+	 * Ontario Button triggers actions and supports button or link behavior.
+	 * This component intentionally does not expose a `disabled` prop.
+	 * To support accessible and understandable form completion:
+	 * - keep actions available
+	 * - use validation and error messaging to guide corrections instead of disabling
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioButton {
 		/**
 		 * Provides more context as to what the button interaction is doing. This should only be used for accessibility purposes, if the button interaction requires more description than what the text provides.   This is optional.
@@ -4843,7 +5410,11 @@ declare namespace LocalJSX {
 		 */
 		elementId?: string;
 		/**
-		 * The native HTML button type the button should use.  If no htmlType is passed, it will default to 'button'.
+		 * When provided, the component renders as a native anchor for navigation use cases. This takes precedence over `htmlType`, so form-submission behaviour is disabled in link mode.
+		 */
+		href?: string;
+		/**
+		 * The native HTML button type the button should use.  If no `htmlType` is passed, it will default to `'button'`. This prop only affects the component when it renders as a native `<button>`. If `href` is provided, the component renders as a native `<a>` and `htmlType` is ignored.
 		 * @default 'button'
 		 */
 		htmlType?: HtmlType;
@@ -4853,11 +5424,26 @@ declare namespace LocalJSX {
 		 */
 		label?: string;
 		/**
+		 * Specifies the relationship of the linked document to the current document when `href` is provided. This prop has no effect unless the component is in link mode.
+		 */
+		rel?: string;
+		/**
+		 * Specifies where to open the linked document when `href` is provided. This prop has no effect unless the component is in link mode.
+		 */
+		target?: string;
+		/**
 		 * The type of button to render.  If no type is passed, it will default to 'secondary'.
 		 * @default 'secondary'
 		 */
 		type?: ButtonType;
 	}
+	/**
+	 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+	 */
 	interface OntarioCallout {
 		/**
 		 * Optional text to be displayed as the content for the callout component. If a string is passed, it will automatically be nested in a paragraph tag.  HTML content can also be passed as the child/children of the callout component if additional/different elements for the content are needed.
@@ -4883,6 +5469,12 @@ declare namespace LocalJSX {
 		 */
 		highlightColour?: HighlightColourOptions;
 	}
+	/**
+	 * Ontario Card displays linked content summaries with optional media and metadata.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/cards.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+	 */
 	interface OntarioCard {
 		/**
 		 * Provides more context as to what the card interaction is doing. This should only be used for accessibility purposes, if the card interaction requires more * * description than what the text provides.  This is optional.
@@ -4938,6 +5530,11 @@ declare namespace LocalJSX {
 		 */
 		layoutDirection?: LayoutDirection;
 	}
+	/**
+	 * Ontario Card Collection lays out multiple cards in a responsive grid.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+	 */
 	interface OntarioCardCollection {
 		/**
 		 * The number of cards to display per row.  If no number is passed, it will default to 3.
@@ -4945,6 +5542,18 @@ declare namespace LocalJSX {
 		 */
 		cardsPerRow?: CardsPerRow;
 	}
+	/**
+	 * Ontario Checkboxes collects one or more selections from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioCheckboxes {
 		/**
 		 * The text to display for the checkbox legend.
@@ -5010,7 +5619,18 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected checkbox option values.  The component keeps the host `value` in sync as users interact with the checkbox group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.  In HTML, pass `value` as a JSON string array.
+		 * @example <ontario-checkboxes   value='["checkbox-option-1", "checkbox-option-2"]'   ...> </ontario-checkboxes>
+		 */
+		value?: string[] | string;
 	}
+	/**
+	 * Ontario Critical Alert communicates urgent, high-priority emergency information.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/critical-alerts.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+	 */
 	interface OntarioCriticalAlert {
 		/**
 		 * Content for critical alert message. It can be either string or HTML content. The content is already wrapped in a paragraph tag, so if using HTML content, the paragraph tag can be ommitted.
@@ -5018,6 +5638,18 @@ declare namespace LocalJSX {
 		 */
 		content?: string | HTMLElement;
 	}
+	/**
+	 * Ontario Date Input captures day, month, and year values as a single date field.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dates.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioDateInput {
 		/**
 		 * The text to display as the input label
@@ -5092,7 +5724,23 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The aggregate date value for the component.  Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`).
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Dropdown List presents a selectable list of predefined options.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioDropdownList {
 		/**
 		 * The text to display for the dropdown list label.
@@ -5168,7 +5816,17 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Fieldset groups related form controls under a shared legend.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/fieldsets.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+	 */
 	interface OntarioFieldset {
 		/**
 		 * The text value used for the legend of the fieldset.
@@ -5180,6 +5838,13 @@ declare namespace LocalJSX {
 		 */
 		legendSize?: CaptionType;
 	}
+	/**
+	 * Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/simple-footer.html
+	 * - https://designsystem.ontario.ca/components/detail/expanded-footer.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+	 */
 	interface OntarioFooter {
 		/**
 		 * The base path to an assets folder containing the Design System assets
@@ -5216,6 +5881,11 @@ declare namespace LocalJSX {
 		 */
 		type?: OntarioFooterType;
 	}
+	/**
+	 * Ontario Form Container applies consistent spacing between grouped form elements.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+	 */
 	interface OntarioFormContainer {
 		/**
 		 * Defines the gap (bottom margin) between slotted form elements. If no gap prop is provided, it will default to 'default'.
@@ -5223,6 +5893,14 @@ declare namespace LocalJSX {
 		 */
 		gap?: 'default' | 'condensed';
 	}
+	/**
+	 * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+	 */
 	interface OntarioHeader {
 		/**
 		 * Information pertaining to the application and ServiceOntario headers.  For the 'application' header type, this includes the application name, URL and optional props for the number of links in the subheader for desktop, tablet, and mobile views.  For the 'serviceOntario' header type, the 'title' property is used as the service name displayed in the subheader.
@@ -5276,10 +5954,14 @@ declare namespace LocalJSX {
 		type?: OntarioHeaderType;
 	}
 	/**
-	 * Ontario Header Menu Tabs Component
-	 * Provides a tabbed navigation interface for mobile/tablet views.
-	 * Displays two tabs (Topics and Sign In) with overflow menu content.
-	 * Manages keyboard navigation, focus trapping, and accessibility.
+	 * Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
+	 * - Displays two tabs (Topics and Sign In) with overflow menu content.
+	 * - Manages keyboard navigation, focus trapping, and accessibility.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 	 */
 	interface OntarioHeaderMenuTabs {
 		/**
@@ -5287,6 +5969,11 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		autoDetectMode?: boolean;
+		/**
+		 * Whether focus should move to the active tab when the menu opens. This should only be true for keyboard-triggered opens.
+		 * @default false
+		 */
+		focusActiveTabOnOpen?: boolean;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 		 * @default 'en'
@@ -5314,25 +6001,36 @@ declare namespace LocalJSX {
 		topicsMenuItems?: MenuItem[] | string;
 	}
 	/**
-	 * Overflow Menu Component
-	 * Displays a dropdown menu of links. Can operate in two modes:
-	 * ## Standalone Mode
+	 * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
+	 * It can operate in two modes:
+	 * ### Standalone Mode
 	 * Used when placed directly in the header (desktop view).
 	 * - Manages its own open/close state via `menuButtonToggled` event
 	 * - Automatically focuses first menu item when opened
 	 * - Sets up focus trap to keep keyboard navigation within menu
 	 * - Auto-closes when focus leaves the menu area
 	 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
-	 * ## Embedded Mode
+	 * ### Embedded Mode
 	 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 	 * - Parent component controls open/close state
 	 * - Parent component manages focus trap
 	 * - Menu is always visible when parent tab is active
 	 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
-	 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
-	 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * ### Mode Detection
+	 * - Auto-detected based on DOM position (no prop needed).
+	 * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+	 * - https://designsystem.ontario.ca/components/detail/application-header.html
+	 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
 	 */
 	interface OntarioHeaderOverflowMenu {
+		/**
+		 * Whether the standalone menu should move focus to the first item when opened. This should only be true for keyboard-triggered opens.
+		 * @default false
+		 */
+		focusFirstItemOnOpen?: boolean;
 		/**
 		 * Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.
 		 * @default true
@@ -5368,7 +6066,18 @@ declare namespace LocalJSX {
 		 * Event emitted when menu closes (standalone mode).
 		 */
 		onMenuClosed?: (event: OntarioHeaderOverflowMenuCustomEvent<void>) => void;
+		/**
+		 * Whether Tab from the last menu item should return focus to the trigger button instead of moving to the next menu or next page element.
+		 * @default false
+		 */
+		returnFocusToTriggerOnLastTab?: boolean;
 	}
+	/**
+	 * Ontario Hint Expander reveals optional supporting guidance on demand.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+	 */
 	interface OntarioHintExpander {
 		/**
 		 * Content to display as the hint, once the expander is toggled open. Please note that any content that is passed into this prop will only be displayed as a string. If you would like to add HTML content, supply child content to the component.
@@ -5394,7 +6103,11 @@ declare namespace LocalJSX {
 		onToggleExpanderEvent?: (event: OntarioHintExpanderCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
 	/**
+	 * Ontario Hint Text provides concise supporting instructions for form controls.
 	 * Use hint text to help users understand how to complete fields in a form.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 	 */
 	interface OntarioHintText {
 		/**
@@ -7375,6 +8088,18 @@ declare namespace LocalJSX {
 		 */
 		isDecorative?: boolean;
 	}
+	/**
+	 * Ontario Input captures single-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioInput {
 		/**
 		 * The text to display as the input label
@@ -7407,7 +8132,7 @@ declare namespace LocalJSX {
 		 */
 		enableLiveValidation?: boolean;
 		/**
-		 * Set this to display an
+		 * Set this to display an error message.
 		 */
 		errorMessage?: string;
 		/**
@@ -7485,6 +8210,11 @@ declare namespace LocalJSX {
 		 */
 		value?: string;
 	}
+	/**
+	 * Ontario Language Toggle switches the interface between supported languages.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+	 */
 	interface OntarioLanguageToggle {
 		/**
 		 * A custom function to pass to the language toggle button.  This is optional.
@@ -7512,6 +8242,12 @@ declare namespace LocalJSX {
 		 */
 		url?: string;
 	}
+	/**
+	 * Ontario Loading Indicator communicates in-progress loading states.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/loading-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+	 */
 	interface OntarioLoadingIndicator {
 		/**
 		 * A boolean value to determine whether the loading indicator overlay covers the full page or not. By default, this is set to `true`.  If set to `false`, the loading indicator overlay will be positioned absolutely relative to its container. Note that this will only work if the containing element has a style rule specifying it to be positioned relatively.
@@ -7537,6 +8273,14 @@ declare namespace LocalJSX {
 		 */
 		type?: 'small' | 'large';
 	}
+	/**
+	 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+	 * (for example informational, warning, success, or error outcomes).
+	 * For component selection guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+	 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+	 */
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
@@ -7555,6 +8299,18 @@ declare namespace LocalJSX {
 		 */
 		type?: PageAlertType;
 	}
+	/**
+	 * Ontario Radio Buttons captures a single choice from a defined option set.
+	 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep options and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioRadioButtons {
 		/**
 		 * The text to display for the radio button legend.
@@ -7620,7 +8376,23 @@ declare namespace LocalJSX {
 		 * @default false
 		 */
 		required?: boolean;
+		/**
+		 * The currently selected radio option value.  The component keeps the host `value` in sync as users interact with the radio group. If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+		 */
+		value?: string;
 	}
+	/**
+	 * Ontario Search Box captures and submits search queries.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/search-box.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioSearchBox {
 		/**
 		 * The text to display as the input label
@@ -7692,6 +8464,12 @@ declare namespace LocalJSX {
 		 */
 		value?: string;
 	}
+	/**
+	 * Ontario Step Indicator communicates progress through multi-step flows.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-step-indicator/
+	 */
 	interface OntarioStepIndicator {
 		/**
 		 * URL for the back element to set a path for where the link will lead.  If a URL is passed in, the back element will display as an anchor tag. The back element will require either the backButtonURL prop or the customOnClick prop to be passed in order for the back element to display.
@@ -7723,6 +8501,12 @@ declare namespace LocalJSX {
 		 */
 		showBackButton?: boolean;
 	}
+	/**
+	 * Ontario Table presents structured tabular data with accessible semantics.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/tables.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+	 */
 	interface OntarioTable {
 		/**
 		 * Specifies the caption (or title) of the table.  This is optional.
@@ -7754,6 +8538,12 @@ declare namespace LocalJSX {
 		 */
 		zebraStripes?: 'auto' | 'disabled' | 'enabled' | undefined;
 	}
+	/**
+	 * Ontario Task represents an individual task item and status within a task list.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+	 */
 	interface OntarioTask {
 		/**
 		 * Disables the task link when set to `true`.  Default is `false`, meaning the link will be active if provided.
@@ -7791,6 +8581,12 @@ declare namespace LocalJSX {
 		 */
 		taskStatus?: TaskStatuses;
 	}
+	/**
+	 * Ontario Task List groups and summarizes related tasks.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/task-list.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+	 */
 	interface OntarioTaskList {
 		/**
 		 * Allows consumers to define the heading level for the task list component.  Accepts 'h1', 'h2', 'h3' or 'h4'. Default is 'h2'.
@@ -7807,6 +8603,18 @@ declare namespace LocalJSX {
 		 */
 		language?: Language;
 	}
+	/**
+	 * Ontario Textarea captures multi-line text input.
+	 * This component intentionally does not expose `readOnly` or `disabled` props.
+	 * To support accessible and understandable form completion:
+	 * - keep form fields and submission actions available
+	 * - use validation and error messaging to guide corrections
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/text-areas.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+	 * Disabled/read-only policy source:
+	 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+	 */
 	interface OntarioTextarea {
 		/**
 		 * The text to display as the textarea label.
@@ -8042,56 +8850,205 @@ export { LocalJSX as JSX };
 declare module '@stencil/core' {
 	export namespace JSX {
 		interface IntrinsicElements {
+			/**
+			 * Ontario Accordion presents collapsible sections of content.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/accordions.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+			 */
 			'ontario-accordion': LocalJSX.OntarioAccordion & JSXBase.HTMLAttributes<HTMLOntarioAccordionElement>;
+			/**
+			 * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
+			 */
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
+			/**
+			 * Ontario Back to Top helps users quickly return to the top of long pages.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/back-to-top.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+			 */
 			'ontario-back-to-top': LocalJSX.OntarioBackToTop & JSXBase.HTMLAttributes<HTMLOntarioBackToTopElement>;
+			/**
+			 * Ontario Badge displays concise status labels and metadata.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/badges.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+			 */
 			'ontario-badge': LocalJSX.OntarioBadge & JSXBase.HTMLAttributes<HTMLOntarioBadgeElement>;
+			/**
+			 * Ontario Blockquote displays quoted content with optional attribution.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/blockquote.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+			 */
 			'ontario-blockquote': LocalJSX.OntarioBlockquote & JSXBase.HTMLAttributes<HTMLOntarioBlockquoteElement>;
+			/**
+			 * Ontario Button triggers actions and supports button or link behavior.
+			 * This component intentionally does not expose a `disabled` prop.
+			 * To support accessible and understandable form completion:
+			 * - keep actions available
+			 * - use validation and error messaging to guide corrections instead of disabling
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-button': LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
+			/**
+			 * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-callout/
+			 */
 			'ontario-callout': LocalJSX.OntarioCallout & JSXBase.HTMLAttributes<HTMLOntarioCalloutElement>;
+			/**
+			 * Ontario Card displays linked content summaries with optional media and metadata.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/cards.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+			 */
 			'ontario-card': LocalJSX.OntarioCard & JSXBase.HTMLAttributes<HTMLOntarioCardElement>;
+			/**
+			 * Ontario Card Collection lays out multiple cards in a responsive grid.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
+			 */
 			'ontario-card-collection': LocalJSX.OntarioCardCollection &
 				JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
+			/**
+			 * Ontario Checkboxes collects one or more selections from a defined option set.
+			 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep options and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkboxes/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-checkboxes': LocalJSX.OntarioCheckboxes & JSXBase.HTMLAttributes<HTMLOntarioCheckboxesElement>;
+			/**
+			 * Ontario Critical Alert communicates urgent, high-priority emergency information.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/critical-alerts.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-critical-alert/
+			 */
 			'ontario-critical-alert': LocalJSX.OntarioCriticalAlert & JSXBase.HTMLAttributes<HTMLOntarioCriticalAlertElement>;
+			/**
+			 * Ontario Date Input captures day, month, and year values as a single date field.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/dates.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-date-input/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-date-input': LocalJSX.OntarioDateInput & JSXBase.HTMLAttributes<HTMLOntarioDateInputElement>;
+			/**
+			 * Ontario Dropdown List presents a selectable list of predefined options.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+			/**
+			 * Ontario Fieldset groups related form controls under a shared legend.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/fieldsets.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+			 */
 			'ontario-fieldset': LocalJSX.OntarioFieldset & JSXBase.HTMLAttributes<HTMLOntarioFieldsetElement>;
+			/**
+			 * Ontario Footer renders simple or expanded footer patterns for Ontario sites and applications.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/simple-footer.html
+			 * - https://designsystem.ontario.ca/components/detail/expanded-footer.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-footer/
+			 */
 			'ontario-footer': LocalJSX.OntarioFooter & JSXBase.HTMLAttributes<HTMLOntarioFooterElement>;
+			/**
+			 * Ontario Form Container applies consistent spacing between grouped form elements.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+			 */
 			'ontario-form-container': LocalJSX.OntarioFormContainer & JSXBase.HTMLAttributes<HTMLOntarioFormContainerElement>;
+			/**
+			 * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+			 * - https://designsystem.ontario.ca/components/detail/application-header.html
+			 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header/
+			 */
 			'ontario-header': LocalJSX.OntarioHeader & JSXBase.HTMLAttributes<HTMLOntarioHeaderElement>;
 			/**
-			 * Ontario Header Menu Tabs Component
-			 * Provides a tabbed navigation interface for mobile/tablet views.
-			 * Displays two tabs (Topics and Sign In) with overflow menu content.
-			 * Manages keyboard navigation, focus trapping, and accessibility.
+			 * Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
+			 * - Displays two tabs (Topics and Sign In) with overflow menu content.
+			 * - Manages keyboard navigation, focus trapping, and accessibility.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+			 * - https://designsystem.ontario.ca/components/detail/application-header.html
+			 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 			 */
 			'ontario-header-menu-tabs': LocalJSX.OntarioHeaderMenuTabs &
 				JSXBase.HTMLAttributes<HTMLOntarioHeaderMenuTabsElement>;
 			/**
-			 * Overflow Menu Component
-			 * Displays a dropdown menu of links. Can operate in two modes:
-			 * ## Standalone Mode
+			 * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
+			 * It can operate in two modes:
+			 * ### Standalone Mode
 			 * Used when placed directly in the header (desktop view).
 			 * - Manages its own open/close state via `menuButtonToggled` event
 			 * - Automatically focuses first menu item when opened
 			 * - Sets up focus trap to keep keyboard navigation within menu
 			 * - Auto-closes when focus leaves the menu area
 			 * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
-			 * ## Embedded Mode
+			 * ### Embedded Mode
 			 * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 			 * - Parent component controls open/close state
 			 * - Parent component manages focus trap
 			 * - Menu is always visible when parent tab is active
 			 * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
-			 * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
-			 * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+			 * ### Mode Detection
+			 * - Auto-detected based on DOM position (no prop needed).
+			 * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+			 * - https://designsystem.ontario.ca/components/detail/application-header.html
+			 * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
 			 */
 			'ontario-header-overflow-menu': LocalJSX.OntarioHeaderOverflowMenu &
 				JSXBase.HTMLAttributes<HTMLOntarioHeaderOverflowMenuElement>;
+			/**
+			 * Ontario Hint Expander reveals optional supporting guidance on demand.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+			 */
 			'ontario-hint-expander': LocalJSX.OntarioHintExpander & JSXBase.HTMLAttributes<HTMLOntarioHintExpanderElement>;
 			/**
+			 * Ontario Hint Text provides concise supporting instructions for form controls.
 			 * Use hint text to help users understand how to complete fields in a form.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/hint-text.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
 			 */
 			'ontario-hint-text': LocalJSX.OntarioHintText & JSXBase.HTMLAttributes<HTMLOntarioHintTextElement>;
 			'ontario-icon-accessibility': LocalJSX.OntarioIconAccessibility &
@@ -8276,18 +9233,109 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
+			/**
+			 * Ontario Input captures single-line text input.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/text-inputs.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-input/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-input': LocalJSX.OntarioInput & JSXBase.HTMLAttributes<HTMLOntarioInputElement>;
+			/**
+			 * Ontario Language Toggle switches the interface between supported languages.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
+			 */
 			'ontario-language-toggle': LocalJSX.OntarioLanguageToggle &
 				JSXBase.HTMLAttributes<HTMLOntarioLanguageToggleElement>;
+			/**
+			 * Ontario Loading Indicator communicates in-progress loading states.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/loading-indicator.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+			 */
 			'ontario-loading-indicator': LocalJSX.OntarioLoadingIndicator &
 				JSXBase.HTMLAttributes<HTMLOntarioLoadingIndicatorElement>;
+			/**
+			 * Ontario Page Alert is used for high-importance status messages that apply to the whole page
+			 * (for example informational, warning, success, or error outcomes).
+			 * For component selection guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/page-alerts.html
+			 * - https://designsystem.ontario.ca/components/detail/callouts-asides.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
+			 */
 			'ontario-page-alert': LocalJSX.OntarioPageAlert & JSXBase.HTMLAttributes<HTMLOntarioPageAlertElement>;
+			/**
+			 * Ontario Radio Buttons captures a single choice from a defined option set.
+			 * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep options and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-radio-buttons': LocalJSX.OntarioRadioButtons & JSXBase.HTMLAttributes<HTMLOntarioRadioButtonsElement>;
+			/**
+			 * Ontario Search Box captures and submits search queries.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/search-box.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-search-box/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
+			/**
+			 * Ontario Step Indicator communicates progress through multi-step flows.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-step-indicator/
+			 */
 			'ontario-step-indicator': LocalJSX.OntarioStepIndicator & JSXBase.HTMLAttributes<HTMLOntarioStepIndicatorElement>;
+			/**
+			 * Ontario Table presents structured tabular data with accessible semantics.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/tables.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
+			 */
 			'ontario-table': LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+			/**
+			 * Ontario Task represents an individual task item and status within a task list.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/task-list.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+			 */
 			'ontario-task': LocalJSX.OntarioTask & JSXBase.HTMLAttributes<HTMLOntarioTaskElement>;
+			/**
+			 * Ontario Task List groups and summarizes related tasks.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/task-list.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+			 */
 			'ontario-task-list': LocalJSX.OntarioTaskList & JSXBase.HTMLAttributes<HTMLOntarioTaskListElement>;
+			/**
+			 * Ontario Textarea captures multi-line text input.
+			 * This component intentionally does not expose `readOnly` or `disabled` props.
+			 * To support accessible and understandable form completion:
+			 * - keep form fields and submission actions available
+			 * - use validation and error messaging to guide corrections
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/text-areas.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-textarea/
+			 * Disabled/read-only policy source:
+			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+			 */
 			'ontario-textarea': LocalJSX.OntarioTextarea & JSXBase.HTMLAttributes<HTMLOntarioTextareaElement>;
 		}
 	}

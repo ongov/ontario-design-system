@@ -7,6 +7,13 @@ import { HintContentType } from '../../utils/common/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Ontario Hint Expander reveals optional supporting guidance on demand.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/hint-text.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+ */
 @Component({
 	tag: 'ontario-hint-expander',
 	styleUrl: 'ontario-hint-expander.scss',

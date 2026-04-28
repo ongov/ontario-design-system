@@ -88,3 +88,37 @@ it('should render a default button with an id being explicity specified', async 
     </ontario-button>
   `);
 });
+
+it('should render as a link when href is provided', async () => {
+	const page = await newSpecPage({
+		components: [OntarioButton],
+		html: `<ontario-button href="/services" target="_blank" rel="noreferrer">Browse services</ontario-button>`,
+	});
+	expect(page.root).toEqualHtml(`
+    <ontario-button href="/services" target="_blank" rel="noreferrer">
+      <mock:shadow-root>
+        <a aria-label="Browse services" class="ontario-button ontario-button--secondary" href="/services" rel="noreferrer" target="_blank">
+          Browse services
+        </a>
+      </mock:shadow-root>
+      Browse services
+    </ontario-button>
+  `);
+});
+
+it('should ignore submit htmlType when rendering as a link', async () => {
+	const page = await newSpecPage({
+		components: [OntarioButton],
+		html: `<ontario-button href="/services" html-type="submit" type="primary">Browse services</ontario-button>`,
+	});
+	expect(page.root).toEqualHtml(`
+    <ontario-button href="/services" html-type="submit" type="primary">
+      <mock:shadow-root>
+        <a aria-label="Browse services" class="ontario-button ontario-button--primary" href="/services">
+          Browse services
+        </a>
+      </mock:shadow-root>
+      Browse services
+    </ontario-button>
+  `);
+});

@@ -6,6 +6,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { isClientSideRendering } from '../../utils/common/environment';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
+/**
+ * Ontario Badge displays concise status labels and metadata.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/badges.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-badge/
+ */
 @Component({
 	tag: 'ontario-badge',
 	styleUrl: 'ontario-badge.scss',

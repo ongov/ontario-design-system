@@ -1,0 +1,21 @@
+# Ontario Design System Web Components
+
+Use this package for framework-agnostic Ontario Design System web components.
+
+## Integration Rules
+- Register and hydrate components using the package loader and hydrate entry points.
+- Prefer documented component APIs and events.
+- Do not depend on internal DOM structure for behavior.
+
+## Next.js Notes
+- Follow official ODS Next.js integration guidance before custom SSR setup.
+- Keep client boundaries explicit for interactive components.
+
+## Guidance Links
+- https://designsystem.ontario.ca/
+- https://designsystem.ontario.ca/developer-docs/
+
+## Related Packages
+- @ongov/ontario-design-system-component-library-react
+- @ongov/ontario-design-system-component-library-angular
+- @ongov/ontario-design-system-global-styles

@@ -240,6 +240,9 @@ export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioB
     properties: {
         type: 'type',
         htmlType: 'html-type',
+        href: 'href',
+        target: 'target',
+        rel: 'rel',
         label: 'label',
         ariaLabelText: 'aria-label-text',
         elementId: 'element-id'
@@ -312,6 +315,7 @@ export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, 
         name: 'name',
         hintText: 'hint-text',
         hintExpander: 'hint-expander',
+        value: 'value',
         options: 'options',
         required: 'required',
         errorMessage: 'error-message',
@@ -348,6 +352,7 @@ export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, On
         language: 'language',
         required: 'required',
         placeholder: 'placeholder',
+        value: 'value',
         caption: 'caption',
         elementId: 'element-id',
         minYear: 'min-year',
@@ -375,6 +380,7 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
         language: 'language',
         name: 'name',
         elementId: 'element-id',
+        value: 'value',
         options: 'options',
         required: 'required',
         isEmptyStartOption: 'is-empty-start-option',
@@ -465,6 +471,7 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
         topicsMenuItems: 'topics-menu-items',
         signInMenuItems: 'sign-in-menu-items',
         autoDetectMode: 'auto-detect-mode',
+        focusActiveTabOnOpen: 'focus-active-tab-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -485,6 +492,8 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
     properties: {
         menuItems: 'menu-items',
         isLastMenu: 'is-last-menu',
+        returnFocusToTriggerOnLastTab: 'return-focus-to-trigger-on-last-tab',
+        focusFirstItemOnOpen: 'focus-first-item-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -2274,6 +2283,7 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
         hintText: 'hint-text',
         hintExpander: 'hint-expander',
         required: 'required',
+        value: 'value',
         options: 'options',
         errorMessage: 'error-message',
         customOnChange: 'custom-on-change',

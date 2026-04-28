@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-angular",
-	"version": "8.0.0-alpha.1",
+	"version": "8.0.0",
 	"description": "Angular specific wrapper for ontario-design-system-component-library",
 	"private": false,
 	"publishConfig": {
@@ -43,7 +43,8 @@
 		"dist/",
 		"projects/component-library/src",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",

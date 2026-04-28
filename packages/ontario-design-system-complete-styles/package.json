@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-complete-styles",
-	"version": "8.0.0-alpha.1",
+	"version": "8.0.0",
 	"private": false,
 	"description": "Complete styles package for the Ontario Design System containing all SASS and CSS for use independently of the Component Library.",
 	"license": "Apache-2.0",
@@ -9,7 +9,8 @@
 	"files": [
 		"dist/",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"scripts": {
 		"build": "gulp deploy && pnpm run docs:copy:readme",

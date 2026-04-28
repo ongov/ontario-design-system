@@ -7,6 +7,22 @@ import { validatePropExists, validateValueAgainstArray } from '../../utils/valid
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { isServerSideRendering } from '../../utils/common/environment';
 
+/**
+ * Ontario Button triggers actions and supports button or link behavior.
+ *
+ * This component intentionally does not expose a `disabled` prop.
+ *
+ * To support accessible and understandable form completion:
+ * - keep actions available
+ * - use validation and error messaging to guide corrections instead of disabling
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
+ *
+ * Disabled/read-only policy source:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+ */
 @Component({
 	tag: 'ontario-button',
 	styleUrl: 'ontario-button.scss',
@@ -27,9 +43,29 @@ export class OntarioButton implements Button {
 	/**
 	 * The native HTML button type the button should use.
 	 *
-	 * If no htmlType is passed, it will default to 'button'.
+	 * If no `htmlType` is passed, it will default to `'button'`.
+	 * This prop only affects the component when it renders as a native `<button>`.
+	 * If `href` is provided, the component renders as a native `<a>` and `htmlType` is ignored.
 	 */
 	@Prop() htmlType: HtmlType = 'button';
+
+	/**
+	 * When provided, the component renders as a native anchor for navigation use cases.
+	 * This takes precedence over `htmlType`, so form-submission behaviour is disabled in link mode.
+	 */
+	@Prop() href?: string;
+
+	/**
+	 * Specifies where to open the linked document when `href` is provided.
+	 * This prop has no effect unless the component is in link mode.
+	 */
+	@Prop() target?: string;
+
+	/**
+	 * Specifies the relationship of the linked document to the current document when `href` is provided.
+	 * This prop has no effect unless the component is in link mode.
+	 */
+	@Prop() rel?: string;
 
 	/**
 	 * Text to be displayed within the button. This will override the text provided through the host element textContent.
@@ -75,6 +111,8 @@ export class OntarioButton implements Button {
 	 */
 
 	private buttonRef: HTMLButtonElement;
+
+	private hasWarnedLinkHtmlTypeConflict = false;
 
 	/*
 	 * Watch for changes to the `label` property for validation purposes.
@@ -179,6 +217,29 @@ export class OntarioButton implements Button {
 		return `ontario-button ontario-button--${this.typeState}`;
 	}
 
+	private isLinkMode() {
+		return !!this.href;
+	}
+
+	private warnIgnoredHtmlTypeInLinkMode() {
+		if (this.hasWarnedLinkHtmlTypeConflict || !this.isLinkMode() || this.htmlTypeState === 'button') {
+			return;
+		}
+
+		const message = new ConsoleMessageClass();
+		message
+			.addDesignSystemTag()
+			.addMonospaceText(' htmlType ')
+			.addRegularText('on')
+			.addMonospaceText(' <ontario-button> ')
+			.addRegularText('is ignored when')
+			.addMonospaceText(' href ')
+			.addRegularText('is provided. The component renders as a native link instead.')
+			.printMessage();
+
+		this.hasWarnedLinkHtmlTypeConflict = true;
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -191,6 +252,10 @@ export class OntarioButton implements Button {
 		this.validateHtmlType();
 		this.validateType();
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
+	}
+
+	componentWillRender() {
+		this.warnIgnoredHtmlTypeInLinkMode();
 	}
 
 	componentDidLoad() {
@@ -207,7 +272,7 @@ export class OntarioButton implements Button {
 		observer.observe(this.host, options);
 
 		// Add a click event listener to handle submitting a form
-		if (this.htmlTypeState === 'submit') {
+		if (!this.isLinkMode() && this.htmlTypeState === 'submit') {
 			this.buttonRef.addEventListener('click', () => {
 				const { form } = this.internals;
 				form?.requestSubmit();
@@ -216,6 +281,21 @@ export class OntarioButton implements Button {
 	}
 
 	render() {
+		if (this.isLinkMode()) {
+			return (
+				<a
+					href={this.href}
+					target={this.target}
+					rel={this.rel}
+					class={this.getClass()}
+					aria-label={this.ariaLabelText}
+					id={this.getId()}
+				>
+					{this.labelState}
+				</a>
+			);
+		}
+
 		return (
 			<button
 				ref={(el) => (this.buttonRef = el as HTMLButtonElement)}
