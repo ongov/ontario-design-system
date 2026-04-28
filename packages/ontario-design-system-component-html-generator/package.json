@@ -34,7 +34,7 @@
 		}
 	},
 	"dependencies": {
-		"@ongov/ontario-design-system-component-library": "^6.0.0-alpha.1",
+		"@ongov/ontario-design-system-component-library": "workspace:*",
 		"commander": "^11.0.0"
 	},
 	"devDependencies": {
