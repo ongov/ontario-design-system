@@ -81,7 +81,7 @@
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
 		"dotenv": "^16.4.5",
-		"uuid": "^11.0.5"
+		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.55.0",
