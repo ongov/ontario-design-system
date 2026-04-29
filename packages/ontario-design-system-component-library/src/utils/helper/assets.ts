@@ -2,10 +2,22 @@ import { getAssetPath } from '@stencil/core';
 
 const assetsPathSegment = '/assets/';
 
+/**
+ * Remove trailing slashes so path segments can be joined consistently.
+ *
+ * @param path - The path to normalize.
+ * @returns The path without trailing slashes.
+ */
 function normalizePath(path: string): string {
 	return path.replace(/\/+$/, '');
 }
 
+/**
+ * Resolve the assets base path from the document base href when the app is
+ * mounted under a subpath.
+ *
+ * @returns The normalized assets base path when a usable base href exists.
+ */
 function resolveAssetBasePathFromBaseHref(): string | undefined {
 	if (typeof document === 'undefined') {
 		return;
@@ -25,6 +37,12 @@ function resolveAssetBasePathFromBaseHref(): string | undefined {
 	}
 }
 
+/**
+ * Inspect loaded scripts and stylesheets to recover the current assets base
+ * path from URLs already present in the document.
+ *
+ * @returns The normalized assets base path when one can be inferred.
+ */
 function resolveAssetBasePathFromLoadedAssets(): string | undefined {
 	if (typeof document === 'undefined') {
 		return;
@@ -54,6 +72,12 @@ function resolveAssetBasePathFromLoadedAssets(): string | undefined {
 	}
 }
 
+/**
+ * Try document-derived asset base paths before falling back to the legacy
+ * root-level assets directory.
+ *
+ * @returns The normalized assets base path when one can be inferred.
+ */
 function resolveFallbackAssetBasePath(): string | undefined {
 	return resolveAssetBasePathFromBaseHref() ?? resolveAssetBasePathFromLoadedAssets();
 }
@@ -63,10 +87,12 @@ function resolveFallbackAssetBasePath(): string | undefined {
  *
  * - If `assetBasePath` is provided, it is used as the base path.
  * - If not, attempts to use Stencil's `getAssetPath` (for Stencil/Angular builds).
- * - If that fails (e.g., in React), falls back to `/assets/`, assuming assets are in the public folder.
+ * - If that fails, attempts to recover the asset base path from the current
+ *   document context before falling back to `/assets/`.
  *
  * @param imageName - The name of the image file.
  * @param assetBasePath - Optional base path for assets.
+ * @param assetPathResolver - Injectable resolver used for testability.
  * @returns The full image path as a string.
  */
 export function getImageAssetSrcPath(
