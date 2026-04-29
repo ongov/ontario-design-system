@@ -82,7 +82,9 @@ jobs:
 
       - name: Update package.json in Docusaurus
         working-directory: packages/docusaurus
-        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${{ inputs.release_tag }}
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${RELEASE_TAG#v}
 
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus

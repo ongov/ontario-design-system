@@ -57,13 +57,13 @@ jobs:
   # Sync generated documentation to Docusaurus.
   # Only sync docs when there is a release_tag (semantic-release produced a tag).
   sync-docs-to-docusaurus: # Job defined in a separate file (sync-docs-to-docusaurus.yml)
-    needs: ['build', 'predict-release-tag']
+    needs: ['build', 'publish-packages']
     name: Sync Docs to Docusaurus
     uses: ./.github/workflows/sync-docs-to-docusaurus.yml
-    if: ${{ success() && needs.predict-release-tag.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    if: ${{ success() && needs.publish-packages.outputs.release_tag != '' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
     with:
       docs-artifacts-name: ${{ needs.build.outputs.docs-artifacts-name }}
-      release_tag: ${{ needs.predict-release-tag.outputs.release_tag }}
+      release_tag: ${{ needs.publish-packages.outputs.release_tag }}
     secrets: inherit
 
   enable-docs-automerge:
