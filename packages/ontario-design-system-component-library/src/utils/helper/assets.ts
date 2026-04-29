@@ -19,6 +19,7 @@ function normalizePath(path: string): string {
  * @returns The normalized assets base path when a usable base href exists.
  */
 function resolveAssetBasePathFromBaseHref(): string | undefined {
+	// `document` is a browser global; guard for SSR/Node contexts where it is absent.
 	if (typeof document === 'undefined') {
 		return;
 	}
@@ -44,6 +45,7 @@ function resolveAssetBasePathFromBaseHref(): string | undefined {
  * @returns The normalized assets base path when one can be inferred.
  */
 function resolveAssetBasePathFromLoadedAssets(): string | undefined {
+	// `document` is a browser global; guard for SSR/Node contexts where it is absent.
 	if (typeof document === 'undefined') {
 		return;
 	}
