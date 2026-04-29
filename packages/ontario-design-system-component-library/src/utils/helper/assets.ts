@@ -70,6 +70,8 @@ function resolveAssetBasePathFromLoadedAssets(): string | undefined {
 			continue;
 		}
 	}
+
+	return;
 }
 
 /**
