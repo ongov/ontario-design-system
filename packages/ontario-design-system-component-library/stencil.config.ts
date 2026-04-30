@@ -124,7 +124,9 @@ export const config: Config = {
 	testing: {
 		transform: {
 			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.cjs',
+			'^.+\\.js$': '@stencil/core/testing/jest-preprocessor',
 		},
+		transformIgnorePatterns: ['node_modules/(?!(.*/)?uuid/)'],
 		reporters: ['default', 'jest-junit'],
 	},
 };
