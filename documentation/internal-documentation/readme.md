@@ -86,4 +86,4 @@ If you run into any issues, please contact the development team. You can reach u
 4. **Develop:** Make your changes, following the [coding guidelines and best practices](./contributing-guidelines.md#code-standards).
 5. **Test:** Run unit tests with `pnpm run test:unit` and E2E tests with `pnpm run test:e2e`.
 6. **Commit and Push:** Follow the [commit guidelines](../../COMMIT-GUIDELINES.md), then push your branch to the remote repository.
-7. **Create a Pull Request:** Open a pull request for your branch and request a code review. Make sure to label your pull request.
+7. **Create a Pull Request:** Open a pull request for your branch and follow the [pull request guidelines](./pull-request-guidelines.md) when you submit it for review.
