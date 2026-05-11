@@ -34,5 +34,24 @@ describe('ontario-card', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
+	it('should render a single link when an image is provided', async () => {
+		const href = 'https://www.ontario.ca/';
+
+		const page = await newSpecPage({
+			components: [OntarioCard],
+			html: `<ontario-card label="Card Title 1" image="https://example.com/image.jpg" card-link="${href}"></ontario-card>`,
+		});
+
+		const shadowRoot = page.root?.shadowRoot;
+		const links = shadowRoot?.querySelectorAll('a');
+		const cardLink = shadowRoot?.querySelector('h2 a');
+		const image = shadowRoot?.querySelector('img.ontario-card__image');
+
+		expect(links?.length).toBe(1);
+		expect(cardLink?.getAttribute('href')).toBe(href);
+		expect(image).not.toBeNull();
+		expect(image?.parentElement?.tagName).toBe('DIV');
+	});
+
 	// Don't think we can test images unless we point to a local path
 });
