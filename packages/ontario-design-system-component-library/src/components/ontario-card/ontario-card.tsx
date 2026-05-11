@@ -344,9 +344,7 @@ export class OntarioCard {
 			<li class={this.getCardClasses()}>
 				{this.image && (
 					<div class="ontario-card__image-container">
-						<a href={this.getHref()} aria-label={this.ariaLabelText}>
-							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
-						</a>
+						<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 					</div>
 				)}
 				<div class={`ontario-card__text-container ${this.image ? 'ontario-card--image-true' : ''}`}>
