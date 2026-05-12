@@ -20,7 +20,7 @@ Examples:
 
 Labels are located on the right side of the pull request, under Assignees.
 
-At a minimum, add the label for the package touched by the pull request. Use the most specific package label available when more than one package could apply. If the change spans multiple packages, label all affected packages.
+If the change spans multiple packages, label all affected packages.  If not then choose the most specific package label available to where the change impacts.
 
 ## Submitting a Pull Request
 
