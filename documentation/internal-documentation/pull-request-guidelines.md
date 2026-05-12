@@ -29,3 +29,6 @@ If the change spans multiple packages, label all affected packages.  If not then
 3. Request reviews from relevant team members.
 4. Confirm tests have been run, or explain why they were not needed.
 5. Update the pull request title or labels if the scope changes during review.
+
+> [!TIP]
+> After opening a pull request review it thoroughly to ensure you have not missed anything.
