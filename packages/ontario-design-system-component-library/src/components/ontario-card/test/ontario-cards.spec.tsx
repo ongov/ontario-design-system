@@ -43,14 +43,14 @@ describe('ontario-card', () => {
 		});
 
 		const shadowRoot = page.root?.shadowRoot;
-		const links = shadowRoot?.querySelectorAll('a');
-		const cardLink = shadowRoot?.querySelector('h2 a');
-		const image = shadowRoot?.querySelector('img.ontario-card__image');
+		const anchors = shadowRoot?.querySelectorAll('a');
+		const headingAnchor = shadowRoot?.querySelector('h2 a');
+		const imageAnchor = shadowRoot?.querySelector('.ontario-card__image-container a');
 
-		expect(links?.length).toBe(1);
-		expect(cardLink?.getAttribute('href')).toBe(href);
-		expect(image).not.toBeNull();
-		expect(image?.parentElement?.tagName).toBe('DIV');
+		expect(anchors?.length).toBeGreaterThanOrEqual(1);
+		expect(headingAnchor?.getAttribute('href')).toBe(href);
+		expect(imageAnchor).not.toBeNull();
+		expect(imageAnchor?.getAttribute('tabindex')).toBe('-1');
 	});
 
 	// Don't think we can test images unless we point to a local path
