@@ -1,4 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { OntarioIconChevronDown } from '../ontario-icon-chevron-down';
+import { OntarioIconChevronUp } from '../ontario-icon-chevron-up';
 import { OntarioIconAccessibility } from '../ontario-icon-accessibility';
 
 describe('ontario-icon', () => {
@@ -29,5 +31,43 @@ describe('ontario-icon', () => {
         </mock:shadow-root>
       </ontario-icon-accessibility>
     `);
+	});
+
+	it('renders a decorative chevron-up icon without being focusable', async () => {
+		const page = await newSpecPage({
+			components: [OntarioIconChevronUp],
+			html: `<ontario-icon-chevron-up icon-width="36" colour="grey" is-decorative="true"></ontario-icon-chevron-up>`,
+		});
+
+		expect(page.root).toEqualHtml(`
+			<ontario-icon-chevron-up icon-width="36" colour="grey" is-decorative="true">
+				<mock:shadow-root>
+					<div class="ontario-icon ontario-icon--grey ontario-icon--width-36" style="width: 36px;">
+						<svg class="svg-icon" id="chevron-up" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: undefined; stroke: undefined;">
+							<path d="M7.4 15.4l4.6-4.58 4.6 4.58L18 14l-6-6-6 6 1.4 1.4z"></path>
+						</svg>
+					</div>
+				</mock:shadow-root>
+			</ontario-icon-chevron-up>
+		`);
+	});
+
+	it('renders a decorative chevron-down icon without being focusable', async () => {
+		const page = await newSpecPage({
+			components: [OntarioIconChevronDown],
+			html: `<ontario-icon-chevron-down icon-width="36" colour="grey" is-decorative="true"></ontario-icon-chevron-down>`,
+		});
+
+		expect(page.root).toEqualHtml(`
+			<ontario-icon-chevron-down icon-width="36" colour="grey" is-decorative="true">
+				<mock:shadow-root>
+					<div class="ontario-icon ontario-icon--grey ontario-icon--width-36" style="width: 36px;">
+						<svg class="svg-icon" id="chevron-down" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: undefined; stroke: undefined;">
+							<path d="M7.4 8.6l4.6 4.58 4.6-4.58L18 10l-6 6-6-6 1.4-1.4z"></path>
+						</svg>
+					</div>
+				</mock:shadow-root>
+			</ontario-icon-chevron-down>
+		`);
 	});
 });
