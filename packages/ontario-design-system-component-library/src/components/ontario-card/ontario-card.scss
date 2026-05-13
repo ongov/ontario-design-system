@@ -14,6 +14,7 @@
 	border-radius: globalVariables.$global-radius;
 	margin-bottom: spacing.$spacing-7;
 	padding: spacing.$spacing-0;
+	overflow: hidden;
 	/*
 	 * Required for cards to stay the same height regardless of content size.
 	 * Without subtracting the margin-bottom amount the cards will be too large.
@@ -86,6 +87,11 @@
 		height: 100%;
 		position: absolute;
 	}
+}
+
+.ontario-card__card-type--basic {
+	display: flex;
+	flex-direction: column;
 }
 
 .ontario-card__image-right {
@@ -189,6 +195,14 @@ $ontario-card-heading-colours: (
 }
 
 .ontario-card__text-container {
+	background-color: colours.$ontario-colour-white;
+
+	.ontario-card__card-type--basic & {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+	}
+
 	.ontario-card__card-type--horizontal & {
 		width: math.percentage(math.div(2, 3));
 	}
@@ -208,6 +222,9 @@ $ontario-card-heading-colours: (
 	background-color: colours.$ontario-colour-white;
 	border-bottom-left-radius: globalVariables.$global-radius;
 	border-bottom-right-radius: globalVariables.$global-radius;
+	.ontario-card__card-type--basic & {
+		flex: 1 1 auto;
+	}
 
 	p {
 		margin-top: spacing.$spacing-0;
