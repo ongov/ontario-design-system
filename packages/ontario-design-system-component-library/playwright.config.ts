@@ -11,6 +11,7 @@ export default await createConfig({
 		trace: 'retain-on-failure',
 	},
 	webServer: {
+		command: 'stencil build --dev --watch --serve --no-open',
 		timeout: 120 * 1000, // 2 minute timeout for the server to start
 	},
 	reporter: [['list'], ['html'], ['junit', { outputFile: 'test-results/playwright/results.xml' }]],
