@@ -65,7 +65,7 @@
 		"@nrwl/nx-linux-x64-musl": "15.9.3",
 		"@nrwl/nx-win32-arm64-msvc": "15.9.3",
 		"@nrwl/nx-win32-x64-msvc": "15.9.3",
-		"bl": "^6.0.18"
+		"bl": "^7.0.0"
 	},
 	"packageManager": "pnpm@10.2.0",
 	"pnpm": {
