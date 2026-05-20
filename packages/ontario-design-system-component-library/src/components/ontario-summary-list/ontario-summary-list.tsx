@@ -42,7 +42,7 @@ export class OntarioSummaryList {
 	 * The heading element to use for the section caption. Defaults to `h3`.
 	 * The heading level should match the document hierarchy of the consuming page.
 	 */
-	@Prop() headingLevel: SummaryListHeadingLevel = 'h3';
+	@Prop({ mutable: true }) headingLevel: SummaryListHeadingLevel = 'h3';
 
 	/**
 	 * When `true`, the summary list expands to the full available width.
@@ -54,7 +54,7 @@ export class OntarioSummaryList {
 	 * Adjusts the flex ratio between the key and value columns.
 	 * Recommended when questions are short. If omitted, columns share equal width.
 	 */
-	@Prop() columnRatio?: SummaryListColumnRatio;
+	@Prop({ mutable: true }) columnRatio?: SummaryListColumnRatio;
 
 	/**
 	 * Renders a section-level change link in the heading row. Accepts a JSON string
@@ -125,11 +125,7 @@ export class OntarioSummaryList {
 				.addMonospaceText(' <ontario-summary-list> ')
 				.addRegularText('was set to an invalid value; only ')
 				.addMonospaceText(allowedValues.join(', '))
-				.addRegularText(' are supported. The default layout ratio ')
-				.addMonospaceText('1-1')
-				.addRegularText(' is assumed.')
-				.printMessage();
-
+				.addRegularText(' are supported. The prop was ignored and equal column widths are assumed.');
 			this.columnRatio = undefined;
 		}
 	}
