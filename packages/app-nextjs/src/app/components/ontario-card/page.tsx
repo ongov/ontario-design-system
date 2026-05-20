@@ -78,128 +78,128 @@ export default function OntarioCardPage() {
 				></OntarioCard>
 
 				<h2>&apos;header-colour&apos; Prop Variants</h2>
-				<h3>Dark-accent</h3>
+				<h3>darkAccent</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="dark-accent"
-					label="Header colour is dark-accent"
+					headerColour="darkAccent"
+					label="Header colour is darkAccent"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-accent</h3>
+				<h3>lightAccent</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-accent"
-					label="Header colour is light-accent"
+					headerColour="lightAccent"
+					label="Header colour is lightAccent"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-gold</h3>
+				<h3>lightGold</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-gold"
-					label="Header colour is light-gold"
+					headerColour="lightGold"
+					label="Header colour is lightGold"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-yellow</h3>
+				<h3>lightYellow</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-yellow"
-					label="Header colour is light-yellow"
+					headerColour="lightYellow"
+					label="Header colour is lightYellow"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-taupe</h3>
+				<h3>lightTaupe</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-taupe"
-					label="Header colour is light-taupe"
+					headerColour="lightTaupe"
+					label="Header colour is lightTaupe"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-green</h3>
+				<h3>lightGreen</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-green"
-					label="Header colour is light-green"
+					headerColour="lightGreen"
+					label="Header colour is lightGreen"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-lime</h3>
+				<h3>lightLime</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-lime"
-					label="Header colour is light-lime"
+					headerColour="lightLime"
+					label="Header colour is lightLime"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-teal</h3>
+				<h3>lightTeal</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-teal"
-					label="Header colour is light-teal"
+					headerColour="lightTeal"
+					label="Header colour is lightTeal"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-sky</h3>
+				<h3>lightSky</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-sky"
-					label="Header colour is light-sky"
+					headerColour="lightSky"
+					label="Header colour is lightSky"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-blue</h3>
+				<h3>lightBlue</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-blue"
-					label="Header colour is light-blue"
+					headerColour="lightBlue"
+					label="Header colour is lightBlue"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-purple</h3>
+				<h3>lightPurple</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-purple"
-					label="Header colour is light-purple"
+					headerColour="lightPurple"
+					label="Header colour is lightPurple"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-orange</h3>
+				<h3>lightOrange</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-orange"
-					label="Header colour is light-orange"
+					headerColour="lightOrange"
+					label="Header colour is lightOrange"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-red</h3>
+				<h3>lightRed</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-red"
-					label="Header colour is light-red"
+					headerColour="lightRed"
+					label="Header colour is lightRed"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>
 
-				<h3>Light-magenta</h3>
+				<h3>lightMagenta</h3>
 				<OntarioCard
 					headingLevel="h2"
-					headerColour="light-magenta"
-					label="Header colour is light-magenta"
+					headerColour="lightMagenta"
+					label="Header colour is lightMagenta"
 					layoutDirection="horizontal"
 					description="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
 				></OntarioCard>

@@ -216,20 +216,20 @@ This is another example of an `ontario-card` component with a horizontal layout 
 
 The `header-colour` property supports a wide range of values, including:
 
-- `dark-accent`
-- `light-accent`
-- `light-gold`
-- `light-yellow`
-- `light-taupe`
-- `light-green`
-- `light-lime`
-- `light-teal`
-- `light-sky`
-- `light-blue`
-- `light-purple`
-- `light-orange`
-- `light-red`
-- `light-magenta`
+- `darkAccent`
+- `lightAccent`
+- `lightGold`
+- `lightYellow`
+- `lightTaupe`
+- `lightGreen`
+- `lightLime`
+- `lightTeal`
+- `lightSky`
+- `lightBlue`
+- `lightPurple`
+- `lightOrange`
+- `lightRed`
+- `lightMagenta`
 - `gold`
 - `yellow`
 - `taupe`
