@@ -3656,6 +3656,29 @@ export declare interface OntarioStepIndicator extends Components.OntarioStepIndi
 
 
 @ProxyCmp({
+  inputs: ['caption', 'captionActionLink', 'columnRatio', 'fullWidth', 'headingLevel', 'language']
+})
+@Component({
+  selector: 'ontario-summary-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [{ name: 'caption', required: true }, 'captionActionLink', 'columnRatio', 'fullWidth', 'headingLevel', 'language'],
+  standalone: false
+})
+export class OntarioSummaryList {
+  protected el: HTMLOntarioSummaryListElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioSummaryList extends Components.OntarioSummaryList {}
+
+
+@ProxyCmp({
   inputs: ['caption', 'condensed', 'fullWidth', 'tableColumns', 'tableData', 'zebraStripes']
 })
 @Component({

@@ -149,6 +149,7 @@ export const DIRECTIVES = [
   d.OntarioRadioButtons,
   d.OntarioSearchBox,
   d.OntarioStepIndicator,
+  d.OntarioSummaryList,
   d.OntarioTable,
   d.OntarioTask,
   d.OntarioTaskList,

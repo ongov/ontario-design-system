@@ -155,6 +155,7 @@ import { OntarioPageAlert as OntarioPageAlertElement, defineCustomElement as def
 import { OntarioRadioButtons as OntarioRadioButtonsElement, defineCustomElement as defineOntarioRadioButtons } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
 import { OntarioSearchBox as OntarioSearchBoxElement, defineCustomElement as defineOntarioSearchBox } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
 import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElement as defineOntarioStepIndicator } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
+import { OntarioSummaryList as OntarioSummaryListElement, defineCustomElement as defineOntarioSummaryList } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
 import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
@@ -1870,6 +1871,17 @@ export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorEle
     react: React,
     events: {} as OntarioStepIndicatorEvents,
     defineCustomElement: defineOntarioStepIndicator
+});
+
+export type OntarioSummaryListEvents = NonNullable<unknown>;
+
+export const OntarioSummaryList: StencilReactComponent<OntarioSummaryListElement, OntarioSummaryListEvents> = /*@__PURE__*/ createComponent<OntarioSummaryListElement, OntarioSummaryListEvents>({
+    tagName: 'ontario-summary-list',
+    elementClass: OntarioSummaryListElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioSummaryListEvents,
+    defineCustomElement: defineOntarioSummaryList
 });
 
 export type OntarioTableEvents = NonNullable<unknown>;
