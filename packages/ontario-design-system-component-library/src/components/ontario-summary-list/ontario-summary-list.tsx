@@ -18,6 +18,13 @@ export interface SummaryListActionLink {
 	label?: string;
 }
 
+/**
+ * Ontario Summary List groups labelled answers for review before a user submits or confirms information.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/summary-list.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-summary-list/
+ */
 @Component({
 	tag: 'ontario-summary-list',
 	styleUrl: 'ontario-summary-list.scss',
@@ -26,16 +33,45 @@ export interface SummaryListActionLink {
 export class OntarioSummaryList {
 	private captionActionSlot?: HTMLSlotElement;
 
+	/**
+	 * The section heading text for this summary list group. This prop is required.
+	 */
 	@Prop() caption!: string;
 
+	/**
+	 * The heading element to use for the section caption. Defaults to `h3`.
+	 * The heading level should match the document hierarchy of the consuming page.
+	 */
 	@Prop() headingLevel: SummaryListHeadingLevel = 'h3';
 
+	/**
+	 * When `true`, the summary list expands to the full available width.
+	 * Recommended when the list contains text area responses.
+	 */
 	@Prop() fullWidth: boolean = false;
 
+	/**
+	 * Adjusts the flex ratio between the key and value columns.
+	 * Recommended when questions are short. If omitted, columns share equal width.
+	 */
 	@Prop() columnRatio?: SummaryListColumnRatio;
 
+	/**
+	 * Renders a section-level change link in the heading row. Accepts a JSON string
+	 * (for plain HTML) or an object (for JSX/framework use). The `href` property is
+	 * required. An optional `label` overrides the visible link text; if omitted, the
+	 * component uses the localized default ("Change" / "Modifier"). Screen-reader
+	 * text is always auto-generated from `caption`.
+	 *
+	 * Use the `caption-action` slot instead when a router-aware link is needed.
+	 */
 	@Prop() captionActionLink?: string | SummaryListActionLink;
 
+	/**
+	 * The language of the component. This is used for translations, and is by default
+	 * set through event listeners checking for a language property from the header.
+	 * If none are passed, it will default to English.
+	 */
 	@Prop({ mutable: true }) language?: Language;
 
 	@State() private hasCaptionActionSlot = false;
