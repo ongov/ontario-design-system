@@ -7,6 +7,105 @@
 		<title>Ontario Design System - component samples</title>
 		<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 		<script nomodule src="/build/ontario-design-system-components.js"></script>
+		<style>
+			.ontario-summary-list__row {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+				padding: 1.1875rem 0;
+				border-bottom: 0.0625rem solid #cccccc;
+				margin: 0;
+			}
+
+			.ontario-summary-list__row dt,
+			.ontario-summary-list__row dd {
+				margin: 0;
+				text-align: left;
+			}
+
+			.ontario-summary-list__key {
+				flex: var(--ontario-summary-list-key-flex, 1);
+				font-family: 'Raleway Modified', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-feature-settings: normal;
+				font-size: 1.125rem;
+				font-weight: 700;
+				font-style: normal;
+				letter-spacing: 0.03rem;
+				line-height: 1.56;
+				min-width: 0;
+				text-rendering: optimizeLegibility;
+			}
+
+			.ontario-summary-list__value {
+				flex: var(--ontario-summary-list-value-flex, 1);
+				padding-left: 1.5rem;
+				min-width: 0;
+			}
+
+			.ontario-summary-list-button__container {
+				flex-basis: 3.5rem;
+				padding-left: 1.5rem;
+				text-align: right;
+			}
+
+			.ontario-summary-list__row .ontario-summary-list-change__button--hidden {
+				visibility: hidden;
+			}
+
+			.ontario-summary-list__row .ontario-summary-list-change__button {
+				display: block;
+				padding: 0;
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 1.625rem;
+				text-decoration: underline;
+			}
+
+			.ontario-summary-list__row--no-actions::after {
+				content: '';
+				width: 5rem;
+			}
+
+			@media screen and (min-width: 40em) {
+				.ontario-summary-list__key {
+					font-size: 1.1875rem;
+					letter-spacing: 0.025rem;
+					line-height: 1.5;
+				}
+			}
+
+			@media screen and (max-width: 40em) {
+				.ontario-summary-list__row {
+					flex-direction: column;
+					gap: 0;
+				}
+
+				.ontario-summary-list__key {
+					padding-bottom: 0.25rem;
+				}
+
+				.ontario-summary-list__value {
+					flex: revert;
+					padding: 0;
+				}
+
+				.ontario-summary-list-button__container {
+					flex-basis: auto;
+					width: 100%;
+					padding-left: 0;
+					text-align: left;
+				}
+
+				.ontario-summary-list__row .ontario-summary-list-change__button {
+					margin-top: 0.75rem;
+				}
+
+				.ontario-summary-list__row--no-actions::after {
+					display: none;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
