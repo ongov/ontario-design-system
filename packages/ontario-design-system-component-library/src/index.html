@@ -7,6 +7,105 @@
 		<title>Ontario Design System - component samples</title>
 		<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 		<script nomodule src="/build/ontario-design-system-components.js"></script>
+		<style>
+			.ontario-summary-list__row {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+				padding: 1.1875rem 0;
+				border-bottom: 0.0625rem solid #cccccc;
+				margin: 0;
+			}
+
+			.ontario-summary-list__row dt,
+			.ontario-summary-list__row dd {
+				margin: 0;
+				text-align: left;
+			}
+
+			.ontario-summary-list__key {
+				flex: var(--ontario-summary-list-key-flex, 1);
+				font-family: 'Raleway Modified', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-feature-settings: normal;
+				font-size: 1.125rem;
+				font-weight: 700;
+				font-style: normal;
+				letter-spacing: 0.03rem;
+				line-height: 1.56;
+				min-width: 0;
+				text-rendering: optimizeLegibility;
+			}
+
+			.ontario-summary-list__value {
+				flex: var(--ontario-summary-list-value-flex, 1);
+				padding-left: 1.5rem;
+				min-width: 0;
+			}
+
+			.ontario-summary-list-button__container {
+				flex-basis: 3.5rem;
+				padding-left: 1.5rem;
+				text-align: right;
+			}
+
+			.ontario-summary-list__row .ontario-summary-list-change__button--hidden {
+				visibility: hidden;
+			}
+
+			.ontario-summary-list__row .ontario-summary-list-change__button {
+				display: block;
+				padding: 0;
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 1.625rem;
+				text-decoration: underline;
+			}
+
+			.ontario-summary-list__row--no-actions::after {
+				content: '';
+				width: 5rem;
+			}
+
+			@media screen and (min-width: 40em) {
+				.ontario-summary-list__key {
+					font-size: 1.1875rem;
+					letter-spacing: 0.025rem;
+					line-height: 1.5;
+				}
+			}
+
+			@media screen and (max-width: 40em) {
+				.ontario-summary-list__row {
+					flex-direction: column;
+					gap: 0;
+				}
+
+				.ontario-summary-list__key {
+					padding-bottom: 0.25rem;
+				}
+
+				.ontario-summary-list__value {
+					flex: revert;
+					padding: 0;
+				}
+
+				.ontario-summary-list-button__container {
+					flex-basis: auto;
+					width: 100%;
+					padding-left: 0;
+					text-align: left;
+				}
+
+				.ontario-summary-list__row .ontario-summary-list-change__button {
+					margin-top: 0.75rem;
+				}
+
+				.ontario-summary-list__row--no-actions::after {
+					display: none;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
@@ -125,6 +224,7 @@
 						<li><a href="#text-inputs">Text inputs</a></li>
 						<li><a href="#date-input">Date input</a></li>
 						<li><a href="#step-indicator">Step indicator</a></li>
+						<li><a href="#summary-list">Summary list</a></li>
 						<li><a href="#search-box">Search Box</a></li>
 						<li><a href="#form">Form example</a></li>
 					</ol>
@@ -1333,6 +1433,219 @@
 							current-step="4"
 							number-of-steps="5"
 						></ontario-step-indicator>
+					</div>
+					<hr />
+
+					<!-- Summary List -->
+					<div>
+						<h2 id="summary-list">Summary list</h2>
+
+						<ontario-summary-list caption="Personal information" heading-level="h3">
+							<div class="ontario-summary-list__row">
+								<dt class="ontario-summary-list__key">Last name</dt>
+								<dd class="ontario-summary-list__value">Smith</dd>
+								<dd class="ontario-summary-list-button__container">
+									<a href="#summary-list"
+										>Change<span class="ontario-show-for-sr"> your answer for: <q>Last name</q></span></a
+									>
+								</dd>
+							</div>
+							<div class="ontario-summary-list__row">
+								<dt class="ontario-summary-list__key">First name</dt>
+								<dd class="ontario-summary-list__value">George</dd>
+								<dd class="ontario-summary-list-button__container">
+									<a href="#summary-list"
+										>Change<span class="ontario-show-for-sr"> your answer for: <q>First name</q></span></a
+									>
+								</dd>
+							</div>
+							<div class="ontario-summary-list__row">
+								<dt class="ontario-summary-list__key">Middle name</dt>
+								<dd class="ontario-summary-list__value">Not applicable</dd>
+								<dd class="ontario-summary-list-button__container">
+									<a href="#summary-list"
+										>Change<span class="ontario-show-for-sr"> your answer for: <q>Middle name</q></span></a
+									>
+								</dd>
+							</div>
+							<div class="ontario-summary-list__row">
+								<dt class="ontario-summary-list__key">Sex</dt>
+								<dd class="ontario-summary-list__value">Male</dd>
+								<dd class="ontario-summary-list-button__container">
+									<a href="#summary-list"
+										>Change<span class="ontario-show-for-sr"> your answer for: <q>Sex</q></span></a
+									>
+								</dd>
+							</div>
+							<div class="ontario-summary-list__row">
+								<dt class="ontario-summary-list__key">Place of birth</dt>
+								<dd class="ontario-summary-list__value">Ottawa</dd>
+								<dd class="ontario-summary-list-button__container">
+									<a href="#summary-list"
+										>Change<span class="ontario-show-for-sr"> your answer for: <q>Place of birth</q></span></a
+									>
+								</dd>
+							</div>
+						</ontario-summary-list>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list
+								caption="Contact details"
+								heading-level="h3"
+								caption-action-link='{"href":"#summary-list"}'
+							>
+								<div class="ontario-summary-list__row ontario-summary-list__row--no-actions">
+									<dt class="ontario-summary-list__key">Email</dt>
+									<dd class="ontario-summary-list__value">gsmith@gmail.com</dd>
+								</div>
+								<div class="ontario-summary-list__row ontario-summary-list__row--no-actions">
+									<dt class="ontario-summary-list__key">Phone number</dt>
+									<dd class="ontario-summary-list__value">123-456-7890</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Key: Value ratio 1:1" heading-level="h3" column-ratio="1-1">
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:1</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:1</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:1</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:1</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Key: Value ratio 1:2" heading-level="h3" column-ratio="1-2">
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:2</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:2</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:2</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:2</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Key: Value ratio 1:3" heading-level="h3" column-ratio="1-3">
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:3</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:3</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 1:3</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 1:3</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Key: Value ratio 2:1" heading-level="h3" column-ratio="2-1">
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 2:1</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 2:1</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 2:1</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 2:1</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Key: Value ratio 2:3" heading-level="h3" column-ratio="2-3">
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 2:3</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 2:3</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key: Value ratio 2:3</dt>
+									<dd class="ontario-summary-list__value">Value</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key: Value ratio 2:3</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
+
+						<div class="ontario-margin-top-24-!">
+							<ontario-summary-list caption="Full width (12-column)" heading-level="h3" full-width>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Key</dt>
+									<dd class="ontario-summary-list__value">
+										Value content spanning the full page width — no max-width constraint.
+									</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Key</q></span></a
+										>
+									</dd>
+								</div>
+								<div class="ontario-summary-list__row">
+									<dt class="ontario-summary-list__key">Supporting details</dt>
+									<dd class="ontario-summary-list__value">
+										Compare this row width against the 8-column examples above.
+									</dd>
+									<dd class="ontario-summary-list-button__container">
+										<a href="#summary-list" class="ontario-summary-list-change__button"
+											>Change<span class="ontario-show-for-sr"> your answer for: <q>Supporting details</q></span></a
+										>
+									</dd>
+								</div>
+							</ontario-summary-list>
+						</div>
 					</div>
 					<hr />
 

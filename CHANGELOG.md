@@ -1,3 +1,9 @@
+# Unreleased
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** add the `ontario-summary-list` host component and demo wiring
+
 # 8.1.0 (2026-06-02)
 
 ### Bug Fixes
