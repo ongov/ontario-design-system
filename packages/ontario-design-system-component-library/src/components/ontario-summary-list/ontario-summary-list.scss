@@ -1,0 +1,106 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables' as typography;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-sizes.variables' as fontSizes;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as placeholders;
+
+:host {
+	display: block;
+	--ontario-summary-list-key-flex: 1;
+	--ontario-summary-list-value-flex: 1;
+}
+
+.ontario-summary-list {
+	max-width: globalVariables.$standard-width;
+	float: revert;
+	margin-bottom: spacing.$spacing-9;
+
+	&.summary-list-full-width {
+		max-width: globalVariables.$full-width;
+	}
+}
+
+.ontario-summary-list-heading__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: spacing.$spacing-6;
+	padding-bottom: spacing.$spacing-3;
+	border-bottom: globalFunctions.px-to-rem(3) solid colours.$ontario-colour-black;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: spacing.$spacing-3;
+	}
+}
+
+.ontario-summary-list__heading {
+	@extend %h3-styles;
+	margin: spacing.$spacing-0;
+}
+
+.ontario-summary-list-heading__buttons {
+	display: flex;
+	align-items: center;
+	gap: spacing.$spacing-6;
+	min-height: globalFunctions.px-to-rem(26);
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		width: globalVariables.$full-width;
+	}
+}
+
+.ontario-summary-list-heading__buttons--hidden {
+	display: none;
+}
+
+.ontario-summary-list-change__button,
+.ontario-summary-list-heading__buttons ::slotted(a) {
+	color: colours.$ontario-colour-link;
+	cursor: pointer;
+	display: inline-block;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	line-height: globalFunctions.px-to-rem(26);
+	padding: spacing.$spacing-0;
+	text-decoration: underline;
+
+	&:hover,
+	&:focus {
+		color: colours.$ontario-colour-link--hover;
+	}
+
+	&:focus {
+		@extend %ontario-focus;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+	}
+}
+
+.ontario-show-for-sr {
+	position: absolute;
+	width: globalFunctions.px-to-rem(1);
+	height: globalFunctions.px-to-rem(1);
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+}
+
+.ontario-summary-list__container {
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
+}
+
+.ontario-summary-list__container ::slotted(ontario-summary-list-item),
+.ontario-summary-list__container ::slotted(.ontario-summary-list__row),
+.ontario-summary-list__container ::slotted(.ontario-summary-list-demo-row) {
+	display: block;
+	margin: spacing.$spacing-0;
+	width: globalVariables.$full-width;
+}
