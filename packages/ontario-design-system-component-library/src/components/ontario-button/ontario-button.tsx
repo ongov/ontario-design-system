@@ -155,10 +155,11 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the missing `label` prop warning message
+	 * Print the missing `label` prop warning message.
+	 * Skipped when `ariaLabelText` is provided, e.g. when using slotted SVG content.
 	 */
 	validateLabelContent(newValue: string) {
-		if (validatePropExists(newValue)) {
+		if (validatePropExists(newValue) && !this.ariaLabelText) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()
@@ -281,6 +282,8 @@ export class OntarioButton implements Button {
 	}
 
 	render() {
+		const content = this.label ? this.labelState : <slot />;
+
 		if (this.isLinkMode()) {
 			return (
 				<a
@@ -291,7 +294,7 @@ export class OntarioButton implements Button {
 					aria-label={this.ariaLabelText}
 					id={this.getId()}
 				>
-					{this.labelState}
+					{content}
 				</a>
 			);
 		}
@@ -304,7 +307,7 @@ export class OntarioButton implements Button {
 				aria-label={this.ariaLabelText}
 				id={this.getId()}
 			>
-				{this.labelState}
+				{content}
 			</button>
 		);
 	}
