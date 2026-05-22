@@ -16,7 +16,6 @@
 
 .ontario-summary-list {
 	max-width: globalVariables.$standard-width;
-	float: revert;
 	margin-bottom: spacing.$spacing-9;
 
 	&.summary-list-full-width {
@@ -60,7 +59,7 @@
 }
 
 .ontario-summary-list__change-button,
-.ontario-summary-list__heading-buttons ::slotted(a) {
+.ontario-summary-list__heading-buttons::slotted(a) {
 	color: colours.$ontario-colour-link;
 	cursor: pointer;
 	display: inline-block;
