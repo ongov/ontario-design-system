@@ -147,7 +147,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
 								&quot;date4&quot;: &quot;46&quot;
 							}
 						},
-						{
+						{ 
 							&quot;data&quot;: {
 								&quot;business&quot;: &quot;Total row&quot;,
 								&quot;date1&quot;: &quot;514&quot;,
@@ -368,7 +368,7 @@ exports[`ontario-table snapshot - 7 columns (numeric and condensed) should rende
 								&quot;column6&quot;: &quot;36,264,081&quot;
 							}
 						},
-						{
+						{ 
 							&quot;data&quot; : {
 								&quot;program&quot;: &quot;Ministry total operating expense&quot;,
 								&quot;column1&quot;: &quot;6,713,690,314&quot;,
