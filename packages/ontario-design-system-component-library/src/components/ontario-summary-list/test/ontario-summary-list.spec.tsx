@@ -43,7 +43,7 @@ describe('ontario-summary-list', () => {
 			html: `<ontario-summary-list caption="Address" caption-action-link='{"href":"/change-address"}'></ontario-summary-list>`,
 		});
 		await linkPage.waitForChanges();
-		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list-change__button');
+		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list__change-button');
 		expect(link).not.toBeNull();
 		expect(link?.getAttribute('href')).toBe('/change-address');
 	});
