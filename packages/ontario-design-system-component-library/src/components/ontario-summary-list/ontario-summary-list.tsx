@@ -236,14 +236,14 @@ export class OntarioSummaryList {
 		return (
 			<Host style={this.getStyleVariables()}>
 				<div class={this.getWrapperClasses()}>
-					<div class="ontario-summary-list-heading__container">
+					<div class="ontario-summary-list__heading-container">
 						{h(this.headingLevel, { className: 'ontario-summary-list__heading' }, this.caption)}
 						<div
 							class={[
-								'ontario-summary-list-heading__buttons',
+								'ontario-summary-list__heading-buttons',
 								!this.hasCaptionActionSlot &&
 									!this.resolvedCaptionActionLink &&
-									'ontario-summary-list-heading__buttons--hidden',
+									'ontario-summary-list__heading-buttons--hidden',
 							]
 								.filter(Boolean)
 								.join(' ')}
@@ -254,7 +254,7 @@ export class OntarioSummaryList {
 								onSlotchange={this.handleCaptionActionSlotChange}
 							></slot>
 							{!this.hasCaptionActionSlot && this.resolvedCaptionActionLink && (
-								<a class="ontario-summary-list-change__button" href={this.resolvedCaptionActionLink.href}>
+								<a class="ontario-summary-list__change-button" href={this.resolvedCaptionActionLink.href}>
 									{this.getHeadingActionLabel()}
 									<span class="ontario-show-for-sr">
 										{translations.summaryList.yourAnswerFor[validateLanguage(this.language)]} <q>{this.caption}</q>

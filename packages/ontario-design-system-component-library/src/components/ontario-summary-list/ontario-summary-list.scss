@@ -24,7 +24,7 @@
 	}
 }
 
-.ontario-summary-list-heading__container {
+.ontario-summary-list__heading-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -44,7 +44,7 @@
 	margin: spacing.$spacing-0;
 }
 
-.ontario-summary-list-heading__buttons {
+.ontario-summary-list__heading-buttons {
 	display: flex;
 	align-items: center;
 	gap: spacing.$spacing-6;
@@ -55,12 +55,12 @@
 	}
 }
 
-.ontario-summary-list-heading__buttons--hidden {
+.ontario-summary-list__heading-buttons--hidden {
 	display: none;
 }
 
-.ontario-summary-list-change__button,
-.ontario-summary-list-heading__buttons ::slotted(a) {
+.ontario-summary-list__change-button,
+.ontario-summary-list__heading-buttons ::slotted(a) {
 	color: colours.$ontario-colour-link;
 	cursor: pointer;
 	display: inline-block;
