@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Watch, getAssetPath } from '@stencil/core';
+import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 
 import { Table, TableColumnOptions, TableRowOptions } from './table.interface';
 
@@ -98,11 +98,11 @@ export class OntarioTable implements Table {
 	 */
 	@Prop() fullWidth?: boolean | undefined = false;
 
-	@State() private tableColumnsState: TableColumnOptions[];
+	@State() private tableColumnsState: TableColumnOptions[] = [];
 
-	@State() private tableDataState: TableRowOptions[];
+	@State() private tableDataState: TableRowOptions[] = [];
 
-	@State() private tableFooterState: TableRowOptions[];
+	@State() private tableFooterState: TableRowOptions[] = [];
 
 	@Watch('tableColumns')
 	private processTableColumns() {
@@ -261,6 +261,7 @@ export class OntarioTable implements Table {
 
 	// Helper function to apply the scrollbar styles to the tops of tables
 	private applyScrollbar(tableElement: Element, scrollerDiv: HTMLElement) {
+		if (!scrollerDiv || !tableElement) return;
 		scrollerDiv.style.visibility = 'visible';
 		scrollerDiv.style.height = '20px';
 		scrollerDiv.style.width = `${tableElement.scrollWidth}px`;
