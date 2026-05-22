@@ -12,9 +12,9 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the summary list component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
+After installing the component package, add the summary list directly to your project and configure it using the properties below.
 
-`ontario-summary-list` provides the structural shell — the section heading and `<dl>` container. Row content is supplied through the default slot, typically using `ontario-summary-list-item` children once that companion component is available.
+`ontario-summary-list` provides the structural shell — the section heading and `<dl>` container. Row content is supplied through the default slot, typically using `ontario-summary-list-item` children.
 
 For a section-level change link, either:
 
