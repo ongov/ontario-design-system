@@ -226,7 +226,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
               <th scope="row">
                 Forestry
                 <svg aria-hidden="true" class="ontario-table--highlight-indicator" focusable="false" viewBox="0 0 11.3 22.6" xmlns="http://www.w3.org/2000/svg">
-                  <polygon fill="#FCAF17" points="0,0 11.3,11.3 0,22.6"></polygon>
+                  <polygon points="0,0 11.3,11.3 0,22.6"></polygon>
                 </svg>
               </th>
               <td class="ontario-table-cell--numeric">

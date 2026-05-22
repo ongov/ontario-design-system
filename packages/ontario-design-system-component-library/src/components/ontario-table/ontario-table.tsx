@@ -247,7 +247,7 @@ export class OntarioTable implements Table {
 									aria-hidden="true"
 									focusable="false"
 								>
-									<polygon points="0,0 11.3,11.3 0,22.6" fill="#FCAF17" />
+									<polygon points="0,0 11.3,11.3 0,22.6" />
 								</svg>
 							)}
 						</th>

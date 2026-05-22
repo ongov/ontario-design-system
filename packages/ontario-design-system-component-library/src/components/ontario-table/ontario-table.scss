@@ -177,6 +177,7 @@ $ontario-table-caption-custom-spacing: spacing.$spacing-4 + math.div(spacing.$sp
 				// Distance from top of svg to top of container
 				top: globalFunctions.px-to-rem(24);
 				left: 0;
+				fill: colours.$ontario-colour-yellow;
 			}
 		}
 	}
