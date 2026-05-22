@@ -147,7 +147,7 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
 								&quot;date4&quot;: &quot;46&quot;
 							}
 						},
-						{ 
+						{
 							&quot;data&quot;: {
 								&quot;business&quot;: &quot;Total row&quot;,
 								&quot;date1&quot;: &quot;514&quot;,
@@ -225,7 +225,9 @@ exports[`ontario-table snapshot - 5 columns (numeric) should render the expected
             <tr class="ontario-table-row--highlight">
               <th scope="row">
                 Forestry
-                <img aria-hidden="true" class="ontario-table--highlight-indicator" src="/assets/highlight-indicator.svg">
+                <svg aria-hidden="true" class="ontario-table--highlight-indicator" focusable="false" viewBox="0 0 11.3 22.6" xmlns="http://www.w3.org/2000/svg">
+                  <polygon fill="#FCAF17" points="0,0 11.3,11.3 0,22.6"></polygon>
+                </svg>
               </th>
               <td class="ontario-table-cell--numeric">
                 182
@@ -366,7 +368,7 @@ exports[`ontario-table snapshot - 7 columns (numeric and condensed) should rende
 								&quot;column6&quot;: &quot;36,264,081&quot;
 							}
 						},
-						{ 
+						{
 							&quot;data&quot; : {
 								&quot;program&quot;: &quot;Ministry total operating expense&quot;,
 								&quot;column1&quot;: &quot;6,713,690,314&quot;,

@@ -170,7 +170,7 @@ $ontario-table-caption-custom-spacing: spacing.$spacing-4 + math.div(spacing.$sp
 			display: flex;
 			position: relative;
 
-			img.ontario-table--highlight-indicator {
+			svg.ontario-table--highlight-indicator {
 				// Width of yellow triangle svg
 				width: globalFunctions.px-to-rem(8);
 				position: absolute;
@@ -331,7 +331,7 @@ $ontario-table-caption-custom-spacing: spacing.$spacing-4 + math.div(spacing.$sp
 		padding: spacing.$spacing-3 spacing.$spacing-4 spacing.$spacing-3 spacing.$spacing-5;
 	}
 
-	tr.ontario-table-row--highlight th img.ontario-table--highlight-indicator {
+	tr.ontario-table-row--highlight th svg.ontario-table--highlight-indicator {
 		top: globalFunctions.px-to-rem(17);
 	}
 

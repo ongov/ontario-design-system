@@ -240,11 +240,15 @@ export class OntarioTable implements Table {
 					return index === 0 ? (
 						<th scope="row" innerHTML={rowData.data[`${columns[0]}`]}>
 							{dataType === 'tableData' && rowData.highlight && (
-								<img
+								<svg
 									class="ontario-table--highlight-indicator"
-									src={getAssetPath('./assets/highlight-indicator.svg')}
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 11.3 22.6"
 									aria-hidden="true"
-								></img>
+									focusable="false"
+								>
+									<polygon points="0,0 11.3,11.3 0,22.6" fill="#FCAF17" />
+								</svg>
 							)}
 						</th>
 					) : (
