@@ -217,9 +217,8 @@ export class OntarioSummaryList {
 		const ratio = this.columnRatio ? ratios[this.columnRatio] : ratios.default;
 
 		return {
-			'--ontario-summary-list-key-flex': ratio.key,
-			'--ontario-summary-list-value-flex': ratio.value,
-		};
+			'--ontario-summary-list-key-flex': String(ratio.key),
+		} as { [key: string]: string };
 	}
 
 	private getWrapperClasses(): string {
