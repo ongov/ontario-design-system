@@ -9,6 +9,10 @@ export default await createConfig({
 	retries: process.env.CI ? 2 : 0,
 	use: {
 		trace: 'retain-on-failure',
+		// Override the baseURL computed from devServer.address ('0.0.0.0') to use
+		// 'localhost' instead. Chrome 107+ blocks navigation to 0.0.0.0 on Linux,
+		// causing setContent's page.goto() to hang until the 30s test timeout fires.
+		baseURL: 'http://localhost:3333',
 	},
 	webServer: {
 		command: 'stencil build --dev --watch --serve --no-open --testing',
