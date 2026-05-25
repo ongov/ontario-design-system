@@ -204,6 +204,7 @@ export class OntarioSummaryList {
 
 		return {
 			'--ontario-summary-list-key-flex': String(ratio.key),
+			'--ontario-summary-list-value-flex': String(ratio.value),
 		} as { [key: string]: string };
 	}
 
