@@ -26,6 +26,10 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 	max-width: globalVariables.$standard-width;
 }
 
+:host-context(.ontario-form-group:last-of-type) .ontario-checkboxes {
+	margin-bottom: spacing.$spacing-0;
+}
+
 .ontario-checkboxes__item {
 	position: relative;
 	margin: 0 0 spacing.$spacing-4;

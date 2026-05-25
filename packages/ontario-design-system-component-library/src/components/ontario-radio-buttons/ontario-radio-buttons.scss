@@ -26,6 +26,10 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 	max-width: globalVariables.$standard-width;
 }
 
+:host-context(.ontario-form-group:last-of-type) .ontario-radios {
+	margin-bottom: spacing.$spacing-0;
+}
+
 .ontario-radios__item {
 	position: relative;
 	display: block;

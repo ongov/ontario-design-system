@@ -4,4 +4,9 @@
 @warn "The `ontario-form-group` class will be deprecated and replaced with a vertical spacing component in future.";
 .ontario-form-group:last-of-type {
 	margin-bottom: spacing.$spacing-8;
+
+	.ontario-checkboxes,
+	.ontario-radios {
+		margin-bottom: spacing.$spacing-0;
+	}
 }
