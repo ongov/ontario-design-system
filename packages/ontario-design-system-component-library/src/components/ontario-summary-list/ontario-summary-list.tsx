@@ -1,6 +1,13 @@
 import { Component, Host, Prop, State, Watch, Listen, h } from '@stencil/core';
+import {
+	summaryListHeadingLevelDefinitions,
+	SummaryListHeadingLevel,
+	summaryListColumnRatioDefinitions,
+	SummaryListColumnRatio,
+	summaryListRatioMap,
+	SummaryListActionLink,
+} from './ontario-summary-list-types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { HeadingLevel } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import {
@@ -9,14 +16,6 @@ import {
 	validateValueAgainstArray,
 } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
-
-export type SummaryListHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
-export type SummaryListColumnRatio = '1-1' | '1-2' | '1-3' | '2-1' | '2-3';
-
-export interface SummaryListActionLink {
-	href: string;
-	label?: string;
-}
 
 /**
  * Ontario Summary List groups labelled answers for review before a user submits or confirms information.
@@ -94,16 +93,14 @@ export class OntarioSummaryList {
 
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues: SummaryListHeadingLevel[] = ['h2', 'h3', 'h4'];
-
-		if (!validateValueAgainstArray(newValue, allowedValues)) {
+		if (!validateValueAgainstArray(newValue, summaryListHeadingLevelDefinitions)) {
 			new ConsoleMessageClass()
 				.addDesignSystemTag()
 				.addMonospaceText(' headingLevel ')
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-summary-list> ')
 				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText(allowedValues.join(', '))
+				.addMonospaceText([...summaryListHeadingLevelDefinitions].join(', '))
 				.addRegularText(' are supported. The default value ')
 				.addMonospaceText('h3')
 				.addRegularText(' is assumed.')
@@ -115,16 +112,14 @@ export class OntarioSummaryList {
 
 	@Watch('columnRatio')
 	validateColumnRatio(newValue?: SummaryListColumnRatio) {
-		const allowedValues: SummaryListColumnRatio[] = ['1-1', '1-2', '1-3', '2-1', '2-3'];
-
-		if (newValue && !validateValueAgainstArray(newValue, allowedValues)) {
+		if (newValue && !validateValueAgainstArray(newValue, summaryListColumnRatioDefinitions)) {
 			new ConsoleMessageClass()
 				.addDesignSystemTag()
 				.addMonospaceText(' columnRatio ')
 				.addRegularText('on')
 				.addMonospaceText(' <ontario-summary-list> ')
 				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText(allowedValues.join(', '))
+				.addMonospaceText([...summaryListColumnRatioDefinitions].join(', '))
 				.addRegularText(' are supported. The prop was ignored and equal column widths are assumed.');
 			this.columnRatio = undefined;
 		}
@@ -205,16 +200,7 @@ export class OntarioSummaryList {
 	}
 
 	private getStyleVariables() {
-		const ratios: Record<SummaryListColumnRatio | 'default', { key: string; value: string }> = {
-			'default': { key: '1', value: '1' },
-			'1-1': { key: '1', value: '1' },
-			'1-2': { key: '1', value: '2' },
-			'1-3': { key: '1', value: '3' },
-			'2-1': { key: '2', value: '1' },
-			'2-3': { key: '2', value: '3' },
-		};
-
-		const ratio = this.columnRatio ? ratios[this.columnRatio] : ratios.default;
+		const ratio = this.columnRatio ? summaryListRatioMap[this.columnRatio] : summaryListRatioMap.default;
 
 		return {
 			'--ontario-summary-list-key-flex': String(ratio.key),
