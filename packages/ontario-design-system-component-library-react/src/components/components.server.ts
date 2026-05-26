@@ -155,6 +155,7 @@ import { OntarioPageAlert as OntarioPageAlertElement } from "@ongov/ontario-desi
 import { OntarioRadioButtons as OntarioRadioButtonsElement } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
 import { OntarioSearchBox as OntarioSearchBoxElement } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
 import { OntarioStepIndicator as OntarioStepIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
+import { OntarioSummaryListItem as OntarioSummaryListItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
 import { OntarioTaskList as OntarioTaskListElement } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
@@ -2356,6 +2357,22 @@ export const OntarioSummaryList: StencilReactComponent<OntarioSummaryListElement
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioSummaryList as ReactWebComponent<OntarioSummaryListElement, OntarioSummaryListEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioSummaryListItemEvents = NonNullable<unknown>;
+
+export const OntarioSummaryListItem: StencilReactComponent<OntarioSummaryListItemElement, OntarioSummaryListItemEvents> = /*@__PURE__*/ createComponent<OntarioSummaryListItemElement, OntarioSummaryListItemEvents>({
+    tagName: 'ontario-summary-list-item',
+    properties: {
+        name: 'name',
+        description: 'description',
+        compact: 'compact',
+        actionLink: 'action-link',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioSummaryListItem as ReactWebComponent<OntarioSummaryListItemElement, OntarioSummaryListItemEvents>,
     serializeShadowRoot
 });
 
