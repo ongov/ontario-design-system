@@ -60,6 +60,43 @@ describe('ontario-input', () => {
 			expect(page.rootInstance.inputWidth).toBe('7-char-width');
 			expect(page.rootInstance.captionState.captionText).toBe('Ontario Input');
 		});
+
+		it('should initialize the input value from defaultValue when value is not set', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+					default-value="default input value"
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
+			});
+
+			const input = page.root?.shadowRoot?.querySelector('input');
+
+			expect(page.rootInstance.defaultValue).toBe('default input value');
+			expect(page.rootInstance.value).toBe('default input value');
+			expect(input?.value).toBe('default input value');
+		});
+
+		it('should prefer value over defaultValue when both are provided', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+					default-value="default input value"
+					value="controlled input value"
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
+			});
+
+			const input = page.root?.shadowRoot?.querySelector('input');
+
+			expect(page.rootInstance.defaultValue).toBe('default input value');
+			expect(page.rootInstance.value).toBe('controlled input value');
+			expect(input?.value).toBe('controlled input value');
+		});
 	});
 
 	describe('events/methods', () => {
