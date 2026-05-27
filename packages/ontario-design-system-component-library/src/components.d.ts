@@ -2866,6 +2866,10 @@ export namespace Components {
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
+		 * The input content default value.  This is optional and is intended for uncontrolled form usage.
+		 */
+		defaultValue?: string;
+		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
@@ -8122,6 +8126,10 @@ declare namespace LocalJSX {
 		 * Used to add a custom function to the input onInput event.
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
+		/**
+		 * The input content default value.  This is optional and is intended for uncontrolled form usage.
+		 */
+		defaultValue?: string;
 		/**
 		 * The unique identifier of the input. This is optional - if no ID is passed, one will be generated.
 		 */

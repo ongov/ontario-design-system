@@ -3381,14 +3381,14 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'defaultValue', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
   selector: 'ontario-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'defaultValue', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

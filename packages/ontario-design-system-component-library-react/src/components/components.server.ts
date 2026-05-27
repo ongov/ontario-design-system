@@ -2203,6 +2203,7 @@ export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInp
         required: 'required',
         type: 'type',
         value: 'value',
+        defaultValue: 'default-value',
         errorMessage: 'error-message',
         language: 'language',
         hintExpander: 'hint-expander',
