@@ -66,4 +66,23 @@ test.describe('Ontario Button', () => {
 		await page.click('#ontario-button-tertiary'); // has no onClick
 		expect(triggered).toBe(false);
 	});
+
+	// Tests for htmlType form integration
+	test.describe('htmlType form integration', () => {
+		test('should submit the form when htmlType is "submit"', async ({ page }) => {
+			await expect(page.locator('#form-submitted-message')).not.toBeVisible();
+			await page.click('#ontario-button-submit');
+			await expect(page.locator('#form-submitted-message')).toBeVisible();
+			await expect(page.locator('#form-submitted-message')).toHaveText('Form submitted!');
+		});
+
+		test('should reset form fields when htmlType is "reset"', async ({ page }) => {
+			const input = page.locator('#form-input');
+			await input.fill('test value');
+			await expect(input).toHaveValue('test value');
+
+			await page.click('#ontario-button-reset');
+			await expect(input).toHaveValue('');
+		});
+	});
 });
