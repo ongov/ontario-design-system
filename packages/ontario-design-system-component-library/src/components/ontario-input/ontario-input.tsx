@@ -130,6 +130,13 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
+	 * The input content default value.
+	 *
+	 * This is optional and is intended for uncontrolled form usage.
+	 */
+	@Prop() defaultValue?: string;
+
+	/**
 	 * Set this to display an error message.
 	 */
 	@Prop({ mutable: true }) errorMessage?: string;
@@ -283,6 +290,7 @@ export class OntarioInput implements TextInput {
 	@Watch('value')
 	handleValueChange() {
 		this.hasBeenInteractedWith = this.hasBeenInteractedWith || !!this.value;
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	/*
@@ -422,7 +430,7 @@ export class OntarioInput implements TextInput {
 	}
 
 	private getValue(): string | number {
-		return this.value ?? '';
+		return this.value ?? this.defaultValue ?? '';
 	}
 
 	private getClass(): string {
@@ -447,6 +455,10 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
+		if (this.value === undefined && this.defaultValue !== undefined) {
+			this.value = this.defaultValue;
+		}
+
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintText();

@@ -2,6 +2,11 @@ import { Input } from '../../utils/common/common.interface';
 
 export interface TextInput extends Input {
 	/**
+	 * The input content default value used for uncontrolled form usage.
+	 */
+	defaultValue?: string;
+
+	/**
 	 * The width of the input field. If no value is assigned, it will present as the `default` input width.
 	 */
 	inputWidth?: string;
