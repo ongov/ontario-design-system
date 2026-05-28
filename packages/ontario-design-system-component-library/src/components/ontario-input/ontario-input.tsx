@@ -1,4 +1,16 @@
-import { Component, Event, h, Prop, State, Listen, Element, Watch, EventEmitter, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	Event,
+	h,
+	Prop,
+	State,
+	Listen,
+	Element,
+	Watch,
+	EventEmitter,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { Input } from '../../utils/common/input/input';
@@ -49,6 +61,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 export class OntarioInput implements TextInput {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
+	private inputFieldRef?: HTMLInputElement;
 
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
@@ -421,6 +434,16 @@ export class OntarioInput implements TextInput {
 		return this.elementId ?? '';
 	}
 
+	/**
+	 * Returns the internal native input element.
+	 *
+	 * This can be used by framework wrappers that need a direct input reference.
+	 */
+	@Method()
+	async getInputElement(): Promise<HTMLInputElement | null> {
+		return this.inputFieldRef ?? null;
+	}
+
 	private getValue(): string | number {
 		return this.value ?? '';
 	}
@@ -473,6 +496,7 @@ export class OntarioInput implements TextInput {
 					className={this.getClass()}
 					id={this.getId()}
 					name={this.name}
+					ref={(el) => (this.inputFieldRef = el)}
 					onInput={(e) => this.handleEvent(e, EventType.Input)}
 					onChange={(e) => this.handleEvent(e, EventType.Change)}
 					onBlur={(e) => this.handleEvent(e, EventType.Blur)}

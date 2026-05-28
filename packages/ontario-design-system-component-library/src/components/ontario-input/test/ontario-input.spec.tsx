@@ -124,5 +124,44 @@ describe('ontario-input', () => {
 
 			expect(page.rootInstance.getId()).toEqual('input-id');
 		});
+
+		it('should return the internal input element when using getInputElement', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+				></ontario-input>`,
+			});
+
+			const inputElement = await page.root?.getInputElement();
+			const shadowInput = page.root?.shadowRoot?.querySelector('input');
+
+			expect(inputElement).not.toBeNull();
+			expect(inputElement?.id).toBe('input-id');
+			expect(inputElement).toBe(shadowInput);
+		});
+
+		it('should keep input interactions working while exposing getInputElement', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
+			});
+
+			const shadowInput = page.root?.shadowRoot?.querySelector('input') as HTMLInputElement;
+			shadowInput.value = 'updated by user';
+			shadowInput.dispatchEvent(new Event('input'));
+			await page.waitForChanges();
+
+			const inputElement = await page.root?.getInputElement();
+
+			expect(inputElement).toBe(shadowInput);
+			expect(inputElement?.value).toBe('updated by user');
+			expect(page.rootInstance.value).toBe('updated by user');
+		});
 	});
 });
