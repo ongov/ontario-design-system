@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { OntarioInput as GeneratedOntarioInput } from '../components/components.js';
