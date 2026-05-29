@@ -44,7 +44,7 @@ describe('ontario-summary-list-item', () => {
 
 	it('should apply ontario-summary-list__row--no-actions when no actionLink or slot is provided', () => {
 		const row = host.shadowRoot?.querySelector('.ontario-summary-list__row');
-		expect(row?.classList.contains('ontario-summary-list__row--no-actions')).toBe(true);
+		expect(row).toHaveClass('ontario-summary-list__row--no-actions');
 	});
 
 	it('should hide the button container when no actionLink or slot is provided', () => {
@@ -70,7 +70,7 @@ describe('ontario-summary-list-item', () => {
 		});
 		await linkPage.waitForChanges();
 		const row = (linkPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list__row');
-		expect(row?.classList.contains('ontario-summary-list__row--no-actions')).toBe(false);
+		expect(row).not.toHaveClass('ontario-summary-list__row--no-actions');
 	});
 
 	it('should use the i18n default label when actionLink has no label', async () => {
