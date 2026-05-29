@@ -31,7 +31,7 @@
 	}
 }
 
-.ontario-summary-list__row--no-actions {
+.ontario-summary-list-item__row--no-actions {
 	&::after {
 		content: '';
 		width: 5rem;
@@ -44,7 +44,7 @@ dd {
 	text-align: left;
 }
 
-.ontario-summary-list__key {
+.ontario-summary-list-item__key {
 	@extend %h5-styles;
 	flex: var(--ontario-summary-list-key-flex, 1);
 	margin-bottom: spacing.$spacing-0;
@@ -54,7 +54,7 @@ dd {
 	}
 }
 
-.ontario-summary-list__value {
+.ontario-summary-list-item__value {
 	flex: var(--ontario-summary-list-value-flex, 1);
 	padding-left: spacing.$spacing-5;
 
@@ -76,11 +76,11 @@ dd {
 	}
 }
 
-.ontario-summary-list__button-container--hidden {
+.ontario-summary-list-item__button-container--hidden {
 	display: none;
 }
 
-.ontario-summary-list-change__button {
+.ontario-summary-list-item__change-button {
 	display: block;
 	text-decoration: underline;
 	cursor: pointer;

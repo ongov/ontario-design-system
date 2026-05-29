@@ -158,9 +158,9 @@ export class OntarioSummaryListItem {
 
 	private getRowClasses(): string {
 		return [
-			'ontario-summary-list__row',
-			!this.hasActionSlot && !this.resolvedActionLink && 'ontario-summary-list__row--no-actions',
-			this.compact && 'ontario-summary-list__row--compact',
+			'ontario-summary-list-item__row',
+			!this.hasActionSlot && !this.resolvedActionLink && 'ontario-summary-list-item__row--no-actions',
+			this.compact && 'ontario-summary-list-item__row--compact',
 		]
 			.filter(Boolean)
 			.join(' ');
@@ -172,12 +172,12 @@ export class OntarioSummaryListItem {
 		return (
 			<Host>
 				<div class={this.getRowClasses()}>
-					<dt class="ontario-summary-list__key">{this.name}</dt>
-					<dd class="ontario-summary-list__value">{this.description}</dd>
+					<dt class="ontario-summary-list-item__key">{this.name}</dt>
+					<dd class="ontario-summary-list-item__value">{this.description}</dd>
 					<dd
 						class={[
-							'ontario-summary-list__button-container',
-							!hasAction && 'ontario-summary-list__button-container--hidden',
+							'ontario-summary-list-item__button-container',
+							!hasAction && 'ontario-summary-list-item__button-container--hidden',
 						]
 							.filter(Boolean)
 							.join(' ')}
@@ -188,7 +188,7 @@ export class OntarioSummaryListItem {
 							onSlotchange={this.handleActionSlotChange}
 						></slot>
 						{!this.hasActionSlot && this.resolvedActionLink && (
-							<a class="ontario-summary-list-change__button" href={this.resolvedActionLink.href}>
+							<a class="ontario-summary-list-item__change-button" href={this.resolvedActionLink.href}>
 								{this.getActionLabel()}
 								<span class="ontario-show-for-sr">
 									{translations.summaryList.yourAnswerFor[validateLanguage(this.language)]} <q>{this.name}</q>
