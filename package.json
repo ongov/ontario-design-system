@@ -48,11 +48,11 @@
 		"dotenv": "^16.4.5",
 		"husky": "^8.0.2",
 		"js-yaml": "^4.1.0",
-		"lerna": "^8.1.9",
+		"lerna": "^9.0.0",
 		"prettier": "^3.3.3",
 		"pretty-quick": "^4.0.0",
 		"semantic-release": "^25.0.2",
-		"semantic-release-lerna": "^2.13.0",
+		"semantic-release-lerna": "^2.18.4",
 		"ts-node": "^10.9.2"
 	},
 	"optionalDependencies": {

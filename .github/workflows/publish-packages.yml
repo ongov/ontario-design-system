@@ -15,6 +15,9 @@ jobs:
   publish:
     name: Publish Packages
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     outputs:
       release_tag: ${{ steps.publish.outputs.release_tag }}
     steps:
@@ -48,7 +51,6 @@ jobs:
         id: publish
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm run semantic-release
 
       - name: Collect published packages

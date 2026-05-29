@@ -11,6 +11,9 @@ jobs:
   predict:
     name: Predict Release Tag
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     outputs:
       release_tag: ${{ steps.predict.outputs.release_tag }}
     steps:
@@ -36,7 +39,6 @@ jobs:
         id: predict
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm exec semantic-release --dry-run
 
       - name: Collect release prediction context
