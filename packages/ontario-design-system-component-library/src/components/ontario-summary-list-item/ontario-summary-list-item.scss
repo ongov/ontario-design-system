@@ -27,7 +27,7 @@
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		flex-direction: column;
-		align-items: revert;
+		align-items: flex-start;
 	}
 }
 
