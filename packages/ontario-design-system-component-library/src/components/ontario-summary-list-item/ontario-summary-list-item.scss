@@ -21,7 +21,7 @@
 	border-bottom: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-20;
 	margin: spacing.$spacing-0;
 
-	&.compact {
+	&.ontario-summary-list__row--compact {
 		padding: spacing.$spacing-3 spacing.$spacing-0;
 	}
 

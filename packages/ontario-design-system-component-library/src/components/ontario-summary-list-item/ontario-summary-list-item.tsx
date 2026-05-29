@@ -160,7 +160,7 @@ export class OntarioSummaryListItem {
 		return [
 			'ontario-summary-list__row',
 			!this.hasActionSlot && !this.resolvedActionLink && 'ontario-summary-list__row--no-actions',
-			this.compact && 'compact',
+			this.compact && 'ontario-summary-list__row--compact',
 		]
 			.filter(Boolean)
 			.join(' ');

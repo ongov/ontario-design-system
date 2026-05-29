@@ -101,6 +101,6 @@ describe('ontario-summary-list-item', () => {
 		});
 		await compactPage.waitForChanges();
 		const row = (compactPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list__row');
-		expect(row?.classList.contains('compact')).toBe(true);
+		expect(row).toHaveClass('ontario-summary-list__row--compact');
 	});
 });
