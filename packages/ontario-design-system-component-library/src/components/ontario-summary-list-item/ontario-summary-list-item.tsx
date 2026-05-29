@@ -176,8 +176,8 @@ export class OntarioSummaryListItem {
 					<dd class="ontario-summary-list__value">{this.description}</dd>
 					<dd
 						class={[
-							'ontario-summary-list-button__container',
-							!hasAction && 'ontario-summary-list-button__container--hidden',
+							'ontario-summary-list__button-container',
+							!hasAction && 'ontario-summary-list__button-container--hidden',
 						]
 							.filter(Boolean)
 							.join(' ')}

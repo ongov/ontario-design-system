@@ -64,7 +64,7 @@ dd {
 	}
 }
 
-.ontario-summary-list-button__container {
+.ontario-summary-list__button-container {
 	text-align: right;
 	flex-basis: globalFunctions.px-to-rem(56);
 	padding-left: spacing.$spacing-5;
@@ -76,7 +76,7 @@ dd {
 	}
 }
 
-.ontario-summary-list-button__container--hidden {
+.ontario-summary-list__button-container--hidden {
 	display: none;
 }
 

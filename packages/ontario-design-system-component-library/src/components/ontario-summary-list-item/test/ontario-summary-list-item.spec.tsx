@@ -48,8 +48,8 @@ describe('ontario-summary-list-item', () => {
 	});
 
 	it('should hide the button container when no actionLink or slot is provided', () => {
-		const container = host.shadowRoot?.querySelector('.ontario-summary-list-button__container');
-		expect(container).toHaveClass('ontario-summary-list-button__container--hidden');
+		const container = host.shadowRoot?.querySelector('.ontario-summary-list__button-container');
+		expect(container).toHaveClass('ontario-summary-list__button-container--hidden');
 	});
 
 	it('should render a change link when actionLink is provided', async () => {
