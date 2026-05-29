@@ -29,7 +29,7 @@ import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list";
-import { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list";
+import { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatuses } from "./utils/common/task-statuses.enum";
 import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
@@ -58,7 +58,7 @@ export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.i
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list";
-export { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list";
+export { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatuses } from "./utils/common/task-statuses.enum";
 export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";

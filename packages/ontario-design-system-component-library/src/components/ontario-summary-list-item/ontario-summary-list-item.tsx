@@ -3,7 +3,7 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { Language } from '../../utils/common/language-types';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import { validateLanguage, validatePropExists } from '../../utils/validation/validation-functions';
-import { SummaryListActionLink } from '../ontario-summary-list/ontario-summary-list';
+import { SummaryListActionLink } from '../ontario-summary-list/ontario-summary-list-types';
 import translations from '../../translations/global.i18n.json';
 
 /**
