@@ -38,6 +38,7 @@ jobs:
     secrets: inherit
     permissions:
       contents: write # semantic-release dry-run still verifies git push access
+      id-token: write # required for OIDC trusted publishing during dry-run verifyConditions
 
   # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
