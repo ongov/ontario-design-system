@@ -28,8 +28,7 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list";
-import { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list-types";
+import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatuses } from "./utils/common/task-statuses.enum";
 import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
@@ -57,8 +56,7 @@ export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list";
-export { SummaryListActionLink as SummaryListActionLink1 } from "./components/ontario-summary-list/ontario-summary-list-types";
+export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatuses } from "./utils/common/task-statuses.enum";
 export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
@@ -3171,7 +3169,7 @@ export namespace Components {
         /**
           * Renders a row-level change link. Accepts a JSON string (for plain HTML) or an object (for JSX/framework use). `href` is required; `label` overrides the visible link text (defaults to the i18n "Change" / "Modifier" label). Screen-reader text is always auto-generated from `name`.  Use the `action` slot instead when a router-aware link is needed. The slot takes precedence over this prop when both are present.
          */
-        "actionLink"?: string | SummaryListActionLink1;
+        "actionLink"?: string | SummaryListActionLink;
         /**
           * When `true`, applies reduced row padding via the `.compact` modifier class.
          */
@@ -8218,7 +8216,7 @@ declare namespace LocalJSX {
         /**
           * Renders a row-level change link. Accepts a JSON string (for plain HTML) or an object (for JSX/framework use). `href` is required; `label` overrides the visible link text (defaults to the i18n "Change" / "Modifier" label). Screen-reader text is always auto-generated from `name`.  Use the `action` slot instead when a router-aware link is needed. The slot takes precedence over this prop when both are present.
          */
-        "actionLink"?: string | SummaryListActionLink1;
+        "actionLink"?: string | SummaryListActionLink;
         /**
           * When `true`, applies reduced row padding via the `.compact` modifier class.
          */
