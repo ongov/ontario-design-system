@@ -464,6 +464,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	private syncValueFromOptions() {
+		// Case 1: a non-empty value was provided and matches one of the options; derive checked state from value.
 		const hasMatchingValue = this.value && this.internalOptions?.some((option) => option.value === this.value);
 		if (hasMatchingValue) {
 			this.internalOptions = this.internalOptions.map((option) => ({
@@ -474,6 +475,16 @@ export class OntarioRadioButtons implements RadioButtons {
 			return;
 		}
 
+		// Case 2: value was explicitly set to ''; the consumer wants to clear the selection.
+		// Distinguish this from undefined (prop never set) so the fallback below does not silently
+		// re-select the previously checked option.
+		if (this.value === '') {
+			this.internalOptions = this.internalOptions?.map((option) => ({ ...option, checked: false }));
+			this.internals?.setFormValue?.('');
+			return;
+		}
+
+		// Case 3: a non-empty value was provided but did not match any option; warn and fall back.
 		if (this.value) {
 			const message = new ConsoleMessageClass();
 			message
@@ -485,6 +496,8 @@ export class OntarioRadioButtons implements RadioButtons {
 				.printMessage();
 		}
 
+		// Case 4: value is undefined (prop was never set); derive the value from whichever option
+		// has checked: true, matching native radio-button initial-state behaviour.
 		const checkedOption = this.internalOptions?.find((option) => option.checked);
 		this.value = checkedOption?.value ?? '';
 		this.internalOptions = this.internalOptions?.map((option) => ({

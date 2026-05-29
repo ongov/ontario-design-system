@@ -126,4 +126,37 @@ describe('ontario-radio-buttons', () => {
 
 		warnSpy.mockRestore();
 	});
+
+	it('should clear all options when value is explicitly set to an empty string on load', async () => {
+		const page = await newSpecPage({
+			components: [OntarioRadioButtons],
+			html: `<ontario-radio-buttons value="" options='[{ "value": "radio-option-1", "elementId": "radio-1", "label": "Radio option 1 label", "checked": true }, { "value": "radio-option-2", "elementId": "radio-2", "label": "Radio option 2 label" }]'></ontario-radio-buttons>`,
+		});
+
+		const radioOne = page.root?.shadowRoot?.querySelector('#radio-1') as HTMLInputElement;
+		const radioTwo = page.root?.shadowRoot?.querySelector('#radio-2') as HTMLInputElement;
+
+		expect(page.root?.value).toBe('');
+		expect(radioOne.checked).toBe(false);
+		expect(radioTwo.checked).toBe(false);
+	});
+
+	it('should clear all options when value is programmatically set to an empty string', async () => {
+		const page = await newSpecPage({
+			components: [OntarioRadioButtons],
+			html: `<ontario-radio-buttons value="radio-option-1" options='[{ "value": "radio-option-1", "elementId": "radio-1", "label": "Radio option 1 label" }, { "value": "radio-option-2", "elementId": "radio-2", "label": "Radio option 2 label" }]'></ontario-radio-buttons>`,
+		});
+
+		const radioOne = page.root?.shadowRoot?.querySelector('#radio-1') as HTMLInputElement;
+		const radioTwo = page.root?.shadowRoot?.querySelector('#radio-2') as HTMLInputElement;
+
+		expect(radioOne.checked).toBe(true);
+
+		(page.root as HTMLOntarioRadioButtonsElement).value = '';
+		await page.waitForChanges();
+
+		expect(page.root?.value).toBe('');
+		expect(radioOne.checked).toBe(false);
+		expect(radioTwo.checked).toBe(false);
+	});
 });
