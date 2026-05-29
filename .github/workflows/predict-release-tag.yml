@@ -12,7 +12,7 @@ jobs:
     name: Predict Release Tag
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write # semantic-release dry-run verifies git push access
       id-token: write
     outputs:
       release_tag: ${{ steps.predict.outputs.release_tag }}
