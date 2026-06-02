@@ -1,3 +1,43 @@
+# 8.1.0 (2026-06-02)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-html-generator:** align html-generator jest versions with workspace dd11095
+- **@ongov/ontario-design-system-component-library:** address date input and checkbox review feedback bcf6d5f
+- **assets:** harden shared asset path fallback resolution a491892
+- **ci:** add repository field to all publishable packages for npm provenance bf2f974
+- **ci:** correct contents permission to write in predict-release-tag workflow 04b5d75
+- **ci:** disable npm auth verification in semantic-release-lerna 8c1edc7
+- **ci:** resolve publish and sync-docs workflow failures 9d859a2
+- **ci:** switch docs auto-merge from rebase to merge 4101ea7
+- **ci:** wait for packages to publish before syncing docs 0da8996
+- **component-library:** satisfy asset helper return paths d7d2833
+- **component-library:** upgrade uuid to v14 to resolve moderate vulnerability bc44c2d
+- **deps:** update dependency next to v15.5.10 [security] 2990369
+- **deps:** update dependency next to v15.5.10 [security] ([#118](undefined/ongov/ontario-design-system/issues/118)) 47ee234
+- **forms:** align committed change handling in browser flows bf081e3
+- **radio-buttons:** respect explicit empty value to allow cleared group state e196419
+- replace workspace:\* with ^6.0.0-alpha.1 for @ongov/ontario-design-system-component-library 6580723
+
+### Features
+
+- app can now be used as a CLI tool and a library, removed unecessary code and file aad8f32
+- **app-angular:** align group value accessors with host value 8cd1517
+- basics for the component sample generator fd55069
+- **button:** add native link mode 838e0a6
+- **checkboxes:** align host value with native events 4f2bdce
+- **date-input:** add aggregate value api 723ddfe
+- **date-input:** add aggregate value event 852a8d3
+- **date-input:** align aggregate updates with host events 9f7894a
+- **date-input:** include aggregate value in host event detail 7613b86
+- **dropdown-list:** align host value with native events a46ab4b
+- **header:** swap Topics and Sign-in order and improve menu accessibility b8cc267
+- **header:** update topics/sign-in order and fix keyboard focus behavior across header menus 039d097
+- **radio-buttons:** align host value with native events 840ad41
+- **react:** export package metadata and improve next.js onboarding b92011a
+- **step-indicator:** clarify mode precedence and warnings 188a515
+- **textarea:** align host value with native events 5c50d24
+
 # 8.1.0-alpha.4 (2026-06-02)
 
 ### Bug Fixes
