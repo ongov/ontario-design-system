@@ -1,6 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-design-tokens",
 	"version": "8.1.0-alpha.3",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ongov/ontario-design-system",
+		"directory": "packages/ontario-design-system-design-tokens"
+	},
 	"private": false,
 	"description": "Design Tokens defining the base values within the Ontario Design System",
 	"license": "Apache-2.0",
