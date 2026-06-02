@@ -159,13 +159,22 @@ This enum defines the possible values for the reason property in the event paylo
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Accordion component supports multiple languages via the `language` prop, which controls the text used in translatable UI elements (e.g., button labels). If no language is explicitly passed, it defaults to English (`'en'`).
+The Ontario Accordion component supports server-side rendering, with a few considerations:
 
-On the client side, the component also listens for global language change events such as `setAppLanguage` and `headerLanguageToggled`, allowing it to update dynamically when used in conjunction with shared application-level language controls (like `<ontario-header>`).
-
-These language change events only fire in the browser after hydration. To ensure the correct language is rendered during SSR, it's recommended to pass the desired `language` explicitly as a prop (e.g., `<ontario-accordion language="fr"></ontario-accordion>`).
+- **Language prop:** Pass `language` explicitly during SSR. If not provided, the component defaults to English (`'en'`).
+- **Hydrated-only language events:** Global language events such as `setAppLanguage` and `headerLanguageToggled` only fire after hydration.
+- **Framework guidance:** For deterministic SSR output, set `language` directly in markup (for example, `<ontario-accordion language="fr"></ontario-accordion>`).
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Accordion presents collapsible sections of content.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/accordions.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
 
 ## Properties
 

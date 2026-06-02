@@ -2,6 +2,12 @@ import { Component, Element, h, Prop } from '@stencil/core';
 
 import { FormGap } from '../../utils/components/form-container/form-container.interface';
 
+/**
+ * Ontario Form Container applies consistent spacing between grouped form elements.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-form-container/
+ */
 @Component({
 	tag: 'ontario-form-container',
 	styleUrl: 'ontario-form-container.scss',

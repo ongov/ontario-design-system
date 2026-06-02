@@ -1,6 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-component-library",
-	"version": "8.0.0",
+	"version": "8.1.0-alpha.4",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ongov/ontario-design-system",
+		"directory": "packages/ontario-design-system-component-library"
+	},
 	"type": "module",
 	"private": false,
 	"description": "Ontario Design System Component Library",
@@ -18,7 +23,8 @@
 		"www/",
 		"LICENSE",
 		"package.json",
-		"readme.md"
+		"readme.md",
+		"llms.txt"
 	],
 	"exports": {
 		".": {
@@ -80,7 +86,7 @@
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
 		"dotenv": "^16.4.5",
-		"uuid": "^11.0.5"
+		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.55.0",

@@ -14,6 +14,16 @@ The Ontario Design System global styles package is required to use the Ontario D
 
 It includes the Ontario Design System global styles that are used for more generic elements and layouts, as well as font assets and favicons.
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library`
+- `@ongov/ontario-design-system-component-library-react`
+- `@ongov/ontario-design-system-component-library-angular`
+- `@ongov/ontario-design-system-complete-styles`
+
 ## Installation and usage
 
 To install the Ontario Design System global styles package, run the following command:

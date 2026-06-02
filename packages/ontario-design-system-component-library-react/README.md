@@ -14,6 +14,18 @@ This library was generated using Stencil's React output target dependency. It is
 
 This package targets React 19 and ships bindings that align with React 19's JSX/runtime expectations and tooling. React 18 is no longer supported by this package's peer dependencies.
 
+### Next.js App Router guide
+
+For Next.js-specific setup guidance, including SSR configuration and asset handling, use the official [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/).
+
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library`
+- `@ongov/ontario-design-system-global-styles`
+
 ## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
@@ -72,6 +84,10 @@ You can now use the React components in your component and template files.
 	quote="Access to high-quality child care is an issue that impacts our entire society."
 ></OntarioBlockquote>
 ```
+
+### Next.js
+
+For Next.js App Router projects, follow the dedicated [Next.js integration guide](https://designsystem.ontario.ca/developer-docs/framework-integrations/next-js-ssr/). Use the same Sass-based styles entry described above, and follow the guide for SSR-specific configuration and asset handling.
 
 ### Sass (optional)
 

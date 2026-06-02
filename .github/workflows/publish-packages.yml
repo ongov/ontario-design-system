@@ -15,6 +15,9 @@ jobs:
   publish:
     name: Publish Packages
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     outputs:
       release_tag: ${{ steps.publish.outputs.release_tag }}
     steps:
@@ -27,7 +30,7 @@ jobs:
 
       # Setup Node.js
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -38,7 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages
@@ -48,7 +51,6 @@ jobs:
         id: publish
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm run semantic-release
 
       - name: Collect published packages

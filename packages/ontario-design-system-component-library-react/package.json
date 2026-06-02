@@ -1,6 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "8.0.0",
+	"version": "8.1.0-alpha.4",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ongov/ontario-design-system",
+		"directory": "packages/ontario-design-system-component-library-react"
+	},
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
@@ -30,6 +35,7 @@
 			"import": "./dist/react-component-lib/index.js",
 			"default": "./dist/react-component-lib/index.js"
 		},
+		"./package.json": "./package.json",
 		"./styles": {
 			"default": "./dist/styles/theme.scss"
 		},
@@ -39,7 +45,8 @@
 		"dist/",
 		"src/",
 		"package.json",
-		"README.md"
+		"README.md",
+		"llms.txt"
 	],
 	"scripts": {
 		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme && pnpm run docs:copy:docs",

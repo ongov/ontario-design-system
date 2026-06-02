@@ -143,7 +143,7 @@ The `ontario-design-system-component-library-react` package is a React wrapper f
 
 See the [Stencil Docs on React](https://stenciljs.com/docs/react) for more information.
 
-_Note: This library doesn't currently support Next.js Server-Side Rendering. For now, use `use client` in wrappers around the components._
+_Note: This library supports Next.js Server-Side Rendering. For integration guidance, refer to the React package's Next.js SSR guide and the `app-nextjs` proof-of-concept application in this repository._
 
 #### Building the Library
 

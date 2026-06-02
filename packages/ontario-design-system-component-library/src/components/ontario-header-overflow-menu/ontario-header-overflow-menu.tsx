@@ -6,11 +6,12 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
 /**
- * Overflow Menu Component
+ * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
  *
- * Displays a dropdown menu of links. Can operate in two modes:
+ * It can operate in two modes:
  *
- * ## Standalone Mode
+ * ### Standalone Mode
+ *
  * Used when placed directly in the header (desktop view).
  * - Manages its own open/close state via `menuButtonToggled` event
  * - Automatically focuses first menu item when opened
@@ -18,15 +19,24 @@ import { HeaderKeyboardNavigation } from '../../utils/components/header/header-k
  * - Auto-closes when focus leaves the menu area
  * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
  *
- * ## Embedded Mode
+ * ### Embedded Mode
+ *
  * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
  * - Parent component controls open/close state
  * - Parent component manages focus trap
  * - Menu is always visible when parent tab is active
  * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
  *
- * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
- * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ * ### Mode Detection
+ *
+ * - Auto-detected based on DOM position (no prop needed).
+ * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+ * - https://designsystem.ontario.ca/components/detail/application-header.html
+ * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
  */
 @Component({
 	tag: 'ontario-header-overflow-menu',
@@ -73,6 +83,18 @@ export class OntarioHeaderOverflowMenu {
 	@Prop() isLastMenu?: boolean = true;
 
 	/**
+	 * Whether Tab from the last menu item should return focus to the trigger button
+	 * instead of moving to the next menu or next page element.
+	 */
+	@Prop() returnFocusToTriggerOnLastTab?: boolean = false;
+
+	/**
+	 * Whether the standalone menu should move focus to the first item when opened.
+	 * This should only be true for keyboard-triggered opens.
+	 */
+	@Prop() focusFirstItemOnOpen?: boolean = false;
+
+	/**
 	 * The language of the component.
 	 * This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English.
 	 */
@@ -114,6 +136,12 @@ export class OntarioHeaderOverflowMenu {
 	private ariaLiveRegion!: HTMLElement;
 
 	/**
+	 * Prevent the same Arrow key event that opened/focused the embedded menu
+	 * from immediately advancing to the next item.
+	 */
+	private suppressNextArrowNavigation = false;
+
+	/**
 	 * Runtime mode detection.
 	 * Returns true when standalone (not inside tabs or mobile panel).
 	 */
@@ -138,10 +166,11 @@ export class OntarioHeaderOverflowMenu {
 	 * Focuses first menu item when menu opens in standalone mode.
 	 */
 	componentDidUpdate() {
-		if (this.menuIsOpen && this.isStandalone && !this.hasInitializedFocus) {
+		if (this.menuIsOpen && this.isStandalone && this.focusFirstItemOnOpen && !this.hasInitializedFocus) {
 			this.focusFirstMenuItem();
 			this.hasInitializedFocus = true;
 		}
+
 		if (!this.menuIsOpen) {
 			this.hasInitializedFocus = false;
 		}
@@ -195,6 +224,7 @@ export class OntarioHeaderOverflowMenu {
 	@Listen('focusFirstItem', { target: 'window' })
 	handleFocusFirstItem() {
 		if (!this.isStandalone) {
+			this.suppressNextArrowNavigation = true;
 			this.focusFirstMenuItem();
 		}
 	}
@@ -356,6 +386,17 @@ export class OntarioHeaderOverflowMenu {
 		// Handle Tab from last item
 		if (event.key === 'Tab' && !event.shiftKey) {
 			if (focusable.length && shadowActive === focusable[focusable.length - 1]) {
+				if (this.returnFocusToTriggerOnLastTab) {
+					event.preventDefault();
+					this.focusMenuButtonEvent.emit();
+					requestAnimationFrame(() => {
+						this.menuIsOpen = false;
+						this.resetState();
+						this.menuClosed.emit();
+					});
+					return;
+				}
+
 				if (this.isLastMenu) {
 					// Last menu: let browser focus next tabbable element
 					this.menuIsOpen = false;
@@ -421,6 +462,11 @@ export class OntarioHeaderOverflowMenu {
 	private handleArrowNavigation(event: KeyboardEvent) {
 		if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
 
+		if (this.suppressNextArrowNavigation) {
+			this.suppressNextArrowNavigation = false;
+			return;
+		}
+
 		const focusable = this.getFocusableElements();
 		if (!focusable.length) return;
 
@@ -467,6 +513,7 @@ export class OntarioHeaderOverflowMenu {
 	private resetState() {
 		this.currentIndex = undefined;
 		this.shouldCheckAutoClose = true;
+		this.suppressNextArrowNavigation = false;
 	}
 
 	/**

@@ -6,6 +6,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import translations from '../../translations/global.i18n.json';
 
+/**
+ * Ontario Loading Indicator communicates in-progress loading states.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/loading-indicator.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-loading-indicator/
+ */
 @Component({
 	tag: 'ontario-loading-indicator',
 	styleUrl: 'ontario-loading-indicator.scss',

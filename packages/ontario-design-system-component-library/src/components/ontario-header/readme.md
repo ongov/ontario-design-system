@@ -498,17 +498,25 @@ To ensure best practices, it is important to limit the number of navigation link
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Header component is partially SSR-compatible. It supports static HTML rendering on the server but defers most dynamic behavior to the browser after hydration.
+The Ontario Header component supports server-side rendering, with a few important limitations:
 
-Important considerations:
-
-- **Dynamic menu fetching via the Ontario Header API (`fetchOntarioMenu`) is browser-only**. This will not execute during SSR, and no menu will be rendered until hydration.
-- **Language detection** (`document.documentElement.lang`, `window`, etc.) is also only available after hydration. Default language will be used until hydration completes. To ensure the correct language is rendered during SSR, explicitly pass the language prop.
-- Internal state updates (like `menuToggle`, `searchToggle`) are interactive and require JavaScript. These elements will not function without hydration.
-- If your framework allows, consider using `client:only` or `useEffect` (React) to delay rendering this component until after hydration in SSR-critical apps.
-- **Use static `menuItems` for SSR environments** and enable the dynamic menu only when client-side rendering is guaranteed.
+- **Hydrated-only menu fetching:** Dynamic menu fetching through `fetchOntarioMenu` is browser-only and will not execute during SSR.
+- **Language prop:** Pass `language` explicitly during SSR. Runtime language detection via `document.documentElement.lang` and `window` is hydrated-only.
+- **Hydrated-only interactions:** Interactive state such as `menuToggle` and `searchToggle` requires JavaScript and is unavailable before hydration.
+- **Framework guidance:** For SSR-critical applications, prefer static `menuItems` and only enable dynamic menu fetching in guaranteed client-side contexts.
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/ontario-header.html
+- https://designsystem.ontario.ca/components/detail/application-header.html
+- https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-header/
 
 ## Properties
 

@@ -28,6 +28,15 @@ Use this package if you are working with plain HTML or any framework/tooling tha
 - [Ontario Design System Angular component library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular)
 - [Ontario Design System React component library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-react)
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library-react`
+- `@ongov/ontario-design-system-component-library-angular`
+- `@ongov/ontario-design-system-global-styles`
+
 ## Installation and usage
 
 There are two ways to install the Ontario Design System component library package into your project: through [npm](#installing-the-npm-package) or through a [CDN](#cdn).
