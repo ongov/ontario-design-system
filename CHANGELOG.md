@@ -1,3 +1,12 @@
+# 8.1.0-alpha.4 (2026-06-02)
+
+### Bug Fixes
+
+- **ci:** add repository field to all publishable packages for npm provenance bf2f974
+- **ci:** correct contents permission to write in predict-release-tag workflow 04b5d75
+- **ci:** disable npm auth verification in semantic-release-lerna 8c1edc7
+- **radio-buttons:** respect explicit empty value to allow cleared group state e196419
+
 # 8.1.0-alpha.3 (2026-05-08)
 
 ### Bug Fixes
