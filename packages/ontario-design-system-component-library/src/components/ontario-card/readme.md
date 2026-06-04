@@ -249,7 +249,7 @@ The Ontario Card component supports server-side rendering, with a few considerat
 
 - **Preferred content source:** Always provide the `label` prop so heading and link text are deterministic in SSR output.
 - **Slotted content caveat:** Fallback content via `host.textContent` is not reliably available during SSR.
-- **Accessibility guidance:** If `ariaLabelText` is used, confirm it is appropriate for both image and heading links.
+- **Accessibility guidance:** If `ariaLabelText` is used, confirm it is appropriate for the card link text (heading link), which is the single keyboard focus target.
 
 ### SSR-safe example:
 

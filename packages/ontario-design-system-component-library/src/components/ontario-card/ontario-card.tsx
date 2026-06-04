@@ -344,7 +344,7 @@ export class OntarioCard {
 			<li class={this.getCardClasses()}>
 				{this.image && (
 					<div class="ontario-card__image-container">
-						<a href={this.getHref()} aria-label={this.ariaLabelText}>
+						<a href={this.getHref()} aria-label={this.ariaLabelText} tabindex={-1}>
 							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 						</a>
 					</div>

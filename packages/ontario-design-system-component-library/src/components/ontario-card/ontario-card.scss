@@ -240,6 +240,12 @@ $ontario-card-heading-colours: (
 }
 
 .ontario-card__image-container {
+	a {
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
 	.ontario-card--position-vertical & {
 		margin-bottom: spacing.$spacing-2 * -1;
 	}
