@@ -283,6 +283,7 @@ export class OntarioInput implements TextInput {
 	@Watch('value')
 	handleValueChange() {
 		this.hasBeenInteractedWith = this.hasBeenInteractedWith || !!this.value;
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	/*
