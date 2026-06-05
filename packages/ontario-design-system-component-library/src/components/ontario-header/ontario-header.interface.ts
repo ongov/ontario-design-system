@@ -25,3 +25,10 @@ export interface OntarioMenuItems {
 }
 
 export type OntarioHeaderType = 'application' | 'ontario' | 'serviceOntario';
+
+export type HeaderMenuOpenTrigger = 'click' | 'keyboard' | 'programmatic';
+
+export interface HeaderMenuToggleDetail {
+	isOpen: boolean;
+	trigger: HeaderMenuOpenTrigger;
+}
