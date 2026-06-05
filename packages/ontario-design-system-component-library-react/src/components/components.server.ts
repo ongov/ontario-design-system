@@ -148,6 +148,7 @@ import { OntarioIconVpnKey as OntarioIconVpnKeyElement } from "@ongov/ontario-de
 import { OntarioIconWheelchair as OntarioIconWheelchairElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js";
 import { OntarioIconWifi as OntarioIconWifiElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js";
 import { OntarioIconYoutube as OntarioIconYoutubeElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js";
+import { OntarioInPageNavigation as OntarioInPageNavigationElement } from "@ongov/ontario-design-system-component-library/components/ontario-in-page-navigation.js";
 import { OntarioInput as OntarioInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-input.js";
 import { OntarioLanguageToggle as OntarioLanguageToggleElement } from "@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js";
 import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js";
@@ -2183,6 +2184,23 @@ export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioIconYoutube as ReactWebComponent<OntarioIconYoutubeElement, OntarioIconYoutubeEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioInPageNavigationEvents = NonNullable<unknown>;
+
+export const OntarioInPageNavigation: StencilReactComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents> = /*@__PURE__*/ createComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents>({
+    tagName: 'ontario-in-page-navigation',
+    properties: {
+        heading: 'heading',
+        headingLevel: 'heading-level',
+        noTopBorder: 'no-top-border',
+        skipLinkTarget: 'skip-link-target',
+        smoothScroll: 'smooth-scroll',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioInPageNavigation as ReactWebComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents>,
     serializeShadowRoot
 });
 

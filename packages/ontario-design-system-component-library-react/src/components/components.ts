@@ -148,6 +148,7 @@ import { OntarioIconVpnKey as OntarioIconVpnKeyElement, defineCustomElement as d
 import { OntarioIconWheelchair as OntarioIconWheelchairElement, defineCustomElement as defineOntarioIconWheelchair } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js";
 import { OntarioIconWifi as OntarioIconWifiElement, defineCustomElement as defineOntarioIconWifi } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js";
 import { OntarioIconYoutube as OntarioIconYoutubeElement, defineCustomElement as defineOntarioIconYoutube } from "@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js";
+import { OntarioInPageNavigation as OntarioInPageNavigationElement, defineCustomElement as defineOntarioInPageNavigation } from "@ongov/ontario-design-system-component-library/components/ontario-in-page-navigation.js";
 import { OntarioInput as OntarioInputElement, defineCustomElement as defineOntarioInput } from "@ongov/ontario-design-system-component-library/components/ontario-input.js";
 import { OntarioLanguageToggle as OntarioLanguageToggleElement, defineCustomElement as defineOntarioLanguageToggle } from "@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js";
 import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement, defineCustomElement as defineOntarioLoadingIndicator } from "@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js";
@@ -1755,6 +1756,17 @@ export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement
     react: React,
     events: {} as OntarioIconYoutubeEvents,
     defineCustomElement: defineOntarioIconYoutube
+});
+
+export type OntarioInPageNavigationEvents = NonNullable<unknown>;
+
+export const OntarioInPageNavigation: StencilReactComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents> = /*@__PURE__*/ createComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents>({
+    tagName: 'ontario-in-page-navigation',
+    elementClass: OntarioInPageNavigationElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioInPageNavigationEvents,
+    defineCustomElement: defineOntarioInPageNavigation
 });
 
 export type OntarioInputEvents = {
