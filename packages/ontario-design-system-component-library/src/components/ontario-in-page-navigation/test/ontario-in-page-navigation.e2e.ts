@@ -1,11 +1,13 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('ontario-in-page-navigation', () => {
-	it('renders', async () => {
-		const page = await newE2EPage();
+test.describe('ontario-in-page-navigation', () => {
+	test('renders', async ({ page }) => {
 		await page.setContent('<ontario-in-page-navigation></ontario-in-page-navigation>');
+		await page.waitForChanges();
 
-		const element = await page.find('ontario-in-page-navigation');
-		expect(element).toHaveClass('hydrated');
+		const host = page.locator('ontario-in-page-navigation').first();
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass(/hydrated/);
 	});
 });
