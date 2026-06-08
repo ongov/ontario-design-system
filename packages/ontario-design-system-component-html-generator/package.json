@@ -16,7 +16,7 @@
 	},
 	"scripts": {
 		"build": "tsc && pnpm run docs:copy:readme",
-		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: HTML Sample Generator\n---\n\" -df ../docusaurus/docs/07-readme-html-sample-generator.md",
+		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: HTML Sample Generator\n---\n\" --df ../docusaurus/docs/07-readme-html-sample-generator.md",
 		"start": "node dist/cli.js",
 		"test": "jest"
 	},
@@ -49,9 +49,9 @@
 		"@types/node": "^24.10.1",
 		"jest": "^29.7.0",
 		"jest-environment-node": "^29.7.0",
-		"puppeteer": "^24.30.0",
+		"puppeteer": "^25.0.0",
 		"ts-jest": "^29.4.9",
 		"tsx": "^4.20.5",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.0"
 	}
 }
