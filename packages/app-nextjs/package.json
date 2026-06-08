@@ -1,6 +1,6 @@
 {
 	"name": "app-nextjs",
-	"version": "8.1.0-alpha.2",
+	"version": "8.1.0",
 	"private": true,
 	"scripts": {
 		"prebuild": "pnpm run copy:assets",

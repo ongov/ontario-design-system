@@ -1,6 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-component-html-generator",
-	"version": "8.1.0-alpha.2",
+	"version": "8.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ongov/ontario-design-system",
+		"directory": "packages/ontario-design-system-component-html-generator"
+	},
 	"description": "Generates static HTML samples for Ontario Design System web components.",
 	"private": false,
 	"main": "dist/index.js",

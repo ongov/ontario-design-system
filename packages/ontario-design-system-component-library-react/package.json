@@ -1,6 +1,11 @@
 {
 	"name": "@ongov/ontario-design-system-component-library-react",
-	"version": "8.1.0-alpha.2",
+	"version": "8.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ongov/ontario-design-system",
+		"directory": "packages/ontario-design-system-component-library-react"
+	},
 	"private": false,
 	"description": "React specific wrapper for ontario-design-system-component-library",
 	"license": "Apache-2.0",
