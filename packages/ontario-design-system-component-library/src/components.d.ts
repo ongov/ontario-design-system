@@ -48,6 +48,7 @@ import {
 import { FooterSocialLinksProps } from './components/ontario-footer/components';
 import {
 	ApplicationHeaderInfo,
+	HeaderMenuToggleDetail,
 	LanguageToggleOptions,
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
@@ -102,6 +103,7 @@ export {
 export { FooterSocialLinksProps } from './components/ontario-footer/components';
 export {
 	ApplicationHeaderInfo,
+	HeaderMenuToggleDetail,
 	LanguageToggleOptions,
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
@@ -3822,7 +3824,7 @@ declare global {
 		new (): HTMLOntarioFormContainerElement;
 	};
 	interface HTMLOntarioHeaderElementEventMap {
-		menuButtonToggled: boolean;
+		menuButtonToggled: HeaderMenuToggleDetail;
 	}
 	/**
 	 * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
@@ -5942,7 +5944,7 @@ declare namespace LocalJSX {
 		/**
 		 * This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu.
 		 */
-		onMenuButtonToggled?: (event: OntarioHeaderCustomEvent<boolean>) => void;
+		onMenuButtonToggled?: (event: OntarioHeaderCustomEvent<HeaderMenuToggleDetail>) => void;
 		/**
 		 * Information pertaining to the sign-in menu items for the Ontario header.
 		 */

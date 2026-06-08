@@ -496,6 +496,24 @@ application-header-info='{ "title": "Application name", "href": "/", "maxSubhead
 
 To ensure best practices, it is important to limit the number of navigation links passed to the `menuItems` property. We recommend a maximum of seven links, and to keep the labels for these links concise.
 
+## Custom event types
+
+### HeaderMenuToggleDetail
+
+Payload shape used by the `menuButtonToggled` custom event.
+
+```ts
+interface HeaderMenuToggleDetail {
+	isOpen: boolean;
+	trigger: 'click' | 'keyboard' | 'programmatic';
+}
+```
+
+| Property name | Type                                      | Description                                       |
+| ------------- | ----------------------------------------- | ------------------------------------------------- |
+| `isOpen`      | `boolean`                                 | Whether the menu is open after the toggle action. |
+| `trigger`     | `'click' \| 'keyboard' \| 'programmatic'` | How the toggle was triggered.                     |
+
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Header component supports server-side rendering, with a few important limitations:
@@ -535,9 +553,9 @@ For component guidance, see:
 
 ## Events
 
-| Event               | Description                                                                                                                                                                              | Type                   |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `menuButtonToggled` | This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu. | `CustomEvent<boolean>` |
+| Event               | Description                                                                                                                                                                              | Type                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `menuButtonToggled` | This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu. | `CustomEvent<HeaderMenuToggleDetail>` |
 
 ## Dependencies
 

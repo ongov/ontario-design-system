@@ -2,6 +2,7 @@ import { Component, Prop, State, Watch, Event, EventEmitter, Listen, h, Element 
 
 import {
 	ApplicationHeaderInfo,
+	HeaderMenuToggleDetail,
 	LanguageToggleOptions,
 	OntarioMenuItems,
 	OntarioHeaderType,
@@ -243,6 +244,7 @@ export class OntarioHeader {
 	@State() private searchBoxTextState: string = '';
 
 	private shouldFocusMenuOnOpen = false;
+	private pendingMenuToggleTrigger: HeaderMenuToggleDetail['trigger'] | null = null;
 
 	/**
 	 * Header-specific device detection.
@@ -262,6 +264,92 @@ export class OntarioHeader {
 	private get isMobileOrTablet(): boolean {
 		return (this.breakpointDeviceState ?? DeviceTypes.Desktop) !== DeviceTypes.Desktop;
 	}
+
+	private createMenuToggleDetail(isOpen: boolean, trigger: HeaderMenuToggleDetail['trigger']): HeaderMenuToggleDetail {
+		return { isOpen, trigger };
+	}
+
+	private emitMenuToggle(isOpen: boolean, trigger: HeaderMenuToggleDetail['trigger']) {
+		this.menuButtonToggled.emit(this.createMenuToggleDetail(isOpen, trigger));
+	}
+
+	private consumePendingMenuToggleTrigger(defaultTrigger: HeaderMenuToggleDetail['trigger']) {
+		const trigger = this.pendingMenuToggleTrigger ?? defaultTrigger;
+		this.pendingMenuToggleTrigger = null;
+		return trigger;
+	}
+
+	private isMenuOpenButtonKey(key: string): boolean {
+		return key === 'Enter' || key === ' ' || key === 'Spacebar' || key === 'ArrowDown';
+	}
+
+	private moveFocusIntoOpenMenu() {
+		window.dispatchEvent(new CustomEvent('menuButtonTabPressed', { bubbles: true, composed: true }));
+	}
+
+	private focusDesktopMenuAfterKeyboardOpen() {
+		if (this.isMobileOrTablet) return;
+
+		requestAnimationFrame(() => {
+			if (this.menuToggled) {
+				this.moveFocusIntoOpenMenu();
+			}
+		});
+	}
+
+	private handleMenuButtonKeyDown = (event: KeyboardEvent) => {
+		if (!this.isMenuOpenButtonKey(event.key)) return;
+
+		this.pendingMenuToggleTrigger = 'keyboard';
+
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+
+			if (this.menuToggled) {
+				this.moveFocusIntoOpenMenu();
+				return;
+			}
+
+			if (this.signInToggled) {
+				this.signInToggled = false;
+			}
+
+			this.menuToggled = true;
+			this.emitMenuToggle(this.menuToggled, 'keyboard');
+			this.searchToggle = undefined;
+			this.focusDesktopMenuAfterKeyboardOpen();
+		}
+	};
+
+	private handleMenuButtonClick = () => {
+		this.handlemenuToggled(this.consumePendingMenuToggleTrigger('click'));
+	};
+
+	private handleSignInButtonKeyDown = (event: KeyboardEvent) => {
+		if (!this.isMenuOpenButtonKey(event.key)) return;
+
+		this.pendingMenuToggleTrigger = 'keyboard';
+
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+
+			if (this.signInToggled) {
+				this.moveFocusIntoOpenMenu();
+				return;
+			}
+
+			if (this.menuToggled) {
+				this.menuToggled = false;
+			}
+
+			this.signInToggled = true;
+			this.emitMenuToggle(this.signInToggled, 'keyboard');
+		}
+	};
+
+	private handleSignInButtonClick = () => {
+		this.handleSignInToggled(this.consumePendingMenuToggleTrigger('click'));
+	};
 
 	@Watch('applicationHeaderInfo')
 	private parseApplicationHeaderInfo() {
@@ -411,12 +499,12 @@ export class OntarioHeader {
 		if (event.key === 'Escape') {
 			if (this.menuToggled) {
 				this.menuToggled = false;
-				this.menuButtonToggled.emit(this.menuToggled);
+				this.emitMenuToggle(this.menuToggled, 'programmatic');
 				this.focusMenuButton();
 			}
 			if (this.signInToggled) {
 				this.signInToggled = false;
-				this.menuButtonToggled.emit(this.signInToggled);
+				this.emitMenuToggle(this.signInToggled, 'programmatic');
 				this.signInButton.focus();
 			}
 		}
@@ -453,7 +541,7 @@ export class OntarioHeader {
 		if (this.menuToggled || this.signInToggled) {
 			this.menuToggled = false;
 			this.signInToggled = false;
-			this.menuButtonToggled.emit(false);
+			this.emitMenuToggle(false, 'programmatic');
 		}
 	}
 
@@ -464,7 +552,7 @@ export class OntarioHeader {
 	handleFocusOut(event: FocusEvent) {
 		if (this.menuToggled && !this.el.contains(event.relatedTarget as Node)) {
 			this.menuToggled = false;
-			this.menuButtonToggled.emit(this.menuToggled);
+			this.emitMenuToggle(this.menuToggled, 'programmatic');
 		}
 	}
 
@@ -480,7 +568,7 @@ export class OntarioHeader {
 		if (previousBreakpoint && previousBreakpoint !== this.breakpointDeviceState) {
 			this.menuToggled = false;
 			this.signInToggled = false;
-			this.menuButtonToggled.emit(false);
+			this.emitMenuToggle(false, 'programmatic');
 		}
 
 		// If we enter tabbed mode, signInToggled is no longer used.
@@ -543,20 +631,24 @@ export class OntarioHeader {
 	 * The `<ontario-header-overflow-menu>` sub-component listens for this event
 	 * To trigger the showing and hiding of the overflow menu.
 	 */
-	@Event() menuButtonToggled: EventEmitter<boolean>;
+	@Event() menuButtonToggled: EventEmitter<HeaderMenuToggleDetail>;
 
 	/**
 	 * Logic to handle the menu toggling
 	 */
-	handlemenuToggled = () => {
+	handlemenuToggled = (trigger: HeaderMenuToggleDetail['trigger'] = 'keyboard') => {
 		// Close sign-in menu if it's open
 		if (this.signInToggled) {
 			this.signInToggled = false;
 		}
 
 		this.menuToggled = !this.menuToggled;
-		this.menuButtonToggled.emit(this.menuToggled);
+		this.emitMenuToggle(this.menuToggled, trigger);
 		this.searchToggle = undefined;
+
+		if (this.menuToggled && trigger === 'keyboard') {
+			this.focusDesktopMenuAfterKeyboardOpen();
+		}
 	};
 
 	/**
@@ -569,7 +661,7 @@ export class OntarioHeader {
 	/**
 	 * Logic to handle the sign-in toggling
 	 */
-	handleSignInToggled = () => {
+	handleSignInToggled = (trigger: HeaderMenuToggleDetail['trigger'] = 'keyboard') => {
 		// Close main menu if it's open
 		if (this.menuToggled) {
 			this.menuToggled = false;
@@ -577,7 +669,7 @@ export class OntarioHeader {
 
 		this.signInToggled = !this.signInToggled;
 		// Emit the menuButtonToggled event for either dropdown
-		this.menuButtonToggled.emit(this.signInToggled);
+		this.emitMenuToggle(this.signInToggled, trigger);
 	};
 
 	/**
@@ -732,14 +824,15 @@ export class OntarioHeader {
 						: this.translations.header.openMenu[`${this.language}`]
 				}
 				aria-expanded={this.menuToggled ? 'true' : 'false'}
-				onClick={this.handlemenuToggled}
-				type="button"
-				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
+				onClick={this.handleMenuButtonClick}
 				onKeyDown={(event: KeyboardEvent) => {
 					if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
 						this.shouldFocusMenuOnOpen = true;
 					}
+					this.handleMenuButtonKeyDown(event);
 				}}
+				type="button"
+				ref={(el) => (this.menuButton = el as HTMLButtonElement)}
 				onMouseDown={() => {
 					this.shouldFocusMenuOnOpen = false;
 				}}
@@ -770,14 +863,15 @@ export class OntarioHeader {
 				id="ontario-header-sign-in-toggler"
 				aria-controls="ontario-sign-in-navigation"
 				aria-expanded={this.signInToggled ? 'true' : 'false'}
-				onClick={this.handleSignInToggled}
-				type="button"
-				ref={(el) => (this.signInButton = el as HTMLElement)}
+				onClick={this.handleSignInButtonClick}
 				onKeyDown={(event: KeyboardEvent) => {
 					if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
 						this.shouldFocusMenuOnOpen = true;
 					}
+					this.handleSignInButtonKeyDown(event);
 				}}
+				type="button"
+				ref={(el) => (this.signInButton = el as HTMLElement)}
 				onMouseDown={() => {
 					this.shouldFocusMenuOnOpen = false;
 				}}

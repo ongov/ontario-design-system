@@ -477,7 +477,7 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 })
 export class OntarioHeader {
   protected el: HTMLOntarioHeaderElement;
-  @Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
+  @Output() menuButtonToggled = new EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -485,13 +485,15 @@ export class OntarioHeader {
 }
 
 
+import type { HeaderMenuToggleDetail as IOntarioHeaderHeaderMenuToggleDetail } from '@ongov/ontario-design-system-component-library';
+
 export declare interface OntarioHeader extends Components.OntarioHeader {
   /**
    * This event is toggled when the menu button is pressed.
 The `<ontario-header-overflow-menu>` sub-component listens for this event
 To trigger the showing and hiding of the overflow menu.
    */
-  menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
+  menuButtonToggled: EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>;
 }
 
 
