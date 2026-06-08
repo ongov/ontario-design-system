@@ -12,7 +12,7 @@
  * Usage Examples:
  *
  *  Single file prepend:
- *    ts-node documentation-helper.ts -f <file> -p "---\\ntitle: My Title\\n---" [--destinationFile <destinationFile>]
+ *    ts-node documentation-helper.ts -f <file> -p "---\\ntitle: My Title\\n---" [--df <destinationFile>]
  *
  *  Batch mode (recommended for repo-wide documentation management):
  *    ts-node documentation-helper.ts -i <inputDir> -o <destinationDir> [-m <mappingFile>]
@@ -66,7 +66,7 @@ const DEFAULT_MAPPING_FILE = 'docs-metadata.yaml';
 program
 	.description('Documentation processing utilities')
 	.option('-f, --file <string>', `File to Process`)
-	.option('--destinationFile <string>', `Destination file to write to, if different from source file`)
+	.option('--df, --destinationFile <string>', `Destination file to write to, if different from source file`)
 	.option('-p, --prepend <string>', `Text to prepend to file`)
 	.option('-d, --debug', 'Enable Debug Mode')
 	.option('-i, --inputDir <string>', 'Input directory containing files to process')
@@ -317,7 +317,7 @@ function exitFailure(message?: string) {
 
 function printUsageModes() {
 	console.error('Use either:');
-	console.error('  Single file mode:   -f <file> -p <text> --destinationFile <destinationFile>');
+	console.error('  Single file mode:   -f <file> -p <text> --df <destinationFile>');
 	console.error('  Batch mode:         -i <inputDir> -o <destinationDir> [-m <mappingFile>]');
 }
 
