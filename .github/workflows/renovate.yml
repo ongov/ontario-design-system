@@ -7,11 +7,12 @@ on:
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
   # React to Renovate PR activity so checkbox/label requests are processed quickly
+  # Note: 'synchronize' is intentionally omitted — triggering Renovate on every
+  # push to a renovate-labelled PR causes it to force-rebase and wipe manual fixes.
   pull_request:
     types:
       - opened
       - reopened
-      - synchronize
       - edited
       - labeled
   # React to Dependency Dashboard checkbox edits on Renovate-labeled issues
