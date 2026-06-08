@@ -2,6 +2,7 @@
 {
 	"compilerOptions": {
 		"baseUrl": "./",
+		"ignoreDeprecations": "6.0",
 		"paths": {
 			"component-library": ["dist/component-library"],
 			"@ongov/ontario-design-system-component-library": ["node_modules/@ongov/ontario-design-system-component-library"],
