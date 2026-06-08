@@ -22,7 +22,7 @@
 		"experimentalDecorators": true,
 		"target": "ES2022",
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "node10",
 		"importHelpers": true,
 		"useDefineForClassFields": false,
 		"skipLibCheck": true,
