@@ -6,15 +6,6 @@ on:
     - cron: '0 0 * * 0'
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
-  # React to Renovate PR activity so checkbox/label requests are processed quickly
-  # Note: 'synchronize' is intentionally omitted — triggering Renovate on every
-  # push to a renovate-labelled PR causes it to force-rebase and wipe manual fixes.
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - edited
-      - labeled
   # React to Dependency Dashboard checkbox edits on Renovate-labeled issues
   issues:
     types:
@@ -23,9 +14,7 @@ on:
 jobs:
   run-renovate:
     name: Run Renovate Bot
-    if: >
-      (github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'renovate')) &&
-      (github.event_name != 'issues' || contains(github.event.issue.labels.*.name, 'renovate'))
+    if: github.event_name != 'issues' || contains(github.event.issue.labels.*.name, 'renovate')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
