@@ -10,7 +10,7 @@ test.describe('ontario-aside', () => {
               heading-type="h4"
               heading-content-type="string"
               heading-content="This is an aside heading"
-              highlight-color="purple"
+              highlight-colour="purple"
       >
               <p>
                   As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
@@ -30,17 +30,17 @@ test.describe('ontario-aside', () => {
 		await expect(host).toHaveClass('hydrated');
 	});
 
-	test('renders correct initial highlight-color', async () => {
+	test('renders correct initial highlight-colour', async () => {
 		const aside = host;
-		await expect(aside).toHaveAttribute('highlight-color', 'purple');
+		await expect(aside).toHaveAttribute('highlight-colour', 'purple');
 	});
 
 	test('applies and updates border-highlight class when highlight-colour changes', async ({ page }) => {
 		// initial class on inner <aside>
-		const hasTeal = await host.evaluate(
-			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--teal'),
+		const hasPurple = await host.evaluate(
+			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--purple'),
 		);
-		expect(hasTeal).toBe(true);
+		expect(hasPurple).toBe(true);
 
 		// update prop to lime and wait for component to re-render
 
@@ -55,9 +55,9 @@ test.describe('ontario-aside', () => {
 	});
 
 	test('invalid highlight-colour falls back to teal', async ({ page }) => {
-		// Set invalid highlight-color via attribute (this will trigger validation better than property assignment)
+		// Set invalid highlight-colour via attribute (this will trigger validation better than property assignment)
 		await host.evaluate((el) => {
-			el.setAttribute('highlight-color', 'banana');
+			el.setAttribute('highlight-colour', 'banana');
 		});
 		await page.waitForChanges();
 
