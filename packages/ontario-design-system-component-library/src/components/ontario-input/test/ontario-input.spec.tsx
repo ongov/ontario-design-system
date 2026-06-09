@@ -134,6 +134,7 @@ describe('ontario-input', () => {
 				></ontario-input>`,
 			});
 
+			expect(page.root).not.toBeNull();
 			const inputElement = await page.root?.getInputElement();
 			const shadowInput = page.root?.shadowRoot?.querySelector('input');
 
