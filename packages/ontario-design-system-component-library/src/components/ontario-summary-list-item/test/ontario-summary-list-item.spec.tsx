@@ -42,6 +42,22 @@ describe('ontario-summary-list-item', () => {
 		expect(dd?.textContent).toBe('Smith');
 	});
 
+	it('should project the named action slot content when provided', async () => {
+		const slotPage = await newSpecPage({
+			components: [OntarioSummaryListItem],
+			html: `<ontario-summary-list-item name="Last name" description="Smith">
+				<a slot="action" href="#change-last-name">Change last name</a>
+			</ontario-summary-list-item>`,
+		});
+
+		await slotPage.waitForChanges();
+
+		const slotLink = slotPage.root?.querySelector('a[slot="action"]');
+		const row = (slotPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list-item__row');
+		expect(slotLink?.textContent).toContain('Change last name');
+		expect(row).not.toHaveClass('ontario-summary-list-item__row--no-actions');
+	});
+
 	it('should apply ontario-summary-list-item__row--no-actions when no actionLink or slot is provided', () => {
 		const row = host.shadowRoot?.querySelector('.ontario-summary-list-item__row');
 		expect(row).toHaveClass('ontario-summary-list-item__row--no-actions');
@@ -102,5 +118,29 @@ describe('ontario-summary-list-item', () => {
 		await compactPage.waitForChanges();
 		const row = (compactPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list-item__row');
 		expect(row).toHaveClass('ontario-summary-list-item__row--compact');
+	});
+
+	it('should warn when name prop is missing', async () => {
+		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+		await newSpecPage({
+			components: [OntarioSummaryListItem],
+			html: `<ontario-summary-list-item description="Smith"></ontario-summary-list-item>`,
+		});
+
+		expect(warnSpy).toHaveBeenCalled();
+		warnSpy.mockRestore();
+	});
+
+	it('should warn when description prop is missing', async () => {
+		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+		await newSpecPage({
+			components: [OntarioSummaryListItem],
+			html: `<ontario-summary-list-item name="Last name"></ontario-summary-list-item>`,
+		});
+
+		expect(warnSpy).toHaveBeenCalled();
+		warnSpy.mockRestore();
 	});
 });

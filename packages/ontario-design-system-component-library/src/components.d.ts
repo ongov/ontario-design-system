@@ -23,7 +23,7 @@ import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-opti
 import { CaptionType } from "./utils/common/input-caption/input-caption.types";
 import { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
 import { FooterSocialLinksProps } from "./components/ontario-footer/components";
-import { ApplicationHeaderInfo, LanguageToggleOptions, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
+import { ApplicationHeaderInfo, HeaderMenuToggleDetail, LanguageToggleOptions, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
 import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
@@ -51,7 +51,7 @@ export { DropdownOption } from "./components/ontario-dropdown-list/dropdown-opti
 export { CaptionType } from "./utils/common/input-caption/input-caption.types";
 export { FooterLinks, OntarioFooterType, ThreeColumnOptions, TwoColumnOptions } from "./components/ontario-footer/ontario-footer-interface";
 export { FooterSocialLinksProps } from "./components/ontario-footer/components";
-export { ApplicationHeaderInfo, LanguageToggleOptions, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
+export { ApplicationHeaderInfo, HeaderMenuToggleDetail, LanguageToggleOptions, OntarioHeaderType } from "./components/ontario-header/ontario-header.interface";
 export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
@@ -3690,7 +3690,7 @@ declare global {
         new (): HTMLOntarioFormContainerElement;
     };
     interface HTMLOntarioHeaderElementEventMap {
-        "menuButtonToggled": boolean;
+        "menuButtonToggled": HeaderMenuToggleDetail;
     }
     /**
      * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
@@ -5615,7 +5615,7 @@ declare namespace LocalJSX {
         /**
           * This event is toggled when the menu button is pressed. The `<ontario-header-overflow-menu>` sub-component listens for this event To trigger the showing and hiding of the overflow menu.
          */
-        "onMenuButtonToggled"?: (event: OntarioHeaderCustomEvent<boolean>) => void;
+        "onMenuButtonToggled"?: (event: OntarioHeaderCustomEvent<HeaderMenuToggleDetail>) => void;
         /**
           * Information pertaining to the sign-in menu items for the Ontario header.
          */
