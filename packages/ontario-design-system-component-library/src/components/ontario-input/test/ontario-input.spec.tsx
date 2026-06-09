@@ -153,7 +153,7 @@ describe('ontario-input', () => {
 			});
 
 			expect(page.root).not.toBeNull();
-			(page.rootInstance as OntarioInput & { inputFieldRef?: HTMLInputElement }).inputFieldRef = undefined;
+			(page.rootInstance as unknown as { inputFieldRef?: HTMLInputElement }).inputFieldRef = undefined;
 
 			await expect(page.root?.getInputElement()).resolves.toBeNull();
 		});

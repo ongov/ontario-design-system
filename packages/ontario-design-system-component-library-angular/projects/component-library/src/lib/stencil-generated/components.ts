@@ -3381,7 +3381,8 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  methods: ['getInputElement']
 })
 @Component({
   selector: 'ontario-input',
