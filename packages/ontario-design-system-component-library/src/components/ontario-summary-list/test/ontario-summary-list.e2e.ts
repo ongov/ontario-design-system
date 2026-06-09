@@ -2,42 +2,46 @@ import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
 test.describe('ontario-summary-list', () => {
-	let host: Locator;
-	const setHostContent = async (page: any, html: string) => {
+	const renderHost = async (page: any, html: string): Promise<Locator> => {
 		await page.setContent(html);
 		await page.waitForChanges();
-		host = page.locator('ontario-summary-list').last();
+		const host = page.locator('ontario-summary-list').last();
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass(/hydrated/);
+		return host;
 	};
 
-	test.beforeEach(async ({ page }) => {
-		await setHostContent(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
-	});
-
-	test('renders and is hydrated', async () => {
+	test('renders and is hydrated', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass('hydrated');
 	});
 
-	test('renders the caption as an h3 heading by default', async () => {
+	test('renders the caption as an h3 heading by default', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
 		const heading = host.locator('h3.ontario-summary-list__heading');
 		await expect(heading).toBeAttached();
 		await expect(heading).toHaveText('Personal information');
 	});
 
-	test('renders the dl container', async () => {
+	test('renders the dl container', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
 		const container = host.locator('dl.ontario-summary-list__container');
 		await expect(container).toBeAttached();
 	});
 
-	test('renders default and fullWidth layout variants without errors', async ({ page }) => {
+	test('renders default layout variant without fullWidth class', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
 		const defaultWrapper = host.locator('.ontario-summary-list');
 		await expect(defaultWrapper).toBeAttached();
 		await expect(defaultWrapper).not.toContainClass('summary-list-full-width');
+	});
 
-		await setHostContent(
+	test('renders fullWidth layout variant without errors', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`
-			<ontario-summary-list caption="Personal information" full-width="true">
+			<ontario-summary-list caption="Personal information" full-width>
 				<div class="ontario-summary-list-demo-row">
 					<dt>Address</dt>
 					<dd>111 Wellington St.</dd>
@@ -51,7 +55,7 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('supports keyboard tab order and enter activation through slotted change links', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Personal information">
@@ -91,8 +95,8 @@ test.describe('ontario-summary-list', () => {
 		await expect(page).toHaveURL(/#row-2$/);
 	});
 
-	test('renders localized generated action link text for English and French', async ({ page }) => {
-		await setHostContent(
+	test('renders localized generated action link text for English', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`<ontario-summary-list caption="Address" caption-action-link='{"href":"/change-address"}'></ontario-summary-list>`,
 		);
@@ -100,8 +104,10 @@ test.describe('ontario-summary-list', () => {
 		const enLink = host.locator('.ontario-summary-list__change-button');
 		await expect(enLink).toContainText('Change');
 		await expect(enLink).toContainText('your answer for:');
+	});
 
-		await setHostContent(
+	test('renders localized generated action link text for French', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`<ontario-summary-list caption="Address" language="fr" caption-action-link='{"href":"/change-address"}'></ontario-summary-list>`,
 		);
@@ -112,7 +118,7 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('renders French slotted content with no generated English text bleed-through', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Renseignements personnels" language="fr">
@@ -133,8 +139,8 @@ test.describe('ontario-summary-list', () => {
 		await expect(host).not.toContainText('your answer for:');
 	});
 
-	test('has expected accessible heading and action link names for default and fullWidth variants', async ({ page }) => {
-		await setHostContent(
+	test('has expected accessible heading and action link names for default variant', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Personal information" caption-action-link='{"href":"/change"}'>
@@ -148,11 +154,13 @@ test.describe('ontario-summary-list', () => {
 
 		await expect(host.getByRole('heading', { name: 'Personal information' })).toBeVisible();
 		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
+	});
 
-		await setHostContent(
+	test('has expected accessible heading and action link names for fullWidth variant', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`
-			<ontario-summary-list caption="Personal information" full-width="true" caption-action-link='{"href":"/change"}'>
+			<ontario-summary-list caption="Personal information" full-width caption-action-link='{"href":"/change"}'>
 				<div class="ontario-summary-list-demo-row">
 					<dt>Address</dt>
 					<dd>111 Wellington St.</dd>
@@ -166,7 +174,7 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('applies focus ring styles to slotted links on keyboard focus', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Personal information">
@@ -194,7 +202,7 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('visual regression: default variant with action link', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Personal information" caption-action-link='{"href":"/change-personal"}'>
@@ -211,7 +219,7 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('visual regression: row without action link', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
 			<ontario-summary-list caption="Personal information">
@@ -228,10 +236,10 @@ test.describe('ontario-summary-list', () => {
 	});
 
 	test('visual regression: fullWidth variant', async ({ page }) => {
-		await setHostContent(
+		const host = await renderHost(
 			page,
 			`
-			<ontario-summary-list caption="Summary" full-width="true" caption-action-link='{"href":"/change"}'>
+			<ontario-summary-list caption="Summary" full-width caption-action-link='{"href":"/change"}'>
 				<div class="ontario-summary-list-demo-row">
 					<dt>Address</dt>
 					<dd>111 Wellington St.</dd>
