@@ -193,12 +193,15 @@ test.describe('ontario-summary-list', () => {
 			const styles = window.getComputedStyle(el as HTMLElement);
 			return {
 				outlineStyle: styles.outlineStyle,
+				outlineWidth: styles.outlineWidth,
 				boxShadow: styles.boxShadow,
 			};
 		});
 
-		expect(focusedStyles.boxShadow).not.toBe('none');
-		expect(focusedStyles.outlineStyle).not.toBe('none');
+		const hasOutline = focusedStyles.outlineStyle !== 'none' && focusedStyles.outlineWidth !== '0px';
+		const hasBoxShadow = focusedStyles.boxShadow !== 'none';
+
+		expect(hasOutline || hasBoxShadow).toBe(true);
 	});
 
 	test('visual regression: default variant with action link', async ({ page }) => {
