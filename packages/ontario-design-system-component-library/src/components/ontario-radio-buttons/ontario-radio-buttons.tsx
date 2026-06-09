@@ -27,6 +27,22 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 
 import { default as translations } from '../../translations/global.i18n.json';
 
+/**
+ * Ontario Radio Buttons captures a single choice from a defined option set.
+ *
+ * This component intentionally does not expose group-level `readOnly` or `disabled` props.
+ *
+ * To support accessible and understandable form completion:
+ * - keep options and submission actions available
+ * - use validation and error messaging to guide corrections
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/radio-buttons.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-radio-buttons/
+ *
+ * Disabled/read-only policy source:
+ * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+ */
 @Component({
 	tag: 'ontario-radio-buttons',
 	styleUrl: 'ontario-radio-buttons.scss',
@@ -110,6 +126,14 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * If no prop is set, it will default to false (optional).
 	 */
 	@Prop() required?: boolean = false;
+
+	/**
+	 * The currently selected radio option value.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the radio group.
+	 * If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+	 */
+	@Prop({ mutable: true }) value?: string;
 
 	/**
 	 * The options for the radio button group.
@@ -299,6 +323,8 @@ export class OntarioRadioButtons implements RadioButtons {
 					.printMessage(ConsoleType.Error);
 			}
 		}
+
+		this.syncValueFromOptions();
 	}
 
 	/*
@@ -373,10 +399,21 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	@Watch('value')
+	syncValueFromValueProp() {
+		if (this.internalOptions) {
+			this.syncValueFromOptions();
+		}
+	}
+
 	/**
 	 * Function to handle radio buttons events and the information pertaining to the radio buttons to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
+		if (eventType === EventType.Change) {
+			event.stopPropagation();
+		}
+
 		const input = event.target as HTMLInputElement | null;
 
 		// Reset all internalOptions checked states
@@ -388,16 +425,10 @@ export class OntarioRadioButtons implements RadioButtons {
 			.find((x) => x.value === input?.value);
 		// Set the new checked state for the selected value
 		if (changedOption) changedOption.checked = !changedOption?.checked;
+		this.value = this.internalOptions.find((x) => !!x.checked)?.value ?? '';
 
 		// Set the value within the form
-		this.internals?.setFormValue?.(
-			this.internalOptions
-				.filter((x) => !!x.checked)
-				.reduce((formData, currentValue) => {
-					formData.append(this.name, currentValue.value);
-					return formData;
-				}, new FormData()),
-		);
+		this.internals?.setFormValue?.(this.value ?? '');
 
 		handleInputEvent(
 			event,
@@ -412,8 +443,68 @@ export class OntarioRadioButtons implements RadioButtons {
 			this.customOnFocus,
 			this.customOnBlur,
 			undefined,
-			this.element,
+			undefined,
 		);
+
+		if (eventType === EventType.Change) {
+			this.emitHostValueEvent('change');
+		}
+	}
+
+	private emitHostValueEvent(name: 'change') {
+		this.element.dispatchEvent(
+			new CustomEvent(name, {
+				bubbles: true,
+				composed: true,
+				detail: {
+					value: this.value ?? '',
+				},
+			}),
+		);
+	}
+
+	private syncValueFromOptions() {
+		// Case 1: a non-empty value was provided and matches one of the options; derive checked state from value.
+		const hasMatchingValue = this.value && this.internalOptions?.some((option) => option.value === this.value);
+		if (hasMatchingValue) {
+			this.internalOptions = this.internalOptions.map((option) => ({
+				...option,
+				checked: option.value === this.value,
+			}));
+			this.internals?.setFormValue?.(this.value ?? '');
+			return;
+		}
+
+		// Case 2: value was explicitly set to ''; the consumer wants to clear the selection.
+		// Distinguish this from undefined (prop never set) so the fallback below does not silently
+		// re-select the previously checked option.
+		if (this.value === '') {
+			this.internalOptions = this.internalOptions?.map((option) => ({ ...option, checked: false }));
+			this.internals?.setFormValue?.('');
+			return;
+		}
+
+		// Case 3: a non-empty value was provided but did not match any option; warn and fall back.
+		if (this.value) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(' value ')
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-radio-buttons> ')
+				.addRegularText('did not match any option values. Falling back to the checked option.')
+				.printMessage();
+		}
+
+		// Case 4: value is undefined (prop was never set); derive the value from whichever option
+		// has checked: true, matching native radio-button initial-state behaviour.
+		const checkedOption = this.internalOptions?.find((option) => option.checked);
+		this.value = checkedOption?.value ?? '';
+		this.internalOptions = this.internalOptions?.map((option) => ({
+			...option,
+			checked: option.value === this.value,
+		}));
+		this.internals?.setFormValue?.(this.value ?? '');
 	}
 
 	/**

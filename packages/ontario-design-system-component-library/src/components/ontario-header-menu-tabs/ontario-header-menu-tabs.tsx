@@ -1,4 +1,5 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
+import { HeaderMenuToggleDetail } from '../ontario-header/ontario-header.interface';
 import { MenuItem } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -8,11 +9,16 @@ import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import translations from '../../translations/global.i18n.json';
 
 /**
- * Ontario Header Menu Tabs Component
+ * Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
  *
- * Provides a tabbed navigation interface for mobile/tablet views.
- * Displays two tabs (Topics and Sign In) with overflow menu content.
- * Manages keyboard navigation, focus trapping, and accessibility.
+ * - Displays two tabs (Topics and Sign In) with overflow menu content.
+ * - Manages keyboard navigation, focus trapping, and accessibility.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+ * - https://designsystem.ontario.ca/components/detail/application-header.html
+ * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
  */
 @Component({
 	tag: 'ontario-header-menu-tabs',
@@ -38,6 +44,12 @@ export class OntarioHeaderMenuTabs {
 	 * Enable auto-detect handoff mode.
 	 */
 	@Prop() autoDetectMode?: boolean = false;
+
+	/**
+	 * Whether focus should move to the active tab when the menu opens.
+	 * This should only be true for keyboard-triggered opens.
+	 */
+	@Prop() focusActiveTabOnOpen: boolean = false;
 
 	/**
 	 * The language of the component.
@@ -79,6 +91,13 @@ export class OntarioHeaderMenuTabs {
 	 * Whether the focus trap has been installed for the current panel.
 	 */
 	private trapInstalled = false;
+
+	private hasInitializedOpenFocus = false;
+
+	/**
+	 * Whether the active tab should receive focus when the menu opens.
+	 */
+	private shouldFocusTabOnOpen = false;
 
 	/**
 	 * Event emitted when ownership handoff is triggered in auto-detect mode.
@@ -158,6 +177,11 @@ export class OntarioHeaderMenuTabs {
 	 * After each render, try to install the focus trap if menu is open.
 	 */
 	componentDidRender() {
+		if (this.menuIsOpen && this.focusActiveTabOnOpen && !this.hasInitializedOpenFocus) {
+			this.setupInitialFocus();
+			this.hasInitializedOpenFocus = true;
+		}
+
 		if (this.menuIsOpen && !this.trapInstalled) {
 			this.tryInstallTrap();
 		}
@@ -171,13 +195,20 @@ export class OntarioHeaderMenuTabs {
 	 * Listen for menu button toggle events.
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	handleMenuButtonToggled(event: CustomEvent<boolean>) {
-		this.menuIsOpen = event.detail;
+	handleMenuButtonToggled(event: CustomEvent<boolean | HeaderMenuToggleDetail>) {
+		const detail =
+			typeof event.detail === 'boolean' ? { isOpen: event.detail, trigger: 'programmatic' as const } : event.detail;
+
+		this.menuIsOpen = detail.isOpen;
+		this.shouldFocusTabOnOpen = detail.isOpen && detail.trigger === 'keyboard';
 
 		if (this.menuIsOpen) {
-			this.setupInitialFocus();
+			if (this.shouldFocusTabOnOpen) {
+				this.setupInitialFocus();
+			}
 		} else {
 			this.resetState();
+			this.hasInitializedOpenFocus = false;
 		}
 	}
 
@@ -375,6 +406,8 @@ export class OntarioHeaderMenuTabs {
 	private resetState() {
 		this.clearFocusTrap();
 		this.trapInstalled = false;
+		this.hasInitializedOpenFocus = false;
+		this.shouldFocusTabOnOpen = false;
 	}
 
 	/**

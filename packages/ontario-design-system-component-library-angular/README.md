@@ -11,6 +11,14 @@
 
 This library is built using [`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target) and supports Angular versions 20+. It is based off the [Ontario Design System Component Library](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library) built using [Stencil](https://stenciljs.com/). For more information, [find it on NPM](https://www.npmjs.com/package/@ongov/ontario-design-system-component-library-angular).
 
+### AI guidance file
+
+This package ships a package-level `llms.txt` file with AI-oriented integration guidance.
+Related package guidance is also available in:
+
+- `@ongov/ontario-design-system-component-library`
+- `@ongov/ontario-design-system-global-styles`
+
 ## Installation and usage
 
 To find documentation on individual web components in this component library, please download and refer to our [component documentation](https://designsystem.ontario.ca/docs/documentation/for-developers/web-components.html#component-documentation).
@@ -88,10 +96,10 @@ If your app serves component assets (fonts, images, favicons) from a non-root pa
 ```typescript
 import { setAssetPath } from '@ongov/ontario-design-system-component-library-angular';
 
-setAssetPath(`${window.location.origin}/assets/`);
+setAssetPath(`${window.location.origin}`);
 ```
 
-## Usage
+If your app serves component assets (fonts, images, favicons) from a non-root path, configure the asset base path before components render. Pass `window.location.origin` (no `/assets/` suffix) — the library's internal asset helper appends the correct path segment automatically.
 
 You can now use the Angular Components in your component template files.
 
@@ -108,16 +116,16 @@ The assets in the npm package are located at `@ongov/ontario-design-system-compo
 In a standard Angular application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) npm package, which you can with any operating system:
 
 ```bash
-copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/*" src/assets
+copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/images/**" src/assets
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
 "prebuild": "npm run copy:assets",
-"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/images/**\" src/assets",
-"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/favicons/**\" src/assets/favicons",
-"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
+"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/images/**\" src/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/favicons/**\" src/assets/favicons",
+"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-angular/dist/assets/fonts/**/*\" src/assets/fonts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
 

@@ -245,12 +245,11 @@ The `header-colour` property supports a wide range of values, including:
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Card component is SSR-compatible and will render static HTML for the card’s image, heading, and description based on its props.
+The Ontario Card component supports server-side rendering, with a few considerations:
 
-For best SSR results:
-
-- **Always provide the `label` prop** to ensure the heading and link are rendered with visible content. During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the card label through the `label` prop.
-- If `ariaLabelText` is used, consider whether it’s appropriate for both the image and heading links, or whether separate values should be passed (if split becomes available in future versions).
+- **Preferred content source:** Always provide the `label` prop so heading and link text are deterministic in SSR output.
+- **Slotted content caveat:** Fallback content via `host.textContent` is not reliably available during SSR.
+- **Accessibility guidance:** If `ariaLabelText` is used, confirm it is appropriate for the card link text (heading link), which is the single keyboard focus target.
 
 ### SSR-safe example:
 
@@ -263,6 +262,15 @@ For best SSR results:
 ```
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Card displays linked content summaries with optional media and metadata.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/cards.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-card/
 
 ## Properties
 

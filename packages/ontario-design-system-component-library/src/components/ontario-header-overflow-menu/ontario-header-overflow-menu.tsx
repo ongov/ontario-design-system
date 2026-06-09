@@ -1,4 +1,5 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
+import { HeaderMenuToggleDetail } from '../ontario-header/ontario-header.interface';
 import { MenuItem } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -6,11 +7,12 @@ import { convertStringToBoolean } from '../../utils/helper/utils';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
 
 /**
- * Overflow Menu Component
+ * Ontario Header Overflow Menu displays overflow navigation links for header contexts.
  *
- * Displays a dropdown menu of links. Can operate in two modes:
+ * It can operate in two modes:
  *
- * ## Standalone Mode
+ * ### Standalone Mode
+ *
  * Used when placed directly in the header (desktop view).
  * - Manages its own open/close state via `menuButtonToggled` event
  * - Automatically focuses first menu item when opened
@@ -18,15 +20,24 @@ import { HeaderKeyboardNavigation } from '../../utils/components/header/header-k
  * - Auto-closes when focus leaves the menu area
  * - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
  *
- * ## Embedded Mode
+ * ### Embedded Mode
+ *
  * Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
  * - Parent component controls open/close state
  * - Parent component manages focus trap
  * - Menu is always visible when parent tab is active
  * - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
  *
- * **Mode Detection**: Auto-detected based on DOM position (no prop needed).
- * Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ * ### Mode Detection
+ *
+ * - Auto-detected based on DOM position (no prop needed).
+ * - Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/ontario-header.html
+ * - https://designsystem.ontario.ca/components/detail/application-header.html
+ * - https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
  */
 @Component({
 	tag: 'ontario-header-overflow-menu',
@@ -77,6 +88,12 @@ export class OntarioHeaderOverflowMenu {
 	 * instead of moving to the next menu or next page element.
 	 */
 	@Prop() returnFocusToTriggerOnLastTab?: boolean = false;
+
+	/**
+	 * Whether the standalone menu should move focus to the first item when opened.
+	 * This should only be true for keyboard-triggered opens.
+	 */
+	@Prop() focusFirstItemOnOpen?: boolean = false;
 
 	/**
 	 * The language of the component.
@@ -139,6 +156,11 @@ export class OntarioHeaderOverflowMenu {
 	private hasInitializedFocus = false;
 
 	/**
+	 * Whether the menu should move focus to the first item when it opens.
+	 */
+	private shouldFocusFirstItemOnOpen = false;
+
+	/**
 	 * Lifecycle hook called before the component is loaded.
 	 */
 	componentWillLoad() {
@@ -150,10 +172,11 @@ export class OntarioHeaderOverflowMenu {
 	 * Focuses first menu item when menu opens in standalone mode.
 	 */
 	componentDidUpdate() {
-		if (this.menuIsOpen && this.isStandalone && !this.hasInitializedFocus) {
+		if (this.menuIsOpen && this.isStandalone && this.shouldFocusFirstItemOnOpen && !this.hasInitializedFocus) {
 			this.focusFirstMenuItem();
 			this.hasInitializedFocus = true;
 		}
+
 		if (!this.menuIsOpen) {
 			this.hasInitializedFocus = false;
 		}
@@ -227,10 +250,14 @@ export class OntarioHeaderOverflowMenu {
 	 * Listen for menu button toggle events (standalone mode only).
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	handleMenuButtonToggled(event: CustomEvent<boolean>) {
+	handleMenuButtonToggled(event: CustomEvent<boolean | HeaderMenuToggleDetail>) {
 		if (!this.isStandalone) return;
 
-		this.menuIsOpen = event.detail;
+		const detail =
+			typeof event.detail === 'boolean' ? { isOpen: event.detail, trigger: 'programmatic' as const } : event.detail;
+
+		this.menuIsOpen = detail.isOpen;
+		this.shouldFocusFirstItemOnOpen = detail.isOpen && detail.trigger === 'keyboard';
 		if (!this.menuIsOpen) {
 			this.resetState();
 		}
@@ -497,6 +524,8 @@ export class OntarioHeaderOverflowMenu {
 		this.currentIndex = undefined;
 		this.shouldCheckAutoClose = true;
 		this.suppressNextArrowNavigation = false;
+		this.shouldFocusFirstItemOnOpen = false;
+		this.hasInitializedFocus = false;
 	}
 
 	/**

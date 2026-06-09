@@ -1,0 +1,16 @@
+# Ontario Design System Complete Styles
+
+Use this package for the complete standalone ODS style bundle.
+
+## Integration Rules
+- Consume compiled and SCSS outputs from documented export paths.
+- Prefer package defaults before adding custom style pipelines.
+- Keep usage aligned with ODS accessibility and component guidance.
+
+## Guidance Links
+- https://designsystem.ontario.ca/
+- https://designsystem.ontario.ca/components/
+
+## Related Packages
+- @ongov/ontario-design-system-global-styles
+- @ongov/ontario-design-system-component-library

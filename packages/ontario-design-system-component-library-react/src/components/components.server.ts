@@ -6,7 +6,7 @@
 /* eslint-disable */
 
 // @ts-ignore - ignore potential type issues as the project is importing itself
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import * as clientComponents from '@ongov/ontario-design-system-component-library-react';
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
@@ -240,6 +240,9 @@ export const OntarioButton: StencilReactComponent<OntarioButtonElement, OntarioB
     properties: {
         type: 'type',
         htmlType: 'html-type',
+        href: 'href',
+        target: 'target',
+        rel: 'rel',
         label: 'label',
         ariaLabelText: 'aria-label-text',
         elementId: 'element-id'
@@ -312,6 +315,7 @@ export const OntarioCheckboxes: StencilReactComponent<OntarioCheckboxesElement, 
         name: 'name',
         hintText: 'hint-text',
         hintExpander: 'hint-expander',
+        value: 'value',
         options: 'options',
         required: 'required',
         errorMessage: 'error-message',
@@ -348,6 +352,7 @@ export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, On
         language: 'language',
         required: 'required',
         placeholder: 'placeholder',
+        value: 'value',
         caption: 'caption',
         elementId: 'element-id',
         minYear: 'min-year',
@@ -375,6 +380,7 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
         language: 'language',
         name: 'name',
         elementId: 'element-id',
+        value: 'value',
         options: 'options',
         required: 'required',
         isEmptyStartOption: 'is-empty-start-option',
@@ -432,7 +438,7 @@ export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerEle
     serializeShadowRoot
 });
 
-export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<boolean>> };
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<HeaderMenuToggleDetail>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
@@ -465,6 +471,7 @@ export const OntarioHeaderMenuTabs: StencilReactComponent<OntarioHeaderMenuTabsE
         topicsMenuItems: 'topics-menu-items',
         signInMenuItems: 'sign-in-menu-items',
         autoDetectMode: 'auto-detect-mode',
+        focusActiveTabOnOpen: 'focus-active-tab-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -486,6 +493,7 @@ export const OntarioHeaderOverflowMenu: StencilReactComponent<OntarioHeaderOverf
         menuItems: 'menu-items',
         isLastMenu: 'is-last-menu',
         returnFocusToTriggerOnLastTab: 'return-focus-to-trigger-on-last-tab',
+        focusFirstItemOnOpen: 'focus-first-item-on-open',
         language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -2275,6 +2283,7 @@ export const OntarioRadioButtons: StencilReactComponent<OntarioRadioButtonsEleme
         hintText: 'hint-text',
         hintExpander: 'hint-expander',
         required: 'required',
+        value: 'value',
         options: 'options',
         errorMessage: 'error-message',
         customOnChange: 'custom-on-change',

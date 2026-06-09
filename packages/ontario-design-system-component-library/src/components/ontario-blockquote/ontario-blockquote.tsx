@@ -6,6 +6,13 @@ import { validatePropExists } from '../../utils/validation/validation-functions'
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { isServerSideRendering } from '../../utils/common/environment';
 
+/**
+ * Ontario Blockquote displays quoted content with optional attribution.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/blockquote.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-blockquote/
+ */
 @Component({
 	tag: 'ontario-blockquote',
 	styleUrl: 'ontario-blockquote.scss',

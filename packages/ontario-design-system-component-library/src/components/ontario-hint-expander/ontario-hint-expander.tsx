@@ -7,6 +7,13 @@ import { HintContentType } from '../../utils/common/common.interface';
 import { validatePropExists } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
+/**
+ * Ontario Hint Expander reveals optional supporting guidance on demand.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/hint-text.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-expander/
+ */
 @Component({
 	tag: 'ontario-hint-expander',
 	styleUrl: 'ontario-hint-expander.scss',
@@ -182,10 +189,10 @@ export class OntarioHintExpander implements HintExpander {
 					data-toggle="ontario-collapse"
 				>
 					<span class="ontario-hint-expander__button-icon--close ontario-icon">
-						<ontario-icon-chevron-up colour="inherit" aria-hidden="true"></ontario-icon-chevron-up>
+						<ontario-icon-chevron-up colour="inherit" is-decorative="true"></ontario-icon-chevron-up>
 					</span>
 					<span class="ontario-hint-expander__button-icon--open">
-						<ontario-icon-chevron-down colour="inherit" aria-hidden="true"></ontario-icon-chevron-down>
+						<ontario-icon-chevron-down colour="inherit" is-decorative="true"></ontario-icon-chevron-down>
 					</span>
 					{this.hint}
 				</button>

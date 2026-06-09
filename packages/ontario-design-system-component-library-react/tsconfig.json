@@ -5,6 +5,7 @@
 			"@ongov/*": ["packages/*"]
 		},
 		"baseUrl": ".",
+		"ignoreDeprecations": "6.0",
 		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"emitDecoratorMetadata": true,

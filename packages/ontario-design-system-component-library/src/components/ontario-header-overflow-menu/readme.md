@@ -83,11 +83,11 @@ If `maxSubheaderLinks` is set within `applicationHeaderInfo` on the `ontario-hea
 
 ## Overview
 
-Overflow Menu Component
+Ontario Header Overflow Menu displays overflow navigation links for header contexts.
 
-Displays a dropdown menu of links. Can operate in two modes:
+It can operate in two modes:
 
-## Standalone Mode
+### Standalone Mode
 
 Used when placed directly in the header (desktop view).
 
@@ -97,7 +97,7 @@ Used when placed directly in the header (desktop view).
 - Auto-closes when focus leaves the menu area
 - **Emits**: `menuClosed` event when menu closes (for cleanup/state sync)
 
-## Embedded Mode
+### Embedded Mode
 
 Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 
@@ -106,13 +106,23 @@ Used when placed inside `ontario-header-menu-tabs` (mobile/tablet view).
 - Menu is always visible when parent tab is active
 - **Emits**: `endOfMenuReached` event when Tab is pressed on last item (for focus looping)
 
-**Mode Detection**: Auto-detected based on DOM position (no prop needed).
-Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+### Mode Detection
+
+- Auto-detected based on DOM position (no prop needed).
+- Checks if ancestor is `ontario-header-menu-tabs` or `.ontario-mobile-menu__panel`.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/ontario-header.html
+- https://designsystem.ontario.ca/components/detail/application-header.html
+- https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-header-overflow-menu/
 
 ## Properties
 
 | Property                        | Attribute                             | Description                                                                                                                                                                                                  | Type                        | Default     |
 | ------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `focusFirstItemOnOpen`          | `focus-first-item-on-open`            | Whether the standalone menu should move focus to the first item when opened. This should only be true for keyboard-triggered opens.                                                                          | `boolean \| undefined`      | `false`     |
 | `isLastMenu`                    | `is-last-menu`                        | Whether this is the last menu in a series of menus. If true, Tab from last item goes to next element on page. If false, Tab from last item emits focusNextElement for header to handle.                      | `boolean \| undefined`      | `true`      |
 | `language`                      | `language`                            | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
 | `menuItems`                     | `menu-items`                          | The menu items to display. Can be passed as a MenuItem array or JSON string. The items that will go inside the menu.                                                                                         | `MenuItem[] \| string`      | `undefined` |

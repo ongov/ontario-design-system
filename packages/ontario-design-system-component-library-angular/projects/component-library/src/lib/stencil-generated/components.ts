@@ -132,14 +132,14 @@ export declare interface OntarioBlockquote extends Components.OntarioBlockquote 
 
 
 @ProxyCmp({
-  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type']
+  inputs: ['ariaLabelText', 'elementId', 'href', 'htmlType', 'label', 'rel', 'target', 'type']
 })
 @Component({
   selector: 'ontario-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'elementId', 'htmlType', 'label', 'type'],
+  inputs: ['ariaLabelText', 'elementId', 'href', 'htmlType', 'label', 'rel', 'target', 'type'],
   standalone: false
 })
 export class OntarioButton {
@@ -224,14 +224,14 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-checkboxes',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -295,14 +295,14 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 
 
 @ProxyCmp({
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required']
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value']
 })
 @Component({
   selector: 'ontario-date-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required'],
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -347,14 +347,14 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-dropdown-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['dropdownOnChange', 'dropdownOnBlur', 'dropdownOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -477,7 +477,7 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 })
 export class OntarioHeader {
   protected el: HTMLOntarioHeaderElement;
-  @Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
+  @Output() menuButtonToggled = new EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -485,25 +485,27 @@ export class OntarioHeader {
 }
 
 
+import type { HeaderMenuToggleDetail as IOntarioHeaderHeaderMenuToggleDetail } from '@ongov/ontario-design-system-component-library';
+
 export declare interface OntarioHeader extends Components.OntarioHeader {
   /**
    * This event is toggled when the menu button is pressed.
 The `<ontario-header-overflow-menu>` sub-component listens for this event
 To trigger the showing and hiding of the overflow menu.
    */
-  menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
+  menuButtonToggled: EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>;
 }
 
 
 @ProxyCmp({
-  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems']
+  inputs: ['autoDetectMode', 'focusActiveTabOnOpen', 'language', 'signInMenuItems', 'topicsMenuItems']
 })
 @Component({
   selector: 'ontario-header-menu-tabs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoDetectMode', 'language', 'signInMenuItems', 'topicsMenuItems'],
+  inputs: ['autoDetectMode', 'focusActiveTabOnOpen', 'language', 'signInMenuItems', 'topicsMenuItems'],
   outputs: ['takeOwnership', 'focusFirstItem', 'focusMenuButton'],
   standalone: false
 })
@@ -537,14 +539,14 @@ Triggered when Shift+Tab is pressed on the first tab.
 
 
 @ProxyCmp({
-  inputs: ['isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab']
+  inputs: ['focusFirstItemOnOpen', 'isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab']
 })
 @Component({
   selector: 'ontario-header-overflow-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab'],
+  inputs: ['focusFirstItemOnOpen', 'isLastMenu', 'language', 'menuItems', 'returnFocusToTriggerOnLastTab'],
   outputs: ['menuClosed', 'endOfMenuReached', 'focusMenuButton', 'focusNextElement', 'menuButtonTabPressed'],
   standalone: false
 })
@@ -3523,14 +3525,14 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
   selector: 'ontario-radio-buttons',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
   outputs: ['radioOnChange', 'radioOnBlur', 'radioOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

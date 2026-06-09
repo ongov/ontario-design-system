@@ -1,5 +1,12 @@
 export type DateInputFieldType = 'day' | 'month' | 'year';
 
+export type DateInputValueParts = {
+	day: string;
+	month: string;
+	year: string;
+	normalizedValue: string;
+};
+
 export type DateInputPlaceholder = {
 	day?: string;
 	month?: string;

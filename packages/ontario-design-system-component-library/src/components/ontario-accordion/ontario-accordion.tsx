@@ -11,6 +11,13 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 
 import translations from '../../translations/global.i18n.json';
 
+/**
+ * Ontario Accordion presents collapsible sections of content.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/accordions.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-accordion/
+ */
 @Component({
 	tag: 'ontario-accordion',
 	styleUrl: 'ontario-accordion.scss',

@@ -7,6 +7,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { OntarioFormContainer, FormGap } from '../../utils/components/form-container/form-container.interface';
 
+/**
+ * Ontario Fieldset groups related form controls under a shared legend.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/fieldsets.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-fieldset/
+ */
 @Component({
 	tag: 'ontario-fieldset',
 	styleUrl: 'ontario-fieldset.scss',

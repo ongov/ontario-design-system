@@ -13,6 +13,13 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { printArray } from '../../utils/helper/utils';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
+/**
+ * Ontario Card displays linked content summaries with optional media and metadata.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/cards.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-card/
+ */
 @Component({
 	tag: 'ontario-card',
 	styleUrl: 'ontario-card.scss',
@@ -337,7 +344,7 @@ export class OntarioCard {
 			<li class={this.getCardClasses()}>
 				{this.image && (
 					<div class="ontario-card__image-container">
-						<a href={this.getHref()} aria-label={this.ariaLabelText}>
+						<a href={this.getHref()} aria-label={this.ariaLabelText} tabindex={-1}>
 							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 						</a>
 					</div>

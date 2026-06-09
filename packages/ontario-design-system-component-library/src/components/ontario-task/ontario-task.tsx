@@ -10,6 +10,13 @@ import { HeadingLevel } from '../../utils/common/common.interface';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 export type TaskHeadingLevel = Extract<HeadingLevel, 'h2' | 'h3' | 'h4'>;
 
+/**
+ * Ontario Task represents an individual task item and status within a task list.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/task-list.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-task/
+ */
 @Component({
 	tag: 'ontario-task',
 	styleUrl: 'ontario-task.scss',

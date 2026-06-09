@@ -8,11 +8,21 @@ It is used in the ontario-header component.
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Language toggle component reads the `<html lang="">` attribute and uses `MutationObserver` to track changes to it. However, since DOM access is not available during SSR, this logic only executes in the browser after hydration.
+The Ontario Language Toggle component supports server-side rendering, with a few considerations:
 
-To ensure the correct language is rendered during SSR, explicitly pass the language prop, e.g.: `<ontario-language-toggle language="fr"></ontario-language-toggle>`. This avoids reliance on the `<html>` element, which is inaccessible server-side. It also ensures that other components listening for the `setAppLanguage` event receive the correct value immediately upon hydration.
+- **Language prop:** Pass `language` explicitly during SSR.
+- **Hydrated-only DOM behaviour:** `<html lang="">` detection and `MutationObserver` logic rely on DOM APIs and only execute after hydration.
+- **Framework guidance:** Passing `language` directly avoids server-side dependence on `<html>` and ensures listeners for `setAppLanguage` have the expected value on hydration.
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Language Toggle switches the interface between supported languages.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/developer-docs/components/ontario-language-toggle/
 
 ## Properties
 

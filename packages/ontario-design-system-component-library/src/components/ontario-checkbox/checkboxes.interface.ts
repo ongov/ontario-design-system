@@ -71,6 +71,22 @@ export interface Checkboxes extends Base {
 	hintExpander?: HintExpander | string;
 
 	/**
+	 * The currently selected checkbox option values.
+	 *
+	 * The component keeps the host `value` in sync as users interact with the checkbox group.
+	 * If `value` is provided, it takes precedence over any `checked` flags passed through `options`.
+	 *
+	 * In HTML, pass `value` as a JSON string array.
+	 *
+	 * @example
+	 * <ontario-checkboxes
+	 *   value='["checkbox-option-1", "checkbox-option-2"]'
+	 *   ...>
+	 * </ontario-checkboxes>
+	 */
+	value?: string[] | string;
+
+	/**
 	 * The options for the checkbox group.
 	 *
 	 * Each property will be passed in through an object in the options array.

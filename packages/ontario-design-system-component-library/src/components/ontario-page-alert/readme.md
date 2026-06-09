@@ -142,22 +142,30 @@ Example of success page alert type, where the content is passed as a string rath
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
-The Ontario Page Alert component supports two ways of defining content:
+The Ontario Page Alert component supports server-side rendering, with a few considerations:
 
-- Via the `content` prop (as a string)
-- Via slotted children placed between the component's opening and closing tags
-
-While both approaches work in the browser, only the `content` prop is reliably rendered during Server-Side Rendering (SSR).
+- **Preferred content source:** Pass page alert content through the `content` prop.
+- **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
+- **Framework guidance:** For deterministic SSR output, prefer `content` over slotted children.
 
 ### SSR-safe example:
-
-During SSR, fallback content using `host.textContent` is not reliably available. This is why it is recommended to pass the page alert content through the `content` prop, when possible. Eg:
 
 ```tsx
 <OntarioPageAlert type="error" heading="Submission failed" content="Please try again."></OntarioPageAlert>
 ```
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Page Alert is used for high-importance status messages that apply to the whole page
+(for example informational, warning, success, or error outcomes).
+
+For component selection guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/page-alerts.html
+- https://designsystem.ontario.ca/components/detail/callouts-asides.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-page-alert/
 
 ## Properties
 

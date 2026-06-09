@@ -4,20 +4,27 @@
 
 ## Overview
 
-Ontario Header Menu Tabs Component
+Ontario Header Menu Tabs provides mobile and tablet tabbed navigation for header menus.
 
-Provides a tabbed navigation interface for mobile/tablet views.
-Displays two tabs (Topics and Sign In) with overflow menu content.
-Manages keyboard navigation, focus trapping, and accessibility.
+- Displays two tabs (Topics and Sign In) with overflow menu content.
+- Manages keyboard navigation, focus trapping, and accessibility.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/ontario-header.html
+- https://designsystem.ontario.ca/components/detail/application-header.html
+- https://designsystem.ontario.ca/components/detail/service-ontario-header.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-header-menu-tabs/
 
 ## Properties
 
-| Property          | Attribute            | Description                                                                                                                                                                                                  | Type                        | Default     |
-| ----------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
-| `autoDetectMode`  | `auto-detect-mode`   | Enable auto-detect handoff mode.                                                                                                                                                                             | `boolean \| undefined`      | `false`     |
-| `language`        | `language`           | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
-| `signInMenuItems` | `sign-in-menu-items` | Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.                                                                                                                          | `MenuItem[] \| string`      | `undefined` |
-| `topicsMenuItems` | `topics-menu-items`  | Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.                                                                                                                           | `MenuItem[] \| string`      | `undefined` |
+| Property               | Attribute                  | Description                                                                                                                                                                                                  | Type                        | Default     |
+| ---------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `autoDetectMode`       | `auto-detect-mode`         | Enable auto-detect handoff mode.                                                                                                                                                                             | `boolean \| undefined`      | `false`     |
+| `focusActiveTabOnOpen` | `focus-active-tab-on-open` | Whether focus should move to the active tab when the menu opens. This should only be true for keyboard-triggered opens.                                                                                      | `boolean`                   | `false`     |
+| `language`             | `language`                 | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none is passed, it will default to English. | `"en" \| "fr" \| undefined` | `'en'`      |
+| `signInMenuItems`      | `sign-in-menu-items`       | Menu items for the "Sign In" tab. Can be passed as a MenuItem array or JSON string.                                                                                                                          | `MenuItem[] \| string`      | `undefined` |
+| `topicsMenuItems`      | `topics-menu-items`        | Menu items for the "Topics" tab. Can be passed as a MenuItem array or JSON string.                                                                                                                           | `MenuItem[] \| string`      | `undefined` |
 
 ## Events
 

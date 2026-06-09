@@ -7,7 +7,13 @@ import { validatePropExists } from '../../utils/validation/validation-functions'
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
+ * Ontario Hint Text provides concise supporting instructions for form controls.
+ *
  * Use hint text to help users understand how to complete fields in a form.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/hint-text.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-hint-text/
  *
  * @part hint-text - The container for the hint text content. This part can be used to apply custom styles to the hint text.
  */

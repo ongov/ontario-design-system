@@ -8,6 +8,13 @@ import translations from '../../translations/global.i18n.json';
 import { isClientSideRendering } from '../../utils/common/environment';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
+/**
+ * Ontario Back to Top helps users quickly return to the top of long pages.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/back-to-top.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
+ */
 @Component({
 	tag: 'ontario-back-to-top',
 	styleUrl: 'ontario-back-to-top.scss',

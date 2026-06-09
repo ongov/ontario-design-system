@@ -3,6 +3,14 @@ import { OntarioDateInput } from '../ontario-date-input';
 import { isInvalidYear } from '../utils';
 
 describe('ontario-date-input', () => {
+	const dispatchInputEvent = (input: HTMLInputElement) => {
+		const event =
+			typeof InputEvent === 'function'
+				? new InputEvent('input', { bubbles: true, composed: true })
+				: new Event('input', { bubbles: true, composed: true });
+		input.dispatchEvent(event);
+	};
+
 	it('renders deafult state', async () => {
 		const page = await newSpecPage({
 			components: [OntarioDateInput],
@@ -30,7 +38,7 @@ describe('ontario-date-input', () => {
 										(1 or 2 digits)
 									</span>
 								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" type="text">
+								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" type="text" value="">
 							</div>
 							<div class="ontario-date__group-input">
 								<label htmlfor="month-date-id-example">
@@ -39,7 +47,7 @@ describe('ontario-date-input', () => {
 										(1 or 2 digits)
 									</span>
 								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" type="text">
+								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" type="text" value="">
 							</div>
 							<div class="ontario-date__group-input">
 								<label htmlfor="day-date-id-example">
@@ -48,7 +56,7 @@ describe('ontario-date-input', () => {
 										(4 digits)
 									</span>
 								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="day-date-id-example" inputmode="numeric" type="text">
+								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="day-date-id-example" inputmode="numeric" type="text" value="">
 							</div>
 						</div>
 					</fieldset>
@@ -99,7 +107,7 @@ describe('ontario-date-input', () => {
 										(1 or 2 digits)
 									</span>
 								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" placeholder="YY" required="" type="text">
+								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" placeholder="YY" required="" type="text" value="">
 							</div>
 							<div class="ontario-date__group-input">
 								<label htmlfor="month-date-id-example">
@@ -108,13 +116,254 @@ describe('ontario-date-input', () => {
 										(1 or 2 digits)
 									</span>
 								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" placeholder="M" required="" type="text">
+								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" placeholder="M" required="" type="text" value="">
 							</div>
 						</div>
 					</fieldset>
 				</mock:shadow-root>
 			</ontario-date-input>
 		`);
+	});
+
+	it('hydrates the internal fields from a plain ISO value', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+
+		expect(inputs?.[0].value).toBe('2024');
+		expect(inputs?.[1].value).toBe('02');
+		expect(inputs?.[2].value).toBe('20');
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+	});
+
+	it('hydrates the internal fields from a full ISO value and normalizes the host value', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20T15:30:00.000Z"></ontario-date-input>`,
+		});
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+
+		expect(inputs?.[0].value).toBe('2024');
+		expect(inputs?.[1].value).toBe('02');
+		expect(inputs?.[2].value).toBe('20');
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+	});
+
+	it('updates the aggregate host value after field input completes a valid date', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		dispatchInputEvent(yearInput);
+		monthInput.value = '02';
+		dispatchInputEvent(monthInput);
+		dayInput.value = '20';
+		dispatchInputEvent(dayInput);
+
+		await page.waitForChanges();
+
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+	});
+
+	it('emits a host `input` event when the aggregate value changes', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('input', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		dispatchInputEvent(yearInput);
+		monthInput.value = '02';
+		dispatchInputEvent(monthInput);
+		dayInput.value = '20';
+		dispatchInputEvent(dayInput);
+
+		await page.waitForChanges();
+
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
+	});
+
+	it('preserves field-level input events while only exposing one aggregate host input event', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const hostInputSpy = jest.fn();
+		const fieldInputSpy = jest.fn();
+		page.root?.addEventListener('input', hostInputSpy);
+		page.doc.addEventListener('inputOnInput', fieldInputSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		dispatchInputEvent(yearInput);
+		monthInput.value = '02';
+		dispatchInputEvent(monthInput);
+		dayInput.value = '20';
+		dispatchInputEvent(dayInput);
+
+		await page.waitForChanges();
+
+		expect(fieldInputSpy).toHaveBeenCalledTimes(3);
+		expect(fieldInputSpy.mock.calls[0][0].detail).toEqual({ value: '2024', fieldType: 'year' });
+		expect(fieldInputSpy.mock.calls[1][0].detail).toEqual({ value: '02', fieldType: 'month' });
+		expect(fieldInputSpy.mock.calls[2][0].detail).toEqual({ value: '20', fieldType: 'day' });
+		expect(hostInputSpy).toHaveBeenCalledTimes(1);
+		expect(hostInputSpy.mock.calls[0][0].target).toBe(page.root);
+	});
+
+	it('emits a host `change` event when the aggregate value changes', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('change', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		yearInput.dispatchEvent(new Event('change'));
+		monthInput.value = '02';
+		monthInput.dispatchEvent(new Event('change'));
+		dayInput.value = '20';
+		dayInput.dispatchEvent(new Event('change'));
+
+		await page.waitForChanges();
+
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
+	});
+
+	it('emits a host `change` event after the aggregate value was already updated by `input` events', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('change', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '2024';
+		dispatchInputEvent(yearInput);
+		monthInput.value = '02';
+		dispatchInputEvent(monthInput);
+		dayInput.value = '20';
+		dispatchInputEvent(dayInput);
+		await page.waitForChanges();
+
+		dayInput.dispatchEvent(new Event('change'));
+		await page.waitForChanges();
+
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('2024-02-20T00:00:00.000Z');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '2024-02-20T00:00:00.000Z' });
+	});
+
+	it('emits a host `input` event when the aggregate value is cleared', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('input', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '';
+		dispatchInputEvent(yearInput);
+
+		await page.waitForChanges();
+
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '' });
+	});
+
+	it('emits a host `change` event when the aggregate value is cleared', async () => {
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+		const emitSpy = jest.fn();
+		page.root?.addEventListener('change', emitSpy);
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+		const [yearInput] = Array.from(inputs ?? []);
+
+		yearInput.value = '';
+		yearInput.dispatchEvent(new Event('change'));
+
+		await page.waitForChanges();
+
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy).toHaveBeenCalledTimes(1);
+		expect((emitSpy.mock.calls[0][0].target as HTMLOntarioDateInputElement).value).toBe('');
+		expect(emitSpy.mock.calls[0][0].detail).toEqual({ value: '' });
+	});
+
+	it('reports an error and ignores invalid aggregate values', async () => {
+		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-99-20"></ontario-date-input>`,
+		});
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+
+		expect(inputs?.[0].value).toBe('');
+		expect(inputs?.[1].value).toBe('');
+		expect(inputs?.[2].value).toBe('');
+		expect((page.root as HTMLOntarioDateInputElement).value).toBe('2024-99-20');
+		expect(consoleErrorSpy).toHaveBeenCalled();
+
+		consoleErrorSpy.mockRestore();
+	});
+
+	it('reports an error and ignores array aggregate values passed at runtime', async () => {
+		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+		const page = await newSpecPage({
+			components: [OntarioDateInput],
+			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
+		});
+
+		(page.root as HTMLOntarioDateInputElement).value = ['2024-02-20'] as unknown as string;
+		await page.waitForChanges();
+
+		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
+
+		expect(inputs?.[0].value).toBe('2024');
+		expect(inputs?.[1].value).toBe('02');
+		expect(inputs?.[2].value).toBe('20');
+		expect((page.root as HTMLOntarioDateInputElement).value).toEqual(['2024-02-20']);
+		expect(consoleErrorSpy).toHaveBeenCalled();
+
+		consoleErrorSpy.mockRestore();
 	});
 });
 

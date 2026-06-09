@@ -23,9 +23,11 @@ import { FrameSixComponent } from './pages/framesix/framesix.component';
 
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxTranslateRoutesModule } from 'ngx-translate-routes';
-import { createTranslateLoader } from './translation.config';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -54,8 +56,7 @@ import { createTranslateLoader } from './translation.config';
 			useDefaultLang: true,
 			loader: {
 				provide: TranslateLoader,
-				useFactory: createTranslateLoader,
-				deps: [HttpClient],
+				useClass: TranslateHttpLoader,
 			},
 		}),
 		NgxTranslateRoutesModule.forRoot({
@@ -64,7 +65,10 @@ import { createTranslateLoader } from './translation.config';
 		}),
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	providers: [TemporaryStorageService],
+	providers: [
+		TemporaryStorageService,
+		...provideTranslateHttpLoader({ prefix: environment.translationPath, suffix: '.json' }),
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

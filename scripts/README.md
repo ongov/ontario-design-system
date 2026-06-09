@@ -110,12 +110,12 @@ A utility script for processing documentation files in Ontario Design System rep
 Prepend text (e.g., front matter) to a single file:
 
 ```
-ts-node documentation-helper.ts -f <file> -p "---\ntitle: My Title\n---" -df <destinationFile>
+ts-node documentation-helper.ts -f <file> -p "---\ntitle: My Title\n---" --df <destinationFile>
 ```
 
 - `-f, --file <string>`: File to process
 - `-p, --prepend <string>`: Text to prepend
-- `-df, --destinationFile <string>`: (Optional) Destination file to write to
+- `--df, --destinationFile <string>`: (Optional) Destination file to write to
 
 #### Batch Mode
 

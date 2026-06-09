@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -371,7 +371,7 @@ export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerEle
     defineCustomElement: defineOntarioFormContainer
 });
 
-export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<boolean>> };
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<HeaderMenuToggleDetail>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',

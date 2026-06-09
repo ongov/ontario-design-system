@@ -1,0 +1,18 @@
+# Ontario Design System Global Styles
+
+Use this package for ODS global CSS and SCSS foundations.
+
+## Integration Rules
+- Prefer package export paths for CSS and SCSS consumption.
+- Use documented theme, variables, and mixin layers.
+- Keep local overrides minimal and accessibility-aligned.
+
+## Guidance Links
+- https://designsystem.ontario.ca/foundations/
+- https://designsystem.ontario.ca/developer-docs/
+
+## Related Packages
+- @ongov/ontario-design-system-component-library
+- @ongov/ontario-design-system-component-library-react
+- @ongov/ontario-design-system-component-library-angular
+- @ongov/ontario-design-system-complete-styles

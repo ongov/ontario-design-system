@@ -8,6 +8,13 @@ import { validateValueAgainstArray } from '../../utils/validation/validation-fun
 import { TaskStatuses } from '../../utils/common/task-statuses.enum';
 export type TaskListHeadingLevel = 'h1' | Exclude<HeadingLevel, 'h6'>;
 
+/**
+ * Ontario Task List groups and summarizes related tasks.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/task-list.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-task-list/
+ */
 @Component({
 	tag: 'ontario-task-list',
 	styleUrl: 'ontario-task-list.scss',
