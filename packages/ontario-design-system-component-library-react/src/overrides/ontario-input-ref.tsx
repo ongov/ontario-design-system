@@ -32,7 +32,7 @@ const mapHostRefToNativeInput = (hostElement: HTMLElement | null, ref: React.For
 	hostWithInputMethod
 		.componentOnReady?.()
 		.then(() => assignInputRef())
-		.catch((_error: unknown): void => undefined);
+		.catch(() => {});
 };
 
 type OntarioInputProps = React.ComponentPropsWithoutRef<typeof GeneratedOntarioInput>;
