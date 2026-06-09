@@ -143,6 +143,21 @@ describe('ontario-input', () => {
 			expect(inputElement).toBe(shadowInput);
 		});
 
+		it('should return null from getInputElement when no internal input ref is available', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+				></ontario-input>`,
+			});
+
+			expect(page.root).not.toBeNull();
+			(page.rootInstance as OntarioInput & { inputFieldRef?: HTMLInputElement }).inputFieldRef = undefined;
+
+			await expect(page.root?.getInputElement()).resolves.toBeNull();
+		});
+
 		it('should keep input interactions working while exposing getInputElement', async () => {
 			const page = await newSpecPage({
 				components: [OntarioInput],
