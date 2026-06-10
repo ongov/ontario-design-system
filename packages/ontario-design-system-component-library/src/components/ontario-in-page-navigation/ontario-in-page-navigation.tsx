@@ -55,9 +55,7 @@ export class OntarioInPageNavigation {
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
 	handleSetAppLanguage(event: CustomEvent<Language>) {
-		if (!this.language) {
-			this.language = validateLanguage(event);
-		}
+		this.language = validateLanguage(event);
 	}
 
 	/**
