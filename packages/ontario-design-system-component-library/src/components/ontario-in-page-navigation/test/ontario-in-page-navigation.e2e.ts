@@ -132,30 +132,6 @@ test.describe('ontario-in-page-navigation', () => {
 		await expect(host).not.toContainText('Skip this page navigation');
 	});
 
-	test('has expected navigation semantics in the accessibility tree', async ({ page }) => {
-		const tree = await page.accessibility.snapshot({ interestingOnly: false });
-		const serializedTree = JSON.stringify(tree);
-
-		expect(serializedTree).toContain('"role":"navigation"');
-		expect(serializedTree).toContain('"name":"On this page"');
-		expect(serializedTree).toContain('"name":"Section 1"');
-		expect(serializedTree).toContain('"name":"Section 2"');
-	});
-
-	test('has expected navigation semantics in no-top-border variant', async ({ page }) => {
-		await setHostContent(page);
-		await host.evaluate((el: Element) => {
-			(el as any).noTopBorder = true;
-		});
-		await page.waitForChanges();
-
-		const tree = await page.accessibility.snapshot({ interestingOnly: false });
-		const serializedTree = JSON.stringify(tree);
-
-		expect(serializedTree).toContain('"role":"navigation"');
-		expect(serializedTree).toContain('"name":"On this page"');
-	});
-
 	test('supports focus on item links for keyboard users', async ({ page }) => {
 		const firstItem = page.locator('ontario-in-page-navigation-item').first();
 

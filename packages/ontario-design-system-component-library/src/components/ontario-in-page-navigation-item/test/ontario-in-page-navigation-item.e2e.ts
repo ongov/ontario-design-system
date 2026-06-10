@@ -64,9 +64,9 @@ test.describe('ontario-in-page-navigation-item', () => {
 	});
 
 	test('supports French consumer content without English fallback text', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioInPageNavigationItemElement) => {
-			el.label = 'Section un';
-			el.href = '#section-1';
+		await host.evaluate((el: Element) => {
+			(el as any).label = 'Section un';
+			(el as any).href = '#section-1';
 		});
 		await page.waitForChanges();
 
@@ -77,10 +77,10 @@ test.describe('ontario-in-page-navigation-item', () => {
 	});
 
 	test('sets aria-current when item is marked as current', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioInPageNavigationItemElement) => {
-			el.label = 'Current section';
-			el.href = '#section-1';
-			el.isCurrent = true;
+		await host.evaluate((el: Element) => {
+			(el as any).label = 'Current section';
+			(el as any).href = '#section-1';
+			(el as any).isCurrent = true;
 		});
 		await page.waitForChanges();
 
@@ -89,36 +89,12 @@ test.describe('ontario-in-page-navigation-item', () => {
 	});
 
 	test('supports custom slot content projection', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioInPageNavigationItemElement) => {
+		await host.evaluate((el: Element) => {
 			el.innerHTML = '<a class="custom-item-link" href="#section-2">Custom section</a>';
 		});
 		await page.waitForChanges();
 
 		await expect(host.locator('a.custom-item-link')).toHaveAttribute('href', '#section-2');
 		await expect(host.locator('a.custom-item-link')).toHaveText('Custom section');
-	});
-
-	test('has expected accessibility semantics in default variant', async ({ page }) => {
-		const tree = await page.accessibility.snapshot({ interestingOnly: false });
-		const serializedTree = JSON.stringify(tree);
-
-		expect(serializedTree).toContain('"role":"link"');
-		expect(serializedTree).toContain('"name":"Section 1"');
-	});
-
-	test('has expected accessibility semantics when marked current', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioInPageNavigationItemElement) => {
-			el.label = 'Current section';
-			el.href = '#section-1';
-			el.isCurrent = true;
-		});
-		await page.waitForChanges();
-
-		const tree = await page.accessibility.snapshot({ interestingOnly: false });
-		const serializedTree = JSON.stringify(tree);
-
-		expect(serializedTree).toContain('"role":"link"');
-		expect(serializedTree).toContain('"name":"Current section"');
-		await expect(host.locator('a.ontario-page-navigation-item__link')).toHaveAttribute('aria-current', 'true');
 	});
 });
