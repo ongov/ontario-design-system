@@ -125,4 +125,44 @@ describe('ontario-input', () => {
 			expect(page.rootInstance.getId()).toEqual('input-id');
 		});
 	});
+
+	describe('form association', () => {
+		it('should call setFormValue with the current value when handleValueChange is invoked', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+					value="initial"
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
+			});
+
+			const setFormValueSpy = jest.fn();
+			page.rootInstance.internals = { setFormValue: setFormValueSpy };
+			page.rootInstance.value = 'updated value';
+			page.rootInstance.handleValueChange();
+
+			expect(setFormValueSpy).toHaveBeenCalledWith('updated value');
+		});
+
+		it('should call setFormValue with an empty string when value is cleared', async () => {
+			const page = await newSpecPage({
+				components: [OntarioInput],
+				html: `<ontario-input
+					name="input-name"
+					element-id="input-id"
+					value="initial"
+					caption='{"captionText": "Ontario Input"}'
+				></ontario-input>`,
+			});
+
+			const setFormValueSpy = jest.fn();
+			page.rootInstance.internals = { setFormValue: setFormValueSpy };
+			page.rootInstance.value = undefined;
+			page.rootInstance.handleValueChange();
+
+			expect(setFormValueSpy).toHaveBeenCalledWith('');
+		});
+	});
 });
