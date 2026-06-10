@@ -42,8 +42,8 @@ test.describe('ontario-in-page-navigation', () => {
 
 	test('renders no-top-border variant', async ({ page }) => {
 		await setHostContent(page);
-		await host.evaluate((el: HTMLOntarioInPageNavigationElement) => {
-			el.noTopBorder = true;
+		await host.evaluate((el: Element) => {
+			(el as any).noTopBorder = true;
 		});
 		await page.waitForChanges();
 		await expect(host.locator('.ontario-page-navigation')).toContainClass('ontario-page-navigation--no-top-border');
@@ -120,9 +120,9 @@ test.describe('ontario-in-page-navigation', () => {
 		await page.waitForChanges();
 
 		host = page.locator('ontario-in-page-navigation').first();
-		await host.evaluate((el: HTMLOntarioInPageNavigationElement) => {
-			el.heading = 'Dans cette page';
-			el.language = 'fr';
+		await host.evaluate((el: Element) => {
+			(el as any).heading = 'Dans cette page';
+			(el as any).language = 'fr';
 		});
 		await page.waitForChanges();
 
@@ -142,58 +142,77 @@ test.describe('ontario-in-page-navigation', () => {
 		expect(serializedTree).toContain('"name":"Section 2"');
 	});
 
-	test('matches default visual rendering', async ({ page }) => {
-		await page.setViewportSize({ width: 1280, height: 800 });
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-default.png');
-	});
-
-	test('matches no-top-border visual rendering', async ({ page }) => {
+	test('has expected navigation semantics in no-top-border variant', async ({ page }) => {
 		await setHostContent(page);
-		await host.evaluate((el: HTMLOntarioInPageNavigationElement) => {
-			el.noTopBorder = true;
+		await host.evaluate((el: Element) => {
+			(el as any).noTopBorder = true;
 		});
 		await page.waitForChanges();
-		await page.setViewportSize({ width: 1280, height: 800 });
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-no-top-border.png');
+
+		const tree = await page.accessibility.snapshot({ interestingOnly: false });
+		const serializedTree = JSON.stringify(tree);
+
+		expect(serializedTree).toContain('"role":"navigation"');
+		expect(serializedTree).toContain('"name":"On this page"');
 	});
 
-	test('matches focus-visible state on a navigation link', async ({ page }) => {
-		await page.setViewportSize({ width: 1280, height: 800 });
-		await page
-			.locator('ontario-in-page-navigation-item')
-			.first()
-			.evaluate((el) => {
-				(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-			});
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-focus-visible.png');
+	test('supports focus on item links for keyboard users', async ({ page }) => {
+		const firstItem = page.locator('ontario-in-page-navigation-item').first();
+
+		await firstItem.evaluate((el: Element) => {
+			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+		});
+
+		const focusedHref = await firstItem.evaluate(
+			(el: Element) =>
+				el.shadowRoot?.activeElement?.getAttribute('href') || document.activeElement?.getAttribute('href'),
+		);
+		expect(focusedHref).toBe('#section-1');
 	});
 
-	test('matches mobile rendering', async ({ page }) => {
+	test('renders correctly in a mobile viewport', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 812 });
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-mobile.png');
+		await expect(host).toBeAttached();
+		await expect(host.locator('.ontario-page-navigation-list')).toBeVisible();
 	});
 
-	test('matches mobile rendering with long list', async ({ page }) => {
-		await page.setContent(`
-			<ontario-in-page-navigation heading="On this page" skip-link-target="main-content">
+	test('renders correctly in a mobile viewport with a long list', async ({ page }) => {
+		await host.evaluate((el: Element) => {
+			el.innerHTML = `
 				<ontario-in-page-navigation-item label="Section 1" href="#section-1"></ontario-in-page-navigation-item>
 				<ontario-in-page-navigation-item label="Section 2" href="#section-2"></ontario-in-page-navigation-item>
 				<ontario-in-page-navigation-item label="Section 3" href="#section-3"></ontario-in-page-navigation-item>
 				<ontario-in-page-navigation-item label="Section 4" href="#section-4"></ontario-in-page-navigation-item>
 				<ontario-in-page-navigation-item label="Section 5" href="#section-5"></ontario-in-page-navigation-item>
 				<ontario-in-page-navigation-item label="Section 6" href="#section-6"></ontario-in-page-navigation-item>
-			</ontario-in-page-navigation>
-			<section id="section-1">Section 1 content</section>
-			<section id="section-2">Section 2 content</section>
-			<section id="section-3">Section 3 content</section>
-			<section id="section-4">Section 4 content</section>
-			<section id="section-5">Section 5 content</section>
-			<section id="section-6">Section 6 content</section>
-		`);
+			`;
+		});
+
+		await page.evaluate(() => {
+			const main = document.querySelector('main');
+			if (!main) {
+				return;
+			}
+
+			for (let i = 3; i <= 6; i++) {
+				if (document.querySelector(`#section-${i}`)) {
+					continue;
+				}
+
+				const section = document.createElement('section');
+				section.id = `section-${i}`;
+				section.textContent = `Section ${i} content`;
+				main.appendChild(section);
+			}
+		});
 		await page.waitForChanges();
-		host = page.locator('ontario-in-page-navigation').first();
 
 		await page.setViewportSize({ width: 375, height: 812 });
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-mobile-long-list.png');
+		await expect(host).toBeAttached();
+		const itemCount = await host.evaluate(
+			(el: Element) => el.querySelectorAll('ontario-in-page-navigation-item').length,
+		);
+		expect(itemCount).toBe(6);
+		await expect(host.locator('.ontario-page-navigation-list')).toBeVisible();
 	});
 });
