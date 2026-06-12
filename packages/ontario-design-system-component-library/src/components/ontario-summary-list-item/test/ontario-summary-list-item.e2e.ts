@@ -1,14 +1,23 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test, E2EPage } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-summary-list-item', () => {
-	const renderHost = async (page: any, html: string): Promise<Locator> => {
+	const renderHost = async (page: E2EPage, html: string): Promise<Locator> => {
 		await page.setContent(html);
 		await page.waitForChanges();
 		const host = page.locator('ontario-summary-list-item').last();
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass(/hydrated/);
 		return host;
+	};
+
+	const expectNoAxeViolations = async (page: E2EPage, selector: string) => {
+		const accessibilityScanResults = await new AxeBuilder({ page })
+			.include(selector)
+			.disableRules(['dlitem'])
+			.analyze();
+		expect(accessibilityScanResults.violations).toHaveLength(0);
 	};
 
 	test('renders and is hydrated', async ({ page }) => {
