@@ -23,7 +23,7 @@ jobs:
           fetch-tags: true
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
         uses: actions/setup-node@v6
