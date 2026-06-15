@@ -30,7 +30,7 @@
 	},
 	"engines": {
 		"node": ">=22.22.3 <23",
-		"pnpm": ">=10.2.0 <11"
+		"pnpm": "<12"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.0.0",
@@ -67,5 +67,5 @@
 		"@nrwl/nx-win32-x64-msvc": "15.9.3",
 		"bl": "^7.0.0"
 	},
-	"packageManager": "pnpm@10.33.4"
+	"packageManager": "pnpm@11.6.0"
 }
