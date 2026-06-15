@@ -40,6 +40,14 @@ test.describe('ontario-summary-list-item', () => {
 		await expect(host.locator('dd.ontario-summary-list-item__value')).toHaveText('Smith');
 	});
 
+	test('hydrates and renders empty key and value when name and description are omitted', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-summary-list-item></ontario-summary-list-item>`);
+
+		await expect(host).toHaveClass('hydrated');
+		await expect(host.locator('dt.ontario-summary-list-item__key')).toHaveText('');
+		await expect(host.locator('dd.ontario-summary-list-item__value')).toHaveText('');
+	});
+
 	test('renders default layout variant without compact class', async ({ page }) => {
 		const host = await renderHost(
 			page,
