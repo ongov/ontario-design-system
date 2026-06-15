@@ -1,2 +1,13 @@
 packages:
   - 'packages/*'
+allowBuilds:
+  '@parcel/watcher': false
+  core-js: false
+  core-js-pure: false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  nx: false
+  puppeteer: false
+  sharp: false
+  unrs-resolver: false
