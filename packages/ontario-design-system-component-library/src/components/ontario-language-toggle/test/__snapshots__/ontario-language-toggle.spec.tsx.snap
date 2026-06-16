@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-language-toggle snapshot should render the expected html 1`] = `
-<ontario-language-toggle>
-  <template shadowrootmode="open">
+exports[`ontario-language-toggle > snapshot > should render the expected html 1`] = `
+<ontario-language-toggle class="hydrated">
+  <mock:shadow-root>
     <a aria-label="Cliquez pour changer la langue en français" class="ontario-language-toggler ontario-language-toggler--default" href="#" hreflang="fr" lang="fr">
-      <abbr class="ontario-show-for-small-only" title="Français">
+      <abbr title="Français" class="ontario-show-for-small-only">
         FR
       </abbr>
       <span class="ontario-show-for-medium">
         Français
       </span>
     </a>
-  </template>
+  </mock:shadow-root>
 </ontario-language-toggle>
 `;
