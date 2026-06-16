@@ -136,7 +136,7 @@ exports[`ontario-table > snapshot - 5 columns (numeric) > should render the expe
             <tr class="ontario-table-row--highlight">
               <th scope="row">
                 Forestry
-                <img class="ontario-table--highlight-indicator" src="file:///home/scott/source/ontario-design-system-components/packages/ontario-design-system-component-library/dist/ontario-design-system-components/assets/highlight-indicator.svg" alt aria-hidden="true">
+                <img class="ontario-table--highlight-indicator" src="/assets/highlight-indicator.svg" alt aria-hidden="true">
               </th>
               <td class="ontario-table-cell--numeric">
                 182
