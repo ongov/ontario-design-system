@@ -1,5 +1,4 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OntarioSummaryList } from '../ontario-summary-list';
+import { render } from '@stencil/vitest';
 
 const defaultCaption = 'Personal information';
 const overrideCaption = 'Contact details';
@@ -7,14 +6,11 @@ const actionLinkCaption = 'Address';
 const actionLinkHref = '/change-address';
 
 describe('ontario-summary-list', () => {
-	let page: SpecPage;
+	let page: Awaited<ReturnType<typeof render>>;
 	let host: HTMLElement;
 
 	beforeEach(async () => {
-		page = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${defaultCaption}"></ontario-summary-list>`,
-		});
+		page = await render(`<ontario-summary-list caption="${defaultCaption}"></ontario-summary-list>`);
 		host = page.root as HTMLElement;
 		await page.waitForChanges();
 	});
@@ -32,10 +28,9 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render the caption using the specified headingLevel', async () => {
-		const overridePage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${overrideCaption}" heading-level="h2"></ontario-summary-list>`,
-		});
+		const overridePage = await render(
+			`<ontario-summary-list caption="${overrideCaption}" heading-level="h2"></ontario-summary-list>`,
+		);
 		await overridePage.waitForChanges();
 		const heading = (overridePage.root as HTMLElement).shadowRoot?.querySelector('h2');
 		expect(heading).not.toBeNull();
@@ -43,12 +38,11 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render default slot content in the container', async () => {
-		const slotPage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${defaultCaption}">
+		const slotPage = await render(
+			`<ontario-summary-list caption="${defaultCaption}">
 				<div class="ontario-summary-list-demo-row">Projected row content</div>
 			</ontario-summary-list>`,
-		});
+		);
 
 		await slotPage.waitForChanges();
 
@@ -58,12 +52,11 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render slotted caption-action content when provided', async () => {
-		const slotActionPage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${defaultCaption}">
+		const slotActionPage = await render(
+			`<ontario-summary-list caption="${defaultCaption}">
 				<a slot="caption-action" href="/slot-action">Update section</a>
 			</ontario-summary-list>`,
-		});
+		);
 
 		await slotActionPage.waitForChanges();
 
@@ -76,10 +69,9 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render a change link when captionActionLink is provided', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${actionLinkCaption}" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list caption="${actionLinkCaption}" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
+		);
 		await linkPage.waitForChanges();
 		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list__change-button');
 		expect(link).not.toBeNull();
@@ -87,10 +79,9 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render English generated action label and sr text by default', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${actionLinkCaption}" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list caption="${actionLinkCaption}" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
+		);
 
 		await linkPage.waitForChanges();
 
@@ -101,10 +92,9 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should render French generated action label and sr text when language is fr', async () => {
-		const frenchPage = await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list caption="${actionLinkCaption}" language="fr" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
-		});
+		const frenchPage = await render(
+			`<ontario-summary-list caption="${actionLinkCaption}" language="fr" caption-action-link='{"href":"${actionLinkHref}"}'></ontario-summary-list>`,
+		);
 
 		await frenchPage.waitForChanges();
 
@@ -115,12 +105,9 @@ describe('ontario-summary-list', () => {
 	});
 
 	it('should warn when caption prop is missing', async () => {
-		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
-		await newSpecPage({
-			components: [OntarioSummaryList],
-			html: `<ontario-summary-list></ontario-summary-list>`,
-		});
+		await render(`<ontario-summary-list></ontario-summary-list>`);
 
 		expect(warnSpy).toHaveBeenCalled();
 		warnSpy.mockRestore();
