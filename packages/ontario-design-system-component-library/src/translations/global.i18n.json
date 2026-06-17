@@ -251,6 +251,16 @@
 			"fr": "fr"
 		}
 	},
+	"summaryList": {
+		"change": {
+			"en": "Change",
+			"fr": "Modifier"
+		},
+		"yourAnswerFor": {
+			"en": "your answer for:",
+			"fr": "votre réponse pour :"
+		}
+	},
 	"taskGroup": {
 		"completed": {
 			"en": "You have completed",

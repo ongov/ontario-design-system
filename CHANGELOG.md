@@ -55,7 +55,6 @@
 - **ci:** switch docs auto-merge from rebase to merge 4101ea7
 - **component-library:** satisfy asset helper return paths d7d2833
 - **component-library:** upgrade uuid to v14 to resolve moderate vulnerability bc44c2d
-
 # 8.1.0-alpha.2 (2026-04-28)
 
 ### Bug Fixes
