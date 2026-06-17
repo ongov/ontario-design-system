@@ -142,20 +142,22 @@ test.describe('ontario-summary-list-item', () => {
 		await expect(host).not.toContainText('your answer for:');
 	});
 
-	test('has expected accessible names for default and compact variants', async ({ page }) => {
-		const defaultHost = await renderHost(
+	test('has expected accessible name for default variant', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`<ontario-summary-list-item name="Last name" description="Smith" action-link='{"href":"/change-last-name"}'></ontario-summary-list-item>`,
 		);
 
-		await expect(defaultHost.getByRole('link', { name: /Change/ })).toBeVisible();
+		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
+	});
 
-		const compactHost = await renderHost(
+	test('has expected accessible name for compact variant', async ({ page }) => {
+		const host = await renderHost(
 			page,
 			`<ontario-summary-list-item name="Last name" description="Smith" compact action-link='{"href":"/change-last-name"}'></ontario-summary-list-item>`,
 		);
 
-		await expect(compactHost.getByRole('link', { name: /Change/ })).toBeVisible();
+		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
 	});
 
 	test('visual regression: row with action link', async ({ page }) => {
