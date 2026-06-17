@@ -1,4 +1,4 @@
-import { OntarioSummaryListItem } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioSummaryList, OntarioSummaryListItem } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -74,6 +74,13 @@ Basic usage with `name` and `description`.
 </Tabs>
 ```
 
+<div>
+	<OntarioSummaryList caption="Personal information" headingLevel="h3">
+		<OntarioSummaryListItem name="Last name" description="Smith" />
+		<OntarioSummaryListItem name="First name" description="George" />
+	</OntarioSummaryList>
+</div>
+
 Row-level change link using `actionLink`.
 
 ```mdx-code-block
@@ -130,6 +137,12 @@ Row-level change link using `actionLink`.
 </Tabs>
 ```
 
+<div>
+	<OntarioSummaryList caption="Personal information" headingLevel="h3">
+		<OntarioSummaryListItem name="Last name" description="Smith" actionLink={{ href: '/step/personal-info' }} />
+	</OntarioSummaryList>
+</div>
+
 Slot override pattern. Use the `action` slot when a router-aware link is required. Supply screen-reader text manually inside the slotted element.
 
 ```mdx-code-block
@@ -177,6 +190,19 @@ Slot override pattern. Use the `action` slot when a router-aware link is require
 </TabItem>
 </Tabs>
 ```
+
+<div>
+	<OntarioSummaryList caption="Personal information" headingLevel="h3">
+		<OntarioSummaryListItem name="Last name" description="Smith">
+			<a slot="action" href="/step/personal-info">
+				Change
+				<span className="ontario-show-for-sr">
+					your answer for: <q>Last name</q>
+				</span>
+			</a>
+		</OntarioSummaryListItem>
+	</OntarioSummaryList>
+</div>
 
 <!-- Auto Generated Below -->
 
