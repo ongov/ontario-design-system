@@ -3161,6 +3161,33 @@ export namespace Components {
         "language"?: Language;
     }
     /**
+     * Ontario Summary List Item renders a single key/value row inside an ontario-summary-list.
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/summary-list.html
+     */
+    interface OntarioSummaryListItem {
+        /**
+          * Renders a row-level change link. Accepts a JSON string (for plain HTML) or an object (for JSX/framework use). `href` is required; `label` overrides the visible link text (defaults to the i18n "Change" / "Modifier" label). Screen-reader text is always auto-generated from `name`.  Use the `action` slot instead when a router-aware link is needed. The slot takes precedence over this prop when both are present.
+         */
+        "actionLink"?: string | SummaryListActionLink;
+        /**
+          * When `true`, applies reduced row padding via the `.compact` modifier class.
+         */
+        "compact"?: boolean;
+        /**
+          * The value/response rendered as `<dd>`. This prop is required.
+         */
+        "description": string;
+        /**
+          * The language of the component. Defaults to English via `validateLanguage`. Set automatically through event listeners from the header by default.
+         */
+        "language"?: Language;
+        /**
+          * The key/question label rendered as `<dt>`. This prop is required.
+         */
+        "name": string;
+    }
+    /**
      * Ontario Table presents structured tabular data with accessible semantics.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/tables.html
@@ -4684,6 +4711,17 @@ declare global {
         new (): HTMLOntarioSummaryListElement;
     };
     /**
+     * Ontario Summary List Item renders a single key/value row inside an ontario-summary-list.
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/summary-list.html
+     */
+    interface HTMLOntarioSummaryListItemElement extends Components.OntarioSummaryListItem, HTMLStencilElement {
+    }
+    var HTMLOntarioSummaryListItemElement: {
+        prototype: HTMLOntarioSummaryListItemElement;
+        new (): HTMLOntarioSummaryListItemElement;
+    };
+    /**
      * Ontario Table presents structured tabular data with accessible semantics.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/tables.html
@@ -4901,6 +4939,7 @@ declare global {
         "ontario-search-box": HTMLOntarioSearchBoxElement;
         "ontario-step-indicator": HTMLOntarioStepIndicatorElement;
         "ontario-summary-list": HTMLOntarioSummaryListElement;
+        "ontario-summary-list-item": HTMLOntarioSummaryListItemElement;
         "ontario-table": HTMLOntarioTableElement;
         "ontario-task": HTMLOntarioTaskElement;
         "ontario-task-list": HTMLOntarioTaskListElement;
@@ -8169,6 +8208,33 @@ declare namespace LocalJSX {
         "language"?: Language;
     }
     /**
+     * Ontario Summary List Item renders a single key/value row inside an ontario-summary-list.
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/summary-list.html
+     */
+    interface OntarioSummaryListItem {
+        /**
+          * Renders a row-level change link. Accepts a JSON string (for plain HTML) or an object (for JSX/framework use). `href` is required; `label` overrides the visible link text (defaults to the i18n "Change" / "Modifier" label). Screen-reader text is always auto-generated from `name`.  Use the `action` slot instead when a router-aware link is needed. The slot takes precedence over this prop when both are present.
+         */
+        "actionLink"?: string | SummaryListActionLink;
+        /**
+          * When `true`, applies reduced row padding via the `.compact` modifier class.
+         */
+        "compact"?: boolean;
+        /**
+          * The value/response rendered as `<dd>`. This prop is required.
+         */
+        "description": string;
+        /**
+          * The language of the component. Defaults to English via `validateLanguage`. Set automatically through event listeners from the header by default.
+         */
+        "language"?: Language;
+        /**
+          * The key/question label rendered as `<dt>`. This prop is required.
+         */
+        "name": string;
+    }
+    /**
      * Ontario Table presents structured tabular data with accessible semantics.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/tables.html
@@ -8508,6 +8574,7 @@ declare namespace LocalJSX {
         "ontario-search-box": OntarioSearchBox;
         "ontario-step-indicator": OntarioStepIndicator;
         "ontario-summary-list": OntarioSummaryList;
+        "ontario-summary-list-item": OntarioSummaryListItem;
         "ontario-table": OntarioTable;
         "ontario-task": OntarioTask;
         "ontario-task-list": OntarioTaskList;
@@ -8910,6 +8977,12 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-summary-list/
              */
             "ontario-summary-list": LocalJSX.OntarioSummaryList & JSXBase.HTMLAttributes<HTMLOntarioSummaryListElement>;
+            /**
+             * Ontario Summary List Item renders a single key/value row inside an ontario-summary-list.
+             * For component guidance, see:
+             * - https://designsystem.ontario.ca/components/detail/summary-list.html
+             */
+            "ontario-summary-list-item": LocalJSX.OntarioSummaryListItem & JSXBase.HTMLAttributes<HTMLOntarioSummaryListItemElement>;
             /**
              * Ontario Table presents structured tabular data with accessible semantics.
              * For component guidance, see:
