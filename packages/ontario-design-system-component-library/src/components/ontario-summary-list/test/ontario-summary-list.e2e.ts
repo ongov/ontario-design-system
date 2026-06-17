@@ -1,8 +1,8 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test, E2EPage } from '@stencil/playwright';
 
 test.describe('ontario-summary-list', () => {
-	const renderHost = async (page: any, html: string): Promise<Locator> => {
+	const renderHost = async (page: E2EPage, html: string): Promise<Locator> => {
 		await page.setContent(html);
 		await page.waitForChanges();
 		const host = page.locator('ontario-summary-list').last();
@@ -10,12 +10,6 @@ test.describe('ontario-summary-list', () => {
 		await expect(host).toHaveClass(/hydrated/);
 		return host;
 	};
-
-	test('renders and is hydrated', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
-		await expect(host).toBeAttached();
-		await expect(host).toHaveClass('hydrated');
-	});
 
 	test('renders the caption as an h3 heading by default', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-summary-list caption="Personal information"></ontario-summary-list>`);
