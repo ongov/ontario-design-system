@@ -139,7 +139,7 @@ Row-level change link using `actionLink`.
 
 <div>
 	<OntarioSummaryList caption="Personal information" headingLevel="h3">
-		<OntarioSummaryListItem name="Last name" description="Smith" actionLink={{ href: '/step/personal-info' }} />
+		<OntarioSummaryListItem name="Last name" description="Smith" actionLink={{ href: '#' }} />
 	</OntarioSummaryList>
 </div>
 
@@ -194,7 +194,7 @@ Slot override pattern. Use the `action` slot when a router-aware link is require
 <div>
 	<OntarioSummaryList caption="Personal information" headingLevel="h3">
 		<OntarioSummaryListItem name="Last name" description="Smith">
-			<a slot="action" href="/step/personal-info">
+			<a slot="action" href="#">
 				Change
 				<span className="ontario-show-for-sr">
 					your answer for: <q>Last name</q>
