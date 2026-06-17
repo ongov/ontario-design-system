@@ -160,6 +160,15 @@ test.describe('ontario-summary-list-item', () => {
 		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
 	});
 
+	test('has no axe violations', async ({ page }) => {
+		await renderHost(
+			page,
+			`<ontario-summary-list-item name="Address" description="111 Wellington St." action-link='{"href":"/change-address"}'></ontario-summary-list-item>`,
+		);
+
+		await expectNoAxeViolations(page, 'ontario-summary-list-item');
+	});
+
 	test('visual regression: row with action link', async ({ page }) => {
 		const host = await renderHost(
 			page,
