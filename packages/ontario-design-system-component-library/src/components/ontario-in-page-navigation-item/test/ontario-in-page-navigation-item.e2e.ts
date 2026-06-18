@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-in-page-navigation-item', () => {
 	let host: Locator;
@@ -21,6 +22,11 @@ test.describe('ontario-in-page-navigation-item', () => {
 	test.beforeEach(async ({ page }) => {
 		await setItemContent(page);
 	});
+
+	const expectNoAxeViolations = async (page: any, selector: string) => {
+		const accessibilityScanResults = await new AxeBuilder({ page }).include(selector).analyze();
+		expect(accessibilityScanResults.violations).toHaveLength(0);
+	};
 
 	test('renders and is hydrated with expected link content', async () => {
 		await expect(host).toBeAttached();
@@ -96,5 +102,24 @@ test.describe('ontario-in-page-navigation-item', () => {
 
 		await expect(host.locator('a.custom-item-link')).toHaveAttribute('href', '#section-2');
 		await expect(host.locator('a.custom-item-link')).toHaveText('Custom section');
+	});
+
+	test('has no axe violations', async ({ page }) => {
+		await expectNoAxeViolations(page, 'ontario-in-page-navigation-item');
+	});
+
+	test('visual regression: default item', async () => {
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
+	});
+
+	test('visual regression: focus-visible state on item link', async ({ page }) => {
+		await host.evaluate((el: Element) => {
+			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+		});
+		await page.waitForChanges();
+
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
 	});
 });
