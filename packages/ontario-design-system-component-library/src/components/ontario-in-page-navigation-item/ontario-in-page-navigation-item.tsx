@@ -120,7 +120,7 @@ export class OntarioInPageNavigationItem {
 
 	render() {
 		return (
-			<Host class="ontario-page-navigation-list__item">
+			<Host class="ontario-page-navigation-list__item" role="listitem">
 				<slot onSlotchange={this.handleDefaultSlotChange}>
 					<a
 						class="ontario-page-navigation-item__link"

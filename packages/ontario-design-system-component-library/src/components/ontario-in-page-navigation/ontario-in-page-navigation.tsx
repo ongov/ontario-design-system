@@ -292,9 +292,9 @@ export class OntarioInPageNavigation {
 								{this.translations.inPageNavigation.skip[resolvedLanguage]}
 							</a>
 						</slot>
-						<ol class="ontario-page-navigation-list">
+						<div class="ontario-page-navigation-list" role="list">
 							<slot onSlotchange={this.handleDefaultSlotChange}></slot>
-						</ol>
+						</div>
 					</div>
 				</div>
 			</nav>

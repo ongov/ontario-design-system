@@ -27,14 +27,14 @@ describe('ontario-in-page-navigation', () => {
 		const nav = page.root?.shadowRoot?.querySelector('nav');
 		const shell = page.root?.shadowRoot?.querySelector('.ontario-page-navigation');
 		const heading = page.root?.shadowRoot?.querySelector('h2.ontario-page-navigation-header');
-		const list = page.root?.shadowRoot?.querySelector('ol.ontario-page-navigation-list');
+		const list = page.root?.shadowRoot?.querySelector('.ontario-page-navigation-list');
 
 		expect(nav).toBeTruthy();
 		expect(nav?.getAttribute('aria-label')).toBe('On this page');
 		expect(shell).toBeTruthy();
 		expect(heading?.textContent?.trim()).toBe('On this page');
 		expect(list).toBeTruthy();
-		expect(list?.getAttribute('role')).toBeNull();
+		expect(list?.getAttribute('role')).toBe('list');
 	});
 
 	it('projects default slot content into the list', async () => {
@@ -104,11 +104,12 @@ describe('ontario-in-page-navigation', () => {
 				<ontario-in-page-navigation-item label="Section 2" href="#section-2"></ontario-in-page-navigation-item>
 			</ontario-in-page-navigation>`);
 
-		const list = page.root?.shadowRoot?.querySelector('ol.ontario-page-navigation-list');
+		const list = page.root?.shadowRoot?.querySelector('.ontario-page-navigation-list');
 		const lightDomItems = page.root?.querySelectorAll('ontario-in-page-navigation-item');
 
-		expect(list?.tagName).toBe('OL');
-		expect(list?.getAttribute('role')).toBeNull();
+		expect(list?.getAttribute('role')).toBe('list');
+		const firstItem = page.root?.querySelector('ontario-in-page-navigation-item');
+		expect(firstItem?.getAttribute('role')).toBe('listitem');
 		expect(lightDomItems?.length).toBe(2);
 	});
 });

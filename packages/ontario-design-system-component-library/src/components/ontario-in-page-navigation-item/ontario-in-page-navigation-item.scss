@@ -5,6 +5,7 @@
 
 :host {
 	display: list-item;
+	list-style-type: disc;
 	padding-bottom: spacing.$spacing-4 + globalFunctions.px-to-rem(4);
 	padding-left: spacing.$spacing-0;
 }
