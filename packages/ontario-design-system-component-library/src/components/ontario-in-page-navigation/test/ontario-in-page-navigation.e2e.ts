@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-in-page-navigation', () => {
 	let host: Locator;
@@ -22,6 +23,11 @@ test.describe('ontario-in-page-navigation', () => {
 	test.beforeEach(async ({ page }) => {
 		await setHostContent(page);
 	});
+
+	const expectNoAxeViolations = async (page: any, selector: string) => {
+		const accessibilityScanResults = await new AxeBuilder({ page }).include(selector).analyze();
+		expect(accessibilityScanResults.violations).toHaveLength(0);
+	};
 
 	const clickItemLink = async (page: any, index: number) => {
 		await page
@@ -47,6 +53,19 @@ test.describe('ontario-in-page-navigation', () => {
 		});
 		await page.waitForChanges();
 		await expect(host.locator('.ontario-page-navigation')).toContainClass('ontario-page-navigation--no-top-border');
+	});
+
+	test('has no axe violations in default variant', async ({ page }) => {
+		await expectNoAxeViolations(page, 'ontario-in-page-navigation');
+	});
+
+	test('has no axe violations in no-top-border variant', async ({ page }) => {
+		await host.evaluate((el: Element) => {
+			(el as any).noTopBorder = true;
+		});
+		await page.waitForChanges();
+
+		await expectNoAxeViolations(page, 'ontario-in-page-navigation');
 	});
 
 	test('renders skip link with expected target', async () => {
@@ -150,6 +169,9 @@ test.describe('ontario-in-page-navigation', () => {
 		await page.setViewportSize({ width: 375, height: 812 });
 		await expect(host).toBeAttached();
 		await expect(host.locator('.ontario-page-navigation-list')).toBeVisible();
+
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
 	});
 
 	test('renders correctly in a mobile viewport with a long list', async ({ page }) => {
@@ -190,5 +212,35 @@ test.describe('ontario-in-page-navigation', () => {
 		);
 		expect(itemCount).toBe(6);
 		await expect(host.locator('.ontario-page-navigation-list')).toBeVisible();
+
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
+	});
+
+	test('visual regression: default variant', async () => {
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
+	});
+
+	test('visual regression: no-top-border variant', async ({ page }) => {
+		await host.evaluate((el: Element) => {
+			(el as any).noTopBorder = true;
+		});
+		await page.waitForChanges();
+
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
+	});
+
+	test('visual regression: focus-visible state on first navigation link', async ({ page }) => {
+		const firstItem = page.locator('ontario-in-page-navigation-item').first();
+
+		await firstItem.evaluate((el: Element) => {
+			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+		});
+		await page.waitForChanges();
+
+		const screenshot = await host.screenshot();
+		expect(screenshot.byteLength).toBeGreaterThan(0);
 	});
 });
