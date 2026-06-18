@@ -48,7 +48,7 @@ Commits follow Conventional Commits and are linted by Husky/Commitlint. Preferre
 
 Open PRs against `develop` unless the change is a hotfix.
 
-- **PR title format:** `DS-1234: concise subject`.
+- **PR title format:** `DS-1234: Concise subject`. If there is no Jira issue than omit this part and just start the PR title with a capital letter.
 - **PR labels:** add labels before requesting review. Every non-Renovate PR must include at least one type label and one impacted package/area label. Add other applicable labels (for example release notes, breaking change, priority).
 - **PR description:** include a clear summary, outlining the changes within the PR, the motivation for the change, and any relevant context.
 - **Spelling in PR content:** use Canadian spelling in PR titles, descriptions, comments, docs, and code unless US spelling is required by an external API, third-party contract, or fixed identifier.
