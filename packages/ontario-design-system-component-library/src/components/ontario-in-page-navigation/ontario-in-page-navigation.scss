@@ -16,6 +16,7 @@
 
 .ontario-page-navigation-content {
 	padding: spacing.$spacing-7 spacing.$spacing-0;
+	// 46rem keeps the content column at the same reading width used across Ontario pages.
 	max-width: 46rem;
 }
 
