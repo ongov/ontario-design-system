@@ -103,6 +103,9 @@ export class OntarioInPageNavigation {
 		}
 	}
 
+	/**
+	 * Checks whether the default slot has any rendered item content.
+	 */
 	private hasSlotContent(slotElement?: HTMLSlotElement): boolean {
 		if (!slotElement) {
 			return false;
@@ -123,6 +126,9 @@ export class OntarioInPageNavigation {
 		});
 	}
 
+	/**
+	 * Warns when the component has no in-page navigation items to render.
+	 */
 	private warnIfMissingItems() {
 		if (!this.hasDefaultSlotContent) {
 			const message = new ConsoleMessageClass();
@@ -136,12 +142,18 @@ export class OntarioInPageNavigation {
 		}
 	}
 
+	/**
+	 * Recomputes default slot content state whenever slotted items change.
+	 */
 	private handleDefaultSlotChange = (event: Event) => {
 		const slotElement = event.target as HTMLSlotElement;
 		this.hasDefaultSlotContent = this.hasSlotContent(slotElement);
 		this.warnIfMissingItems();
 	};
 
+	/**
+	 * Resolves a hash link to the target element in the current document.
+	 */
 	private getAnchorTarget(href: string): HTMLElement | null {
 		if (!href || !href.startsWith('#')) {
 			return null;
@@ -155,6 +167,9 @@ export class OntarioInPageNavigation {
 		return document.getElementById(targetId);
 	}
 
+	/**
+	 * Intercepts in-page navigation clicks so the page can smooth-scroll.
+	 */
 	private handleLinkClick = (event: MouseEvent) => {
 		if (!this.smoothScroll) {
 			return;
@@ -182,6 +197,9 @@ export class OntarioInPageNavigation {
 		history.pushState(null, '', href);
 	};
 
+	/**
+	 * Scrolls to the current hash target after the component finishes loading.
+	 */
 	private scrollToAnchorOnLoad() {
 		if (!this.smoothScroll || !window.location.hash) {
 			return;
@@ -196,6 +214,9 @@ export class OntarioInPageNavigation {
 		}
 	}
 
+	/**
+	 * Renders the heading at the configured semantic level.
+	 */
 	private renderHeading(headingText: string) {
 		switch (this.headingLevel) {
 			case 'h3':
