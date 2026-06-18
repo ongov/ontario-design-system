@@ -1,11 +1,11 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-in-page-navigation-item', () => {
 	let host: Locator;
 
-	const setItemContent = async (page: any) => {
+	const setItemContent = async (page: E2EPage) => {
 		await page.setContent(`
 			<main>
 				<ol>
@@ -23,7 +23,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		await setItemContent(page);
 	});
 
-	const expectNoAxeViolations = async (page: any, selector: string) => {
+	const expectNoAxeViolations = async (page: E2EPage, selector: string) => {
 		const accessibilityScanResults = await new AxeBuilder({ page }).include(selector).analyze();
 		expect(accessibilityScanResults.violations).toHaveLength(0);
 	};
@@ -71,8 +71,8 @@ test.describe('ontario-in-page-navigation-item', () => {
 
 	test('supports French consumer content without English fallback text', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el as any).label = 'Section un';
-			(el as any).href = '#section-1';
+			(el as HTMLOntarioInPageNavigationItemElement).label = 'Section un';
+			(el as HTMLOntarioInPageNavigationItemElement).href = '#section-1';
 		});
 		await page.waitForChanges();
 
@@ -84,9 +84,9 @@ test.describe('ontario-in-page-navigation-item', () => {
 
 	test('sets aria-current when item is marked as current', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el as any).label = 'Current section';
-			(el as any).href = '#section-1';
-			(el as any).isCurrent = true;
+			(el as HTMLOntarioInPageNavigationItemElement).label = 'Current section';
+			(el as HTMLOntarioInPageNavigationItemElement).href = '#section-1';
+			(el as HTMLOntarioInPageNavigationItemElement).isCurrent = true;
 		});
 		await page.waitForChanges();
 

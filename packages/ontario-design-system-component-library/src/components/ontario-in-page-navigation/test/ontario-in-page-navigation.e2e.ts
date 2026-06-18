@@ -1,11 +1,23 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
+
+declare global {
+	interface Window {
+		__lastScrollTarget?: string | null;
+	}
+}
+
+type OntarioInPageNavigationHostElement = HTMLElement & {
+	heading?: string;
+	language?: string;
+	noTopBorder?: boolean;
+};
 
 test.describe('ontario-in-page-navigation', () => {
 	let host: Locator;
 
-	const setHostContent = async (page: any, hostAttributes = '') => {
+	const setHostContent = async (page: E2EPage, hostAttributes = '') => {
 		await page.setContent(`
 			<main id="main-content" tabindex="-1">
 				<ontario-in-page-navigation ${hostAttributes} heading="On this page" skip-link-target="main-content">
@@ -24,12 +36,12 @@ test.describe('ontario-in-page-navigation', () => {
 		await setHostContent(page);
 	});
 
-	const expectNoAxeViolations = async (page: any, selector: string) => {
+	const expectNoAxeViolations = async (page: E2EPage, selector: string) => {
 		const accessibilityScanResults = await new AxeBuilder({ page }).include(selector).analyze();
 		expect(accessibilityScanResults.violations).toHaveLength(0);
 	};
 
-	const clickItemLink = async (page: any, index: number) => {
+	const clickItemLink = async (page: E2EPage, index: number) => {
 		await page
 			.locator('ontario-in-page-navigation-item')
 			.nth(index)
@@ -49,7 +61,7 @@ test.describe('ontario-in-page-navigation', () => {
 	test('renders no-top-border variant', async ({ page }) => {
 		await setHostContent(page);
 		await host.evaluate((el: Element) => {
-			(el as any).noTopBorder = true;
+			(el as OntarioInPageNavigationHostElement).noTopBorder = true;
 		});
 		await page.waitForChanges();
 		await expect(host.locator('.ontario-page-navigation')).toContainClass('ontario-page-navigation--no-top-border');
@@ -61,7 +73,7 @@ test.describe('ontario-in-page-navigation', () => {
 
 	test('has no axe violations in no-top-border variant', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el as any).noTopBorder = true;
+			(el as OntarioInPageNavigationHostElement).noTopBorder = true;
 		});
 		await page.waitForChanges();
 
@@ -79,10 +91,10 @@ test.describe('ontario-in-page-navigation', () => {
 		const secondItem = page.locator('ontario-in-page-navigation-item').nth(1);
 
 		await page.evaluate(() => {
-			(window as any).__lastScrollTarget = null;
+			window.__lastScrollTarget = null;
 			const originalScrollIntoView = Element.prototype.scrollIntoView;
 			Element.prototype.scrollIntoView = function () {
-				(window as any).__lastScrollTarget = (this as HTMLElement).id || null;
+				window.__lastScrollTarget = (this as HTMLElement).id || null;
 				return originalScrollIntoView.apply(this);
 			};
 		});
@@ -112,7 +124,7 @@ test.describe('ontario-in-page-navigation', () => {
 		await page.waitForChanges();
 
 		await expect(page).toHaveURL(/#section-1$/);
-		const lastScrollTarget = await page.evaluate(() => (window as any).__lastScrollTarget);
+		const lastScrollTarget = await page.evaluate(() => window.__lastScrollTarget);
 		expect(lastScrollTarget).toBe('section-1');
 	});
 
@@ -140,8 +152,8 @@ test.describe('ontario-in-page-navigation', () => {
 
 		host = page.locator('ontario-in-page-navigation').first();
 		await host.evaluate((el: Element) => {
-			(el as any).heading = 'Dans cette page';
-			(el as any).language = 'fr';
+			(el as OntarioInPageNavigationHostElement).heading = 'Dans cette page';
+			(el as OntarioInPageNavigationHostElement).language = 'fr';
 		});
 		await page.waitForChanges();
 
@@ -224,7 +236,7 @@ test.describe('ontario-in-page-navigation', () => {
 
 	test('visual regression: no-top-border variant', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el as any).noTopBorder = true;
+			(el as OntarioInPageNavigationHostElement).noTopBorder = true;
 		});
 		await page.waitForChanges();
 
