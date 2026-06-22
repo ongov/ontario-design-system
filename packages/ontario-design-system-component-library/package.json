@@ -85,7 +85,7 @@
 		"test:vrt:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner",
 		"pretest:update-snapshots": "pnpm run build:config",
 		"test:update-snapshots": "playwright test vrt.ts --retries=0 --update-snapshots",
-		"test:update-snapshots:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner pnpm run test:update-snapshots"
+		"test:update-snapshots:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner sh -c \"pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm --filter @ongov/ontario-design-system-component-library run test:update-snapshots\""
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",

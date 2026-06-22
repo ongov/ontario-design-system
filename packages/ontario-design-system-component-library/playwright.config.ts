@@ -23,12 +23,20 @@ export default await createConfig({
 		baseURL: 'http://localhost:3333',
 	},
 	// Pin the browser projects explicitly so the `{projectName}` token in the
-	// snapshot path is stable. Start with chromium; firefox/webkit can be added
-	// once the chromium baselines are proven stable.
+	// snapshot path is stable. The VRT suite is captured across the same browser
+	// matrix as the apps VRT (chromium, firefox, webkit).
 	projects: [
 		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] },
+		},
+		{
+			name: 'firefox',
+			use: { ...devices['Desktop Firefox'] },
+		},
+		{
+			name: 'webkit',
+			use: { ...devices['Desktop Safari'] },
 		},
 	],
 	webServer: {
