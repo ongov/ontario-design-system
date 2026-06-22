@@ -78,8 +78,14 @@
 		"test:unit": "vitest run",
 		"test:unit:watch": "vitest",
 		"pretest:e2e": "pnpm run build:config",
-		"test:e2e": "playwright test",
-		"test:e2e:docker": "../../scripts/docker-compose.sh run --rm stencil-e2e-runner"
+		"test:e2e": "playwright test e2e.ts",
+		"test:e2e:docker": "../../scripts/docker-compose.sh run --rm stencil-e2e-runner",
+		"pretest:vrt": "pnpm run build:config",
+		"test:vrt": "playwright test vrt.ts --retries=0",
+		"test:vrt:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner",
+		"pretest:update-snapshots": "pnpm run build:config",
+		"test:update-snapshots": "playwright test vrt.ts --retries=0 --update-snapshots",
+		"test:update-snapshots:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner pnpm run test:update-snapshots"
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",

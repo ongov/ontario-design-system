@@ -23,7 +23,10 @@
 		"test:e2e:apps:docker": "pnpm --filter 'app-*' --filter '!app-web-components-documentation' run test:e2e:docker",
 		"test:unit": "lerna run test:unit",
 		"test:vrt": "lerna run test:vrt",
+		"test:vrt:stencil": "lerna run test:vrt --scope '@ongov/ontario-design-system-component-library'",
+		"test:vrt:apps": "lerna run test:vrt --scope 'app-*' --ignore 'app-web-components-documentation'",
 		"test:vrt:docker": "pnpm -r run test:vrt:docker",
+		"test:vrt:stencil:docker": "pnpm --filter @ongov/ontario-design-system-component-library run test:vrt:docker",
 		"test:update-snapshots": "lerna run test:update-snapshots",
 		"test:update-snapshots:docker": "pnpm -r run test:update-snapshots:docker",
 		"test:all": "pnpm run test:unit && pnpm run test:e2e"
