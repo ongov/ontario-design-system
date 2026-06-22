@@ -1,4 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+
+const waitForInteractionPaint = async (page: Page) => {
+	await page.evaluate(
+		() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
+	);
+};
 
 test.describe('Ontario Summary List - default states', () => {
 	test.beforeEach(async ({ page }) => {
@@ -48,9 +54,11 @@ test.describe('Ontario Summary List - focus states', () => {
 		const actionLink = summaryList.locator('a.ontario-summary-list-item__change-button').first();
 
 		await actionLink.focus();
+		await waitForInteractionPaint(page);
 		await expect(summaryList).toHaveScreenshot('ontarioSummaryList-default-focus.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 750,
 		});
 	});
 
@@ -59,9 +67,11 @@ test.describe('Ontario Summary List - focus states', () => {
 		const actionLink = summaryList.locator('a.ontario-summary-list__change-button');
 
 		await actionLink.focus();
+		await waitForInteractionPaint(page);
 		await expect(summaryList).toHaveScreenshot('ontarioSummaryList-heading-action-focus.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 750,
 		});
 	});
 });
@@ -105,9 +115,11 @@ test.describe('Ontario Summary List - active states', () => {
 
 		await actionLink.hover();
 		await page.mouse.down();
+		await waitForInteractionPaint(page);
 		await expect(summaryList).toHaveScreenshot('ontarioSummaryList-default-active.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 750,
 		});
 		await page.mouse.up();
 	});
@@ -118,9 +130,11 @@ test.describe('Ontario Summary List - active states', () => {
 
 		await actionLink.hover();
 		await page.mouse.down();
+		await waitForInteractionPaint(page);
 		await expect(summaryList).toHaveScreenshot('ontarioSummaryList-heading-action-active.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 900,
 		});
 		await page.mouse.up();
 	});

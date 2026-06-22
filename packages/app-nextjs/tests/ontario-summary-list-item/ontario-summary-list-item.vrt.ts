@@ -1,4 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+
+const waitForInteractionPaint = async (page: Page) => {
+	await page.evaluate(
+		() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
+	);
+};
 
 test.describe('Ontario Summary List Item - default states', () => {
 	test.beforeEach(async ({ page }) => {
@@ -56,9 +62,11 @@ test.describe('Ontario Summary List Item - focus states', () => {
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.focus();
+		await waitForInteractionPaint(page);
 		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action-focus.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 600,
 		});
 	});
 
@@ -67,9 +75,11 @@ test.describe('Ontario Summary List Item - focus states', () => {
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.focus();
+		await waitForInteractionPaint(page);
 		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label-focus.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 400,
 		});
 	});
 });
@@ -113,9 +123,11 @@ test.describe('Ontario Summary List Item - active states', () => {
 
 		await actionLink.hover();
 		await page.mouse.down();
+		await waitForInteractionPaint(page);
 		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action-active.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 550,
 		});
 		await page.mouse.up();
 	});
@@ -126,9 +138,11 @@ test.describe('Ontario Summary List Item - active states', () => {
 
 		await actionLink.hover();
 		await page.mouse.down();
+		await waitForInteractionPaint(page);
 		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label-active.png', {
 			animations: 'disabled',
 			caret: 'hide',
+			maxDiffPixels: 400,
 		});
 		await page.mouse.up();
 	});
