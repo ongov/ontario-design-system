@@ -107,7 +107,7 @@ test.describe('ontario-summary-list-item', () => {
 			`<ontario-summary-list-item name="Address" description="111 Wellington St." action-link='{"href":"/change-address"}'></ontario-summary-list-item>`,
 		);
 
-		const link = host.locator('.ontario-summary-list-change__button');
+		const link = host.locator('.ontario-summary-list-item__change-button');
 		await expect(link).toContainText('Change');
 		await expect(link).toContainText('your answer for:');
 		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
@@ -119,7 +119,7 @@ test.describe('ontario-summary-list-item', () => {
 			`<ontario-summary-list-item name="Adresse" description="111, rue Wellington" language="fr" action-link='{"href":"/modifier-adresse"}'></ontario-summary-list-item>`,
 		);
 
-		const link = host.locator('.ontario-summary-list-change__button');
+		const link = host.locator('.ontario-summary-list-item__change-button');
 		await expect(link).toContainText('Modifier');
 		await expect(link).toContainText(/votre réponse pour\s*:/);
 		await expect(host.getByRole('link', { name: /Modifier/ })).toBeVisible();
