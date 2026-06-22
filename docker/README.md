@@ -39,6 +39,12 @@ Run Next.js E2E tests:
 pnpm --filter app-nextjs run test:e2e:docker
 ```
 
+Run component library VRT tests:
+
+```bash
+pnpm --filter @ongov/ontario-design-system-component-library run test:vrt:docker
+```
+
 Run Next.js VRT tests:
 
 ```bash
@@ -92,6 +98,12 @@ Run Next.js E2E tests:
 
 ```bash
 ./scripts/docker-compose.sh run --rm app-e2e-runner
+```
+
+Run component library VRT tests:
+
+```bash
+./scripts/docker-compose.sh run --rm stencil-vrt-runner
 ```
 
 Run Next.js VRT tests:
