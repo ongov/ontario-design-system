@@ -10,6 +10,8 @@ export default await createConfig({
 	// @stencil/playwright defaults testMatch to '*.e2e.ts'. Broaden it so the VRT
 	// suite (*.vrt.ts) is also discovered. The e2e and vrt suites are then split
 	// at invocation time via a Playwright filter (see the package.json scripts).
+	// This global value applies to chromium; firefox/webkit narrow it to VRT only
+	// (see the projects below).
 	testMatch: ['*.e2e.ts', '*.vrt.ts'],
 	// Place VRT baseline snapshots next to each test file in a `vrt-snapshots`
 	// folder, mirroring the app-nextjs VRT layout. `{projectName}` keeps the
@@ -23,8 +25,9 @@ export default await createConfig({
 		baseURL: 'http://localhost:3333',
 	},
 	// Pin the browser projects explicitly so the `{projectName}` token in the
-	// snapshot path is stable. The VRT suite is captured across the same browser
-	// matrix as the apps VRT (chromium, firefox, webkit).
+	// snapshot path is stable. E2E runs in chromium only (its long-standing
+	// behaviour); the VRT suite is additionally captured in firefox and webkit so
+	// visual rendering is covered across the same matrix as the apps VRT.
 	projects: [
 		{
 			name: 'chromium',
@@ -33,10 +36,12 @@ export default await createConfig({
 		{
 			name: 'firefox',
 			use: { ...devices['Desktop Firefox'] },
+			testMatch: ['*.vrt.ts'],
 		},
 		{
 			name: 'webkit',
 			use: { ...devices['Desktop Safari'] },
+			testMatch: ['*.vrt.ts'],
 		},
 	],
 	webServer: {
