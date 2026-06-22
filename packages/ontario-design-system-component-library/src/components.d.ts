@@ -112,7 +112,6 @@ export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
-export { TaskStatus } from './utils/common/task-statuses.enum';
 export { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export namespace Components {
