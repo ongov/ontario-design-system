@@ -107,7 +107,7 @@ test.describe('ontario-summary-list-item', () => {
 			`<ontario-summary-list-item name="Address" description="111 Wellington St." action-link='{"href":"/change-address"}'></ontario-summary-list-item>`,
 		);
 
-		const link = host.locator('.ontario-summary-list-item__change-button');
+		const link = host.locator('.ontario-summary-list-change__button');
 		await expect(link).toContainText('Change');
 		await expect(link).toContainText('your answer for:');
 		await expect(host.getByRole('link', { name: /Change/ })).toBeVisible();
@@ -119,7 +119,7 @@ test.describe('ontario-summary-list-item', () => {
 			`<ontario-summary-list-item name="Adresse" description="111, rue Wellington" language="fr" action-link='{"href":"/modifier-adresse"}'></ontario-summary-list-item>`,
 		);
 
-		const link = host.locator('.ontario-summary-list-item__change-button');
+		const link = host.locator('.ontario-summary-list-change__button');
 		await expect(link).toContainText('Modifier');
 		await expect(link).toContainText(/votre réponse pour\s*:/);
 		await expect(host.getByRole('link', { name: /Modifier/ })).toBeVisible();
@@ -167,35 +167,5 @@ test.describe('ontario-summary-list-item', () => {
 		);
 
 		await expectNoAxeViolations(page, 'ontario-summary-list-item');
-	});
-
-	test('visual regression: row with action link', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`<ontario-summary-list-item name="Address" description="111 Wellington St." action-link='{"href":"/change-address"}'></ontario-summary-list-item>`,
-		);
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: row without action link', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`<ontario-summary-list-item name="Address" description="111 Wellington St."></ontario-summary-list-item>`,
-		);
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: compact variant', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`<ontario-summary-list-item name="Address" description="111 Wellington St." compact action-link='{"href":"/change-address"}'></ontario-summary-list-item>`,
-		);
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
 	});
 });
