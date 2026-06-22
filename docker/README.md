@@ -12,7 +12,7 @@ container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of
 
 ## CI Usage
 
-GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.55.0-noble`
+GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.60.0-noble`
 job container. In CI we do not use Docker Compose or bind mounts; the workflow
 installs dependencies with pnpm and executes the existing test scripts inside
 the container.
