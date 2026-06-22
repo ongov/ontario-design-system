@@ -5,7 +5,7 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { TaskStatuses } from '../../utils/common/task-statuses.enum';
+import { TaskStatus } from '../../utils/common/task-statuses.enum';
 export type TaskListHeadingLevel = 'h1' | Exclude<HeadingLevel, 'h6'>;
 
 /**
@@ -103,7 +103,7 @@ export class OntarioTaskList {
 		this.completedTasks = tasks.filter((task) => {
 			// Get the status directly from the light DOM
 			const status = task.getAttribute('data-task-status');
-			return status === TaskStatuses.Completed;
+			return status === TaskStatus.Completed;
 		}).length;
 	}
 
