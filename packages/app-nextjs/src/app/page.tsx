@@ -99,6 +99,9 @@ export default function Home() {
 							<Link href="/components/ontario-step-indicator">ontario-step-indicator</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-summary-list">ontario-summary-list</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-table">ontario-table</Link>
 						</li>
 						<li>
