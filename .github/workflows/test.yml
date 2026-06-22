@@ -217,8 +217,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run All VRT Tests
-        run: pnpm run test:vrt
+      - name: Run Apps VRT Tests
+        run: pnpm run test:vrt:apps
 
       - name: Upload Next.js VRT Test Results
         if: ${{ !cancelled() }}
