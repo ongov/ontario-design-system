@@ -46,6 +46,11 @@ services:
     <<: *playwright-runner
     command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm --filter @ongov/ontario-design-system-component-library run test:e2e"
 
+  # Runs Stencil component library Playwright visual regression tests.
+  stencil-vrt-runner:
+    <<: *playwright-runner
+    command: sh -c "pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm --filter @ongov/ontario-design-system-component-library run test:vrt"
+
   # Runs app-level Playwright E2E tests.
   app-e2e-runner:
     <<: *playwright-runner
