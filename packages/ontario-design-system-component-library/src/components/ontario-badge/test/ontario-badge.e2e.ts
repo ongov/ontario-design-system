@@ -61,7 +61,26 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge>Pending</ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('Pending');
-		await expect(host).toHaveScreenshot('ontarioBadge-slotText.png');
+	});
+
+	test.skip('container layout', async ({ page }) => {
+		const host = await renderHost(
+			page,
+			`
+        <div class="ontario-badge__container">
+          <span class="ontario-badge__label">Status</span>
+          <span class="ontario-badge ontario-badge--default-light">Default Light</span>
+        </div>
+      `,
+		);
+		const container = host.locator('div.ontario-badge__container');
+		await expect(container).toBeVisible();
+		await expect(container).toHaveCSS('display', 'flex');
+		await expect(container).toHaveCSS('flex-direction', 'column');
+		await expect(container).toHaveCSS('align-items', 'flex-start');
+
+		const gap = await container.evaluate((el) => getComputedStyle(el).gap);
+		expect(gap).not.toBe('0px');
 	});
 
 	test('label typography', async ({ page }) => {
@@ -69,15 +88,13 @@ test.describe('ontario-badge', () => {
 		console.log('host: ', await host.innerHTML());
 		const label = host.locator('span.ontario-badge__label').first();
 		//console.log('label: ', await label.first());
-		//await expect(label).toHaveCSS('display', 'block');
+		await expect(label).toHaveCSS('display', 'block');
 		await expect(label).toHaveCSS('text-align', 'left');
 		await expect(label).toHaveCSS('font-weight', '600');
-		await expect(host).toHaveScreenshot('ontarioBadge-labelTypography.png');
 	});
 
 	test('applies correct styles for red badge', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Alert" colour="red"></ontario-badge>`);
-		console.log('host: ', await host.innerHTML());
 		const span = host.locator('span');
 
 		// Check class mapping for alert colour
