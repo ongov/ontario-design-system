@@ -24,6 +24,12 @@ const packageRoot = path.dirname(fileURLToPath(import.meta.url));
 const legacyDir = path.join(packageRoot, 'legacy');
 const distDir = path.join(packageRoot, 'dist');
 
+/**
+ * Recursively copy a directory tree.
+ * @param {string} from - Absolute source directory path.
+ * @param {string} to - Absolute destination directory path.
+ * @returns {Promise<void>}
+ */
 async function copyDir(from, to) {
 	await mkdir(to, { recursive: true });
 	for (const entry of await readdir(from)) {
