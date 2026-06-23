@@ -3,6 +3,9 @@ dist/
 www/
 loader/
 
+# Vendored, frozen design-token snapshot (verbatim copy of design-tokens output — DS-2685)
+**/1-variables/_tokens.frozen.scss
+
 *~
 *.sw[mnpcod]
 *.log
