@@ -1,3 +1,6 @@
+// Generates the colour primitive tokens (greyscale, 12 accent ramps, and system
+// colours) from seed anchors using HSL interpolation, writing one JSON file per
+// hue to tokens/primitives/colour/. Idempotent: only rewrites files that change.
 import fs from 'node:fs';
 import path from 'node:path';
 

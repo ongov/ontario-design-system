@@ -1,3 +1,7 @@
+// Exports the primitive tokens as a Figma Variables-compatible JSON bundle
+// (exports/figma/figma-tokens.json). Runs the linter as a pre-flight check and
+// infers Figma token types from token paths and values. Scoped to the Core
+// (primitive) layer for the DS-2685 work.
 import fs from 'node:fs';
 import path from 'node:path';
 import { lintTokens, loadLayerTrees, normaliseReference, rootDir } from './lib/token-tooling.mjs';

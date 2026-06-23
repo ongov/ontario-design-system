@@ -1,3 +1,7 @@
+// Build entry point for the design-tokens package. While the package is being
+// rearchitected for the layered token model (DS-2685), this serves the shipped
+// flat output from the committed legacy/ snapshot and registers the primitive
+// value transforms for the upcoming primitive output platforms (DS-2691).
 import { mkdir, copyFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
