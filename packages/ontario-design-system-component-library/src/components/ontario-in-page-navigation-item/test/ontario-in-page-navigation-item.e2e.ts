@@ -38,15 +38,8 @@ test.describe('ontario-in-page-navigation-item', () => {
 	});
 
 	test('supports keyboard focus and Enter navigation', async ({ page }) => {
-		await host.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-		});
-
-		const focusedHref = await host.evaluate(
-			(el: Element) =>
-				el.shadowRoot?.activeElement?.getAttribute('href') || document.activeElement?.getAttribute('href'),
-		);
-		expect(focusedHref).toBe('#section-1');
+		await getLink().focus();
+		await expect(getLink()).toBeFocused();
 
 		await page.keyboard.press('Enter');
 		await page.waitForChanges();
@@ -111,10 +104,9 @@ test.describe('ontario-in-page-navigation-item', () => {
 	});
 
 	test('visual regression: focus-visible state on item link', async ({ page }) => {
-		await host.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-		});
+		await getLink().focus();
 		await page.waitForChanges();
+		await expect(getLink()).toBeFocused();
 
 		const screenshot = await host.screenshot();
 		expect(screenshot.byteLength).toBeGreaterThan(0);
