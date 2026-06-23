@@ -1,3 +1,6 @@
+// Shared library for the token tooling. Provides token file discovery, layer
+// loading and deep-merging, alias normalisation/resolution, and the alias/
+// integrity linter used by the generator, linter CLI, and exporters.
 import fs from 'node:fs';
 import path from 'node:path';
 
