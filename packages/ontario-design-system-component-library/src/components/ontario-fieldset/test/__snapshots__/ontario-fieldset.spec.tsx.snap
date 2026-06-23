@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-fieldset snapshot should render the expected html 1`] = `
-<ontario-fieldset legend="What is your delivery address?" legend-size="heading">
-  <template shadowrootmode="open">
+exports[`ontario-fieldset > snapshot > should render the expected html 1`] = `
+<ontario-fieldset legend="What is your delivery address?" legend-size="heading" class="hydrated">
+  <mock:shadow-root>
     <fieldset class="ontario-fieldset">
       <legend class="ontario-fieldset__legend ontario-fieldset__legend--heading">
         <h1>
@@ -11,6 +11,6 @@ exports[`ontario-fieldset snapshot should render the expected html 1`] = `
       </legend>
       <slot></slot>
     </fieldset>
-  </template>
+  </mock:shadow-root>
 </ontario-fieldset>
 `;

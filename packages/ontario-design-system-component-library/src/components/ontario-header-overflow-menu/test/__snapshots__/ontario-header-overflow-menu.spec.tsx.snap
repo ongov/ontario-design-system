@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
-<ontario-header-overflow-menu>
-  <template shadowrootmode="open">
-    <nav aria-hidden="true" class="ontario-application-navigation" id="ontario-application-navigation" role="navigation">
+exports[`ontario-header-overflow-menu > should render menu items correctly 1`] = `
+<ontario-header-overflow-menu class="hydrated">
+  <mock:shadow-root>
+    <nav role="navigation" class="ontario-application-navigation" id="ontario-application-navigation" aria-hidden="true">
       <div class="ontario-application-navigation__container">
         <ul>
           <li>
@@ -18,8 +18,8 @@ exports[`ontario-header-overflow-menu should render menu items correctly 1`] = `
           </li>
         </ul>
       </div>
-      <div aria-live="polite" class="ontario-show-for-sr" id="aria-live-region"></div>
+      <div id="aria-live-region" class="ontario-show-for-sr" aria-live="polite"></div>
     </nav>
-  </template>
+  </mock:shadow-root>
 </ontario-header-overflow-menu>
 `;

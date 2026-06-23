@@ -1,25 +1,18 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OntarioSummaryListItem } from '../ontario-summary-list-item';
+import { render } from '@stencil/vitest';
 
 describe('ontario-summary-list-item', () => {
-	let page: SpecPage;
+	let page: Awaited<ReturnType<typeof render>>;
 	let host: HTMLElement;
 
 	it('should render without crashing when no props are provided', async () => {
-		const emptyPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item></ontario-summary-list-item>`,
-		});
+		const emptyPage = await render(`<ontario-summary-list-item></ontario-summary-list-item>`);
 		await emptyPage.waitForChanges();
 		expect(emptyPage.root).not.toBeNull();
 		expect(emptyPage.root?.shadowRoot).not.toBeNull();
 	});
 
 	beforeEach(async () => {
-		page = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="Last name" description="Smith"></ontario-summary-list-item>`,
-		});
+		page = await render(`<ontario-summary-list-item name="Last name" description="Smith"></ontario-summary-list-item>`);
 		host = page.root as HTMLElement;
 		await page.waitForChanges();
 	});
@@ -43,12 +36,11 @@ describe('ontario-summary-list-item', () => {
 	});
 
 	it('should project the named action slot content when provided', async () => {
-		const slotPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="Last name" description="Smith">
+		const slotPage = await render(
+			`<ontario-summary-list-item name="Last name" description="Smith">
 				<a slot="action" href="#change-last-name">Change last name</a>
 			</ontario-summary-list-item>`,
-		});
+		);
 
 		await slotPage.waitForChanges();
 
@@ -69,10 +61,9 @@ describe('ontario-summary-list-item', () => {
 	});
 
 	it('should render a change link when actionLink is provided', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
+		);
 		await linkPage.waitForChanges();
 		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list-item__change-button');
 		expect(link).not.toBeNull();
@@ -80,20 +71,18 @@ describe('ontario-summary-list-item', () => {
 	});
 
 	it('should not apply ontario-summary-list-item__row--no-actions when actionLink is provided', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
+		);
 		await linkPage.waitForChanges();
 		const row = (linkPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list-item__row');
 		expect(row).not.toHaveClass('ontario-summary-list-item__row--no-actions');
 	});
 
 	it('should use the i18n default label when actionLink has no label', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change"}'></ontario-summary-list-item>`,
+		);
 		await linkPage.waitForChanges();
 		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list-item__change-button');
 		// default language is 'en'; i18n label is "Change"
@@ -101,44 +90,36 @@ describe('ontario-summary-list-item', () => {
 	});
 
 	it('should override the visible link text when actionLink.label is provided', async () => {
-		const linkPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change","label":"Edit"}'></ontario-summary-list-item>`,
-		});
+		const linkPage = await render(
+			`<ontario-summary-list-item name="First name" description="George" action-link='{"href":"/change","label":"Edit"}'></ontario-summary-list-item>`,
+		);
 		await linkPage.waitForChanges();
 		const link = (linkPage.root as HTMLElement).shadowRoot?.querySelector('a.ontario-summary-list-item__change-button');
 		expect(link?.textContent?.trim().startsWith('Edit')).toBe(true);
 	});
 
 	it('should apply the compact modifier class when the compact prop is set', async () => {
-		const compactPage = await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="Last name" description="Smith" compact></ontario-summary-list-item>`,
-		});
+		const compactPage = await render(
+			`<ontario-summary-list-item name="Last name" description="Smith" compact></ontario-summary-list-item>`,
+		);
 		await compactPage.waitForChanges();
 		const row = (compactPage.root as HTMLElement).shadowRoot?.querySelector('.ontario-summary-list-item__row');
 		expect(row).toHaveClass('ontario-summary-list-item__row--compact');
 	});
 
 	it('should warn when name prop is missing', async () => {
-		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
-		await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item description="Smith"></ontario-summary-list-item>`,
-		});
+		await render(`<ontario-summary-list-item description="Smith"></ontario-summary-list-item>`);
 
 		expect(warnSpy).toHaveBeenCalled();
 		warnSpy.mockRestore();
 	});
 
 	it('should warn when description prop is missing', async () => {
-		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
-		await newSpecPage({
-			components: [OntarioSummaryListItem],
-			html: `<ontario-summary-list-item name="Last name"></ontario-summary-list-item>`,
-		});
+		await render(`<ontario-summary-list-item name="Last name"></ontario-summary-list-item>`);
 
 		expect(warnSpy).toHaveBeenCalled();
 		warnSpy.mockRestore();

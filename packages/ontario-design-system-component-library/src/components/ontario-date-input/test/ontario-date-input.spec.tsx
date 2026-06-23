@@ -1,5 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioDateInput } from '../ontario-date-input';
+import { render } from '@stencil/vitest';
 import { isInvalidYear } from '../utils';
 
 describe('ontario-date-input', () => {
@@ -12,63 +11,67 @@ describe('ontario-date-input', () => {
 	};
 
 	it('renders deafult state', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input language="en" element-id="date-id-example"></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input language="en" element-id="date-id-example"></ontario-date-input>`);
 		expect(page.root).toEqualHtml(`
-			<ontario-date-input element-id="date-id-example" language="en">
-				<mock:shadow-root>
-					<fieldset class="ontario-fieldset" role="group">
-						<legend class="ontario-fieldset__legend">
-							Exact date
-							<span class="ontario-label__flag">
-								(optional)
-							</span>
-						</legend>
-						<div class="ontario-error-messaging ontario-error__hidden" role="alert">
-							<ontario-icon-alert-error></ontario-icon-alert-error>
-							<div class="ontario-error-messaging__content"></div>
-						</div>
-						<div class="ontario-date__group">
-							<div class="ontario-date__group-input">
-								<label htmlfor="year-date-id-example">
-									Year
-									<span class="ontario-show-for-sr">
-										(1 or 2 digits)
-									</span>
-								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" type="text" value="">
-							</div>
-							<div class="ontario-date__group-input">
-								<label htmlfor="month-date-id-example">
-									Month
-									<span class="ontario-show-for-sr">
-										(1 or 2 digits)
-									</span>
-								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" type="text" value="">
-							</div>
-							<div class="ontario-date__group-input">
-								<label htmlfor="day-date-id-example">
-									Day
-									<span class="ontario-show-for-sr">
-										(4 digits)
-									</span>
-								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="day-date-id-example" inputmode="numeric" type="text" value="">
-							</div>
-						</div>
-					</fieldset>
-				</mock:shadow-root>
-			</ontario-date-input>
-    `);
+<ontario-date-input language="en" element-id="date-id-example" class="hydrated">
+  <mock:shadow-root>
+    <fieldset role="group" class="ontario-fieldset">
+      <legend class="ontario-fieldset__legend">
+        Exact date
+        <span class="ontario-label__flag">
+          (optional)
+        </span>
+      </legend>
+      <div role="alert" class="ontario-error-messaging ontario-error__hidden">
+        <ontario-icon-alert-error class="hydrated">
+          <mock:shadow-root>
+            <div class="ontario-icon ontario-icon--width-24">
+              <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
+                <path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
+              </svg>
+            </div>
+          </mock:shadow-root>
+        </ontario-icon-alert-error>
+        <div class="ontario-error-messaging__content"></div>
+      </div>
+      <div class="ontario-date__group">
+        <div class="ontario-date__group-input">
+          <label htmlfor="year-date-id-example">
+            Year
+            <span class="ontario-show-for-sr">
+              (1 or 2 digits)
+            </span>
+          </label>
+          <input class="ontario-input ontario-input--4-char-width" id="year-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+        </div>
+        <div class="ontario-date__group-input">
+          <label htmlfor="month-date-id-example">
+            Month
+            <span class="ontario-show-for-sr">
+              (1 or 2 digits)
+            </span>
+          </label>
+          <input class="ontario-input ontario-input--4-char-width" id="month-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+        </div>
+        <div class="ontario-date__group-input">
+          <label htmlfor="day-date-id-example">
+            Day
+            <span class="ontario-show-for-sr">
+              (4 digits)
+            </span>
+          </label>
+          <input class="ontario-input ontario-input--4-char-width" id="day-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+        </div>
+      </div>
+    </fieldset>
+  </mock:shadow-root>
+</ontario-date-input>
+`);
 	});
 
 	it('should render custom prop', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `
+		const page = await render(`
 				<ontario-date-input
 					element-id="date-id-example"
 					placeholder='{ "day": "D", "month": "M", "year": "YY" }'
@@ -79,57 +82,62 @@ describe('ontario-date-input', () => {
 					date-options='["month", "year"]'
 					caption='{ "captionText": "Enter Date", "captionType": "default" }'
 				></ontario-date-input>
-			`,
-		});
+			`);
 
 		expect(page.root).toEqualHtml(`
-			<ontario-date-input element-id="date-id-example" caption="{ &quot;captionText&quot;: &quot;Enter Date&quot;, &quot;captionType&quot;: &quot;default&quot; }" date-options="[&quot;month&quot;, &quot;year&quot;]" hint-text="Example 1990 12" max-year="1000" min-year="500" placeholder="{ &quot;day&quot;: &quot;D&quot;, &quot;month&quot;: &quot;M&quot;, &quot;year&quot;: &quot;YY&quot; }" required="true">
-				<mock:shadow-root>
-					<fieldset class="ontario-fieldset" role="group">
-						<legend class="ontario-fieldset__legend">
-							Enter Date
-							<span class="ontario-label__flag">
-								(required)
-							</span>
-						</legend>
-						<p class="ontario-hint" id="date-input-hint-date-id-example">
-							Example 1990 12
-						</p>
-						<div class="ontario-error-messaging ontario-error__hidden" role="alert">
-							<ontario-icon-alert-error></ontario-icon-alert-error>
-							<div class="ontario-error-messaging__content"></div>
-						</div>
-						<div class="ontario-date__group">
-							<div class="ontario-date__group-input">
-								<label htmlfor="year-date-id-example">
-									Year
-									<span class="ontario-show-for-sr">
-										(1 or 2 digits)
-									</span>
-								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="year-date-id-example" inputmode="numeric" placeholder="YY" required="" type="text" value="">
-							</div>
-							<div class="ontario-date__group-input">
-								<label htmlfor="month-date-id-example">
-									Month
-									<span class="ontario-show-for-sr">
-										(1 or 2 digits)
-									</span>
-								</label>
-								<input aria-describedby="date-input-hint-date-id-example" class="ontario-input ontario-input--4-char-width" id="month-date-id-example" inputmode="numeric" placeholder="M" required="" type="text" value="">
-							</div>
-						</div>
-					</fieldset>
-				</mock:shadow-root>
-			</ontario-date-input>
-		`);
+<ontario-date-input element-id="date-id-example" placeholder="{ "day": "D", "month": "M", "year": "YY" }" min-year="500" max-year="1000" required="true" hint-text="Example 1990 12" date-options="["month", "year"]" caption="{ "captionText": "Enter Date", "captionType": "default" }" class="hydrated">
+  <mock:shadow-root>
+    <fieldset role="group" class="ontario-fieldset">
+      <legend class="ontario-fieldset__legend">
+        Enter Date
+        <span class="ontario-label__flag">
+          (required)
+        </span>
+      </legend>
+      <p id="date-input-hint-date-id-example" class="ontario-hint">
+        Example 1990 12
+      </p>
+      <div role="alert" class="ontario-error-messaging ontario-error__hidden">
+        <ontario-icon-alert-error class="hydrated">
+          <mock:shadow-root>
+            <div class="ontario-icon ontario-icon--width-24">
+              <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
+                <path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
+              </svg>
+            </div>
+          </mock:shadow-root>
+        </ontario-icon-alert-error>
+        <div class="ontario-error-messaging__content"></div>
+      </div>
+      <div class="ontario-date__group">
+        <div class="ontario-date__group-input">
+          <label htmlfor="year-date-id-example">
+            Year
+            <span class="ontario-show-for-sr">
+              (1 or 2 digits)
+            </span>
+          </label>
+          <input class="ontario-input ontario-input--4-char-width" id="year-date-id-example" type="text" value placeholder="YY" required inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+        </div>
+        <div class="ontario-date__group-input">
+          <label htmlfor="month-date-id-example">
+            Month
+            <span class="ontario-show-for-sr">
+              (1 or 2 digits)
+            </span>
+          </label>
+          <input class="ontario-input ontario-input--4-char-width" id="month-date-id-example" type="text" value placeholder="M" required inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+        </div>
+      </div>
+    </fieldset>
+  </mock:shadow-root>
+</ontario-date-input>
+`);
 	});
 
 	it('hydrates the internal fields from a plain ISO value', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input value="2024-02-20"></ontario-date-input>`);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
 
@@ -140,10 +148,7 @@ describe('ontario-date-input', () => {
 	});
 
 	it('hydrates the internal fields from a full ISO value and normalizes the host value', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-02-20T15:30:00.000Z"></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input value="2024-02-20T15:30:00.000Z"></ontario-date-input>`);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
 
@@ -154,10 +159,7 @@ describe('ontario-date-input', () => {
 	});
 
 	it('updates the aggregate host value after field input completes a valid date', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input></ontario-date-input>`);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
@@ -175,11 +177,8 @@ describe('ontario-date-input', () => {
 	});
 
 	it('emits a host `input` event when the aggregate value changes', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input></ontario-date-input>`,
-		});
-		const emitSpy = jest.fn();
+		const page = await render(`<ontario-date-input></ontario-date-input>`);
+		const emitSpy = vi.fn();
 		page.root?.addEventListener('input', emitSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
@@ -200,14 +199,11 @@ describe('ontario-date-input', () => {
 	});
 
 	it('preserves field-level input events while only exposing one aggregate host input event', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input></ontario-date-input>`,
-		});
-		const hostInputSpy = jest.fn();
-		const fieldInputSpy = jest.fn();
+		const page = await render(`<ontario-date-input></ontario-date-input>`);
+		const hostInputSpy = vi.fn();
+		const fieldInputSpy = vi.fn();
 		page.root?.addEventListener('input', hostInputSpy);
-		page.doc.addEventListener('inputOnInput', fieldInputSpy);
+		document.addEventListener('inputOnInput', fieldInputSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
 		const [yearInput, monthInput, dayInput] = Array.from(inputs ?? []);
@@ -230,11 +226,8 @@ describe('ontario-date-input', () => {
 	});
 
 	it('emits a host `change` event when the aggregate value changes', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input></ontario-date-input>`,
-		});
-		const emitSpy = jest.fn();
+		const page = await render(`<ontario-date-input></ontario-date-input>`);
+		const emitSpy = vi.fn();
 		page.root?.addEventListener('change', emitSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
@@ -255,11 +248,8 @@ describe('ontario-date-input', () => {
 	});
 
 	it('emits a host `change` event after the aggregate value was already updated by `input` events', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input></ontario-date-input>`,
-		});
-		const emitSpy = jest.fn();
+		const page = await render(`<ontario-date-input></ontario-date-input>`);
+		const emitSpy = vi.fn();
 		page.root?.addEventListener('change', emitSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
@@ -282,11 +272,8 @@ describe('ontario-date-input', () => {
 	});
 
 	it('emits a host `input` event when the aggregate value is cleared', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
-		});
-		const emitSpy = jest.fn();
+		const page = await render(`<ontario-date-input value="2024-02-20"></ontario-date-input>`);
+		const emitSpy = vi.fn();
 		page.root?.addEventListener('input', emitSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
@@ -304,11 +291,8 @@ describe('ontario-date-input', () => {
 	});
 
 	it('emits a host `change` event when the aggregate value is cleared', async () => {
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
-		});
-		const emitSpy = jest.fn();
+		const page = await render(`<ontario-date-input value="2024-02-20"></ontario-date-input>`);
+		const emitSpy = vi.fn();
 		page.root?.addEventListener('change', emitSpy);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
@@ -326,12 +310,9 @@ describe('ontario-date-input', () => {
 	});
 
 	it('reports an error and ignores invalid aggregate values', async () => {
-		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+		const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-99-20"></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input value="2024-99-20"></ontario-date-input>`);
 
 		const inputs = page.root?.shadowRoot?.querySelectorAll('input');
 
@@ -345,12 +326,9 @@ describe('ontario-date-input', () => {
 	});
 
 	it('reports an error and ignores array aggregate values passed at runtime', async () => {
-		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+		const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
-		const page = await newSpecPage({
-			components: [OntarioDateInput],
-			html: `<ontario-date-input value="2024-02-20"></ontario-date-input>`,
-		});
+		const page = await render(`<ontario-date-input value="2024-02-20"></ontario-date-input>`);
 
 		(page.root as HTMLOntarioDateInputElement).value = ['2024-02-20'] as unknown as string;
 		await page.waitForChanges();

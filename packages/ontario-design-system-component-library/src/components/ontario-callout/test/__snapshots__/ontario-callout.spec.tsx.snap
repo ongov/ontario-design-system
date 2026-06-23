@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-callout snapshot should render the expected html 1`] = `
-<ontario-callout heading-content="Get notified" heading-content-type="string" heading-type="h3" highlight-colour="gold">
-  <template shadowrootmode="open">
-    <div class="ontario-border-highlight--gold ontario-callout">
+exports[`ontario-callout > snapshot > should render the expected html 1`] = `
+<ontario-callout heading-type="h3" heading-content-type="string" heading-content="Get notified" highlight-colour="gold" class="hydrated">
+  <mock:shadow-root>
+    <div class="ontario-callout ontario-border-highlight--gold">
       <h3 class="ontario-callout__title ontario-h5">
         Get notified
       </h3>
       <slot></slot>
     </div>
-  </template>
+  </mock:shadow-root>
   <p>
     <a href="#">
       Sign up for email reminders
