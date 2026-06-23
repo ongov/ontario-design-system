@@ -4,18 +4,34 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+/** Absolute path to the package root (the current working directory at run time). */
 export const rootDir = process.cwd();
+/** Absolute path to the package's tokens/ directory. */
 export const tokensDir = path.join(rootDir, 'tokens');
-// Only the Core (primitive) layer exists during the DS-2685 primitive-layer work.
-// Semantic and Component layers are added by later Epics; keep this list in sync
-// with the directories that actually exist under tokens/.
+/**
+ * Token layers to load, in cascade order. Only the Core (primitive) layer exists
+ * during the DS-2685 primitive-layer work; Semantic and Component layers are added
+ * by later Epics. Keep this list in sync with the directories under tokens/.
+ * @type {{ label: string, dir: string }[]}
+ */
 export const layerConfig = [{ label: 'Core', dir: 'primitives' }];
 
+/**
+ * Strip the legacy `.value` suffix from a Style Dictionary alias reference.
+ * @param {*} value - A token value; only strings are transformed.
+ * @returns {*} The value with any `.value` alias suffix removed.
+ */
 export function normaliseReference(value) {
 	if (typeof value !== 'string') return value;
 	return value.replace(/\.value(?=}|$)/g, '');
 }
 
+/**
+ * Recursively merge `source` into `target`, combining nested objects.
+ * @param {Record<string, any>} target - The object mutated in place.
+ * @param {Record<string, any>} source - The object merged into the target.
+ * @returns {Record<string, any>} The mutated target.
+ */
 export function deepMerge(target, source) {
 	Object.entries(source).forEach(([key, value]) => {
 		if (value && typeof value === 'object' && !Array.isArray(value)) {
@@ -32,7 +48,12 @@ export function deepMerge(target, source) {
 	return target;
 }
 
-// Recursively collect .json token files under a directory, sorted for stable order.
+/**
+ * Recursively collect `.json` token files under a directory, sorted for a stable
+ * order. Returns an empty array if the directory does not exist.
+ * @param {string} dir - Absolute directory path to search.
+ * @returns {string[]} Absolute paths of the JSON files found.
+ */
 function collectJsonFiles(dir) {
 	if (!fs.existsSync(dir)) {
 		return [];
@@ -51,6 +72,10 @@ function collectJsonFiles(dir) {
 	return found;
 }
 
+/**
+ * List every token JSON file across the configured layers.
+ * @returns {string[]} Absolute paths of all token files.
+ */
 export function listTokenFiles() {
 	const filePaths = [];
 
@@ -61,6 +86,11 @@ export function listTokenFiles() {
 	return filePaths;
 }
 
+/**
+ * Read and deep-merge all token files in a single layer directory.
+ * @param {string} layerDir - Layer directory name under tokens/ (e.g. 'primitives').
+ * @returns {Record<string, any>} The merged token tree for the layer.
+ */
 export function readLayer(layerDir) {
 	const layerTree = {};
 
@@ -72,6 +102,10 @@ export function readLayer(layerDir) {
 	return layerTree;
 }
 
+/**
+ * Load each configured layer as its own merged token tree, keyed by layer label.
+ * @returns {Record<string, Record<string, any>>} Map of layer label to token tree.
+ */
 export function loadLayerTrees() {
 	const result = {};
 	layerConfig.forEach(({ label, dir }) => {
@@ -80,6 +114,10 @@ export function loadLayerTrees() {
 	return result;
 }
 
+/**
+ * Load all layers merged into a single token tree (used for alias resolution).
+ * @returns {Record<string, any>} The merged token tree across all layers.
+ */
 export function loadMergedTokens() {
 	const merged = {};
 	layerConfig.forEach(({ dir }) => {
@@ -88,6 +126,13 @@ export function loadMergedTokens() {
 	return merged;
 }
 
+/**
+ * Depth-first walk an object tree, invoking `visit` for every object node.
+ * @param {*} node - The current node.
+ * @param {(node: Record<string, any>, pathParts: string[]) => void} visit - Visitor callback.
+ * @param {string[]} [pathParts] - Accumulated key path to the current node.
+ * @returns {void}
+ */
 export function walkObject(node, visit, pathParts = []) {
 	if (node && typeof node === 'object' && !Array.isArray(node)) {
 		visit(node, pathParts);
@@ -97,6 +142,12 @@ export function walkObject(node, visit, pathParts = []) {
 	}
 }
 
+/**
+ * Resolve a dot-delimited token path against a token tree.
+ * @param {Record<string, any>} root - The token tree to resolve against.
+ * @param {string} dotPath - Dot path, with or without a legacy `.value` suffix.
+ * @returns {*} The resolved node, or `undefined` if the path does not exist.
+ */
 export function getByPath(root, dotPath) {
 	const cleanPath = normaliseReference(dotPath);
 	return cleanPath.split('.').reduce((current, segment) => {
@@ -107,6 +158,11 @@ export function getByPath(root, dotPath) {
 	}, root);
 }
 
+/**
+ * Rewrite legacy `.value` alias suffixes in place within a parsed token tree.
+ * @param {*} node - The current node to inspect and mutate.
+ * @returns {number} The number of alias values repaired.
+ */
 function traverseAndMutateAlias(node) {
 	let fixes = 0;
 
@@ -133,6 +189,16 @@ function traverseAndMutateAlias(node) {
 	return fixes;
 }
 
+/**
+ * Lint every token file for alias integrity and structural issues.
+ *
+ * Detects missing alias targets (error), legacy `.value` alias suffixes
+ * (warning, auto-fixable), and tokens with a type but no value (warning).
+ * @param {{ fix?: boolean }} [options] - When `fix` is true, repairs legacy alias
+ *   suffixes in place.
+ * @returns {{ errors: object[], warnings: object[], fixesApplied: number, filesChecked: number }}
+ *   The collected lint results.
+ */
 export function lintTokens({ fix = false } = {}) {
 	const mergedTokens = loadMergedTokens();
 	const issues = {

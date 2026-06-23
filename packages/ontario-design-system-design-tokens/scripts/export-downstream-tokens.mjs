@@ -15,12 +15,23 @@ if (!['all', 'downstream', 'tailwind'].includes(target)) {
 	process.exit(1);
 }
 
+/**
+ * Whether a node is a leaf token (a plain object with a `value` property).
+ * @param {*} node - The node to test.
+ * @returns {boolean} True if the node is a leaf token.
+ */
 function isLeafToken(node) {
 	return (
 		!!node && typeof node === 'object' && !Array.isArray(node) && Object.prototype.hasOwnProperty.call(node, 'value')
 	);
 }
 
+/**
+ * Infer a downstream token type from a token's path and value using heuristics.
+ * @param {string[]} pathParts - The token's key path.
+ * @param {*} value - The token's value.
+ * @returns {string|null} The inferred type, or null if none matched.
+ */
 function inferType(pathParts, value) {
 	const pathText = pathParts.join('.').toLowerCase();
 	if (pathText.includes('colour') || pathText.includes('color') || /^#([0-9a-f]{3,8})$/i.test(String(value)))
@@ -40,6 +51,13 @@ function inferType(pathParts, value) {
 	return null;
 }
 
+/**
+ * Recursively convert a token tree into a typed tree, resolving aliases and
+ * attaching an explicit or inferred type to each leaf.
+ * @param {*} node - The current token node.
+ * @param {string[]} [pathParts] - Accumulated key path to the current node.
+ * @returns {*} The typed token tree.
+ */
 function toTypedTree(node, pathParts = []) {
 	if (isLeafToken(node)) {
 		const cleanedValue = normaliseReference(node.value);
@@ -60,6 +78,11 @@ function toTypedTree(node, pathParts = []) {
 	return output;
 }
 
+/**
+ * Recursively flatten a token tree to bare values (used for the Tailwind theme).
+ * @param {*} node - The current token node.
+ * @returns {*} The value-only tree.
+ */
 function toValueTree(node) {
 	if (isLeafToken(node)) {
 		return normaliseReference(node.value);
@@ -78,6 +101,10 @@ function toValueTree(node) {
 
 const layerTrees = loadLayerTrees();
 
+/**
+ * Builders for each downstream export shape, keyed by hook name.
+ * @type {Record<string, () => Record<string, any>>}
+ */
 const downstreamHooks = {
 	odsTokenTree: () => {
 		return {
@@ -132,6 +159,12 @@ const downstreamHooks = {
 	},
 };
 
+/**
+ * Write a JSON payload to a path relative to the package root, creating directories.
+ * @param {string} relativePath - Path relative to the package root.
+ * @param {*} payload - The JSON-serialisable payload.
+ * @returns {void}
+ */
 function writeJson(relativePath, payload) {
 	const absolutePath = path.join(rootDir, relativePath);
 	fs.mkdirSync(path.dirname(absolutePath), { recursive: true });

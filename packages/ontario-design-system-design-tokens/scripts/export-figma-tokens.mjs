@@ -10,12 +10,23 @@ const outputFile = path.join(rootDir, 'exports', 'figma', 'figma-tokens.json');
 
 const warnings = [];
 
+/**
+ * Normalise a single path segment for heuristic matching (lowercase, no separators).
+ * @param {string} part - The path segment.
+ * @returns {string} The normalised segment.
+ */
 function normalisePart(part) {
 	return String(part)
 		.toLowerCase()
 		.replace(/[-_\s]/g, '');
 }
 
+/**
+ * Infer a Figma token type from a token's path and value using heuristics.
+ * @param {string[]} pathParts - The token's key path.
+ * @param {*} value - The token's value.
+ * @returns {string|null} The inferred Figma type, or null if none matched.
+ */
 function inferTokenType(pathParts, value) {
 	const parts = pathParts.map(normalisePart);
 	const valueString = typeof value === 'string' ? value : '';
@@ -89,6 +100,13 @@ function inferTokenType(pathParts, value) {
 	return null;
 }
 
+/**
+ * Recursively convert a token tree into Figma token nodes, adding an inferred
+ * type to each leaf. Records a warning for any leaf whose type cannot be inferred.
+ * @param {*} node - The current token node.
+ * @param {string[]} [pathParts] - Accumulated key path to the current node.
+ * @returns {*} The converted node.
+ */
 function convertNode(node, pathParts = []) {
 	if (node && typeof node === 'object' && !Array.isArray(node) && Object.prototype.hasOwnProperty.call(node, 'value')) {
 		const tokenValue = normaliseReference(node.value);
@@ -116,6 +134,11 @@ function convertNode(node, pathParts = []) {
 	return output;
 }
 
+/**
+ * Build the Figma export bundle from the loaded layer trees.
+ * @returns {{ version: string, updatedAt: string, updatedBy: string, values: Record<string, any> }}
+ *   The Figma-compatible export payload.
+ */
 function buildExportBundle() {
 	const layerTrees = loadLayerTrees();
 	const values = {

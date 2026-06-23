@@ -35,17 +35,33 @@ const rampSeeds = {
 	},
 };
 
+/**
+ * Wrap a value in a Style Dictionary colour token.
+ * Every token this generator emits is a colour. The `type: 'color'` keyword is
+ * Style Dictionary's fixed identifier (American spelling), required so the colour
+ * transforms (e.g. color/hsl) match these tokens.
+ * @param {string} value - The token value (an `hsl(...)` string or `{alias}`).
+ * @returns {{ value: string, type: 'color' }} The colour token object.
+ */
 function token(value) {
-	// Every token this generator emits is a colour. The `type: 'color'` keyword is
-	// Style Dictionary's fixed identifier (American spelling), required so the
-	// colour transforms (e.g. color/hsl) match these tokens.
 	return { value, type: 'color' };
 }
 
+/**
+ * Clamp a colour channel to an integer in the 0–255 range.
+ * @param {number} channel - The raw channel value.
+ * @returns {number} The clamped, rounded channel.
+ */
 function clampChannel(channel) {
 	return Math.max(0, Math.min(255, Math.round(channel)));
 }
 
+/**
+ * Parse a 6-digit hex colour into RGB channels.
+ * @param {string} hex - A `#rrggbb` colour string.
+ * @returns {{ r: number, g: number, b: number }} The RGB channels.
+ * @throws {Error} If the hex string is not a 6-digit colour.
+ */
 function hexToRgb(hex) {
 	const clean = String(hex).trim().replace(/^#/, '');
 	if (!/^[0-9a-fA-F]{6}$/.test(clean)) {
@@ -58,11 +74,21 @@ function hexToRgb(hex) {
 	};
 }
 
+/**
+ * Format RGB channels as an uppercase `#rrggbb` hex string.
+ * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
+ * @returns {string} The hex colour string.
+ */
 function rgbToHex(rgb) {
 	const format = (channel) => clampChannel(channel).toString(16).padStart(2, '0').toUpperCase();
 	return `#${format(rgb.r)}${format(rgb.g)}${format(rgb.b)}`;
 }
 
+/**
+ * Convert RGB channels to HSL components.
+ * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
+ * @returns {{ h: number, s: number, l: number }} Hue (0–360), saturation and lightness (0–1).
+ */
 function rgbToHsl(rgb) {
 	const r = clampChannel(rgb.r) / 255;
 	const g = clampChannel(rgb.g) / 255;
@@ -92,6 +118,11 @@ function rgbToHsl(rgb) {
 	return { h: hue, s: saturation, l: lightness };
 }
 
+/**
+ * Format RGB channels as a space-separated `hsl(h s% l%)` string.
+ * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
+ * @returns {string} The HSL colour string.
+ */
 function toHslString(rgb) {
 	const hsl = rgbToHsl(rgb);
 	const h = Math.round(hsl.h);
@@ -100,6 +131,14 @@ function toHslString(rgb) {
 	return `hsl(${h} ${s}% ${l}%)`;
 }
 
+/**
+ * Linearly interpolate a ramp colour at a given step between sorted anchor points.
+ * Steps outside the anchor range are extrapolated from the nearest segment.
+ * @param {number} step - The ramp step to compute.
+ * @param {{ step: number, rgb: { r: number, g: number, b: number } }[]} points - Sorted anchor points.
+ * @returns {string} The interpolated `#rrggbb` colour.
+ * @throws {Error} If fewer than two anchor points are supplied.
+ */
 function interpolate(step, points) {
 	if (points.length < 2) {
 		throw new Error('At least two colour anchors are required to build a ramp.');
@@ -142,6 +181,11 @@ function interpolate(step, points) {
 	return rgbToHex(points[points.length - 1].rgb);
 }
 
+/**
+ * Build a full ramp of colour tokens from a sparse map of anchor colours.
+ * @param {Record<string, string>} anchorMap - Map of step to anchor hex colour.
+ * @returns {Record<string, { value: string, type: 'color' }>} The ramp keyed by step.
+ */
 function buildRamp(anchorMap) {
 	const points = Object.entries(anchorMap)
 		.map(([step, colour]) => ({
@@ -158,10 +202,19 @@ function buildRamp(anchorMap) {
 	return ramp;
 }
 
+/**
+ * Build a single colour token from a hex value (converted to HSL).
+ * @param {string} hex - A `#rrggbb` colour string.
+ * @returns {{ value: string, type: 'color' }} The colour token.
+ */
 function tokenFromHex(hex) {
 	return token(toHslString(hexToRgb(hex)));
 }
 
+/**
+ * Build the 12 accent hue ramps, each with light/base/dark aliases.
+ * @returns {Record<string, Record<string, { value: string, type: 'color' }>>} The accent ramps keyed by hue.
+ */
 function buildAccentRamps() {
 	const accent = {};
 
@@ -176,6 +229,11 @@ function buildAccentRamps() {
 	return accent;
 }
 
+/**
+ * Build the system colour tokens (alert, success, warning, information, link,
+ * focus, and the secondary/tertiary button states).
+ * @returns {Record<string, any>} The system colour token tree.
+ */
 function buildSystemTokens() {
 	return {
 		alert: {
@@ -212,6 +270,10 @@ function buildSystemTokens() {
 	};
 }
 
+/**
+ * Assemble the full colour token tree (greyscale, neutral aliases, accents, system).
+ * @returns {{ colour: Record<string, any> }} The complete colour token tree.
+ */
 function buildTokenTree() {
 	const greyscaleRamp = buildRamp(rampSeeds.grey);
 	const accent = buildAccentRamps();
@@ -229,6 +291,12 @@ function buildTokenTree() {
 	};
 }
 
+/**
+ * Write a file only if its content differs, so the generator stays idempotent.
+ * @param {string} filePath - Absolute path of the file to write.
+ * @param {string} content - The desired file content.
+ * @returns {boolean} True if the file was written (changed), false if unchanged.
+ */
 function writeIfChanged(filePath, content) {
 	const current = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
 	if (current === content) {
