@@ -1,3 +1,7 @@
+// Exports the primitive tokens as downstream JSON consumables: a typed token tree
+// (exports/downstream/) and a Tailwind theme mapping (exports/tailwind/). Use
+// --target=all|downstream|tailwind to select outputs. Scoped to the Core
+// (primitive) layer for the DS-2685 work.
 import fs from 'node:fs';
 import path from 'node:path';
 import { layerConfig, loadLayerTrees, normaliseReference, rootDir } from './lib/token-tooling.mjs';
