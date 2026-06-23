@@ -71,6 +71,8 @@
 		"format": "prettier --write .",
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",
+		"scan:hardcoded": "node scripts/scan-hardcoded-values.mjs",
+		"scan:hardcoded:check": "node scripts/scan-hardcoded-values.mjs --check",
 		"start": "stencil build --dev --watch --serve",
 		"pretest": "pnpm run build:config",
 		"test": "stencil test --spec --e2e",
