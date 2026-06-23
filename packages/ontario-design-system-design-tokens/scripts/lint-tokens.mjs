@@ -1,3 +1,7 @@
+// CLI for the token alias/integrity linter. Checks every primitive token JSON for
+// broken aliases, legacy .value suffixes, and malformed tokens. Flags: --fix to
+// auto-repair alias suffixes, --json for machine-readable output. Exits non-zero
+// on errors.
 import { lintTokens } from './lib/token-tooling.mjs';
 
 const args = new Set(process.argv.slice(2));
