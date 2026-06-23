@@ -2,51 +2,66 @@
   "colour": {
     "greyscale": {
       "0": {
-        "value": "hsl(0 0% 100%)"
+        "value": "hsl(0 0% 100%)",
+        "type": "color"
       },
       "5": {
-        "value": "hsl(0 0% 95%)"
+        "value": "hsl(0 0% 95%)",
+        "type": "color"
       },
       "10": {
-        "value": "hsl(0 0% 90%)"
+        "value": "hsl(0 0% 90%)",
+        "type": "color"
       },
       "20": {
-        "value": "hsl(0 0% 80%)"
+        "value": "hsl(0 0% 80%)",
+        "type": "color"
       },
       "30": {
-        "value": "hsl(0 0% 70%)"
+        "value": "hsl(0 0% 70%)",
+        "type": "color"
       },
       "40": {
-        "value": "hsl(0 0% 60%)"
+        "value": "hsl(0 0% 60%)",
+        "type": "color"
       },
       "50": {
-        "value": "hsl(0 0% 50%)"
+        "value": "hsl(0 0% 50%)",
+        "type": "color"
       },
       "60": {
-        "value": "hsl(0 0% 40%)"
+        "value": "hsl(0 0% 40%)",
+        "type": "color"
       },
       "70": {
-        "value": "hsl(0 0% 30%)"
+        "value": "hsl(0 0% 30%)",
+        "type": "color"
       },
       "80": {
-        "value": "hsl(0 0% 24%)"
+        "value": "hsl(0 0% 24%)",
+        "type": "color"
       },
       "90": {
-        "value": "hsl(0 0% 17%)"
+        "value": "hsl(0 0% 17%)",
+        "type": "color"
       },
       "95": {
-        "value": "hsl(0 0% 14%)"
+        "value": "hsl(0 0% 14%)",
+        "type": "color"
       },
       "100": {
-        "value": "hsl(0 0% 10%)"
+        "value": "hsl(0 0% 10%)",
+        "type": "color"
       }
     },
     "neutral": {
       "white": {
-        "value": "{colour.greyscale.0}"
+        "value": "{colour.greyscale.0}",
+        "type": "color"
       },
       "black": {
-        "value": "{colour.greyscale.100}"
+        "value": "{colour.greyscale.100}",
+        "type": "color"
       }
     }
   }

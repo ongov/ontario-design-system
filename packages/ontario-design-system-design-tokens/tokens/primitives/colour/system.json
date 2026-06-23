@@ -3,67 +3,84 @@
     "system": {
       "alert": {
         "base": {
-          "value": "hsl(0 100% 40%)"
+          "value": "hsl(0 100% 40%)",
+          "type": "color"
         },
         "light": {
-          "value": "hsl(355 68% 96%)"
+          "value": "hsl(355 68% 96%)",
+          "type": "color"
         }
       },
       "success": {
         "base": {
-          "value": "hsl(147 78% 30%)"
+          "value": "hsl(147 78% 30%)",
+          "type": "color"
         },
         "light": {
-          "value": "hsl(142 27% 92%)"
+          "value": "hsl(142 27% 92%)",
+          "type": "color"
         }
       },
       "warning": {
         "base": {
-          "value": "hsl(46 100% 63%)"
+          "value": "hsl(46 100% 63%)",
+          "type": "color"
         },
         "light": {
-          "value": "hsl(46 94% 93%)"
+          "value": "hsl(46 94% 93%)",
+          "type": "color"
         }
       },
       "information": {
         "base": {
-          "value": "hsl(195 82% 36%)"
+          "value": "hsl(195 82% 36%)",
+          "type": "color"
         },
         "light": {
-          "value": "hsl(193 45% 92%)"
+          "value": "hsl(193 45% 92%)",
+          "type": "color"
         }
       },
       "link": {
         "default": {
-          "value": "hsl(210 100% 40%)"
+          "value": "hsl(210 100% 40%)",
+          "type": "color"
         },
         "hover": {
-          "value": "hsl(210 100% 28%)"
+          "value": "hsl(210 100% 28%)",
+          "type": "color"
         },
         "active": {
-          "value": "hsl(210 100% 13%)"
+          "value": "hsl(210 100% 13%)",
+          "type": "color"
         },
         "visited": {
-          "value": "hsl(271 68% 32%)"
+          "value": "hsl(271 68% 32%)",
+          "type": "color"
         }
       },
       "focus": {
-        "value": "hsl(198 100% 43%)"
+        "value": "hsl(198 100% 43%)",
+        "type": "color"
       },
       "secondary": {
         "hover": {
-          "value": "hsl(209 100% 94%)"
+          "value": "hsl(209 100% 94%)",
+          "type": "color"
         },
         "active": {
-          "value": "hsl(210 100% 88%)"
+          "value": "hsl(210 100% 88%)",
+          "type": "color"
         }
       },
       "tertiary": {
         "hover": {
-          "value": "hsl(0 0% 91%)"
+          "value": "hsl(0 0% 91%)",
+          "type": "color"
         },
         "active": {
-          "value": "hsl(0 0% 82%)"
+          "value": "hsl(0 0% 82%)",
+          "type": "color"
         }
       }
     }
