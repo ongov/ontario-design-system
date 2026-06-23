@@ -610,9 +610,6 @@ importers:
 
   packages/ontario-design-system-global-styles:
     devDependencies:
-      '@ongov/ontario-design-system-design-tokens':
-        specifier: workspace:*
-        version: link:../ontario-design-system-design-tokens
       gulp:
         specifier: ^5.0.0
         version: 5.0.0
