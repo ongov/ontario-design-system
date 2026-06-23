@@ -84,6 +84,26 @@ describe('ontario-in-page-navigation-item', () => {
 		expect(hasInvalidHrefWarning).toBe(true);
 	});
 
+	it('renders fallback href when href is missing', async () => {
+		const page = await newSpecPage({
+			components: [OntarioInPageNavigationItem],
+			html: '<ontario-in-page-navigation-item label="Section"></ontario-in-page-navigation-item>',
+		});
+
+		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
+		expect(link?.getAttribute('href')).toBe('#');
+	});
+
+	it('renders empty link text when label is empty', async () => {
+		const page = await newSpecPage({
+			components: [OntarioInPageNavigationItem],
+			html: '<ontario-in-page-navigation-item label="   " href="#section"></ontario-in-page-navigation-item>',
+		});
+
+		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
+		expect(link?.textContent?.trim()).toBe('');
+	});
+
 	it('projects default slot content when custom markup is supplied', async () => {
 		const page = await newSpecPage({
 			components: [OntarioInPageNavigationItem],
