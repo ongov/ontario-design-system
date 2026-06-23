@@ -3,52 +3,68 @@
     "accent": {
       "orange": {
         "0": {
-          "value": "hsl(0 0% 100%)"
+          "value": "hsl(0 0% 100%)",
+          "type": "color"
         },
         "5": {
-          "value": "hsl(13 100% 96%)"
+          "value": "hsl(13 100% 96%)",
+          "type": "color"
         },
         "10": {
-          "value": "hsl(13 95% 92%)"
+          "value": "hsl(13 95% 92%)",
+          "type": "color"
         },
         "20": {
-          "value": "hsl(15 91% 83%)"
+          "value": "hsl(15 91% 83%)",
+          "type": "color"
         },
         "30": {
-          "value": "hsl(16 90% 73%)"
+          "value": "hsl(16 90% 73%)",
+          "type": "color"
         },
         "40": {
-          "value": "hsl(16 88% 64%)"
+          "value": "hsl(16 88% 64%)",
+          "type": "color"
         },
         "50": {
-          "value": "hsl(16 88% 54%)"
+          "value": "hsl(16 88% 54%)",
+          "type": "color"
         },
         "60": {
-          "value": "hsl(16 80% 52%)"
+          "value": "hsl(16 80% 52%)",
+          "type": "color"
         },
         "70": {
-          "value": "hsl(16 75% 49%)"
+          "value": "hsl(16 75% 49%)",
+          "type": "color"
         },
         "80": {
-          "value": "hsl(16 75% 47%)"
+          "value": "hsl(16 75% 47%)",
+          "type": "color"
         },
         "90": {
-          "value": "hsl(16 75% 44%)"
+          "value": "hsl(16 75% 44%)",
+          "type": "color"
         },
         "95": {
-          "value": "hsl(16 75% 22%)"
+          "value": "hsl(16 75% 22%)",
+          "type": "color"
         },
         "100": {
-          "value": "hsl(0 0% 0%)"
+          "value": "hsl(0 0% 0%)",
+          "type": "color"
         },
         "light": {
-          "value": "{colour.accent.orange.10}"
+          "value": "{colour.accent.orange.10}",
+          "type": "color"
         },
         "base": {
-          "value": "{colour.accent.orange.50}"
+          "value": "{colour.accent.orange.50}",
+          "type": "color"
         },
         "dark": {
-          "value": "{colour.accent.orange.90}"
+          "value": "{colour.accent.orange.90}",
+          "type": "color"
         }
       }
     }
