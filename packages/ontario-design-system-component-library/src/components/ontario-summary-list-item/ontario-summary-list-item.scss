@@ -12,7 +12,7 @@
 	display: block;
 }
 
-.ontario-summary-list__row {
+.ontario-summary-list-item__row {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -21,7 +21,7 @@
 	border-bottom: globalFunctions.px-to-rem(1) solid colours.$ontario-greyscale-20;
 	margin: spacing.$spacing-0;
 
-	&.ontario-summary-list__row--compact {
+	&.ontario-summary-list-item__row--compact {
 		padding: spacing.$spacing-3 spacing.$spacing-0;
 	}
 
@@ -64,7 +64,7 @@ dd {
 	}
 }
 
-.ontario-summary-list__button-container {
+.ontario-summary-list-item__button-container {
 	text-align: right;
 	flex-basis: globalFunctions.px-to-rem(56);
 	padding-left: spacing.$spacing-5;
