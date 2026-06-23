@@ -1,0 +1,71 @@
+{
+  "colour": {
+    "system": {
+      "alert": {
+        "base": {
+          "value": "hsl(0 100% 40%)"
+        },
+        "light": {
+          "value": "hsl(355 68% 96%)"
+        }
+      },
+      "success": {
+        "base": {
+          "value": "hsl(147 78% 30%)"
+        },
+        "light": {
+          "value": "hsl(142 27% 92%)"
+        }
+      },
+      "warning": {
+        "base": {
+          "value": "hsl(46 100% 63%)"
+        },
+        "light": {
+          "value": "hsl(46 94% 93%)"
+        }
+      },
+      "information": {
+        "base": {
+          "value": "hsl(195 82% 36%)"
+        },
+        "light": {
+          "value": "hsl(193 45% 92%)"
+        }
+      },
+      "link": {
+        "default": {
+          "value": "hsl(210 100% 40%)"
+        },
+        "hover": {
+          "value": "hsl(210 100% 28%)"
+        },
+        "active": {
+          "value": "hsl(210 100% 13%)"
+        },
+        "visited": {
+          "value": "hsl(271 68% 32%)"
+        }
+      },
+      "focus": {
+        "value": "hsl(198 100% 43%)"
+      },
+      "secondary": {
+        "hover": {
+          "value": "hsl(209 100% 94%)"
+        },
+        "active": {
+          "value": "hsl(210 100% 88%)"
+        }
+      },
+      "tertiary": {
+        "hover": {
+          "value": "hsl(0 0% 91%)"
+        },
+        "active": {
+          "value": "hsl(0 0% 82%)"
+        }
+      }
+    }
+  }
+}
