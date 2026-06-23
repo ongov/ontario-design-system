@@ -1,11 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioStepIndicator } from '../ontario-step-indicator';
+import { render } from '@stencil/vitest';
+import type { MockInstance } from 'vitest';
 
 describe('ontario-step-indicator', () => {
-	let warnSpy: jest.SpyInstance;
+	let warnSpy: MockInstance;
 
 	beforeEach(() => {
-		warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+		warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 	});
 
 	afterEach(() => {
@@ -14,37 +14,29 @@ describe('ontario-step-indicator', () => {
 
 	describe('renders', () => {
 		it('the default output', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator></ontario-step-indicator>`);
 
 			expect(page.root).toMatchSnapshot();
 		});
 
 		it('the step output shape', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
 			expect(page.root).toMatchSnapshot();
 		});
 
 		it('the percentage output shape with a back link', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" percentage-complete="70"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" percentage-complete="70"></ontario-step-indicator>`,
+			);
 
 			expect(page.root).toMatchSnapshot();
 		});
 
 		it('step mode by default', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator></ontario-step-indicator>`);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'Step ? of ?',
@@ -53,10 +45,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('a placeholder when currentStep is missing', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator number-of-steps="5"></ontario-step-indicator>`);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'Step ? of 5',
@@ -64,10 +53,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('a placeholder when numberOfSteps is missing', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator current-step="2"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator current-step="2"></ontario-step-indicator>`);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'Step 2 of ?',
@@ -75,10 +61,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('percentage mode when percentageComplete is defined', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator percentage-complete="70"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator percentage-complete="70"></ontario-step-indicator>`);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'70% complete',
@@ -86,10 +69,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('percentage mode when percentageComplete is 0', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator percentage-complete="0"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator percentage-complete="0"></ontario-step-indicator>`);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'0% complete',
@@ -97,10 +77,9 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('a back link when backButtonUrl is provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
 			const link = page.root?.shadowRoot?.querySelector('a');
 			const button = page.root?.shadowRoot?.querySelector('button');
@@ -112,16 +91,15 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('a back button when only customOnClick is provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
-			page.rootInstance.showBackButton = true;
-			page.rootInstance.customOnClick = jest.fn();
-			page.rootInstance.backButtonUrl = undefined;
+			page.instance.showBackButton = true;
+			page.instance.customOnClick = vi.fn();
+			page.instance.backButtonUrl = undefined;
 			warnSpy.mockClear();
-			page.rootInstance.componentWillLoad();
+			page.instance.componentWillLoad();
 			await page.waitForChanges();
 
 			const link = page.root?.shadowRoot?.querySelector('a');
@@ -135,10 +113,9 @@ describe('ontario-step-indicator', () => {
 
 	describe('warns', () => {
 		it('when percentage and step props are mixed', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator percentage-complete="70" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator percentage-complete="70" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
 			expect(warnSpy).toHaveBeenCalledTimes(1);
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
@@ -147,10 +124,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('when currentStep is missing', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator number-of-steps="5"></ontario-step-indicator>`);
 
 			expect(warnSpy).toHaveBeenCalledTimes(1);
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
@@ -159,10 +133,7 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('when numberOfSteps is missing', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator current-step="2"></ontario-step-indicator>`,
-			});
+			const page = await render(`<ontario-step-indicator current-step="2"></ontario-step-indicator>`);
 
 			expect(warnSpy).toHaveBeenCalledTimes(1);
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
@@ -171,24 +142,22 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('when a back button has no backButtonUrl or customOnClick', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator show-back-button="true" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator show-back-button="true" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
 			expect(page.root?.shadowRoot?.querySelector('button')).not.toBeNull();
 			expect(warnSpy).toHaveBeenCalledTimes(1);
 		});
 
 		it('when backButtonUrl and customOnClick are both provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
-			page.rootInstance.customOnClick = jest.fn();
+			page.instance.customOnClick = vi.fn();
 			warnSpy.mockClear();
-			page.rootInstance.componentWillLoad();
+			page.instance.componentWillLoad();
 			await page.waitForChanges();
 
 			expect(warnSpy).toHaveBeenCalledTimes(1);
@@ -199,10 +168,9 @@ describe('ontario-step-indicator', () => {
 
 	describe('prefers', () => {
 		it('percentage mode when percentage and step props are mixed', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator percentage-complete="70" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator percentage-complete="70" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
 			expect(page.root?.shadowRoot?.querySelector('.ontario-h4')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'70% complete',
@@ -210,14 +178,13 @@ describe('ontario-step-indicator', () => {
 		});
 
 		it('the anchor when backButtonUrl and customOnClick are both provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioStepIndicator],
-				html: `<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
-			});
+			const page = await render(
+				`<ontario-step-indicator show-back-button="true" back-button-url="https://designsystem.ontario.ca/" current-step="2" number-of-steps="5"></ontario-step-indicator>`,
+			);
 
-			page.rootInstance.customOnClick = jest.fn();
+			page.instance.customOnClick = vi.fn();
 			warnSpy.mockClear();
-			page.rootInstance.componentWillLoad();
+			page.instance.componentWillLoad();
 			await page.waitForChanges();
 
 			expect(page.root?.shadowRoot?.querySelector('a')).not.toBeNull();

@@ -6,6 +6,10 @@ describe('getImageAssetSrcPath', () => {
 	beforeEach(() => {
 		document.head.innerHTML = '';
 		document.body.innerHTML = '';
+		// The Stencil test environment leaves `window.location.href` empty, which makes
+		// `new URL(path, window.location.href)` throw. Seed a valid origin so the asset
+		// path resolution behaves like a real browser.
+		(window as unknown as { location: { href: string } }).location.href = 'http://localhost:3000/';
 	});
 
 	it('returns asset path from explicit assetBasePath when provided', () => {
@@ -15,7 +19,7 @@ describe('getImageAssetSrcPath', () => {
 	});
 
 	it('returns stencil asset path when getAssetPath succeeds', () => {
-		const resolver = jest.fn().mockReturnValue('/build/assets/ontario-material-dropdown-arrow-48px.svg');
+		const resolver = vi.fn().mockReturnValue('/build/assets/ontario-material-dropdown-arrow-48px.svg');
 
 		const result = getImageAssetSrcPath(imageName, undefined, resolver);
 
@@ -24,7 +28,7 @@ describe('getImageAssetSrcPath', () => {
 	});
 
 	it('falls back using base href when getAssetPath fails', () => {
-		const resolver = jest.fn(() => {
+		const resolver = vi.fn(() => {
 			throw new Error('asset path unavailable');
 		});
 		document.head.innerHTML = '<base href="/developer-docs/">';
@@ -35,7 +39,7 @@ describe('getImageAssetSrcPath', () => {
 	});
 
 	it('falls back using loaded asset URLs when base href is unavailable', () => {
-		const resolver = jest.fn(() => {
+		const resolver = vi.fn(() => {
 			throw new Error('asset path unavailable');
 		});
 		document.head.innerHTML = '<script src="/developer-docs/assets/js/common.js"></script>';
@@ -46,7 +50,7 @@ describe('getImageAssetSrcPath', () => {
 	});
 
 	it('falls back to root assets when no document hint is available', () => {
-		const resolver = jest.fn(() => {
+		const resolver = vi.fn(() => {
 			throw new Error('asset path unavailable');
 		});
 

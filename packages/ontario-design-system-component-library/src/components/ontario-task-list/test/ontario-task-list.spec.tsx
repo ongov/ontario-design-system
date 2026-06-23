@@ -1,5 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioTaskList } from '../ontario-task-list';
+import { render } from '@stencil/vitest';
 
 describe('ontario-task-list', () => {
 	beforeAll(() => {
@@ -16,10 +15,7 @@ describe('ontario-task-list', () => {
 	});
 
 	it('renders with a label and updates when the label changes', async () => {
-		const page = await newSpecPage({
-			components: [OntarioTaskList],
-			html: `<ontario-task-list label="My Task List"></ontario-task-list>`,
-		});
+		const page = await render(`<ontario-task-list label="My Task List"></ontario-task-list>`);
 
 		if (!page.root) {
 			throw new Error('Component did not render properly.');
@@ -40,10 +36,7 @@ describe('ontario-task-list', () => {
 	});
 
 	it('handles language changes and updates translations', async () => {
-		const page = await newSpecPage({
-			components: [OntarioTaskList],
-			html: `<ontario-task-list language="en"></ontario-task-list>`,
-		});
+		const page = await render(`<ontario-task-list language="en"></ontario-task-list>`);
 
 		if (!page.root) {
 			throw new Error('Component did not render properly.');

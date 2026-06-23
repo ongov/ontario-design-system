@@ -1,20 +1,19 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioTable } from '../ontario-table';
+import { render } from '@stencil/vitest';
 
 describe('ontario-table', () => {
 	beforeEach(() => {
-		global.ResizeObserver = jest.fn().mockImplementation(() => ({
-			observe: jest.fn(),
-			unobserve: jest.fn(),
-			disconnect: jest.fn(),
-		}));
+		global.ResizeObserver = vi.fn().mockImplementation(function () {
+			return {
+				observe: vi.fn(),
+				unobserve: vi.fn(),
+				disconnect: vi.fn(),
+			};
+		});
 	});
 
 	describe('snapshot - 3 columns (non-numeric)', () => {
 		it('should render the expected html', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTable],
-				html: `
+			const page = await render(`
 				<ontario-table
 					caption="Marriage certificate: cost and delivery"
 					table-columns='[
@@ -47,8 +46,7 @@ describe('ontario-table', () => {
 					]'
 				>
 				</ontario-table>
-				`,
-			});
+				`);
 
 			expect(page.root).toMatchSnapshot();
 		});
@@ -56,9 +54,7 @@ describe('ontario-table', () => {
 
 	describe('snapshot - 5 columns (numeric)', () => {
 		it('should render the expected html', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTable],
-				html: `
+			const page = await render(`
 				<ontario-table
 					caption="Number of engagement sessions by business area from 2016–2020"
 					zebra-stripes="enabled"
@@ -129,8 +125,7 @@ describe('ontario-table', () => {
 					]'
 				>
 				</ontario-table>
-				`,
-			});
+				`);
 
 			expect(page.root).toMatchSnapshot();
 		});
@@ -138,9 +133,7 @@ describe('ontario-table', () => {
 
 	describe('snapshot - 7 columns (numeric and condensed)', () => {
 		it('should render the expected html', async () => {
-			const page = await newSpecPage({
-				components: [OntarioTable],
-				html: `
+			const page = await render(`
 				<ontario-table
 					caption="Operating expense"
 					condensed="true"
@@ -291,8 +284,7 @@ describe('ontario-table', () => {
 					]'
 				>
 				</ontario-table>
-				`,
-			});
+				`);
 
 			expect(page.root).toMatchSnapshot();
 		});

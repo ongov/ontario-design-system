@@ -1,21 +1,17 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OntarioHeaderMenuTabs } from '../ontario-header-menu-tabs';
+import { render, RenderResult } from '@stencil/vitest';
 import { HeaderMenuToggleDetail } from '../../ontario-header/ontario-header.interface';
 
 describe('ontario-header-menu-tabs', () => {
-	let page: SpecPage;
+	let page: RenderResult;
 
 	beforeEach(async () => {
-		page = await newSpecPage({
-			components: [OntarioHeaderMenuTabs],
-			html: `<ontario-header-menu-tabs></ontario-header-menu-tabs>`,
-		});
+		page = await render(`<ontario-header-menu-tabs></ontario-header-menu-tabs>`);
 
 		await page.waitForChanges();
 	});
 
 	it('should not focus the Topics tab on click-open', async () => {
-		const component = page.rootInstance as unknown as {
+		const component = page.instance as unknown as {
 			handleMenuButtonToggled: (event: CustomEvent<HeaderMenuToggleDetail>) => void;
 			menuIsOpen: boolean;
 			shouldFocusTabOnOpen: boolean;
@@ -30,7 +26,7 @@ describe('ontario-header-menu-tabs', () => {
 	});
 
 	it('should focus the Topics tab on keyboard-open', async () => {
-		const component = page.rootInstance as unknown as {
+		const component = page.instance as unknown as {
 			handleMenuButtonToggled: (event: CustomEvent<HeaderMenuToggleDetail>) => void;
 			menuIsOpen: boolean;
 			shouldFocusTabOnOpen: boolean;
@@ -45,7 +41,7 @@ describe('ontario-header-menu-tabs', () => {
 	});
 
 	it('should reset tab focus intent when menu closes', async () => {
-		const component = page.rootInstance as unknown as {
+		const component = page.instance as unknown as {
 			handleMenuButtonToggled: (event: CustomEvent<HeaderMenuToggleDetail>) => void;
 			shouldFocusTabOnOpen: boolean;
 		};

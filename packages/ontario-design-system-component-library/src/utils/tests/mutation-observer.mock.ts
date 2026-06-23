@@ -1,7 +1,9 @@
-export const mutationObserverMock = jest.fn<MutationObserver, [MutationCallback]>().mockImplementation(() => {
+import { vi } from 'vitest';
+
+export const mutationObserverMock = vi.fn().mockImplementation(function () {
 	return {
-		observe: jest.fn(),
-		disconnect: jest.fn(),
-		takeRecords: jest.fn(),
+		observe: vi.fn(),
+		disconnect: vi.fn(),
+		takeRecords: vi.fn(),
 	};
 });
