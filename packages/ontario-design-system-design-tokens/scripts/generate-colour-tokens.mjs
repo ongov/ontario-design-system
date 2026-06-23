@@ -33,7 +33,10 @@ const rampSeeds = {
 };
 
 function token(value) {
-	return { value };
+	// Every token this generator emits is a colour. The `type: 'color'` keyword is
+	// Style Dictionary's fixed identifier (American spelling), required so the
+	// colour transforms (e.g. color/hsl) match these tokens.
+	return { value, type: 'color' };
 }
 
 function clampChannel(channel) {
