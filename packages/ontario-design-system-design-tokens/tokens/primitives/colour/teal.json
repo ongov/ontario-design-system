@@ -3,52 +3,68 @@
     "accent": {
       "teal": {
         "0": {
-          "value": "hsl(0 0% 100%)"
+          "value": "hsl(0 0% 100%)",
+          "type": "color"
         },
         "5": {
-          "value": "hsl(180 45% 94%)"
+          "value": "hsl(180 45% 94%)",
+          "type": "color"
         },
         "10": {
-          "value": "hsl(180 45% 87%)"
+          "value": "hsl(180 45% 87%)",
+          "type": "color"
         },
         "20": {
-          "value": "hsl(177 40% 77%)"
+          "value": "hsl(177 40% 77%)",
+          "type": "color"
         },
         "30": {
-          "value": "hsl(178 37% 67%)"
+          "value": "hsl(178 37% 67%)",
+          "type": "color"
         },
         "40": {
-          "value": "hsl(177 36% 57%)"
+          "value": "hsl(177 36% 57%)",
+          "type": "color"
         },
         "50": {
-          "value": "hsl(177 39% 47%)"
+          "value": "hsl(177 39% 47%)",
+          "type": "color"
         },
         "60": {
-          "value": "hsl(177 39% 44%)"
+          "value": "hsl(177 39% 44%)",
+          "type": "color"
         },
         "70": {
-          "value": "hsl(176 39% 41%)"
+          "value": "hsl(176 39% 41%)",
+          "type": "color"
         },
         "80": {
-          "value": "hsl(177 39% 38%)"
+          "value": "hsl(177 39% 38%)",
+          "type": "color"
         },
         "90": {
-          "value": "hsl(176 39% 35%)"
+          "value": "hsl(176 39% 35%)",
+          "type": "color"
         },
         "95": {
-          "value": "hsl(176 39% 17%)"
+          "value": "hsl(176 39% 17%)",
+          "type": "color"
         },
         "100": {
-          "value": "hsl(0 0% 0%)"
+          "value": "hsl(0 0% 0%)",
+          "type": "color"
         },
         "light": {
-          "value": "{colour.accent.teal.10}"
+          "value": "{colour.accent.teal.10}",
+          "type": "color"
         },
         "base": {
-          "value": "{colour.accent.teal.50}"
+          "value": "{colour.accent.teal.50}",
+          "type": "color"
         },
         "dark": {
-          "value": "{colour.accent.teal.90}"
+          "value": "{colour.accent.teal.90}",
+          "type": "color"
         }
       }
     }
