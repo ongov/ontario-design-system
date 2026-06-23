@@ -1,0 +1,56 @@
+{
+  "colour": {
+    "accent": {
+      "taupe": {
+        "0": {
+          "value": "hsl(0 0% 100%)"
+        },
+        "5": {
+          "value": "hsl(45 29% 95%)"
+        },
+        "10": {
+          "value": "hsl(45 29% 89%)"
+        },
+        "20": {
+          "value": "hsl(43 29% 83%)"
+        },
+        "30": {
+          "value": "hsl(44 29% 77%)"
+        },
+        "40": {
+          "value": "hsl(41 29% 72%)"
+        },
+        "50": {
+          "value": "hsl(42 29% 66%)"
+        },
+        "60": {
+          "value": "hsl(42 23% 60%)"
+        },
+        "70": {
+          "value": "hsl(42 17% 54%)"
+        },
+        "80": {
+          "value": "hsl(42 15% 48%)"
+        },
+        "90": {
+          "value": "hsl(43 14% 42%)"
+        },
+        "95": {
+          "value": "hsl(41 15% 21%)"
+        },
+        "100": {
+          "value": "hsl(0 0% 0%)"
+        },
+        "light": {
+          "value": "{colour.accent.taupe.10}"
+        },
+        "base": {
+          "value": "{colour.accent.taupe.50}"
+        },
+        "dark": {
+          "value": "{colour.accent.taupe.90}"
+        }
+      }
+    }
+  }
+}
