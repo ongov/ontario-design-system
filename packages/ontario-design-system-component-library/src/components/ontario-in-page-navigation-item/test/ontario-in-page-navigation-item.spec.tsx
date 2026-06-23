@@ -1,6 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OntarioInPageNavigationItem } from '../ontario-in-page-navigation-item';
 
+const setHasDefaultSlotContent = (instance: OntarioInPageNavigationItem, hasDefaultSlotContent: boolean) => {
+	(instance as unknown as { hasDefaultSlotContent: boolean }).hasDefaultSlotContent = hasDefaultSlotContent;
+};
+
 describe('ontario-in-page-navigation-item', () => {
 	let warnSpy: jest.SpyInstance;
 
@@ -44,7 +48,7 @@ describe('ontario-in-page-navigation-item', () => {
 		});
 
 		const instance = page.rootInstance as OntarioInPageNavigationItem;
-		instance.hasDefaultSlotContent = false;
+		setHasDefaultSlotContent(instance, false);
 		instance.label = '';
 		instance.validateLabel();
 
@@ -59,7 +63,7 @@ describe('ontario-in-page-navigation-item', () => {
 		});
 
 		const instance = page.rootInstance as OntarioInPageNavigationItem;
-		instance.hasDefaultSlotContent = false;
+		setHasDefaultSlotContent(instance, false);
 		instance.href = '';
 		instance.validateHref();
 
@@ -74,7 +78,7 @@ describe('ontario-in-page-navigation-item', () => {
 		});
 
 		const instance = page.rootInstance as OntarioInPageNavigationItem;
-		instance.hasDefaultSlotContent = false;
+		setHasDefaultSlotContent(instance, false);
 		instance.href = '/section';
 		instance.validateHref();
 
