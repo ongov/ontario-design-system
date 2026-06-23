@@ -77,13 +77,7 @@ function collectJsonFiles(dir) {
  * @returns {string[]} Absolute paths of all token files.
  */
 export function listTokenFiles() {
-	const filePaths = [];
-
-	layerConfig.forEach(({ dir }) => {
-		filePaths.push(...collectJsonFiles(path.join(tokensDir, dir)));
-	});
-
-	return filePaths;
+	return layerConfig.flatMap(({ dir }) => collectJsonFiles(path.join(tokensDir, dir)));
 }
 
 /**
@@ -107,11 +101,7 @@ export function readLayer(layerDir) {
  * @returns {Record<string, Record<string, any>>} Map of layer label to token tree.
  */
 export function loadLayerTrees() {
-	const result = {};
-	layerConfig.forEach(({ label, dir }) => {
-		result[label] = readLayer(dir);
-	});
-	return result;
+	return Object.fromEntries(layerConfig.map(({ label, dir }) => [label, readLayer(dir)]));
 }
 
 /**
@@ -119,11 +109,7 @@ export function loadLayerTrees() {
  * @returns {Record<string, any>} The merged token tree across all layers.
  */
 export function loadMergedTokens() {
-	const merged = {};
-	layerConfig.forEach(({ dir }) => {
-		deepMerge(merged, readLayer(dir));
-	});
-	return merged;
+	return layerConfig.reduce((merged, { dir }) => deepMerge(merged, readLayer(dir)), {});
 }
 
 /**
