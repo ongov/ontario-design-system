@@ -188,7 +188,7 @@ jobs:
       options: --user pwuser
     env:
       HOME: /github/home
-    needs: ['stencil-unit-test', 'stencil-e2e-test']
+    needs: ['stencil-unit-test', 'stencil-e2e-test', 'stencil-vrt-test']
     permissions:
       contents: read
       actions: read
@@ -257,7 +257,7 @@ jobs:
       options: --user pwuser
     env:
       HOME: /github/home
-    needs: ['stencil-unit-test', 'stencil-e2e-test']
+    needs: ['stencil-unit-test', 'stencil-e2e-test', 'stencil-vrt-test']
     permissions:
       contents: read
       actions: read
