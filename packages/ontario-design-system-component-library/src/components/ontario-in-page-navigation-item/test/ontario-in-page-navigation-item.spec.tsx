@@ -43,7 +43,7 @@ describe('ontario-in-page-navigation-item', () => {
 			html: '<ontario-in-page-navigation-item href="#section"></ontario-in-page-navigation-item>',
 		});
 
-		const instance = page.rootInstance as any;
+		const instance = page.rootInstance as OntarioInPageNavigationItem;
 		instance.hasDefaultSlotContent = false;
 		instance.label = '';
 		instance.validateLabel();
@@ -58,7 +58,7 @@ describe('ontario-in-page-navigation-item', () => {
 			html: '<ontario-in-page-navigation-item label="Section"></ontario-in-page-navigation-item>',
 		});
 
-		const instance = page.rootInstance as any;
+		const instance = page.rootInstance as OntarioInPageNavigationItem;
 		instance.hasDefaultSlotContent = false;
 		instance.href = '';
 		instance.validateHref();
@@ -73,7 +73,7 @@ describe('ontario-in-page-navigation-item', () => {
 			html: '<ontario-in-page-navigation-item label="Section" href="/section"></ontario-in-page-navigation-item>',
 		});
 
-		const instance = page.rootInstance as any;
+		const instance = page.rootInstance as OntarioInPageNavigationItem;
 		instance.hasDefaultSlotContent = false;
 		instance.href = '/section';
 		instance.validateHref();
