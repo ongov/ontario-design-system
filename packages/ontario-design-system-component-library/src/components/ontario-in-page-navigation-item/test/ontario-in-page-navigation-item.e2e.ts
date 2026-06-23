@@ -4,6 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-in-page-navigation-item', () => {
 	let host: Locator;
+	const getLink = () => host.locator('a.ontario-in-page-navigation-item__link');
 
 	const setItemContent = async (page: E2EPage) => {
 		await page.setContent(`
@@ -32,9 +33,8 @@ test.describe('ontario-in-page-navigation-item', () => {
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass(/hydrated/);
 
-		const link = host.locator('a.ontario-in-page-navigation-item__link');
-		await expect(link).toHaveAttribute('href', '#section-1');
-		await expect(link).toHaveText('Section 1');
+		await expect(getLink()).toHaveAttribute('href', '#section-1');
+		await expect(getLink()).toHaveText('Section 1');
 	});
 
 	test('supports keyboard focus and Enter navigation', async ({ page }) => {
@@ -76,8 +76,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		});
 		await page.waitForChanges();
 
-		const link = host.locator('a.ontario-in-page-navigation-item__link');
-		await expect(link).toHaveText('Section un');
+		await expect(getLink()).toHaveText('Section un');
 		await expect(host).not.toContainText('Section 1');
 	});
 
@@ -89,8 +88,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		});
 		await page.waitForChanges();
 
-		const link = host.locator('a.ontario-in-page-navigation-item__link');
-		await expect(link).toHaveAttribute('aria-current', 'true');
+		await expect(getLink()).toHaveAttribute('aria-current', 'true');
 	});
 
 	test('supports custom slot content projection', async ({ page }) => {
