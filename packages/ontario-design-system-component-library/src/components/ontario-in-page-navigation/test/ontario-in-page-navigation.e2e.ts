@@ -46,7 +46,9 @@ test.describe('ontario-in-page-navigation', () => {
 			.locator('ontario-in-page-navigation-item')
 			.nth(index)
 			.evaluate((el: Element) => {
-				const anchor = el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null;
+				const anchor = el.shadowRoot?.querySelector(
+					'a.ontario-in-page-navigation-item__link',
+				) as HTMLAnchorElement | null;
 				anchor?.click();
 			});
 		await page.waitForChanges();
@@ -100,7 +102,7 @@ test.describe('ontario-in-page-navigation', () => {
 		});
 
 		await firstItem.evaluate((el) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
 		});
 
 		const firstFocused = await firstItem.evaluate(
@@ -167,7 +169,7 @@ test.describe('ontario-in-page-navigation', () => {
 		const firstItem = page.locator('ontario-in-page-navigation-item').first();
 
 		await firstItem.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
 		});
 
 		const focusedHref = await firstItem.evaluate(
@@ -248,7 +250,7 @@ test.describe('ontario-in-page-navigation', () => {
 		const firstItem = page.locator('ontario-in-page-navigation-item').first();
 
 		await firstItem.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
 		});
 		await page.waitForChanges();
 

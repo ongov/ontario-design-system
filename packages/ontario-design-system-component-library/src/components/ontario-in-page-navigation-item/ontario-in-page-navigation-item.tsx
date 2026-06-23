@@ -120,10 +120,10 @@ export class OntarioInPageNavigationItem {
 
 	render() {
 		return (
-			<Host class="ontario-page-navigation-list__item" role="listitem">
+			<Host class="ontario-in-page-navigation-item" role="listitem">
 				<slot onSlotchange={this.handleDefaultSlotChange}>
 					<a
-						class="ontario-page-navigation-item__link"
+						class="ontario-in-page-navigation-item__link"
 						href={this.href?.trim() || '#'}
 						aria-current={this.isCurrent ? 'true' : undefined}
 					>

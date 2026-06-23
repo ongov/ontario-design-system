@@ -32,14 +32,14 @@ test.describe('ontario-in-page-navigation-item', () => {
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass(/hydrated/);
 
-		const link = host.locator('a.ontario-page-navigation-item__link');
+		const link = host.locator('a.ontario-in-page-navigation-item__link');
 		await expect(link).toHaveAttribute('href', '#section-1');
 		await expect(link).toHaveText('Section 1');
 	});
 
 	test('supports keyboard focus and Enter navigation', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
 		});
 
 		const focusedHref = await host.evaluate(
@@ -55,7 +55,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 
 	test('updates browser history and supports back navigation', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.click();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.click();
 		});
 		await page.waitForChanges();
 		await expect(page).toHaveURL(/#section-1$/);
@@ -76,8 +76,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		});
 		await page.waitForChanges();
 
-		const link = host.locator('a.ontario-page-navigation-item__link');
-
+		const link = host.locator('a.ontario-in-page-navigation-item__link');
 		await expect(link).toHaveText('Section un');
 		await expect(host).not.toContainText('Section 1');
 	});
@@ -90,7 +89,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		});
 		await page.waitForChanges();
 
-		const link = host.locator('a.ontario-page-navigation-item__link');
+		const link = host.locator('a.ontario-in-page-navigation-item__link');
 		await expect(link).toHaveAttribute('aria-current', 'true');
 	});
 
@@ -115,7 +114,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 
 	test('visual regression: focus-visible state on item link', async ({ page }) => {
 		await host.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
+			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
 		});
 		await page.waitForChanges();
 

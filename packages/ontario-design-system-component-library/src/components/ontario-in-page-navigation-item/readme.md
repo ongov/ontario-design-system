@@ -142,7 +142,7 @@ When a router link is needed, use the default slot and supply the full anchor/li
 
 ```html
 <ontario-in-page-navigation-item>
-	<a class="ontario-page-navigation-item__link" href="#eligibility">Eligibility</a>
+	<a class="ontario-in-page-navigation-item__link" href="#eligibility">Eligibility</a>
 </ontario-in-page-navigation-item>
 ```
 

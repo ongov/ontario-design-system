@@ -19,9 +19,9 @@ describe('ontario-in-page-navigation-item', () => {
 		});
 
 		expect(page.root).toBeTruthy();
-		expect(page.root?.classList.contains('ontario-page-navigation-list__item')).toBe(true);
+		expect(page.root?.classList.contains('ontario-in-page-navigation-item')).toBe(true);
 
-		const link = page.root?.shadowRoot?.querySelector('a.ontario-page-navigation-item__link');
+		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
 		expect(link).toBeTruthy();
 		expect(link?.getAttribute('href')).toBe('#section');
 		expect(link?.textContent?.trim()).toBe('Section');
@@ -33,7 +33,7 @@ describe('ontario-in-page-navigation-item', () => {
 			html: '<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>',
 		});
 
-		const link = page.root?.shadowRoot?.querySelector('a.ontario-page-navigation-item__link');
+		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
 		expect(link?.getAttribute('href')).toBe('#eligibility');
 	});
 
