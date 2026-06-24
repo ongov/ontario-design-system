@@ -6,15 +6,36 @@ import TabItem from '@theme/TabItem';
 
 Use a back button to provide a clear, consistent way for users to return to a previous step.
 
+## When to use this component
+
+- User is progressing through a linear or mostly linear flow
+- User benefit comes from returning to the previous step in-context
+- You need a consistent, accessible back navigation pattern
+
+## When not to use this component
+
+- The page has multiple entry points and previous-page expectations are ambiguous
+- Breadcrumbs are already present (do not use both together)
+- The back action is unclear or would confuse users about where they're going
+
 ## Usage guidance
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/back-button.html) for current documentation guidance.
 
-## Configuration
+## Accessibility
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the back button component can be added directly into your project and customized using the properties outlined [here](#properties).
+The back button uses native `<button>` or `<a>` semantics, making it keyboard and screen-reader compatible by default:
 
-The component is navigation-strategy agnostic. Choose the mode that best fits your application's routing approach:
+- **Keyboard support:** Activates with Enter or Space keys
+- **Focus indicator:** Maintains visible focus meeting WCAG standards
+- **Decorative icon:** The chevron icon is marked `aria-hidden="true"` and does not pollute the accessible name
+- **Accessible name:** Comes from visible label text (Back / Retour), so label text must remain clear and contextual
+
+For complex journeys, use more explicit labels (e.g., "Go back to Contact details") to improve clarity for all users.
+
+## Component architecture
+
+This component is **intentionally navigation-strategy agnostic**. The back button itself is presentational—it does not encode routing logic. Instead, you choose the mode that fits your application's navigation approach:
 
 | Mode                  | Use When                                                            | Renders As | Behavior                                                   |
 | --------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
@@ -252,7 +273,7 @@ If you do this, the component renders as a button instead of a link, and a conso
 <ontario-back-button></ontario-back-button>
 ```
 
-In non-linear user flows (e.g., users can enter at any step), use `href` mode instead:
+In non-linear user flows (e.g., users can enter at any step), use `href` mode with deterministic URLs:
 
 ```html
 <!-- ✅ Better for non-linear flows -->
@@ -273,9 +294,27 @@ Always attach a listener:
 <OntarioBackButton backMode="event" onBackClick={() => navigate(-1)} />
 ```
 
-## Guidance warning
+### Using both breadcrumbs and back button
 
-Do not combine breadcrumbs and a back button in the same location when users can enter from multiple entry points. This can create ambiguous navigation paths.
+Do not combine breadcrumbs and a back button in the same location when users can enter from multiple entry points. This creates ambiguous navigation paths and confuses users about which control to use.
+
+### Unexpected behaviour risks
+
+**Back action returns to in-page state only:**
+If your back button is part of a modal or overlay, ensure it doesn't unexpectedly exit the current context without user confirmation.
+
+**Back action exits service unintentionally:**
+In multi-step flows with external entry points (e.g., links from emails), verify that back navigation doesn't leave the service prematurely. Use `href` mode with explicit URLs in these cases.
+
+## Visual design
+
+The back button is rendered as a tertiary-styled button (or link in href mode) with:
+
+- Inline flex layout with centered icon and text
+- Leading left-chevron icon (decorative)
+- Localized label ("Back" / "Retour")
+- Mobile-responsive width (full width behavior on small screens)
+- Consistent spacing and icon sizing tuned for the design system
 
 ## Properties
 

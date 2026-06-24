@@ -66,6 +66,13 @@ export class OntarioBackButton {
 
 	@State() translations: any = translations;
 
+	/**
+	 * Validates that href mode has the required href prop.
+	 *
+	 * Runs whenever `backMode` or `href` changes.
+	 * If `backMode` is set to `'href'` without providing an `href` prop,
+	 * logs a developer warning and the component falls back to button rendering with event-only emission.
+	 */
 	@Watch('backMode')
 	@Watch('href')
 	validateConfiguration() {
