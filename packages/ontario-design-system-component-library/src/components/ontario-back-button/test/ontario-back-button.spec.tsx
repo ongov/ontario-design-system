@@ -154,4 +154,154 @@ describe('ontario-back-button', () => {
 			expect(historyBackSpy).toHaveBeenCalledTimes(0);
 		});
 	});
+
+	describe('keyboard interaction', () => {
+		it('activates on Enter key press', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button back-mode="event"></ontario-back-button>`,
+			});
+
+			const eventSpy = jest.fn();
+			page.root?.addEventListener('backClick', eventSpy);
+
+			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
+			const enterEvent = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true });
+			button.dispatchEvent(enterEvent);
+			button.click();
+
+			expect(eventSpy).toHaveBeenCalled();
+		});
+
+		it('activates on Space key press', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button back-mode="event"></ontario-back-button>`,
+			});
+
+			const eventSpy = jest.fn();
+			page.root?.addEventListener('backClick', eventSpy);
+
+			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
+			const spaceEvent = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+			button.dispatchEvent(spaceEvent);
+			button.click();
+
+			expect(eventSpy).toHaveBeenCalled();
+		});
+	});
+
+	describe('accessibility', () => {
+		it('has accessible button semantics', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			expect(button?.tagName).toBe('BUTTON');
+			expect(button?.getAttribute('type')).toBe('button');
+		});
+
+		it('decorative icon is hidden from screen readers', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button></ontario-back-button>`,
+			});
+
+			const icon = page.root?.shadowRoot?.querySelector('svg');
+			expect(icon?.getAttribute('aria-hidden')).toBe('true');
+			expect(icon?.getAttribute('focusable')).toBe('false');
+		});
+
+		it('has accessible name from visible label text', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			const buttonText = button?.textContent?.trim();
+			expect(buttonText).toContain('Back');
+		});
+	});
+
+	describe('href attribute handling', () => {
+		it('renders correct href value when provided', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button href="/contact-details" back-mode="href"></ontario-back-button>`,
+			});
+
+			const link = page.root?.shadowRoot?.querySelector('a');
+			expect(link?.getAttribute('href')).toBe('/contact-details');
+		});
+
+		it('warns when href mode is used without href value', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button back-mode="href"></ontario-back-button>`,
+			});
+
+			await page.waitForChanges();
+			expect(warnSpy).toHaveBeenCalled();
+		});
+	});
+
+	describe('bilingual support', () => {
+		it('renders English label by default', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
+			expect(text).toBe('Back');
+		});
+
+		it('renders French label when language="fr"', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button language="fr"></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
+			expect(text).toBe('Retour');
+		});
+
+		it('preserves custom label across language changes', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button label="Custom Label" language="en"></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
+			expect(text).toBe('Custom Label');
+		});
+	});
+
+	describe('disabled prop variants', () => {
+		it('recognizes disabled boolean attribute', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button disabled></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			expect(button?.hasAttribute('disabled')).toBe(true);
+		});
+
+		it('recognizes disabled="true" string attribute', async () => {
+			const page = await newSpecPage({
+				components: [OntarioBackButton],
+				html: `<ontario-back-button disabled="true"></ontario-back-button>`,
+			});
+
+			const button = page.root?.shadowRoot?.querySelector('button');
+			expect(button?.hasAttribute('disabled')).toBe(true);
+		});
+	});
 });
