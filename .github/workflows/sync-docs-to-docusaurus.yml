@@ -63,7 +63,9 @@ jobs:
       # Install dependencies for Docusaurus
       - name: Install Docusaurus dependencies
         working-directory: packages/docusaurus
-        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
+        # This workflow intentionally updates package specs (component library versioning),
+        # so lockfile must be allowed to refresh for the docs PR commit.
+        run: pnpm install --no-frozen-lockfile --lockfile-dir . --ignore-workspace
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash
@@ -89,6 +91,25 @@ jobs:
       - name: Version Docusaurus docs
         working-directory: packages/docusaurus
         run: pnpm exec docusaurus docs:version ${{ inputs.release_tag }}
+
+      - name: Validate docs-only change scope
+        shell: bash
+        run: |
+          changed_files="$({
+            git diff --name-only
+            git diff --name-only --cached
+            git ls-files --others --exclude-standard
+          } | sort -u)"
+
+          echo 'Changed files:'
+          echo "$changed_files"
+
+          unexpected_files="$(echo "$changed_files" | grep -v '^packages/docusaurus/' || true)"
+          if [ -n "$unexpected_files" ]; then
+            echo 'Unexpected changes detected outside packages/docusaurus:'
+            echo "$unexpected_files"
+            exit 1
+          fi
 
       - name: Create Pull Request
         id: create_pr
