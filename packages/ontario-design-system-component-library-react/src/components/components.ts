@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
@@ -155,6 +155,8 @@ import { OntarioPageAlert as OntarioPageAlertElement, defineCustomElement as def
 import { OntarioRadioButtons as OntarioRadioButtonsElement, defineCustomElement as defineOntarioRadioButtons } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
 import { OntarioSearchBox as OntarioSearchBoxElement, defineCustomElement as defineOntarioSearchBox } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
 import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElement as defineOntarioStepIndicator } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
+import { OntarioSummaryListItem as OntarioSummaryListItemElement, defineCustomElement as defineOntarioSummaryListItem } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
+import { OntarioSummaryList as OntarioSummaryListElement, defineCustomElement as defineOntarioSummaryList } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
 import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
@@ -371,7 +373,7 @@ export const OntarioFormContainer: StencilReactComponent<OntarioFormContainerEle
     defineCustomElement: defineOntarioFormContainer
 });
 
-export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<boolean>> };
+export type OntarioHeaderEvents = { onMenuButtonToggled: EventName<OntarioHeaderCustomEvent<HeaderMenuToggleDetail>> };
 
 export const OntarioHeader: StencilReactComponent<OntarioHeaderElement, OntarioHeaderEvents> = /*@__PURE__*/ createComponent<OntarioHeaderElement, OntarioHeaderEvents>({
     tagName: 'ontario-header',
@@ -1870,6 +1872,28 @@ export const OntarioStepIndicator: StencilReactComponent<OntarioStepIndicatorEle
     react: React,
     events: {} as OntarioStepIndicatorEvents,
     defineCustomElement: defineOntarioStepIndicator
+});
+
+export type OntarioSummaryListEvents = NonNullable<unknown>;
+
+export const OntarioSummaryList: StencilReactComponent<OntarioSummaryListElement, OntarioSummaryListEvents> = /*@__PURE__*/ createComponent<OntarioSummaryListElement, OntarioSummaryListEvents>({
+    tagName: 'ontario-summary-list',
+    elementClass: OntarioSummaryListElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioSummaryListEvents,
+    defineCustomElement: defineOntarioSummaryList
+});
+
+export type OntarioSummaryListItemEvents = NonNullable<unknown>;
+
+export const OntarioSummaryListItem: StencilReactComponent<OntarioSummaryListItemElement, OntarioSummaryListItemEvents> = /*@__PURE__*/ createComponent<OntarioSummaryListItemElement, OntarioSummaryListItemEvents>({
+    tagName: 'ontario-summary-list-item',
+    elementClass: OntarioSummaryListItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioSummaryListItemEvents,
+    defineCustomElement: defineOntarioSummaryListItem
 });
 
 export type OntarioTableEvents = NonNullable<unknown>;

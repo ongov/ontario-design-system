@@ -1,16 +1,13 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OntarioHeaderOverflowMenu } from '../ontario-header-overflow-menu';
+import { render, RenderResult } from '@stencil/vitest';
+import { HeaderMenuToggleDetail } from '../../ontario-header/ontario-header.interface';
 
 describe('ontario-header-overflow-menu', () => {
-	let page: SpecPage;
+	let page: RenderResult;
 	let host: HTMLOntarioHeaderOverflowMenuElement;
 	let hostShadow: ShadowRoot;
 
 	beforeEach(async () => {
-		page = await newSpecPage({
-			components: [OntarioHeaderOverflowMenu],
-			html: `<ontario-header-overflow-menu></ontario-header-overflow-menu>`,
-		});
+		page = await render(`<ontario-header-overflow-menu></ontario-header-overflow-menu>`);
 
 		host = page.root as HTMLOntarioHeaderOverflowMenuElement;
 		hostShadow = host.shadowRoot as ShadowRoot;
@@ -54,7 +51,7 @@ describe('ontario-header-overflow-menu', () => {
 	});
 
 	it('should call menu item onClickHandler when item is clicked', async () => {
-		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+		const onClickHandler = vi.fn((event: Event) => event.preventDefault());
 		host.menuItems = [{ title: 'Link 1', href: '/link-1', linkIsActive: false, onClickHandler }];
 
 		await page.waitForChanges();
@@ -65,5 +62,35 @@ describe('ontario-header-overflow-menu', () => {
 		menuItem.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
 
 		expect(onClickHandler).toHaveBeenCalledTimes(1);
+	});
+
+	it('should not auto-focus the first item on click-open in standalone mode', async () => {
+		const component = page.instance as unknown as {
+			handleMenuButtonToggled: (event: CustomEvent<HeaderMenuToggleDetail>) => void;
+			shouldFocusFirstItemOnOpen: boolean;
+			menuIsOpen: boolean;
+		};
+
+		component.handleMenuButtonToggled({
+			detail: { isOpen: true, trigger: 'click' },
+		} as CustomEvent<HeaderMenuToggleDetail>);
+
+		expect(component.menuIsOpen).toBe(true);
+		expect(component.shouldFocusFirstItemOnOpen).toBe(false);
+	});
+
+	it('should auto-focus the first item on keyboard-open in standalone mode', async () => {
+		const component = page.instance as unknown as {
+			handleMenuButtonToggled: (event: CustomEvent<HeaderMenuToggleDetail>) => void;
+			shouldFocusFirstItemOnOpen: boolean;
+			menuIsOpen: boolean;
+		};
+
+		component.handleMenuButtonToggled({
+			detail: { isOpen: true, trigger: 'keyboard' },
+		} as CustomEvent<HeaderMenuToggleDetail>);
+
+		expect(component.menuIsOpen).toBe(true);
+		expect(component.shouldFocusFirstItemOnOpen).toBe(true);
 	});
 });

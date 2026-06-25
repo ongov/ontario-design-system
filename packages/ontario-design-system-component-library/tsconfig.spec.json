@@ -1,0 +1,8 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"moduleResolution": "bundler",
+		"types": ["node", "vitest/globals", "uuid", "react", "react-dom"]
+	},
+	"include": ["src/**/*.spec.ts", "src/**/*.spec.tsx", "src/utils/tests", "vitest.config.ts", "vitest-setup.ts"]
+}

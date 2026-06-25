@@ -1,6 +1,7 @@
 import { Component, Prop, Element, h, State, Watch } from '@stencil/core';
 import {
 	headerColourDefinitions,
+	headerColourToClass,
 	HeaderColour,
 	HorizontalImagePositionType,
 	HorizontalImageSizeType,
@@ -299,8 +300,8 @@ export class OntarioCard {
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
 
-		const backgroundClass =
-			this.headerColour && !this.description ? `ontario-card__background--${this.headerColour}` : '';
+		const colourClass = this.cardState.headerColour ? headerColourToClass[this.cardState.headerColour] : undefined;
+		const backgroundClass = colourClass && !this.description ? `ontario-card__background--${colourClass}` : '';
 
 		return `${baseClass} ${descriptionClass} ${backgroundClass}`.trim();
 	}
@@ -313,7 +314,8 @@ export class OntarioCard {
 	private getCardHeadingClasses(): string {
 		const baseClass = 'ontario-card__heading';
 
-		const backgroundClass = this.cardState.headerColour ? `ontario-card__heading--${this.cardState.headerColour}` : '';
+		const colourClass = this.cardState.headerColour ? headerColourToClass[this.cardState.headerColour] : undefined;
+		const backgroundClass = colourClass ? `ontario-card__heading--${colourClass}` : '';
 
 		return `${baseClass} ${backgroundClass}`.trim();
 	}
@@ -344,7 +346,7 @@ export class OntarioCard {
 			<li class={this.getCardClasses()}>
 				{this.image && (
 					<div class="ontario-card__image-container">
-						<a href={this.getHref()} aria-label={this.ariaLabelText}>
+						<a href={this.getHref()} aria-label={this.ariaLabelText} tabindex={-1}>
 							<img class="ontario-card__image" alt={this.imageAltText} src={this.image} />
 						</a>
 					</div>

@@ -1,45 +1,45 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-badge should override the host textContent with label prop output on the span element 1`] = `
-<ontario-badge label="completed">
-  <template shadowrootmode="open">
+exports[`ontario-badge > should override the host textContent with label prop output on the span element 1`] = `
+<ontario-badge label="completed" class="hydrated">
+  <mock:shadow-root>
     <span class="ontario-badge ontario-badge--teal">
       completed
     </span>
-  </template>
+  </mock:shadow-root>
   In progress
 </ontario-badge>
 `;
 
-exports[`ontario-badge should render the aria-label attribute on the span element 1`] = `
-<ontario-badge aria-label-text="This course is currently in progress.">
-  <template shadowrootmode="open">
-    <span aria-label="This course is currently in progress." class="ontario-badge ontario-badge--teal">
+exports[`ontario-badge > should render the aria-label attribute on the span element 1`] = `
+<ontario-badge aria-label-text="This course is currently in progress." class="hydrated">
+  <mock:shadow-root>
+    <span class="ontario-badge ontario-badge--teal" aria-label="This course is currently in progress.">
       In progress
     </span>
-  </template>
+  </mock:shadow-root>
   In progress
 </ontario-badge>
 `;
 
-exports[`ontario-badge should render the expected base html 1`] = `
-<ontario-badge>
-  <template shadowrootmode="open">
+exports[`ontario-badge > should render the expected base html 1`] = `
+<ontario-badge class="hydrated">
+  <mock:shadow-root>
     <span class="ontario-badge ontario-badge--teal">
       In progress
     </span>
-  </template>
+  </mock:shadow-root>
   In progress
 </ontario-badge>
 `;
 
-exports[`ontario-badge should render with the ontario-badge--default-light class on the span element 1`] = `
-<ontario-badge colour="lightTeal">
-  <template shadowrootmode="open">
+exports[`ontario-badge > should render with the ontario-badge--default-light class on the span element 1`] = `
+<ontario-badge colour="lightTeal" class="hydrated">
+  <mock:shadow-root>
     <span class="ontario-badge ontario-badge--light-teal">
       In progress
     </span>
-  </template>
+  </mock:shadow-root>
   In progress
 </ontario-badge>
 `;

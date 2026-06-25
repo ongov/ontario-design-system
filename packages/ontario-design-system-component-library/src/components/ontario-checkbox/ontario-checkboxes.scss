@@ -90,6 +90,7 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 	&:before {
 		content: '';
 		border: $ontario-checkbox-border-size solid colours.$ontario-colour-black;
+		background-color: colours.$ontario-colour-white;
 		border-radius: globalVariables.$global-radius;
 		position: absolute;
 		top: 0;

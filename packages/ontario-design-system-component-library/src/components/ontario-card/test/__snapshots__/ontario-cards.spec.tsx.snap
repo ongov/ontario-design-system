@@ -1,23 +1,23 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-card renders 1`] = `
-<ontario-card>
-  <template shadowrootmode="open">
-    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
+exports[`ontario-card > renders 1`] = `
+<ontario-card class="hydrated">
+  <mock:shadow-root>
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#"></a>
         </h2>
       </div>
     </li>
-  </template>
+  </mock:shadow-root>
 </ontario-card>
 `;
 
-exports[`ontario-card should render a description 1`] = `
-<ontario-card description="Lorem ipsum">
-  <template shadowrootmode="open">
-    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic">
+exports[`ontario-card > should render a description 1`] = `
+<ontario-card description="Lorem ipsum" class="hydrated">
+  <mock:shadow-root>
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#"></a>
@@ -29,14 +29,14 @@ exports[`ontario-card should render a description 1`] = `
         </div>
       </div>
     </li>
-  </template>
+  </mock:shadow-root>
 </ontario-card>
 `;
 
-exports[`ontario-card should render a header colour on the label 1`] = `
-<ontario-card header-colour="sky" label="Card Title 1">
-  <template shadowrootmode="open">
-    <li class="ontario-card ontario-card--position-vertical ontario-card__background--sky ontario-card__card-type--basic ontario-card__description-false">
+exports[`ontario-card > should render a header colour on the label 1`] = `
+<ontario-card label="Card Title 1" header-colour="sky" class="hydrated">
+  <mock:shadow-root>
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false ontario-card__background--sky">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading ontario-card__heading--sky">
           <a href="#">
@@ -45,14 +45,14 @@ exports[`ontario-card should render a header colour on the label 1`] = `
         </h2>
       </div>
     </li>
-  </template>
+  </mock:shadow-root>
 </ontario-card>
 `;
 
-exports[`ontario-card should render a label 1`] = `
-<ontario-card label="Card Title 1">
-  <template shadowrootmode="open">
-    <li class="ontario-card ontario-card--position-vertical ontario-card__card-type--basic ontario-card__description-false">
+exports[`ontario-card > should render a label 1`] = `
+<ontario-card label="Card Title 1" class="hydrated">
+  <mock:shadow-root>
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#">
@@ -61,6 +61,6 @@ exports[`ontario-card should render a label 1`] = `
         </h2>
       </div>
     </li>
-  </template>
+  </mock:shadow-root>
 </ontario-card>
 `;

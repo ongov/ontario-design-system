@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ontario-form-container snapshot should render the expected html 1`] = `
-<ontario-form-container>
-  <template shadowrootmode="open">
+exports[`ontario-form-container > snapshot > should render the expected html 1`] = `
+<ontario-form-container class="hydrated">
+  <mock:shadow-root>
     <div class="ontario-form-container--gap-40">
       <slot></slot>
     </div>
-  </template>
+  </mock:shadow-root>
 </ontario-form-container>
 `;

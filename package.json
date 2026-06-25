@@ -1,6 +1,6 @@
 {
 	"name": "root",
-	"version": "8.1.0-alpha.4",
+	"version": "8.1.0",
 	"private": true,
 	"workspaces": [
 		"packages/*"
@@ -29,30 +29,30 @@
 		"test:all": "pnpm run test:unit && pnpm run test:e2e"
 	},
 	"engines": {
-		"node": ">=22.22.0 <23",
-		"pnpm": ">=10.2.0 <11"
+		"node": ">=22.22.3 <23",
+		"pnpm": "<12"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.5.0",
-		"@commitlint/config-conventional": "^19.5.0",
+		"@commitlint/cli": "^21.0.0",
+		"@commitlint/config-conventional": "^21.0.0",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^13.0.1",
 		"@semantic-release/exec": "^7.1.0",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/github": "12.0.2",
+		"@semantic-release/github": "12.0.8",
 		"@semantic-release/npm": "^13.1.1",
 		"@types/js-yaml": "^4.0.9",
-		"@types/node": "^22.12.0",
+		"@types/node": "^24.0.0",
 		"bash-color": "^0.0.4",
-		"commander": "^11.0.0",
-		"dotenv": "^16.4.5",
-		"husky": "^8.0.2",
+		"commander": "^15.0.0",
+		"dotenv": "^17.0.0",
+		"husky": "^9.0.0",
 		"js-yaml": "^4.1.0",
 		"lerna": "^9.0.0",
 		"prettier": "^3.3.3",
 		"pretty-quick": "^4.0.0",
 		"semantic-release": "^25.0.2",
-		"semantic-release-lerna": "^2.18.4",
+		"semantic-release-lerna": "^3.0.0",
 		"ts-node": "^10.9.2"
 	},
 	"optionalDependencies": {
@@ -65,12 +65,7 @@
 		"@nrwl/nx-linux-x64-musl": "15.9.3",
 		"@nrwl/nx-win32-arm64-msvc": "15.9.3",
 		"@nrwl/nx-win32-x64-msvc": "15.9.3",
-		"bl": "^6.0.18"
+		"bl": "^7.0.0"
 	},
-	"packageManager": "pnpm@10.2.0",
-	"pnpm": {
-		"patchedDependencies": {
-			"@semantic-release/github@12.0.2": "patches/@semantic-release__github@12.0.2.patch"
-		}
-	}
+	"packageManager": "pnpm@11.6.0"
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "8.1.0-alpha.4",
+	"version": "8.1.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ongov/ontario-design-system",
@@ -24,12 +24,12 @@
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"scss": "sass --pkg-importer=node --watch ./src/styles/scss:dist/styles/css",
-		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" -df ../docusaurus/docs/05-readme-global-styles.md"
+		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" --df ../docusaurus/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"gulp": "^5.0.0",
-		"gulp-autoprefixer": "^9.0.0",
+		"gulp-autoprefixer": "^10.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-if": "^3.0.0",

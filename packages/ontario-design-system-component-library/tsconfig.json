@@ -8,7 +8,7 @@
 		"lib": ["dom", "es2017", "ESNext.Disposable"],
 		"module": "esnext",
 		"target": "ES2017",
-		"moduleResolution": "node",
+		"moduleResolution": "node10",
 		"strictNullChecks": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -17,10 +17,10 @@
 		"jsx": "react",
 		"jsxFactory": "h",
 		"resolveJsonModule": true,
-		"types": ["node", "jest", "uuid", "react", "react-dom"]
+		"types": ["node", "uuid", "react", "react-dom"]
 	},
 	"include": ["src"],
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules", "src/**/*.spec.ts", "src/**/*.spec.tsx", "src/utils/tests"],
 	"paths": {
 		"@ongov/ontario-design-system-design-tokens/*": ["node_modules/@ongov/ontario-design-system-design-tokens/*"]
 	},
