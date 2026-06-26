@@ -25,7 +25,6 @@
 		"generate:colours": "node scripts/generate-colour-tokens.mjs",
 		"lint:tokens": "node scripts/lint-tokens.mjs",
 		"export:figma": "node scripts/export-figma-tokens.mjs",
-		"export:downstream": "node scripts/export-downstream-tokens.mjs",
 		"test": "vitest run",
 		"test:unit": "vitest run",
 		"test:watch": "vitest",
