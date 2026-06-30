@@ -20,6 +20,10 @@
 	"labels": ["dependencies", "renovate"],
 	"prHourlyLimit": 5,
 	"prConcurrentLimit": 10,
+	"ignorePaths": [
+		"**/node_modules/**",
+		"packages/ontario-design-system-component-library-angular/projects/component-library/package.json"
+	],
 	"packageRules": [
 		{
 			"description": "Automerge devDependencies",
