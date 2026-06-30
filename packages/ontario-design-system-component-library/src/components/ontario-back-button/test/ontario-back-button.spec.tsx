@@ -1,13 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioBackButton } from '../ontario-back-button';
+import { render } from '@stencil/vitest';
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
 
 describe('ontario-back-button', () => {
-	let warnSpy: jest.SpyInstance;
-	let historyBackSpy: jest.SpyInstance;
+	let warnSpy: MockInstance;
+	let historyBackSpy: MockInstance;
 
 	beforeEach(() => {
-		warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-		historyBackSpy = jest.spyOn(window.history, 'back').mockImplementation(() => undefined);
+		warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+		historyBackSpy = vi.spyOn(window.history, 'back').mockImplementation(() => undefined);
 	});
 
 	afterEach(() => {
@@ -17,46 +17,31 @@ describe('ontario-back-button', () => {
 
 	describe('renders', () => {
 		it('the default output', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			expect(page.root).toMatchSnapshot();
 		});
 
 		it('href mode output', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button href="/previous-step" back-mode="href"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button href="/previous-step" back-mode="href"></ontario-back-button>`);
 
 			expect(page.root).toMatchSnapshot();
 		});
 
 		it('renders Back by default', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			expect(page.root?.shadowRoot?.querySelector('button')?.textContent?.replace(/\s+/g, ' ').trim()).toBe('Back');
 		});
 
 		it('renders Retour when language is fr and label is not provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button language="fr"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button language="fr"></ontario-back-button>`);
 
 			expect(page.root?.shadowRoot?.querySelector('button')?.textContent?.replace(/\s+/g, ' ').trim()).toBe('Retour');
 		});
 
 		it('uses label prop when provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button label="Go back now"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button label="Go back now"></ontario-back-button>`);
 
 			expect(page.root?.shadowRoot?.querySelector('button')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
 				'Go back now',
@@ -64,10 +49,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('renders an anchor when href is provided and back-mode is omitted', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button href="/previous-step"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button href="/previous-step"></ontario-back-button>`);
 
 			const link = page.root?.shadowRoot?.querySelector('a');
 			const button = page.root?.shadowRoot?.querySelector('button');
@@ -78,10 +60,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('renders a button when back-mode is href but href is missing', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button back-mode="href"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button back-mode="href"></ontario-back-button>`);
 
 			expect(page.root?.shadowRoot?.querySelector('button')).not.toBeNull();
 			expect(page.root?.shadowRoot?.querySelector('a')).toBeNull();
@@ -91,12 +70,9 @@ describe('ontario-back-button', () => {
 
 	describe('behaviour by mode', () => {
 		it('history mode emits event and calls window.history.back', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
@@ -107,12 +83,9 @@ describe('ontario-back-button', () => {
 		});
 
 		it('event mode emits event only', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button back-mode="event"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button back-mode="event"></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
@@ -123,12 +96,9 @@ describe('ontario-back-button', () => {
 		});
 
 		it('href mode emits event on click', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button href="/previous-step" back-mode="href"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button href="/previous-step" back-mode="href"></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const link = page.root?.shadowRoot?.querySelector('a') as HTMLAnchorElement;
@@ -139,12 +109,9 @@ describe('ontario-back-button', () => {
 		});
 
 		it('disabled mode blocks interaction and does not emit events', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button disabled="true"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button disabled="true"></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
@@ -157,12 +124,9 @@ describe('ontario-back-button', () => {
 
 	describe('keyboard interaction', () => {
 		it('activates on Enter key press', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button back-mode="event"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button back-mode="event"></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
@@ -174,12 +138,9 @@ describe('ontario-back-button', () => {
 		});
 
 		it('activates on Space key press', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button back-mode="event"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button back-mode="event"></ontario-back-button>`);
 
-			const eventSpy = jest.fn();
+			const eventSpy = vi.fn();
 			page.root?.addEventListener('backClick', eventSpy);
 
 			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
@@ -193,10 +154,7 @@ describe('ontario-back-button', () => {
 
 	describe('accessibility', () => {
 		it('has accessible button semantics', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			expect(button?.tagName).toBe('BUTTON');
@@ -204,10 +162,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('decorative icon is hidden from screen readers', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			const icon = page.root?.shadowRoot?.querySelector('svg');
 			expect(icon?.getAttribute('aria-hidden')).toBe('true');
@@ -215,10 +170,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('has accessible name from visible label text', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			const buttonText = button?.textContent?.trim();
@@ -228,32 +180,21 @@ describe('ontario-back-button', () => {
 
 	describe('href attribute handling', () => {
 		it('renders correct href value when provided', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button href="/contact-details" back-mode="href"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button href="/contact-details" back-mode="href"></ontario-back-button>`);
 
 			const link = page.root?.shadowRoot?.querySelector('a');
 			expect(link?.getAttribute('href')).toBe('/contact-details');
 		});
 
 		it('warns when href mode is used without href value', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button back-mode="href"></ontario-back-button>`,
-			});
-
-			await page.waitForChanges();
+			await render(`<ontario-back-button back-mode="href"></ontario-back-button>`);
 			expect(warnSpy).toHaveBeenCalled();
 		});
 	});
 
 	describe('bilingual support', () => {
 		it('renders English label by default', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
@@ -261,10 +202,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('renders French label when language="fr"', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button language="fr"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button language="fr"></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
@@ -272,10 +210,7 @@ describe('ontario-back-button', () => {
 		});
 
 		it('preserves custom label across language changes', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button label="Custom Label" language="en"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button label="Custom Label" language="en"></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			const text = button?.textContent?.replace(/\s+/g, ' ').trim();
@@ -285,20 +220,14 @@ describe('ontario-back-button', () => {
 
 	describe('disabled prop variants', () => {
 		it('recognizes disabled boolean attribute', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button disabled></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button disabled></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			expect(button?.hasAttribute('disabled')).toBe(true);
 		});
 
 		it('recognizes disabled="true" string attribute', async () => {
-			const page = await newSpecPage({
-				components: [OntarioBackButton],
-				html: `<ontario-back-button disabled="true"></ontario-back-button>`,
-			});
+			const page = await render(`<ontario-back-button disabled="true"></ontario-back-button>`);
 
 			const button = page.root?.shadowRoot?.querySelector('button');
 			expect(button?.hasAttribute('disabled')).toBe(true);
