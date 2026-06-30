@@ -16,16 +16,21 @@ describe('ontario-back-button', () => {
 	});
 
 	describe('renders', () => {
-		it('the default output', async () => {
+		it('renders the default button output', async () => {
 			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
-			expect(page.root).toMatchSnapshot();
+			expect(page.root?.shadowRoot?.querySelector('button')).not.toBeNull();
+			expect(page.root?.shadowRoot?.querySelector('a')).toBeNull();
+			expect(page.root?.shadowRoot?.querySelector('button')?.textContent?.replace(/\s+/g, ' ').trim()).toBe('Back');
 		});
 
-		it('href mode output', async () => {
+		it('renders link output in href mode', async () => {
 			const page = await render(`<ontario-back-button href="/previous-step" back-mode="href"></ontario-back-button>`);
 
-			expect(page.root).toMatchSnapshot();
+			const link = page.root?.shadowRoot?.querySelector('a');
+			expect(link).not.toBeNull();
+			expect(link?.getAttribute('href')).toBe('/previous-step');
+			expect(page.root?.shadowRoot?.querySelector('button')).toBeNull();
 		});
 
 		it('renders Back by default', async () => {
