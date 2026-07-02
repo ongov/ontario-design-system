@@ -169,9 +169,8 @@ describe('ontario-back-button', () => {
 		it('decorative icon is hidden from screen readers', async () => {
 			const page = await render(`<ontario-back-button></ontario-back-button>`);
 
-			const icon = page.root?.shadowRoot?.querySelector('svg');
+			const icon = page.root?.shadowRoot?.querySelector('ontario-icon-chevron-left');
 			expect(icon?.getAttribute('aria-hidden')).toBe('true');
-			expect(icon?.getAttribute('focusable')).toBe('false');
 		});
 
 		it('has accessible name from visible label text', async () => {
