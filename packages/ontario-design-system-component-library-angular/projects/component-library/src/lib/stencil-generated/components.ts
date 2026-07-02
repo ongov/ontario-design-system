@@ -3633,6 +3633,36 @@ Below is an example on how to hook into the event to get the event details. @exa
 
 
 @ProxyCmp({
+  inputs: ['active', 'boldRanges', 'description', 'disabled', 'highlightParts', 'href', 'label', 'language', 'selected', 'value']
+})
+@Component({
+  selector: 'ontario-search-result-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['active', 'boldRanges', 'description', 'disabled', 'highlightParts', 'href', 'label', 'language', 'selected', 'value'],
+  outputs: ['itemSelected'],
+  standalone: false
+})
+export class OntarioSearchResultItem {
+  protected el: HTMLOntarioSearchResultItemElement;
+  @Output() itemSelected = new EventEmitter<CustomEvent<{ label?: string; value?: string; href?: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioSearchResultItem extends Components.OntarioSearchResultItem {
+  /**
+   * Emitted when a non-disabled option is selected via click.
+   */
+  itemSelected: EventEmitter<CustomEvent<{ label?: string; value?: string; href?: string }>>;
+}
+
+
+@ProxyCmp({
   inputs: ['backButtonUrl', 'currentStep', 'customOnClick', 'language', 'numberOfSteps', 'percentageComplete', 'showBackButton']
 })
 @Component({
