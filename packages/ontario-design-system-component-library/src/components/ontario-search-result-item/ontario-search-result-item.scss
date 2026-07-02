@@ -1,0 +1,65 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+
+:host {
+	display: block;
+	list-style: none;
+}
+
+.ontario-search-result-item {
+	padding: spacing.$spacing-2 spacing.$spacing-4;
+	background-color: colours.$ontario-colour-white;
+	cursor: pointer;
+}
+
+.ontario-search-result-item--active,
+.ontario-search-result-item--selected {
+	background-color: colours.$ontario-colour-button-tertiary--hover;
+}
+
+.ontario-search-result-item--selected {
+	box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus inset;
+}
+
+.ontario-search-result-item--disabled {
+	cursor: default;
+	opacity: 0.65;
+}
+
+:host(:focus-visible) .ontario-search-result-item {
+	box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus;
+	outline: globalFunctions.px-to-rem(4) solid transparent;
+}
+
+.ontario-search-result-item__content {
+	display: block;
+}
+
+.ontario-search-result-item__text {
+	display: flex;
+	flex-direction: column;
+	gap: spacing.$spacing-1;
+}
+
+.ontario-search-result-item__label {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+}
+
+.ontario-search-result-item__match {
+	font-weight: fontWeights.$ontario-font-weights-normal;
+}
+
+.ontario-search-result-item__completion {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+}
+
+.ontario-search-result-item__description {
+	line-height: 1.35;
+}
+
+.ontario-search-result-item__link {
+	color: inherit;
+	text-decoration: none;
+}
