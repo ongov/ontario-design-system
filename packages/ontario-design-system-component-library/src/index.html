@@ -1704,8 +1704,91 @@
 						window.addEventListener('load', () => {
 							console.log('Loaded Search Box Event Listener');
 							const searchBox = document.getElementById('ontario-search-box');
+							const autocompleteSearchBox = document.getElementById('ontario-search-autocomplete');
 							searchBox.performSearch = async ($value) => {
 								console.log('Performing search with value:', $value);
+							};
+
+							const ontarioCities = [
+								'Ajax',
+								'Barrie',
+								'Belleville',
+								'Brampton',
+								'Brant',
+								'Brantford',
+								'Brockville',
+								'Burlington',
+								'Cambridge',
+								'Clarence-Rockland',
+								'Cornwall',
+								'Dryden',
+								'Elliot Lake',
+								'Greater Sudbury',
+								'Guelph',
+								'Haldimand County',
+								'Hamilton',
+								'Kawartha Lakes',
+								'Kenora',
+								'Kingston',
+								'Kitchener',
+								'London',
+								'Markham',
+								'Mississauga',
+								'Niagara Falls',
+								'Norfolk County',
+								'North Bay',
+								'Orillia',
+								'Oshawa',
+								'Ottawa',
+								'Owen Sound',
+								'Pembroke',
+								'Peterborough',
+								'Pickering',
+								'Port Colborne',
+								'Prince Edward County',
+								'Quinte West',
+								'Richmond Hill',
+								'Sarnia',
+								'Sault Ste. Marie',
+								'St. Catharines',
+								'St. Thomas',
+								'Stratford',
+								'Temiskaming Shores',
+								'Thorold',
+								'Thunder Bay',
+								'Timmins',
+								'Toronto',
+								'Vaughan',
+								'Waterloo',
+								'Welland',
+								'Windsor',
+								'Woodstock',
+							];
+
+							autocompleteSearchBox.getSuggestions = async (query) => {
+								const normalizedQuery = (query || '').toLowerCase();
+								return ontarioCities
+									.filter((city) => city.toLowerCase().includes(normalizedQuery))
+									.map((city) => {
+										const cityLower = city.toLowerCase();
+										const queryIndex = cityLower.indexOf(normalizedQuery);
+
+										if (!normalizedQuery || queryIndex < 0) {
+											return {
+												label: city,
+												value: city,
+											};
+										}
+
+										return {
+											label: city,
+											value: city,
+											boldRanges: [
+												{ start: 0, end: queryIndex },
+												{ start: queryIndex + normalizedQuery.length, end: city.length },
+											].filter((range) => range.end > range.start),
+										};
+									});
 							};
 
 							searchBox.addEventListener('searchOnSubmit', (event) => {
@@ -1724,6 +1807,35 @@
 						}'
 							hint-text="Search by employee name or organization name."
 						></ontario-search-box>
+
+						<h3 class="ontario-h4">Autocomplete with Ontario cities (async)</h3>
+						<ontario-search-box
+							id="ontario-search-autocomplete"
+							autocomplete
+							caption='{
+							"captionText": "Search Ontario cities",
+							"captionType": "default"
+						}'
+							hint-text="Start typing to see city suggestions."
+						></ontario-search-box>
+
+						<h3 class="ontario-h4">Autocomplete with slotted semantic and custom options</h3>
+						<ontario-search-box
+							id="ontario-search-slot"
+							autocomplete
+							caption='{
+							"captionText": "Search Ontario cities (slot mode)",
+							"captionType": "default"
+						}'
+						>
+							<ontario-search-result-item
+								slot="suggestions"
+								label="Toronto"
+								value="Toronto"
+							></ontario-search-result-item>
+							<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
+							<div slot="suggestions" data-value="Waterloo" role="option">Waterloo (custom HTML option)</div>
+						</ontario-search-box>
 					</div>
 
 					<hr />

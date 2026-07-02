@@ -123,6 +123,37 @@ The following example registers a simple function on `window` `load` that adds a
 </script>
 ```
 
+## Autocomplete examples
+
+### Async suggestions with `getSuggestions(query)`
+
+```html
+<ontario-search-box id="search-with-autocomplete" caption="Search Ontario cities" autocomplete></ontario-search-box>
+
+<script>
+	window.addEventListener('load', () => {
+		const cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+		const searchBox = document.getElementById('search-with-autocomplete');
+
+		searchBox.getSuggestions = async (query) => {
+			return cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+		};
+	});
+</script>
+```
+
+### Slotted semantic and custom HTML suggestions
+
+```html
+<ontario-search-box id="search-with-slot" caption="Search Ontario cities" autocomplete>
+	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
+	<div slot="suggestions" data-value="Toronto" role="option">Toronto (custom HTML option)</div>
+</ontario-search-box>
+```
+
+Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+
 ## Custom property types
 
 ### caption

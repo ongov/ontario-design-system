@@ -40,8 +40,12 @@ import translations from '../../translations/global.i18n.json';
 	shadow: true,
 })
 export class OntarioSearchBox {
-	@Element() element: HTMLElement;
-	@AttachInternals() internals: ElementInternals;
+	@Element() element!: HTMLElement;
+	@AttachInternals() internals!: ElementInternals;
+
+	private suggestionSlotRef?: HTMLSlotElement;
+	private inputRefId = 'ontario-search-input-field';
+	private debounceTimer?: number | ReturnType<typeof setTimeout>;
 
 	/**
 	 * This Ref is used get a direct reference to the hint text element
@@ -71,6 +75,47 @@ export class OntarioSearchBox {
 	@Prop({ mutable: true }) value?: string;
 
 	/**
+	 * Enables autocomplete behaviour on the search input.
+	 */
+	@Prop() autocomplete?: boolean = false;
+
+	/**
+	 * Async suggestion provider for autocomplete mode.
+	 * Slot content has precedence over this callback.
+	 */
+	@Prop()
+	getSuggestions?: (query: string) => Promise<
+		(
+			| string
+			| {
+					id?: string;
+					label: string;
+					value?: string;
+					description?: string;
+					href?: string;
+					disabled?: boolean;
+					boldRanges?: Array<{ start: number; end: number }>;
+					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+			  }
+		)[]
+	>;
+
+	/**
+	 * Minimum number of characters required before suggestions are shown.
+	 */
+	@Prop() minChars?: number = 1;
+
+	/**
+	 * Debounce delay before `getSuggestions` is called.
+	 */
+	@Prop() debounceMs?: number = 150;
+
+	/**
+	 * Maximum number of suggestions rendered in async mode.
+	 */
+	@Prop() maxSuggestions?: number = 8;
+
+	/**
 	 * The text to display as the input label
 	 *
 	 * @example
@@ -83,7 +128,7 @@ export class OntarioSearchBox {
 	 * >
 	 * </ontario-search-box>
 	 */
-	@Prop() caption: Caption | string;
+	@Prop() caption!: Caption | string;
 
 	/**
 	 * This is used to determine whether the dropdown list is required or not.
@@ -153,42 +198,86 @@ export class OntarioSearchBox {
 	 *	  };
 	 * 	</script>
 	 */
-	@Event() searchOnSubmit: EventEmitter<string>;
+	@Event() searchOnSubmit!: EventEmitter<string>;
 
 	/**
 	 * Emitted when a input  occurs when an input has been changed.
 	 */
-	@Event() inputOnInput: EventEmitter<InputInputEvent>;
+	@Event() inputOnInput!: EventEmitter<InputInputEvent>;
 
 	/**
 	 * Emitted when a keyboard input or mouse event occurs when an input has been changed.
 	 */
-	@Event() inputOnChange: EventEmitter<InputInteractionEvent>;
+	@Event() inputOnChange!: EventEmitter<InputInteractionEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has lost focus.
 	 */
-	@Event() inputOnBlur: EventEmitter<InputFocusBlurEvent>;
+	@Event() inputOnBlur!: EventEmitter<InputFocusBlurEvent>;
 
 	/**
 	 * Emitted when a keyboard input event occurs when an input has gained focus.
 	 */
-	@Event() inputOnFocus: EventEmitter<InputFocusBlurEvent>;
+	@Event() inputOnFocus!: EventEmitter<InputFocusBlurEvent>;
+
+	/**
+	 * Emitted when the autocomplete query changes.
+	 */
+	@Event() autocompleteQueryUpdated!: EventEmitter<{ query: string }>;
+
+	/**
+	 * Emitted after suggestions are updated from either slot content or async mode.
+	 */
+	@Event() autocompleteSuggestionsUpdated!: EventEmitter<{ query: string; count: number }>;
+
+	/**
+	 * Emitted when a suggestion is selected.
+	 */
+	@Event() autocompleteSuggestionSelected!: EventEmitter<{
+		query: string;
+		suggestion: {
+			id?: string;
+			label: string;
+			value?: string;
+			description?: string;
+			href?: string;
+			disabled?: boolean;
+			boldRanges?: Array<{ start: number; end: number }>;
+			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+		};
+		source: 'keyboard' | 'mouse';
+	}>;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
 	 */
-	@State() private internalHintText: Hint;
+	@State() private internalHintText!: Hint;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
 	 */
-	@State() private captionState: InputCaption;
+	@State() private captionState!: InputCaption;
 
 	/**
 	 * Used for the `aria-describedby` value of the dropdown list. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
+	@State()
+	private suggestions: {
+		id?: string;
+		label: string;
+		value?: string;
+		description?: string;
+		href?: string;
+		disabled?: boolean;
+		boldRanges?: Array<{ start: number; end: number }>;
+		highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+	}[] = [];
+	@State() private activeSuggestionIndex: number = -1;
+	@State() private hoveredSuggestionIndex: number = -1;
+	@State() private suggestionsOpen = false;
+	@State() private hasSuggestionSlotContent = false;
+	@State() private ariaLiveMessage = '';
 
 	@State() translations: any = translations;
 
@@ -231,17 +320,42 @@ export class OntarioSearchBox {
 		this.updateCaptionState(this.caption);
 	}
 
+	@Watch('autocomplete')
+	handleAutocompleteToggled() {
+		if (!this.autocomplete) {
+			this.closeSuggestions();
+			this.suggestions = [];
+		}
+	}
+
 	/**
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the select `aria-describedBy` attribute.
 	 */
 	async componentDidLoad() {
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
+		this.updateSuggestionSlotState(this.suggestionSlotRef);
 	}
 
 	componentWillLoad() {
 		this.elementId = this.elementId;
 		this.parseHintText();
 		this.updateCaptionState(this.caption);
+	}
+
+	private syncFormValue(value: string) {
+		try {
+			if (typeof this.internals?.setFormValue === 'function') {
+				this.internals.setFormValue(value);
+			}
+		} catch {
+			// Ignore when running in contexts where the host element is not form-associated.
+		}
+	}
+
+	disconnectedCallback() {
+		if (this.debounceTimer) {
+			clearTimeout(this.debounceTimer);
+		}
 	}
 
 	/**
@@ -255,8 +369,14 @@ export class OntarioSearchBox {
 
 		// Guard usage of `this.internals` to ensure this logic only runs in the browser.
 		// `ElementInternals` is not available during SSR, and unguarded access can cause hydration errors.
-		if (typeof this.internals?.setFormValue === 'function') {
-			this.internals.setFormValue(this.value ?? '');
+		this.syncFormValue(this.value ?? '');
+
+		if (eventType === EventType.Input) {
+			this.handleAutocompleteInput(this.value ?? '');
+		}
+
+		if (eventType === EventType.Blur && this.autocomplete) {
+			window.setTimeout(() => this.closeSuggestions(), 120);
 		}
 
 		handleInputEvent(
@@ -275,6 +395,565 @@ export class OntarioSearchBox {
 			this.element,
 		);
 	}
+
+	private async handleAutocompleteInput(query: string) {
+		this.autocompleteQueryUpdated.emit({ query });
+
+		if (!this.autocomplete) return;
+
+		if (query.length < (this.minChars ?? 1)) {
+			this.suggestions = [];
+			this.emitSuggestionsUpdated();
+			this.closeSuggestions();
+			return;
+		}
+
+		if (this.hasSuggestionSlotContent) {
+			this.decorateSlotSuggestionOptions();
+			this.openSuggestions();
+			this.emitSuggestionsUpdated();
+			return;
+		}
+
+		if (!this.getSuggestions) {
+			this.suggestions = [];
+			this.emitSuggestionsUpdated();
+			this.closeSuggestions();
+			return;
+		}
+
+		if (this.debounceTimer) {
+			clearTimeout(this.debounceTimer);
+		}
+
+		this.debounceTimer = window.setTimeout(async () => {
+			const expectedQuery = this.value ?? '';
+
+			try {
+				const results = await this.getSuggestions?.(expectedQuery);
+
+				if (expectedQuery !== (this.value ?? '')) {
+					return;
+				}
+
+				const maxSuggestions = this.maxSuggestions ?? 8;
+				this.suggestions = (results || [])
+					.map((item, index) => this.normalizeSuggestion(item, index))
+					.slice(0, maxSuggestions);
+				this.activeSuggestionIndex = -1;
+				this.emitSuggestionsUpdated();
+
+				if (this.suggestions.length) {
+					this.openSuggestions();
+				} else {
+					this.closeSuggestions();
+				}
+			} catch {
+				this.suggestions = [];
+				this.emitSuggestionsUpdated();
+				this.closeSuggestions();
+			}
+		}, this.debounceMs ?? 150);
+	}
+
+	private normalizeSuggestion(
+		item:
+			| string
+			| {
+					id?: string;
+					label: string;
+					value?: string;
+					description?: string;
+					href?: string;
+					disabled?: boolean;
+					boldRanges?: Array<{ start: number; end: number }>;
+					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+			  },
+		index: number,
+	) {
+		if (typeof item === 'string') {
+			return {
+				id: `${this.getSuggestionListId()}-option-${index}`,
+				label: item,
+				value: item,
+			};
+		}
+
+		return {
+			id: item.id || `${this.getSuggestionListId()}-option-${index}`,
+			label: item.label || item.value || '',
+			value: item.value || item.label,
+			description: item.description,
+			href: item.href,
+			disabled: !!item.disabled,
+			boldRanges: item.boldRanges,
+			highlightParts: item.highlightParts,
+		};
+	}
+
+	private getSuggestionListId(): string {
+		const idPrefix = this.getId() || this.inputRefId;
+		return `${idPrefix}-suggestion-list`;
+	}
+
+	private getAriaLiveRegionId(): string {
+		const idPrefix = this.getId() || this.inputRefId;
+		return `${idPrefix}-aria-live-region`;
+	}
+
+	private getSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
+		const assignedElements = slot?.assignedElements({ flatten: true }) || [];
+		return assignedElements.filter((el) => !el.hasAttribute('hidden')) as HTMLElement[];
+	}
+
+	private updateSuggestionSlotState(slot?: HTMLSlotElement) {
+		const assignedOptions = this.getSlotSuggestionElements(slot);
+		this.hasSuggestionSlotContent = assignedOptions.length > 0;
+		this.decorateSlotSuggestionOptions(assignedOptions);
+	}
+
+	private computeFallbackHighlightParts(label: string, query: string): Array<{ text: string; isInputMatch: boolean }> {
+		const normalizedQuery = (query || '').trim();
+
+		if (!normalizedQuery) {
+			return [{ text: label, isInputMatch: false }];
+		}
+
+		const labelChars = Array.from(label);
+		const queryChars = Array.from(normalizedQuery);
+		const matchedIndices = new Set<number>();
+
+		let queryIndex = 0;
+		for (let labelIndex = 0; labelIndex < labelChars.length && queryIndex < queryChars.length; labelIndex++) {
+			if (labelChars[labelIndex].toLowerCase() === queryChars[queryIndex].toLowerCase()) {
+				matchedIndices.add(labelIndex);
+				queryIndex++;
+			}
+		}
+
+		if (queryIndex < queryChars.length) {
+			matchedIndices.clear();
+			const contiguousMatchStart = label.toLowerCase().indexOf(normalizedQuery.toLowerCase());
+			if (contiguousMatchStart >= 0) {
+				for (let i = contiguousMatchStart; i < contiguousMatchStart + queryChars.length; i++) {
+					matchedIndices.add(i);
+				}
+			}
+		}
+
+		if (!matchedIndices.size) {
+			return [{ text: label, isInputMatch: false }];
+		}
+
+		const segments: Array<{ text: string; isInputMatch: boolean }> = [];
+		let activeSegment = '';
+		let activeSegmentFromInput: boolean | null = null;
+
+		for (let index = 0; index < labelChars.length; index++) {
+			const fromInput = matchedIndices.has(index);
+
+			if (activeSegmentFromInput === null || activeSegmentFromInput === fromInput) {
+				activeSegment += labelChars[index];
+				activeSegmentFromInput = fromInput;
+				continue;
+			}
+
+			segments.push({ text: activeSegment, isInputMatch: activeSegmentFromInput });
+			activeSegment = labelChars[index];
+			activeSegmentFromInput = fromInput;
+		}
+
+		if (activeSegment && activeSegmentFromInput !== null) {
+			segments.push({ text: activeSegment, isInputMatch: activeSegmentFromInput });
+		}
+
+		return segments;
+	}
+
+	private decorateSlotSuggestionOptions(assignedOptions = this.getSlotSuggestionElements()) {
+		assignedOptions.forEach((option, index) => {
+			if (!option.id) {
+				option.id = `${this.getSuggestionListId()}-option-${index}`;
+			}
+
+			option.setAttribute('role', option.getAttribute('role') || 'option');
+			option.setAttribute('tabindex', '-1');
+			option.setAttribute('data-ontario-suggestion-index', String(index));
+			option.classList.add('ontario-search-autocomplete__slot-option');
+
+			const isActive = index === this.activeSuggestionIndex || index === this.hoveredSuggestionIndex;
+			const isHovered = index === this.hoveredSuggestionIndex;
+			option.setAttribute('aria-selected', String(isActive));
+			option.classList.toggle('ontario-search-autocomplete__slot-option--active', isActive);
+			option.classList.toggle('ontario-search-autocomplete__slot-option--hovered', isHovered);
+
+			if (option.tagName === 'ONTARIO-SEARCH-RESULT-ITEM') {
+				(option as any).active = isActive;
+				const semanticLabel = (option as any).label || this.getSuggestionValueFromOption(option);
+				if (typeof semanticLabel === 'string' && semanticLabel.length) {
+					(option as any).highlightParts = this.computeFallbackHighlightParts(semanticLabel, this.value || '');
+				}
+			}
+		});
+	}
+
+	private onSuggestionSlotChange = (event: Event) => {
+		const slotElement = event.target as HTMLSlotElement;
+		this.updateSuggestionSlotState(slotElement);
+
+		if (!this.autocomplete) return;
+
+		if (this.hasSuggestionSlotContent && (this.value?.length ?? 0) >= (this.minChars ?? 1)) {
+			this.openSuggestions();
+			this.emitSuggestionsUpdated();
+		} else {
+			this.closeSuggestions();
+			this.emitSuggestionsUpdated();
+		}
+	};
+
+	private getSuggestionCount(): number {
+		return this.hasSuggestionSlotContent ? this.getSlotSuggestionElements().length : this.suggestions.length;
+	}
+
+	private isSuggestionDisabled(index: number): boolean {
+		if (this.hasSuggestionSlotContent) {
+			const option = this.getSlotSuggestionElements()[index];
+			if (!option) return true;
+			return option.hasAttribute('disabled') || option.getAttribute('aria-disabled') === 'true';
+		}
+
+		return !!this.suggestions[index]?.disabled;
+	}
+
+	private getActiveDescendantId(): string | undefined {
+		if (this.activeSuggestionIndex < 0) return undefined;
+
+		if (this.hasSuggestionSlotContent) {
+			return this.getSlotSuggestionElements()[this.activeSuggestionIndex]?.id;
+		}
+
+		return this.suggestions[this.activeSuggestionIndex]?.id;
+	}
+
+	private findNextActiveIndex(currentIndex: number, direction: 1 | -1): number {
+		const total = this.getSuggestionCount();
+		if (total === 0) return -1;
+
+		let candidate = currentIndex;
+
+		for (let steps = 0; steps < total; steps++) {
+			candidate = (candidate + direction + total) % total;
+
+			if (!this.isSuggestionDisabled(candidate)) {
+				return candidate;
+			}
+		}
+
+		return -1;
+	}
+
+	private setActiveSuggestion(index: number) {
+		this.activeSuggestionIndex = index;
+
+		if (this.hasSuggestionSlotContent) {
+			this.decorateSlotSuggestionOptions();
+		}
+
+		if (index >= 0) {
+			const label = this.getSuggestionLabel(index);
+			this.ariaLiveMessage = label;
+		}
+	}
+
+	private getSuggestionLabel(index: number): string {
+		if (this.hasSuggestionSlotContent) {
+			const option = this.getSlotSuggestionElements()[index];
+			return this.getSuggestionValueFromOption(option);
+		}
+
+		return this.suggestions[index]?.label || '';
+	}
+
+	private renderHighlightedSuggestionLabel(
+		label: string,
+		suggestion?: {
+			boldRanges?: Array<{ start: number; end: number }>;
+			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+		},
+	) {
+		if (!label) {
+			return <span class="ontario-search-autocomplete__suggestion-label"></span>;
+		}
+
+		if (suggestion?.highlightParts?.length) {
+			return (
+				<span class="ontario-search-autocomplete__suggestion-label">
+					{suggestion.highlightParts.map((part, index) => (
+						<span
+							class={
+								part.isInputMatch
+									? 'ontario-search-autocomplete__suggestion-match'
+									: 'ontario-search-autocomplete__suggestion-completion'
+							}
+							key={`part-${index}`}
+						>
+							{part.text}
+						</span>
+					))}
+				</span>
+			);
+		}
+
+		if (suggestion?.boldRanges?.length) {
+			const ranges = suggestion.boldRanges
+				.map((range) => ({
+					start: Math.max(0, Math.min(range.start, label.length)),
+					end: Math.max(0, Math.min(range.end, label.length)),
+				}))
+				.filter((range) => range.end > range.start)
+				.sort((a, b) => a.start - b.start);
+
+			if (ranges.length) {
+				const mergedRanges: Array<{ start: number; end: number }> = [];
+				for (const range of ranges) {
+					const lastRange = mergedRanges[mergedRanges.length - 1];
+					if (!lastRange || range.start > lastRange.end) {
+						mergedRanges.push({ ...range });
+					} else {
+						lastRange.end = Math.max(lastRange.end, range.end);
+					}
+				}
+
+				const segments: Array<{ text: string; isCompletion: boolean }> = [];
+				let cursor = 0;
+				for (const range of mergedRanges) {
+					if (cursor < range.start) {
+						segments.push({ text: label.slice(cursor, range.start), isCompletion: false });
+					}
+					segments.push({ text: label.slice(range.start, range.end), isCompletion: true });
+					cursor = range.end;
+				}
+				if (cursor < label.length) {
+					segments.push({ text: label.slice(cursor), isCompletion: false });
+				}
+
+				return (
+					<span class="ontario-search-autocomplete__suggestion-label">
+						{segments.map((segment, index) => (
+							<span
+								class={
+									segment.isCompletion
+										? 'ontario-search-autocomplete__suggestion-completion'
+										: 'ontario-search-autocomplete__suggestion-match'
+								}
+								key={`range-${index}`}
+							>
+								{segment.text}
+							</span>
+						))}
+					</span>
+				);
+			}
+		}
+
+		const labelSegments = this.computeFallbackHighlightParts(label, this.value || '');
+
+		return (
+			<span class="ontario-search-autocomplete__suggestion-label">
+				{labelSegments.map((segment, index) => (
+					<span
+						class={
+							segment.isInputMatch
+								? 'ontario-search-autocomplete__suggestion-match'
+								: 'ontario-search-autocomplete__suggestion-completion'
+						}
+						key={`seg-${index}`}
+					>
+						{segment.text}
+					</span>
+				))}
+			</span>
+		);
+	}
+
+	private handleSuggestionMouseOver = (event: MouseEvent) => {
+		if (!this.autocomplete) return;
+
+		const hoveredIndex = this.getSuggestionIndexFromEvent(event);
+		if (hoveredIndex < 0 || hoveredIndex === this.hoveredSuggestionIndex) return;
+
+		this.hoveredSuggestionIndex = hoveredIndex;
+
+		if (this.hasSuggestionSlotContent) {
+			this.decorateSlotSuggestionOptions();
+		}
+	};
+
+	private getSuggestionValueFromOption(option?: HTMLElement): string {
+		if (!option) return '';
+		return (
+			option.getAttribute('data-value') ||
+			option.getAttribute('value') ||
+			(option as any).value ||
+			option.textContent?.trim() ||
+			''
+		);
+	}
+
+	private emitSuggestionsUpdated() {
+		this.autocompleteSuggestionsUpdated.emit({
+			query: this.value ?? '',
+			count: this.getSuggestionCount(),
+		});
+	}
+
+	private openSuggestions() {
+		if (!this.autocomplete || this.getSuggestionCount() === 0) {
+			this.suggestionsOpen = false;
+			return;
+		}
+
+		this.suggestionsOpen = true;
+	}
+
+	private closeSuggestions() {
+		this.suggestionsOpen = false;
+		this.activeSuggestionIndex = -1;
+		this.hoveredSuggestionIndex = -1;
+		if (this.hasSuggestionSlotContent) {
+			this.decorateSlotSuggestionOptions();
+		}
+	}
+
+	private selectSuggestionByIndex(index: number, source: 'keyboard' | 'mouse') {
+		if (index < 0 || this.isSuggestionDisabled(index)) {
+			return;
+		}
+
+		let selectedSuggestion:
+			| {
+					id?: string;
+					label: string;
+					value?: string;
+					description?: string;
+					href?: string;
+					disabled?: boolean;
+			  }
+			| undefined;
+
+		if (this.hasSuggestionSlotContent) {
+			const option = this.getSlotSuggestionElements()[index];
+			const optionValue = this.getSuggestionValueFromOption(option);
+
+			selectedSuggestion = {
+				id: option?.id,
+				label: optionValue,
+				value: optionValue,
+				disabled: option?.hasAttribute('disabled') || option?.getAttribute('aria-disabled') === 'true',
+			};
+		} else {
+			selectedSuggestion = this.suggestions[index];
+		}
+
+		if (!selectedSuggestion) return;
+
+		this.value = selectedSuggestion.value || selectedSuggestion.label;
+
+		if (this.inputFieldRef) {
+			this.inputFieldRef.value = this.value || '';
+		}
+
+		this.syncFormValue(this.value ?? '');
+
+		this.autocompleteSuggestionSelected.emit({
+			query: this.value ?? '',
+			suggestion: selectedSuggestion,
+			source,
+		});
+
+		this.ariaLiveMessage = selectedSuggestion.label;
+		this.closeSuggestions();
+	}
+
+	private getSuggestionIndexFromEvent(event: MouseEvent): number {
+		const targetPath = event.composedPath();
+
+		for (const pathItem of targetPath) {
+			if (!(pathItem instanceof HTMLElement)) continue;
+
+			const indexAttribute = pathItem.getAttribute('data-ontario-suggestion-index');
+			if (indexAttribute == null) continue;
+
+			const parsedIndex = Number(indexAttribute);
+			if (!Number.isNaN(parsedIndex)) {
+				return parsedIndex;
+			}
+		}
+
+		return -1;
+	}
+
+	private handleSuggestionClick = (event: MouseEvent) => {
+		if (!this.autocomplete) return;
+
+		const selectedIndex = this.getSuggestionIndexFromEvent(event);
+		if (selectedIndex < 0) return;
+
+		event.preventDefault();
+		this.selectSuggestionByIndex(selectedIndex, 'mouse');
+	};
+
+	private handleSuggestionMouseDown = (event: MouseEvent) => {
+		if (!this.autocomplete) return;
+
+		const selectedIndex = this.getSuggestionIndexFromEvent(event);
+		if (selectedIndex < 0) return;
+
+		event.preventDefault();
+		this.selectSuggestionByIndex(selectedIndex, 'mouse');
+	};
+
+	private handleInputKeyDown = (event: KeyboardEvent) => {
+		if (!this.autocomplete) return;
+
+		const suggestionCount = this.getSuggestionCount();
+
+		switch (event.key) {
+			case 'ArrowDown': {
+				if (!suggestionCount) return;
+				event.preventDefault();
+				this.openSuggestions();
+				this.setActiveSuggestion(this.findNextActiveIndex(this.activeSuggestionIndex, 1));
+				break;
+			}
+			case 'ArrowUp': {
+				if (!suggestionCount) return;
+				event.preventDefault();
+				this.openSuggestions();
+				this.setActiveSuggestion(this.findNextActiveIndex(this.activeSuggestionIndex, -1));
+				break;
+			}
+			case 'Enter': {
+				if (this.suggestionsOpen && this.activeSuggestionIndex >= 0) {
+					event.preventDefault();
+					this.selectSuggestionByIndex(this.activeSuggestionIndex, 'keyboard');
+				}
+				break;
+			}
+			case 'Escape': {
+				if (this.suggestionsOpen) {
+					event.preventDefault();
+					this.closeSuggestions();
+				}
+				break;
+			}
+			case 'Tab': {
+				this.closeSuggestions();
+				break;
+			}
+		}
+	};
 
 	/**
 	 * handleSearch function is called when the search submit button is clicked
@@ -310,7 +989,15 @@ export class OntarioSearchBox {
 	};
 
 	render() {
-		const searchInputFieldId: string = 'ontario-search-input-field';
+		const searchInputFieldId = this.inputRefId;
+		const shouldShowSuggestions = this.autocomplete && this.suggestionsOpen && this.getSuggestionCount() > 0;
+		const suggestionListClass = [
+			'ontario-search-autocomplete__suggestion-list',
+			shouldShowSuggestions && 'ontario-search-autocomplete__suggestion-list--open',
+		]
+			.filter(Boolean)
+			.join(' ');
+
 		return (
 			<form
 				name="searchForm"
@@ -327,39 +1014,105 @@ export class OntarioSearchBox {
 					></ontario-hint-text>
 				)}
 
-				<div class="ontario-search__input-container">
-					<Input
-						aria-describedBy={this.hintTextId}
-						type="search"
-						name="search"
-						id={searchInputFieldId}
-						autoComplete="off"
-						aria-autocomplete="none"
-						className="ontario-search__input ontario-input"
-						required={true}
-						ref={(el) => (this.inputFieldRef = el)}
-						onInput={(e) => this.handleEvent(e, EventType.Input)}
-						onChange={(e) => this.handleEvent(e, EventType.Change)}
-						onBlur={(e) => this.handleEvent(e, EventType.Blur)}
-						onFocus={(e) => this.handleEvent(e, EventType.Focus)}
-						value={this.getValue()}
-					></Input>
-					<Input
-						className="ontario-search__reset"
-						id="ontario-search-reset"
-						type="reset"
-						value=""
-						onClick={() => this.handleFocus()}
-					></Input>
-					<button
-						class="ontario-search__submit"
-						type="submit"
-						id="ontario-search-box__submit"
-						onClick={(e) => this.handleSearch(e)}
+				<div class="ontario-search__input-suggestion-container">
+					<div class="ontario-search__input-container">
+						<Input
+							ariaDescribedBy={this.hintTextId || undefined}
+							type="search"
+							name="search"
+							id={searchInputFieldId}
+							autoComplete="off"
+							ariaAutocomplete={this.autocomplete ? 'list' : 'none'}
+							ariaControls={this.autocomplete ? this.getSuggestionListId() : undefined}
+							ariaExpanded={this.autocomplete ? shouldShowSuggestions : undefined}
+							ariaHaspopup={this.autocomplete ? 'listbox' : undefined}
+							ariaActivedescendant={this.autocomplete ? this.getActiveDescendantId() : undefined}
+							role={this.autocomplete ? 'combobox' : undefined}
+							className="ontario-search__input ontario-input"
+							required={true}
+							ref={(el) => (this.inputFieldRef = el)}
+							onInput={(e) => this.handleEvent(e, EventType.Input)}
+							onChange={(e) => this.handleEvent(e, EventType.Change)}
+							onBlur={(e) => this.handleEvent(e, EventType.Blur)}
+							onFocus={(e) => this.handleEvent(e, EventType.Focus)}
+							onKeyDown={(e) => this.handleInputKeyDown(e as KeyboardEvent)}
+							value={this.getValue()}
+						></Input>
+						<Input
+							className="ontario-search__reset"
+							id="ontario-search-reset"
+							type="reset"
+							value=""
+							ariaLabel={this.translations.header.clearSearchField[`${this.language}`]}
+							onClick={() => this.handleFocus()}
+						></Input>
+						<button
+							class="ontario-search__submit"
+							type="submit"
+							id="ontario-search-box__submit"
+							onClick={(e) => this.handleSearch(e)}
+						>
+							<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
+							<span innerHTML={OntarioIconSearch} aria-hidden="true" />
+						</button>
+					</div>
+
+					<ul
+						id={this.getSuggestionListId()}
+						class={suggestionListClass}
+						role="listbox"
+						aria-labelledby={searchInputFieldId}
+						aria-hidden={String(!shouldShowSuggestions)}
+						onMouseOver={this.handleSuggestionMouseOver}
+						onMouseDown={this.handleSuggestionMouseDown}
+						onClick={this.handleSuggestionClick}
 					>
-						<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
-						<span innerHTML={OntarioIconSearch} aria-hidden="true" />
-					</button>
+						<slot
+							name="suggestions"
+							ref={(el) => (this.suggestionSlotRef = el as HTMLSlotElement)}
+							onSlotchange={this.onSuggestionSlotChange}
+						></slot>
+						{!this.hasSuggestionSlotContent &&
+							this.suggestions.map((suggestion, index) => (
+								<li
+									id={suggestion.id}
+									class={[
+										'ontario-search-autocomplete__suggestion-option',
+										index === this.activeSuggestionIndex && 'ontario-search-autocomplete__suggestion-option--active',
+										index === this.hoveredSuggestionIndex && 'ontario-search-autocomplete__suggestion-option--hovered',
+										suggestion.disabled && 'ontario-search-autocomplete__suggestion-option--disabled',
+									]
+										.filter(Boolean)
+										.join(' ')}
+									data-ontario-suggestion-index={String(index)}
+									data-value={suggestion.value || suggestion.label}
+									role="option"
+									aria-selected={String(index === this.activeSuggestionIndex || index === this.hoveredSuggestionIndex)}
+									aria-disabled={String(!!suggestion.disabled)}
+									aria-label={suggestion.label}
+									tabIndex={-1}
+									onClick={(event) => {
+										event.preventDefault();
+										this.selectSuggestionByIndex(index, 'mouse');
+									}}
+									onMouseDown={(event) => {
+										event.preventDefault();
+										this.selectSuggestionByIndex(index, 'mouse');
+									}}
+								>
+									<div class="ontario-search-autocomplete__suggestion-content">
+										{this.renderHighlightedSuggestionLabel(suggestion.label, suggestion)}
+										{suggestion.description && (
+											<span class="ontario-search-autocomplete__suggestion-description">{suggestion.description}</span>
+										)}
+									</div>
+								</li>
+							))}
+					</ul>
+
+					<div id={this.getAriaLiveRegionId()} class="ontario-search__visually-hidden" aria-live="polite">
+						{this.ariaLiveMessage}
+					</div>
 				</div>
 			</form>
 		);
