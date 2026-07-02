@@ -6,12 +6,19 @@ export type InputProps = {
 	id: string;
 	name?: string;
 	type: string;
+	role?: string;
 	value?: string | number;
 	checked?: boolean;
 	required?: boolean;
 	inputMode?: string;
 	placeholder?: string;
+	ariaLabel?: string;
 	ariaInvalid?: boolean;
+	ariaControls?: string;
+	ariaHaspopup?: string;
+	ariaExpanded?: boolean;
+	ariaAutocomplete?: string;
+	ariaActivedescendant?: string;
 	ariaDescribedBy?: string;
 	onKeyDown?: ((event: Event) => void) | undefined;
 	onInput?: ((event: Event) => void) | undefined;
@@ -29,6 +36,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	name,
 	placeholder,
 	type,
+	role,
 	value,
 	checked,
 	required,
@@ -38,7 +46,13 @@ export const Input: FunctionalComponent<InputProps> = ({
 	onBlur,
 	onFocus,
 	onClick,
+	ariaLabel,
 	ariaInvalid,
+	ariaControls,
+	ariaHaspopup,
+	ariaExpanded,
+	ariaAutocomplete,
+	ariaActivedescendant,
 	ariaDescribedBy,
 	ref,
 	inputMode,
@@ -51,6 +65,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 			id={id}
 			name={name}
 			type={type}
+			role={role}
 			value={value}
 			checked={checked}
 			placeholder={placeholder}
@@ -63,7 +78,13 @@ export const Input: FunctionalComponent<InputProps> = ({
 			onClick={onClick}
 			inputMode={inputMode}
 			ref={ref}
+			aria-label={ariaLabel}
 			aria-invalid={ariaInvalid}
+			aria-controls={ariaControls}
+			aria-haspopup={ariaHaspopup}
+			aria-expanded={ariaExpanded}
+			aria-autocomplete={ariaAutocomplete}
+			aria-activedescendant={ariaActivedescendant}
 			aria-describedby={ariaDescribedBy}
 			{...props}
 		/>

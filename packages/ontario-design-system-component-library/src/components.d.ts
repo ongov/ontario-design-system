@@ -3041,6 +3041,11 @@ export namespace Components {
      */
     interface OntarioSearchBox {
         /**
+          * Enables autocomplete behaviour on the search input.
+          * @default false
+         */
+        "autocomplete"?: boolean;
+        /**
           * The text to display as the input label
           * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
          */
@@ -3062,9 +3067,32 @@ export namespace Components {
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**
+          * Debounce delay before `getSuggestions` is called.
+          * @default 150
+         */
+        "debounceMs"?: number;
+        /**
           * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
          */
         "elementId"?: string;
+        /**
+          * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+         */
+        "getSuggestions"?: (query: string) => Promise<
+		(
+			| string
+			| {
+					id?: string;
+					label: string;
+					value?: string;
+					description?: string;
+					href?: string;
+					disabled?: boolean;
+					boldRanges?: Array<{ start: number; end: number }>;
+					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+			  }
+		)[]
+	>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -3074,6 +3102,16 @@ export namespace Components {
           * @default 'en'
          */
         "language"?: Language;
+        /**
+          * Maximum number of suggestions rendered in async mode.
+          * @default 8
+         */
+        "maxSuggestions"?: number;
+        /**
+          * Minimum number of characters required before suggestions are shown.
+          * @default 1
+         */
+        "minChars"?: number;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -4714,6 +4752,22 @@ declare global {
         "inputOnChange": InputInteractionEvent;
         "inputOnBlur": InputFocusBlurEvent;
         "inputOnFocus": InputFocusBlurEvent;
+        "autocompleteQueryUpdated": { query: string };
+        "autocompleteSuggestionsUpdated": { query: string; count: number };
+        "autocompleteSuggestionSelected": {
+		query: string;
+		suggestion: {
+			id?: string;
+			label: string;
+			value?: string;
+			description?: string;
+			href?: string;
+			disabled?: boolean;
+			boldRanges?: Array<{ start: number; end: number }>;
+			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+		};
+		source: 'keyboard' | 'mouse';
+	};
     }
     /**
      * Ontario Search Box captures and submits search queries.
@@ -8145,10 +8199,15 @@ declare namespace LocalJSX {
      */
     interface OntarioSearchBox {
         /**
+          * Enables autocomplete behaviour on the search input.
+          * @default false
+         */
+        "autocomplete"?: boolean;
+        /**
           * The text to display as the input label
           * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
          */
-        "caption"?: Caption | string;
+        "caption": Caption | string;
         /**
           * Used to add a custom function to the input onBlur event.
          */
@@ -8166,9 +8225,32 @@ declare namespace LocalJSX {
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**
+          * Debounce delay before `getSuggestions` is called.
+          * @default 150
+         */
+        "debounceMs"?: number;
+        /**
           * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
          */
         "elementId"?: string;
+        /**
+          * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+         */
+        "getSuggestions"?: (query: string) => Promise<
+		(
+			| string
+			| {
+					id?: string;
+					label: string;
+					value?: string;
+					description?: string;
+					href?: string;
+					disabled?: boolean;
+					boldRanges?: Array<{ start: number; end: number }>;
+					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+			  }
+		)[]
+	>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -8178,6 +8260,41 @@ declare namespace LocalJSX {
           * @default 'en'
          */
         "language"?: Language;
+        /**
+          * Maximum number of suggestions rendered in async mode.
+          * @default 8
+         */
+        "maxSuggestions"?: number;
+        /**
+          * Minimum number of characters required before suggestions are shown.
+          * @default 1
+         */
+        "minChars"?: number;
+        /**
+          * Emitted when the autocomplete query changes.
+         */
+        "onAutocompleteQueryUpdated"?: (event: OntarioSearchBoxCustomEvent<{ query: string }>) => void;
+        /**
+          * Emitted when a suggestion is selected.
+         */
+        "onAutocompleteSuggestionSelected"?: (event: OntarioSearchBoxCustomEvent<{
+		query: string;
+		suggestion: {
+			id?: string;
+			label: string;
+			value?: string;
+			description?: string;
+			href?: string;
+			disabled?: boolean;
+			boldRanges?: Array<{ start: number; end: number }>;
+			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+		};
+		source: 'keyboard' | 'mouse';
+	}>) => void;
+        /**
+          * Emitted after suggestions are updated from either slot content or async mode.
+         */
+        "onAutocompleteSuggestionsUpdated"?: (event: OntarioSearchBoxCustomEvent<{ query: string; count: number }>) => void;
         /**
           * Emitted when a keyboard input event occurs when an input has lost focus.
          */

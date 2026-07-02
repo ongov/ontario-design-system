@@ -2303,7 +2303,10 @@ export type OntarioSearchBoxEvents = {
     onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
-    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>
+    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
+    onAutocompleteQueryUpdated: EventName<OntarioSearchBoxCustomEvent<{ query: string }>>,
+    onAutocompleteSuggestionsUpdated: EventName<OntarioSearchBoxCustomEvent<{ query: string; count: number }>>,
+    onAutocompleteSuggestionSelected: EventName<OntarioSearchBoxCustomEvent<{ query: string; suggestion: { id?: string; label: string; value?: string; description?: string; href?: string; disabled?: boolean; boldRanges?: Array<{ start: number; end: number }>; highlightParts?: Array<{ text: string; isInputMatch: boolean }>; }; source: 'keyboard' | 'mouse'; }>>
 };
 
 export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> = /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
@@ -2312,6 +2315,11 @@ export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, On
         language: 'language',
         elementId: 'element-id',
         value: 'value',
+        autocomplete: 'autocomplete',
+        getSuggestions: 'get-suggestions',
+        minChars: 'min-chars',
+        debounceMs: 'debounce-ms',
+        maxSuggestions: 'max-suggestions',
         caption: 'caption',
         required: 'required',
         performSearch: 'perform-search',
