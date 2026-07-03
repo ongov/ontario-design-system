@@ -47,19 +47,21 @@ test.describe('ontario-badge', () => {
 
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass('hydrated');
-		await expect(host.locator('span')).toHaveScreenshot('default-badge.png');
+		await expect(host).toHaveScreenshot('default-badge.png');
 	});
 
 	test('renders label text', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Active"></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('Active');
+		await expect(host.locator('span')).toHaveScreenshot('label-text-badge.png');
 	});
 
 	test('renders slot text when label not provided', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge>Pending</ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('Pending');
+		await expect(host.locator('span')).toHaveScreenshot('slot-text-badge.png');
 	});
 
 	test('label typography', async ({ page }) => {
@@ -68,6 +70,7 @@ test.describe('ontario-badge', () => {
 		await expect(badgeSpan).toHaveCSS('display', 'inline-block');
 		await expect(badgeSpan).toHaveCSS('font-weight', '700');
 		await expect(badgeSpan).toHaveCSS('text-transform', 'uppercase');
+		await expect(host.locator('span')).toHaveScreenshot('label-typography.png');
 	});
 
 	test('applies correct styles for red badge', async ({ page }) => {
@@ -76,7 +79,7 @@ test.describe('ontario-badge', () => {
 
 		// Check class mapping for alert colour
 		await expect(span).toContainClass('ontario-badge--red');
-		await expect(span).toHaveScreenshot('red-badge.png');
+		await expect(host.locator('span')).toHaveScreenshot('red-badge.png');
 	});
 
 	test('updates colour dynamically', async ({ page }) => {
@@ -89,6 +92,7 @@ test.describe('ontario-badge', () => {
 		const span = host.locator('span');
 
 		await expect(span).toContainClass('ontario-badge--red');
+		await expect(host.locator('span')).toHaveScreenshot('dynamic-red-badge.png');
 	});
 
 	test('sets aria-label correctly', async ({ page }) => {
@@ -105,6 +109,7 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge label="Test" colour="invalid"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
+		await expect(host.locator('span')).toHaveScreenshot('invalid-colour-fallback.png');
 	});
 
 	test('renders empty when no label and no slot', async ({ page }) => {
@@ -123,6 +128,7 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge label="Test" colour="lightTeal"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--light-teal');
+		await expect(host.locator('span')).toHaveScreenshot('legacy-colour-mapping.png');
 	});
 
 	/* ==============================================
@@ -157,12 +163,14 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge label=""></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('');
+		await expect(host).toHaveScreenshot('empty-label.png');
 	});
 
 	test('defaults to teal when colour not provided', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Default"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
+		await expect(host).toHaveScreenshot('default-colour.png');
 	});
 
 	test('handles rapid updates', async ({ page }) => {
@@ -178,6 +186,7 @@ test.describe('ontario-badge', () => {
 
 		await expect(host.locator('span')).toBeAttached();
 		await expect(host.locator('span')).toContainClass('ontario-badge--yellow');
+		await expect(host.locator('span')).toHaveScreenshot('rapid-updates.png');
 	});
 
 	test('supports unicode label', async ({ page }) => {
@@ -193,8 +202,25 @@ test.describe('ontario-badge', () => {
 
 	test('has no accessibility violations', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
-
 		await expectNoAxeViolations(page, 'ontario-badge');
+		const results = await new AxeBuilder({ page }).include('ontario-badge').analyze();
+
+		if (results.violations.length > 0) {
+			console.log('\n❌ Accessibility Violations Found:\n');
+
+			results.violations.forEach((violation, index) => {
+				console.log(`${index + 1}. ${violation.id}`);
+				console.log(`   Impact: ${violation.impact}`);
+				console.log(`   Description: ${violation.description}`);
+				console.log(`   Help: ${violation.help}`);
+				console.log(`   URL: ${violation.helpUrl}`);
+			});
+
+			console.log('-----------------------------------');
+		}
+
+		expect(results.violations, JSON.stringify(results.violations, null, 2)).toHaveLength(0);
+
 		await expect(host).toBeVisible();
 	});
 
@@ -223,31 +249,24 @@ test.describe('ontario-badge', () => {
 		const span = host.locator('span');
 		await expect(span).toBeAttached();
 		await expect(span).not.toHaveAttribute('role', /.+/);
+		await expect(host).toHaveScreenshot('semantic-structure.png');
 	});
 
 	/* =========================
      Visual Regression Tests -- currently skipped due to Playwright screenshot not implemented in Stencil E2E testing
     ========================== */
 
-	/* test('visual regression: default badge', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge label="Snapshot"></ontario-badge>`);
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
 	test('visual regression: colour variants', async ({ page }) => {
 		const host = await renderHost(
 			page,
 			`
       <ontario-badge label="One" colour="teal"></ontario-badge>
-      <ontario-badge label="Two" colour="alert"></ontario-badge>
+      <ontario-badge label="Two" colour="green"></ontario-badge>
       `,
 		);
 
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	}); */
+		await expect(host).toHaveScreenshot('colour-variants.png');
+	});
 
 	/* =========================
      Performance Tests
@@ -263,6 +282,7 @@ test.describe('ontario-badge', () => {
 
 		const badges = page.locator('ontario-badge');
 		await expect(badges).toHaveCount(50);
+		await expect(page).toHaveScreenshot('multiple-badges.png');
 	});
 
 	test('handles rapid re-rendering', async ({ page }) => {
@@ -277,5 +297,6 @@ test.describe('ontario-badge', () => {
 		await page.waitForChanges();
 
 		await expect(host).toBeAttached();
+		await expect(host.locator('span')).toHaveScreenshot('rapid-re-rendering.png');
 	});
 });
