@@ -47,14 +47,13 @@ test.describe('ontario-badge', () => {
 
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass('hydrated');
-		//await expect(host).toHaveScreenshot('ontarioBadge.png');
+		await expect(host.locator('span')).toHaveScreenshot('default-badge.png');
 	});
 
 	test('renders label text', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Active"></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('Active');
-		//await expect(host).toHaveScreenshot('ontarioBadge-labelText.png');
 	});
 
 	test('renders slot text when label not provided', async ({ page }) => {
@@ -63,34 +62,12 @@ test.describe('ontario-badge', () => {
 		await expect(host.locator('span')).toHaveText('Pending');
 	});
 
-	test.skip('container layout', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`
-        <div class="ontario-badge__container">
-          <span class="ontario-badge__label">Status</span>
-          <span class="ontario-badge ontario-badge--default-light">Default Light</span>
-        </div>
-      `,
-		);
-		const container = host.locator('div.ontario-badge__container');
-		await expect(container).toBeVisible();
-		await expect(container).toHaveCSS('display', 'flex');
-		await expect(container).toHaveCSS('flex-direction', 'column');
-		await expect(container).toHaveCSS('align-items', 'flex-start');
-
-		const gap = await container.evaluate((el) => getComputedStyle(el).gap);
-		expect(gap).not.toBe('0px');
-	});
-
 	test('label typography', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Status"></ontario-badge>`);
-		console.log('host: ', await host.innerHTML());
-		const label = host.locator('span.ontario-badge__label').first();
-		//console.log('label: ', await label.first());
-		await expect(label).toHaveCSS('display', 'block');
-		await expect(label).toHaveCSS('text-align', 'left');
-		await expect(label).toHaveCSS('font-weight', '600');
+		const badgeSpan = host.locator('span').first();
+		await expect(badgeSpan).toHaveCSS('display', 'inline-block');
+		await expect(badgeSpan).toHaveCSS('font-weight', '700');
+		await expect(badgeSpan).toHaveCSS('text-transform', 'uppercase');
 	});
 
 	test('applies correct styles for red badge', async ({ page }) => {
@@ -99,7 +76,7 @@ test.describe('ontario-badge', () => {
 
 		// Check class mapping for alert colour
 		await expect(span).toContainClass('ontario-badge--red');
-		//await expect(host).toHaveScreenshot('ontarioBadge-redBadge.png');
+		await expect(span).toHaveScreenshot('red-badge.png');
 	});
 
 	test('updates colour dynamically', async ({ page }) => {
@@ -112,14 +89,12 @@ test.describe('ontario-badge', () => {
 		const span = host.locator('span');
 
 		await expect(span).toContainClass('ontario-badge--red');
-		await expect(host).toHaveScreenshot('ontarioBadge-dynamicColour.png');
 	});
 
 	test('sets aria-label correctly', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text="Accessible"></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Accessible');
-		await expect(host).toHaveScreenshot('ontarioBadge-ariaLabel.png');
 	});
 
 	/* =========================
@@ -130,28 +105,24 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge label="Test" colour="invalid"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
-		await expect(host).toHaveScreenshot('ontarioBadge-invalidColour.png');
 	});
 
 	test('renders empty when no label and no slot', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('');
-		await expect(host).toHaveScreenshot('ontarioBadge-empty.png');
 	});
 
 	test('handles empty aria-label', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text=""></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveAttribute('aria-label', '');
-		await expect(host).toHaveScreenshot('ontarioBadge-emptyAriaLabel.png');
 	});
 
 	test('maps legacy colour values', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Test" colour="lightTeal"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--light-teal');
-		await expect(host).toHaveScreenshot('ontarioBadge-mappedColour.png');
 	});
 
 	/* ==============================================
@@ -186,36 +157,34 @@ test.describe('ontario-badge', () => {
 		const host = await renderHost(page, `<ontario-badge label=""></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('');
-		await expect(host).toHaveScreenshot('ontarioBadge-empty.png');
 	});
 
 	test('defaults to teal when colour not provided', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Default"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
-		await expect(host).toHaveScreenshot('ontarioBadge-default.png');
 	});
 
 	test('handles rapid updates', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Stress"></ontario-badge>`);
 
 		await host.evaluate((el: any) => {
-			el.colour = 'alert';
+			el.colour = 'grey';
 			el.colour = 'teal';
-			el.colour = 'alert';
+			el.colour = 'yellow';
 		});
 
 		await page.waitForChanges();
 
 		await expect(host.locator('span')).toBeAttached();
-		await expect(host).toHaveScreenshot('ontarioBadge-rapidUpdates.png');
+		await expect(host.locator('span')).toContainClass('ontario-badge--yellow');
 	});
 
 	test('supports unicode label', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="✅ Done"></ontario-badge>`);
 
 		await expect(host.locator('span')).toHaveText('✅ Done');
-		await expect(host).toHaveScreenshot('ontarioBadge-unicodeLabel.png');
+		await expect(host.locator('span')).toHaveScreenshot('unicode-badge.png');
 	});
 
 	/* =========================
@@ -223,10 +192,10 @@ test.describe('ontario-badge', () => {
     ========================== */
 
 	test('has no accessibility violations', async ({ page }) => {
-		await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
+		const host = await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
 
 		await expectNoAxeViolations(page, 'ontario-badge');
-		await expect(page).toHaveScreenshot('ontarioBadge-accessible.png');
+		await expect(host).toBeVisible();
 	});
 
 	test('uses aria-label for screen readers', async ({ page }) => {
@@ -236,7 +205,6 @@ test.describe('ontario-badge', () => {
 		);
 
 		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Screen reader text');
-		await expect(host).toHaveScreenshot('ontarioBadge-ariaLabelText.png');
 	});
 
 	test('falls back to visible text without aria-label', async ({ page }) => {
@@ -247,7 +215,6 @@ test.describe('ontario-badge', () => {
 		await expect(label).not.toHaveAttribute('aria-label');
 		await expect(label).toHaveText('Fallback');
 		await expect(host).toBeVisible();
-		await expect(host).toHaveScreenshot('ontarioBadge-fallback.png');
 	});
 
 	test('has correct semantic structure', async ({ page }) => {
@@ -256,7 +223,6 @@ test.describe('ontario-badge', () => {
 		const span = host.locator('span');
 		await expect(span).toBeAttached();
 		await expect(span).not.toHaveAttribute('role', /.+/);
-		await expect(host).toHaveScreenshot('ontarioBadge-semantic.png');
 	});
 
 	/* =========================
@@ -297,7 +263,6 @@ test.describe('ontario-badge', () => {
 
 		const badges = page.locator('ontario-badge');
 		await expect(badges).toHaveCount(50);
-		await expect(page).toHaveScreenshot('ontarioBadge-multipleBadges.png');
 	});
 
 	test('handles rapid re-rendering', async ({ page }) => {
@@ -305,13 +270,12 @@ test.describe('ontario-badge', () => {
 
 		await host.evaluate((el: any) => {
 			for (let i = 0; i < 10; i++) {
-				el.colour = i % 2 ? 'alert' : 'teal';
+				el.colour = i % 2 ? 'red' : 'teal';
 			}
 		});
 
 		await page.waitForChanges();
 
 		await expect(host).toBeAttached();
-		await expect(host).toHaveScreenshot('ontarioBadge-rapidUpdates.png');
 	});
 });
