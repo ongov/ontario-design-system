@@ -42,6 +42,22 @@ test.describe('ontario-search-box autocomplete', () => {
 		await expect(page.locator('ontario-search-box > ontario-search-result-item')).toHaveCount(2);
 	});
 
+	test('filters semantic slot suggestions by input query', async ({ page }) => {
+		await page.setContent(`<ontario-search-box autocomplete caption="Search cities">
+			<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
+			<ontario-search-result-item slot="suggestions" label="Waterloo" value="Waterloo"></ontario-search-result-item>
+		</ontario-search-box>`);
+
+		const input = page.locator('ontario-search-box').locator('input[type="search"]');
+		await input.fill('wat');
+
+		const torontoOption = page.locator('ontario-search-box > ontario-search-result-item[slot="suggestions"]').nth(0);
+		const waterlooOption = page.locator('ontario-search-box > ontario-search-result-item[slot="suggestions"]').nth(1);
+
+		await expect(torontoOption).toHaveAttribute('hidden', '');
+		await expect(waterlooOption).not.toHaveAttribute('hidden', '');
+	});
+
 	test('supports keyboard navigation and Enter selection', async ({ page }) => {
 		await page.setContent(
 			`<ontario-search-box enable-autocomplete caption="Search Ontario cities"></ontario-search-box>`,
