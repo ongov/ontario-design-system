@@ -231,6 +231,11 @@ input[type='reset'].ontario-search__reset {
 	font-weight: fontWeights.$ontario-font-weights-bold;
 }
 
+::slotted([slot='suggestions'][hidden]),
+::slotted(.ontario-search-autocomplete__slot-option[hidden]) {
+	display: none !important;
+}
+
 ::slotted(.ontario-search-autocomplete__slot-option--active),
 ::slotted(.ontario-search-autocomplete__slot-option--hovered) {
 	background-color: colours.$ontario-colour-button-tertiary--hover;

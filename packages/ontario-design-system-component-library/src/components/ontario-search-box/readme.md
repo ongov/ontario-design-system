@@ -148,11 +148,17 @@ The following example registers a simple function on `window` `load` that adds a
 <ontario-search-box id="search-with-slot" caption="Search Ontario cities" autocomplete>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
-	<div slot="suggestions" data-value="Toronto" role="option">Toronto (custom HTML option)</div>
+	<div slot="suggestions" data-value="Waterloo" role="option">
+		<span data-ontario-search-highlight>Waterloo</span>
+		<span class="ontario-search-result-meta">Custom HTML option</span>
+	</div>
 </ontario-search-box>
 ```
 
 Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+For custom HTML suggestions, plain text-only options are highlighted automatically.
+If your custom option contains extra markup, wrap the text that should receive autocomplete bolding in an element with `data-ontario-search-highlight`.
+In slot mode, both semantic (`ontario-search-result-item`) and custom HTML options are filtered by the current query, and non-matching options are hidden.
 
 ## Custom property types
 

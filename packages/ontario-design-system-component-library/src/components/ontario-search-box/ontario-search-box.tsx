@@ -402,6 +402,7 @@ export class OntarioSearchBox {
 		if (!this.autocomplete) return;
 
 		if (query.length < (this.minChars ?? 1)) {
+			this.updateSlotSuggestionVisibility('');
 			this.suggestions = [];
 			this.emitSuggestionsUpdated();
 			this.closeSuggestions();
@@ -409,8 +410,17 @@ export class OntarioSearchBox {
 		}
 
 		if (this.hasSuggestionSlotContent) {
+			this.updateSlotSuggestionVisibility(query);
+			this.activeSuggestionIndex = -1;
+			this.hoveredSuggestionIndex = -1;
 			this.decorateSlotSuggestionOptions();
-			this.openSuggestions();
+
+			if (this.getSuggestionCount() > 0) {
+				this.openSuggestions();
+			} else {
+				this.closeSuggestions();
+			}
+
 			this.emitSuggestionsUpdated();
 			return;
 		}
@@ -501,15 +511,57 @@ export class OntarioSearchBox {
 		return `${idPrefix}-aria-live-region`;
 	}
 
-	private getSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
+	private getAllSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
 		const assignedElements = slot?.assignedElements({ flatten: true }) || [];
-		return assignedElements.filter((el) => !el.hasAttribute('hidden')) as HTMLElement[];
+		return assignedElements as HTMLElement[];
+	}
+
+	private getSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
+		return this.getAllSlotSuggestionElements(slot).filter((el) => !el.hasAttribute('hidden'));
 	}
 
 	private updateSuggestionSlotState(slot?: HTMLSlotElement) {
-		const assignedOptions = this.getSlotSuggestionElements(slot);
+		const assignedOptions = this.getAllSlotSuggestionElements(slot);
 		this.hasSuggestionSlotContent = assignedOptions.length > 0;
-		this.decorateSlotSuggestionOptions(assignedOptions);
+		this.updateSlotSuggestionVisibility(this.value || '', assignedOptions);
+		this.decorateSlotSuggestionOptions(this.getSlotSuggestionElements(slot));
+	}
+
+	private getSlotOptionLabel(option: HTMLElement): string {
+		if (option.tagName === 'ONTARIO-SEARCH-RESULT-ITEM') {
+			return (option as any).label || (option as any).value || this.getSuggestionValueFromOption(option);
+		}
+
+		return this.getSuggestionValueFromOption(option);
+	}
+
+	private updateSlotSuggestionVisibility(query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
+		const normalizedQuery = (query || '').trim();
+		const hasQuery = normalizedQuery.length > 0;
+
+		assignedOptions.forEach((option) => {
+			const optionLabel = this.getSlotOptionLabel(option);
+			const shouldShow =
+				!hasQuery || this.computeFallbackHighlightParts(optionLabel, normalizedQuery).some((part) => part.isInputMatch);
+
+			option.toggleAttribute('hidden', !shouldShow);
+			option.setAttribute('aria-hidden', String(!shouldShow));
+
+			if (!shouldShow) {
+				option.removeAttribute('data-ontario-suggestion-index');
+				option.setAttribute('aria-selected', 'false');
+				option.classList.remove('ontario-search-autocomplete__slot-option--active');
+				option.classList.remove('ontario-search-autocomplete__slot-option--hovered');
+			}
+		});
+
+		if (this.activeSuggestionIndex >= this.getSuggestionCount()) {
+			this.activeSuggestionIndex = -1;
+		}
+
+		if (this.hoveredSuggestionIndex >= this.getSuggestionCount()) {
+			this.hoveredSuggestionIndex = -1;
+		}
 	}
 
 	private computeFallbackHighlightParts(label: string, query: string): Array<{ text: string; isInputMatch: boolean }> {
@@ -570,6 +622,40 @@ export class OntarioSearchBox {
 		return segments;
 	}
 
+	private getCustomSlotHighlightTarget(option: HTMLElement): HTMLElement | undefined {
+		const explicitTarget = option.querySelector('[data-ontario-search-highlight]') as HTMLElement | null;
+		if (explicitTarget) {
+			return explicitTarget;
+		}
+
+		return option.children.length === 0 ? option : undefined;
+	}
+
+	private decorateCustomSlotSuggestionOption(option: HTMLElement) {
+		const highlightTarget = this.getCustomSlotHighlightTarget(option);
+		if (!highlightTarget) {
+			return;
+		}
+
+		const originalText = highlightTarget.dataset.ontarioSearchOriginalText ?? highlightTarget.textContent ?? '';
+
+		if (!highlightTarget.dataset.ontarioSearchOriginalText) {
+			highlightTarget.dataset.ontarioSearchOriginalText = originalText;
+		}
+
+		const highlightParts = this.computeFallbackHighlightParts(originalText, this.value || '');
+		const highlightNodes = highlightParts.map((part) => {
+			const segment = document.createElement(part.isInputMatch ? 'span' : 'strong');
+			segment.className = part.isInputMatch
+				? 'ontario-search-autocomplete__suggestion-match'
+				: 'ontario-search-autocomplete__suggestion-completion';
+			segment.textContent = part.text;
+			return segment;
+		});
+
+		highlightTarget.replaceChildren(...highlightNodes);
+	}
+
 	private decorateSlotSuggestionOptions(assignedOptions = this.getSlotSuggestionElements()) {
 		assignedOptions.forEach((option, index) => {
 			if (!option.id) {
@@ -593,6 +679,8 @@ export class OntarioSearchBox {
 				if (typeof semanticLabel === 'string' && semanticLabel.length) {
 					(option as any).highlightParts = this.computeFallbackHighlightParts(semanticLabel, this.value || '');
 				}
+			} else {
+				this.decorateCustomSlotSuggestionOption(option);
 			}
 		});
 	}
@@ -669,7 +757,7 @@ export class OntarioSearchBox {
 	private getSuggestionLabel(index: number): string {
 		if (this.hasSuggestionSlotContent) {
 			const option = this.getSlotSuggestionElements()[index];
-			return this.getSuggestionValueFromOption(option);
+			return this.getSlotOptionLabel(option);
 		}
 
 		return this.suggestions[index]?.label || '';
