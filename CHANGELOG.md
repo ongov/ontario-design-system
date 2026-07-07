@@ -1,3 +1,76 @@
+# 9.0.0-alpha.1 (2026-06-25)
+
+- **@ongov/ontario-design-system-component-library:** feat(ontario-card)!: normalize headerColour values to camelCase 8ec9266
+
+### Bug Fixes
+
+- **app-angular:** update `TranslateHttpLoader` to `@ngx-translate/http-loader` v17 API dbf5781
+- **build:** add ignoreDeprecations 6.0 to Angular and React library tsconfigs ba32d19
+- **build:** add TypeScript 6 tsconfig compatibility 44134f4
+- **build:** replace -df with --df alias and fix @types/node for commander v15 and TypeScript 6 7838704
+- **build:** replace `-df` short option with `--destinationFile` for commander v15 eb01863
+- **build:** update node version requirement to 22.22.3 in .npmrc and engines 980069b
+- **build:** use moduleResolution node10 in component library for TS5/TS6 compatibility 4efb3a1
+- **component-library:** add white background fill to checkbox and radio controls 6955c64
+- **component-library:** make table asset snapshot portable across machines a808b5a
+- **deps:** update all non-major dependencies 550152a
+- **deps:** update all non-major dependencies ([#66](undefined/ongov/ontario-design-system/issues/66)) 0cff486
+- **deps:** update dependency @ngx-translate/core to v17 215dc54
+- **deps:** update dependency @ngx-translate/core to v17 ([#110](undefined/ongov/ontario-design-system/issues/110)) eb16da8
+- **deps:** update dependency @ngx-translate/http-loader to v17 e2861e4
+- **deps:** update dependency @ngx-translate/http-loader to v17 ([#111](undefined/ongov/ontario-design-system/issues/111)) 036fd71, closes #8203
+- **deps:** update dependency @types/jest to v30 18eda1e
+- **deps:** update dependency next to v15.5.14 [security] bcfc5c1
+- **deps:** update dependency next to v15.5.14 [security] ([#200](undefined/ongov/ontario-design-system/issues/200)) 410da51
+- **deps:** upgrade @playwright/test to 1.60.0, @stencil/playwright to 0.4.3, @types/react 19.2.14 cb8caa6
+- **deps:** upgrade Angular to 22.0.x for TypeScript 6 compatibility 20141e8
+- **docker:** close arg parsing loop 716689b
+- **docker:** upgrade Node.js in Playwright image to match .nvmrc 7fc9411
+- **e2e:** add --testing flag to Stencil dev server command 33d50f4
+- **e2e:** await createConfig in playwright.config.ts for @stencil/playwright 0.4.x 57ce760
+- **e2e:** override baseURL to localhost to fix Chrome Linux navigation block c9bbe5f
+- **e2e:** override webServer command to use stencil binary directly, not npx 81847f6
+- **hint-expander:** update unit test expectation for decorative chevron attributes d6c684d
+- **ontario-button:** resolve htmlType submit and reset across shadow DOM boundary 1f6d6db
+- **ontario-card:** prevent active background gaps on uneven card heights eeeb2d5
+- **ontario-card:** reintroduce image anchor and remove from tab order db5bf83
+- **ontario-card:** remove duplicate tab stop on image cards 9fa1fbb
+- **ontario-icon:** make focusable conditional on isDecorative prop cb70e68
+- **ontario-icon:** mark decorative icons as non-focusable for accessibility 7cab2f3
+- **ontario-input:** sync form value when value prop changes externally dba0c71
+- **ontario-summary-list-item:** replace any type with E2EPage in e2e test helpers 05d5740
+- **ontario-summary-list-item:** use ontario-summary-list-types for SummaryListActionLink 2bed532
+- **ontario-summary-list:** add explicit alias for typography variables import 121c520
+- **ontario-summary-list:** comment out test stubs to unblock CI c9c5e5b
+- **ontario-summary-list:** emit --ontario-summary-list-value-flex CSS variable for column ratio d4bd864
+- **ontario-summary-list:** import types from ontario-summary-list-types 5b772e9
+- **ontario-summary-list:** import visibility overrides instead of redefining show-for-sr 2139a44
+- **ontario-summary-list:** mark validator-mutated props as mutable and clean up SCSS import 4e09740
+- **ontario-summary-list:** remove float revert and correct slotted selector 323153a
+- **ontario-summary-list:** rename classes to follow BEM convention 3084bc4
+- **ontario-summary-list:** update getStyleVariables return type 218423e
+- **ontario-table:** initialize state arrays to prevent undefined map errors 94be694
+- **ontario-table:** move highlight indicator fill to design token def5aa6
+- **ontario-table:** replace getAssetPath SVG with inline SVG for highlight indicator 77ad5c3
+- **ontario-table:** use getImageAssetSrcPath helper for highlight indicator 5fc2597
+- **summary-list-item:** restore axe e2e accessibility scan 7a3734e
+- **summary-list-item:** restore summary list item styles 0e3dedb
+- **test:** revert jest to v29 across all workspace packages for Stencil v4 compatibility 1d1b505
+- **types:** add scss module declaration for TypeScript 6 compatibility 18f648e
+- **vrt:** regenerate webkit baselines for Playwright 1.60 03c4067
+
+### Features
+
+- **docker:** forward Playwright args into local runners 1652b58
+- **docker:** forward Playwright args via runner 01f45ef
+- **ontario-summary-list-item:** implement ontario-summary-list-item stencil component b3b3541
+- **ontario-summary-list:** implement host component 20ec425
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library:** multi-word headerColour prop values are now camelCase.
+  Single-word values (e.g. `sky`, `gold`) are unaffected.
+
 # 8.1.0 (2026-06-02)
 
 ### Bug Fixes
@@ -55,6 +128,7 @@
 - **ci:** switch docs auto-merge from rebase to merge 4101ea7
 - **component-library:** satisfy asset helper return paths d7d2833
 - **component-library:** upgrade uuid to v14 to resolve moderate vulnerability bc44c2d
+
 # 8.1.0-alpha.2 (2026-04-28)
 
 ### Bug Fixes
