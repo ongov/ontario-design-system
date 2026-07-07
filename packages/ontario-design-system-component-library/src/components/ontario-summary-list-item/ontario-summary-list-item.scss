@@ -32,10 +32,7 @@
 }
 
 .ontario-summary-list-item__row--no-actions {
-	&::after {
-		content: '';
-		width: 5rem;
-	}
+	// Space is reserved by the hidden button container (opacity: 0)
 }
 
 dt,
@@ -65,8 +62,8 @@ dd {
 }
 
 .ontario-summary-list-item__button-container {
-	text-align: right;
 	flex-basis: globalFunctions.px-to-rem(56);
+	text-align: right;
 	padding-left: spacing.$spacing-5;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
@@ -74,6 +71,11 @@ dd {
 		align-self: flex-start;
 		padding-left: spacing.$spacing-0;
 	}
+}
+
+.ontario-summary-list-item__button-container--hidden {
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .ontario-summary-list-item__change-button {
