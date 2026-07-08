@@ -70,8 +70,8 @@ dd {
 }
 
 .ontario-summary-list-item__button-container--hidden {
-	clip-path: inset(100%);
-	overflow: hidden;
+	transform: translateX(9999px);
+	position: relative;
 }
 
 .ontario-summary-list-item__change-button {

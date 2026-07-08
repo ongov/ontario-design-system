@@ -91,8 +91,7 @@ test.describe('Ontario Summary List Item - React Framework Tests', () => {
 			.locator('#ontario-summary-list-item-with-action')
 			.locator('a.ontario-summary-list-item__change-button');
 		await actionLink.focus();
-		const isFocused = await actionLink.evaluate((el) => el === document.activeElement);
-		expect(isFocused).toBe(true);
+		await expect(actionLink).toBeFocused();
 	});
 
 	test('should trigger navigation on action link click', async ({ page }) => {
