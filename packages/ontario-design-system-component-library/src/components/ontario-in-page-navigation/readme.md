@@ -1,4 +1,4 @@
-import { OntarioInPageNavigation } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioInPageNavigation, OntarioInPageNavigationItem } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,7 +21,7 @@ If no list item content is provided in the default slot, the component renders t
 
 ## Examples
 
-Default usage with slotted list items:
+Default usage with child items:
 
 ```mdx-code-block
 <Tabs
@@ -38,9 +38,9 @@ Default usage with slotted list items:
 
 ```html
 <ontario-in-page-navigation heading="On this page">
-	<li><a href="#overview">Overview</a></li>
-	<li><a href="#eligibility">Eligibility</a></li>
-	<li><a href="#apply">Apply</a></li>
+	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
+	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
+	<ontario-in-page-navigation-item label="Apply" href="#apply"></ontario-in-page-navigation-item>
 </ontario-in-page-navigation>
 ```
 
@@ -51,15 +51,9 @@ Default usage with slotted list items:
 
 ```tsx
 <OntarioInPageNavigation heading="On this page">
-	<li>
-		<a href="#overview">Overview</a>
-	</li>
-	<li>
-		<a href="#eligibility">Eligibility</a>
-	</li>
-	<li>
-		<a href="#apply">Apply</a>
-	</li>
+	<OntarioInPageNavigationItem label="Overview" href="#overview"></OntarioInPageNavigationItem>
+	<OntarioInPageNavigationItem label="Eligibility" href="#eligibility"></OntarioInPageNavigationItem>
+	<OntarioInPageNavigationItem label="Apply" href="#apply"></OntarioInPageNavigationItem>
 </OntarioInPageNavigation>
 ```
 
@@ -70,9 +64,9 @@ Default usage with slotted list items:
 
 ```html
 <ontario-in-page-navigation heading="On this page">
-	<li><a href="#overview">Overview</a></li>
-	<li><a href="#eligibility">Eligibility</a></li>
-	<li><a href="#apply">Apply</a></li>
+	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
+	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
+	<ontario-in-page-navigation-item label="Apply" href="#apply"></ontario-in-page-navigation-item>
 </ontario-in-page-navigation>
 ```
 
@@ -107,8 +101,8 @@ Slot-based composition:
 
 ```html
 <ontario-in-page-navigation>
-	<li><a href="#overview">Overview</a></li>
-	<li><a href="#eligibility">Eligibility</a></li>
+	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
+	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
 </ontario-in-page-navigation>
 ```
 
