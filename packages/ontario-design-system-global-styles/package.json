@@ -27,7 +27,6 @@
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\ntitle: Global Styles\n---\n\" --df ../docusaurus/docs/05-readme-global-styles.md"
 	},
 	"devDependencies": {
-		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^10.0.0",
 		"gulp-clean-css": "^4.3.0",
@@ -78,6 +77,7 @@
 		"./styles/scss/1-variables/letter-spacing.variables": "./dist/styles/scss/1-variables/_letter-spacing.variables.scss",
 		"./styles/scss/1-variables/line-heights.variables": "./dist/styles/scss/1-variables/_line-heights.variables.scss",
 		"./styles/scss/1-variables/spacing.variables": "./dist/styles/scss/1-variables/_spacing.variables.scss",
+		"./styles/scss/1-variables/tokens.frozen": "./dist/styles/scss/1-variables/_tokens.frozen.scss",
 		"./styles/scss/1-variables/tokens.variables": "./dist/styles/scss/1-variables/_tokens.variables.scss",
 		"./styles/scss/1-variables/typography.variables": "./dist/styles/scss/1-variables/_typography.variables.scss",
 		"./styles/scss/1-variables/z-index.variables": "./dist/styles/scss/1-variables/_z-index.variables.scss",
