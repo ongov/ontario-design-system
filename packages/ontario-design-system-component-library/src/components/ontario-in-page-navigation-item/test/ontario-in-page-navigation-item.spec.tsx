@@ -1,15 +1,15 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { OntarioInPageNavigationItem } from '../ontario-in-page-navigation-item';
+import { render } from '@stencil/vitest';
+import type { OntarioInPageNavigationItem } from '../ontario-in-page-navigation-item';
 
 const setHasDefaultSlotContent = (instance: OntarioInPageNavigationItem, hasDefaultSlotContent: boolean) => {
 	(instance as unknown as { hasDefaultSlotContent: boolean }).hasDefaultSlotContent = hasDefaultSlotContent;
 };
 
 describe('ontario-in-page-navigation-item', () => {
-	let warnSpy: jest.SpyInstance;
+	let warnSpy: ReturnType<typeof vi.spyOn>;
 
 	beforeEach(() => {
-		warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+		warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 	});
 
 	afterEach(() => {
@@ -17,10 +17,9 @@ describe('ontario-in-page-navigation-item', () => {
 	});
 
 	it('renders expected link structure with label and href', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="Section" href="#section"></ontario-in-page-navigation-item>',
-		});
+		const page = await render(
+			'<ontario-in-page-navigation-item label="Section" href="#section"></ontario-in-page-navigation-item>',
+		);
 
 		expect(page.root).toBeTruthy();
 		expect(page.root?.classList.contains('ontario-in-page-navigation-item')).toBe(true);
@@ -32,22 +31,20 @@ describe('ontario-in-page-navigation-item', () => {
 	});
 
 	it('renders valid in-page anchor href values', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>',
-		});
+		const page = await render(
+			'<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>',
+		);
 
 		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
 		expect(link?.getAttribute('href')).toBe('#eligibility');
 	});
 
-	it('warns when label validation runs without slot content and label is missing', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item href="#section"></ontario-in-page-navigation-item>',
-		});
+	it('warns when label is missing without slot content', async () => {
+		const page = await render(
+			'<ontario-in-page-navigation-item label="Section" href="#section"></ontario-in-page-navigation-item>',
+		);
 
-		const instance = page.rootInstance as OntarioInPageNavigationItem;
+		const instance = page.instance as OntarioInPageNavigationItem;
 		setHasDefaultSlotContent(instance, false);
 		instance.label = '';
 		instance.validateLabel();
@@ -56,13 +53,12 @@ describe('ontario-in-page-navigation-item', () => {
 		expect(hasLabelWarning).toBe(true);
 	});
 
-	it('warns when href validation runs without slot content and href is missing', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="Section"></ontario-in-page-navigation-item>',
-		});
+	it('warns when href is missing without slot content', async () => {
+		const page = await render(
+			'<ontario-in-page-navigation-item label="Section" href="#section"></ontario-in-page-navigation-item>',
+		);
 
-		const instance = page.rootInstance as OntarioInPageNavigationItem;
+		const instance = page.instance as OntarioInPageNavigationItem;
 		setHasDefaultSlotContent(instance, false);
 		instance.href = '';
 		instance.validateHref();
@@ -71,13 +67,12 @@ describe('ontario-in-page-navigation-item', () => {
 		expect(hasHrefWarning).toBe(true);
 	});
 
-	it('warns when href validation runs without slot content and href is not an in-page anchor', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="Section" href="/section"></ontario-in-page-navigation-item>',
-		});
+	it('warns when href is not an in-page anchor', async () => {
+		const page = await render(
+			'<ontario-in-page-navigation-item label="Section" href="#section"></ontario-in-page-navigation-item>',
+		);
 
-		const instance = page.rootInstance as OntarioInPageNavigationItem;
+		const instance = page.instance as OntarioInPageNavigationItem;
 		setHasDefaultSlotContent(instance, false);
 		instance.href = '/section';
 		instance.validateHref();
@@ -88,33 +83,26 @@ describe('ontario-in-page-navigation-item', () => {
 		expect(hasInvalidHrefWarning).toBe(true);
 	});
 
-	it('renders fallback href when href is missing', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="Section"></ontario-in-page-navigation-item>',
-		});
+	it('omits href when href is missing', async () => {
+		const page = await render('<ontario-in-page-navigation-item label="Section"></ontario-in-page-navigation-item>');
 
 		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
-		expect(link?.getAttribute('href')).toBe('#');
+		expect(link?.hasAttribute('href')).toBe(false);
 	});
 
 	it('renders empty link text when label is empty', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: '<ontario-in-page-navigation-item label="   " href="#section"></ontario-in-page-navigation-item>',
-		});
+		const page = await render(
+			'<ontario-in-page-navigation-item label="   " href="#section"></ontario-in-page-navigation-item>',
+		);
 
 		const link = page.root?.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link');
 		expect(link?.textContent?.trim()).toBe('');
 	});
 
 	it('projects default slot content when custom markup is supplied', async () => {
-		const page = await newSpecPage({
-			components: [OntarioInPageNavigationItem],
-			html: `<ontario-in-page-navigation-item>
+		const page = await render(`<ontario-in-page-navigation-item>
 				<a class="custom-link" href="#section-custom">Custom section</a>
-			</ontario-in-page-navigation-item>`,
-		});
+			</ontario-in-page-navigation-item>`);
 
 		const slot = page.root?.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
 		const assignedElements = slot.assignedElements({ flatten: true });

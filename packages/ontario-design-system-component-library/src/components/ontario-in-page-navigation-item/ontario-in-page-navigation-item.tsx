@@ -119,12 +119,14 @@ export class OntarioInPageNavigationItem {
 	}
 
 	render() {
+		const resolvedHref = this.href?.trim();
+
 		return (
 			<Host class="ontario-in-page-navigation-item" role="listitem">
 				<slot onSlotchange={this.handleDefaultSlotChange}>
 					<a
 						class="ontario-in-page-navigation-item__link"
-						href={this.href?.trim() || '#'}
+						href={resolvedHref || undefined}
 						aria-current={this.isCurrent ? 'true' : undefined}
 					>
 						{this.label?.trim() || ''}
