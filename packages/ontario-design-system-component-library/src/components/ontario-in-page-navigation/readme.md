@@ -19,7 +19,7 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 ## Examples
 
-Default usage with child items:
+Default usage with slotted list items:
 
 ```mdx-code-block
 <Tabs
@@ -36,9 +36,9 @@ Default usage with child items:
 
 ```html
 <ontario-in-page-navigation heading="On this page">
-	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
-	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
-	<ontario-in-page-navigation-item label="Apply" href="#apply"></ontario-in-page-navigation-item>
+	<li><a href="#overview">Overview</a></li>
+	<li><a href="#eligibility">Eligibility</a></li>
+	<li><a href="#apply">Apply</a></li>
 </ontario-in-page-navigation>
 ```
 
@@ -49,9 +49,15 @@ Default usage with child items:
 
 ```tsx
 <OntarioInPageNavigation heading="On this page">
-	<ontario-in-page-navigation-item label="Overview" href="#overview" />
-	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility" />
-	<ontario-in-page-navigation-item label="Apply" href="#apply" />
+	<li>
+		<a href="#overview">Overview</a>
+	</li>
+	<li>
+		<a href="#eligibility">Eligibility</a>
+	</li>
+	<li>
+		<a href="#apply">Apply</a>
+	</li>
 </OntarioInPageNavigation>
 ```
 
@@ -62,9 +68,9 @@ Default usage with child items:
 
 ```html
 <ontario-in-page-navigation heading="On this page">
-	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
-	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
-	<ontario-in-page-navigation-item label="Apply" href="#apply"></ontario-in-page-navigation-item>
+	<li><a href="#overview">Overview</a></li>
+	<li><a href="#eligibility">Eligibility</a></li>
+	<li><a href="#apply">Apply</a></li>
 </ontario-in-page-navigation>
 ```
 
@@ -93,12 +99,12 @@ Skip-link target customization:
 <main id="main-content"></main>
 ```
 
-Slot-based composition with item children:
+Slot-based composition:
 
 ```html
 <ontario-in-page-navigation>
-	<ontario-in-page-navigation-item label="Overview" href="#overview"></ontario-in-page-navigation-item>
-	<ontario-in-page-navigation-item label="Eligibility" href="#eligibility"></ontario-in-page-navigation-item>
+	<li><a href="#overview">Overview</a></li>
+	<li><a href="#eligibility">Eligibility</a></li>
 </ontario-in-page-navigation>
 ```
 
