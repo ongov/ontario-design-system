@@ -16,6 +16,7 @@ jobs:
     with:
       build-artifacts-name: 'build-artifacts'
       docs-artifacts-name: 'docs-artifacts'
+      app-build-artifacts-name: 'app-build-artifacts'
 
   # Run test suites for the project.
   test: # Job defined in a separate file (test.yml)
@@ -28,6 +29,7 @@ jobs:
       checks: write
     with:
       build-artifacts-name: ${{ needs.build.outputs.build-artifacts-name }}
+      app-build-artifacts-name: ${{ needs.build.outputs.app-build-artifacts-name }}
 
   # Predict the next release tag before publishing so docs PRs can be prepared earlier.
   predict-release-tag:
