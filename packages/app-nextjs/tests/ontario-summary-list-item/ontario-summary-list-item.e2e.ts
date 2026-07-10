@@ -29,7 +29,7 @@ test.describe('Ontario Summary List Item - React Framework Tests', () => {
 	test('should not render action link when actionLink prop is omitted', async ({ page }) => {
 		const noActionItem = page.locator('#ontario-summary-list-item-no-action');
 		const actionLink = noActionItem.locator('a.ontario-summary-list-item__change-button');
-		await expect(actionLink).not.toBeVisible();
+		await expect(actionLink).toHaveCount(0);
 	});
 
 	test('should apply compact class when compact prop is true', async ({ page }) => {
@@ -86,19 +86,20 @@ test.describe('Ontario Summary List Item - React Framework Tests', () => {
 	});
 
 	// Keyboard navigation tests
-	test('should be keyboard accessible and focusable', async ({ page }) => {
+	test('should be focusable', async ({ page }) => {
 		const actionLink = page
 			.locator('#ontario-summary-list-item-with-action')
 			.locator('a.ontario-summary-list-item__change-button');
+		await actionLink.scrollIntoViewIfNeeded();
 		await actionLink.focus();
 		await expect(actionLink).toBeFocused();
 	});
 
-	test('should trigger navigation on action link click', async ({ page }) => {
+	test('should navigate when action link is clicked', async ({ page }) => {
 		const actionLink = page
 			.locator('#ontario-summary-list-item-with-action')
 			.locator('a.ontario-summary-list-item__change-button');
-		const href = await actionLink.getAttribute('href');
-		expect(href).toBe('/change-address');
+		await Promise.all([page.waitForURL('**/change-address'), actionLink.click()]);
+		await expect(page).toHaveURL(/\/change-address$/);
 	});
 });

@@ -27,7 +27,7 @@ test.describe('Ontario Summary List - React Framework Tests', () => {
 	test('should not render caption action link when captionActionLink prop is omitted', async ({ page }) => {
 		const defaultList = page.locator('#ontario-summary-list-default');
 		const actionLink = defaultList.locator('a.ontario-summary-list__change-button');
-		await expect(actionLink).not.toBeVisible();
+		await expect(actionLink).toHaveCount(0);
 	});
 
 	// Accessibility tests

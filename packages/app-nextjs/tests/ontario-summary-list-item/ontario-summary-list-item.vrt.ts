@@ -1,149 +1,108 @@
-import { test, expect, Page } from '@playwright/test';
+import { test } from '@playwright/test';
 
-const waitForInteractionPaint = async (page: Page) => {
-	await page.evaluate(
-		() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
-	);
-};
+import { expectVrtScreenshot, waitForInteractionPaint } from '../vrt-helpers';
 
-test.describe('Ontario Summary List Item - default states', () => {
+test.describe('Summary List Item - default states', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('row with action link', async ({ page }) => {
+	test('with action', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 
-	test('row without action link', async ({ page }) => {
+	test('no action', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-no-action');
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-no-action.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 
-	test('compact variant', async ({ page }) => {
+	test('compact', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-compact');
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-compact.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 
-	test('custom action label variant', async ({ page }) => {
+	test('custom label', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 
-	test('compact variant without action link', async ({ page }) => {
+	test('compact no action', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-compact-no-action');
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-compact-no-action.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 });
 
-test.describe('Ontario Summary List Item - focus states', () => {
+test.describe('Summary List Item - focus states', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('row with action link - focus state', async ({ page }) => {
+	test('with action - focus', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.focus();
 		await waitForInteractionPaint(page);
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action-focus.png', {
-			animations: 'disabled',
-			caret: 'hide',
-			maxDiffPixels: 600,
-		});
+		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 600 });
 	});
 
-	test('custom action label - focus state', async ({ page }) => {
+	test('custom label - focus', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.focus();
 		await waitForInteractionPaint(page);
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label-focus.png', {
-			animations: 'disabled',
-			caret: 'hide',
-			maxDiffPixels: 400,
-		});
+		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 400 });
 	});
 });
 
-test.describe('Ontario Summary List Item - hover states', () => {
+test.describe('Summary List Item - hover states', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('row with action link - hover state', async ({ page }) => {
+	test('with action - hover', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.hover();
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action-hover.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 
-	test('custom action label - hover state', async ({ page }) => {
+	test('custom label - hover', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.hover();
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label-hover.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(summaryListItem);
 	});
 });
 
-test.describe('Ontario Summary List Item - active states', () => {
+test.describe('Summary List Item - active states', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('row with action link - active state', async ({ page }) => {
+	test('with action - active', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.hover();
 		await page.mouse.down();
 		await waitForInteractionPaint(page);
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-with-action-active.png', {
-			animations: 'disabled',
-			caret: 'hide',
-			maxDiffPixels: 550,
-		});
+		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 550 });
 		await page.mouse.up();
 	});
 
-	test('custom action label - active state', async ({ page }) => {
+	test('custom label - active', async ({ page }) => {
 		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
 		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
 
 		await actionLink.hover();
 		await page.mouse.down();
 		await waitForInteractionPaint(page);
-		await expect(summaryListItem).toHaveScreenshot('ontarioSummaryListItem-custom-label-active.png', {
-			animations: 'disabled',
-			caret: 'hide',
-			maxDiffPixels: 400,
-		});
+		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 400 });
 		await page.mouse.up();
 	});
 });
