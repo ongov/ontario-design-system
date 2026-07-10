@@ -32,8 +32,14 @@ export class OntarioInPageNavigationItem {
 	 */
 	@Prop({ mutable: true }) language?: Language;
 
+	/**
+	 * Tracks whether the default slot has user-provided content.
+	 */
 	@State() private hasDefaultSlotContent = false;
 
+	/**
+	 * Checks whether the default slot contains element or non-empty text nodes.
+	 */
 	private hasSlotContent(slotElement?: HTMLSlotElement): boolean {
 		if (!slotElement) {
 			return false;
@@ -54,6 +60,9 @@ export class OntarioInPageNavigationItem {
 		});
 	}
 
+	/**
+	 * Validates the label prop when no slot override is supplied.
+	 */
 	@Watch('label')
 	validateLabel() {
 		if (this.hasDefaultSlotContent) {
@@ -72,6 +81,9 @@ export class OntarioInPageNavigationItem {
 		}
 	}
 
+	/**
+	 * Validates the href prop when no slot override is supplied.
+	 */
 	@Watch('href')
 	validateHref() {
 		if (this.hasDefaultSlotContent) {
@@ -103,6 +115,9 @@ export class OntarioInPageNavigationItem {
 		}
 	}
 
+	/**
+	 * Re-evaluates slot presence and validation when slot content changes.
+	 */
 	private handleDefaultSlotChange = (event: Event) => {
 		const slotElement = event.target as HTMLSlotElement;
 		this.hasDefaultSlotContent = this.hasSlotContent(slotElement);
@@ -110,6 +125,9 @@ export class OntarioInPageNavigationItem {
 		this.validateHref();
 	};
 
+	/**
+	 * Initializes language and validates props after first render.
+	 */
 	componentDidLoad() {
 		const defaultSlot = this.host.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement | null;
 		this.hasDefaultSlotContent = this.hasSlotContent(defaultSlot || undefined);
