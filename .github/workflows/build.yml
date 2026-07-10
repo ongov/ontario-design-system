@@ -180,6 +180,8 @@ jobs:
       - name: Summarise app build outputs
         if: ${{ always() }}
         run: |
+          app_build_size="$(du -ch packages/app-angular/dist packages/app-react/build packages/app-nextjs/.next 2>/dev/null | tail -1 | cut -f1)"
+
           {
             echo '## Build Apps'
             echo ''
@@ -189,7 +191,7 @@ jobs:
             echo ''
             echo '### Artifacts'
             echo ''
-            echo "| Artifact | Name | Upload |"
-            echo "| --- | --- | --- |"
-            echo "| App Build | \`${{ inputs.app-build-artifacts-name }}\` | \`${{ steps.upload_app_build_artifacts.outcome }}\` |"
+            echo "| Artifact | Name | Size | Upload |"
+            echo "| --- | --- | --- | --- |"
+            echo "| App Build | \`${{ inputs.app-build-artifacts-name }}\` | \`${app_build_size:-unknown}\` | \`${{ steps.upload_app_build_artifacts.outcome }}\` |"
           } >> "$GITHUB_STEP_SUMMARY"
