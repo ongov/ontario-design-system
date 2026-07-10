@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.60.0-noble
+FROM mcr.microsoft.com/playwright:v1.61.1-noble
 
 # The Playwright base image ships an older Node.js. Overwrite it with the version
 # declared in .nvmrc so the container stays in sync with the rest of the project.
