@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 
 /**
  * Visual regression tests for ontario-summary-list-item.
@@ -12,26 +13,16 @@ import { test } from '@stencil/playwright';
  * shadow nodes, with animations disabled and the caret hidden for determinism.
  */
 
-const SNAPSHOT_OPTS = { animations: 'disabled' as const, caret: 'hide' as const };
-
 /**
  * Wraps component markup with the global stylesheet so that @font-face
  * declarations (Raleway Modified, Open Sans) are available to shadow-DOM
  * components that inherit typography from the document root.
  */
-const withStyles = (body: string) => `
-	<html>
-		<head>
-			<link rel="stylesheet" href="/build/ontario-design-system-components.css">
-		</head>
-		<body>${body}</body>
-	</html>
-`;
-
-test.describe('ontario-summary-list-item - with actionLink', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(
-			withStyles(`
+test.describe('ontario-summary-list-item', () => {
+	test.describe('with action', () => {
+		test.beforeEach(async ({ page }) => {
+			await page.setContent(
+				withGlobalStyles(`
 				<ontario-summary-list caption="Row variants">
 					<ontario-summary-list-item
 						name="Full name"
@@ -40,29 +31,31 @@ test.describe('ontario-summary-list-item - with actionLink', () => {
 					></ontario-summary-list-item>
 				</ontario-summary-list>
 			`),
-		);
-		await page.waitForChanges();
+			);
+			await page.waitForChanges();
+		});
+
+		test('default', async ({ page }) => {
+			const host = page.locator('ontario-summary-list');
+			await expect(host).toHaveClass(/hydrated/);
+			await expectVrtScreenshot(host);
+		});
+
+		test('focus', async ({ page }) => {
+			const host = page.locator('ontario-summary-list');
+			await expect(host).toHaveClass(/hydrated/);
+			const changeLink = host
+				.locator('ontario-summary-list-item')
+				.locator('a.ontario-summary-list-item__change-button');
+			await changeLink.focus();
+			await expectVrtScreenshot(host);
+		});
 	});
 
-	test('row with actionLink - default state', async ({ page }) => {
-		const host = page.locator('ontario-summary-list');
-		await expect(host).toHaveClass(/hydrated/);
-		await expect(host).toHaveScreenshot('ontarioSummaryListItem-withAction.png', SNAPSHOT_OPTS);
-	});
-
-	test('row with actionLink - focus state on change link', async ({ page }) => {
-		const host = page.locator('ontario-summary-list');
-		await expect(host).toHaveClass(/hydrated/);
-		const changeLink = host.locator('ontario-summary-list-item').locator('a.ontario-summary-list-item__change-button');
-		await changeLink.focus();
-		await expect(host).toHaveScreenshot('ontarioSummaryListItem-withAction-focus.png', SNAPSHOT_OPTS);
-	});
-});
-
-test.describe('ontario-summary-list-item - without actionLink', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(
-			withStyles(`
+	test.describe('without action', () => {
+		test.beforeEach(async ({ page }) => {
+			await page.setContent(
+				withGlobalStyles(`
 				<ontario-summary-list caption="Row variants">
 					<ontario-summary-list-item
 						name="Email address"
@@ -70,21 +63,21 @@ test.describe('ontario-summary-list-item - without actionLink', () => {
 					></ontario-summary-list-item>
 				</ontario-summary-list>
 			`),
-		);
-		await page.waitForChanges();
+			);
+			await page.waitForChanges();
+		});
+
+		test('default', async ({ page }) => {
+			const host = page.locator('ontario-summary-list');
+			await expect(host).toHaveClass(/hydrated/);
+			await expectVrtScreenshot(host);
+		});
 	});
 
-	test('row without actionLink - default state', async ({ page }) => {
-		const host = page.locator('ontario-summary-list');
-		await expect(host).toHaveClass(/hydrated/);
-		await expect(host).toHaveScreenshot('ontarioSummaryListItem-noAction.png', SNAPSHOT_OPTS);
-	});
-});
-
-test.describe('ontario-summary-list-item - compact variant', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(
-			withStyles(`
+	test.describe('compact', () => {
+		test.beforeEach(async ({ page }) => {
+			await page.setContent(
+				withGlobalStyles(`
 				<ontario-summary-list caption="Compact rows">
 					<ontario-summary-list-item
 						name="Full name"
@@ -99,13 +92,14 @@ test.describe('ontario-summary-list-item - compact variant', () => {
 					></ontario-summary-list-item>
 				</ontario-summary-list>
 			`),
-		);
-		await page.waitForChanges();
-	});
+			);
+			await page.waitForChanges();
+		});
 
-	test('compact rows - default state', async ({ page }) => {
-		const host = page.locator('ontario-summary-list');
-		await expect(host).toHaveClass(/hydrated/);
-		await expect(host).toHaveScreenshot('ontarioSummaryListItem-compact.png', SNAPSHOT_OPTS);
+		test('default', async ({ page }) => {
+			const host = page.locator('ontario-summary-list');
+			await expect(host).toHaveClass(/hydrated/);
+			await expectVrtScreenshot(host);
+		});
 	});
 });
