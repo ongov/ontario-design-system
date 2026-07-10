@@ -171,6 +171,7 @@ jobs:
         with:
           name: ${{ inputs.app-build-artifacts-name }}
           compression-level: 9 # Best compression
+          include-hidden-files: true # app-nextjs's build output lives in the hidden .next directory
           path: | # Collect built app output only
             packages/app-angular/dist/**/*
             packages/app-react/build/**/*
