@@ -3327,7 +3327,7 @@ export namespace Components {
 		 */
 		taskId: string;
 		/**
-		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.
+		 * Defines the status of the task.  Falls back to the default status if not provided, or if an unrecognized value is passed.
 		 * @default TaskStatus.NotStarted
 		 */
 		taskStatus: TaskStatus;
@@ -8733,7 +8733,7 @@ declare namespace LocalJSX {
 		 */
 		taskId?: string;
 		/**
-		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.
+		 * Defines the status of the task.  Falls back to the default status if not provided, or if an unrecognized value is passed.
 		 * @default TaskStatus.NotStarted
 		 */
 		taskStatus?: TaskStatus;

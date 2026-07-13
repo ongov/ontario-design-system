@@ -140,8 +140,8 @@ The Ontario Task List component supports server-side rendering, with a few consi
 
 ```html
 <ontario-task-list label="Your tasks" heading-level="h2">
-	<ontario-task data-task-status="Completed" />
-	<ontario-task data-task-status="Incomplete" />
+	<ontario-task data-task-status="completed" />
+	<ontario-task data-task-status="notStarted" />
 </ontario-task-list>
 ```
 
