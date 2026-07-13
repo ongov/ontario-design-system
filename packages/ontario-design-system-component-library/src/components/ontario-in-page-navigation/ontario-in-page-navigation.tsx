@@ -13,6 +13,9 @@ export type OntarioInPageNavigationHeadingLevel = 'h2' | 'h3' | 'h4';
 	styleUrl: 'ontario-in-page-navigation.scss',
 	shadow: true,
 })
+/**
+ * A heading and ordered list of links that help users navigate long single-page content.
+ */
 export class OntarioInPageNavigation {
 	@Element() host!: HTMLElement;
 
@@ -66,6 +69,9 @@ export class OntarioInPageNavigation {
 		this.language = validateLanguage(event.detail.newLanguage);
 	}
 
+	/**
+	 * Validates the `heading` prop and logs a warning when it is empty.
+	 */
 	@Watch('heading')
 	validateHeading() {
 		if (!this.heading?.trim()) {
@@ -80,6 +86,9 @@ export class OntarioInPageNavigation {
 		}
 	}
 
+	/**
+	 * Validates the `headingLevel` prop and falls back to `h2` when invalid.
+	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
 		const allowedValues: OntarioInPageNavigationHeadingLevel[] = ['h2', 'h3', 'h4'];
@@ -119,7 +128,7 @@ export class OntarioInPageNavigation {
 			}
 
 			if (node.nodeType === Node.TEXT_NODE) {
-				return Boolean(node.textContent?.trim());
+				return node.textContent?.trim() !== '';
 			}
 
 			return false;
