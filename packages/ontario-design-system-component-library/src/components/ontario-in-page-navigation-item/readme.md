@@ -19,11 +19,12 @@ Please refer to the [Ontario Design System in-page navigation guidance](https://
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the item component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Pass both `label` and `href` for the standard pattern. The component warns if either value is missing.
 
+When no default slot content is provided and either `label` or `href` is omitted, the component still renders an anchor for layout consistency and logs a console warning to help authors correct the configuration.
+
 ## Examples
 
 1. Standard item
-
-Demonstrates the basic required configuration.
+   Demonstrates the basic required configuration.
 
 ```mdx-code-block
 <Tabs
@@ -70,8 +71,7 @@ Demonstrates the basic required configuration.
 </div>
 
 1. Item with long label
-
-Demonstrates wrapping behaviour.
+   Demonstrates wrapping behaviour.
 
 ```mdx-code-block
 <Tabs
@@ -123,8 +123,7 @@ Demonstrates wrapping behaviour.
 ```
 
 1. Current (active) item
-
-Demonstrates the current section state.
+   Demonstrates the current section state.
 
 ```html
 <ontario-in-page-navigation-item
@@ -134,11 +133,10 @@ Demonstrates the current section state.
 ></ontario-in-page-navigation-item>
 ```
 
-When implemented, this should apply `aria-current="true"`.
+This applies `aria-current="true"` to the rendered anchor.
 
 1. Slot override pattern
-
-When a router link is needed, use the default slot and supply the full anchor/link element.
+   When a router link is needed, use the default slot and supply the full anchor/link element.
 
 ```html
 <ontario-in-page-navigation-item>

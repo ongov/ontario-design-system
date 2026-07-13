@@ -9,6 +9,9 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 	styleUrl: 'ontario-in-page-navigation-item.scss',
 	shadow: true,
 })
+/**
+ * A single list item link used inside `ontario-in-page-navigation`.
+ */
 export class OntarioInPageNavigationItem {
 	@Element() host!: HTMLElement;
 
