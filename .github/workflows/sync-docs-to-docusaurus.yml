@@ -63,9 +63,11 @@ jobs:
       # Install dependencies for Docusaurus
       - name: Install Docusaurus dependencies
         working-directory: packages/docusaurus
-        # This workflow intentionally updates package specs (component library versioning),
-        # so lockfile must be allowed to refresh for the docs PR commit.
-        run: pnpm install --no-frozen-lockfile --lockfile-dir . --ignore-workspace
+        # This install validates the docs repo's own lockfile as-is (catches a pnpm
+        # version mismatch between this monorepo and the docs repo). The subsequent
+        # component-library version bump below is a separate, intentional lockfile
+        # mutation and is unaffected by --frozen-lockfile here.
+        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash

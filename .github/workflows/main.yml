@@ -40,9 +40,18 @@ jobs:
       contents: write # semantic-release dry-run still verifies git push access
       id-token: write # required for OIDC trusted publishing during dry-run verifyConditions
 
+  # Pre-publish environment checks (e.g. pnpm version parity with the docs repo).
+  # Home for future pre-publish environment checks, not just this one.
+  pre-flight:
+    needs: ['build', 'test']
+    name: Pre-flight Checks
+    uses: ./.github/workflows/pre-flight.yml
+    if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
+    secrets: inherit
+
   # Publish packages and release artifacts on release branches.
   publish-packages: # Job defined in a separate file (publish-packages.yml)
-    needs: ['build', 'test', 'predict-release-tag']
+    needs: ['build', 'test', 'predict-release-tag', 'pre-flight']
     name: Publish Packages
     uses: ./.github/workflows/publish-packages.yml # Path to the reusable workflow file
     if: ${{ success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta') }}
