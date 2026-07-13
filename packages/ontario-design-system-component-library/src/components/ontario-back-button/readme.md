@@ -22,6 +22,18 @@ Use a back button to provide a clear, consistent way for users to return to a pr
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/back-button.html) for current documentation guidance.
 
+## Disabled state rationale
+
+`ontario-back-button` intentionally supports a `disabled` state as an exception to the general "avoid disabling actions" guidance used for primary action buttons.
+
+Why this component is different:
+
+- Back navigation can be unsafe in transient states (for example, save-in-progress, route guards resolving, or controlled step transitions)
+- Temporarily disabling the back control can prevent accidental navigation and data loss
+- In `href` mode, the component applies `aria-disabled` and removes tab focus to match disabled link semantics
+
+Use this sparingly. Prefer clear messaging whenever possible, and only disable when navigation must be temporarily blocked for correctness/safety.
+
 ## Accessibility
 
 The back button uses native `<button>` or `<a>` semantics, making it keyboard and screen-reader compatible by default:

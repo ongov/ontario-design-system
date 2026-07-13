@@ -59,6 +59,11 @@ export class OntarioBackButton {
 
 	/**
 	 * Disables user interaction.
+	 *
+	 * Policy note:
+	 * Unlike primary action buttons, back navigation may need to be temporarily unavailable
+	 * during guarded/transient states (for example, save-in-progress or step-transition lock).
+	 * In those cases, `disabled` prevents accidental navigation while preserving a consistent UI shell.
 	 */
 	@Prop() disabled?: boolean = false;
 
