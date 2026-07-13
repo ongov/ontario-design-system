@@ -3,21 +3,24 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
 
+$ontario-page-navigation-border-width: spacing.$spacing-1;
+$ontario-page-navigation-content-max-width: 46rem;
+$ontario-page-navigation-list-indent: spacing.$spacing-4 + spacing.$spacing-1;
+
 :host {
 	display: block;
 }
 
 .ontario-page-navigation {
-	border-top: globalFunctions.px-to-rem(4) solid colours.$ontario-colour-black;
-	border-bottom: globalFunctions.px-to-rem(4) solid colours.$ontario-greyscale-20;
+	border-top: $ontario-page-navigation-border-width solid colours.$ontario-colour-black;
+	border-bottom: $ontario-page-navigation-border-width solid colours.$ontario-greyscale-20;
 	padding: spacing.$spacing-0;
 	margin: spacing.$spacing-7 spacing.$spacing-0;
 }
 
 .ontario-page-navigation-content {
 	padding: spacing.$spacing-7 spacing.$spacing-0;
-	// 46rem keeps the content column at the same reading width used across Ontario pages.
-	max-width: 46rem;
+	max-width: $ontario-page-navigation-content-max-width;
 }
 
 .ontario-page-navigation--no-top-border {
@@ -55,7 +58,7 @@
 
 .ontario-page-navigation-list {
 	padding: spacing.$spacing-0;
-	padding-left: spacing.$spacing-4 + globalFunctions.px-to-rem(4);
+	padding-left: $ontario-page-navigation-list-indent;
 	margin: spacing.$spacing-0;
 	margin-top: spacing.$spacing-4;
 	list-style-type: disc;
