@@ -1,0 +1,18 @@
+{
+	"zIndex": {
+		"auto": { "value": "auto" },
+		"inherit": { "value": "inherit" },
+		"initial": { "value": "initial" },
+		"neutral": { "value": "0" },
+		"behind": {
+			"low": { "value": "-4" },
+			"medium": { "value": "-2" },
+			"high": { "value": "-1" }
+		},
+		"above": {
+			"low": { "value": "1" },
+			"medium": { "value": "2" },
+			"high": { "value": "4" }
+		}
+	}
+}

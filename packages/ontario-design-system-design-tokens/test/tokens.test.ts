@@ -38,6 +38,28 @@ describe('primitive colour tokens', () => {
 	});
 });
 
+describe('non-colour primitive tokens', () => {
+	it('ships one file per category (space, typography, radius, border, elevation, motion, z-index, breakpoint)', () => {
+		const primitivesDir = path.join(packageRoot, 'tokens', 'primitives');
+		const files = readdirSync(primitivesDir)
+			.filter((file) => file.endsWith('.json'))
+			.sort();
+
+		expect(files).toEqual(
+			[
+				'border.json',
+				'breakpoint.json',
+				'elevation.json',
+				'motion.json',
+				'radius.json',
+				'space.json',
+				'typography.json',
+				'z-index.json',
+			].sort(),
+		);
+	});
+});
+
 describe('token linter', () => {
 	it('passes with no alias/integrity errors against the committed primitives', async () => {
 		const { lintTokens } = await import('../scripts/lib/token-tooling.ts');
