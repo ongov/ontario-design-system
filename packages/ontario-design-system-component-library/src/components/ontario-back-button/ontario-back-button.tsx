@@ -46,12 +46,16 @@ export class OntarioBackButton {
 	@Prop() href?: string;
 
 	/**
-	 * Determines navigation strategy:
+	 * Optional navigation strategy override:
 	 * - `history`: emits event, then calls browser history back.
 	 * - `href`: emits event, then navigates using `href`.
 	 * - `event`: emits event only.
+	 *
+	 * When omitted, runtime mode is inferred:
+	 * - uses `href` mode if `href` exists
+	 * - otherwise defaults to `history`
 	 */
-	@Prop() backMode: BackMode = 'history';
+	@Prop() backMode?: BackMode;
 
 	/**
 	 * Disables user interaction.
@@ -119,17 +123,19 @@ export class OntarioBackButton {
 	/**
 	 * Resolves which navigation mode to use at runtime.
 	 *
-	 * If `href` is provided without an explicit `back-mode` attribute,
-	 * this defaults to `href` mode for expected link behaviour.
+	 * If `backMode` is explicitly provided (attribute or property), that value wins.
+	 * Otherwise, `href` implies link mode; missing `href` falls back to history mode.
 	 */
 	private get resolvedBackMode(): BackMode {
-		const hasBackModeAttribute = this.host.hasAttribute('back-mode');
+		if (this.backMode) {
+			return this.backMode;
+		}
 
-		if (!hasBackModeAttribute && this.href) {
+		if (this.href) {
 			return 'href';
 		}
 
-		return this.backMode;
+		return 'history';
 	}
 
 	/**

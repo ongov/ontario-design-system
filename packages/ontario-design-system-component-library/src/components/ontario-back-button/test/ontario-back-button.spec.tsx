@@ -74,6 +74,44 @@ describe('ontario-back-button', () => {
 	});
 
 	describe('behaviour by mode', () => {
+		it('honours explicit event mode set via property when href is also set', async () => {
+			const page = await render(`<ontario-back-button href="/previous-step"></ontario-back-button>`);
+
+			const host = page.root as HTMLOntarioBackButtonElement;
+			host.backMode = 'event';
+			await page.waitForChanges();
+
+			const eventSpy = vi.fn();
+			host.addEventListener('backClick', eventSpy);
+
+			const button = host.shadowRoot?.querySelector('button') as HTMLButtonElement;
+			expect(button).not.toBeNull();
+			expect(host.shadowRoot?.querySelector('a')).toBeNull();
+			button.click();
+
+			expect(eventSpy).toHaveBeenCalledTimes(1);
+			expect(historyBackSpy).toHaveBeenCalledTimes(0);
+		});
+
+		it('honours explicit history mode set via property when href is also set', async () => {
+			const page = await render(`<ontario-back-button href="/previous-step"></ontario-back-button>`);
+
+			const host = page.root as HTMLOntarioBackButtonElement;
+			host.backMode = 'history';
+			await page.waitForChanges();
+
+			const eventSpy = vi.fn();
+			host.addEventListener('backClick', eventSpy);
+
+			const button = host.shadowRoot?.querySelector('button') as HTMLButtonElement;
+			expect(button).not.toBeNull();
+			expect(host.shadowRoot?.querySelector('a')).toBeNull();
+			button.click();
+
+			expect(eventSpy).toHaveBeenCalledTimes(1);
+			expect(historyBackSpy).toHaveBeenCalledTimes(1);
+		});
+
 		it('history mode emits event and calls window.history.back', async () => {
 			const page = await render(`<ontario-back-button></ontario-back-button>`);
 

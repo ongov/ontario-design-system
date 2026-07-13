@@ -72,6 +72,29 @@ test.describe('ontario-back-button', () => {
 		expect(count).toBe(1);
 	});
 
+	test('property-assigned backMode takes precedence over href', async ({ page }) => {
+		await host.evaluate((el: any) => {
+			el.href = '/step-1';
+			el.backMode = 'event';
+		});
+		await page.waitForChanges();
+
+		await expect(host.locator('button')).toHaveCount(1);
+		await expect(host.locator('a')).toHaveCount(0);
+
+		await page.evaluate(() => {
+			(window as any).backClickCount = 0;
+			document.querySelector('ontario-back-button')?.addEventListener('backClick', () => {
+				(window as any).backClickCount += 1;
+			});
+		});
+
+		await host.locator('button').click();
+
+		const count = await page.evaluate(() => (window as any).backClickCount);
+		expect(count).toBe(1);
+	});
+
 	test('disabled button blocks event emission', async ({ page }) => {
 		await host.evaluate((el) => {
 			el.setAttribute('back-mode', 'event');
