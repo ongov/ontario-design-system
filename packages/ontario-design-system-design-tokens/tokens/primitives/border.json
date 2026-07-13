@@ -1,0 +1,14 @@
+{
+	"border": {
+		"width": {
+			"0": { "value": "0px" },
+			"100": { "value": "1px" },
+			"200": { "value": "2px" },
+			"300": { "value": "3px" }
+		},
+		"style": {
+			"solid": { "value": "solid" },
+			"dashed": { "value": "dashed" }
+		}
+	}
+}
