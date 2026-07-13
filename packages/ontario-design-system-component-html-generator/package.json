@@ -41,7 +41,7 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",
-		"commander": "^11.0.0"
+		"commander": "^15.0.0"
 	},
 	"devDependencies": {
 		"@stencil/core": "^4.38.3",

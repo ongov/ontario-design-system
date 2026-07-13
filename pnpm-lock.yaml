@@ -359,8 +359,8 @@ importers:
         specifier: workspace:*
         version: link:../ontario-design-system-component-library
       commander:
-        specifier: ^11.0.0
-        version: 11.1.0
+        specifier: ^15.0.0
+        version: 15.0.0
     devDependencies:
       '@stencil/core':
         specifier: ^4.38.3
@@ -5794,10 +5794,6 @@ packages:
 
   comma-separated-tokens@1.0.8:
     resolution: {integrity: sha512-GHuDRO12Sypu2cV70d1dkA2EUmXHgntrzbpvOB+Qy+49ypNfGgFQIC2fhhXbnyrJRynDCAARsT7Ou0M6hirpfw==}
-
-  commander@11.1.0:
-    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
-    engines: {node: '>=16'}
 
   commander@12.1.0:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
@@ -17197,8 +17193,6 @@ snapshots:
       delayed-stream: 1.0.0
 
   comma-separated-tokens@1.0.8: {}
-
-  commander@11.1.0: {}
 
   commander@12.1.0: {}
 
