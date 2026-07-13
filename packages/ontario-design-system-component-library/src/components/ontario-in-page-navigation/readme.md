@@ -10,6 +10,8 @@ Use in-page navigation (table of contents) to help users understand and navigate
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/in-page-navigation.html) for current documentation guidance.
 
+If no list item content is provided in the default slot, the component renders the heading and skip link without navigation links and logs a console warning to help authors catch the missing items.
+
 ## Accessibility guidance
 
 - Match each navigation link label to the destination section heading text.
@@ -78,6 +80,8 @@ Default usage with slotted list items:
 </TabItem>
 </Tabs>
 ```
+
+The canonical authoring pattern in this branch is standard slotted `<li><a></a></li>` items. Once `ontario-in-page-navigation-item` is merged, this documentation will include both patterns and recommend component items for consistency.
 
 Smooth scroll enabled (default):
 
