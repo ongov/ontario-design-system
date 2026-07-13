@@ -14,13 +14,18 @@ jobs:
       # that doesn't carry across to the docs repo. Left unchecked, the docs repo's own
       # CI and the sync-docs-to-docusaurus install step run against a mismatched pnpm
       # version, which can fail a lockfile install right after packages have published.
+      #
+      # The docs repo's full name lives in the `DOCS_REPO` repository variable (Settings
+      # > Secrets and variables > Actions > Variables), not hardcoded here -- update it
+      # there if the docs repo is ever renamed or transferred.
       - name: Verify docs repo pnpm version matches monorepo
         id: pnpm_check
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DOCS_REPO: ${{ vars.DOCS_REPO }}
         run: |
           monorepo_pnpm=$(node -p "require('./package.json').packageManager")
-          docs_pnpm=$(gh api repos/ongov/design-system-developer-documentation-site/contents/package.json \
+          docs_pnpm=$(gh api "repos/${DOCS_REPO}/contents/package.json" \
             --jq '.content' | base64 -d | \
             node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).packageManager")
 

@@ -38,9 +38,12 @@ jobs:
           persist-credentials: false
 
       - name: Checkout Docusaurus repo
+        # Target repo name lives in the `DOCS_REPO` repository variable (Settings >
+        # Secrets and variables > Actions > Variables), not hardcoded here -- update
+        # it there if the docs repo is ever renamed or transferred.
         uses: actions/checkout@v7
         with:
-          repository: ongov/design-system-developer-documentation-site
+          repository: ${{ vars.DOCS_REPO }}
           token: ${{ secrets.GH_TOKEN }}
           ref: main
           path: packages/docusaurus
@@ -126,6 +129,8 @@ jobs:
           branch: docs/update-${{ inputs.release_tag }}
           labels: docs-update
 
+      # Target repository below comes from the `DOCS_REPO` repository variable (see
+      # the "Checkout Docusaurus repo" step above for details).
       - name: Summarise docs sync
         if: ${{ always() }}
         run: |
@@ -139,10 +144,10 @@ jobs:
             echo "| Release tag | \`${{ inputs.release_tag }}\` |"
             echo "| Docs artifacts input | \`${{ inputs.docs-artifacts-name }}\` |"
             echo "| Target docs branch | \`docs/update-${{ inputs.release_tag }}\` |"
-            echo "| Target repository | \`ongov/design-system-developer-documentation-site\` |"
+            echo "| Target repository | \`${{ vars.DOCS_REPO }}\` |"
             echo "| Create PR step | \`${{ steps.create_pr.outcome }}\` |"
             if [ -n "${{ steps.create_pr.outputs.pull-request-number }}" ]; then
-              echo "| Docs PR | [#${{ steps.create_pr.outputs.pull-request-number }}](${{ github.server_url }}/ongov/design-system-developer-documentation-site/pull/${{ steps.create_pr.outputs.pull-request-number }}) |"
+              echo "| Docs PR | [#${{ steps.create_pr.outputs.pull-request-number }}](${{ github.server_url }}/${{ vars.DOCS_REPO }}/pull/${{ steps.create_pr.outputs.pull-request-number }}) |"
             else
               echo '| Docs PR | No docs PR number returned |'
             fi
