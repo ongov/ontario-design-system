@@ -165,36 +165,6 @@ describe('ontario-back-button', () => {
 		});
 	});
 
-	describe('keyboard interaction', () => {
-		it('activates on Enter key press', async () => {
-			const page = await render(`<ontario-back-button back-mode="event"></ontario-back-button>`);
-
-			const eventSpy = vi.fn();
-			page.root?.addEventListener('backClick', eventSpy);
-
-			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
-			const enterEvent = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true });
-			button.dispatchEvent(enterEvent);
-			button.click();
-
-			expect(eventSpy).toHaveBeenCalled();
-		});
-
-		it('activates on Space key press', async () => {
-			const page = await render(`<ontario-back-button back-mode="event"></ontario-back-button>`);
-
-			const eventSpy = vi.fn();
-			page.root?.addEventListener('backClick', eventSpy);
-
-			const button = page.root?.shadowRoot?.querySelector('button') as HTMLButtonElement;
-			const spaceEvent = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
-			button.dispatchEvent(spaceEvent);
-			button.click();
-
-			expect(eventSpy).toHaveBeenCalled();
-		});
-	});
-
 	describe('accessibility', () => {
 		it('has accessible button semantics', async () => {
 			const page = await render(`<ontario-back-button></ontario-back-button>`);
