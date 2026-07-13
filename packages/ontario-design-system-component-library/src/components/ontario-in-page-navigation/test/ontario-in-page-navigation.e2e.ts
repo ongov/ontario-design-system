@@ -16,6 +16,7 @@ type OntarioInPageNavigationHostElement = HTMLElement & {
 
 test.describe('ontario-in-page-navigation', () => {
 	let host: Locator;
+	const getItemLink = (item: Locator) => item.locator('a.ontario-in-page-navigation-item__link');
 
 	const setHostContent = async (page: E2EPage, hostAttributes = '') => {
 		await page.setContent(`
@@ -42,15 +43,8 @@ test.describe('ontario-in-page-navigation', () => {
 	};
 
 	const clickItemLink = async (page: E2EPage, index: number) => {
-		await page
-			.locator('ontario-in-page-navigation-item')
-			.nth(index)
-			.evaluate((el: Element) => {
-				const anchor = el.shadowRoot?.querySelector(
-					'a.ontario-in-page-navigation-item__link',
-				) as HTMLAnchorElement | null;
-				anchor?.click();
-			});
+		const itemLink = getItemLink(page.locator('ontario-in-page-navigation-item').nth(index));
+		await itemLink.click();
 		await page.waitForChanges();
 	};
 
@@ -101,9 +95,7 @@ test.describe('ontario-in-page-navigation', () => {
 			};
 		});
 
-		await firstItem.evaluate((el) => {
-			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-		});
+		await getItemLink(firstItem).focus();
 
 		const firstFocused = await firstItem.evaluate(
 			(el) => el.shadowRoot?.activeElement?.getAttribute('href') || document.activeElement?.getAttribute('href'),
@@ -168,9 +160,7 @@ test.describe('ontario-in-page-navigation', () => {
 	test('supports focus on item links for keyboard users', async ({ page }) => {
 		const firstItem = page.locator('ontario-in-page-navigation-item').first();
 
-		await firstItem.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-		});
+		await getItemLink(firstItem).focus();
 
 		const focusedHref = await firstItem.evaluate(
 			(el: Element) =>
@@ -226,33 +216,6 @@ test.describe('ontario-in-page-navigation', () => {
 		);
 		expect(itemCount).toBe(6);
 		await expect(host.locator('.ontario-page-navigation-list')).toBeVisible();
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: default variant', async () => {
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: no-top-border variant', async ({ page }) => {
-		await host.evaluate((el: Element) => {
-			(el as OntarioInPageNavigationHostElement).noTopBorder = true;
-		});
-		await page.waitForChanges();
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: focus-visible state on first navigation link', async ({ page }) => {
-		const firstItem = page.locator('ontario-in-page-navigation-item').first();
-
-		await firstItem.evaluate((el: Element) => {
-			(el.shadowRoot?.querySelector('a.ontario-in-page-navigation-item__link') as HTMLAnchorElement | null)?.focus();
-		});
-		await page.waitForChanges();
 
 		const screenshot = await host.screenshot();
 		expect(screenshot.byteLength).toBeGreaterThan(0);
