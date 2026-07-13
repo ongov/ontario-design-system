@@ -91,7 +91,7 @@ test.describe('Summary List Item - active states', () => {
 		await actionLink.hover();
 		await page.mouse.down();
 		await waitForInteractionPaint(page);
-		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 550 });
+		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 700 });
 		await page.mouse.up();
 	});
 

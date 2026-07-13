@@ -87,10 +87,11 @@ test.describe('Ontario Summary List Item - React Framework Tests', () => {
 
 	// Keyboard navigation tests
 	test('should be focusable', async ({ page }) => {
-		const actionLink = page
-			.locator('#ontario-summary-list-item-with-action')
-			.locator('a.ontario-summary-list-item__change-button');
-		await actionLink.scrollIntoViewIfNeeded();
+		const item = page.locator('#ontario-summary-list-item-with-action');
+		await expect(item).toBeVisible();
+
+		const actionLink = item.locator('a.ontario-summary-list-item__change-button');
+		await expect(actionLink).toBeVisible();
 		await actionLink.focus();
 		await expect(actionLink).toBeFocused();
 	});
