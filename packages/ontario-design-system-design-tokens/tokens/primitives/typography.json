@@ -1,0 +1,49 @@
+{
+	"font": {
+		"family": {
+			"heading": { "value": "Raleway, 'Open Sans', Arial, sans-serif" },
+			"body": { "value": "'Open Sans', Arial, sans-serif" },
+			"mono": { "value": "'Courier Prime', 'Courier New', monospace" }
+		},
+		"weight": {
+			"thin": { "value": "300" },
+			"regular": { "value": "400" },
+			"semibold": { "value": "600" },
+			"bold": { "value": "700" }
+		},
+		"size": {
+			"400": { "value": "16px" },
+			"450": { "value": "18px" },
+			"475": { "value": "19px" },
+			"500": { "value": "20px" },
+			"550": { "value": "22px" },
+			"575": { "value": "23px" },
+			"600": { "value": "24px" },
+			"675": { "value": "27px" },
+			"700": { "value": "28px" },
+			"800": { "value": "32px" },
+			"825": { "value": "33px" },
+			"1000": { "value": "40px" }
+		}
+	},
+	"lineHeight": {
+		"400": { "value": "16px" },
+		"500": { "value": "20px" },
+		"600": { "value": "24px" },
+		"625": { "value": "25px" },
+		"650": { "value": "26px" },
+		"700": { "value": "28px" },
+		"725": { "value": "29px" },
+		"800": { "value": "32px" },
+		"900": { "value": "36px" },
+		"1000": { "value": "40px" },
+		"1100": { "value": "44px" },
+		"1200": { "value": "48px" }
+	},
+	"letterSpacing": {
+		"normal": { "value": "0px" },
+		"loose": { "value": "0.16px" },
+		"looser": { "value": "0.32px" },
+		"loosest": { "value": "0.64px" }
+	}
+}
