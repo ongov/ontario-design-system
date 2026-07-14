@@ -657,7 +657,14 @@ export class OntarioSearchBox {
 			return segment;
 		});
 
-		highlightTarget.replaceChildren(...highlightNodes);
+		// Clear existing children
+		while (highlightTarget.firstChild) {
+			highlightTarget.removeChild(highlightTarget.firstChild);
+		}
+		// Add new children
+		highlightNodes.forEach((node) => {
+			highlightTarget.appendChild(node);
+		});
 	}
 
 	private decorateSlotSuggestionOptions(assignedOptions = this.getSlotSuggestionElements()) {
