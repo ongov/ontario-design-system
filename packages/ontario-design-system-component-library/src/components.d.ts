@@ -30,7 +30,7 @@ import { PageAlertType } from "./components/ontario-page-alert/ontario-page-aler
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-import { TaskStatuses } from "./utils/common/task-statuses.enum";
+import { TaskStatus } from "./utils/common/task-statuses.enum";
 import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 import { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
 export { ExpandCollapseButtonDetails } from "./components/ontario-accordion/expandCollapseButtonDetails.interface";
@@ -58,7 +58,7 @@ export { PageAlertType } from "./components/ontario-page-alert/ontario-page-aler
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
-export { TaskStatuses } from "./utils/common/task-statuses.enum";
+export { TaskStatus } from "./utils/common/task-statuses.enum";
 export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 export { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
 export namespace Components {
@@ -3351,10 +3351,10 @@ export namespace Components {
          */
         "taskId": string;
         /**
-          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-          * @default TaskStatuses.NotStarted
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.
+          * @default TaskStatus.NotStarted
          */
-        "taskStatus": TaskStatuses;
+        "taskStatus": TaskStatus;
     }
     /**
      * Ontario Task List groups and summarizes related tasks.
@@ -8559,10 +8559,10 @@ declare namespace LocalJSX {
          */
         "taskId"?: string;
         /**
-          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-          * @default TaskStatuses.NotStarted
+          * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.
+          * @default TaskStatus.NotStarted
          */
-        "taskStatus"?: TaskStatuses;
+        "taskStatus"?: TaskStatus;
     }
     /**
      * Ontario Task List groups and summarizes related tasks.

@@ -544,7 +544,11 @@ export class OntarioSearchBox {
 			const shouldShow =
 				!hasQuery || this.computeFallbackHighlightParts(optionLabel, normalizedQuery).some((part) => part.isInputMatch);
 
-			option.toggleAttribute('hidden', !shouldShow);
+			if (shouldShow) {
+				option.removeAttribute('hidden');
+			} else {
+				option.setAttribute('hidden', '');
+			}
 			option.setAttribute('aria-hidden', String(!shouldShow));
 
 			if (!shouldShow) {
