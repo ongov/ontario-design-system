@@ -21772,7 +21772,7 @@ snapshots:
 
   import-from-esm@2.0.0:
     dependencies:
-      debug: 4.4.0
+      debug: 4.4.3
       import-meta-resolve: 4.1.0
     transitivePeerDependencies:
       - supports-color
@@ -24859,8 +24859,9 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
+    optional: true
 
-  sass@1.97.3:
+  sass@1.97.1:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.0.3
