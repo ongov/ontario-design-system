@@ -147,9 +147,8 @@ export class OntarioTask {
 		const isValidStatus = validStatuses.includes(newValue);
 
 		if (isValidStatus) {
-			this.taskStatusState = newValue;
+			this.taskStatusState = newValue as TaskStatus;
 		} else {
-			// If the status is invalid, log a warning and use the default
 			this.taskStatusState = this.warnAndGetDefaultTaskStatus();
 		}
 
