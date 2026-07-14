@@ -60,7 +60,11 @@ export default function OntarioPageAlertPage() {
 				</OntarioPageAlert>
 
 				<h3>Invalid type (should warn + fall back)</h3>
-				<OntarioPageAlert id="ontario-page-alert-invalid-type" type={'banana' as any} heading="Invalid type">
+				<OntarioPageAlert
+					id="ontario-page-alert-invalid-type"
+					type={'banana' as unknown as React.ComponentProps<typeof OntarioPageAlert>['type']}
+					heading="Invalid type"
+				>
 					<p>Invalid type value.</p>
 				</OntarioPageAlert>
 
