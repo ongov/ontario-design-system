@@ -133,11 +133,15 @@ describe('ontario-search-box', () => {
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
 		await page.waitForChanges();
 
-		const semanticOptions = (page.root as HTMLElement).querySelectorAll(
-			'ontario-search-result-item[slot="suggestions"]',
-		);
-		expect((semanticOptions[0] as HTMLElement).hasAttribute('hidden')).toBe(true);
-		expect((semanticOptions[1] as HTMLElement).hasAttribute('hidden')).toBe(false);
+		const torontoOption = (page.root as HTMLElement).querySelector(
+			'ontario-search-result-item[slot="suggestions"][value="Toronto"]',
+		) as HTMLElement;
+		const waterlooOption = (page.root as HTMLElement).querySelector(
+			'ontario-search-result-item[slot="suggestions"][value="Waterloo"]',
+		) as HTMLElement;
+
+		expect(torontoOption.hasAttribute('hidden')).toBe(true);
+		expect(waterlooOption.hasAttribute('hidden')).toBe(false);
 	});
 
 	it('should keep subsequence matching consistent for semantic slot filtering', async () => {
@@ -155,11 +159,15 @@ describe('ontario-search-box', () => {
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
 		await page.waitForChanges();
 
-		const semanticOptions = (page.root as HTMLElement).querySelectorAll(
-			'ontario-search-result-item[slot="suggestions"]',
-		);
-		expect((semanticOptions[0] as HTMLElement).hasAttribute('hidden')).toBe(false);
-		expect((semanticOptions[1] as HTMLElement).hasAttribute('hidden')).toBe(true);
+		const waterlooOption = (page.root as HTMLElement).querySelector(
+			'ontario-search-result-item[slot="suggestions"][value="Waterloo"]',
+		) as HTMLElement;
+		const torontoOption = (page.root as HTMLElement).querySelector(
+			'ontario-search-result-item[slot="suggestions"][value="Toronto"]',
+		) as HTMLElement;
+
+		expect(waterlooOption.hasAttribute('hidden')).toBe(false);
+		expect(torontoOption.hasAttribute('hidden')).toBe(true);
 	});
 
 	it('should close suggestion list on mouse option selection', async () => {
