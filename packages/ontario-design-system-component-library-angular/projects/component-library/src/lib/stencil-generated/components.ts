@@ -3593,7 +3593,7 @@ export class OntarioSearchBox {
   @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
   @Output() autocompleteQueryUpdated = new EventEmitter<CustomEvent<{ query: string }>>();
   @Output() autocompleteSuggestionsUpdated = new EventEmitter<CustomEvent<{ query: string; count: number }>>();
-  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<{ query: string; suggestion: IOntarioSearchBoxAutocompleteSuggestion; source: 'keyboard' | 'mouse'; }>>();
+  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<IOntarioSearchBoxAutocompleteSuggestionSelectedEvent>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -3604,7 +3604,7 @@ export class OntarioSearchBox {
 import type { InputInputEvent as IOntarioSearchBoxInputInputEvent } from '@ongov/ontario-design-system-component-library';
 import type { InputInteractionEvent as IOntarioSearchBoxInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioSearchBoxInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
-import type { AutocompleteSuggestion as IOntarioSearchBoxAutocompleteSuggestion } from '@ongov/ontario-design-system-component-library';
+import type { AutocompleteSuggestionSelectedEvent as IOntarioSearchBoxAutocompleteSuggestionSelectedEvent } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioSearchBox extends Components.OntarioSearchBox {
   /**
@@ -3644,7 +3644,7 @@ Below is an example on how to hook into the event to get the event details. @exa
   /**
    * Emitted when a suggestion is selected.
    */
-  autocompleteSuggestionSelected: EventEmitter<CustomEvent<{ query: string; suggestion: IOntarioSearchBoxAutocompleteSuggestion; source: 'keyboard' | 'mouse'; }>>;
+  autocompleteSuggestionSelected: EventEmitter<CustomEvent<IOntarioSearchBoxAutocompleteSuggestionSelectedEvent>>;
 }
 
 

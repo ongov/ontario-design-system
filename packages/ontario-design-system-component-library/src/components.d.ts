@@ -28,7 +28,7 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-import { AutocompleteSuggestion } from "./components/ontario-search-box/ontario-search-box";
+import { AutocompleteSuggestion, AutocompleteSuggestionSelectedEvent } from "./components/ontario-search-box/ontario-search-box";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -57,7 +57,7 @@ export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-export { AutocompleteSuggestion } from "./components/ontario-search-box/ontario-search-box";
+export { AutocompleteSuggestion, AutocompleteSuggestionSelectedEvent } from "./components/ontario-search-box/ontario-search-box";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -4742,11 +4742,7 @@ declare global {
         "inputOnFocus": InputFocusBlurEvent;
         "autocompleteQueryUpdated": { query: string };
         "autocompleteSuggestionsUpdated": { query: string; count: number };
-        "autocompleteSuggestionSelected": {
-		query: string;
-		suggestion: AutocompleteSuggestion;
-		source: 'keyboard' | 'mouse';
-	};
+        "autocompleteSuggestionSelected": AutocompleteSuggestionSelectedEvent;
     }
     /**
      * Ontario Search Box captures and submits search queries.
@@ -8242,11 +8238,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a suggestion is selected.
          */
-        "onAutocompleteSuggestionSelected"?: (event: OntarioSearchBoxCustomEvent<{
-		query: string;
-		suggestion: AutocompleteSuggestion;
-		source: 'keyboard' | 'mouse';
-	}>) => void;
+        "onAutocompleteSuggestionSelected"?: (event: OntarioSearchBoxCustomEvent<AutocompleteSuggestionSelectedEvent>) => void;
         /**
           * Emitted after suggestions are updated from either slot content or async mode.
          */
