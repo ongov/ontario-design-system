@@ -433,7 +433,8 @@ export class OntarioSearchBox {
 			try {
 				const results = await this.getSuggestions?.(expectedQuery);
 
-				if (expectedQuery !== (this.value ?? '')) {
+				const currentQuery = this.value ?? '';
+				if (expectedQuery !== currentQuery) {
 					return;
 				}
 
