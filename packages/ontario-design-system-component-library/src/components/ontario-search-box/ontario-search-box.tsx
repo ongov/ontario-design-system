@@ -18,6 +18,18 @@ import {
 
 import translations from '../../translations/global.i18n.json';
 
+/** Represents a suggestion item in autocomplete mode */
+interface AutocompleteSuggestion {
+	id?: string;
+	label: string;
+	value?: string;
+	description?: string;
+	href?: string;
+	disabled?: boolean;
+	boldRanges?: Array<{ start: number; end: number }>;
+	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+}
+
 /**
  * Ontario Search Box captures and submits search queries.
  *
@@ -77,28 +89,14 @@ export class OntarioSearchBox {
 	/**
 	 * Enables autocomplete behaviour on the search input.
 	 */
-	@Prop() autocomplete?: boolean = false;
+	@Prop() enableAutocomplete?: boolean = false;
 
 	/**
 	 * Async suggestion provider for autocomplete mode.
 	 * Slot content has precedence over this callback.
 	 */
 	@Prop()
-	getSuggestions?: (query: string) => Promise<
-		(
-			| string
-			| {
-					id?: string;
-					label: string;
-					value?: string;
-					description?: string;
-					href?: string;
-					disabled?: boolean;
-					boldRanges?: Array<{ start: number; end: number }>;
-					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-			  }
-		)[]
-	>;
+	getSuggestions?: (query: string) => Promise<(string | AutocompleteSuggestion)[]>;
 
 	/**
 	 * Minimum number of characters required before suggestions are shown.
@@ -106,7 +104,7 @@ export class OntarioSearchBox {
 	@Prop() minChars?: number = 1;
 
 	/**
-	 * Debounce delay before `getSuggestions` is called.
+	 * Debounce delay in milliseconds before `getSuggestions` is called.
 	 */
 	@Prop() debounceMs?: number = 150;
 
@@ -235,16 +233,7 @@ export class OntarioSearchBox {
 	 */
 	@Event() autocompleteSuggestionSelected!: EventEmitter<{
 		query: string;
-		suggestion: {
-			id?: string;
-			label: string;
-			value?: string;
-			description?: string;
-			href?: string;
-			disabled?: boolean;
-			boldRanges?: Array<{ start: number; end: number }>;
-			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-		};
+		suggestion: AutocompleteSuggestion;
 		source: 'keyboard' | 'mouse';
 	}>;
 
@@ -263,16 +252,7 @@ export class OntarioSearchBox {
 	 */
 	@State() hintTextId: string | null | undefined;
 	@State()
-	private suggestions: {
-		id?: string;
-		label: string;
-		value?: string;
-		description?: string;
-		href?: string;
-		disabled?: boolean;
-		boldRanges?: Array<{ start: number; end: number }>;
-		highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-	}[] = [];
+	private suggestions: AutocompleteSuggestion[] = [];
 	@State() private activeSuggestionIndex: number = -1;
 	@State() private hoveredSuggestionIndex: number = -1;
 	@State() private suggestionsOpen = false;
@@ -280,6 +260,11 @@ export class OntarioSearchBox {
 	@State() private ariaLiveMessage = '';
 
 	@State() translations: any = translations;
+
+	// Constants for default values
+	private static readonly DEFAULT_MIN_CHARS = 1;
+	private static readonly DEFAULT_DEBOUNCE_MS = 150;
+	private static readonly DEFAULT_MAX_SUGGESTIONS = 8;
 
 	/**
 	 * Watch for changes to the `hintText` prop.
