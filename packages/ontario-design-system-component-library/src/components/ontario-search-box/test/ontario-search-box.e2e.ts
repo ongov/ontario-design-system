@@ -3,7 +3,9 @@ import { test } from '@stencil/playwright';
 
 test.describe('ontario-search-box autocomplete', () => {
 	test('renders async suggestions and selects by mouse', async ({ page }) => {
-		await page.setContent(`<ontario-search-box autocomplete caption="Search Ontario cities"></ontario-search-box>`);
+		await page.setContent(
+			`<ontario-search-box enable-autocomplete caption="Search Ontario cities"></ontario-search-box>`,
+		);
 
 		await page.evaluate(() => {
 			const searchBox = document.querySelector('ontario-search-box') as HTMLOntarioSearchBoxElement;
@@ -29,7 +31,7 @@ test.describe('ontario-search-box autocomplete', () => {
 	});
 
 	test('uses slot suggestions when provided', async ({ page }) => {
-		await page.setContent(`<ontario-search-box autocomplete caption="Search cities">
+		await page.setContent(`<ontario-search-box enable-autocomplete caption="Search cities">
 			<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 			<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
 		</ontario-search-box>`);
@@ -42,8 +44,9 @@ test.describe('ontario-search-box autocomplete', () => {
 	});
 
 	test('supports keyboard navigation and Enter selection', async ({ page }) => {
-		await page.setContent(`<ontario-search-box autocomplete caption="Search Ontario cities"></ontario-search-box>`);
-
+		await page.setContent(
+			`<ontario-search-box enable-autocomplete caption="Search Ontario cities"></ontario-search-box>`,
+		);
 		await page.evaluate(() => {
 			const searchBox = document.querySelector('ontario-search-box') as HTMLOntarioSearchBoxElement;
 			searchBox.getSuggestions = async () => ['Toronto', 'Ottawa', 'London'];
