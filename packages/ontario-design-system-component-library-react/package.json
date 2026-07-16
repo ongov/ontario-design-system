@@ -27,8 +27,8 @@
 			"default": "./dist/components.js"
 		},
 		"./next": {
-			"types": "./dist/components.server.d.ts",
-			"import": "./dist/components.server.js"
+			"types": "./dist/components/components.server.d.ts",
+			"import": "./dist/components/components.server.js"
 		},
 		"./next/sass-pkg-importer": {
 			"types": "./dist/next/sass-pkg-importer.d.ts",
