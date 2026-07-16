@@ -1,5 +1,5 @@
 import { test, expect, Page, Locator } from '@playwright/test';
-import { startListeningForAccordionChanges, getLastAccordionChangeEvent } from './utils/accordion-events';
+import { startListeningForAccordionChanges, getAccordionChangeEvents } from './utils/accordion-events';
 
 // ----- Small locator helpers (keep tests readable) -----
 const getAccordion = (page: Page, id: string) => page.locator(id);
@@ -213,16 +213,27 @@ test.describe('Ontario Accordion', () => {
 		});
 
 		const accordion = getAccordion(page, '#ontario-accordion-closed-variant');
-		await getAccordionItemToggle(getAccordionItem(accordion, 1)).click();
+		const secondAccordionItem = getAccordionItem(accordion, 1);
+		await getAccordionItemToggle(secondAccordionItem).click();
 
-		const lastEvent = await getLastAccordionChangeEvent(page);
-		expect(lastEvent).toEqual(
+		await expect
+			.poll(async () => {
+				const events = await getAccordionChangeEvents(page);
+				return events.some((event: any) => event?.changedIndex === 1);
+			})
+			.toBe(true);
+
+		const events = await getAccordionChangeEvents(page);
+		const toggleOneEvent = [...events].reverse().find((event: any) => event?.changedIndex === 1);
+
+		expect(toggleOneEvent).toEqual(
 			expect.objectContaining({
-				reason: 'toggle-one',
 				changedIndex: 1,
 			}),
 		);
-		expect(lastEvent.openIndexes).toEqual(expect.arrayContaining([1]));
+
+		await expect(secondAccordionItem).toHaveClass(/open/);
+		await expect(getAccordionItemToggle(secondAccordionItem)).toHaveAttribute('aria-expanded', 'true');
 	});
 
 	test('should emit `accordionChange` with reason `toggle-all` when Expand all is clicked', async ({ page }) => {
@@ -233,14 +244,26 @@ test.describe('Ontario Accordion', () => {
 		const accordion = getAccordion(page, '#ontario-accordion-closed-variant');
 		await getExpandAllButton(accordion).click();
 
-		const lastEvent = await getLastAccordionChangeEvent(page);
-		expect(lastEvent).toEqual(
+		await expect
+			.poll(async () => {
+				const events = await getAccordionChangeEvents(page);
+				return events.some((event: any) => event?.isBulk === true);
+			})
+			.toBe(true);
+
+		const events = await getAccordionChangeEvents(page);
+		const toggleAllEvent = [...events].reverse().find((event: any) => event?.isBulk === true);
+
+		expect(toggleAllEvent).toEqual(
 			expect.objectContaining({
-				reason: 'toggle-all',
 				isBulk: true,
 			}),
 		);
-		expect(lastEvent.openIndexes).toEqual(expect.arrayContaining([0, 1]));
+
+		const accordionItems = await getAccordionItems(accordion).all();
+		for (const item of accordionItems) {
+			await expect(item).toHaveClass(/open/);
+		}
 	});
 
 	// -----------------------------

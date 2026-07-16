@@ -19,6 +19,8 @@ export async function startListeningForAccordionChanges(
 		within: string; // selector scoping where to find the accordion
 	},
 ) {
+	await page.locator(options.within).first().waitFor({ state: 'attached' });
+
 	await page.evaluate(({ within }) => {
 		// Reset captured events for this test run
 		(window as any).accordionChangeEvents = [];
@@ -34,7 +36,11 @@ export async function startListeningForAccordionChanges(
 		if (!accordion) return;
 
 		accordion.addEventListener('accordionChange', (event: Event) => {
-			(window as any).accordionChangeEvents.push((event as CustomEvent).detail);
+			const detail = (event as CustomEvent).detail as any;
+			(window as any).accordionChangeEvents.push({
+				...detail,
+				openIndexes: Array.isArray(detail?.openIndexes) ? [...detail.openIndexes] : [],
+			});
 		});
 	}, options);
 }
