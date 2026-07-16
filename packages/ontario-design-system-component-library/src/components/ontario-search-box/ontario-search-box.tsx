@@ -33,6 +33,13 @@ export interface AutocompleteSuggestion {
 /** Represents highlight segments for text matching */
 type HighlightPart = { text: string; isInputMatch: boolean };
 
+/** Payload emitted when a suggestion is selected */
+export interface AutocompleteSuggestionSelectedEvent {
+	query: string;
+	suggestion: AutocompleteSuggestion;
+	source: 'keyboard' | 'mouse';
+}
+
 /**
  * Ontario Search Box captures and submits search queries.
  *
@@ -234,11 +241,7 @@ export class OntarioSearchBox {
 	/**
 	 * Emitted when a suggestion is selected.
 	 */
-	@Event() autocompleteSuggestionSelected!: EventEmitter<{
-		query: string;
-		suggestion: AutocompleteSuggestion;
-		source: 'keyboard' | 'mouse';
-	}>;
+	@Event() autocompleteSuggestionSelected!: EventEmitter<AutocompleteSuggestionSelectedEvent>;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.

@@ -146,7 +146,7 @@ Example of a task with a hint.
 
 The Ontario Task component supports server-side rendering, with a few considerations:
 
-- **Task status validation:** Always pass a valid `taskStatus`. Invalid values default to `'notStarted'` at runtime.
+- **Task status validation:** Always pass a valid `taskStatus`. Invalid values default to `'NotStarted'` at runtime.
 - **Language prop:** Pass `language` explicitly during SSR.
 - **Hydrated-only language events:** Language change events only fire after hydration.
 
@@ -156,7 +156,7 @@ The Ontario Task component supports server-side rendering, with a few considerat
 <ontario-task
 	label="Confirm email"
 	task-id="confirm-email"
-	task-status="inProgress"
+	task-status="InProgress"
 	heading-level="h3"
 	language="fr"
 	hint-text="Be sure to use your work email"
@@ -185,7 +185,7 @@ For component guidance, see:
 | `language`       | `language`        | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English. | `"en" \| "fr" \| undefined`                                                                | `undefined`             |
 | `link`           | `link`            | Specifies an optional link associated with the task. If provided, clicking the task will navigate to this URL.                                                                                                      | `string \| undefined`                                                                      | `undefined`             |
 | `taskId`         | `task-id`         | A unique id for the task. This is required.                                                                                                                                                                         | `string`                                                                                   | `undefined`             |
-| `taskStatus`     | `task-status`     | Defines the status of the task. Falls back to the default status if not provided, or if an unrecognized value is passed.                                                                                            | `"cannotStartYet" \| "completed" \| "error" \| "inProgress" \| "notStarted" \| "optional"` | `TaskStatus.NotStarted` |
+| `taskStatus`     | `task-status`     | Defines the status of the task, with default set to 'NotStarted'. Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.                                                             | `"cannotStartYet" \| "completed" \| "error" \| "inProgress" \| "notStarted" \| "optional"` | `TaskStatus.NotStarted` |
 
 ## Dependencies
 
