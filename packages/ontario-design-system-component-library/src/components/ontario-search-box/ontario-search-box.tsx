@@ -305,9 +305,9 @@ export class OntarioSearchBox {
 		this.updateCaptionState(this.caption);
 	}
 
-	@Watch('autocomplete')
-	handleAutocompleteToggled() {
-		if (!this.autocomplete) {
+	@Watch('enableAutocomplete')
+	handleAutocompleteToggled(): void {
+		if (!this.enableAutocomplete) {
 			this.closeSuggestions();
 			this.suggestions = [];
 		}
@@ -360,7 +360,7 @@ export class OntarioSearchBox {
 			this.handleAutocompleteInput(this.value ?? '');
 		}
 
-		if (eventType === EventType.Blur && this.autocomplete) {
+		if (eventType === EventType.Blur && this.enableAutocomplete) {
 			window.setTimeout(() => this.closeSuggestions(), 120);
 		}
 
@@ -384,7 +384,7 @@ export class OntarioSearchBox {
 	private async handleAutocompleteInput(query: string) {
 		this.autocompleteQueryUpdated.emit({ query });
 
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		if (query.length < (this.minChars ?? 1)) {
 			this.updateSlotSuggestionVisibility('');
@@ -685,7 +685,7 @@ export class OntarioSearchBox {
 		const slotElement = event.target as HTMLSlotElement;
 		this.updateSuggestionSlotState(slotElement);
 
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		if (this.hasSuggestionSlotContent && (this.value?.length ?? 0) >= (this.minChars ?? 1)) {
 			this.openSuggestions();
@@ -862,7 +862,7 @@ export class OntarioSearchBox {
 	}
 
 	private handleSuggestionMouseOver = (event: MouseEvent) => {
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		const hoveredIndex = this.getSuggestionIndexFromEvent(event);
 		if (hoveredIndex < 0 || hoveredIndex === this.hoveredSuggestionIndex) return;
@@ -893,7 +893,7 @@ export class OntarioSearchBox {
 	}
 
 	private openSuggestions() {
-		if (!this.autocomplete || this.getSuggestionCount() === 0) {
+		if (!this.enableAutocomplete || this.getSuggestionCount() === 0) {
 			this.suggestionsOpen = false;
 			return;
 		}
@@ -979,7 +979,7 @@ export class OntarioSearchBox {
 	}
 
 	private handleSuggestionClick = (event: MouseEvent) => {
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		const selectedIndex = this.getSuggestionIndexFromEvent(event);
 		if (selectedIndex < 0) return;
@@ -989,7 +989,7 @@ export class OntarioSearchBox {
 	};
 
 	private handleSuggestionMouseDown = (event: MouseEvent) => {
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		const selectedIndex = this.getSuggestionIndexFromEvent(event);
 		if (selectedIndex < 0) return;
@@ -999,7 +999,7 @@ export class OntarioSearchBox {
 	};
 
 	private handleInputKeyDown = (event: KeyboardEvent) => {
-		if (!this.autocomplete) return;
+		if (!this.enableAutocomplete) return;
 
 		const suggestionCount = this.getSuggestionCount();
 
@@ -1074,7 +1074,7 @@ export class OntarioSearchBox {
 
 	render() {
 		const searchInputFieldId = this.inputRefId;
-		const shouldShowSuggestions = this.autocomplete && this.suggestionsOpen && this.getSuggestionCount() > 0;
+		const shouldShowSuggestions = this.enableAutocomplete && this.suggestionsOpen && this.getSuggestionCount() > 0;
 		const suggestionListClass = [
 			'ontario-search-autocomplete__suggestion-list',
 			shouldShowSuggestions && 'ontario-search-autocomplete__suggestion-list--open',
@@ -1106,12 +1106,12 @@ export class OntarioSearchBox {
 							name="search"
 							id={searchInputFieldId}
 							autoComplete="off"
-							ariaAutocomplete={this.autocomplete ? 'list' : 'none'}
-							ariaControls={this.autocomplete ? this.getSuggestionListId() : undefined}
-							ariaExpanded={this.autocomplete ? shouldShowSuggestions : undefined}
-							ariaHaspopup={this.autocomplete ? 'listbox' : undefined}
-							ariaActivedescendant={this.autocomplete ? this.getActiveDescendantId() : undefined}
-							role={this.autocomplete ? 'combobox' : undefined}
+							ariaAutocomplete={this.enableAutocomplete ? 'list' : 'none'}
+							ariaControls={this.enableAutocomplete ? this.getSuggestionListId() : undefined}
+							ariaExpanded={this.enableAutocomplete ? shouldShowSuggestions : undefined}
+							ariaHaspopup={this.enableAutocomplete ? 'listbox' : undefined}
+							ariaActivedescendant={this.enableAutocomplete ? this.getActiveDescendantId() : undefined}
+							role={this.enableAutocomplete ? 'combobox' : undefined}
 							className="ontario-search__input ontario-input"
 							required={true}
 							ref={(el) => (this.inputFieldRef = el)}
