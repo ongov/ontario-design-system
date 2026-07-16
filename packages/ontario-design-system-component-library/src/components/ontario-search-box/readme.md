@@ -127,8 +127,25 @@ The following example registers a simple function on `window` `load` that adds a
 
 ### Async suggestions with `getSuggestions(query)`
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
-<ontario-search-box id="search-with-autocomplete" caption="Search Ontario cities" autocomplete></ontario-search-box>
+<ontario-search-box
+	id="search-with-autocomplete"
+	caption="Search Ontario cities"
+	enableAutocomplete
+></ontario-search-box>
 
 <script>
 	window.addEventListener('load', () => {
@@ -142,10 +159,72 @@ The following example registers a simple function on `window` `load` that adds a
 </script>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+import { useState } from 'react';
+import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
+
+export default function AutocompleteExample() {
+	const cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+
+	const handleGetSuggestions = async (query) => {
+		return cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+	};
+
+	return (
+		<OntarioSearchBox
+			id="search-with-autocomplete"
+			caption="Search Ontario cities"
+			enableAutocomplete
+			getSuggestions={handleGetSuggestions}
+		/>
+	);
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+	selector: 'app-search-autocomplete',
+	template: `
+		<ontario-search-box
+			id="search-with-autocomplete"
+			[caption]="'Search Ontario cities'"
+			[enableAutocomplete]="true"
+		></ontario-search-box>
+	`,
+})
+export class SearchAutocompleteComponent {
+	cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+
+	ngAfterViewInit() {
+		const searchBox = document.getElementById('search-with-autocomplete');
+		searchBox.getSuggestions = async (query) => {
+			return this.cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+		};
+	}
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Slotted semantic and custom HTML suggestions
 
 ```html
-<ontario-search-box id="search-with-slot" caption="Search Ontario cities" autocomplete>
+<ontario-search-box id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
 	<div slot="suggestions" data-value="Waterloo" role="option">
@@ -155,9 +234,28 @@ The following example registers a simple function on `window` `load` that adds a
 </ontario-search-box>
 ```
 
+### Grouping suggestions with static headers
+
+For search results with multiple categories, you can add non-interactive header elements to group suggestions:
+
+```html
+<ontario-search-box id="search-grouped" caption="Search Ontario" enableAutocomplete>
+	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Cities</div>
+	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
+
+	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Regions</div>
+	<ontario-search-result-item slot="suggestions" label="Durham Region" value="durham"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="York Region" value="york"></ontario-search-result-item>
+</ontario-search-box>
+```
+
+### Important notes about autocomplete
+
 Slot content takes precedence over `getSuggestions(query)` when both are supplied.
-For custom HTML suggestions, plain text-only options are highlighted automatically.
-If your custom option contains extra markup, wrap the text that should receive autocomplete bolding in an element with `data-ontario-search-highlight`.
+
+For custom HTML suggestions, plain text-only options are highlighted automatically. If your custom option contains extra markup, wrap the text that should receive highlighting in an element with `data-ontario-search-highlight`.
+
 In slot mode, both semantic (`ontario-search-result-item`) and custom HTML options are filtered by the current query, and non-matching options are hidden.
 
 ## Custom property types
