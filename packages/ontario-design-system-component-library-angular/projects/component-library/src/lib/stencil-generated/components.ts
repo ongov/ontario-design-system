@@ -3593,7 +3593,7 @@ export class OntarioSearchBox {
   @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
   @Output() autocompleteQueryUpdated = new EventEmitter<CustomEvent<{ query: string }>>();
   @Output() autocompleteSuggestionsUpdated = new EventEmitter<CustomEvent<{ query: string; count: number }>>();
-  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<{ query: string; suggestion: [object Object]; source: 'keyboard' | 'mouse'; }>>();
+  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<{ query: string; suggestion: IOntarioSearchBoxAutocompleteSuggestion; source: 'keyboard' | 'mouse'; }>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -3644,7 +3644,7 @@ Below is an example on how to hook into the event to get the event details. @exa
   /**
    * Emitted when a suggestion is selected.
    */
-  autocompleteSuggestionSelected: EventEmitter<CustomEvent<{ query: string; suggestion: [object Object]; source: 'keyboard' | 'mouse'; }>>;
+  autocompleteSuggestionSelected: EventEmitter<CustomEvent<{ query: string; suggestion: IOntarioSearchBoxAutocompleteSuggestion; source: 'keyboard' | 'mouse'; }>>;
 }
 
 
