@@ -19,7 +19,7 @@ import {
 import translations from '../../translations/global.i18n.json';
 
 /** Represents a suggestion item in autocomplete mode */
-interface AutocompleteSuggestion {
+export interface AutocompleteSuggestion {
 	id?: string;
 	label: string;
 	value?: string;
@@ -29,6 +29,9 @@ interface AutocompleteSuggestion {
 	boldRanges?: Array<{ start: number; end: number }>;
 	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
 }
+
+/** Represents highlight segments for text matching */
+type HighlightPart = { text: string; isInputMatch: boolean };
 
 /**
  * Ontario Search Box captures and submits search queries.
@@ -265,6 +268,7 @@ export class OntarioSearchBox {
 	private static readonly DEFAULT_MIN_CHARS = 1;
 	private static readonly DEFAULT_DEBOUNCE_MS = 150;
 	private static readonly DEFAULT_MAX_SUGGESTIONS = 8;
+	private static readonly RESULT_ITEM_TAG = 'ONTARIO-SEARCH-RESULT-ITEM';
 
 	/**
 	 * Watch for changes to the `hintText` prop.
@@ -385,18 +389,18 @@ export class OntarioSearchBox {
 
 		if (!this.enableAutocomplete) return;
 
-		if (query.length < (this.minChars ?? 1)) {
+		if (query.length < (this.minChars ?? OntarioSearchBox.DEFAULT_MIN_CHARS)) {
 			this.updateSlotSuggestionVisibility('');
+			this.closeSuggestions();
 			this.suggestions = [];
 			this.emitSuggestionsUpdated();
-			this.closeSuggestions();
 			return;
 		}
 
 		if (this.hasSuggestionSlotContent) {
 			this.updateSlotSuggestionVisibility(query);
-			this.activeSuggestionIndex = -1;
-			this.hoveredSuggestionIndex = -1;
+			this.resetActiveSuggestionIndex();
+			this.resetHoveredSuggestionIndex();
 			this.decorateSlotSuggestionOptions();
 
 			if (this.getSuggestionCount() > 0) {
@@ -410,9 +414,9 @@ export class OntarioSearchBox {
 		}
 
 		if (!this.getSuggestions) {
+			this.closeSuggestions();
 			this.suggestions = [];
 			this.emitSuggestionsUpdated();
-			this.closeSuggestions();
 			return;
 		}
 
@@ -430,11 +434,11 @@ export class OntarioSearchBox {
 					return;
 				}
 
-				const maxSuggestions = this.maxSuggestions ?? 8;
+				const maxSuggestions = this.maxSuggestions ?? OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS;
 				this.suggestions = (results || [])
 					.map((item, index) => this.normalizeSuggestion(item, index))
 					.slice(0, maxSuggestions);
-				this.activeSuggestionIndex = -1;
+				this.resetActiveSuggestionIndex();
 				this.emitSuggestionsUpdated();
 
 				if (this.suggestions.length) {
@@ -443,28 +447,17 @@ export class OntarioSearchBox {
 					this.closeSuggestions();
 				}
 			} catch {
+				this.closeSuggestions();
 				this.suggestions = [];
 				this.emitSuggestionsUpdated();
-				this.closeSuggestions();
 			}
-		}, this.debounceMs ?? 150);
+		}, this.debounceMs ?? OntarioSearchBox.DEFAULT_DEBOUNCE_MS);
 	}
 
-	private normalizeSuggestion(
-		item:
-			| string
-			| {
-					id?: string;
-					label: string;
-					value?: string;
-					description?: string;
-					href?: string;
-					disabled?: boolean;
-					boldRanges?: Array<{ start: number; end: number }>;
-					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-			  },
-		index: number,
-	) {
+	/**
+	 * Normalises a raw suggestion item into a consistent AutocompleteSuggestion shape.
+	 */
+	private normalizeSuggestion(item: string | AutocompleteSuggestion, index: number): AutocompleteSuggestion {
 		if (typeof item === 'string') {
 			return {
 				id: `${this.getSuggestionListId()}-option-${index}`,
@@ -524,7 +517,7 @@ export class OntarioSearchBox {
 	}
 
 	private getSlotOptionLabel(option: HTMLElement): string {
-		if (option.tagName === 'ONTARIO-SEARCH-RESULT-ITEM') {
+		if (option.tagName === OntarioSearchBox.RESULT_ITEM_TAG) {
 			return (option as any).label || (option as any).value || this.getSuggestionValueFromOption(option);
 		}
 
@@ -564,7 +557,7 @@ export class OntarioSearchBox {
 		}
 	}
 
-	private computeFallbackHighlightParts(label: string, query: string): Array<{ text: string; isInputMatch: boolean }> {
+	private computeFallbackHighlightParts(label: string, query: string): HighlightPart[] {
 		const normalizedQuery = (query || '').trim();
 
 		if (!normalizedQuery) {
@@ -597,7 +590,7 @@ export class OntarioSearchBox {
 			return [{ text: label, isInputMatch: false }];
 		}
 
-		const segments: Array<{ text: string; isInputMatch: boolean }> = [];
+		const segments: HighlightPart[] = [];
 		let activeSegment = '';
 		let activeSegmentFromInput: boolean | null = null;
 
@@ -698,7 +691,10 @@ export class OntarioSearchBox {
 
 		if (!this.enableAutocomplete) return;
 
-		if (this.hasSuggestionSlotContent && (this.value?.length ?? 0) >= (this.minChars ?? 1)) {
+		if (
+			this.hasSuggestionSlotContent &&
+			(this.value?.length ?? 0) >= (this.minChars ?? OntarioSearchBox.DEFAULT_MIN_CHARS)
+		) {
 			this.openSuggestions();
 			this.emitSuggestionsUpdated();
 		} else {

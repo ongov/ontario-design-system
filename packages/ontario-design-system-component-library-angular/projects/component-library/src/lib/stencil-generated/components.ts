@@ -3650,14 +3650,14 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value']
 })
 @Component({
   selector: 'ontario-search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', { name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value'],
+  inputs: [{ name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value'],
   outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'autocompleteQueryUpdated', 'autocompleteSuggestionsUpdated', 'autocompleteSuggestionSelected'],
   standalone: false
 })
@@ -3670,7 +3670,7 @@ export class OntarioSearchBox {
   @Output() inputOnFocus = new EventEmitter<CustomEvent<IOntarioSearchBoxInputFocusBlurEvent>>();
   @Output() autocompleteQueryUpdated = new EventEmitter<CustomEvent<{ query: string }>>();
   @Output() autocompleteSuggestionsUpdated = new EventEmitter<CustomEvent<{ query: string; count: number }>>();
-  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<{ query: string; suggestion: { id?: string; label: string; value?: string; description?: string; href?: string; disabled?: boolean; boldRanges?: Array<{ start: number; end: number }>; highlightParts?: Array<{ text: string; isInputMatch: boolean }>; }; source: 'keyboard' | 'mouse'; }>>();
+  @Output() autocompleteSuggestionSelected = new EventEmitter<CustomEvent<{ query: string; suggestion: [object Object]; source: 'keyboard' | 'mouse'; }>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -3681,6 +3681,7 @@ export class OntarioSearchBox {
 import type { InputInputEvent as IOntarioSearchBoxInputInputEvent } from '@ongov/ontario-design-system-component-library';
 import type { InputInteractionEvent as IOntarioSearchBoxInputInteractionEvent } from '@ongov/ontario-design-system-component-library';
 import type { InputFocusBlurEvent as IOntarioSearchBoxInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
+import type { AutocompleteSuggestion as IOntarioSearchBoxAutocompleteSuggestion } from '@ongov/ontario-design-system-component-library';
 
 export declare interface OntarioSearchBox extends Components.OntarioSearchBox {
   /**
@@ -3720,7 +3721,7 @@ Below is an example on how to hook into the event to get the event details. @exa
   /**
    * Emitted when a suggestion is selected.
    */
-  autocompleteSuggestionSelected: EventEmitter<CustomEvent<{ query: string; suggestion: { id?: string; label: string; value?: string; description?: string; href?: string; disabled?: boolean; boldRanges?: Array<{ start: number; end: number }>; highlightParts?: Array<{ text: string; isInputMatch: boolean }>; }; source: 'keyboard' | 'mouse'; }>>;
+  autocompleteSuggestionSelected: EventEmitter<CustomEvent<{ query: string; suggestion: [object Object]; source: 'keyboard' | 'mouse'; }>>;
 }
 
 
