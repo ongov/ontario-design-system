@@ -308,8 +308,7 @@ export class OntarioSearchBox {
 	@Watch('enableAutocomplete')
 	handleAutocompleteToggled(): void {
 		if (!this.enableAutocomplete) {
-			this.closeSuggestions();
-			this.suggestions = [];
+			this.resetSuggestions();
 		}
 	}
 
@@ -486,21 +485,33 @@ export class OntarioSearchBox {
 		};
 	}
 
+	/**
+	 * Gets the unique ID for the suggestion list.
+	 */
 	private getSuggestionListId(): string {
 		const idPrefix = this.getId() || this.inputRefId;
 		return `${idPrefix}-suggestion-list`;
 	}
 
+	/**
+	 * Gets the unique ID for the aria-live region.
+	 */
 	private getAriaLiveRegionId(): string {
 		const idPrefix = this.getId() || this.inputRefId;
 		return `${idPrefix}-aria-live-region`;
 	}
 
+	/**
+	 * Gets all slotted suggestion elements.
+	 */
 	private getAllSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
 		const assignedElements = slot?.assignedElements({ flatten: true }) || [];
 		return assignedElements as HTMLElement[];
 	}
 
+	/**
+	 * Gets visible (non-hidden) slotted suggestion elements.
+	 */
 	private getSlotSuggestionElements(slot = this.suggestionSlotRef): HTMLElement[] {
 		return this.getAllSlotSuggestionElements(slot).filter((el) => !el.hasAttribute('hidden'));
 	}
@@ -696,10 +707,16 @@ export class OntarioSearchBox {
 		}
 	};
 
+	/**
+	 * Gets the suggestion count from async or slotted suggestions.
+	 */
 	private getSuggestionCount(): number {
 		return this.hasSuggestionSlotContent ? this.getSlotSuggestionElements().length : this.suggestions.length;
 	}
 
+	/**
+	 * Checks if suggestion at index is disabled.
+	 */
 	private isSuggestionDisabled(index: number): boolean {
 		if (this.hasSuggestionSlotContent) {
 			const option = this.getSlotSuggestionElements()[index];
@@ -885,14 +902,14 @@ export class OntarioSearchBox {
 		);
 	}
 
-	private emitSuggestionsUpdated() {
+	private emitSuggestionsUpdated(): void {
 		this.autocompleteSuggestionsUpdated.emit({
 			query: this.value ?? '',
 			count: this.getSuggestionCount(),
 		});
 	}
 
-	private openSuggestions() {
+	private openSuggestions(): void {
 		if (!this.enableAutocomplete || this.getSuggestionCount() === 0) {
 			this.suggestionsOpen = false;
 			return;
@@ -901,16 +918,38 @@ export class OntarioSearchBox {
 		this.suggestionsOpen = true;
 	}
 
-	private closeSuggestions() {
+	private closeSuggestions(): void {
 		this.suggestionsOpen = false;
-		this.activeSuggestionIndex = -1;
-		this.hoveredSuggestionIndex = -1;
+		this.resetActiveSuggestionIndex();
+		this.resetHoveredSuggestionIndex();
 		if (this.hasSuggestionSlotContent) {
 			this.decorateSlotSuggestionOptions();
 		}
 	}
 
-	private selectSuggestionByIndex(index: number, source: 'keyboard' | 'mouse') {
+	/**
+	 * Reset the active suggestion index to -1.
+	 */
+	private resetActiveSuggestionIndex(): void {
+		this.activeSuggestionIndex = -1;
+	}
+
+	/**
+	 * Reset the hovered suggestion index to -1.
+	 */
+	private resetHoveredSuggestionIndex(): void {
+		this.hoveredSuggestionIndex = -1;
+	}
+
+	/**
+	 * Reset and close suggestions list.
+	 */
+	private resetSuggestions(): void {
+		this.closeSuggestions();
+		this.suggestions = [];
+	}
+
+	private selectSuggestionByIndex(index: number, source: 'keyboard' | 'mouse'): void {
 		if (index < 0 || this.isSuggestionDisabled(index)) {
 			return;
 		}
