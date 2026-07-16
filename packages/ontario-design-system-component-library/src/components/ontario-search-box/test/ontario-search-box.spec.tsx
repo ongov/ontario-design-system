@@ -14,7 +14,7 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should render async suggestions in autocomplete mode', async () => {
-		const page = await render(`<ontario-search-box autocomplete caption="Search cities"></ontario-search-box>`);
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -39,7 +39,7 @@ describe('ontario-search-box', () => {
 
 	it('should prioritize slotted suggestions over getSuggestions', async () => {
 		const page = await render(
-			`<ontario-search-box autocomplete caption="Search cities">
+			`<ontario-search-box enable-autocomplete caption="Search cities">
 				<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
 			</ontario-search-box>`,
 		);
@@ -61,7 +61,7 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should close suggestion list on mouse option click selection', async () => {
-		const page = await render(`<ontario-search-box autocomplete caption="Search cities"></ontario-search-box>`);
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -89,7 +89,7 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should keep suggestions available after keyboard navigation keys', async () => {
-		const page = await render(`<ontario-search-box autocomplete caption="Search cities"></ontario-search-box>`);
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -116,7 +116,7 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should emit autocomplete lifecycle events', async () => {
-		const page = await render(`<ontario-search-box autocomplete caption="Search cities"></ontario-search-box>`);
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -146,7 +146,7 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should keep search submit behaviour unchanged with autocomplete enabled', async () => {
-		const page = await render(`<ontario-search-box autocomplete caption="Search cities"></ontario-search-box>`);
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 
 		const submitSpy = vi.fn();
 		document.addEventListener('searchOnSubmit', submitSpy);

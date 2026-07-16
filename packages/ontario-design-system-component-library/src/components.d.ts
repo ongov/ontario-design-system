@@ -28,6 +28,7 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
+import { AutocompleteSuggestion } from "./components/ontario-search-box/ontario-search-box";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -56,6 +57,7 @@ export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
+export { AutocompleteSuggestion } from "./components/ontario-search-box/ontario-search-box";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -3041,11 +3043,6 @@ export namespace Components {
      */
     interface OntarioSearchBox {
         /**
-          * Enables autocomplete behaviour on the search input.
-          * @default false
-         */
-        "autocomplete"?: boolean;
-        /**
           * The text to display as the input label
           * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
          */
@@ -3067,7 +3064,7 @@ export namespace Components {
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**
-          * Debounce delay before `getSuggestions` is called.
+          * Debounce delay in milliseconds before `getSuggestions` is called.
           * @default 150
          */
         "debounceMs"?: number;
@@ -3076,23 +3073,14 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * Enables autocomplete behaviour on the search input.
+          * @default false
+         */
+        "enableAutocomplete"?: boolean;
+        /**
           * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
-        "getSuggestions"?: (query: string) => Promise<
-		(
-			| string
-			| {
-					id?: string;
-					label: string;
-					value?: string;
-					description?: string;
-					href?: string;
-					disabled?: boolean;
-					boldRanges?: Array<{ start: number; end: number }>;
-					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-			  }
-		)[]
-	>;
+        "getSuggestions"?: (query: string) => Promise<(string | AutocompleteSuggestion)[]>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -4756,16 +4744,7 @@ declare global {
         "autocompleteSuggestionsUpdated": { query: string; count: number };
         "autocompleteSuggestionSelected": {
 		query: string;
-		suggestion: {
-			id?: string;
-			label: string;
-			value?: string;
-			description?: string;
-			href?: string;
-			disabled?: boolean;
-			boldRanges?: Array<{ start: number; end: number }>;
-			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-		};
+		suggestion: AutocompleteSuggestion;
 		source: 'keyboard' | 'mouse';
 	};
     }
@@ -8199,11 +8178,6 @@ declare namespace LocalJSX {
      */
     interface OntarioSearchBox {
         /**
-          * Enables autocomplete behaviour on the search input.
-          * @default false
-         */
-        "autocomplete"?: boolean;
-        /**
           * The text to display as the input label
           * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
          */
@@ -8225,7 +8199,7 @@ declare namespace LocalJSX {
          */
         "customOnInput"?: (event: globalThis.Event) => void;
         /**
-          * Debounce delay before `getSuggestions` is called.
+          * Debounce delay in milliseconds before `getSuggestions` is called.
           * @default 150
          */
         "debounceMs"?: number;
@@ -8234,23 +8208,14 @@ declare namespace LocalJSX {
          */
         "elementId"?: string;
         /**
+          * Enables autocomplete behaviour on the search input.
+          * @default false
+         */
+        "enableAutocomplete"?: boolean;
+        /**
           * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
-        "getSuggestions"?: (query: string) => Promise<
-		(
-			| string
-			| {
-					id?: string;
-					label: string;
-					value?: string;
-					description?: string;
-					href?: string;
-					disabled?: boolean;
-					boldRanges?: Array<{ start: number; end: number }>;
-					highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-			  }
-		)[]
-	>;
+        "getSuggestions"?: (query: string) => Promise<(string | AutocompleteSuggestion)[]>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -8279,16 +8244,7 @@ declare namespace LocalJSX {
          */
         "onAutocompleteSuggestionSelected"?: (event: OntarioSearchBoxCustomEvent<{
 		query: string;
-		suggestion: {
-			id?: string;
-			label: string;
-			value?: string;
-			description?: string;
-			href?: string;
-			disabled?: boolean;
-			boldRanges?: Array<{ start: number; end: number }>;
-			highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-		};
+		suggestion: AutocompleteSuggestion;
 		source: 'keyboard' | 'mouse';
 	}>) => void;
         /**

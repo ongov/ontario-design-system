@@ -256,7 +256,7 @@ Slot content takes precedence over `getSuggestions(query)` when both are supplie
 
 For custom HTML suggestions, plain text-only options are highlighted automatically. If your custom option contains extra markup, wrap the text that should receive highlighting in an element with `data-ontario-search-highlight`.
 
-In slot mode, both semantic (`ontario-search-result-item`) and custom HTML options are filtered by the current query, and non-matching options are hidden.
+Both semantic (`ontario-search-result-item`) and custom HTML options are filtered by the current query in slot mode, and non-matching options are hidden.
 
 ## Custom property types
 
