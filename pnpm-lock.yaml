@@ -133,8 +133,8 @@ importers:
         specifier: ^18.0.0
         version: 18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       '@ngx-translate/http-loader':
-        specifier: ^17.0.0
-        version: 17.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))
+        specifier: ^18.0.0
+        version: 18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))
       '@ongov/ontario-design-system-component-library-angular':
         specifier: workspace:*
         version: link:../ontario-design-system-component-library-angular
@@ -3496,11 +3496,12 @@ packages:
       '@angular/core': '>=18'
       rxjs: '>=7'
 
-  '@ngx-translate/http-loader@17.0.0':
-    resolution: {integrity: sha512-hgS8sa0ARjH9ll3PhkLTufeVXNI2DNR2uFKDhBgq13siUXzzVr/a31M6zgecrtwbA34iaBV01hsTMbMS8V7iIw==}
+  '@ngx-translate/http-loader@18.0.0':
+    resolution: {integrity: sha512-p6QpNcU3rkCYjHbKVIadcYtml/Njpr0aLp8neJ4uJWQ4Xm9f09bIePhOjdjAFHupTptKqKrG1J2gSi3RSwgYeA==}
     peerDependencies:
-      '@angular/common': '>=16'
-      '@angular/core': '>=16'
+      '@angular/common': '>=18'
+      '@angular/core': '>=18'
+      '@ngx-translate/core': '>=18.0.0'
 
   '@noble/hashes@1.4.0':
     resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
@@ -14751,10 +14752,11 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@ngx-translate/http-loader@17.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))':
+  '@ngx-translate/http-loader@18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))':
     dependencies:
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2)
+      '@ngx-translate/core': 18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       tslib: 2.8.1
 
   '@noble/hashes@1.4.0': {}
