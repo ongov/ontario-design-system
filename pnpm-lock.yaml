@@ -393,8 +393,8 @@ importers:
         specifier: ^4.33.1
         version: 4.36.2
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.7
+        specifier: ^17.0.0
+        version: 17.4.2
       uuid:
         specifier: ^14.0.0
         version: 14.0.0
