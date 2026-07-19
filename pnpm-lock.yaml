@@ -151,8 +151,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       ngx-translate-routes:
-        specifier: ^1.4.1
-        version: 1.4.1
+        specifier: ^2.0.0
+        version: 2.3.3(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1
@@ -8795,8 +8795,13 @@ packages:
       tailwindcss:
         optional: true
 
-  ngx-translate-routes@1.4.1:
-    resolution: {integrity: sha512-o5vqfLs9YaA6+5if3F+SSyvtyGdfgF5aNVklZbpqjLiVoz7uI8TfiIbvGJSESJeYqBpaRnUw92xwK34bRHpbXw==}
+  ngx-translate-routes@2.3.3:
+    resolution: {integrity: sha512-DJ3/c8NOFEHOcxbRwGuOqFS7QGpvfXRr90XKA4e0QPrzX7SQThLMQLa7AM8pdr1ZxKz7ouNnbaG5w5AqMlwQGQ==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0'
+      '@angular/core': '>=16.0.0'
+      '@ngx-translate/core': '>=14.0.0'
+      rxjs: '>=7.0.0'
 
   nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
@@ -20732,8 +20737,12 @@ snapshots:
       rollup: 4.60.2
       tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@24.12.2)(typescript@6.0.3))
 
-  ngx-translate-routes@1.4.1:
+  ngx-translate-routes@2.3.3(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1):
     dependencies:
+      '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
+      '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2)
+      '@ngx-translate/core': 18.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
+      rxjs: 7.8.1
       tslib: 2.8.1
 
   nice-try@1.0.5: {}
