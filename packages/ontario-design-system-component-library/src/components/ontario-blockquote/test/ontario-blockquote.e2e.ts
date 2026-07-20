@@ -1,84 +1,105 @@
-// import { newE2EPage } from '@stencil/core/testing';
+import { expect, Locator } from '@playwright/test';
+import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
-// describe('ontario-blockquote', () => {
-// 	it('renders', async () => {
-// 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-blockquote></ontario-blockquote>');
-// 		const component = await page.find('ontario-blockquote');
-// 		const element = await page.find('ontario-blockquote >>> blockquote');
+test.describe('ontario-blockquote', () => {
+	let host: Locator;
 
-// 		expect(component).toHaveClass('hydrated');
-// 		expect(element).toHaveClass('ontario-blockquote');
-// 	});
+	test.beforeEach(async ({ page }) => {
+		await page.setContent(`
+			<ontario-blockquote quote="This is the quote"></ontario-blockquote>
+		`);
 
-// 	describe('render changes', () => {
-// 		let page: any;
-// 		let component: any;
-// 		let element: any;
+		await page.waitForChanges();
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 			await page.setContent('<ontario-blockquote></ontario-blockquote>');
-// 			component = await page.find('ontario-blockquote');
-// 			element = await page.find('ontario-blockquote >>> blockquote');
-// 		});
+		host = page.locator('ontario-blockquote');
+	});
 
-// 		it('renders changes to the quote property', async () => {
-// 			component.setProperty('quote', 'This is the quote');
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClasses(['ontario-blockquote', 'ontario-blockquote--short']);
-// 			expect(element.textContent).toContain('This is the quote');
+	test('renders and is hydrated', async () => {
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass('hydrated');
+	});
 
-// 			// set a longer quote and test that the short class does not exist
-// 			component.setProperty(
-// 				'quote',
-// 				'When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one that has opened for us.',
-// 			);
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClass('ontario-blockquote');
-// 			expect(element).not.toHaveClass('ontario-blockquote--short');
-// 		});
+	test('renders the quote text content', async () => {
+		const blockquote = host.locator('blockquote');
+		await expect(blockquote).toContainText('This is the quote');
+	});
 
-// 		it('renders changes to the attribution property', async () => {
-// 			component.setProperty('attribution', 'Homer Simpson');
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClass('ontario-blockquote');
-// 			expect(element.textContent).toContain('Homer Simpson');
-// 		});
+	test('applies the short quote class when the quote is 140 characters or less', async () => {
+		const blockquote = host.locator('blockquote');
+		await expect(blockquote).toHaveClass('ontario-blockquote ontario-blockquote--short');
+	});
 
-// 		it('renders changes to the byline property', async () => {
-// 			component.setProperty('byline', 'Ontario Digital Service');
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClass('ontario-blockquote');
-// 			expect(element.textContent).toContain('Ontario Digital Service');
-// 		});
-// 	});
+	test('does not apply the short quote class when the quote exceeds 140 characters', async ({ page }) => {
+		const longQuote =
+			'When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one that has opened for us.';
 
-// 	describe('render CSS classes', () => {
-// 		let page: any;
-// 		let component: any;
-// 		let element: any;
+		await host.evaluate((el: Element, value: string) => el.setAttribute('quote', value), longQuote);
+		await page.waitForChanges();
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 			await page.setContent('<ontario-blockquote></ontario-blockquote>');
-// 			component = await page.find('ontario-blockquote');
-// 			element = await page.find('ontario-blockquote >>> blockquote');
-// 		});
+		const blockquote = host.locator('blockquote');
+		await expect(blockquote).toHaveClass('ontario-blockquote');
+	});
 
-// 		it('should render only the `ontario-blockquote` class when the count of the quote prop is over 140 characters', async () => {
-// 			component.setProperty(
-// 				'quote',
-// 				'I saw this movie about a bus that had to speed around a city, keeping its speed over fifty, and if its speed dropped, it would explode! I think it was called, "The Bus That Couldn’t Slow Down".',
-// 			);
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClasses(['ontario-blockquote']);
-// 		});
+	test('renders no attribution or byline when not provided', async () => {
+		const attribution = host.locator('cite.ontario-blockquote__attribution');
+		const byline = host.locator('cite.ontario-blockquote__byline');
 
-// 		it('should render both the `ontario-blockquote` and `ontario-blockquote--short` classes when the count of the quote prop is under 140 characters', async () => {
-// 			component.setProperty('quote', 'This is an example of a short quote');
-// 			await page.waitForChanges();
-// 			expect(element).toHaveClasses(['ontario-blockquote', 'ontario-blockquote--short']);
-// 		});
-// 	});
-// });
+		await expect(attribution).toHaveCount(0);
+		await expect(byline).toHaveCount(0);
+	});
+
+	test('renders the attribution when provided', async ({ page }) => {
+		await host.evaluate((el: Element) => el.setAttribute('attribution', 'Homer Simpson'));
+		await page.waitForChanges();
+
+		const attribution = host.locator('cite.ontario-blockquote__attribution');
+		await expect(attribution).toContainText('Homer Simpson');
+	});
+
+	test('renders the byline when provided', async ({ page }) => {
+		await host.evaluate((el: Element) => el.setAttribute('byline', 'Ontario Digital Service'));
+		await page.waitForChanges();
+
+		const byline = host.locator('cite.ontario-blockquote__byline');
+		await expect(byline).toContainText('Ontario Digital Service');
+	});
+
+	test('renders both attribution and byline when both are provided', async ({ page }) => {
+		await host.evaluate((el: Element) => {
+			el.setAttribute('attribution', 'Homer Simpson');
+			el.setAttribute('byline', 'Ontario Digital Service');
+		});
+		await page.waitForChanges();
+
+		const attribution = host.locator('cite.ontario-blockquote__attribution');
+		const byline = host.locator('cite.ontario-blockquote__byline');
+
+		await expect(attribution).toContainText('Homer Simpson');
+		await expect(byline).toContainText('Ontario Digital Service');
+	});
+});
+
+test.describe('ontario-blockquote - slotted content fallback', () => {
+	test('falls back to host textContent when quote prop is not provided', async ({ page }) => {
+		await page.setContent(`<ontario-blockquote>Quote from slotted content</ontario-blockquote>`);
+		await page.waitForChanges();
+
+		const blockquoteHost = page.locator('ontario-blockquote');
+		const blockquote = blockquoteHost.locator('blockquote');
+
+		await expect(blockquote).toContainText('Quote from slotted content');
+	});
+});
+
+test.describe('ontario-blockquote - accessibility', () => {
+	test('has no axe violations', async ({ page }) => {
+		await page.setContent(`
+			<ontario-blockquote quote="This is the quote" attribution="Homer Simpson" byline="Ontario Digital Service"></ontario-blockquote>
+		`);
+		await page.waitForChanges();
+
+		const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-blockquote').analyze();
+		expect(accessibilityScanResults.violations).toHaveLength(0);
+	});
+});
