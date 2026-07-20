@@ -30,6 +30,9 @@ export default function Home() {
 							<Link href="/components/ontario-badge">ontario-badge</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-blockquote">ontario-blockquote</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-button">ontario-button</Link>
 						</li>
 						<li>
