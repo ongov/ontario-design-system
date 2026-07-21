@@ -144,9 +144,9 @@ export class OntarioInPageNavigation {
 			message
 				.addDesignSystemTag()
 				.addMonospaceText(' <ontario-in-page-navigation> ')
-				.addRegularText('requires child')
-				.addMonospaceText(' <ontario-in-page-navigation-item> ')
-				.addRegularText('elements in the default slot to render links.')
+				.addRegularText('requires list item links in the default slot (for example')
+				.addMonospaceText(' <li><a href="#section-id">Section</a></li> ')
+				.addRegularText(') to render navigation links.')
 				.printMessage();
 		}
 	}
