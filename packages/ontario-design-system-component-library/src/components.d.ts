@@ -28,7 +28,8 @@ import { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 import { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 import { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 import { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-import { AutocompleteSuggestion, AutocompleteSuggestionSelectedEvent } from "./components/ontario-search-box/ontario-search-box";
+import { AutocompleteSuggestionSelectedEvent, Suggestion } from "./components/ontario-search-box/ontario-search-box";
+import { Segment } from "./utils/components/search-box-autocomplete";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -57,7 +58,8 @@ export { IconColour, IconSize } from "./components/ontario-icon/icon.types";
 export { HeaderLanguageToggleEventDetails } from "./utils/events/common-events.interface";
 export { PageAlertType } from "./components/ontario-page-alert/ontario-page-alert.interface";
 export { RadioOption } from "./components/ontario-radio-buttons/radio-option.interface";
-export { AutocompleteSuggestion, AutocompleteSuggestionSelectedEvent } from "./components/ontario-search-box/ontario-search-box";
+export { AutocompleteSuggestionSelectedEvent, Suggestion } from "./components/ontario-search-box/ontario-search-box";
+export { Segment } from "./utils/components/search-box-autocomplete";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
@@ -3080,7 +3082,7 @@ export namespace Components {
         /**
           * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
-        "getSuggestions"?: (query: string) => Promise<(string | AutocompleteSuggestion)[]>;
+        "getSuggestions"?: (query: string) => Promise<Suggestion[]>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -3127,7 +3129,7 @@ export namespace Components {
          */
         "active"?: boolean;
         /**
-          * Optional bold ranges over the label string for completion emphasis. Used when highlightParts is not provided.
+          * Optional bold ranges over the label string for completion emphasis. Deprecated in favour of `segments`.
          */
         "boldRanges"?: Array<{ start: number; end: number }>;
         /**
@@ -3140,7 +3142,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Optional highlight parts used to style input-matched text and completion text. When provided, this takes precedence over default label rendering.
+          * Optional highlight parts used to style input-matched text and completion text. Deprecated in favour of `segments`.
          */
         "highlightParts"?: Array<{ text: string; isInputMatch: boolean }>;
         /**
@@ -3156,6 +3158,10 @@ export namespace Components {
           * @default 'en'
          */
         "language"?: Language;
+        /**
+          * Ordered label segments used to render matched input text and completion text.
+         */
+        "segments"?: Segment[];
         /**
           * Marks the option as selected (parent-managed).
           * @default false
@@ -8211,7 +8217,7 @@ declare namespace LocalJSX {
         /**
           * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
-        "getSuggestions"?: (query: string) => Promise<(string | AutocompleteSuggestion)[]>;
+        "getSuggestions"?: (query: string) => Promise<Suggestion[]>;
         /**
           * Used to include the ontario-hint-text component for the search-box. This is optional.
          */
@@ -8291,7 +8297,7 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
-          * Optional bold ranges over the label string for completion emphasis. Used when highlightParts is not provided.
+          * Optional bold ranges over the label string for completion emphasis. Deprecated in favour of `segments`.
          */
         "boldRanges"?: Array<{ start: number; end: number }>;
         /**
@@ -8304,7 +8310,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional highlight parts used to style input-matched text and completion text. When provided, this takes precedence over default label rendering.
+          * Optional highlight parts used to style input-matched text and completion text. Deprecated in favour of `segments`.
          */
         "highlightParts"?: Array<{ text: string; isInputMatch: boolean }>;
         /**
@@ -8324,6 +8330,10 @@ declare namespace LocalJSX {
           * Emitted when a non-disabled option is selected via click.
          */
         "onItemSelected"?: (event: OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>) => void;
+        /**
+          * Ordered label segments used to render matched input text and completion text.
+         */
+        "segments"?: Segment[];
         /**
           * Marks the option as selected (parent-managed).
           * @default false

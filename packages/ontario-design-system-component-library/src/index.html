@@ -1671,10 +1671,11 @@
 										return {
 											label: city,
 											value: city,
-											boldRanges: [
-												{ start: 0, end: queryIndex },
-												{ start: queryIndex + normalizedQuery.length, end: city.length },
-											].filter((range) => range.end > range.start),
+											segments: [
+												{ text: city.slice(0, queryIndex), kind: 'completion' },
+												{ text: city.slice(queryIndex, queryIndex + normalizedQuery.length), kind: 'match' },
+												{ text: city.slice(queryIndex + normalizedQuery.length), kind: 'completion' },
+											].filter((segment) => segment.text.length > 0),
 										};
 									});
 							};
