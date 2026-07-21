@@ -26,6 +26,7 @@ describe('ontario-search-box', () => {
 		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
 			'#ontario-search-input-field',
 		) as HTMLInputElement;
+		input.focus();
 		input.value = 'to';
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
 		await new Promise((resolve) => setTimeout(resolve, 0));
@@ -85,10 +86,13 @@ describe('ontario-search-box', () => {
 
 	it('should support ArrowUp and Escape keyboard behaviours', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
+		const hostRef = (page.root as any).__stencil__getHostRef?.();
+		const hostInstance = hostRef?.$lazyInstance$ as unknown as {
+			handleInputKeyDown?: (event: KeyboardEvent) => void;
+		};
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
-			handleInputKeyDown?: (event: KeyboardEvent) => void;
 		};
 
 		host.getSuggestions = vi.fn(async () => ['Toronto', 'Ottawa']);
@@ -102,10 +106,10 @@ describe('ontario-search-box', () => {
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
 		await page.waitForChanges();
 
-		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
 		await page.waitForChanges();
 
 		const listBeforeEscape = (page.root as HTMLElement).shadowRoot?.querySelector(
@@ -113,7 +117,7 @@ describe('ontario-search-box', () => {
 		);
 		expect(listBeforeEscape?.getAttribute('aria-hidden')).toBe('false');
 
-		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'Escape' }));
+		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'Escape' }));
 		await page.waitForChanges();
 
 		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
