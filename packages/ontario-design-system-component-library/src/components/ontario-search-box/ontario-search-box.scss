@@ -151,7 +151,7 @@ input[type='reset'].ontario-search__reset {
 	clip-path: inset(0 globalFunctions.px-to-rem(-8) globalFunctions.px-to-rem(-8) globalFunctions.px-to-rem(-8));
 	display: none;
 	list-style: none;
-	margin: globalFunctions.px-to-rem(-2) 0 0 0;
+	margin: globalFunctions.px-to-rem(-2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
 	padding: 0;
 	overflow: hidden;
 	position: absolute;
@@ -223,7 +223,7 @@ input[type='reset'].ontario-search__reset {
 	display: block;
 	list-style: none;
 	padding: spacing.$spacing-2 spacing.$spacing-4;
-	margin: 0;
+	margin: spacing.$spacing-0;
 	line-height: lineheight.$ontario-line-height-8;
 	background-color: colours.$ontario-colour-white;
 	cursor: pointer;
@@ -231,6 +231,7 @@ input[type='reset'].ontario-search__reset {
 	font-weight: fontWeights.$ontario-font-weights-bold;
 }
 
+// Required to keep hidden slotted options out of the rendered list regardless of consumer-provided slot styles.
 ::slotted([slot='suggestions'][hidden]),
 ::slotted(.ontario-search-autocomplete__slot-option[hidden]) {
 	display: none !important;
@@ -254,7 +255,8 @@ input[type='reset'].ontario-search__reset {
 	position: absolute;
 	width: globalFunctions.px-to-rem(1);
 	height: globalFunctions.px-to-rem(1);
-	margin: -1px;
+	// Offset the element by 1px while keeping it available to assistive technologies.
+	margin: globalFunctions.px-to-rem(-1);
 	padding: 0;
 	border: 0;
 	clip: rect(0, 0, 0, 0);
