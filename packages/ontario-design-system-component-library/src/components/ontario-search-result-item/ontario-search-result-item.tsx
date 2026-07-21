@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { Language } from '../../utils/common/language-types';
+import { Segment } from '../../utils/components/search-box-autocomplete';
 
 /**
  * Ontario Search Result Item renders a semantic option row for search suggestions.
@@ -38,14 +39,19 @@ export class OntarioSearchResultItem {
 	@Prop() href?: string;
 
 	/**
+	 * Ordered label segments used to render matched input text and completion text.
+	 */
+	@Prop() segments?: Segment[];
+
+	/**
 	 * Optional highlight parts used to style input-matched text and completion text.
-	 * When provided, this takes precedence over default label rendering.
+	 * Deprecated in favour of `segments`.
 	 */
 	@Prop() highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
 
 	/**
 	 * Optional bold ranges over the label string for completion emphasis.
-	 * Used when highlightParts is not provided.
+	 * Deprecated in favour of `segments`.
 	 */
 	@Prop() boldRanges?: Array<{ start: number; end: number }>;
 
@@ -130,9 +136,16 @@ export class OntarioSearchResultItem {
 			.join(' ');
 	}
 
-	private getResolvedHighlightParts(label: string): Array<{ text: string; isInputMatch: boolean }> {
+	private getResolvedSegments(label: string): Segment[] {
+		if (this.segments?.length) {
+			return this.segments;
+		}
+
 		if (this.highlightParts?.length) {
-			return this.highlightParts;
+			return this.highlightParts.map((part) => ({
+				text: part.text,
+				kind: part.isInputMatch ? 'match' : 'completion',
+			}));
 		}
 
 		if (this.boldRanges?.length) {
@@ -145,7 +158,7 @@ export class OntarioSearchResultItem {
 				.sort((a, b) => a.start - b.start);
 
 			if (!ranges.length) {
-				return [{ text: label, isInputMatch: false }];
+				return [{ text: label, kind: 'match' }];
 			}
 
 			const mergedRanges: Array<{ start: number; end: number }> = [];
@@ -158,36 +171,40 @@ export class OntarioSearchResultItem {
 				}
 			}
 
-			const segments: Array<{ text: string; isInputMatch: boolean }> = [];
+			const segments: Segment[] = [];
 			let cursor = 0;
 			for (const range of mergedRanges) {
 				if (cursor < range.start) {
-					segments.push({ text: label.slice(cursor, range.start), isInputMatch: true });
+					segments.push({ text: label.slice(cursor, range.start), kind: 'match' });
 				}
-				segments.push({ text: label.slice(range.start, range.end), isInputMatch: false });
+				segments.push({ text: label.slice(range.start, range.end), kind: 'completion' });
 				cursor = range.end;
 			}
 			if (cursor < label.length) {
-				segments.push({ text: label.slice(cursor), isInputMatch: true });
+				segments.push({ text: label.slice(cursor), kind: 'match' });
 			}
 
 			return segments;
 		}
 
-		return [{ text: label, isInputMatch: false }];
+		return [{ text: label, kind: 'completion' }];
 	}
 
 	private renderHighlightedLabel(label: string) {
-		const parts = this.getResolvedHighlightParts(label);
+		const segments = this.getResolvedSegments(label);
 
 		return (
 			<span class="ontario-search-result-item__label">
-				{parts.map((part, index) => (
+				{segments.map((segment, index) => (
 					<span
-						class={part.isInputMatch ? 'ontario-search-result-item__match' : 'ontario-search-result-item__completion'}
+						class={
+							segment.kind === 'completion'
+								? 'ontario-search-result-item__completion'
+								: 'ontario-search-result-item__match'
+						}
 						key={`part-${index}`}
 					>
-						{part.text}
+						{segment.text}
 					</span>
 				))}
 			</span>

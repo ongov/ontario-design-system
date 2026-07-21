@@ -23,6 +23,23 @@ describe('ontario-search-result-item', () => {
 		expect(description?.textContent).toContain('City in Ontario');
 	});
 
+	it('should render provided segments before legacy highlight fallbacks', async () => {
+		const page = await render(`<ontario-search-result-item label="Toronto"></ontario-search-result-item>`);
+		const host = page.root as HTMLOntarioSearchResultItemElement & {
+			segments?: Array<{ text: string; kind: 'match' | 'completion' }>;
+		};
+
+		host.segments = [
+			{ text: 'Tor', kind: 'match' },
+			{ text: 'onto', kind: 'completion' },
+		];
+		await page.waitForChanges();
+
+		const parts = (page.root as HTMLElement).shadowRoot?.querySelectorAll('.ontario-search-result-item__label span');
+		expect(parts?.[0]?.textContent).toBe('Tor');
+		expect(parts?.[1]?.className).toBe('ontario-search-result-item__completion');
+	});
+
 	it('should give slot content precedence over label and description', async () => {
 		const page = await render(
 			`<ontario-search-result-item label="Toronto" description="City in Ontario">
