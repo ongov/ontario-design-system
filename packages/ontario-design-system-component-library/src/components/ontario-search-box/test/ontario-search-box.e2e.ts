@@ -15,16 +15,13 @@ test.describe('ontario-search-box autocomplete', () => {
 
 		const input = page.locator('ontario-search-box').locator('input[type="search"]');
 		await input.fill('to');
-		await page.waitForTimeout(20);
 
 		const list = page.locator('ontario-search-box').locator('.ontario-search-autocomplete__suggestion-list');
 		await expect(list).toHaveAttribute('aria-hidden', 'false');
+		await expect(page.locator('ontario-search-box').locator('ontario-search-result-item')).toHaveCount(3);
 
-		const firstOption = page
-			.locator('ontario-search-box')
-			.locator('.ontario-search-autocomplete__suggestion-option')
-			.first();
-		await firstOption.click();
+		const firstOption = page.locator('ontario-search-box').locator('ontario-search-result-item').first();
+		await firstOption.dispatchEvent('mousedown');
 
 		await expect(input).toHaveValue('Toronto');
 		await expect(list).toHaveAttribute('aria-hidden', 'true');
@@ -39,8 +36,10 @@ test.describe('ontario-search-box autocomplete', () => {
 		const input = page.locator('ontario-search-box').locator('input[type="search"]');
 		await input.fill('a');
 
-		const option = page.locator('ontario-search-box > ontario-search-result-item').first();
-		await expect(option).toHaveAttribute('slot', 'suggestions');
+		const list = page.locator('ontario-search-box').locator('.ontario-search-autocomplete__suggestion-list');
+		await expect(list).toHaveAttribute('aria-hidden', 'false');
+
+		await expect(page.locator('ontario-search-box > ontario-search-result-item')).toHaveCount(2);
 	});
 
 	test('supports keyboard navigation and Enter selection', async ({ page }) => {
@@ -55,7 +54,7 @@ test.describe('ontario-search-box autocomplete', () => {
 
 		const input = page.locator('ontario-search-box').locator('input[type="search"]');
 		await input.fill('o');
-		await page.waitForTimeout(20);
+		await expect(page.locator('ontario-search-box').locator('ontario-search-result-item')).toHaveCount(3);
 
 		await input.press('ArrowDown');
 		await input.press('Enter');

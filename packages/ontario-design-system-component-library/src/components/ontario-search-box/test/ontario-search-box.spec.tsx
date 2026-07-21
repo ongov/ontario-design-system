@@ -32,9 +32,7 @@ describe('ontario-search-box', () => {
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		const options = (page.root as HTMLElement).shadowRoot?.querySelectorAll(
-			'.ontario-search-autocomplete__suggestion-option',
-		);
+		const options = (page.root as HTMLElement).shadowRoot?.querySelectorAll('ontario-search-result-item');
 		expect(options?.length).toBe(2);
 	});
 
@@ -67,34 +65,6 @@ describe('ontario-search-box', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('should close suggestion list on mouse option click selection', async () => {
-		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
-		const host = page.root as unknown as {
-			getSuggestions?: (query: string) => Promise<string[]>;
-			debounceMs?: number;
-		};
-
-		host.getSuggestions = vi.fn(async () => ['Toronto', 'Ottawa']);
-		host.debounceMs = 0;
-
-		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
-			'#ontario-search-input-field',
-		) as HTMLInputElement;
-		input.value = 'to';
-		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
-		await new Promise((resolve) => setTimeout(resolve, 0));
-		await page.waitForChanges();
-
-		const option = (page.root as HTMLElement).shadowRoot?.querySelector(
-			'.ontario-search-autocomplete__suggestion-option',
-		) as HTMLElement;
-		option.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-		await page.waitForChanges();
-
-		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
-		expect(list?.getAttribute('aria-hidden')).toBe('true');
-	});
-
 	it('should keep suggestions available after keyboard navigation keys', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
@@ -116,10 +86,98 @@ describe('ontario-search-box', () => {
 		input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, composed: true }));
 		await page.waitForChanges();
 
-		const options = (page.root as HTMLElement).shadowRoot?.querySelectorAll(
-			'.ontario-search-autocomplete__suggestion-option',
-		);
+		const options = (page.root as HTMLElement).shadowRoot?.querySelectorAll('ontario-search-result-item');
 		expect(options?.length).toBeGreaterThan(0);
+	});
+
+	it('should support ArrowUp and Escape keyboard behaviours', async () => {
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
+		const host = page.root as unknown as {
+			getSuggestions?: (query: string) => Promise<string[]>;
+			debounceMs?: number;
+			handleInputKeyDown?: (event: KeyboardEvent) => void;
+		};
+
+		host.getSuggestions = vi.fn(async () => ['Toronto', 'Ottawa']);
+		host.debounceMs = 0;
+
+		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'#ontario-search-input-field',
+		) as HTMLInputElement;
+		input.value = 'to';
+		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		await new Promise((resolve) => setTimeout(resolve, 0));
+		await page.waitForChanges();
+
+		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+		await page.waitForChanges();
+
+		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+		await page.waitForChanges();
+
+		const listBeforeEscape = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'.ontario-search-autocomplete__suggestion-list',
+		);
+		expect(listBeforeEscape?.getAttribute('aria-hidden')).toBe('false');
+
+		host.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'Escape' }));
+		await page.waitForChanges();
+
+		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
+		expect(list?.getAttribute('aria-hidden')).toBe('true');
+	});
+
+	it('should render contiguous matches before fuzzy matches when computing segments', async () => {
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
+		const host = page.root as unknown as {
+			getSuggestions?: (query: string) => Promise<string[]>;
+			debounceMs?: number;
+		};
+
+		host.getSuggestions = vi.fn(async () => ['Toronto']);
+		host.debounceMs = 0;
+
+		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'#ontario-search-input-field',
+		) as HTMLInputElement;
+		input.value = 'ron';
+		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		await new Promise((resolve) => setTimeout(resolve, 0));
+		await page.waitForChanges();
+
+		const option = (page.root as HTMLElement).shadowRoot?.querySelector('ontario-search-result-item') as HTMLElement;
+		const labelSegments = option.shadowRoot?.querySelectorAll('.ontario-search-result-item__label span');
+
+		expect(labelSegments?.[0]?.textContent).toBe('To');
+		expect(labelSegments?.[1]?.textContent).toBe('ron');
+		expect(labelSegments?.[2]?.textContent).toBe('to');
+		expect(labelSegments?.[1]?.className).toBe('ontario-search-result-item__match');
+	});
+
+	it('should render the full label bold when a slotted query is cleared', async () => {
+		const page = await render(
+			`<ontario-search-box enable-autocomplete caption="Search cities">
+				<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
+			</ontario-search-box>`,
+		);
+
+		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'#ontario-search-input-field',
+		) as HTMLInputElement;
+
+		input.value = 'to';
+		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+
+		input.value = '';
+		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+
+		const option = (page.root as HTMLElement).querySelector('ontario-search-result-item') as HTMLElement;
+		const labelSegments = option.shadowRoot?.querySelectorAll('.ontario-search-result-item__label span');
+
+		expect(labelSegments?.length).toBe(1);
+		expect(labelSegments?.[0]?.className).toBe('ontario-search-result-item__completion');
 	});
 
 	it('should emit autocomplete lifecycle events', async () => {
