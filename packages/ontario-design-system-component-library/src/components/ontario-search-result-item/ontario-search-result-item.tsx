@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 
 import { Language } from '../../utils/common/language-types';
-import { Segment } from '../../utils/components/search-box-autocomplete';
+import { resolveSuggestionSegments, Segment } from '../../utils/components/search-box-autocomplete';
 
 /**
  * Ontario Search Result Item renders a semantic option row for search suggestions.
@@ -162,57 +162,11 @@ export class OntarioSearchResultItem {
 	}
 
 	private getResolvedSegments(label: string): Segment[] {
-		if (this.segments?.length) {
-			return this.segments;
-		}
-
-		if (this.highlightParts?.length) {
-			return this.highlightParts.map((part) => ({
-				text: part.text,
-				kind: part.isInputMatch ? 'match' : 'completion',
-			}));
-		}
-
-		if (this.boldRanges?.length) {
-			const ranges = this.boldRanges
-				.map((range) => ({
-					start: Math.max(0, Math.min(range.start, label.length)),
-					end: Math.max(0, Math.min(range.end, label.length)),
-				}))
-				.filter((range) => range.end > range.start)
-				.sort((a, b) => a.start - b.start);
-
-			if (!ranges.length) {
-				return [{ text: label, kind: 'match' }];
-			}
-
-			const mergedRanges: Array<{ start: number; end: number }> = [];
-			for (const range of ranges) {
-				const lastRange = mergedRanges[mergedRanges.length - 1];
-				if (!lastRange || range.start > lastRange.end) {
-					mergedRanges.push({ ...range });
-				} else {
-					lastRange.end = Math.max(lastRange.end, range.end);
-				}
-			}
-
-			const segments: Segment[] = [];
-			let cursor = 0;
-			for (const range of mergedRanges) {
-				if (cursor < range.start) {
-					segments.push({ text: label.slice(cursor, range.start), kind: 'match' });
-				}
-				segments.push({ text: label.slice(range.start, range.end), kind: 'completion' });
-				cursor = range.end;
-			}
-			if (cursor < label.length) {
-				segments.push({ text: label.slice(cursor), kind: 'match' });
-			}
-
-			return segments;
-		}
-
-		return [{ text: label, kind: 'completion' }];
+		return resolveSuggestionSegments(label, '', {
+			segments: this.segments,
+			highlightParts: this.highlightParts,
+			boldRanges: this.boldRanges,
+		});
 	}
 
 	private renderHighlightedLabel(label: string) {

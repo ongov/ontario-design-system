@@ -3,6 +3,12 @@ export interface Segment {
 	kind: 'match' | 'completion';
 }
 
+export interface SegmentResolutionInput {
+	segments?: Segment[];
+	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
+	boldRanges?: Array<{ start: number; end: number }>;
+}
+
 function buildSegments(label: string, matchedIndices: Set<number>): Segment[] {
 	const labelChars = Array.from(label);
 	const segments: Segment[] = [];
@@ -67,4 +73,64 @@ export function computeHighlightSegments(label: string, query: string): Segment[
 	}
 
 	return buildSegments(normalizedLabel, matchedIndices);
+}
+
+/**
+ * Resolves suggestion label segments using a single fallback order:
+ * `segments` -> `highlightParts` -> `boldRanges` -> computed/default fallback.
+ */
+export function resolveSuggestionSegments(label: string, query: string, input?: SegmentResolutionInput): Segment[] {
+	if (input?.segments?.length) {
+		return input.segments;
+	}
+
+	if (input?.highlightParts?.length) {
+		return input.highlightParts.map((part) => ({
+			text: part.text,
+			kind: part.isInputMatch ? 'match' : 'completion',
+		}));
+	}
+
+	if (input?.boldRanges?.length) {
+		const ranges = input.boldRanges
+			.map((range) => ({
+				start: Math.max(0, Math.min(range.start, label.length)),
+				end: Math.max(0, Math.min(range.end, label.length)),
+			}))
+			.filter((range) => range.end > range.start)
+			.sort((a, b) => a.start - b.start);
+
+		if (ranges.length) {
+			const mergedRanges: Array<{ start: number; end: number }> = [];
+			for (const range of ranges) {
+				const lastRange = mergedRanges[mergedRanges.length - 1];
+				if (!lastRange || range.start > lastRange.end) {
+					mergedRanges.push({ ...range });
+				} else {
+					lastRange.end = Math.max(lastRange.end, range.end);
+				}
+			}
+
+			const segments: Segment[] = [];
+			let cursor = 0;
+			for (const range of mergedRanges) {
+				if (cursor < range.start) {
+					segments.push({ text: label.slice(cursor, range.start), kind: 'match' });
+				}
+				segments.push({ text: label.slice(range.start, range.end), kind: 'completion' });
+				cursor = range.end;
+			}
+			if (cursor < label.length) {
+				segments.push({ text: label.slice(cursor), kind: 'match' });
+			}
+
+			return segments;
+		}
+	}
+
+	if (!(query || '').trim()) {
+		return [{ text: label, kind: 'completion' }];
+	}
+
+	return computeHighlightSegments(label, query) ?? [{ text: label, kind: 'completion' }];
 }
