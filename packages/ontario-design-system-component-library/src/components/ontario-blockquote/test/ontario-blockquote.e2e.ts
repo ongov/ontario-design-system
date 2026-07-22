@@ -2,12 +2,19 @@ import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
 
+const quoteText = 'This is the quote';
+const longQuoteText =
+	'When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one that has opened for us.';
+const attributionText = 'Homer Simpson';
+const bylineText = 'Ontario Digital Service';
+const slottedQuoteText = 'Quote from slotted content';
+
 test.describe('ontario-blockquote', () => {
 	let host: Locator;
 
 	test.beforeEach(async ({ page }) => {
 		await page.setContent(`
-			<ontario-blockquote quote="This is the quote"></ontario-blockquote>
+			<ontario-blockquote quote="${quoteText}"></ontario-blockquote>
 		`);
 
 		await page.waitForChanges();
@@ -22,7 +29,7 @@ test.describe('ontario-blockquote', () => {
 
 	test('renders the quote text content', async () => {
 		const blockquote = host.locator('blockquote');
-		await expect(blockquote).toContainText('This is the quote');
+		await expect(blockquote).toContainText(quoteText);
 	});
 
 	test('applies the short quote class when the quote is 140 characters or less', async () => {
@@ -31,10 +38,7 @@ test.describe('ontario-blockquote', () => {
 	});
 
 	test('does not apply the short quote class when the quote exceeds 140 characters', async ({ page }) => {
-		const longQuote =
-			'When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one that has opened for us.';
-
-		await host.evaluate((el: Element, value: string) => el.setAttribute('quote', value), longQuote);
+		await host.evaluate((el: Element, value: string) => el.setAttribute('quote', value), longQuoteText);
 		await page.waitForChanges();
 
 		const blockquote = host.locator('blockquote');
@@ -50,52 +54,55 @@ test.describe('ontario-blockquote', () => {
 	});
 
 	test('renders the attribution when provided', async ({ page }) => {
-		await host.evaluate((el: Element) => el.setAttribute('attribution', 'Homer Simpson'));
+		await host.evaluate((el: Element, value: string) => el.setAttribute('attribution', value), attributionText);
 		await page.waitForChanges();
 
 		const attribution = host.locator('cite.ontario-blockquote__attribution');
-		await expect(attribution).toContainText('Homer Simpson');
+		await expect(attribution).toContainText(attributionText);
 	});
 
 	test('renders the byline when provided', async ({ page }) => {
-		await host.evaluate((el: Element) => el.setAttribute('byline', 'Ontario Digital Service'));
+		await host.evaluate((el: Element, value: string) => el.setAttribute('byline', value), bylineText);
 		await page.waitForChanges();
 
 		const byline = host.locator('cite.ontario-blockquote__byline');
-		await expect(byline).toContainText('Ontario Digital Service');
+		await expect(byline).toContainText(bylineText);
 	});
 
 	test('renders both attribution and byline when both are provided', async ({ page }) => {
-		await host.evaluate((el: Element) => {
-			el.setAttribute('attribution', 'Homer Simpson');
-			el.setAttribute('byline', 'Ontario Digital Service');
-		});
+		await host.evaluate(
+			(el: Element, values: { attribution: string; byline: string }) => {
+				el.setAttribute('attribution', values.attribution);
+				el.setAttribute('byline', values.byline);
+			},
+			{ attribution: attributionText, byline: bylineText },
+		);
 		await page.waitForChanges();
 
 		const attribution = host.locator('cite.ontario-blockquote__attribution');
 		const byline = host.locator('cite.ontario-blockquote__byline');
 
-		await expect(attribution).toContainText('Homer Simpson');
-		await expect(byline).toContainText('Ontario Digital Service');
+		await expect(attribution).toContainText(attributionText);
+		await expect(byline).toContainText(bylineText);
 	});
 });
 
 test.describe('ontario-blockquote - slotted content fallback', () => {
 	test('falls back to host textContent when quote prop is not provided', async ({ page }) => {
-		await page.setContent(`<ontario-blockquote>Quote from slotted content</ontario-blockquote>`);
+		await page.setContent(`<ontario-blockquote>${slottedQuoteText}</ontario-blockquote>`);
 		await page.waitForChanges();
 
 		const blockquoteHost = page.locator('ontario-blockquote');
 		const blockquote = blockquoteHost.locator('blockquote');
 
-		await expect(blockquote).toContainText('Quote from slotted content');
+		await expect(blockquote).toContainText(slottedQuoteText);
 	});
 });
 
 test.describe('ontario-blockquote - accessibility', () => {
 	test('has no axe violations', async ({ page }) => {
 		await page.setContent(`
-			<ontario-blockquote quote="This is the quote" attribution="Homer Simpson" byline="Ontario Digital Service"></ontario-blockquote>
+			<ontario-blockquote quote="${quoteText}" attribution="${attributionText}" byline="${bylineText}"></ontario-blockquote>
 		`);
 		await page.waitForChanges();
 
