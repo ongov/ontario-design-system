@@ -64,9 +64,13 @@ test.describe('ontario-footer - default type', () => {
 		await expect(footer).toHaveClass(/ontario-footer--default/);
 	});
 
-	test('renders the inline links with correct text', async () => {
+	test('renders three inline links', async () => {
 		const links = host.locator('.ontario-footer__links-container--inline .ontario-footer__link');
 		await expect(links).toHaveCount(3);
+	});
+
+	test('renders the inline links with correct text', async () => {
+		const links = host.locator('.ontario-footer__links-container--inline .ontario-footer__link');
 		await expect(links.nth(0)).toHaveText('Accessibility');
 		await expect(links.nth(1)).toHaveText('Privacy');
 		await expect(links.nth(2)).toHaveText('Contact');
