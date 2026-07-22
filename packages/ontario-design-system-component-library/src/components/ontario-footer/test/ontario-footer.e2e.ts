@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 const copyrightLinkHref = 'https://www.ontario.ca/page/copyright-information';
 
@@ -227,7 +228,6 @@ test.describe('ontario-footer - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		const { AxeBuilder } = await import('@axe-core/playwright');
 		const results = await new AxeBuilder({ page }).include('ontario-footer').analyze();
 		expect(results.violations).toEqual([]);
 	});
