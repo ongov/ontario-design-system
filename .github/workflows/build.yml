@@ -49,6 +49,34 @@ jobs:
         id: build_project
         run: pnpm run build-libs
 
+      # Stencil regenerates these tracked files on every build (components.d.ts,
+      # Angular stencil-generated wrappers, and component readme.md files). If a PR
+      # changes component types/props/JSDoc without running `pnpm build-libs` locally,
+      # these files drift out of sync with source and the mismatch previously went
+      # undetected until the release pipeline's dirty-tree check failed at publish time.
+      # Fail fast here instead, right after the build that regenerates them.
+      - name: Check for uncommitted Stencil-generated file drift
+        id: drift_check
+        run: |
+          tracked_generated_files=(
+            'packages/ontario-design-system-component-library/src/components.d.ts'
+            'packages/ontario-design-system-component-html-generator/src/components.d.ts'
+            'packages/ontario-design-system-component-library-angular/projects/component-library/src/lib/stencil-generated'
+            'packages/ontario-design-system-component-library/src/components/**/readme.md'
+          )
+
+          if ! git diff --exit-code -- "${tracked_generated_files[@]}"; then
+            echo '::error::Stencil-generated tracked files are out of sync with source.'
+            echo 'The files below changed after running `pnpm build-libs`, which means they were not regenerated and committed locally before this PR.'
+            echo ''
+            git diff --name-only -- "${tracked_generated_files[@]}"
+            echo ''
+            echo 'Run `pnpm build-libs` locally, commit the updated files, and push again.'
+            exit 1
+          fi
+
+          echo 'No Stencil-generated file drift detected.'
+
       # Upload build artifacts
       - name: Upload build artifacts
         id: upload_build_artifacts
@@ -79,9 +107,9 @@ jobs:
           {
             echo '## Build'
             echo ''
-            echo "| Repository | Event | Ref | SHA | Run | Build Step |"
-            echo "| --- | --- | --- | --- | --- | --- |"
-            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` |"
+            echo "| Repository | Event | Ref | SHA | Run | Build Step | Drift Check |"
+            echo "| --- | --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` | \`${{ steps.drift_check.outcome }}\` |"
             echo ''
             echo '### Artifacts'
             echo ''
