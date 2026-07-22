@@ -26,6 +26,7 @@ export default function OntarioHeaderPage() {
 					type="ontario"
 					disableDynamicMenu={true}
 					menuItems={JSON.stringify(menuItems)}
+					assetBasePath="/assets"
 				></OntarioHeader>
 
 				<h3>Ontario header with sign-in menu items</h3>
@@ -35,6 +36,7 @@ export default function OntarioHeaderPage() {
 					disableDynamicMenu={true}
 					menuItems={JSON.stringify(menuItems)}
 					signInMenuItems={JSON.stringify(signInMenuItems)}
+					assetBasePath="/assets"
 				></OntarioHeader>
 
 				<h3>Application header</h3>
@@ -43,6 +45,7 @@ export default function OntarioHeaderPage() {
 					type="application"
 					applicationHeaderInfo={JSON.stringify({ title: 'Application name', href: '/application-homepage' })}
 					menuItems={JSON.stringify(menuItems)}
+					assetBasePath="/assets"
 				></OntarioHeader>
 
 				<h3>ServiceOntario header</h3>
@@ -50,6 +53,7 @@ export default function OntarioHeaderPage() {
 					id="ontario-header-service-ontario"
 					type="serviceOntario"
 					applicationHeaderInfo={JSON.stringify({ title: 'ServiceOntario Service' })}
+					assetBasePath="/assets"
 				></OntarioHeader>
 			</Grid>
 		</main>
