@@ -7,12 +7,12 @@ test.describe('Ontario Blockquote - quote variants', () => {
 
 	test('short quote - default state', async ({ page }) => {
 		const blockquote = page.locator('#ontario-blockquote-short');
-		await expect(blockquote).toHaveScreenshot('ontarioBlockquote-short.png');
+		await expect(blockquote).toHaveScreenshot();
 	});
 
 	test('long quote - default state', async ({ page }) => {
 		const blockquote = page.locator('#ontario-blockquote-long');
-		await expect(blockquote).toHaveScreenshot('ontarioBlockquote-long.png');
+		await expect(blockquote).toHaveScreenshot();
 	});
 });
 
@@ -23,12 +23,12 @@ test.describe('Ontario Blockquote - attribution and byline variants', () => {
 
 	test('attribution only - default state', async ({ page }) => {
 		const blockquote = page.locator('#ontario-blockquote-attribution');
-		await expect(blockquote).toHaveScreenshot('ontarioBlockquote-attribution.png');
+		await expect(blockquote).toHaveScreenshot();
 	});
 
 	test('attribution and byline - default state', async ({ page }) => {
 		const blockquote = page.locator('#ontario-blockquote-attribution-byline');
-		await expect(blockquote).toHaveScreenshot('ontarioBlockquote-attributionByline.png');
+		await expect(blockquote).toHaveScreenshot();
 	});
 });
 
@@ -39,6 +39,6 @@ test.describe('Ontario Blockquote - slotted content variant', () => {
 
 	test('slotted content - default state', async ({ page }) => {
 		const blockquote = page.locator('#ontario-blockquote-slotted');
-		await expect(blockquote).toHaveScreenshot('ontarioBlockquote-slotted.png');
+		await expect(blockquote).toHaveScreenshot();
 	});
 });
