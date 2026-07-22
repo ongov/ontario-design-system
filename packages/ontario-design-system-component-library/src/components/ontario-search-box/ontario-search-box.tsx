@@ -15,7 +15,7 @@ import {
 	InputInteractionEvent,
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
-import { computeHighlightSegments, Segment } from '../../utils/components/search-box-autocomplete';
+import { resolveSuggestionSegments, Segment } from '../../utils/components/search-box-autocomplete';
 
 import translations from '../../translations/global.i18n.json';
 
@@ -28,7 +28,9 @@ export interface AutocompleteSuggestion {
 	href?: string;
 	disabled?: boolean;
 	segments?: Segment[];
+	/** @deprecated Use `segments` instead. */
 	boldRanges?: Array<{ start: number; end: number }>;
+	/** @deprecated Use `segments` instead. */
 	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
 }
 
@@ -272,6 +274,8 @@ export class OntarioSearchBox {
 	private static readonly DEFAULT_MIN_CHARS = 1;
 	private static readonly DEFAULT_DEBOUNCE_MS = 150;
 	private static readonly DEFAULT_MAX_SUGGESTIONS = 8;
+	// Allows suggestion mousedown handlers to run before blur closes the list.
+	private static readonly BLUR_CLOSE_DELAY_MS = 120;
 	private static readonly RESULT_ITEM_TAG = 'ONTARIO-SEARCH-RESULT-ITEM';
 
 	/**
@@ -368,7 +372,7 @@ export class OntarioSearchBox {
 		}
 
 		if (eventType === EventType.Blur && this.enableAutocomplete) {
-			window.setTimeout(() => this.closeSuggestions(), 120);
+			window.setTimeout(() => this.closeSuggestions(), OntarioSearchBox.BLUR_CLOSE_DELAY_MS);
 		}
 
 		handleInputEvent(
@@ -388,6 +392,9 @@ export class OntarioSearchBox {
 		);
 	}
 
+	/**
+	 * Handles autocomplete query updates for slotted and async suggestion modes.
+	 */
 	private async handleAutocompleteInput(query: string) {
 		this.autocompleteQueryUpdated.emit({ query });
 
@@ -468,7 +475,7 @@ export class OntarioSearchBox {
 				id: `${this.getSuggestionListId()}-option-${index}`,
 				label: item,
 				value: item,
-				segments: this.resolveSuggestionSegments(item, query),
+				segments: resolveSuggestionSegments(item, query),
 			};
 		}
 
@@ -481,66 +488,10 @@ export class OntarioSearchBox {
 			description: item.description,
 			href: item.href,
 			disabled: !!item.disabled,
-			segments: this.resolveSuggestionSegments(label, query, item),
+			segments: resolveSuggestionSegments(label, query, item),
 			boldRanges: item.boldRanges,
 			highlightParts: item.highlightParts,
 		};
-	}
-
-	private resolveSuggestionSegments(label: string, query: string, suggestion?: AutocompleteSuggestion): Segment[] {
-		if (suggestion?.segments?.length) {
-			return suggestion.segments;
-		}
-
-		if (suggestion?.highlightParts?.length) {
-			return suggestion.highlightParts.map((part) => ({
-				text: part.text,
-				kind: part.isInputMatch ? 'match' : 'completion',
-			}));
-		}
-
-		if (suggestion?.boldRanges?.length) {
-			const ranges = suggestion.boldRanges
-				.map((range) => ({
-					start: Math.max(0, Math.min(range.start, label.length)),
-					end: Math.max(0, Math.min(range.end, label.length)),
-				}))
-				.filter((range) => range.end > range.start)
-				.sort((a, b) => a.start - b.start);
-
-			if (ranges.length) {
-				const mergedRanges: Array<{ start: number; end: number }> = [];
-				for (const range of ranges) {
-					const lastRange = mergedRanges[mergedRanges.length - 1];
-					if (!lastRange || range.start > lastRange.end) {
-						mergedRanges.push({ ...range });
-					} else {
-						lastRange.end = Math.max(lastRange.end, range.end);
-					}
-				}
-
-				const segments: Segment[] = [];
-				let cursor = 0;
-				for (const range of mergedRanges) {
-					if (cursor < range.start) {
-						segments.push({ text: label.slice(cursor, range.start), kind: 'match' });
-					}
-					segments.push({ text: label.slice(range.start, range.end), kind: 'completion' });
-					cursor = range.end;
-				}
-				if (cursor < label.length) {
-					segments.push({ text: label.slice(cursor), kind: 'match' });
-				}
-
-				return segments;
-			}
-		}
-
-		if (!(query || '').trim()) {
-			return [{ text: label, kind: 'completion' }];
-		}
-
-		return computeHighlightSegments(label, query) ?? [{ text: label, kind: 'completion' }];
 	}
 
 	/**
@@ -574,6 +525,9 @@ export class OntarioSearchBox {
 		return this.getAllSlotSuggestionElements(slot).filter((el) => !el.hasAttribute('hidden'));
 	}
 
+	/**
+	 * Updates slot state from the current assigned elements and reapplies option decoration.
+	 */
 	private updateSuggestionSlotState(slot?: HTMLSlotElement) {
 		const assignedOptions = this.getAllSlotSuggestionElements(slot);
 		this.hasSuggestionSlotContent = assignedOptions.length > 0;
@@ -589,22 +543,15 @@ export class OntarioSearchBox {
 		return this.getSuggestionValueFromOption(option);
 	}
 
-	private updateSlotSuggestionVisibility(query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
-		const normalizedQuery = (query || '').trim();
-		const hasQuery = normalizedQuery.length > 0;
-
+	/**
+	 * Mirrors consumer-provided slot visibility into ARIA state without deciding relevance.
+	 */
+	private updateSlotSuggestionVisibility(_query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
 		assignedOptions.forEach((option) => {
-			const optionLabel = this.getSlotOptionLabel(option);
-			const shouldShow = !hasQuery || computeHighlightSegments(optionLabel, normalizedQuery) !== null;
+			const isHidden = option.hasAttribute('hidden');
+			option.setAttribute('aria-hidden', String(isHidden));
 
-			if (shouldShow) {
-				option.removeAttribute('hidden');
-			} else {
-				option.setAttribute('hidden', '');
-			}
-			option.setAttribute('aria-hidden', String(!shouldShow));
-
-			if (!shouldShow) {
+			if (isHidden) {
 				option.removeAttribute('data-ontario-suggestion-index');
 				option.setAttribute('aria-selected', 'false');
 				option.classList.remove('ontario-search-autocomplete__slot-option--active');
@@ -630,6 +577,9 @@ export class OntarioSearchBox {
 		return option.children.length === 0 ? option : undefined;
 	}
 
+	/**
+	 * Decorates custom slotted markup that opts in via `data-ontario-search-highlight`.
+	 */
 	private decorateCustomSlotSuggestionOption(option: HTMLElement) {
 		const highlightTarget = this.getCustomSlotHighlightTarget(option);
 		if (!highlightTarget) {
@@ -642,7 +592,7 @@ export class OntarioSearchBox {
 			highlightTarget.dataset.ontarioSearchOriginalText = originalText;
 		}
 
-		const segments = this.resolveSuggestionSegments(originalText, this.value || '');
+		const segments = resolveSuggestionSegments(originalText, this.value || '');
 		const highlightNodes = segments.map((segment) => {
 			const segmentNode = document.createElement(segment.kind === 'completion' ? 'strong' : 'span');
 			segmentNode.className =
@@ -663,6 +613,9 @@ export class OntarioSearchBox {
 		});
 	}
 
+	/**
+	 * Applies accessibility attributes and active/hover styling hooks to slot options.
+	 */
 	private decorateSlotSuggestionOptions(assignedOptions = this.getSlotSuggestionElements()) {
 		assignedOptions.forEach((option, index) => {
 			if (!option.id) {
@@ -681,11 +634,11 @@ export class OntarioSearchBox {
 			option.classList.toggle('ontario-search-autocomplete__slot-option--active', isActive);
 			option.classList.toggle('ontario-search-autocomplete__slot-option--hovered', isHovered);
 
-			if (option.tagName === 'ONTARIO-SEARCH-RESULT-ITEM') {
+			if (option.tagName === OntarioSearchBox.RESULT_ITEM_TAG) {
 				(option as any).active = isActive;
 				const semanticLabel = (option as any).label || this.getSuggestionValueFromOption(option);
 				if (typeof semanticLabel === 'string' && semanticLabel.length) {
-					(option as any).segments = this.resolveSuggestionSegments(semanticLabel, this.value || '', option as any);
+					(option as any).segments = resolveSuggestionSegments(semanticLabel, this.value || '', option as any);
 				}
 			} else {
 				this.decorateCustomSlotSuggestionOption(option);
@@ -851,21 +804,15 @@ export class OntarioSearchBox {
 		this.suggestions = [];
 	}
 
+	/**
+	 * Selects a suggestion by index, updates the input value, and emits selection metadata.
+	 */
 	private selectSuggestionByIndex(index: number, source: 'keyboard' | 'mouse'): void {
 		if (index < 0 || this.isSuggestionDisabled(index)) {
 			return;
 		}
 
-		let selectedSuggestion:
-			| {
-					id?: string;
-					label: string;
-					value?: string;
-					description?: string;
-					href?: string;
-					disabled?: boolean;
-			  }
-			| undefined;
+		let selectedSuggestion: AutocompleteSuggestion | undefined;
 
 		if (this.hasSuggestionSlotContent) {
 			const option = this.getSlotSuggestionElements()[index];
@@ -942,6 +889,9 @@ export class OntarioSearchBox {
 		this.selectSuggestionByIndex(selectedIndex, 'mouse');
 	};
 
+	/**
+	 * Handles autocomplete keyboard navigation and keyboard-based suggestion selection.
+	 */
 	private handleInputKeyDown = (event: KeyboardEvent) => {
 		if (!this.enableAutocomplete) return;
 
