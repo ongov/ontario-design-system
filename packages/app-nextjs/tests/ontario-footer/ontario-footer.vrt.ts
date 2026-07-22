@@ -7,27 +7,27 @@ test.describe('Ontario Footer - type variants', () => {
 
 	test('default footer - default state', async ({ page }) => {
 		const footer = page.locator('#ontario-footer-default');
-		await expect(footer).toHaveScreenshot('ontarioFooter-default.png');
+		await expect(footer).toHaveScreenshot();
 	});
 
 	test('twoColumn footer - default state', async ({ page }) => {
 		const footer = page.locator('#ontario-footer-two-column');
-		await expect(footer).toHaveScreenshot('ontarioFooter-two-column.png');
+		await expect(footer).toHaveScreenshot();
 	});
 
 	test('twoColumn footer with social links - default state', async ({ page }) => {
 		const footer = page.locator('#ontario-footer-two-column-social');
-		await expect(footer).toHaveScreenshot('ontarioFooter-two-column-social.png');
+		await expect(footer).toHaveScreenshot();
 	});
 
 	test('threeColumn footer with social links - default state', async ({ page }) => {
 		const footer = page.locator('#ontario-footer-three-column');
-		await expect(footer).toHaveScreenshot('ontarioFooter-three-column.png');
+		await expect(footer).toHaveScreenshot();
 	});
 
 	test('footer with no top margin - default state', async ({ page }) => {
 		const footer = page.locator('#ontario-footer-no-top-margin');
-		await expect(footer).toHaveScreenshot('ontarioFooter-no-top-margin.png');
+		await expect(footer).toHaveScreenshot();
 	});
 });
 
@@ -42,7 +42,7 @@ test.describe('Ontario Footer - link interaction states', () => {
 
 		await link.hover();
 
-		await expect(host).toHaveScreenshot('ontarioFooter-default-link-hover.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -54,7 +54,7 @@ test.describe('Ontario Footer - link interaction states', () => {
 
 		await link.focus();
 
-		await expect(host).toHaveScreenshot('ontarioFooter-default-link-focus.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -67,7 +67,7 @@ test.describe('Ontario Footer - link interaction states', () => {
 		await link.hover();
 		await page.mouse.down();
 
-		await expect(host).toHaveScreenshot('ontarioFooter-default-link-active.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -81,7 +81,7 @@ test.describe('Ontario Footer - link interaction states', () => {
 
 		await link.hover();
 
-		await expect(host).toHaveScreenshot('ontarioFooter-two-column-social-link-hover.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -93,7 +93,7 @@ test.describe('Ontario Footer - link interaction states', () => {
 
 		await link.focus();
 
-		await expect(host).toHaveScreenshot('ontarioFooter-two-column-social-link-focus.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});

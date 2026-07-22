@@ -86,6 +86,7 @@ export default function OntarioFooterPage() {
 					id="ontario-footer-default"
 					type="default"
 					footerLinks={JSON.stringify(footerLinks)}
+					assetBasePath="/assets"
 				></OntarioFooter>
 
 				<h3>Two column expanded footer</h3>
@@ -94,6 +95,7 @@ export default function OntarioFooterPage() {
 					type="twoColumn"
 					footerLinks={JSON.stringify(footerLinks)}
 					twoColumnOptions={JSON.stringify(twoColumnOptions)}
+					assetBasePath="/assets"
 				></OntarioFooter>
 
 				<h3>Two column expanded footer with social links</h3>
@@ -103,6 +105,7 @@ export default function OntarioFooterPage() {
 					footerLinks={JSON.stringify(footerLinks)}
 					socialLinks={JSON.stringify(socialLinks)}
 					twoColumnOptions={JSON.stringify(twoColumnOptions)}
+					assetBasePath="/assets"
 				></OntarioFooter>
 
 				<h3>Three column expanded footer with social links</h3>
@@ -112,6 +115,7 @@ export default function OntarioFooterPage() {
 					footerLinks={JSON.stringify(footerLinks)}
 					socialLinks={JSON.stringify(socialLinks)}
 					threeColumnOptions={JSON.stringify(threeColumnOptions)}
+					assetBasePath="/assets"
 				></OntarioFooter>
 
 				<h2>"topMargin" Prop Variant</h2>
@@ -122,6 +126,7 @@ export default function OntarioFooterPage() {
 					type="default"
 					topMargin={false}
 					footerLinks={JSON.stringify(footerLinks)}
+					assetBasePath="/assets"
 				></OntarioFooter>
 			</Grid>
 		</main>
