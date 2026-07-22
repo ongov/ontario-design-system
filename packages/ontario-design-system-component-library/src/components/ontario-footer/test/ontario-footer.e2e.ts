@@ -82,6 +82,41 @@ test.describe('ontario-footer - default type', () => {
 	});
 });
 
+test.describe('ontario-footer - default type with no footerLinks prop', () => {
+	let host: Locator;
+
+	test.beforeEach(async ({ page }) => {
+		await page.setContent(`
+			<ontario-footer type="default"></ontario-footer>
+		`);
+		await page.waitForChanges();
+		host = page.locator('ontario-footer');
+	});
+
+	test('renders and is hydrated', async () => {
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass('hydrated');
+	});
+
+	test('renders two inline links', async () => {
+		const links = host.locator('.ontario-footer__links-container--inline .ontario-footer__link');
+		await expect(links).toHaveCount(2);
+	});
+
+	test('renders the default inline links using fallback translations', async () => {
+		const links = host.locator('.ontario-footer__links-container--inline .ontario-footer__link');
+		await expect(links.nth(0)).toHaveText('Accessibility');
+		await expect(links.nth(0)).toHaveAttribute('href', 'https://www.ontario.ca/page/accessibility');
+		await expect(links.nth(1)).toHaveText('Privacy');
+		await expect(links.nth(1)).toHaveAttribute('href', 'https://www.ontario.ca/page/privacy-statement');
+	});
+
+	test('renders the copyright link using the default printer link href', async () => {
+		const copyrightLink = host.locator('.ontario-footer__copyright .ontario-footer__link');
+		await expect(copyrightLink).toHaveAttribute('href', 'https://www.ontario.ca/page/copyright-information');
+	});
+});
+
 test.describe('ontario-footer - topMargin prop', () => {
 	test('applies the no-top-margin class when topMargin is false', async ({ page }) => {
 		await page.setContent(`
