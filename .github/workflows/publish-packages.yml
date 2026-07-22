@@ -46,23 +46,6 @@ jobs:
           name: ${{ inputs.build-artifacts-name }} # Artifact name (must match upload name)
           path: ./packages
 
-      # Downloaded build artifacts can overwrite tracked files (for example `components.d.ts`).
-      # `semantic-release-lerna` requires a clean git working tree, so we log what changed,
-      # then reset tracked files back to HEAD before running the release step.
-
-      - name: Debug git state after artifact download
-        run: |
-          echo 'Changed files before cleanup:'
-          git status --short
-          echo ''
-          echo 'Tracked file diff summary before cleanup:'
-          git diff --name-status || true
-
-      - name: Ensure clean git tree before release
-        run: |
-          git reset --hard HEAD
-          git status --short
-
       # Note: This step outputs a `release_tag` variable to be used by downstream workflows if needed.
       - name: Publish packages
         id: publish
