@@ -1,3 +1,9 @@
+# 9.0.0-alpha.2 (2026-07-22)
+
+### Bug Fixes
+
+- **ci:** ignore corepack integrity hash in pnpm pre-flight version check 58149e2
+
 # 9.0.0-alpha.1 (2026-06-25)
 
 - **@ongov/ontario-design-system-component-library:** feat(ontario-card)!: normalize headerColour values to camelCase 8ec9266
