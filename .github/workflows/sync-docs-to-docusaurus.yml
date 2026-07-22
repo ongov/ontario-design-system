@@ -70,7 +70,31 @@ jobs:
         # version mismatch between this monorepo and the docs repo). The subsequent
         # component-library version bump below is a separate, intentional lockfile
         # mutation and is unaffected by --frozen-lockfile here.
-        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
+        #
+        # `--ignore-workspace` is required here -- `packages/docusaurus` matches this
+        # monorepo's own `packages/*` workspace glob, so without it pnpm would try to
+        # fold the docs repo's checkout into this monorepo's workspace. The tradeoff:
+        # `--ignore-workspace` also disables the docs repo's own `pnpm-workspace.yaml`
+        # (where its `allowBuilds` list lives), so pnpm always reports its two
+        # intentionally-denied, notice-only postinstall scripts (`core-js`,
+        # `core-js-pure`) as unapproved and exits non-zero, even though the install
+        # itself completes successfully. Tolerate exactly that known, harmless
+        # condition; anything else still fails the step.
+        run: |
+          set +e
+          output="$(pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace 2>&1)"
+          exit_code=$?
+          set -e
+          echo "$output"
+
+          if [ "$exit_code" -ne 0 ]; then
+            if [ "$(grep -c '\[ERR_PNPM_' <<< "$output")" -eq 1 ] && \
+              grep -qE '^\[ERR_PNPM_IGNORED_BUILDS\] Ignored build scripts: core-js-pure@[0-9.]+, core-js@[0-9.]+$' <<< "$output"; then
+              echo '::warning::Ignoring the expected ERR_PNPM_IGNORED_BUILDS for core-js/core-js-pure (notice-only postinstall scripts, already denied in the docs repo pnpm-workspace.yaml). See sync-docs-to-docusaurus.yml for details.'
+            else
+              exit "$exit_code"
+            fi
+          fi
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash
