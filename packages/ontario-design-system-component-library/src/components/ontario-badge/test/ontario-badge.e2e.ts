@@ -15,20 +15,6 @@ test.describe('ontario-badge', () => {
 		await expect(host).toBeAttached();
 		await expect(host).toHaveClass(/hydrated/);
 
-		// Ensure the page has finished loading resources and fonts are ready
-		try {
-			await page.waitForLoadState('networkidle');
-			// Wait for fonts to be ready to avoid visual diffs due to late font load
-			const hasFonts = await page.evaluate(() => typeof (document as any).fonts !== 'undefined');
-			if (hasFonts) {
-				// `document.fonts.ready` resolves when fonts are loaded
-				await page.evaluate(() => (document as any).fonts.ready);
-			}
-		} catch (e) {
-			// Non-fatal; proceed even if these waits are not supported in some environments
-			console.warn('Non-fatal: resource/font readiness wait failed', e);
-		}
-
 		return host;
 	};
 
@@ -294,7 +280,11 @@ test.describe('ontario-badge', () => {
 			}
 		});
 
+		const start = performance.now();
 		await page.waitForChanges();
+
+		const end = performance.now();
+		console.log(`Rendered 50 badges in ${(end - start).toFixed(2)} ms`);
 
 		await expect(host).toBeAttached();
 		await expect(host.locator('span')).toHaveScreenshot('rapid-re-rendering.png');
