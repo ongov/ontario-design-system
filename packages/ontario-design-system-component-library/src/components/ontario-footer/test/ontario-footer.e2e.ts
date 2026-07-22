@@ -1,11 +1,13 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
+const copyrightLinkHref = 'https://www.ontario.ca/page/copyright-information';
+
 const footerLinksJson = JSON.stringify({
 	accessibilityLink: { text: 'Accessibility', href: 'https://www.ontario.ca/page/accessibility' },
 	privacyLink: { href: 'https://www.ontario.ca/page/privacy-statement' },
 	contactLink: { text: 'Contact', href: 'https://www.ontario.ca/feedback/contact-us' },
-	printerLink: { href: 'https://www.ontario.ca/page/copyright-information' },
+	printerLink: { href: copyrightLinkHref },
 });
 
 const twoColumnOptionsJson = JSON.stringify({
@@ -78,7 +80,7 @@ test.describe('ontario-footer - default type', () => {
 
 	test('renders the copyright link using the printer link href', async () => {
 		const copyrightLink = host.locator('.ontario-footer__copyright .ontario-footer__link');
-		await expect(copyrightLink).toHaveAttribute('href', 'https://www.ontario.ca/page/copyright-information');
+		await expect(copyrightLink).toHaveAttribute('href', copyrightLinkHref);
 	});
 });
 
@@ -113,7 +115,7 @@ test.describe('ontario-footer - default type with no footerLinks prop', () => {
 
 	test('renders the copyright link using the default printer link href', async () => {
 		const copyrightLink = host.locator('.ontario-footer__copyright .ontario-footer__link');
-		await expect(copyrightLink).toHaveAttribute('href', 'https://www.ontario.ca/page/copyright-information');
+		await expect(copyrightLink).toHaveAttribute('href', copyrightLinkHref);
 	});
 });
 
@@ -156,7 +158,7 @@ test.describe('ontario-footer - twoColumn type', () => {
 		await expect(headings.nth(1)).toHaveText('Help us improve the design system');
 	});
 
-	test('renders the inline links in the expanded bottom section', async () => {
+	test('renders three inline links in the expanded bottom section', async () => {
 		const links = host.locator('.ontario-footer__links-container--inline .ontario-footer__link');
 		await expect(links).toHaveCount(3);
 	});
