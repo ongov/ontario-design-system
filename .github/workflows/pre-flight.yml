@@ -32,7 +32,13 @@ jobs:
           echo "monorepo_pnpm=${monorepo_pnpm}" >> "$GITHUB_OUTPUT"
           echo "docs_pnpm=${docs_pnpm}" >> "$GITHUB_OUTPUT"
 
-          if [ "$monorepo_pnpm" != "$docs_pnpm" ]; then
+          # Compare only the version, not any optional corepack-appended integrity
+          # hash (e.g. `pnpm@11.6.0+sha512....`), which `corepack use` can add to
+          # either repo's packageManager field without changing the actual version.
+          monorepo_pnpm_version="${monorepo_pnpm%%+*}"
+          docs_pnpm_version="${docs_pnpm%%+*}"
+
+          if [ "$monorepo_pnpm_version" != "$docs_pnpm_version" ]; then
             echo "::error::pnpm version mismatch — monorepo: '$monorepo_pnpm', docs repo: '$docs_pnpm'."
             echo "Update the docs repo packageManager field (and pnpm/action-setup version in its workflows) to match before the next release."
             exit 1
