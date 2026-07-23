@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 const menuItemsJson = JSON.stringify([
 	{ title: 'Item 1', href: '/item-1' },
@@ -136,7 +137,6 @@ test.describe('ontario-header - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		const { AxeBuilder } = await import('@axe-core/playwright');
 		const results = await new AxeBuilder({ page })
 			.include('ontario-header')
 			// svg-img-alt is a pre-existing icon accessibility issue tracked separately; not in scope for this suite.
