@@ -68,7 +68,7 @@
 		"clean:icons": "rm -rf src/components/ontario-icon/ontario-icon-*.tsx",
 		"docs:assemble": "tsx scripts/build-documentation-bundle.ts",
 		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" --df ../docusaurus/docs/01-readme.md",
-		"format": "prettier --write .",
+		"format": "prettier --write . --ignore-path ../../.prettierignore",
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",
 		"start": "stencil build --dev --watch --serve",
