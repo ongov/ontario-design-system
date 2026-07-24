@@ -5,8 +5,8 @@
 	"scripts": {
 		"prebuild": "pnpm run copy:assets",
 		"prestart": "pnpm run copy:assets",
-		"dev": "next dev",
-		"build": "next build",
+		"dev": "next dev --webpack",
+		"build": "next build --webpack",
 		"start": "next start",
 		"lint": "next lint",
 		"copy:assets": "pnpm run copy:images && pnpm run copy:favicons && pnpm run copy:fonts",
