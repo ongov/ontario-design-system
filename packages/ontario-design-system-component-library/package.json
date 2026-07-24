@@ -91,7 +91,7 @@
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
-		"dotenv": "^16.4.5",
+		"dotenv": "^17.0.0",
 		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
