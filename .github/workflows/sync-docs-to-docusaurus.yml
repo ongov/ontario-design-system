@@ -30,13 +30,11 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Checkout monorepo
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0 # Fetch all history to ensure tagged commits are available
-          fetch-tags: true # Ensure tags are fetched as well
-          persist-credentials: false
-
+      # This job only ever touches the Docusaurus repo -- it doesn't read or write any
+      # file from this monorepo (the release tag and docs content it needs both arrive
+      # via `inputs`/artifacts). Checking it out alone, at the job root, means pnpm here
+      # always resolves against *this* repo's own package.json/pnpm-workspace.yaml, with
+      # no risk of colliding with this monorepo's own `packages/*` workspace glob.
       - name: Checkout Docusaurus repo
         # Target repo name lives in the `DOCS_REPO` repository variable (Settings >
         # Secrets and variables > Actions > Variables), not hardcoded here -- update
@@ -46,7 +44,6 @@ jobs:
           repository: ${{ vars.DOCS_REPO }}
           token: ${{ secrets.GH_TOKEN }}
           ref: main
-          path: packages/docusaurus
           persist-credentials: false
 
       # Install pnpm
@@ -65,16 +62,14 @@ jobs:
 
       # Install dependencies for Docusaurus
       - name: Install Docusaurus dependencies
-        working-directory: packages/docusaurus
         # This install validates the docs repo's own lockfile as-is (catches a pnpm
-        # version mismatch between this monorepo and the docs repo). The subsequent
+        # version mismatch against what this repo's own CI expects). The subsequent
         # component-library version bump below is a separate, intentional lockfile
         # mutation and is unaffected by --frozen-lockfile here.
-        run: pnpm install --frozen-lockfile --lockfile-dir . --ignore-workspace
+        run: pnpm install --frozen-lockfile
 
       - name: Clean Docusaurus docs (preserve _category_.json; delete empty dirs)
         shell: bash
-        working-directory: packages/docusaurus
         run: |
           # Delete all files except _category_.json, then remove empty directories
           find docs -depth -mindepth 1 \
@@ -85,43 +80,21 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.docs-artifacts-name }}
-          path: packages/docusaurus/docs/
+          path: docs/
 
       - name: Update package.json in Docusaurus
-        working-directory: packages/docusaurus
         env:
           RELEASE_TAG: ${{ inputs.release_tag }}
-        run: pnpm --ignore-workspace --lockfile-dir . add @ongov/ontario-design-system-component-library-react@${RELEASE_TAG#v}
+        run: pnpm add @ongov/ontario-design-system-component-library-react@${RELEASE_TAG#v}
 
       - name: Version Docusaurus docs
-        working-directory: packages/docusaurus
         run: pnpm exec docusaurus docs:version ${{ inputs.release_tag }}
-
-      - name: Validate docs-only change scope
-        shell: bash
-        run: |
-          changed_files="$({
-            git diff --name-only
-            git diff --name-only --cached
-            git ls-files --others --exclude-standard
-          } | sort -u)"
-
-          echo 'Changed files:'
-          echo "$changed_files"
-
-          unexpected_files="$(echo "$changed_files" | grep -v '^packages/docusaurus/' || true)"
-          if [ -n "$unexpected_files" ]; then
-            echo 'Unexpected changes detected outside packages/docusaurus:'
-            echo "$unexpected_files"
-            exit 1
-          fi
 
       - name: Create Pull Request
         id: create_pr
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GH_TOKEN }}
-          path: packages/docusaurus
           commit-message: 'docs: update for ${{ inputs.release_tag }}'
           title: 'docs: update for ${{ inputs.release_tag }}'
           body: |
