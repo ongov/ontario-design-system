@@ -22,12 +22,18 @@
 		"build": "node build.mjs && pnpm run docs:copy:readme",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"generate:colours": "node scripts/generate-colour-tokens.mjs",
+		"lint:tokens": "node scripts/lint-tokens.mjs",
+		"export:figma": "node scripts/export-figma-tokens.mjs",
+		"test": "vitest run",
+		"test:unit": "vitest run",
+		"test:watch": "vitest",
 		"docs:copy:readme": "ts-node ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" --df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
 		"@types/node": "^24.0.0",
-		"style-dictionary": "^5.0.0"
+		"style-dictionary": "^5.5.0",
+		"vitest": "^4.1.8"
 	},
 	"publishConfig": {
 		"access": "public"
