@@ -56,7 +56,7 @@
 		"pretty-quick": "^4.0.0",
 		"semantic-release": "^25.0.2",
 		"semantic-release-lerna": "^3.0.0",
-		"ts-node": "^10.9.2"
+		"tsx": "^4.20.5"
 	},
 	"optionalDependencies": {
 		"@nrwl/nx-darwin-arm64": "15.9.3",
