@@ -71,9 +71,9 @@ export class OntarioTask {
 	@Prop({ mutable: true }) hintText?: string | Hint;
 
 	/**
-	 * Defines the status of the task, with default set to 'NotStarted'.
+	 * Defines the status of the task.
 	 *
-	 * Accepts values from `TaskStatus` const: `NotStarted`, `InProgress`, `Completed`, etc.
+	 * Falls back to the default status if not provided, or if an unrecognized value is passed.
 	 */
 	@Prop() taskStatus: TaskStatus = TaskStatus.NotStarted;
 
