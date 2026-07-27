@@ -8,8 +8,9 @@
 		"module": "commonjs",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"strict": true
+		"strict": true,
+		"types": ["node"]
 	},
-	"include": ["packages/**/*"],
+	"include": ["packages/**/*", "scripts/**/*"],
 	"exclude": ["node_modules"]
 }

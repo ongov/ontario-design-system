@@ -1,4 +1,5 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
+import { HeaderMenuToggleDetail } from '../ontario-header/ontario-header.interface';
 import { MenuItem } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -155,6 +156,11 @@ export class OntarioHeaderOverflowMenu {
 	private hasInitializedFocus = false;
 
 	/**
+	 * Whether the menu should move focus to the first item when it opens.
+	 */
+	private shouldFocusFirstItemOnOpen = false;
+
+	/**
 	 * Lifecycle hook called before the component is loaded.
 	 */
 	componentWillLoad() {
@@ -166,7 +172,7 @@ export class OntarioHeaderOverflowMenu {
 	 * Focuses first menu item when menu opens in standalone mode.
 	 */
 	componentDidUpdate() {
-		if (this.menuIsOpen && this.isStandalone && this.focusFirstItemOnOpen && !this.hasInitializedFocus) {
+		if (this.menuIsOpen && this.isStandalone && this.shouldFocusFirstItemOnOpen && !this.hasInitializedFocus) {
 			this.focusFirstMenuItem();
 			this.hasInitializedFocus = true;
 		}
@@ -244,10 +250,14 @@ export class OntarioHeaderOverflowMenu {
 	 * Listen for menu button toggle events (standalone mode only).
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	handleMenuButtonToggled(event: CustomEvent<boolean>) {
+	handleMenuButtonToggled(event: CustomEvent<boolean | HeaderMenuToggleDetail>) {
 		if (!this.isStandalone) return;
 
-		this.menuIsOpen = event.detail;
+		const detail =
+			typeof event.detail === 'boolean' ? { isOpen: event.detail, trigger: 'programmatic' as const } : event.detail;
+
+		this.menuIsOpen = detail.isOpen;
+		this.shouldFocusFirstItemOnOpen = detail.isOpen && detail.trigger === 'keyboard';
 		if (!this.menuIsOpen) {
 			this.resetState();
 		}
@@ -514,6 +524,8 @@ export class OntarioHeaderOverflowMenu {
 		this.currentIndex = undefined;
 		this.shouldCheckAutoClose = true;
 		this.suppressNextArrowNavigation = false;
+		this.shouldFocusFirstItemOnOpen = false;
+		this.hasInitializedFocus = false;
 	}
 
 	/**

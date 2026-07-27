@@ -271,11 +271,17 @@ export class OntarioButton implements Button {
 		const options = { attributes: true };
 		observer.observe(this.host, options);
 
-		// Add a click event listener to handle submitting a form
-		if (!this.isLinkMode() && this.htmlTypeState === 'submit') {
+		// Shadow DOM prevents the internal button's type from interacting with the outer form natively.
+		// Use ElementInternals to trigger submit/reset programmatically on click instead.
+		if (!this.isLinkMode()) {
 			this.buttonRef.addEventListener('click', () => {
 				const { form } = this.internals;
-				form?.requestSubmit();
+				if (!form) return;
+				if (this.htmlTypeState === 'submit') {
+					form.requestSubmit();
+				} else if (this.htmlTypeState === 'reset') {
+					form.reset();
+				}
 			});
 		}
 	}

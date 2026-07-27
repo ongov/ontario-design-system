@@ -49,10 +49,10 @@ To use the Ontario Design System React component library, follow these steps:
    ```tsx
    import { setAssetPath } from '@ongov/ontario-design-system-component-library-react';
 
-   setAssetPath(`${window.location.origin}/assets/`);
+   setAssetPath(`${window.location.origin}`);
    ```
 
-   Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path.
+   Call `setAssetPath` once, before rendering any components. This ensures Stencil can resolve component assets (fonts, images, favicons) when they are hosted under a custom base path. Pass `window.location.origin` (no `/assets/` suffix) — the library's internal asset helper appends the correct path segment automatically.
 
    If you need to override the global styles theme with a custom asset base path, you can create a local theme wrapper that forwards the global styles and sets `$asset-base-path`, then import that wrapper in your app entry point.
 
@@ -106,16 +106,16 @@ The assets in the npm package are located at `@ongov/ontario-design-system-compo
 In a standard React application this can be done in a number of ways. One way is to use the [copyfiles](https://www.npmjs.com/package/copyfiles) npm package, which you can with any operating system:
 
 ```bash
-copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/*" src/assets
+copyfiles -E -f "node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**" public/assets
 ```
 
 Another way is to add scripts to copy the assets in your `package.json` file. For example:
 
 ```json
 "prebuild": "npm run copy:assets",
-"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/images/**\" src/assets",
-"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/favicons/**\" src/assets/favicons",
-"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-react/dist/component-library/assets/fonts/**/*\" src/assets/fonts",
+"copy:images": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/images/**\" public/assets",
+"copy:favicons": "copyfiles -E -f \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/favicons/**\" public/assets/favicons",
+"copy:fonts": "copyfiles -E -u 6 \"node_modules/@ongov/ontario-design-system-component-library-react/dist/assets/fonts/**/*\" public/assets/fonts",
 "copy:assets": "npm run copy:images && npm run copy:favicons && npm run copy:fonts"
 ```
 

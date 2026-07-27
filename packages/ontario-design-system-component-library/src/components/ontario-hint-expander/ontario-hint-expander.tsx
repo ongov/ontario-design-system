@@ -189,10 +189,10 @@ export class OntarioHintExpander implements HintExpander {
 					data-toggle="ontario-collapse"
 				>
 					<span class="ontario-hint-expander__button-icon--close ontario-icon">
-						<ontario-icon-chevron-up colour="inherit" aria-hidden="true"></ontario-icon-chevron-up>
+						<ontario-icon-chevron-up colour="inherit" is-decorative="true"></ontario-icon-chevron-up>
 					</span>
 					<span class="ontario-hint-expander__button-icon--open">
-						<ontario-icon-chevron-down colour="inherit" aria-hidden="true"></ontario-icon-chevron-down>
+						<ontario-icon-chevron-down colour="inherit" is-decorative="true"></ontario-icon-chevron-down>
 					</span>
 					{this.hint}
 				</button>

@@ -1,4 +1,5 @@
 import { Component, Prop, State, Watch, h, Listen, Element, Event, EventEmitter } from '@stencil/core';
+import { HeaderMenuToggleDetail } from '../ontario-header/ontario-header.interface';
 import { MenuItem } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -92,6 +93,11 @@ export class OntarioHeaderMenuTabs {
 	private trapInstalled = false;
 
 	private hasInitializedOpenFocus = false;
+
+	/**
+	 * Whether the active tab should receive focus when the menu opens.
+	 */
+	private shouldFocusTabOnOpen = false;
 
 	/**
 	 * Event emitted when ownership handoff is triggered in auto-detect mode.
@@ -189,10 +195,18 @@ export class OntarioHeaderMenuTabs {
 	 * Listen for menu button toggle events.
 	 */
 	@Listen('menuButtonToggled', { target: 'window' })
-	handleMenuButtonToggled(event: CustomEvent<boolean>) {
-		this.menuIsOpen = event.detail;
+	handleMenuButtonToggled(event: CustomEvent<boolean | HeaderMenuToggleDetail>) {
+		const detail =
+			typeof event.detail === 'boolean' ? { isOpen: event.detail, trigger: 'programmatic' as const } : event.detail;
 
-		if (!this.menuIsOpen) {
+		this.menuIsOpen = detail.isOpen;
+		this.shouldFocusTabOnOpen = detail.isOpen && detail.trigger === 'keyboard';
+
+		if (this.menuIsOpen) {
+			if (this.shouldFocusTabOnOpen) {
+				this.setupInitialFocus();
+			}
+		} else {
 			this.resetState();
 			this.hasInitializedOpenFocus = false;
 		}
@@ -393,6 +407,7 @@ export class OntarioHeaderMenuTabs {
 		this.clearFocusTrap();
 		this.trapInstalled = false;
 		this.hasInitializedOpenFocus = false;
+		this.shouldFocusTabOnOpen = false;
 	}
 
 	/**

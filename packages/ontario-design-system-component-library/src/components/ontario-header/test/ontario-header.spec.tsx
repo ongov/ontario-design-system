@@ -1,15 +1,6 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OntarioHeader } from '../ontario-header';
+import { render, RenderResult } from '@stencil/vitest';
 import OntarioHeaderDefaultData from '../ontario-header-default-data.json';
-import { OntarioHeaderOverflowMenu } from '../../ontario-header-overflow-menu/ontario-header-overflow-menu';
-import { OntarioLanguageToggle } from '../../ontario-language-toggle/ontario-language-toggle';
 import { default as translations } from '../../../translations/global.i18n.json';
-
-jest.mock('@ongov/ontario-design-system-design-tokens/', () => ({
-	OntarioBreakpointsSmall: '40em',
-	OntarioBreakpointsMedium: '64em',
-	OntarioBreakpointsLarge: '90em',
-}));
 
 // Used to help with Stencil Component Lifecycles
 // the _ variables denote unsued variables
@@ -24,15 +15,12 @@ globalThis.MutationObserver = class {
 } as typeof MutationObserver;
 
 describe('ontario-header', () => {
-	let page: SpecPage;
+	let page: RenderResult;
 	let host: HTMLOntarioHeaderElement;
 	let hostShadow: ShadowRoot;
 
 	beforeEach(async () => {
-		page = await newSpecPage({
-			components: [OntarioHeader],
-			html: `<ontario-header></ontario-header>`,
-		});
+		page = await render(`<ontario-header></ontario-header>`);
 
 		host = page.root as HTMLOntarioHeaderElement;
 		hostShadow = host.shadowRoot as ShadowRoot;
@@ -48,10 +36,7 @@ describe('ontario-header', () => {
 	});
 
 	it('should render child components', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader, OntarioLanguageToggle, OntarioHeaderOverflowMenu],
-			html: `<ontario-header></ontario-header>`,
-		});
+		const page = await render(`<ontario-header></ontario-header>`);
 
 		await page.waitForChanges();
 
@@ -100,10 +85,7 @@ describe('ontario-header', () => {
 	});
 
 	it('should render the ontario header menu items', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader, OntarioHeaderOverflowMenu],
-			html: `<ontario-header></ontario-header>`,
-		});
+		const page = await render(`<ontario-header></ontario-header>`);
 
 		await page.waitForChanges();
 
@@ -148,10 +130,7 @@ describe('ontario-header', () => {
 	});
 
 	it('should render the application header menu items', async () => {
-		const page = await newSpecPage({
-			components: [OntarioHeader, OntarioHeaderOverflowMenu],
-			html: `<ontario-header></ontario-header>`,
-		});
+		const page = await render(`<ontario-header></ontario-header>`);
 
 		await page.waitForChanges();
 
@@ -201,7 +180,7 @@ describe('ontario-header', () => {
 	});
 
 	it('should call menu item onClickHandler for subheader menu item', async () => {
-		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+		const onClickHandler = vi.fn((event: Event) => event.preventDefault());
 
 		host.type = 'application';
 		host.applicationHeaderInfo = {
@@ -227,12 +206,9 @@ describe('ontario-header', () => {
 	});
 
 	it('should call menu item onClickHandler for overflow menu item', async () => {
-		const onClickHandler = jest.fn((event: Event) => event.preventDefault());
+		const onClickHandler = vi.fn((event: Event) => event.preventDefault());
 
-		const page = await newSpecPage({
-			components: [OntarioHeader, OntarioHeaderOverflowMenu],
-			html: `<ontario-header></ontario-header>`,
-		});
+		const page = await render(`<ontario-header></ontario-header>`);
 
 		const host = page.root as HTMLOntarioHeaderElement;
 		const hostShadow = host.shadowRoot as ShadowRoot;

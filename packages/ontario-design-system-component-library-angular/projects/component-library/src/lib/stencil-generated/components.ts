@@ -477,7 +477,7 @@ export declare interface OntarioFormContainer extends Components.OntarioFormCont
 })
 export class OntarioHeader {
   protected el: HTMLOntarioHeaderElement;
-  @Output() menuButtonToggled = new EventEmitter<CustomEvent<boolean>>();
+  @Output() menuButtonToggled = new EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -485,13 +485,15 @@ export class OntarioHeader {
 }
 
 
+import type { HeaderMenuToggleDetail as IOntarioHeaderHeaderMenuToggleDetail } from '@ongov/ontario-design-system-component-library';
+
 export declare interface OntarioHeader extends Components.OntarioHeader {
   /**
    * This event is toggled when the menu button is pressed.
 The `<ontario-header-overflow-menu>` sub-component listens for this event
 To trigger the showing and hiding of the overflow menu.
    */
-  menuButtonToggled: EventEmitter<CustomEvent<boolean>>;
+  menuButtonToggled: EventEmitter<CustomEvent<IOntarioHeaderHeaderMenuToggleDetail>>;
 }
 
 
@@ -3651,6 +3653,52 @@ export class OntarioStepIndicator {
 
 
 export declare interface OntarioStepIndicator extends Components.OntarioStepIndicator {}
+
+
+@ProxyCmp({
+  inputs: ['caption', 'captionActionLink', 'columnRatio', 'fullWidth', 'headingLevel', 'language']
+})
+@Component({
+  selector: 'ontario-summary-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [{ name: 'caption', required: true }, 'captionActionLink', 'columnRatio', 'fullWidth', 'headingLevel', 'language'],
+  standalone: false
+})
+export class OntarioSummaryList {
+  protected el: HTMLOntarioSummaryListElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioSummaryList extends Components.OntarioSummaryList {}
+
+
+@ProxyCmp({
+  inputs: ['actionLink', 'compact', 'description', 'language', 'name']
+})
+@Component({
+  selector: 'ontario-summary-list-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['actionLink', 'compact', { name: 'description', required: true }, 'language', { name: 'name', required: true }],
+  standalone: false
+})
+export class OntarioSummaryListItem {
+  protected el: HTMLOntarioSummaryListItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioSummaryListItem extends Components.OntarioSummaryListItem {}
 
 
 @ProxyCmp({

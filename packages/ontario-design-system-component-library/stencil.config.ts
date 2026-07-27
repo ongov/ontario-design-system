@@ -121,12 +121,4 @@ export const config: Config = {
 	extras: {
 		enableImportInjection: true,
 	},
-	testing: {
-		transform: {
-			'^.+\\.svg$': '<rootDir>/src/utils/svgTransform.cjs',
-			'^.+\\.js$': '@stencil/core/testing/jest-preprocessor',
-		},
-		transformIgnorePatterns: ['node_modules/(?!(.*/)?uuid/)'],
-		reporters: ['default', 'jest-junit'],
-	},
 };

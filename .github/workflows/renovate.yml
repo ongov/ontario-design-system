@@ -6,14 +6,6 @@ on:
     - cron: '0 0 * * 0'
   # Allow manual triggering from the Actions tab
   workflow_dispatch:
-  # React to Renovate PR activity so checkbox/label requests are processed quickly
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - edited
-      - labeled
   # React to Dependency Dashboard checkbox edits on Renovate-labeled issues
   issues:
     types:
@@ -22,19 +14,17 @@ on:
 jobs:
   run-renovate:
     name: Run Renovate Bot
-    if: >
-      (github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'renovate')) &&
-      (github.event_name != 'issues' || contains(github.event.issue.labels.*.name, 'renovate'))
+    if: github.event_name != 'issues' || contains(github.event.issue.labels.*.name, 'renovate')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Install PNPM
-        uses: pnpm/action-setup@v4.0.0
+        uses: pnpm/action-setup@v6.0.8
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v43.0.5
+        uses: renovatebot/github-action@v46.1.15
         env:
           # GitHub and NPM tokens must be set in the repository secrets
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
