@@ -193,6 +193,23 @@ export class OntarioBackButton {
 	}
 
 	/**
+	 * Handles the Space key on the anchor render path.
+	 *
+	 * Native `<a>` elements only activate on Enter (which triggers a native `click`
+	 * event and is handled by `handleActivation` via `onClick`); unlike `<button>`,
+	 * they do not activate on Space. This listener adds that missing Space-key
+	 * activation so keyboard behaviour is consistent with the button render path.
+	 */
+	private handleAnchorKeyDown(event: KeyboardEvent) {
+		if (event.key !== ' ' && event.code !== 'Space') {
+			return;
+		}
+
+		event.preventDefault();
+		this.handleActivation(event);
+	}
+
+	/**
 	 * Renders the native button variant used for `history` and `event` modes,
 	 * and as a safe fallback when `href` mode is misconfigured.
 	 */
@@ -221,6 +238,7 @@ export class OntarioBackButton {
 					aria-disabled={this.disabled ? 'true' : undefined}
 					tabIndex={this.disabled ? -1 : undefined}
 					onClick={(event) => this.handleActivation(event)}
+					onKeyDown={(event) => this.handleAnchorKeyDown(event)}
 				>
 					<ontario-icon-chevron-left colour="blue" aria-hidden="true"></ontario-icon-chevron-left>
 					{this.labelText}
