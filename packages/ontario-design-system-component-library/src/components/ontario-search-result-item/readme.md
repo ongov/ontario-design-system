@@ -6,6 +6,10 @@ import TabItem from '@theme/TabItem';
 
 Use `ontario-search-result-item` to render a semantic option row for search suggestions.
 
+## User guidance
+
+Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/autocomplete.html) for current documentation guidance.
+
 ## Example
 
 ```mdx-code-block
