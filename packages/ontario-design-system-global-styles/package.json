@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-global-styles",
-	"version": "9.0.0-alpha.1",
+	"version": "9.0.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ongov/ontario-design-system",
