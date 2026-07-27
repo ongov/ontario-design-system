@@ -3710,14 +3710,14 @@ Below is an example on how to hook into the event to get the event details. @exa
 
 
 @ProxyCmp({
-  inputs: ['active', 'boldRanges', 'description', 'disabled', 'highlightParts', 'href', 'label', 'language', 'selected', 'value']
+  inputs: ['active', 'description', 'disabled', 'href', 'label', 'language', 'segments', 'selected', 'value']
 })
 @Component({
   selector: 'ontario-search-result-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['active', 'boldRanges', 'description', 'disabled', 'highlightParts', 'href', 'label', 'language', 'selected', 'value'],
+  inputs: ['active', 'description', 'disabled', 'href', 'label', 'language', 'segments', 'selected', 'value'],
   outputs: ['itemSelected'],
   standalone: false
 })

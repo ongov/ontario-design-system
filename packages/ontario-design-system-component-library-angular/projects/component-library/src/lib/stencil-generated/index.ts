@@ -151,6 +151,7 @@ export const DIRECTIVES = [
   d.OntarioPageAlert,
   d.OntarioRadioButtons,
   d.OntarioSearchBox,
+  d.OntarioSearchResultItem,
   d.OntarioStepIndicator,
   d.OntarioSummaryList,
   d.OntarioSummaryListItem,
