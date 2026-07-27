@@ -32,6 +32,7 @@ $search-result-item-description-line-height: 1.35;
 
 :host(:focus-visible) .ontario-search-result-item {
 	box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus;
+	// Keep an explicit transparent outline so keyboard focus remains visible across high-contrast modes.
 	outline: globalFunctions.px-to-rem(4) solid transparent;
 }
 
