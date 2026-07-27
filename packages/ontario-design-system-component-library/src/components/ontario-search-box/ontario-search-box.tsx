@@ -15,7 +15,10 @@ import {
 	InputInteractionEvent,
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
-import { resolveSuggestionSegments } from '../../utils/components/search-box-autocomplete';
+import {
+	computeHighlightSegments,
+	resolveSuggestionSegments,
+} from '../../utils/components/search-box-autocomplete';
 import {
 	AutocompleteSuggestion,
 	AutocompleteSuggestionSelectedEvent,
@@ -515,11 +518,33 @@ export class OntarioSearchBox {
 		return this.getSuggestionValueFromOption(option);
 	}
 
+	private doesSlotOptionMatchQuery(option: HTMLElement, query: string): boolean {
+		const trimmedQuery = (query || '').trim();
+		if (!trimmedQuery) {
+			return true;
+		}
+
+		const label = this.getSlotOptionLabel(option);
+		if (!label) {
+			return false;
+		}
+
+		return computeHighlightSegments(label, trimmedQuery) !== null;
+	}
+
 	/**
-	 * Mirrors consumer-provided slot visibility into ARIA state without deciding relevance.
+	 * Applies autocomplete query relevance to slotted options and mirrors visibility into ARIA state.
 	 */
-	private updateSlotSuggestionVisibility(_query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
+	private updateSlotSuggestionVisibility(query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
 		assignedOptions.forEach((option) => {
+			const matchesQuery = this.doesSlotOptionMatchQuery(option, query);
+
+			if (matchesQuery) {
+				option.removeAttribute('hidden');
+			} else {
+				option.setAttribute('hidden', '');
+			}
+
 			const isHidden = option.hasAttribute('hidden');
 			option.setAttribute('aria-hidden', String(isHidden));
 
