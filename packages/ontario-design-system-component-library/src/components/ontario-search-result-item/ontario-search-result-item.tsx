@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 
 import { Language } from '../../utils/common/language-types';
 
@@ -38,16 +38,9 @@ export class OntarioSearchResultItem {
 	@Prop() href?: string;
 
 	/**
-	 * Optional highlight parts used to style input-matched text and completion text.
-	 * When provided, this takes precedence over default label rendering.
+	 * Optional ordered text segments used to style match and completion portions.
 	 */
-	@Prop() highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-
-	/**
-	 * Optional bold ranges over the label string for completion emphasis.
-	 * Used when highlightParts is not provided.
-	 */
-	@Prop() boldRanges?: Array<{ start: number; end: number }>;
+	@Prop() segments?: Array<{ text: string; kind: 'match' | 'completion' }>;
 
 	/**
 	 * Marks the option as disabled and non-interactive.
@@ -76,24 +69,6 @@ export class OntarioSearchResultItem {
 
 	@State() private hasDefaultSlot = false;
 
-	@Watch('active')
-	@Watch('selected')
-	private updateAriaSelectedState() {
-		this.element.setAttribute('aria-selected', String(!!(this.active || this.selected)));
-	}
-
-	@Watch('disabled')
-	private updateAriaDisabledState() {
-		this.element.setAttribute('aria-disabled', String(!!this.disabled));
-	}
-
-	componentWillLoad() {
-		this.element.setAttribute('role', 'option');
-		this.element.tabIndex = -1;
-		this.updateAriaSelectedState();
-		this.updateAriaDisabledState();
-	}
-
 	componentDidLoad() {
 		const slotElement = this.element.shadowRoot?.querySelector('slot');
 		if (slotElement) {
@@ -101,15 +76,24 @@ export class OntarioSearchResultItem {
 		}
 	}
 
+	/**
+	 * Synchronise whether fallback text should render based on assigned slot nodes.
+	 */
 	private syncSlotState(slotElement: HTMLSlotElement) {
 		this.hasDefaultSlot = !!slotElement.assignedNodes({ flatten: true }).length;
 	}
 
+	/**
+	 * Handle default slot assignment changes.
+	 */
 	private onSlotChange = (event: Event) => {
 		this.syncSlotState(event.target as HTMLSlotElement);
 	};
 
-	private onSelect = () => {
+	/**
+	 * Emit a selection event when interaction is allowed.
+	 */
+	private emitSelection() {
 		if (this.disabled) return;
 
 		this.itemSelected.emit({
@@ -117,8 +101,37 @@ export class OntarioSearchResultItem {
 			value: this.value || this.label,
 			href: this.href,
 		});
+	}
+
+	/**
+	 * Handle clicks on the host row (non-link areas).
+	 */
+	private onSelect = (event: MouseEvent) => {
+		const target = event.target as HTMLElement | null;
+		if (target?.closest('a')) {
+			return;
+		}
+
+		this.emitSelection();
 	};
 
+	/**
+	 * Handle clicks on the optional link without double-emitting from host click bubbling.
+	 */
+	private onLinkSelect = (event: MouseEvent) => {
+		event.stopPropagation();
+
+		if (this.disabled) {
+			event.preventDefault();
+			return;
+		}
+
+		this.emitSelection();
+	};
+
+	/**
+	 * Build host classes from interactive state.
+	 */
 	private getHostClassNames() {
 		return [
 			'ontario-search-result-item',
@@ -130,61 +143,34 @@ export class OntarioSearchResultItem {
 			.join(' ');
 	}
 
-	private getResolvedHighlightParts(label: string): Array<{ text: string; isInputMatch: boolean }> {
-		if (this.highlightParts?.length) {
-			return this.highlightParts;
+	/**
+	 * Resolve renderable text segments from props with a safe fallback.
+	 */
+	private getResolvedSegments(label: string): Array<{ text: string; kind: 'match' | 'completion' }> {
+		if (this.segments?.length) {
+			return this.segments
+				.filter((segment) => !!segment.text)
+				.map((segment) => ({
+					text: segment.text,
+					kind: segment.kind,
+				}));
 		}
 
-		if (this.boldRanges?.length) {
-			const ranges = this.boldRanges
-				.map((range) => ({
-					start: Math.max(0, Math.min(range.start, label.length)),
-					end: Math.max(0, Math.min(range.end, label.length)),
-				}))
-				.filter((range) => range.end > range.start)
-				.sort((a, b) => a.start - b.start);
-
-			if (!ranges.length) {
-				return [{ text: label, isInputMatch: false }];
-			}
-
-			const mergedRanges: Array<{ start: number; end: number }> = [];
-			for (const range of ranges) {
-				const lastRange = mergedRanges[mergedRanges.length - 1];
-				if (!lastRange || range.start > lastRange.end) {
-					mergedRanges.push({ ...range });
-				} else {
-					lastRange.end = Math.max(lastRange.end, range.end);
-				}
-			}
-
-			const segments: Array<{ text: string; isInputMatch: boolean }> = [];
-			let cursor = 0;
-			for (const range of mergedRanges) {
-				if (cursor < range.start) {
-					segments.push({ text: label.slice(cursor, range.start), isInputMatch: true });
-				}
-				segments.push({ text: label.slice(range.start, range.end), isInputMatch: false });
-				cursor = range.end;
-			}
-			if (cursor < label.length) {
-				segments.push({ text: label.slice(cursor), isInputMatch: true });
-			}
-
-			return segments;
-		}
-
-		return [{ text: label, isInputMatch: false }];
+		return [{ text: label, kind: 'completion' }];
 	}
 
 	private renderHighlightedLabel(label: string) {
-		const parts = this.getResolvedHighlightParts(label);
+		const parts = this.getResolvedSegments(label);
 
 		return (
 			<span class="ontario-search-result-item__label">
 				{parts.map((part, index) => (
 					<span
-						class={part.isInputMatch ? 'ontario-search-result-item__match' : 'ontario-search-result-item__completion'}
+						class={
+							part.kind === 'completion'
+								? 'ontario-search-result-item__completion'
+								: 'ontario-search-result-item__match'
+						}
 						key={`part-${index}`}
 					>
 						{part.text}
@@ -197,15 +183,25 @@ export class OntarioSearchResultItem {
 	render() {
 		const value = this.value || this.label;
 		const labelText = this.label || '';
+		const isSelected = !!(this.active || this.selected);
+		const isDisabled = !!this.disabled;
 
 		return (
-			<Host class={this.getHostClassNames()} onClick={this.onSelect} data-value={value}>
+			<Host
+				role="option"
+				tabIndex={-1}
+				aria-selected={String(isSelected)}
+				aria-disabled={String(isDisabled)}
+				class={this.getHostClassNames()}
+				onClick={this.onSelect}
+				data-value={value}
+			>
 				<div class="ontario-search-result-item__content">
 					<slot onSlotchange={this.onSlotChange}></slot>
 					{!this.hasDefaultSlot && (
 						<div class="ontario-search-result-item__text">
 							{this.href ? (
-								<a href={this.href} class="ontario-search-result-item__link" tabIndex={-1}>
+								<a href={this.href} class="ontario-search-result-item__link" tabIndex={-1} onClick={this.onLinkSelect}>
 									{this.renderHighlightedLabel(labelText)}
 								</a>
 							) : (

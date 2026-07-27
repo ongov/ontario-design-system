@@ -3,6 +3,8 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 
+$search-result-item-description-line-height: 1.35;
+
 :host {
 	display: block;
 	list-style: none;
@@ -33,10 +35,6 @@
 	outline: globalFunctions.px-to-rem(4) solid transparent;
 }
 
-.ontario-search-result-item__content {
-	display: block;
-}
-
 .ontario-search-result-item__text {
 	display: flex;
 	flex-direction: column;
@@ -56,7 +54,7 @@
 }
 
 .ontario-search-result-item__description {
-	line-height: 1.35;
+	line-height: $search-result-item-description-line-height;
 }
 
 .ontario-search-result-item__link {
