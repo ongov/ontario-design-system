@@ -43,7 +43,7 @@ test.describe('ontario-search-box autocomplete', () => {
 	});
 
 	test('filters semantic slot suggestions by input query', async ({ page }) => {
-		await page.setContent(`<ontario-search-box autocomplete caption="Search cities">
+		await page.setContent(`<ontario-search-box enable-autocomplete caption="Search cities">
 			<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
 			<ontario-search-result-item slot="suggestions" label="Waterloo" value="Waterloo"></ontario-search-result-item>
 		</ontario-search-box>`);
