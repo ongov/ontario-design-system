@@ -55,6 +55,27 @@ test.describe('ontario-back-button', () => {
 		await expect(host.locator('a')).toHaveCount(0);
 	});
 
+	test('href mode anchor activates with Enter key', async ({ page }) => {
+		await host.evaluate((el) => {
+			el.setAttribute('back-mode', 'href');
+			el.setAttribute('href', '#step-1');
+		});
+		await page.waitForChanges();
+
+		await page.evaluate(() => {
+			(window as any).backClickCount = 0;
+			document.querySelector('ontario-back-button')?.addEventListener('backClick', () => {
+				(window as any).backClickCount += 1;
+			});
+		});
+
+		await host.locator('a').focus();
+		await page.keyboard.press('Enter');
+
+		const count = await page.evaluate(() => (window as any).backClickCount);
+		expect(count).toBe(1);
+	});
+
 	test('href mode anchor activates with Space key', async ({ page }) => {
 		await host.evaluate((el) => {
 			el.setAttribute('back-mode', 'href');
