@@ -75,24 +75,39 @@ For component guidance, see:
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                                                       | Type                                                      | Default     |
-| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `active`         | `active`          | Marks the option as active during keyboard navigation (parent-managed).                                                                           | `boolean \| undefined`                                    | `false`     |
-| `boldRanges`     | `bold-ranges`     | Optional bold ranges over the label string for completion emphasis. Used when highlightParts is not provided.                                     | `undefined \| { start: number; end: number; }[]`          | `undefined` |
-| `description`    | `description`     | Optional secondary text shown below the label.                                                                                                    | `string \| undefined`                                     | `undefined` |
-| `disabled`       | `disabled`        | Marks the option as disabled and non-interactive.                                                                                                 | `boolean \| undefined`                                    | `false`     |
-| `highlightParts` | `highlight-parts` | Optional highlight parts used to style input-matched text and completion text. When provided, this takes precedence over default label rendering. | `undefined \| { text: string; isInputMatch: boolean; }[]` | `undefined` |
-| `href`           | `href`            | Optional URL to represent a navigable search result.                                                                                              | `string \| undefined`                                     | `undefined` |
-| `label`          | `label`           | Primary text for the suggestion row.                                                                                                              | `string \| undefined`                                     | `undefined` |
-| `language`       | `language`        | Optional language prop to align with component API conventions.                                                                                   | `"en" \| "fr" \| undefined`                               | `'en'`      |
-| `selected`       | `selected`        | Marks the option as selected (parent-managed).                                                                                                    | `boolean \| undefined`                                    | `false`     |
-| `value`          | `value`           | Optional value used by parent components during selection. Falls back to `label` when not set.                                                    | `string \| undefined`                                     | `undefined` |
+| Property         | Attribute         | Description                                                                                                        | Type                                                      | Default     |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------- |
+| `active`         | `active`          | Marks the option as active during keyboard navigation (parent-managed).                                            | `boolean \| undefined`                                    | `false`     |
+| `boldRanges`     | `bold-ranges`     | Optional bold ranges over the label string for completion emphasis. Deprecated in favour of `segments`.            | `undefined \| { start: number; end: number; }[]`          | `undefined` |
+| `description`    | `description`     | Optional secondary text shown below the label.                                                                     | `string \| undefined`                                     | `undefined` |
+| `disabled`       | `disabled`        | Marks the option as disabled and non-interactive.                                                                  | `boolean \| undefined`                                    | `false`     |
+| `highlightParts` | `highlight-parts` | Optional highlight parts used to style input-matched text and completion text. Deprecated in favour of `segments`. | `undefined \| { text: string; isInputMatch: boolean; }[]` | `undefined` |
+| `href`           | `href`            | Optional URL to represent a navigable search result.                                                               | `string \| undefined`                                     | `undefined` |
+| `label`          | `label`           | Primary text for the suggestion row.                                                                               | `string \| undefined`                                     | `undefined` |
+| `language`       | `language`        | Optional language prop to align with component API conventions.                                                    | `"en" \| "fr" \| undefined`                               | `'en'`      |
+| `segments`       | `segments`        | Ordered label segments used to render matched input text and completion text.                                      | `Segment[] \| undefined`                                  | `undefined` |
+| `selected`       | `selected`        | Marks the option as selected (parent-managed).                                                                     | `boolean \| undefined`                                    | `false`     |
+| `value`          | `value`           | Optional value used by parent components during selection. Falls back to `label` when not set.                     | `string \| undefined`                                     | `undefined` |
 
 ## Events
 
 | Event          | Description                                               | Type                                                                                                     |
 | -------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `itemSelected` | Emitted when a non-disabled option is selected via click. | `CustomEvent<{ label?: string \| undefined; value?: string \| undefined; href?: string \| undefined; }>` |
+
+## Dependencies
+
+### Used by
+
+- [ontario-search-box](../ontario-search-box)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-search-box --> ontario-search-result-item
+  style ontario-search-result-item fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
