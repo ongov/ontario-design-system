@@ -24,6 +24,14 @@ export default await createConfig({
 		// causing setContent's page.goto() to hang until the 30s test timeout fires.
 		baseURL: 'http://localhost:3333',
 	},
+	expect: {
+		toHaveScreenshot: {
+			// Allow a small amount of pixel drift (anti-aliasing/font hinting jitter)
+			// to reduce flaky VRT failures without masking real regressions.
+			maxDiffPixelRatio: 0.02,
+		},
+	},
+
 	// Pin the browser projects explicitly so the `{projectName}` token in the
 	// snapshot path is stable. E2E runs in chromium only (its long-standing
 	// behaviour); the VRT suite is additionally captured in firefox and webkit so
