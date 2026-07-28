@@ -1,4 +1,4 @@
-import { OntarioSummaryList } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioSummaryList, OntarioSummaryListItem } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -84,6 +84,8 @@ Minimal `captionActionLink` usage. Passing only `href` uses the default localize
 		headingLevel="h3"
 		captionActionLink={{ href: '/step/contact' }}
 	>
+		<OntarioSummaryListItem name="Email" description="gsmith@gmail.com" />
+		<OntarioSummaryListItem name="Phone number" description="123-456-7890" />
 	</OntarioSummaryList>
 </div>
 
@@ -156,6 +158,8 @@ Full `captionActionLink` usage. Passing `{ href, label }` overrides the visible 
 		headingLevel="h3"
 		captionActionLink={{ href: '/step/personal-info', label: 'Update' }}
 	>
+		<OntarioSummaryListItem name="Last name" description="Smith" />
+		<OntarioSummaryListItem name="First name" description="George" />
 	</OntarioSummaryList>
 </div>
 
