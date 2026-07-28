@@ -54,7 +54,7 @@ import {
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import {
 	SummaryListActionLink,
@@ -114,7 +114,7 @@ export {
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 export {
 	SummaryListActionLink,
@@ -3011,7 +3011,6 @@ export namespace Components {
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
-		 * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
 		 */
 		content: string;
 		/**
@@ -8380,7 +8379,6 @@ declare namespace LocalJSX {
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
-		 * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
 		 */
 		content?: string;
 		/**
