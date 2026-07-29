@@ -81,7 +81,7 @@ test.describe('ontario-in-page-navigation-item', () => {
 		});
 		await page.waitForChanges();
 
-		await expect(getLink()).toHaveAttribute('aria-current', 'true');
+		await expect(getLink()).toHaveAttribute('aria-current', 'location');
 	});
 
 	test('supports custom slot content projection', async ({ page }) => {

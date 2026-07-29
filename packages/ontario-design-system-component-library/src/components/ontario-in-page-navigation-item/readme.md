@@ -133,7 +133,7 @@ When no default slot content is provided and either `label` or `href` is omitted
 ></ontario-in-page-navigation-item>
 ```
 
-This applies `aria-current="true"` to the rendered anchor.
+This applies `aria-current="location"` to the rendered anchor.
 
 1. Slot override pattern
    When a router link is needed, use the default slot and supply the full anchor/link element.

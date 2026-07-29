@@ -148,7 +148,7 @@ export class OntarioInPageNavigationItem {
 					<a
 						class="ontario-in-page-navigation-item__link"
 						href={resolvedHref || undefined}
-						aria-current={this.isCurrent ? 'true' : undefined}
+						aria-current={this.isCurrent ? 'location' : undefined}
 					>
 						{this.label?.trim() || ''}
 					</a>
