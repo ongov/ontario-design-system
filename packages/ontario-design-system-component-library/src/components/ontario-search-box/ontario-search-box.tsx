@@ -401,10 +401,7 @@ export class OntarioSearchBox {
 		if (!this.enableAutocomplete) return;
 
 		if (query.length < (this.minChars ?? OntarioSearchBox.DEFAULT_MIN_CHARS)) {
-			this.updateSlotSuggestionVisibility('');
-			this.closeSuggestions();
-			this.suggestions = [];
-			this.emitSuggestionsUpdated();
+			this.clearSuggestions();
 			return;
 		}
 
@@ -425,9 +422,7 @@ export class OntarioSearchBox {
 		}
 
 		if (!this.getSuggestions) {
-			this.closeSuggestions();
-			this.suggestions = [];
-			this.emitSuggestionsUpdated();
+			this.clearSuggestions();
 			return;
 		}
 
@@ -459,9 +454,7 @@ export class OntarioSearchBox {
 					this.closeSuggestions();
 				}
 			} catch {
-				this.closeSuggestions();
-				this.suggestions = [];
-				this.emitSuggestionsUpdated();
+				this.clearSuggestions();
 			}
 		}, this.debounceMs ?? OntarioSearchBox.DEFAULT_DEBOUNCE_MS);
 	}
@@ -746,6 +739,17 @@ export class OntarioSearchBox {
 		}
 	};
 
+	private handleSuggestionMouseLeave = () => {
+		if (!this.enableAutocomplete) return;
+		if (this.hoveredSuggestionIndex < 0) return;
+
+		this.hoveredSuggestionIndex = -1;
+
+		if (this.hasSuggestionSlotContent) {
+			this.decorateSlotSuggestionOptions();
+		}
+	};
+
 	private getSuggestionValueFromOption(option?: HTMLElement): string {
 		if (!option) return '';
 		return (
@@ -802,6 +806,16 @@ export class OntarioSearchBox {
 	private resetSuggestions(): void {
 		this.closeSuggestions();
 		this.suggestions = [];
+	}
+
+	/**
+	 * Clears all suggestion state: hides slotted options, closes the list, resets suggestions, and emits the updated event.
+	 */
+	private clearSuggestions(): void {
+		this.updateSlotSuggestionVisibility('');
+		this.closeSuggestions();
+		this.suggestions = [];
+		this.emitSuggestionsUpdated();
 	}
 
 	/**
@@ -1042,6 +1056,7 @@ export class OntarioSearchBox {
 						aria-labelledby={searchInputFieldId}
 						aria-hidden={String(!shouldShowSuggestions)}
 						onMouseOver={this.handleSuggestionMouseOver}
+						onMouseLeave={this.handleSuggestionMouseLeave}
 						onMouseDown={this.handleSuggestionMouseDown}
 					>
 						<slot
