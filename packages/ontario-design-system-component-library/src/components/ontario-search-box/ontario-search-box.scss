@@ -27,6 +27,7 @@ $ontario-search-input-padding--mobile: 7.75rem;
 $ontario-search-desktop-width: 34rem;
 $ontario-search-mobile-width: 20.5rem;
 $ontario-search-autosuggest-box-shadow: #0000001a;
+$ontario-search-autocomplete-disabled-opacity: 0.65;
 
 .ontario-search__container {
 	max-width: $ontario-search-desktop-width;
@@ -152,7 +153,7 @@ input[type='reset'].ontario-search__reset {
 	display: none;
 	list-style: none;
 	margin: globalFunctions.px-to-rem(-2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
-	padding: 0;
+	padding: spacing.$spacing-0;
 	overflow: hidden;
 	position: absolute;
 	width: 100%;
@@ -184,16 +185,13 @@ input[type='reset'].ontario-search__reset {
 	padding-bottom: spacing.$spacing-2;
 }
 
-.ontario-search-autocomplete__suggestion-option--active {
-	background-color: colours.$ontario-colour-button-tertiary--hover;
-}
-
+.ontario-search-autocomplete__suggestion-option--active,
 .ontario-search-autocomplete__suggestion-option--hovered {
 	background-color: colours.$ontario-colour-button-tertiary--hover;
 }
 
 .ontario-search-autocomplete__suggestion-option--disabled {
-	opacity: 0.65;
+	opacity: $ontario-search-autocomplete-disabled-opacity;
 	cursor: default;
 }
 
@@ -243,7 +241,7 @@ input[type='reset'].ontario-search__reset {
 }
 
 ::slotted(.ontario-search-autocomplete__slot-option[aria-disabled='true']) {
-	opacity: 0.65;
+	opacity: $ontario-search-autocomplete-disabled-opacity;
 	cursor: default;
 }
 
@@ -257,7 +255,7 @@ input[type='reset'].ontario-search__reset {
 	height: globalFunctions.px-to-rem(1);
 	// Offset the element by 1px while keeping it available to assistive technologies.
 	margin: globalFunctions.px-to-rem(-1);
-	padding: 0;
+	padding: spacing.$spacing-0;
 	border: 0;
 	clip: rect(0, 0, 0, 0);
 	overflow: hidden;
