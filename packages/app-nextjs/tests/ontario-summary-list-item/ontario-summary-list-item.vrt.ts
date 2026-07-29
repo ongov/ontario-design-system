@@ -2,6 +2,13 @@ import { test } from '@playwright/test';
 
 import { expectVrtScreenshot, waitForInteractionPaint } from '../vrt-helpers';
 
+const ACTION_LINK_SELECTOR = 'a.ontario-summary-list-item__change-button';
+
+const interactiveVariants = [
+	{ label: 'with action', id: 'ontario-summary-list-item-with-action', maxDiffPixels: { focus: 600, active: 700 } },
+	{ label: 'custom label', id: 'ontario-summary-list-item-custom-label', maxDiffPixels: { focus: 400, active: 400 } },
+] as const;
+
 test.describe('Summary List Item - default states', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
@@ -38,23 +45,16 @@ test.describe('Summary List Item - focus states', () => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('with action - focus', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
+	for (const { label, id, maxDiffPixels } of interactiveVariants) {
+		test(`${label} - focus`, async ({ page }) => {
+			const summaryListItem = page.locator(`#${id}`);
+			const actionLink = summaryListItem.locator(ACTION_LINK_SELECTOR);
 
-		await actionLink.focus();
-		await waitForInteractionPaint(page);
-		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 600 });
-	});
-
-	test('custom label - focus', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
-
-		await actionLink.focus();
-		await waitForInteractionPaint(page);
-		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 400 });
-	});
+			await actionLink.focus();
+			await waitForInteractionPaint(page);
+			await expectVrtScreenshot(summaryListItem, { maxDiffPixels: maxDiffPixels.focus });
+		});
+	}
 });
 
 test.describe('Summary List Item - hover states', () => {
@@ -62,21 +62,15 @@ test.describe('Summary List Item - hover states', () => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('with action - hover', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
+	for (const { label, id } of interactiveVariants) {
+		test(`${label} - hover`, async ({ page }) => {
+			const summaryListItem = page.locator(`#${id}`);
+			const actionLink = summaryListItem.locator(ACTION_LINK_SELECTOR);
 
-		await actionLink.hover();
-		await expectVrtScreenshot(summaryListItem);
-	});
-
-	test('custom label - hover', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
-
-		await actionLink.hover();
-		await expectVrtScreenshot(summaryListItem);
-	});
+			await actionLink.hover();
+			await expectVrtScreenshot(summaryListItem);
+		});
+	}
 });
 
 test.describe('Summary List Item - active states', () => {
@@ -84,25 +78,16 @@ test.describe('Summary List Item - active states', () => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	test('with action - active', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-with-action');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
+	for (const { label, id, maxDiffPixels } of interactiveVariants) {
+		test(`${label} - active`, async ({ page }) => {
+			const summaryListItem = page.locator(`#${id}`);
+			const actionLink = summaryListItem.locator(ACTION_LINK_SELECTOR);
 
-		await actionLink.hover();
-		await page.mouse.down();
-		await waitForInteractionPaint(page);
-		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 700 });
-		await page.mouse.up();
-	});
-
-	test('custom label - active', async ({ page }) => {
-		const summaryListItem = page.locator('#ontario-summary-list-item-custom-label');
-		const actionLink = summaryListItem.locator('a.ontario-summary-list-item__change-button');
-
-		await actionLink.hover();
-		await page.mouse.down();
-		await waitForInteractionPaint(page);
-		await expectVrtScreenshot(summaryListItem, { maxDiffPixels: 400 });
-		await page.mouse.up();
-	});
+			await actionLink.hover();
+			await page.mouse.down();
+			await waitForInteractionPaint(page);
+			await expectVrtScreenshot(summaryListItem, { maxDiffPixels: maxDiffPixels.active });
+			await page.mouse.up();
+		});
+	}
 });
