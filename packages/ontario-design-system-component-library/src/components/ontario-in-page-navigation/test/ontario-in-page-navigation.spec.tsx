@@ -94,7 +94,9 @@ describe('ontario-in-page-navigation', () => {
 		await render(`<ontario-in-page-navigation heading="On this page"></ontario-in-page-navigation>`);
 
 		expect(warnSpy).toHaveBeenCalled();
-		const hasMissingItemsWarning = warnSpy.mock.calls.some((args) => String(args[0] || '').includes('requires child'));
+		const hasMissingItemsWarning = warnSpy.mock.calls.some((args) =>
+			String(args[0] || '').includes('requires list item links in the default slot'),
+		);
 		expect(hasMissingItemsWarning).toBe(true);
 	});
 
