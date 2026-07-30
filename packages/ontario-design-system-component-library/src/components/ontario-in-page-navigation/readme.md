@@ -81,7 +81,7 @@ Default usage with slotted list items:
 </Tabs>
 ```
 
-The canonical authoring pattern in this branch is standard slotted `<li><a></a></li>` items. Once `ontario-in-page-navigation-item` is merged, this documentation will include both patterns and recommend component items for consistency.
+Slotted list items (`<li><a href="#section-id">Label</a></li>`) are the standard way to author navigation links.
 
 Smooth scroll enabled (default):
 
