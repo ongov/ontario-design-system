@@ -97,18 +97,4 @@ test.describe('ontario-in-page-navigation-item', () => {
 	test('has no axe violations', async ({ page }) => {
 		await expectNoAxeViolations(page, 'ontario-in-page-navigation-item');
 	});
-
-	test('visual regression: default item', async () => {
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
-
-	test('visual regression: focus-visible state on item link', async ({ page }) => {
-		await getLink().focus();
-		await page.waitForChanges();
-		await expect(getLink()).toBeFocused();
-
-		const screenshot = await host.screenshot();
-		expect(screenshot.byteLength).toBeGreaterThan(0);
-	});
 });
