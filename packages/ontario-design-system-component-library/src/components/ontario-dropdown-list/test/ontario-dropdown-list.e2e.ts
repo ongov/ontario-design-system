@@ -46,6 +46,65 @@ test.describe('ontario-dropdown-list', () => {
 	});
 });
 
+test.describe('ontario-dropdown-list - slotted option children', () => {
+	test('renders options passed as light DOM <option> children', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="audi">Audi</option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-dropdown-list').first();
+		const select = host.locator('select').first();
+		const renderedOptions = select.locator('option');
+
+		await expect(renderedOptions).toHaveCount(3);
+		await expect(renderedOptions.nth(0)).toHaveText('Volvo');
+		await expect(renderedOptions.nth(1)).toHaveText('Saab');
+		await expect(renderedOptions.nth(2)).toHaveText('Audi');
+	});
+
+	test('respects a selected attribute on a slotted <option>', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
+				<option value="volvo">Volvo</option>
+				<option value="saab" selected>Saab</option>
+				<option value="audi">Audi</option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-dropdown-list').first();
+		const select = host.locator('select').first();
+
+		await expect(select).toHaveValue('saab');
+		expect(await host.evaluate((element: HTMLOntarioDropdownListElement) => element.value)).toBe('saab');
+	});
+
+	test('the options prop takes precedence over slotted <option> children', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list
+				name="dropdown-options"
+				element-id="dropdown-list"
+				options='[{ "value": "dropdown-option-1", "label": "Option 1" }]'
+			>
+				<option value="volvo">Volvo</option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-dropdown-list').first();
+		const select = host.locator('select').first();
+		const renderedOptions = select.locator('option');
+
+		await expect(renderedOptions).toHaveCount(1);
+		await expect(renderedOptions.nth(0)).toHaveText('Option 1');
+	});
+});
+
 // import { newE2EPage } from '@stencil/core/testing';
 
 // describe('ontario-dropdown-list', () => {
