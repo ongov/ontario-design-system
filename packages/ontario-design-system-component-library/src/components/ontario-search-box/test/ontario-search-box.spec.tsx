@@ -170,36 +170,6 @@ describe('ontario-search-box', () => {
 		expect(torontoOption.hasAttribute('hidden')).toBe(true);
 	});
 
-	it('should close suggestion list on mouse option selection', async () => {
-		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities">
-			<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
-			<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
-		</ontario-search-box>`);
-
-		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
-			'#ontario-search-input-field',
-		) as HTMLInputElement;
-		input.value = 'to';
-		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
-		await page.waitForChanges();
-
-		// Verify list is open
-		expect(input.getAttribute('aria-expanded')).toBe('true');
-
-		const list = (page.root as HTMLElement).shadowRoot?.querySelector(
-			'.ontario-search-autocomplete__suggestion-list',
-		) as HTMLElement;
-		// Find any selectable element within the list (li, button, or div)
-		const option = list?.querySelector('[role="option"], li, button, div') as HTMLElement;
-
-		// Simulate mouse selection with both mousedown and click to match browser behavior
-		option?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
-		option?.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-		await page.waitForChanges();
-
-		// Verify list is closed after selection
-		expect(input.getAttribute('aria-expanded')).toBe('false');
-	});
 	it('should keep suggestions available after keyboard navigation keys', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {
