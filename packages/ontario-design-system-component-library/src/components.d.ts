@@ -53,7 +53,7 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
-import { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation';
+import { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -114,7 +114,7 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
-export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation';
+export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -2845,6 +2845,12 @@ export namespace Components {
 		 */
 		isDecorative: boolean;
 	}
+	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
 	interface OntarioInPageNavigation {
 		/**
 		 * Optional heading text. If omitted, the heading is resolved from i18n.
@@ -4813,6 +4819,12 @@ declare global {
 		prototype: HTMLOntarioIconYoutubeElement;
 		new (): HTMLOntarioIconYoutubeElement;
 	};
+	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
 	interface HTMLOntarioInPageNavigationElement extends Components.OntarioInPageNavigation, HTMLStencilElement {}
 	var HTMLOntarioInPageNavigationElement: {
 		prototype: HTMLOntarioInPageNavigationElement;
@@ -8221,6 +8233,12 @@ declare namespace LocalJSX {
 		 */
 		isDecorative?: boolean;
 	}
+	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
 	interface OntarioInPageNavigation {
 		/**
 		 * Optional heading text. If omitted, the heading is resolved from i18n.
@@ -9459,6 +9477,12 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
+			/**
+			 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+			 */
 			'ontario-in-page-navigation': LocalJSX.OntarioInPageNavigation &
 				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationElement>;
 			/**

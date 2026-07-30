@@ -114,6 +114,15 @@ Slot-based composition:
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+
 ## Properties
 
 | Property         | Attribute          | Description                                                           | Type                        | Default          |
