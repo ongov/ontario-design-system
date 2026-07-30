@@ -188,7 +188,9 @@ describe('ontario-search-box', () => {
 		) as HTMLElement;
 		expect(list?.getAttribute('aria-hidden')).toBe('false');
 
-		list?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
+		// Dispatch mousedown on the list item (child) so it bubbles up to the listener on the ul
+		const option = list?.querySelector('li') as HTMLElement;
+		option?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
 		await page.waitForChanges();
 
 		expect(list?.getAttribute('aria-hidden')).toBe('true');
