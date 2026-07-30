@@ -80,7 +80,7 @@ export class OntarioSearchResultItem {
 	 * Synchronise whether fallback text should render based on assigned slot nodes.
 	 */
 	private syncSlotState(slotElement: HTMLSlotElement) {
-		this.hasDefaultSlot = !!slotElement.assignedNodes({ flatten: true }).length;
+		this.hasDefaultSlot = !!slotElement.assignedElements({ flatten: true }).length;
 	}
 
 	/**
@@ -190,8 +190,8 @@ export class OntarioSearchResultItem {
 			<Host
 				role="option"
 				tabIndex={-1}
-				aria-selected={String(isSelected)}
-				aria-disabled={String(isDisabled)}
+				aria-selected={isSelected ? 'true' : 'false'}
+				aria-disabled={isDisabled ? 'true' : 'false'}
 				class={this.getHostClassNames()}
 				onClick={this.onSelect}
 				data-value={value}
