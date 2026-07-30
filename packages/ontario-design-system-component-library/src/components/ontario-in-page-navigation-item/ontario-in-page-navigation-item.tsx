@@ -4,14 +4,17 @@ import { ConsoleMessageClass } from '../../utils/console-message/console-message
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
+/**
+ * A single list item link used inside `ontario-in-page-navigation`.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+ */
 @Component({
 	tag: 'ontario-in-page-navigation-item',
 	styleUrl: 'ontario-in-page-navigation-item.scss',
 	shadow: true,
 })
-/**
- * A single list item link used inside `ontario-in-page-navigation`.
- */
 export class OntarioInPageNavigationItem {
 	@Element() host!: HTMLElement;
 

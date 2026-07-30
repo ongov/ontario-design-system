@@ -167,6 +167,14 @@ The Ontario In-Page Navigation Item component supports server-side rendering, wi
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+A single list item link used inside `ontario-in-page-navigation`.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+
 ## Properties
 
 | Property    | Attribute    | Description                                                | Type                        | Default     |
