@@ -171,31 +171,26 @@ describe('ontario-search-box', () => {
 	});
 
 	it('should close suggestion list on mouse option selection', async () => {
-		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
-		const host = page.root as unknown as {
-			getSuggestions?: (query: string) => Promise<string[]>;
-			debounceMs?: number;
-		};
-
-		host.getSuggestions = vi.fn(async () => ['Toronto', 'Ottawa']);
-		host.debounceMs = 0;
+		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities">
+			<ontario-search-result-item slot="suggestions" label="Toronto" value="Toronto"></ontario-search-result-item>
+			<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
+		</ontario-search-box>`);
 
 		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
 			'#ontario-search-input-field',
 		) as HTMLInputElement;
 		input.value = 'to';
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
-		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		// Mock DOM sets onMouseDown as a property on custom elements, not a DOM listener, so dispatch won't reach it.
-		const instance = page.rootInstance as unknown as {
-			selectSuggestionByIndex?: (index: number, source: 'keyboard' | 'mouse') => void;
-		};
-		instance.selectSuggestionByIndex?.(0, 'mouse');
+		const list = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'.ontario-search-autocomplete__suggestion-list',
+		) as HTMLElement;
+		expect(list?.getAttribute('aria-hidden')).toBe('false');
+
+		list?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
 		await page.waitForChanges();
 
-		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
 		expect(list?.getAttribute('aria-hidden')).toBe('true');
 	});
 	it('should keep suggestions available after keyboard navigation keys', async () => {
