@@ -6,8 +6,10 @@ import { validateLanguage, validateValueAgainstArray } from '../../utils/validat
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import translations from '../../translations/global.i18n.json';
 
-export const ontarioInPageNavigationHeadingLevels = ['h2', 'h3', 'h4'] as const;
-export type OntarioInPageNavigationHeadingLevel = (typeof ontarioInPageNavigationHeadingLevels)[number];
+import {
+	ontarioInPageNavigationHeadingLevels,
+	type OntarioInPageNavigationHeadingLevel,
+} from './ontario-in-page-navigation.types';
 
 /**
  * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
