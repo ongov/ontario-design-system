@@ -6,16 +6,21 @@ import { validateLanguage, validateValueAgainstArray } from '../../utils/validat
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import translations from '../../translations/global.i18n.json';
 
-export type OntarioInPageNavigationHeadingLevel = 'h2' | 'h3' | 'h4';
+export const ontarioInPageNavigationHeadingLevels = ['h2', 'h3', 'h4'] as const;
+export type OntarioInPageNavigationHeadingLevel = (typeof ontarioInPageNavigationHeadingLevels)[number];
 
+/**
+ * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+ *
+ * For component guidance, see:
+ * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+ * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+ */
 @Component({
 	tag: 'ontario-in-page-navigation',
 	styleUrl: 'ontario-in-page-navigation.scss',
 	shadow: true,
 })
-/**
- * A heading and ordered list of links that help users navigate long single-page content.
- */
 export class OntarioInPageNavigation {
 	@Element() host!: HTMLElement;
 
@@ -49,8 +54,14 @@ export class OntarioInPageNavigation {
 	 */
 	@Prop({ mutable: true }) language?: Language;
 
-	@State() translations: any = translations;
+	/**
+	 * Localized string translations for this component.
+	 */
+	@State() translations: typeof translations = translations;
 
+	/**
+	 * Whether the default slot currently has rendered navigation item content.
+	 */
 	@State() private hasDefaultSlotContent = false;
 
 	/**
@@ -91,7 +102,7 @@ export class OntarioInPageNavigation {
 	 */
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
-		const allowedValues: OntarioInPageNavigationHeadingLevel[] = ['h2', 'h3', 'h4'];
+		const allowedValues = ontarioInPageNavigationHeadingLevels;
 		const isValid = validateValueAgainstArray(newValue, allowedValues);
 
 		if (!isValid) {
@@ -161,10 +172,17 @@ export class OntarioInPageNavigation {
 	};
 
 	/**
+	 * Returns true when href is a non-empty in-page anchor (starts with #).
+	 */
+	private isAnchorHref(href?: string | null): href is string {
+		return !!href && href.startsWith('#');
+	}
+
+	/**
 	 * Resolves a hash link to the target element in the current document.
 	 */
 	private getAnchorTarget(href: string): HTMLElement | null {
-		if (!href || !href.startsWith('#')) {
+		if (!this.isAnchorHref(href)) {
 			return null;
 		}
 
@@ -192,7 +210,7 @@ export class OntarioInPageNavigation {
 		}
 
 		const href = anchor.getAttribute('href')?.trim();
-		if (!href || !href.startsWith('#')) {
+		if (!this.isAnchorHref(href)) {
 			return;
 		}
 
