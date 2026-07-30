@@ -172,10 +172,6 @@ describe('ontario-search-box', () => {
 
 	it('should close suggestion list on mouse option selection', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
-		const hostRef = (page.root as any).__stencil__getHostRef?.();
-		const hostInstance = hostRef?.$lazyInstance$ as unknown as {
-			selectSuggestionByIndex?: (index: number, source: 'keyboard' | 'mouse') => void;
-		};
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -192,7 +188,10 @@ describe('ontario-search-box', () => {
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		hostInstance.selectSuggestionByIndex?.(0, 'mouse');
+		const firstOption = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'ontario-search-result-item',
+		) as HTMLElement;
+		firstOption?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
 		await page.waitForChanges();
 
 		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
