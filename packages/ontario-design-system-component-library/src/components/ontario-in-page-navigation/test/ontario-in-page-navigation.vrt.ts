@@ -36,7 +36,7 @@ test.describe('ontario-in-page-navigation visual regression', () => {
 
 	test('default variant', async () => {
 		await expect(host).toHaveClass(/hydrated/);
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-default.png', screenshotOptions);
+		await expect(host).toHaveScreenshot(screenshotOptions);
 	});
 
 	test('no-top-border variant', async ({ page }) => {
@@ -44,7 +44,7 @@ test.describe('ontario-in-page-navigation visual regression', () => {
 			(el as OntarioInPageNavigationHostElement).noTopBorder = true;
 		});
 		await page.waitForChanges();
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-no-top-border.png', screenshotOptions);
+		await expect(host).toHaveScreenshot(screenshotOptions);
 	});
 
 	test('focus-visible state on first navigation link', async ({ page }) => {
@@ -55,6 +55,6 @@ test.describe('ontario-in-page-navigation visual regression', () => {
 		await firstItemLink.focus();
 		await page.waitForChanges();
 
-		await expect(host).toHaveScreenshot('ontario-in-page-navigation-focus-visible.png', screenshotOptions);
+		await expect(host).toHaveScreenshot(screenshotOptions);
 	});
 });
