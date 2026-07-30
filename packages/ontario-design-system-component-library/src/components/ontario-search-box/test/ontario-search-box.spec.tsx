@@ -188,10 +188,11 @@ describe('ontario-search-box', () => {
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		const firstOption = (page.root as HTMLElement).shadowRoot?.querySelector(
-			'ontario-search-result-item',
-		) as HTMLElement;
-		firstOption?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
+		// Mock DOM sets onMouseDown as a property on custom elements, not a DOM listener, so dispatch won't reach it.
+		const instance = page.rootInstance as unknown as {
+			selectSuggestionByIndex?: (index: number, source: 'keyboard' | 'mouse') => void;
+		};
+		instance.selectSuggestionByIndex?.(0, 'mouse');
 		await page.waitForChanges();
 
 		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
