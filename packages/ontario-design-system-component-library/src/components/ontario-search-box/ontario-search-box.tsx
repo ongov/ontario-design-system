@@ -28,10 +28,6 @@ export interface AutocompleteSuggestion {
 	href?: string;
 	disabled?: boolean;
 	segments?: Segment[];
-	/** @deprecated Use `segments` instead. */
-	boldRanges?: Array<{ start: number; end: number }>;
-	/** @deprecated Use `segments` instead. */
-	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
 }
 
 export type Suggestion = string | AutocompleteSuggestion;
@@ -482,8 +478,6 @@ export class OntarioSearchBox {
 			href: item.href,
 			disabled: !!item.disabled,
 			segments: resolveSuggestionSegments(label, query, item),
-			boldRanges: item.boldRanges,
-			highlightParts: item.highlightParts,
 		};
 	}
 
