@@ -110,17 +110,17 @@ export class OntarioSearchBox {
 	/**
 	 * Minimum number of characters required before suggestions are shown.
 	 */
-	@Prop() minChars?: number = 1;
+	@Prop() minChars?: number = OntarioSearchBox.DEFAULT_MIN_CHARS;
 
 	/**
 	 * Debounce delay in milliseconds before `getSuggestions` is called.
 	 */
-	@Prop() debounceMs?: number = 150;
+	@Prop() debounceMs?: number = OntarioSearchBox.DEFAULT_DEBOUNCE_MS;
 
 	/**
 	 * Maximum number of suggestions rendered in async mode.
 	 */
-	@Prop() maxSuggestions?: number = 8;
+	@Prop() maxSuggestions?: number = OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS;
 
 	/**
 	 * The text to display as the input label
