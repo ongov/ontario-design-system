@@ -245,8 +245,10 @@ input[type='reset'].ontario-search__reset {
 	cursor: default;
 }
 
+$search-autocomplete-suggestion-description-line-height: 1.35;
+
 .ontario-search-autocomplete__suggestion-description {
-	line-height: 1.35;
+	line-height: $search-autocomplete-suggestion-description-line-height;
 }
 
 .ontario-search__visually-hidden {
