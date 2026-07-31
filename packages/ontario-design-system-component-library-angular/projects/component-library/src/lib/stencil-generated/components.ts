@@ -63,14 +63,14 @@ export declare interface OntarioAside extends Components.OntarioAside {}
 
 
 @ProxyCmp({
-  inputs: ['language']
+  inputs: ['bottomOffset', 'language']
 })
 @Component({
   selector: 'ontario-back-to-top',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['language'],
+  inputs: ['bottomOffset', 'language'],
   standalone: false
 })
 export class OntarioBackToTop {
