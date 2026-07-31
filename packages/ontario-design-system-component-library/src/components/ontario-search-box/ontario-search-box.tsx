@@ -264,7 +264,8 @@ export class OntarioSearchBox {
 	@State() private hasSuggestionSlotContent = false;
 	@State() private ariaLiveMessage = '';
 
-	@State() translations: any = translations;
+	/** Component i18n strings, typed to prevent stale keys after translation file changes. */
+	@State() translations: typeof translations = translations;
 
 	// Constants for default values
 	private static readonly DEFAULT_MIN_CHARS = 1;
