@@ -890,11 +890,14 @@ export class OntarioSearchBox {
 	private handleSuggestionMouseDown = (event: MouseEvent) => {
 		if (!this.enableAutocomplete) return;
 		if (!this.hasSuggestionSlotContent) return;
+		// Prevent blur from closing the list before the click can commit the selection.
+		event.preventDefault();
+	};
 
+	private handleSuggestionClick = (event: MouseEvent) => {
+		if (!this.enableAutocomplete) return;
 		const selectedIndex = this.getSuggestionIndexFromEvent(event);
 		if (selectedIndex < 0) return;
-
-		event.preventDefault();
 		this.selectSuggestionByIndex(selectedIndex, 'mouse');
 	};
 
@@ -1053,6 +1056,7 @@ export class OntarioSearchBox {
 						onMouseOver={this.handleSuggestionMouseOver}
 						onMouseLeave={this.handleSuggestionMouseLeave}
 						onMouseDown={this.handleSuggestionMouseDown}
+						onClick={this.handleSuggestionClick}
 					>
 						<slot
 							name="suggestions"
