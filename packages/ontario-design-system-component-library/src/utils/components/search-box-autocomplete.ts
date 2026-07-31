@@ -1,14 +1,17 @@
+/** A single styled text run within a suggestion label — either a matched or completion portion. */
 export interface Segment {
 	text: string;
 	kind: 'match' | 'completion';
 }
 
+/** Input accepted by `resolveSuggestionSegments` for pre-computed segment data. */
 export interface SegmentResolutionInput {
 	segments?: Segment[];
 	highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
 	boldRanges?: Array<{ start: number; end: number }>;
 }
 
+/** Converts a label string and a set of matched character indices into contiguous `Segment` runs. */
 function buildSegments(label: string, matchedIndices: Set<number>): Segment[] {
 	const labelChars = Array.from(label);
 	const segments: Segment[] = [];
@@ -36,6 +39,10 @@ function buildSegments(label: string, matchedIndices: Set<number>): Segment[] {
 	return segments;
 }
 
+/**
+ * Computes highlight segments by finding matched character indices of `query` within `label`.
+ * Returns `null` when no match is found.
+ */
 export function computeHighlightSegments(label: string, query: string): Segment[] | null {
 	const normalizedLabel = label || '';
 	const normalizedQuery = (query || '').trim();
