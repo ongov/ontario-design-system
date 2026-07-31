@@ -15,10 +15,7 @@ import {
 	InputInteractionEvent,
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
-import {
-	computeHighlightSegments,
-	resolveSuggestionSegments,
-} from '../../utils/components/search-box-autocomplete';
+import { resolveSuggestionSegments } from '../../utils/components/search-box-autocomplete';
 import {
 	AutocompleteSuggestion,
 	AutocompleteSuggestionSelectedEvent,
@@ -667,7 +664,7 @@ export class OntarioSearchBox {
 	private getSuggestionLabel(index: number): string {
 		if (this.hasSuggestionSlotContent) {
 			const option = this.getSlotSuggestionElements()[index];
-			return this.getSlotOptionLabel(option);
+			return this.getSuggestionValueFromOption(option);
 		}
 
 		return this.suggestions[index]?.label || '';
