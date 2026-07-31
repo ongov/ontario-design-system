@@ -390,7 +390,6 @@ export class OntarioSearchBox {
 		}
 
 		if (this.hasSuggestionSlotContent) {
-			this.updateSlotSuggestionVisibility(query);
 			this.resetActiveSuggestionIndex();
 			this.resetHoveredSuggestionIndex();
 			this.decorateSlotSuggestionOptions();
@@ -506,63 +505,7 @@ export class OntarioSearchBox {
 	private updateSuggestionSlotState(slot?: HTMLSlotElement) {
 		const assignedOptions = this.getAllSlotSuggestionElements(slot);
 		this.hasSuggestionSlotContent = assignedOptions.length > 0;
-		this.updateSlotSuggestionVisibility(this.value || '', assignedOptions);
 		this.decorateSlotSuggestionOptions(this.getSlotSuggestionElements(slot));
-	}
-
-	private getSlotOptionLabel(option: HTMLElement): string {
-		if (option.tagName === OntarioSearchBox.RESULT_ITEM_TAG) {
-			return (option as any).label || (option as any).value || this.getSuggestionValueFromOption(option);
-		}
-
-		return this.getSuggestionValueFromOption(option);
-	}
-
-	private doesSlotOptionMatchQuery(option: HTMLElement, query: string): boolean {
-		const trimmedQuery = (query || '').trim();
-		if (!trimmedQuery) {
-			return true;
-		}
-
-		const label = this.getSlotOptionLabel(option);
-		if (!label) {
-			return false;
-		}
-
-		return computeHighlightSegments(label, trimmedQuery) !== null;
-	}
-
-	/**
-	 * Applies autocomplete query relevance to slotted options and mirrors visibility into ARIA state.
-	 */
-	private updateSlotSuggestionVisibility(query: string, assignedOptions = this.getAllSlotSuggestionElements()) {
-		assignedOptions.forEach((option) => {
-			const matchesQuery = this.doesSlotOptionMatchQuery(option, query);
-
-			if (matchesQuery) {
-				option.removeAttribute('hidden');
-			} else {
-				option.setAttribute('hidden', '');
-			}
-
-			const isHidden = option.hasAttribute('hidden');
-			option.setAttribute('aria-hidden', String(isHidden));
-
-			if (isHidden) {
-				option.removeAttribute('data-ontario-suggestion-index');
-				option.setAttribute('aria-selected', 'false');
-				option.classList.remove('ontario-search-autocomplete__slot-option--active');
-				option.classList.remove('ontario-search-autocomplete__slot-option--hovered');
-			}
-		});
-
-		if (this.activeSuggestionIndex >= this.getSuggestionCount()) {
-			this.activeSuggestionIndex = -1;
-		}
-
-		if (this.hoveredSuggestionIndex >= this.getSuggestionCount()) {
-			this.hoveredSuggestionIndex = -1;
-		}
 	}
 
 	private getCustomSlotHighlightTarget(option: HTMLElement): HTMLElement | undefined {
@@ -816,7 +759,6 @@ export class OntarioSearchBox {
 	 * Clears all suggestion state: hides slotted options, closes the list, resets suggestions, and emits the updated event.
 	 */
 	private clearSuggestions(): void {
-		this.updateSlotSuggestionVisibility('');
 		this.closeSuggestions();
 		this.suggestions = [];
 		this.emitSuggestionsUpdated();
