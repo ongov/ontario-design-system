@@ -19,6 +19,8 @@ test.describe('ontario-back-button', () => {
 		const button = host.locator('button');
 		await expect(button).toBeVisible();
 		await expect(button).toContainText('Back');
+		// render() branches between a <button> and an <a>, so also assert no anchor is present to
+		// guard against both being rendered at once, or the anchor leaking through unexpectedly.
 		await expect(host.locator('a')).toHaveCount(0);
 	});
 
@@ -153,6 +155,9 @@ test.describe('ontario-back-button', () => {
 
 		await host.locator('button').click({ force: true });
 
+		// force: true is required here because Playwright's actionability checks refuse to click a
+		// disabled native <button>. We still want to verify that a click event dispatched anyway
+		// (e.g. via JS or assistive tech) doesn't result in the backClick event being emitted.
 		const count = await page.evaluate(() => (window as any).backClickCount);
 		expect(count).toBe(0);
 	});

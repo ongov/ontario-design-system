@@ -61,9 +61,10 @@ export class OntarioBackButton {
 	 * Disables user interaction.
 	 *
 	 * Policy note:
-	 * Unlike primary action buttons, back navigation may need to be temporarily unavailable
-	 * during guarded/transient states (for example, save-in-progress or step-transition lock).
-	 * In those cases, `disabled` prevents accidental navigation while preserving a consistent UI shell.
+	 * This is intended for temporary/transient states only (for example, save-in-progress or
+	 * step-transition lock), not as a general-purpose way to gate back navigation in normal usage.
+	 * Whether going back is actually valid should be determined by application logic/validation
+	 * before this prop is ever set to `true`, not used as a substitute for that validation.
 	 */
 	@Prop() disabled?: boolean = false;
 
@@ -132,15 +133,7 @@ export class OntarioBackButton {
 	 * Otherwise, `href` implies link mode; missing `href` falls back to history mode.
 	 */
 	private get resolvedBackMode(): BackMode {
-		if (this.backMode) {
-			return this.backMode;
-		}
-
-		if (this.href) {
-			return 'href';
-		}
-
-		return 'history';
+		return this.backMode ?? (this.href ? 'href' : 'history');
 	}
 
 	/**
@@ -174,21 +167,14 @@ export class OntarioBackButton {
 		this.backClick.emit(event);
 
 		const mode = this.resolvedBackMode;
-		if (mode === 'event') {
+
+		const shouldAllowNativeNavigation = mode === 'href' && !!this.href;
+		if (!shouldAllowNativeNavigation) {
 			event.preventDefault();
-			return;
 		}
 
-		if (mode === 'history') {
-			event.preventDefault();
-			if (isClientSideRendering()) {
-				window.history.back();
-			}
-			return;
-		}
-
-		if (mode === 'href' && !this.href) {
-			event.preventDefault();
+		if (mode === 'history' && isClientSideRendering()) {
+			window.history.back();
 		}
 	}
 

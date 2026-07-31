@@ -17,6 +17,7 @@ Use a back button to provide a clear, consistent way for users to return to a pr
 - The page has multiple entry points and previous-page expectations are ambiguous
 - Breadcrumbs are already present (do not use both together)
 - The back action is unclear or would confuse users about where they're going
+- This is not a form component, don't use it to control form submission or step validation logic
 
 ## Usage guidance
 
@@ -49,11 +50,11 @@ For complex journeys, use more explicit labels (e.g., "Go back to Contact detail
 
 This component is **intentionally navigation-strategy agnostic**. The back button itself is presentational—it does not encode routing logic. Instead, you choose the mode that fits your application's navigation approach:
 
-| Mode                  | Use When                                                            | Renders As | Behavior                                                   |
-| --------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
-| **history** (default) | Users follow a linear flow and browser history is reliable          | `<button>` | Calls `window.history.back()`                              |
-| **href**              | You need deterministic navigation to a known previous step          | `<a>` link | Navigates to the specified URL                             |
-| **event**             | Your framework (React Router, Angular Router, etc.) manages routing | `<button>` | Emits `backClick` event only; your app controls navigation |
+| Mode                | Use When                                                            | Renders As | Behavior                                                   |
+| ------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
+| `history` (default) | Users follow a linear flow and browser history is reliable          | `<button>` | Calls `window.history.back()`                              |
+| `href`              | You need deterministic navigation to a known previous step          | `<a>` link | Navigates to the specified URL                             |
+| `event`             | Your framework (React Router, Angular Router, etc.) manages routing | `<button>` | Emits `backClick` event only; your app controls navigation |
 
 ## Examples
 
@@ -63,14 +64,14 @@ Use this for straightforward, linear flows where browser history is expected. Th
 
 ```mdx-code-block
 <Tabs
-defaultValue="html"
-values={[
-{label: 'HTML', value: 'html'},
-{label: 'React', value: 'react'},
-{label: 'Angular', value: 'angular'},
-]}
-groupId="framework"
-queryString="framework">
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
 <TabItem value="html">
 ```
 
@@ -111,14 +112,14 @@ Use this for deterministic navigation in non-linear flows where a known previous
 
 ```mdx-code-block
 <Tabs
-defaultValue="html"
-values={[
-{label: 'HTML', value: 'html'},
-{label: 'React', value: 'react'},
-{label: 'Angular', value: 'angular'},
-]}
-groupId="framework"
-queryString="framework">
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
 <TabItem value="html">
 ```
 
@@ -330,7 +331,18 @@ The back button is rendered as a tertiary-styled button (or link in href mode) w
 
 ### Listening to events
 
-**HTML:**
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
 
 ```html
 <ontario-back-button id="my-back-button"></ontario-back-button>
@@ -342,16 +354,27 @@ The back button is rendered as a tertiary-styled button (or link in href mode) w
 </script>
 ```
 
-**React:**
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
 
 ```tsx
 <OntarioBackButton onBackClick={(event) => console.log('Clicked', event)} />
 ```
 
-**Angular:**
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
 
 ```html
 <ontario-back-button (backClick)="onBackClick($event)"></ontario-back-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 <!-- Auto Generated Below -->
