@@ -4,6 +4,7 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 
 $search-result-item-description-line-height: 1.35;
+$search-result-item-focus-ring-width: globalFunctions.px-to-rem(4);
 
 :host {
 	display: block;
@@ -22,7 +23,7 @@ $search-result-item-description-line-height: 1.35;
 }
 
 .ontario-search-result-item--selected {
-	box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus inset;
+	box-shadow: 0 0 0 $search-result-item-focus-ring-width colours.$ontario-colour-focus inset;
 }
 
 .ontario-search-result-item--disabled {
@@ -31,9 +32,9 @@ $search-result-item-description-line-height: 1.35;
 }
 
 :host(:focus-visible) .ontario-search-result-item {
-	box-shadow: 0 0 0 globalFunctions.px-to-rem(4) colours.$ontario-colour-focus;
+	box-shadow: 0 0 0 $search-result-item-focus-ring-width colours.$ontario-colour-focus;
 	// Keep an explicit transparent outline so keyboard focus remains visible across high-contrast modes.
-	outline: globalFunctions.px-to-rem(4) solid transparent;
+	outline: $search-result-item-focus-ring-width solid transparent;
 }
 
 .ontario-search-result-item__text {

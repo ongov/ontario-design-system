@@ -67,6 +67,7 @@ export class OntarioSearchResultItem {
 	 */
 	@Event() itemSelected!: EventEmitter<{ label?: string; value?: string; href?: string }>;
 
+	/** Whether the default slot has any projected element content. */
 	@State() private hasDefaultSlot = false;
 
 	componentDidLoad() {
@@ -90,6 +91,10 @@ export class OntarioSearchResultItem {
 		this.syncSlotState(event.target as HTMLSlotElement);
 	};
 
+	private get resolvedValue() {
+		return this.value || this.label;
+	}
+
 	/**
 	 * Emit a selection event when interaction is allowed.
 	 */
@@ -98,7 +103,7 @@ export class OntarioSearchResultItem {
 
 		this.itemSelected.emit({
 			label: this.label,
-			value: this.value || this.label,
+			value: this.resolvedValue,
 			href: this.href,
 		});
 	}
@@ -181,7 +186,7 @@ export class OntarioSearchResultItem {
 	}
 
 	render() {
-		const value = this.value || this.label;
+		const value = this.resolvedValue;
 		const labelText = this.label || '';
 		const isSelected = !!(this.active || this.selected);
 		const isDisabled = !!this.disabled;
