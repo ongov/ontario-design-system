@@ -146,7 +146,7 @@ Example of a task with a hint.
 
 The Ontario Task component supports server-side rendering, with a few considerations:
 
-- **Task status validation:** Always pass a valid `taskStatus`. Invalid values default to `'NotStarted'` at runtime.
+- **Task status validation:** Always pass a valid `taskStatus`. Invalid values default to `'notStarted'` at runtime.
 - **Language prop:** Pass `language` explicitly during SSR.
 - **Hydrated-only language events:** Language change events only fire after hydration.
 
@@ -156,7 +156,7 @@ The Ontario Task component supports server-side rendering, with a few considerat
 <ontario-task
 	label="Confirm email"
 	task-id="confirm-email"
-	task-status="InProgress"
+	task-status="inProgress"
 	heading-level="h3"
 	language="fr"
 	hint-text="Be sure to use your work email"
