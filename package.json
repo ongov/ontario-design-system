@@ -32,7 +32,7 @@
 		"test:all": "pnpm run test:unit && pnpm run test:e2e && pnpm run test:vrt"
 	},
 	"engines": {
-		"node": ">=22.22.3 <23",
+		"node": "<25",
 		"pnpm": "<12"
 	},
 	"devDependencies": {
