@@ -1,8 +1,4 @@
-import { expect, type Locator } from '@playwright/test';
-
-type VrtScreenshotOptions = {
-	maxDiffPixels?: number;
-};
+export { expectVrtScreenshot } from './vrt-screenshot';
 
 export const withGlobalStyles = (body: string) => `
 	<html>
@@ -12,11 +8,3 @@ export const withGlobalStyles = (body: string) => `
 		<body>${body}</body>
 	</html>
 `;
-
-export const expectVrtScreenshot = async (locator: Locator, options: VrtScreenshotOptions = {}) => {
-	await expect(locator).toHaveScreenshot({
-		animations: 'disabled',
-		caret: 'hide',
-		...options,
-	});
-};
