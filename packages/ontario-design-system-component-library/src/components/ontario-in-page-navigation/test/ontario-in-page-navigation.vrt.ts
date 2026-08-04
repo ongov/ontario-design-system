@@ -57,4 +57,16 @@ test.describe('ontario-in-page-navigation visual regression', () => {
 
 		await expect(host).toHaveScreenshot(screenshotOptions);
 	});
+
+	test('visited state on first navigation link', async ({ page }) => {
+		const firstItemLink = page
+			.locator('ontario-in-page-navigation-item')
+			.first()
+			.locator('a.ontario-in-page-navigation-item__link');
+
+		await firstItemLink.click();
+		await page.waitForChanges();
+		await expect(page).toHaveURL(/#section-1$/);
+		await expect(host).toHaveScreenshot(screenshotOptions);
+	});
 });
