@@ -2395,8 +2395,6 @@ export const OntarioSearchResultItem: StencilReactComponent<OntarioSearchResultI
         value: 'value',
         href: 'href',
         segments: 'segments',
-        highlightParts: 'highlight-parts',
-        boldRanges: 'bold-ranges',
         disabled: 'disabled',
         selected: 'selected',
         active: 'active',

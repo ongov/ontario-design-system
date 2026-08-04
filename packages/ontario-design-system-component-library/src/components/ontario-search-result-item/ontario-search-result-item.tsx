@@ -44,18 +44,6 @@ export class OntarioSearchResultItem {
 	@Prop() segments?: Segment[];
 
 	/**
-	 * Optional highlight parts used to style input-matched text and completion text.
-	 * Deprecated in favour of `segments`.
-	 */
-	@Prop() highlightParts?: Array<{ text: string; isInputMatch: boolean }>;
-
-	/**
-	 * Optional bold ranges over the label string for completion emphasis.
-	 * Deprecated in favour of `segments`.
-	 */
-	@Prop() boldRanges?: Array<{ start: number; end: number }>;
-
-	/**
 	 * Marks the option as disabled and non-interactive.
 	 */
 	@Prop() disabled?: boolean = false;
@@ -164,8 +152,6 @@ export class OntarioSearchResultItem {
 	private getResolvedSegments(label: string): Segment[] {
 		return resolveSuggestionSegments(label, '', {
 			segments: this.segments,
-			highlightParts: this.highlightParts,
-			boldRanges: this.boldRanges,
 		});
 	}
 
