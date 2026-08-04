@@ -71,7 +71,7 @@ test.describe('ontario-badge', () => {
 	test('updates colour dynamically', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Dynamic"></ontario-badge>`);
 
-		await host.evaluate((el: any) => {
+		await host.evaluate((el: HTMLOntarioBadgeElement) => {
 			el.colour = 'red';
 		});
 
@@ -121,7 +121,7 @@ test.describe('ontario-badge', () => {
      Boundary Tests with longer than 15 characters
     ================================================= */
 	/* ==============================================
-    Curretly skipped because the badge component is not designed to handle long text 
+    Currently skipped because the badge component is not designed to handle long text 
     and will overflow horizontally. 
     This test is included for future reference if the component is updated 
     to support long text wrapping.
@@ -187,27 +187,8 @@ test.describe('ontario-badge', () => {
     ========================== */
 
 	test('has no accessibility violations', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
+		await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
 		await expectNoAxeViolations(page, 'ontario-badge');
-		const results = await new AxeBuilder({ page }).include('ontario-badge').analyze();
-
-		if (results.violations.length > 0) {
-			console.log('\n❌ Accessibility Violations Found:\n');
-
-			results.violations.forEach((violation, index) => {
-				console.log(`${index + 1}. ${violation.id}`);
-				console.log(`   Impact: ${violation.impact}`);
-				console.log(`   Description: ${violation.description}`);
-				console.log(`   Help: ${violation.help}`);
-				console.log(`   URL: ${violation.helpUrl}`);
-			});
-
-			console.log('-----------------------------------');
-		}
-
-		expect(results.violations, JSON.stringify(results.violations, null, 2)).toHaveLength(0);
-
-		await expect(host).toBeVisible();
 	});
 
 	test('uses aria-label for screen readers', async ({ page }) => {
@@ -234,24 +215,20 @@ test.describe('ontario-badge', () => {
 
 		const span = host.locator('span');
 		await expect(span).toBeAttached();
-		await expect(span).not.toHaveAttribute('role', /.+/);
+		await expect(span).not.toHaveAttribute('role');
 		await expect(host).toHaveScreenshot('semantic-structure.png');
 	});
 
-	/* =========================
-     Visual Regression Tests -- currently skipped due to Playwright screenshot not implemented in Stencil E2E testing
-    ========================== */
-
 	test('visual regression: colour variants', async ({ page }) => {
-		const host = await renderHost(
-			page,
+		await page.setContent(
 			`
       <ontario-badge label="One" colour="teal"></ontario-badge>
       <ontario-badge label="Two" colour="green"></ontario-badge>
       `,
 		);
+		await page.waitForChanges();
 
-		await expect(host).toHaveScreenshot('colour-variants.png');
+		await expect(page).toHaveScreenshot('colour-variants.png');
 	});
 
 	/* =========================
@@ -284,7 +261,7 @@ test.describe('ontario-badge', () => {
 		await page.waitForChanges();
 
 		const end = performance.now();
-		console.log(`Rendered 50 badges in ${(end - start).toFixed(2)} ms`);
+		console.log(`Applied 10 rapid colour updates in ${(end - start).toFixed(2)} ms`);
 
 		await expect(host).toBeAttached();
 		await expect(host.locator('span')).toHaveScreenshot('rapid-re-rendering.png');
