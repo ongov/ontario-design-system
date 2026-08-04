@@ -12,6 +12,7 @@ import { defineCustomElements } from '@ongov/ontario-design-system-component-lib
 defineCustomElements();
 export const OntarioAccordion = /*@__PURE__*/createReactComponent<JSX.OntarioAccordion, HTMLOntarioAccordionElement>('ontario-accordion');
 export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
+export const OntarioBackButton = /*@__PURE__*/createReactComponent<JSX.OntarioBackButton, HTMLOntarioBackButtonElement>('ontario-back-button');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBadge = /*@__PURE__*/createReactComponent<JSX.OntarioBadge, HTMLOntarioBadgeElement>('ontario-badge');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
