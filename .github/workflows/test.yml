@@ -48,7 +48,7 @@ jobs:
     name: Stencil E2E Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -116,7 +116,7 @@ jobs:
     name: Stencil VRT Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -184,7 +184,7 @@ jobs:
     name: Apps VRT Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -253,7 +253,7 @@ jobs:
     name: Apps E2E Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
