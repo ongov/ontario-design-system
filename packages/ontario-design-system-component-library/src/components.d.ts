@@ -3249,6 +3249,53 @@ export namespace Components {
 		value?: string;
 	}
 	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Optional ordered text segments used to style match and completion portions.
+		 */
+		segments?: Array<{ text: string; kind: 'match' | 'completion' }>;
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
+		 */
+		value?: string;
+	}
+	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
@@ -3569,6 +3616,10 @@ export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioSearchBoxElement;
+}
+export interface OntarioSearchResultItemCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioSearchResultItemElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -5255,6 +5306,66 @@ declare global {
 		prototype: HTMLOntarioSearchBoxElement;
 		new (): HTMLOntarioSearchBoxElement;
 	};
+	interface HTMLOntarioSearchResultItemElementEventMap {
+		itemSelected: { label?: string; value?: string; href?: string };
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface HTMLOntarioSearchResultItemElement extends Components.OntarioSearchResultItem, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioSearchResultItemElement: {
+		prototype: HTMLOntarioSearchResultItemElement;
+		new (): HTMLOntarioSearchResultItemElement;
+	};
 	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
 	 * For component guidance, see:
@@ -5541,6 +5652,7 @@ declare global {
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-search-box': HTMLOntarioSearchBoxElement;
+		'ontario-search-result-item': HTMLOntarioSearchResultItemElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-summary-list': HTMLOntarioSummaryListElement;
 		'ontario-summary-list-item': HTMLOntarioSummaryListItemElement;
@@ -8840,6 +8952,59 @@ declare namespace LocalJSX {
 		value?: string;
 	}
 	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a non-disabled option is selected via click.
+		 */
+		onItemSelected?: (
+			event: OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>,
+		) => void;
+		/**
+		 * Optional ordered text segments used to style match and completion portions.
+		 */
+		segments?: Array<{ text: string; kind: 'match' | 'completion' }>;
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
+		 */
+		value?: string;
+	}
+	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
@@ -9278,6 +9443,7 @@ declare namespace LocalJSX {
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-search-box': OntarioSearchBox;
+		'ontario-search-result-item': OntarioSearchResultItem;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-summary-list': OntarioSummaryList;
 		'ontario-summary-list-item': OntarioSummaryListItem;
@@ -9761,6 +9927,13 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
+			/**
+			 * Ontario Search Result Item renders a semantic option row for search suggestions.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+			 */
+			'ontario-search-result-item': LocalJSX.OntarioSearchResultItem &
+				JSXBase.HTMLAttributes<HTMLOntarioSearchResultItemElement>;
 			/**
 			 * Ontario Step Indicator communicates progress through multi-step flows.
 			 * For component guidance, see:
