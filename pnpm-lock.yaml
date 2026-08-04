@@ -257,8 +257,8 @@ importers:
         specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       '@types/node':
-        specifier: ^22.12.0
-        version: 22.19.9
+        specifier: ^24.0.0
+        version: 24.12.2
       '@types/react':
         specifier: 19.2.18
         version: 19.2.18
@@ -292,7 +292,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^6.0.0
-        version: 6.0.2(vite@8.0.16(@types/node@22.19.9)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))
+        version: 6.0.2(vite@8.0.16(@types/node@24.12.2)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
@@ -301,7 +301,7 @@ importers:
         version: 10.4.1(jiti@2.6.1)(supports-color@8.1.1)
       vite:
         specifier: ^8.0.0
-        version: 8.0.16(@types/node@22.19.9)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0)
+        version: 8.0.16(@types/node@24.12.2)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0)
 
   packages/ontario-design-system-complete-styles:
     dependencies:
@@ -6453,10 +6453,6 @@ packages:
   '@types/mock-fs@4.13.4':
     resolution:
       { integrity: sha512-mXmM0o6lULPI8z3XNnQCpL0BGxPwx1Ul1wXYEPBGl4efShyxW2Rln0JOPEWGyZaYZMM6OVXM/15zUuFMY52ljg== }
-
-  '@types/node@22.19.9':
-    resolution:
-      { integrity: sha512-PD03/U8g1F9T9MI+1OBisaIARhSzeidsUjQaf51fOxrfjeiKN9bLVO06lHuHYjxdnqLWJijJHfqXPSJri2EM2A== }
 
   '@types/node@24.12.2':
     resolution:
@@ -14636,10 +14632,6 @@ packages:
       { integrity: sha512-tO/bf30wBbTsJ7go80j0RzA2rcwX6o7XPBpeFcb+jzoeb4pfMM2zUeSDIkY1AWqeZabWxaQZ/h8N9t35QKDLPQ== }
     engines: { node: '>=10.13.0' }
 
-  undici-types@6.21.0:
-    resolution:
-      { integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ== }
-
   undici-types@7.16.0:
     resolution:
       { integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw== }
@@ -20515,10 +20507,6 @@ snapshots:
     dependencies:
       '@types/node': 24.12.2
 
-  '@types/node@22.19.9':
-    dependencies:
-      undici-types: 6.21.0
-
   '@types/node@24.12.2':
     dependencies:
       undici-types: 7.16.0
@@ -20819,10 +20807,10 @@ snapshots:
     dependencies:
       vite: 8.1.5(@types/node@24.12.2)(esbuild@0.28.1)(jiti@2.6.1)(less@4.6.7)(sass-embedded@1.93.2)(sass@1.101.0)(terser@5.49.0)(tsx@4.21.0)(yaml@2.9.0)
 
-  '@vitejs/plugin-react@6.0.2(vite@8.0.16(@types/node@22.19.9)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.2(vite@8.0.16(@types/node@24.12.2)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.0.16(@types/node@22.19.9)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@24.12.2)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0)
 
   '@vitest/expect@4.1.8':
     dependencies:
@@ -28454,8 +28442,6 @@ snapshots:
       last-run: 2.0.0
       undertaker-registry: 2.0.0
 
-  undici-types@6.21.0: {}
-
   undici-types@7.16.0: {}
 
   undici@5.29.0:
@@ -28697,7 +28683,7 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.9.0
 
-  vite@8.0.16(@types/node@22.19.9)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0):
+  vite@8.0.16(@types/node@24.12.2)(esbuild@0.28.0)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.83.4)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -28705,7 +28691,7 @@ snapshots:
       rolldown: 1.0.3
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 22.19.9
+      '@types/node': 24.12.2
       esbuild: 0.28.0
       fsevents: 2.3.3
       jiti: 2.6.1
