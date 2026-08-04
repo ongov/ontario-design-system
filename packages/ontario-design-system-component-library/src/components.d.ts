@@ -53,6 +53,7 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
+import { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -113,6 +114,7 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
@@ -2844,6 +2846,66 @@ export namespace Components {
 		isDecorative: boolean;
 	}
 	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface OntarioInPageNavigation {
+		/**
+		 * Optional heading text. If omitted, the heading is resolved from i18n.
+		 */
+		heading?: string;
+		/**
+		 * Heading level used for the component heading.
+		 * @default 'h2'
+		 */
+		headingLevel: OntarioInPageNavigationHeadingLevel;
+		/**
+		 * Language used for translated defaults.
+		 */
+		language?: Language;
+		/**
+		 * Removes the top border from the navigation container.
+		 * @default false
+		 */
+		noTopBorder?: boolean;
+		/**
+		 * Skip link target id (without #) or anchor (with #).
+		 * @default 'skip-to-main'
+		 */
+		skipLinkTarget?: string;
+		/**
+		 * Enables smooth scrolling and hash updates for in-page links.
+		 * @default true
+		 */
+		smoothScroll?: boolean;
+	}
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface OntarioInPageNavigationItem {
+		/**
+		 * In-page anchor target, for example #eligibility.
+		 */
+		href?: string;
+		/**
+		 * Marks the current/active section.
+		 * @default false
+		 */
+		isCurrent?: boolean;
+		/**
+		 * Link label for the in-page navigation item.
+		 */
+		label?: string;
+		/**
+		 * Language used if localized text is required in the future.
+		 */
+		language?: Language;
+	}
+	/**
 	 * Ontario Input captures single-line text input.
 	 * This component intentionally does not expose `readOnly` or `disabled` props.
 	 * To support accessible and understandable form completion:
@@ -4781,6 +4843,27 @@ declare global {
 		prototype: HTMLOntarioIconYoutubeElement;
 		new (): HTMLOntarioIconYoutubeElement;
 	};
+	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface HTMLOntarioInPageNavigationElement extends Components.OntarioInPageNavigation, HTMLStencilElement {}
+	var HTMLOntarioInPageNavigationElement: {
+		prototype: HTMLOntarioInPageNavigationElement;
+		new (): HTMLOntarioInPageNavigationElement;
+	};
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface HTMLOntarioInPageNavigationItemElement extends Components.OntarioInPageNavigationItem, HTMLStencilElement {}
+	var HTMLOntarioInPageNavigationItemElement: {
+		prototype: HTMLOntarioInPageNavigationItemElement;
+		new (): HTMLOntarioInPageNavigationItemElement;
+	};
 	interface HTMLOntarioInputElementEventMap {
 		inputOnInput: InputInputEvent;
 		inputOnChange: InputInteractionEvent;
@@ -5349,6 +5432,8 @@ declare global {
 		'ontario-icon-wheelchair': HTMLOntarioIconWheelchairElement;
 		'ontario-icon-wifi': HTMLOntarioIconWifiElement;
 		'ontario-icon-youtube': HTMLOntarioIconYoutubeElement;
+		'ontario-in-page-navigation': HTMLOntarioInPageNavigationElement;
+		'ontario-in-page-navigation-item': HTMLOntarioInPageNavigationItemElement;
 		'ontario-input': HTMLOntarioInputElement;
 		'ontario-language-toggle': HTMLOntarioLanguageToggleElement;
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
@@ -8184,6 +8269,66 @@ declare namespace LocalJSX {
 		isDecorative?: boolean;
 	}
 	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface OntarioInPageNavigation {
+		/**
+		 * Optional heading text. If omitted, the heading is resolved from i18n.
+		 */
+		heading?: string;
+		/**
+		 * Heading level used for the component heading.
+		 * @default 'h2'
+		 */
+		headingLevel?: OntarioInPageNavigationHeadingLevel;
+		/**
+		 * Language used for translated defaults.
+		 */
+		language?: Language;
+		/**
+		 * Removes the top border from the navigation container.
+		 * @default false
+		 */
+		noTopBorder?: boolean;
+		/**
+		 * Skip link target id (without #) or anchor (with #).
+		 * @default 'skip-to-main'
+		 */
+		skipLinkTarget?: string;
+		/**
+		 * Enables smooth scrolling and hash updates for in-page links.
+		 * @default true
+		 */
+		smoothScroll?: boolean;
+	}
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface OntarioInPageNavigationItem {
+		/**
+		 * In-page anchor target, for example #eligibility.
+		 */
+		href?: string;
+		/**
+		 * Marks the current/active section.
+		 * @default false
+		 */
+		isCurrent?: boolean;
+		/**
+		 * Link label for the in-page navigation item.
+		 */
+		label?: string;
+		/**
+		 * Language used if localized text is required in the future.
+		 */
+		language?: Language;
+	}
+	/**
 	 * Ontario Input captures single-line text input.
 	 * This component intentionally does not expose `readOnly` or `disabled` props.
 	 * To support accessible and understandable form completion:
@@ -8988,6 +9133,8 @@ declare namespace LocalJSX {
 		'ontario-icon-wheelchair': OntarioIconWheelchair;
 		'ontario-icon-wifi': OntarioIconWifi;
 		'ontario-icon-youtube': OntarioIconYoutube;
+		'ontario-in-page-navigation': OntarioInPageNavigation;
+		'ontario-in-page-navigation-item': OntarioInPageNavigationItem;
 		'ontario-input': OntarioInput;
 		'ontario-language-toggle': OntarioLanguageToggle;
 		'ontario-loading-indicator': OntarioLoadingIndicator;
@@ -9390,6 +9537,21 @@ declare module '@stencil/core' {
 				JSXBase.HTMLAttributes<HTMLOntarioIconWheelchairElement>;
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
+			/**
+			 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+			 */
+			'ontario-in-page-navigation': LocalJSX.OntarioInPageNavigation &
+				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationElement>;
+			/**
+			 * A single list item link used inside `ontario-in-page-navigation`.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+			 */
+			'ontario-in-page-navigation-item': LocalJSX.OntarioInPageNavigationItem &
+				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationItemElement>;
 			/**
 			 * Ontario Input captures single-line text input.
 			 * This component intentionally does not expose `readOnly` or `disabled` props.

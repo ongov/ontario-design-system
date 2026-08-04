@@ -142,6 +142,8 @@ export const DIRECTIVES = [
   d.OntarioIconWheelchair,
   d.OntarioIconWifi,
   d.OntarioIconYoutube,
+  d.OntarioInPageNavigation,
+  d.OntarioInPageNavigationItem,
   d.OntarioInput,
   d.OntarioLanguageToggle,
   d.OntarioLoadingIndicator,

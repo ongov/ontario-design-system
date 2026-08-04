@@ -3383,6 +3383,52 @@ export declare interface OntarioIconYoutube extends Components.OntarioIconYoutub
 
 
 @ProxyCmp({
+  inputs: ['heading', 'headingLevel', 'language', 'noTopBorder', 'skipLinkTarget', 'smoothScroll']
+})
+@Component({
+  selector: 'ontario-in-page-navigation',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['heading', 'headingLevel', 'language', 'noTopBorder', 'skipLinkTarget', 'smoothScroll'],
+  standalone: false
+})
+export class OntarioInPageNavigation {
+  protected el: HTMLOntarioInPageNavigationElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioInPageNavigation extends Components.OntarioInPageNavigation {}
+
+
+@ProxyCmp({
+  inputs: ['href', 'isCurrent', 'label', 'language']
+})
+@Component({
+  selector: 'ontario-in-page-navigation-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['href', 'isCurrent', 'label', 'language'],
+  standalone: false
+})
+export class OntarioInPageNavigationItem {
+  protected el: HTMLOntarioInPageNavigationItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioInPageNavigationItem extends Components.OntarioInPageNavigationItem {}
+
+
+@ProxyCmp({
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
