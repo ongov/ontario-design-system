@@ -3324,53 +3324,6 @@ export namespace Components {
 		value?: string;
 	}
 	/**
-	 * Ontario Search Result Item renders a semantic option row for search suggestions.
-	 * For component guidance, see:
-	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
-	 */
-	interface OntarioSearchResultItem {
-		/**
-		 * Marks the option as active during keyboard navigation (parent-managed).
-		 * @default false
-		 */
-		active?: boolean;
-		/**
-		 * Optional secondary text shown below the label.
-		 */
-		description?: string;
-		/**
-		 * Marks the option as disabled and non-interactive.
-		 * @default false
-		 */
-		disabled?: boolean;
-		/**
-		 * Optional URL to represent a navigable search result.
-		 */
-		href?: string;
-		/**
-		 * Primary text for the suggestion row.
-		 */
-		label?: string;
-		/**
-		 * Optional language prop to align with component API conventions.
-		 * @default 'en'
-		 */
-		language?: Language;
-		/**
-		 * Optional ordered text segments used to style match and completion portions.
-		 */
-		segments?: Array<{ text: string; kind: 'match' | 'completion' }>;
-		/**
-		 * Marks the option as selected (parent-managed).
-		 * @default false
-		 */
-		selected?: boolean;
-		/**
-		 * Optional value used by parent components during selection. Falls back to `label` when not set.
-		 */
-		value?: string;
-	}
-	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/step-indicator.html
@@ -9064,6 +9017,59 @@ declare namespace LocalJSX {
 		required?: boolean;
 		/**
 		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a non-disabled option is selected via click.
+		 */
+		onItemSelected?: (
+			event: OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>,
+		) => void;
+		/**
+		 * Ordered label segments used to render matched input text and completion text.
+		 */
+		segments?: Segment[];
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
 		 */
 		value?: string;
 	}
