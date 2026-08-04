@@ -40,4 +40,11 @@ test.describe('ontario-in-page-navigation-item visual regression', () => {
 		await expect(getLink()).toBeFocused();
 		await expect(host).toHaveScreenshot(screenshotOptions);
 	});
+
+	test('visited state on item link', async ({ page }) => {
+		await getLink().click();
+		await page.waitForChanges();
+		await expect(page).toHaveURL(/#section-1$/);
+		await expect(host).toHaveScreenshot(screenshotOptions);
+	});
 });
