@@ -65,8 +65,8 @@ dd {
 }
 
 .ontario-summary-list-item__button-container {
-	text-align: right;
 	flex-basis: globalFunctions.px-to-rem(56);
+	text-align: right;
 	padding-left: spacing.$spacing-5;
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
