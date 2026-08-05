@@ -3519,60 +3519,60 @@ export namespace Components {
 	}
 }
 export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioAccordionElement;
+	detail: T;
+	target: HTMLOntarioAccordionElement;
 }
 export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioBackButtonElement;
+	detail: T;
+	target: HTMLOntarioBackButtonElement;
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioCheckboxesElement;
+	detail: T;
+	target: HTMLOntarioCheckboxesElement;
 }
 export interface OntarioDateInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioDateInputElement;
+	detail: T;
+	target: HTMLOntarioDateInputElement;
 }
 export interface OntarioDropdownListCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioDropdownListElement;
+	detail: T;
+	target: HTMLOntarioDropdownListElement;
 }
 export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderElement;
+	detail: T;
+	target: HTMLOntarioHeaderElement;
 }
 export interface OntarioHeaderMenuTabsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderMenuTabsElement;
+	detail: T;
+	target: HTMLOntarioHeaderMenuTabsElement;
 }
 export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderOverflowMenuElement;
+	detail: T;
+	target: HTMLOntarioHeaderOverflowMenuElement;
 }
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHintExpanderElement;
+	detail: T;
+	target: HTMLOntarioHintExpanderElement;
 }
 export interface OntarioInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioInputElement;
+	detail: T;
+	target: HTMLOntarioInputElement;
 }
 export interface OntarioLanguageToggleCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioLanguageToggleElement;
+	detail: T;
+	target: HTMLOntarioLanguageToggleElement;
 }
 export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioRadioButtonsElement;
+	detail: T;
+	target: HTMLOntarioRadioButtonsElement;
 }
 export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioSearchBoxElement;
+	detail: T;
+	target: HTMLOntarioSearchBoxElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioTextareaElement;
+	detail: T;
+	target: HTMLOntarioTextareaElement;
 }
 declare global {
 	interface HTMLOntarioAccordionElementEventMap {
