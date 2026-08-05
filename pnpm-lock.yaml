@@ -129,8 +129,8 @@ importers:
         specifier: 22.0.5
         version: 22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(@angular/platform-browser@22.0.5(@angular/animations@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2)))(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2)))(rxjs@7.8.1)
       '@ngx-translate/core':
-        specifier: ^18.0.0
-        version: 18.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
+        specifier: ^17.0.0
+        version: 17.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))
       '@ngx-translate/http-loader':
         specifier: ^17.0.0
         version: 17.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))
@@ -3495,13 +3495,12 @@ packages:
       typescript: '>=6.0 <6.1'
       webpack: ^5.54.0
 
-  '@ngx-translate/core@18.0.0':
+  '@ngx-translate/core@17.0.0':
     resolution:
-      { integrity: sha512-Z9u9AXaeuyeHHimivvJQvhal/LJNB+5tlH+FimSU4QQ61FrtRDqgyn6nfFbc6Cb+59NDZdsh4QeTJyPCldFUwA== }
+      { integrity: sha512-Rft2D5ns2pq4orLZjEtx1uhNuEBerUdpFUG1IcqtGuipj6SavgB8SkxtNQALNDA+EVlvsNCCjC2ewZVtUeN6rg== }
     peerDependencies:
-      '@angular/common': '>=18'
-      '@angular/core': '>=18'
-      rxjs: '>=7'
+      '@angular/common': '>=16'
+      '@angular/core': '>=16'
 
   '@ngx-translate/http-loader@17.0.0':
     resolution:
@@ -16264,11 +16263,10 @@ snapshots:
       typescript: 6.0.3
       webpack: 5.106.2(esbuild@0.28.1)(lightningcss@1.32.0)
 
-  '@ngx-translate/core@18.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)':
+  '@ngx-translate/core@17.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))':
     dependencies:
       '@angular/common': 22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       '@angular/core': 22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2)
-      rxjs: 7.8.1
       tslib: 2.8.1
 
   '@ngx-translate/http-loader@17.0.0(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.1)(zone.js@0.16.2))':
