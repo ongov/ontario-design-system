@@ -7,17 +7,17 @@ test.describe('Ontario Button - default states', () => {
 
 	test('primary button - default state', async ({ page }) => {
 		const primaryButton = page.locator('#ontario-button-primary');
-		await expect(primaryButton).toHaveScreenshot('ontarioButtonPrimary.png');
+		await expect(primaryButton).toHaveScreenshot();
 	});
 
 	test('secondary button - default state', async ({ page }) => {
 		const secondaryButton = page.locator('#ontario-button-secondary');
-		await expect(secondaryButton).toHaveScreenshot('ontarioButtonSecondary.png');
+		await expect(secondaryButton).toHaveScreenshot();
 	});
 
 	test('tertiary button - default state', async ({ page }) => {
 		const tertiaryButton = page.locator('#ontario-button-tertiary');
-		await expect(tertiaryButton).toHaveScreenshot('ontarioButtonTertiary.png');
+		await expect(tertiaryButton).toHaveScreenshot();
 	});
 });
 
@@ -36,7 +36,7 @@ test.describe('Ontario Button - focus states', () => {
 		await inner.focus();
 
 		// Snap the HOST (stable target) while inner button is focused
-		await expect(host).toHaveScreenshot('ontarioButtonPrimary-focus.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -52,7 +52,7 @@ test.describe('Ontario Button - focus states', () => {
 		await inner.focus();
 
 		// Snap the HOST (stable target) while inner button is focused
-		await expect(host).toHaveScreenshot('ontarioButtonSecondary-focus.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -68,7 +68,7 @@ test.describe('Ontario Button - focus states', () => {
 		await inner.focus();
 
 		// Snap the HOST (stable target) while inner button is focused
-		await expect(host).toHaveScreenshot('ontarioButtonTertiary-focus.png', {
+		await expect(host).toHaveScreenshot({
 			animations: 'disabled',
 			caret: 'hide',
 		});
@@ -83,19 +83,19 @@ test.describe('Ontario Button - hover states', () => {
 	test('primary button - hover state', async ({ page }) => {
 		const button = page.locator('#ontario-button-primary');
 		await button.hover();
-		await expect(button).toHaveScreenshot('ontarioButtonPrimary-hover.png');
+		await expect(button).toHaveScreenshot();
 	});
 
 	test('secondary button - hover state', async ({ page }) => {
 		const button = page.locator('#ontario-button-secondary');
 		await button.hover();
-		await expect(button).toHaveScreenshot('ontarioButtonSecondary-hover.png');
+		await expect(button).toHaveScreenshot();
 	});
 
 	test('tertiary button - hover state', async ({ page }) => {
 		const button = page.locator('#ontario-button-tertiary');
 		await button.hover();
-		await expect(button).toHaveScreenshot('ontarioButtonTertiary-hover.png');
+		await expect(button).toHaveScreenshot();
 	});
 });
 
@@ -108,7 +108,7 @@ test.describe('Ontario Button - active states', () => {
 		const button = page.locator('#ontario-button-primary');
 		await button.hover(); // to ensure it's "pressable"
 		await page.mouse.down();
-		await expect(button).toHaveScreenshot('ontarioButtonPrimary-active.png');
+		await expect(button).toHaveScreenshot();
 		await page.mouse.up(); // cleanup
 	});
 
@@ -116,7 +116,7 @@ test.describe('Ontario Button - active states', () => {
 		const button = page.locator('#ontario-button-secondary');
 		await button.hover(); // to ensure it's "pressable"
 		await page.mouse.down();
-		await expect(button).toHaveScreenshot('ontarioButtonSecondary-active.png');
+		await expect(button).toHaveScreenshot();
 		await page.mouse.up(); // cleanup
 	});
 
@@ -124,7 +124,7 @@ test.describe('Ontario Button - active states', () => {
 		const button = page.locator('#ontario-button-tertiary');
 		await button.hover(); // to ensure it's "pressable"
 		await page.mouse.down();
-		await expect(button).toHaveScreenshot('ontarioButtonTertiary-active.png');
+		await expect(button).toHaveScreenshot();
 		await page.mouse.up(); // cleanup
 	});
 });
