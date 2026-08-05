@@ -222,13 +222,21 @@ test.describe('ontario-badge', () => {
 	test('visual regression: colour variants', async ({ page }) => {
 		await page.setContent(
 			`
-      <ontario-badge label="One" colour="teal"></ontario-badge>
-      <ontario-badge label="Two" colour="green"></ontario-badge>
+      <div id="colour-variants">
+        <ontario-badge label="One" colour="teal"></ontario-badge>
+        <ontario-badge label="Two" colour="green"></ontario-badge>
+      </div>
       `,
 		);
 		await page.waitForChanges();
 
-		await expect(page).toHaveScreenshot('colour-variants.png');
+		const container = page.locator('#colour-variants');
+		const badges = container.locator('ontario-badge');
+
+		await expect(badges).toHaveCount(2);
+		await expect(badges.last()).toHaveClass(/hydrated/);
+
+		await expect(container).toHaveScreenshot('colour-variants.png');
 	});
 
 	/* =========================
