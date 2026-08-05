@@ -7,9 +7,10 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
+import { OntarioBackButton as OntarioBackButtonElement, defineCustomElement as defineOntarioBackButton } from "@ongov/ontario-design-system-component-library/components/ontario-back-button.js";
 import { OntarioBackToTop as OntarioBackToTopElement, defineCustomElement as defineOntarioBackToTop } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
 import { OntarioBadge as OntarioBadgeElement, defineCustomElement as defineOntarioBadge } from "@ongov/ontario-design-system-component-library/components/ontario-badge.js";
 import { OntarioBlockquote as OntarioBlockquoteElement, defineCustomElement as defineOntarioBlockquote } from "@ongov/ontario-design-system-component-library/components/ontario-blockquote.js";
@@ -187,6 +188,17 @@ export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsi
     react: React,
     events: {} as OntarioAsideEvents,
     defineCustomElement: defineOntarioAside
+});
+
+export type OntarioBackButtonEvents = { onBackClick: EventName<OntarioBackButtonCustomEvent<MouseEvent | KeyboardEvent>> };
+
+export const OntarioBackButton: StencilReactComponent<OntarioBackButtonElement, OntarioBackButtonEvents> = /*@__PURE__*/ createComponent<OntarioBackButtonElement, OntarioBackButtonEvents>({
+    tagName: 'ontario-back-button',
+    elementClass: OntarioBackButtonElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onBackClick: 'backClick' } as OntarioBackButtonEvents,
+    defineCustomElement: defineOntarioBackButton
 });
 
 export type OntarioBackToTopEvents = NonNullable<unknown>;

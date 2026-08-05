@@ -3489,6 +3489,10 @@ export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioAccordionElement;
 }
+export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioBackButtonElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;

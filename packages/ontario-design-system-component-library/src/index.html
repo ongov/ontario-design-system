@@ -1501,6 +1501,28 @@
 					</div>
 					<hr />
 
+					<!-- Back Button -->
+					<div>
+						<h2 id="back-button">Back button</h2>
+						<h3>History mode (default)</h3>
+						<ontario-back-button></ontario-back-button>
+
+						<h3>Href mode</h3>
+						<ontario-back-button href="https://designsystem.ontario.ca/" back-mode="href"></ontario-back-button>
+
+						<h3>Event mode</h3>
+						<ontario-back-button id="event-back-button" back-mode="event"></ontario-back-button>
+					</div>
+					<script>
+						window.addEventListener('load', () => {
+							const eventBackButton = document.getElementById('event-back-button');
+							eventBackButton?.addEventListener('backClick', () => {
+								console.log('Event mode backClick emitted');
+							});
+						});
+					</script>
+					<hr />
+
 					<!-- Step Indicator -->
 					<div>
 						<h2 id="step-indicator">Step Indicator</h2>

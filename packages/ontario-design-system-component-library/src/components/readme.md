@@ -33,6 +33,7 @@
 
 | Component Name      | Component Element       | Status | Specification                                                                                                       |
 | ------------------- | ----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------- |
+| Ontario Back Button | `<ontario-back-button>` | 🆕     | TBD                                                                                                                 |
 | Ontario Back to Top | `<ontario-back-to-top>` | ✅     | [Link](https://docs.google.com/document/d/1jS_HlRKf4eEOYxROuPLSgXi9y_csW_KyXMHbgVk0i30/edit#heading=h.qlc9lvl7aco9) |
 
 ### **Form**
