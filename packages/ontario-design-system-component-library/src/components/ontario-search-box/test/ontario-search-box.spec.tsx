@@ -61,7 +61,11 @@ describe('ontario-search-box', () => {
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		expect(page.root).toMatchSnapshot();
+		expect(getter).not.toHaveBeenCalled();
+
+		const slotted = (page.root as HTMLElement).querySelectorAll('ontario-search-result-item');
+		expect(slotted.length).toBe(1);
+		expect(slotted[0].getAttribute('label')).toBe('Toronto');
 	});
 
 	it('should render a default search box element', async () => {
