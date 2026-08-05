@@ -58,7 +58,10 @@ import { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-pag
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
-import { AutocompleteSuggestionSelectedEvent, Suggestion } from './components/ontario-search-box/ontario-search-box';
+import {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
 import { Segment } from './utils/components/search-box-autocomplete';
 import {
 	SummaryListActionLink,
@@ -122,7 +125,10 @@ export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-pag
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
-export { AutocompleteSuggestionSelectedEvent, Suggestion } from './components/ontario-search-box/ontario-search-box';
+export {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
 export { Segment } from './utils/components/search-box-autocomplete';
 export {
 	SummaryListActionLink,
