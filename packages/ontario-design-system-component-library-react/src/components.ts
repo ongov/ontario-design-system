@@ -159,6 +159,7 @@ export const OntarioLoadingIndicator = /*@__PURE__*/createReactComponent<JSX.Ont
 export const OntarioPageAlert = /*@__PURE__*/createReactComponent<JSX.OntarioPageAlert, HTMLOntarioPageAlertElement>('ontario-page-alert');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
 export const OntarioSearchBox = /*@__PURE__*/createReactComponent<JSX.OntarioSearchBox, HTMLOntarioSearchBoxElement>('ontario-search-box');
+export const OntarioSearchResultItem = /*@__PURE__*/createReactComponent<JSX.OntarioSearchResultItem, HTMLOntarioSearchResultItemElement>('ontario-search-result-item');
 export const OntarioStepIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioStepIndicator, HTMLOntarioStepIndicatorElement>('ontario-step-indicator');
 export const OntarioSummaryList = /*@__PURE__*/createReactComponent<JSX.OntarioSummaryList, HTMLOntarioSummaryListElement>('ontario-summary-list');
 export const OntarioSummaryListItem = /*@__PURE__*/createReactComponent<JSX.OntarioSummaryListItem, HTMLOntarioSummaryListItemElement>('ontario-summary-list-item');
