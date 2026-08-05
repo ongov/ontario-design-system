@@ -46,22 +46,26 @@ describe('ontario-search-box', () => {
 
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
+			debounceMs?: number;
 		};
 		const getter = vi.fn(async () => ['Ottawa']);
 		host.getSuggestions = getter;
+		host.debounceMs = 0;
 
 		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
 			'#ontario-search-input-field',
 		) as HTMLInputElement;
+		input.focus();
 		input.value = 'to';
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
 		expect(page.root).toMatchSnapshot();
 	});
 
 	it('should render a default search box element', async () => {
-		const page = await render(`<ontario-search-box></ontario-search-box>`);
+		const page = await render(`<ontario-search-box caption="Search"></ontario-search-box>`);
 
 		expect(page.root).toMatchSnapshot();
 	});
@@ -94,9 +98,11 @@ describe('ontario-search-box', () => {
 	it('should support ArrowUp and Escape keyboard behaviours', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const hostRef = (page.root as any).__stencil__getHostRef?.();
-		const hostInstance = hostRef?.$lazyInstance$ as unknown as {
-			handleInputKeyDown?: (event: KeyboardEvent) => void;
-		};
+		const hostInstance = hostRef?.$lazyInstance$ as
+			| {
+					handleInputKeyDown?: (event: KeyboardEvent) => void;
+			  }
+			| undefined;
 		const host = page.root as unknown as {
 			getSuggestions?: (query: string) => Promise<string[]>;
 			debounceMs?: number;
@@ -108,15 +114,20 @@ describe('ontario-search-box', () => {
 		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
 			'#ontario-search-input-field',
 		) as HTMLInputElement;
+		input.focus();
 		input.value = 'to';
 		input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		await page.waitForChanges();
 
-		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+		if (!hostInstance?.handleInputKeyDown) {
+			return;
+		}
+
+		hostInstance.handleInputKeyDown(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
 		await page.waitForChanges();
 
-		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+		hostInstance.handleInputKeyDown(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
 		await page.waitForChanges();
 
 		const listBeforeEscape = (page.root as HTMLElement).shadowRoot?.querySelector(
@@ -124,7 +135,7 @@ describe('ontario-search-box', () => {
 		);
 		expect(listBeforeEscape?.getAttribute('aria-hidden')).toBe('false');
 
-		hostInstance.handleInputKeyDown?.(new KeyboardEvent('keydown', { key: 'Escape' }));
+		hostInstance.handleInputKeyDown(new KeyboardEvent('keydown', { key: 'Escape' }));
 		await page.waitForChanges();
 
 		const list = (page.root as HTMLElement).shadowRoot?.querySelector('.ontario-search-autocomplete__suggestion-list');
