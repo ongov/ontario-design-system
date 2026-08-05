@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
 
 /**
  * Visual regression tests for ontario-search-box.
@@ -13,10 +14,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('required search box - default state', async ({ page }) => {
@@ -27,10 +25,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('search box with hint text - default state', async ({ page }) => {
@@ -44,10 +39,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('search box with pre-filled value - default state', async ({ page }) => {
@@ -58,10 +50,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('search box with French language - default state', async ({ page }) => {
@@ -72,10 +61,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('search box with large caption - default state', async ({ page }) => {
@@ -86,10 +72,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('search box with heading caption - default state', async ({ page }) => {
@@ -100,10 +83,7 @@ test.describe('ontario-search-box - default states', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
 
@@ -117,10 +97,7 @@ test.describe('ontario-search-box - focus states', () => {
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
 		await host.locator('input[type="search"]').focus();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('submit button - focus state', async ({ page }) => {
@@ -132,10 +109,7 @@ test.describe('ontario-search-box - focus states', () => {
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
 		await host.locator('#ontario-search-box__submit').focus();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('reset button - focus state', async ({ page }) => {
@@ -147,10 +121,7 @@ test.describe('ontario-search-box - focus states', () => {
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
 		await host.locator('#ontario-search-reset').focus();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
 
@@ -163,10 +134,7 @@ test.describe('ontario-search-box - autocomplete default state', () => {
 
 		const host = page.locator('ontario-search-box');
 		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
 
@@ -191,10 +159,7 @@ test.describe('ontario-search-box - autocomplete slotted suggestions open', () =
 		await expect(host).toHaveClass('hydrated');
 		const list = host.locator('.ontario-search-autocomplete__suggestion-list');
 		await expect(list).toHaveAttribute('aria-hidden', 'false');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('slotted suggestions list - first item keyboard highlighted', async ({ page }) => {
@@ -202,10 +167,7 @@ test.describe('ontario-search-box - autocomplete slotted suggestions open', () =
 		await expect(host).toHaveClass('hydrated');
 		await page.locator('ontario-search-box').locator('input[type="search"]').press('ArrowDown');
 		await page.waitForChanges();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('slotted suggestions list - second item keyboard highlighted', async ({ page }) => {
@@ -215,10 +177,7 @@ test.describe('ontario-search-box - autocomplete slotted suggestions open', () =
 		await input.press('ArrowDown');
 		await input.press('ArrowDown');
 		await page.waitForChanges();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
 
@@ -242,10 +201,7 @@ test.describe('ontario-search-box - autocomplete async suggestions open', () => 
 		await expect(host).toHaveClass('hydrated');
 		const list = host.locator('.ontario-search-autocomplete__suggestion-list');
 		await expect(list).toHaveAttribute('aria-hidden', 'false');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 
 	test('async suggestions list - first item keyboard highlighted', async ({ page }) => {
@@ -253,10 +209,7 @@ test.describe('ontario-search-box - autocomplete async suggestions open', () => 
 		await expect(host).toHaveClass('hydrated');
 		await page.locator('ontario-search-box').locator('input[type="search"]').press('ArrowDown');
 		await page.waitForChanges();
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
 
@@ -279,9 +232,6 @@ test.describe('ontario-search-box - autocomplete suggestion highlight markup', (
 		await expect(host).toHaveClass('hydrated');
 		const list = host.locator('.ontario-search-autocomplete__suggestion-list');
 		await expect(list).toHaveAttribute('aria-hidden', 'false');
-		await expect(host).toHaveScreenshot({
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		await expectVrtScreenshot(host);
 	});
 });
