@@ -90,6 +90,7 @@ jobs:
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
           compression-level: 9 # Best compression
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
           path: | # Collect all package artifacts
             packages/**/*
             !**/node_modules/**/*
@@ -102,6 +103,7 @@ jobs:
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
           path: packages/docusaurus/docs/
 
       - name: Summarise build outputs
@@ -172,6 +174,7 @@ jobs:
           name: ${{ inputs.app-build-artifacts-name }}
           compression-level: 9 # Best compression
           include-hidden-files: true # app-nextjs's build output lives in the hidden .next directory
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
           path: | # Collect built app output only
             packages/app-angular/dist/**/*
             packages/app-react/build/**/*
