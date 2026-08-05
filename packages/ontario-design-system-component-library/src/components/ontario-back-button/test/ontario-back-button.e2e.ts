@@ -109,21 +109,10 @@ test.describe('ontario-back-button', () => {
 			});
 		});
 
-		await host.locator('button').click();
+		await host.locator('button').click({ force: true });
 
 		const count = await page.evaluate(() => (window as any).backClickCount);
 		expect(count).toBe(0);
-	});
-
-	test('supports keyboard focus via Tab', async ({ page }) => {
-		await page.setContent('<input id="first" /><ontario-back-button id="back-btn"></ontario-back-button>');
-		await page.waitForChanges();
-
-		await page.keyboard.press('Tab');
-		await expect(page.locator('#first')).toBeFocused();
-
-		await page.keyboard.press('Tab');
-		await expect(page.locator('#back-btn')).toBeFocused();
 	});
 
 	test('marks icon as decorative', async () => {
@@ -142,5 +131,18 @@ test.describe('ontario-back-button', () => {
 		const anchor = host.locator('a');
 		await expect(anchor).toHaveAttribute('aria-disabled', 'true');
 		await expect(anchor).toHaveAttribute('tabindex', '-1');
+	});
+});
+
+test.describe('ontario-back-button - keyboard focus', () => {
+	test('supports keyboard focus via Tab', async ({ page }) => {
+		await page.setContent('<input id="first" /><ontario-back-button id="back-btn"></ontario-back-button>');
+		await page.waitForChanges();
+
+		await page.locator('#first').focus();
+		await expect(page.locator('#first')).toBeFocused();
+
+		await page.keyboard.press('Tab');
+		await expect(page.locator('#back-btn').locator('button')).toBeFocused();
 	});
 });

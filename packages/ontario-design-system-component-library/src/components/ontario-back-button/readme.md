@@ -328,22 +328,6 @@ The back button is rendered as a tertiary-styled button (or link in href mode) w
 - Mobile-responsive width (full width behavior on small screens)
 - Consistent spacing and icon sizing tuned for the design system
 
-## Properties
-
-| Property   | Attribute   | Description                                                                                                                                               | Type                             | Default     |
-| ---------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `label`    | `label`     | Optional visible text override for the back action. If not provided, translated defaults are used: `Back` (English) or `Retour` (French).                 | `string \| undefined`            | `undefined` |
-| `language` | `language`  | The language of the component. If no language is passed, it defaults to English (`en`). Language is typically set via the header's language toggle event. | `"en" \| "fr" \| undefined`      | `undefined` |
-| `href`     | `href`      | Required when using `backMode="href"`. Specifies the destination URL for navigation.                                                                      | `string \| undefined`            | `undefined` |
-| `backMode` | `back-mode` | Determines navigation strategy: `history` (browser back), `href` (explicit URL), or `event` (app-controlled).                                             | `"history" \| "href" \| "event"` | `"history"` |
-| `disabled` | `disabled`  | Disables user interaction with the button.                                                                                                                | `boolean \| undefined`           | `false`     |
-
-## Events
-
-| Event       | Description                                                                                                                                                                 | Payload                       |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `backClick` | Emitted when the user activates the back control. Fires before navigation occurs in `history` or `href` modes. In `event` mode, your app must listen and handle navigation. | `MouseEvent \| KeyboardEvent` |
-
 ### Listening to events
 
 **HTML:**
@@ -371,3 +355,49 @@ The back button is rendered as a tertiary-styled button (or link in href mode) w
 ```
 
 <!-- Auto Generated Below -->
+
+## Overview
+
+Ontario Back Button renders a consistent, accessible back action shell.
+
+This component is intentionally navigation-strategy agnostic.
+Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+
+For component guidance, see:
+
+- https://designsystem.ontario.ca/components/detail/back-button.html
+- https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+
+## Properties
+
+| Property   | Attribute   | Description                                                                                                                                                                                                                                                                                                              | Type                                          | Default     |
+| ---------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | ----------- |
+| `backMode` | `back-mode` | Optional navigation strategy override: - `history`: emits event, then calls browser history back. - `href`: emits event, then navigates using `href`. - `event`: emits event only. When omitted, runtime mode is inferred: - uses `href` mode if `href` exists - otherwise defaults to `history`                         | `"event" \| "history" \| "href" \| undefined` | `undefined` |
+| `disabled` | `disabled`  | Disables user interaction. Policy note: Unlike primary action buttons, back navigation may need to be temporarily unavailable during guarded/transient states (for example, save-in-progress or step-transition lock). In those cases, `disabled` prevents accidental navigation while preserving a consistent UI shell. | `boolean \| undefined`                        | `false`     |
+| `href`     | `href`      | Optional destination URL used by href mode.                                                                                                                                                                                                                                                                              | `string \| undefined`                         | `undefined` |
+| `label`    | `label`     | Optional visible text override for the back action. If not provided, translated defaults are used: - `Back` for English - `Retour` for French                                                                                                                                                                            | `string \| undefined`                         | `undefined` |
+| `language` | `language`  | The language of the component. If no language is passed, it defaults to English (`en`).                                                                                                                                                                                                                                  | `"en" \| "fr" \| undefined`                   | `undefined` |
+
+## Events
+
+| Event       | Description                                                                                  | Type                                       |
+| ----------- | -------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `backClick` | Emitted when the user activates the back control. Emitted before navigation when applicable. | `CustomEvent<KeyboardEvent \| MouseEvent>` |
+
+## Dependencies
+
+### Depends on
+
+- [ontario-icon-chevron-left](../ontario-icon)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-back-button --> ontario-icon-chevron-left
+  style ontario-back-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+---
+
+_Built with [StencilJS](https://stenciljs.com/)_
