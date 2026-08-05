@@ -15,29 +15,14 @@ import {
 	InputInteractionEvent,
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
-import { resolveSuggestionSegments, Segment } from '../../utils/components/search-box-autocomplete';
+import { resolveSuggestionSegments } from '../../utils/components/search-box-autocomplete';
+import {
+	AutocompleteSuggestion,
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './ontario-search-box.interface';
 
 import translations from '../../translations/global.i18n.json';
-
-/** Represents a suggestion item in autocomplete mode */
-export interface AutocompleteSuggestion {
-	id?: string;
-	label: string;
-	value?: string;
-	description?: string;
-	href?: string;
-	disabled?: boolean;
-	segments?: Segment[];
-}
-
-export type Suggestion = string | AutocompleteSuggestion;
-
-/** Payload emitted when a suggestion is selected */
-export interface AutocompleteSuggestionSelectedEvent {
-	query: string;
-	suggestion: AutocompleteSuggestion;
-	source: 'keyboard' | 'mouse';
-}
 
 /**
  * Ontario Search Box captures and submits search queries.
