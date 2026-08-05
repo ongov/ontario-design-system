@@ -67,6 +67,12 @@
 			"fr": "Sauter cette navigation"
 		}
 	},
+	"backButton": {
+		"back": {
+			"en": "Back",
+			"fr": "Retour"
+		}
+	},
 	"contactUs": {
 		"en": "Contact us",
 		"fr": "Contactez-nous"

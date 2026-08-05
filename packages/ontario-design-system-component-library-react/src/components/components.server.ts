@@ -6,10 +6,11 @@
 /* eslint-disable */
 
 // @ts-ignore - ignore potential type issues as the project is importing itself
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import * as clientComponents from '@ongov/ontario-design-system-component-library-react';
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
+import { OntarioBackButton as OntarioBackButtonElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-button.js";
 import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
 import { OntarioBadge as OntarioBadgeElement } from "@ongov/ontario-design-system-component-library/components/ontario-badge.js";
 import { OntarioBlockquote as OntarioBlockquoteElement } from "@ongov/ontario-design-system-component-library/components/ontario-blockquote.js";
@@ -196,6 +197,22 @@ export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsi
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioAside as ReactWebComponent<OntarioAsideElement, OntarioAsideEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioBackButtonEvents = { onBackClick: EventName<OntarioBackButtonCustomEvent<MouseEvent | KeyboardEvent>> };
+
+export const OntarioBackButton: StencilReactComponent<OntarioBackButtonElement, OntarioBackButtonEvents> = /*@__PURE__*/ createComponent<OntarioBackButtonElement, OntarioBackButtonEvents>({
+    tagName: 'ontario-back-button',
+    properties: {
+        label: 'label',
+        language: 'language',
+        href: 'href',
+        backMode: 'back-mode',
+        disabled: 'disabled'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioBackButton as ReactWebComponent<OntarioBackButtonElement, OntarioBackButtonEvents>,
     serializeShadowRoot
 });
 

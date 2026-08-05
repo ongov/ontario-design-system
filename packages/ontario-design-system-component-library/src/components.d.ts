@@ -13,6 +13,7 @@ import {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+import { BackMode } from './components/ontario-back-button/ontario-back-button';
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
@@ -74,6 +75,7 @@ export {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+export { BackMode } from './components/ontario-back-button/ontario-back-button';
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
@@ -186,6 +188,37 @@ export namespace Components {
 		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface OntarioBackButton {
+		/**
+		 * Optional navigation strategy override: - `history`: emits event, then calls browser history back. - `href`: emits event, then navigates using `href`. - `event`: emits event only.  When omitted, runtime mode is inferred: - uses `href` mode if `href` exists - otherwise defaults to `history`
+		 */
+		backMode?: BackMode;
+		/**
+		 * Disables user interaction.  Policy note: This is intended for temporary/transient states only (for example, save-in-progress or step-transition lock), not as a general-purpose way to gate back navigation in normal usage. Whether going back is actually valid should be determined by application logic/validation before this prop is ever set to `true`, not used as a substitute for that validation.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional destination URL used by href mode.
+		 */
+		href?: string;
+		/**
+		 * Optional visible text override for the back action. If not provided, translated defaults are used: - `Back` for English - `Retour` for French
+		 */
+		label?: string;
+		/**
+		 * The language of the component. If no language is passed, it defaults to English (`en`).
+		 */
+		language?: Language;
 	}
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -3489,6 +3522,10 @@ export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioAccordionElement;
 }
+export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioBackButtonElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
@@ -3610,6 +3647,69 @@ declare global {
 	var HTMLOntarioAsideElement: {
 		prototype: HTMLOntarioAsideElement;
 		new (): HTMLOntarioAsideElement;
+	};
+	interface HTMLOntarioBackButtonElementEventMap {
+		backClick: MouseEvent | KeyboardEvent;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface HTMLOntarioBackButtonElement extends Components.OntarioBackButton, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioBackButtonElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioBackButtonElement,
+				ev: OntarioBackButtonCustomEvent<HTMLOntarioBackButtonElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioBackButtonElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioBackButtonElement,
+				ev: OntarioBackButtonCustomEvent<HTMLOntarioBackButtonElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioBackButtonElement: {
+		prototype: HTMLOntarioBackButtonElement;
+		new (): HTMLOntarioBackButtonElement;
 	};
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -5294,6 +5394,7 @@ declare global {
 	interface HTMLElementTagNameMap {
 		'ontario-accordion': HTMLOntarioAccordionElement;
 		'ontario-aside': HTMLOntarioAsideElement;
+		'ontario-back-button': HTMLOntarioBackButtonElement;
 		'ontario-back-to-top': HTMLOntarioBackToTopElement;
 		'ontario-badge': HTMLOntarioBadgeElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
@@ -5512,6 +5613,41 @@ declare namespace LocalJSX {
 		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface OntarioBackButton {
+		/**
+		 * Optional navigation strategy override: - `history`: emits event, then calls browser history back. - `href`: emits event, then navigates using `href`. - `event`: emits event only.  When omitted, runtime mode is inferred: - uses `href` mode if `href` exists - otherwise defaults to `history`
+		 */
+		backMode?: BackMode;
+		/**
+		 * Disables user interaction.  Policy note: This is intended for temporary/transient states only (for example, save-in-progress or step-transition lock), not as a general-purpose way to gate back navigation in normal usage. Whether going back is actually valid should be determined by application logic/validation before this prop is ever set to `true`, not used as a substitute for that validation.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional destination URL used by href mode.
+		 */
+		href?: string;
+		/**
+		 * Optional visible text override for the back action. If not provided, translated defaults are used: - `Back` for English - `Retour` for French
+		 */
+		label?: string;
+		/**
+		 * The language of the component. If no language is passed, it defaults to English (`en`).
+		 */
+		language?: Language;
+		/**
+		 * Emitted when the user activates the back control. Emitted before navigation when applicable.
+		 */
+		onBackClick?: (event: OntarioBackButtonCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -8995,6 +9131,7 @@ declare namespace LocalJSX {
 	interface IntrinsicElements {
 		'ontario-accordion': OntarioAccordion;
 		'ontario-aside': OntarioAside;
+		'ontario-back-button': OntarioBackButton;
 		'ontario-back-to-top': OntarioBackToTop;
 		'ontario-badge': OntarioBadge;
 		'ontario-blockquote': OntarioBlockquote;
@@ -9169,6 +9306,15 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
 			 */
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
+			/**
+			 * Ontario Back Button renders a consistent, accessible back action shell.
+			 * This component is intentionally navigation-strategy agnostic.
+			 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/back-button.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+			 */
+			'ontario-back-button': LocalJSX.OntarioBackButton & JSXBase.HTMLAttributes<HTMLOntarioBackButtonElement>;
 			/**
 			 * Ontario Back to Top helps users quickly return to the top of long pages.
 			 * For component guidance, see:

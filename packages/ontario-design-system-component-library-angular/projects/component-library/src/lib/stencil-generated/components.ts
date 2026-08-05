@@ -63,6 +63,37 @@ export declare interface OntarioAside extends Components.OntarioAside {}
 
 
 @ProxyCmp({
+  inputs: ['backMode', 'disabled', 'href', 'label', 'language']
+})
+@Component({
+  selector: 'ontario-back-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['backMode', 'disabled', 'href', 'label', 'language'],
+  outputs: ['backClick'],
+  standalone: false
+})
+export class OntarioBackButton {
+  protected el: HTMLOntarioBackButtonElement;
+  @Output() backClick = new EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioBackButton extends Components.OntarioBackButton {
+  /**
+   * Emitted when the user activates the back control.
+Emitted before navigation when applicable.
+   */
+  backClick: EventEmitter<CustomEvent<MouseEvent | KeyboardEvent>>;
+}
+
+
+@ProxyCmp({
   inputs: ['language']
 })
 @Component({
