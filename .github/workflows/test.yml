@@ -18,7 +18,7 @@ jobs:
         uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -48,7 +48,7 @@ jobs:
     name: Stencil E2E Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -65,7 +65,7 @@ jobs:
         uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -116,7 +116,7 @@ jobs:
     name: Stencil VRT Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -133,7 +133,7 @@ jobs:
         uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -184,7 +184,7 @@ jobs:
     name: Apps VRT Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -202,7 +202,7 @@ jobs:
         uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -253,7 +253,7 @@ jobs:
     name: Apps E2E Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
       options: --user pwuser
     env:
       HOME: /github/home
@@ -271,7 +271,7 @@ jobs:
         uses: pnpm/action-setup@v6
 
       - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'

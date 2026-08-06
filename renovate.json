@@ -13,6 +13,7 @@
 	],
 	"repositories": ["ongov/ontario-design-system"],
 	"dependencyDashboard": true,
+	"dependencyDashboardLabels": ["renovate"],
 	"automerge": false,
 	"schedule": ["before 3am on Sunday"],
 	"timezone": "UTC",
