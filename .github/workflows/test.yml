@@ -6,9 +6,6 @@ on:
       build-artifacts-name:
         required: true
         type: string
-      app-build-artifacts-name:
-        required: true
-        type: string
 
 jobs:
   stencil-unit-test:
@@ -217,18 +214,10 @@ jobs:
           name: ${{ inputs.build-artifacts-name }}
           path: ./packages
 
-      - name: Download app build artifacts
-        uses: actions/download-artifact@v8
-        with:
-          name: ${{ inputs.app-build-artifacts-name }}
-          path: ./packages
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run Apps VRT Tests
-        env:
-          SKIP_APP_BUILD: 'true' # apps were already built in the build-apps job
         run: pnpm run test:vrt:apps
 
       - name: Upload Next.js VRT Test Results
@@ -294,18 +283,10 @@ jobs:
           name: ${{ inputs.build-artifacts-name }}
           path: ./packages
 
-      - name: Download app build artifacts
-        uses: actions/download-artifact@v8
-        with:
-          name: ${{ inputs.app-build-artifacts-name }}
-          path: ./packages
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run All E2E Apps Tests
-        env:
-          SKIP_APP_BUILD: 'true' # apps were already built in the build-apps job
         run: pnpm run test:e2e:apps
 
       - name: Upload Next.js E2E Apps Test Results

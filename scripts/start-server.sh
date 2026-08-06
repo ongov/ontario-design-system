@@ -9,10 +9,6 @@ set -x
 # Go to the app directory
 cd "$(dirname "$0")/../packages/app-nextjs"
 
-# Build the app, unless it was already built upstream (e.g. by the build-apps CI job)
-if [ "$SKIP_APP_BUILD" != "true" ]; then
-	pnpm run build
-fi
-
-# Start the app
+# Build and start the app
+pnpm run build
 pnpm run start
