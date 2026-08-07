@@ -13,6 +13,7 @@ import {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+import { BackMode } from './components/ontario-back-button/ontario-back-button';
 import { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 import { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 import { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
@@ -53,16 +54,22 @@ import {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 import { IconColour, IconSize } from './components/ontario-icon/icon.types';
+import { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
+import {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
+import { Segment } from './utils/components/search-box-autocomplete';
 import {
 	SummaryListActionLink,
 	SummaryListColumnRatio,
 	SummaryListHeadingLevel,
 } from './components/ontario-summary-list/ontario-summary-list-types';
 import { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
-import { TaskStatuses } from './utils/common/task-statuses.enum';
+import { TaskStatus } from './utils/common/task-statuses.enum';
 import { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 import { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export { ExpandCollapseButtonDetails } from './components/ontario-accordion/expandCollapseButtonDetails.interface';
@@ -73,6 +80,7 @@ export {
 	HeadingLevelOptions,
 	HighlightColourOptions,
 } from './utils/components/callout-aside/callout-aside.interface';
+export { BackMode } from './components/ontario-back-button/ontario-back-button';
 export { BadgeColour } from './components/ontario-badge/ontario-badge.types';
 export { ButtonType, HtmlType } from './components/ontario-button/ontario-button.types';
 export { HeadingLevel, Hint, HintContentType, MenuItem } from './utils/common/common.interface';
@@ -113,16 +121,22 @@ export {
 	OntarioHeaderType,
 } from './components/ontario-header/ontario-header.interface';
 export { IconColour, IconSize } from './components/ontario-icon/icon.types';
+export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-page-navigation/ontario-in-page-navigation.types';
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
-export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.interface';
+export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
+export {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
+export { Segment } from './utils/components/search-box-autocomplete';
 export {
 	SummaryListActionLink,
 	SummaryListColumnRatio,
 	SummaryListHeadingLevel,
 } from './components/ontario-summary-list/ontario-summary-list-types';
 export { TableColumnOptions, TableRowOptions } from './components/ontario-table/table.interface';
-export { TaskStatuses } from './utils/common/task-statuses.enum';
+export { TaskStatus } from './utils/common/task-statuses.enum';
 export { TaskHeadingLevel } from './components/ontario-task/ontario-task';
 export { TaskListHeadingLevel } from './components/ontario-task-list/ontario-task-list';
 export namespace Components {
@@ -184,6 +198,37 @@ export namespace Components {
 		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface OntarioBackButton {
+		/**
+		 * Optional navigation strategy override: - `history`: emits event, then calls browser history back. - `href`: emits event, then navigates using `href`. - `event`: emits event only.  When omitted, runtime mode is inferred: - uses `href` mode if `href` exists - otherwise defaults to `history`
+		 */
+		backMode?: BackMode;
+		/**
+		 * Disables user interaction.  Policy note: This is intended for temporary/transient states only (for example, save-in-progress or step-transition lock), not as a general-purpose way to gate back navigation in normal usage. Whether going back is actually valid should be determined by application logic/validation before this prop is ever set to `true`, not used as a substitute for that validation.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional destination URL used by href mode.
+		 */
+		href?: string;
+		/**
+		 * Optional visible text override for the back action. If not provided, translated defaults are used: - `Back` for English - `Retour` for French
+		 */
+		label?: string;
+		/**
+		 * The language of the component. If no language is passed, it defaults to English (`en`).
+		 */
+		language?: Language;
 	}
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -2844,6 +2889,66 @@ export namespace Components {
 		isDecorative: boolean;
 	}
 	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface OntarioInPageNavigation {
+		/**
+		 * Optional heading text. If omitted, the heading is resolved from i18n.
+		 */
+		heading?: string;
+		/**
+		 * Heading level used for the component heading.
+		 * @default 'h2'
+		 */
+		headingLevel: OntarioInPageNavigationHeadingLevel;
+		/**
+		 * Language used for translated defaults.
+		 */
+		language?: Language;
+		/**
+		 * Removes the top border from the navigation container.
+		 * @default false
+		 */
+		noTopBorder?: boolean;
+		/**
+		 * Skip link target id (without #) or anchor (with #).
+		 * @default 'skip-to-main'
+		 */
+		skipLinkTarget?: string;
+		/**
+		 * Enables smooth scrolling and hash updates for in-page links.
+		 * @default true
+		 */
+		smoothScroll?: boolean;
+	}
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface OntarioInPageNavigationItem {
+		/**
+		 * In-page anchor target, for example #eligibility.
+		 */
+		href?: string;
+		/**
+		 * Marks the current/active section.
+		 * @default false
+		 */
+		isCurrent?: boolean;
+		/**
+		 * Link label for the in-page navigation item.
+		 */
+		label?: string;
+		/**
+		 * Language used if localized text is required in the future.
+		 */
+		language?: Language;
+	}
+	/**
 	 * Ontario Input captures single-line text input.
 	 * This component intentionally does not expose `readOnly` or `disabled` props.
 	 * To support accessible and understandable form completion:
@@ -3011,7 +3116,6 @@ export namespace Components {
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
-		 * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
 		 */
 		content: string;
 		/**
@@ -3127,9 +3231,23 @@ export namespace Components {
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
+		 * Debounce delay in milliseconds before `getSuggestions` is called.
+		 * @default OntarioSearchBox.DEFAULT_DEBOUNCE_MS
+		 */
+		debounceMs?: number;
+		/**
 		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enables autocomplete behaviour on the search input.
+		 * @default false
+		 */
+		enableAutocomplete?: boolean;
+		/**
+		 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+		 */
+		getSuggestions?: (query: string) => Promise<Suggestion[]>;
 		/**
 		 * Used to include the ontario-hint-text component for the search-box. This is optional.
 		 */
@@ -3139,6 +3257,16 @@ export namespace Components {
 		 * @default 'en'
 		 */
 		language?: Language;
+		/**
+		 * Maximum number of suggestions rendered in async mode.
+		 * @default OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS
+		 */
+		maxSuggestions?: number;
+		/**
+		 * Minimum number of characters required before suggestions are shown.
+		 * @default OntarioSearchBox.DEFAULT_MIN_CHARS
+		 */
+		minChars?: number;
 		/**
 		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
 		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -3151,6 +3279,53 @@ export namespace Components {
 		required?: boolean;
 		/**
 		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Ordered label segments used to render matched input text and completion text.
+		 */
+		segments?: Segment[];
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
 		 */
 		value?: string;
 	}
@@ -3327,10 +3502,10 @@ export namespace Components {
 		 */
 		taskId: string;
 		/**
-		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-		 * @default TaskStatuses.NotStarted
+		 * Defines the status of the task.  Falls back to the default status if not provided, or if an unrecognized value is passed.
+		 * @default TaskStatus.NotStarted
 		 */
-		taskStatus: TaskStatuses;
+		taskStatus: TaskStatus;
 	}
 	/**
 	 * Ontario Task List groups and summarizes related tasks.
@@ -3428,6 +3603,10 @@ export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioAccordionElement;
 }
+export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioBackButtonElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioCheckboxesElement;
@@ -3471,6 +3650,10 @@ export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioSearchBoxElement;
+}
+export interface OntarioSearchResultItemCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioSearchResultItemElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -3549,6 +3732,69 @@ declare global {
 	var HTMLOntarioAsideElement: {
 		prototype: HTMLOntarioAsideElement;
 		new (): HTMLOntarioAsideElement;
+	};
+	interface HTMLOntarioBackButtonElementEventMap {
+		backClick: MouseEvent | KeyboardEvent;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface HTMLOntarioBackButtonElement extends Components.OntarioBackButton, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioBackButtonElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioBackButtonElement,
+				ev: OntarioBackButtonCustomEvent<HTMLOntarioBackButtonElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioBackButtonElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioBackButtonElement,
+				ev: OntarioBackButtonCustomEvent<HTMLOntarioBackButtonElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioBackButtonElement: {
+		prototype: HTMLOntarioBackButtonElement;
+		new (): HTMLOntarioBackButtonElement;
 	};
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -4782,6 +5028,27 @@ declare global {
 		prototype: HTMLOntarioIconYoutubeElement;
 		new (): HTMLOntarioIconYoutubeElement;
 	};
+	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface HTMLOntarioInPageNavigationElement extends Components.OntarioInPageNavigation, HTMLStencilElement {}
+	var HTMLOntarioInPageNavigationElement: {
+		prototype: HTMLOntarioInPageNavigationElement;
+		new (): HTMLOntarioInPageNavigationElement;
+	};
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface HTMLOntarioInPageNavigationItemElement extends Components.OntarioInPageNavigationItem, HTMLStencilElement {}
+	var HTMLOntarioInPageNavigationItemElement: {
+		prototype: HTMLOntarioInPageNavigationItemElement;
+		new (): HTMLOntarioInPageNavigationItemElement;
+	};
 	interface HTMLOntarioInputElementEventMap {
 		inputOnInput: InputInputEvent;
 		inputOnChange: InputInteractionEvent;
@@ -5008,6 +5275,9 @@ declare global {
 		inputOnChange: InputInteractionEvent;
 		inputOnBlur: InputFocusBlurEvent;
 		inputOnFocus: InputFocusBlurEvent;
+		autocompleteQueryUpdated: { query: string };
+		autocompleteSuggestionsUpdated: { query: string; count: number };
+		autocompleteSuggestionSelected: AutocompleteSuggestionSelectedEvent;
 	}
 	/**
 	 * Ontario Search Box captures and submits search queries.
@@ -5072,6 +5342,66 @@ declare global {
 	var HTMLOntarioSearchBoxElement: {
 		prototype: HTMLOntarioSearchBoxElement;
 		new (): HTMLOntarioSearchBoxElement;
+	};
+	interface HTMLOntarioSearchResultItemElementEventMap {
+		itemSelected: { label?: string; value?: string; href?: string };
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface HTMLOntarioSearchResultItemElement extends Components.OntarioSearchResultItem, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioSearchResultItemElement: {
+		prototype: HTMLOntarioSearchResultItemElement;
+		new (): HTMLOntarioSearchResultItemElement;
 	};
 	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
@@ -5212,6 +5542,7 @@ declare global {
 	interface HTMLElementTagNameMap {
 		'ontario-accordion': HTMLOntarioAccordionElement;
 		'ontario-aside': HTMLOntarioAsideElement;
+		'ontario-back-button': HTMLOntarioBackButtonElement;
 		'ontario-back-to-top': HTMLOntarioBackToTopElement;
 		'ontario-badge': HTMLOntarioBadgeElement;
 		'ontario-blockquote': HTMLOntarioBlockquoteElement;
@@ -5350,12 +5681,15 @@ declare global {
 		'ontario-icon-wheelchair': HTMLOntarioIconWheelchairElement;
 		'ontario-icon-wifi': HTMLOntarioIconWifiElement;
 		'ontario-icon-youtube': HTMLOntarioIconYoutubeElement;
+		'ontario-in-page-navigation': HTMLOntarioInPageNavigationElement;
+		'ontario-in-page-navigation-item': HTMLOntarioInPageNavigationItemElement;
 		'ontario-input': HTMLOntarioInputElement;
 		'ontario-language-toggle': HTMLOntarioLanguageToggleElement;
 		'ontario-loading-indicator': HTMLOntarioLoadingIndicatorElement;
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-search-box': HTMLOntarioSearchBoxElement;
+		'ontario-search-result-item': HTMLOntarioSearchResultItemElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-summary-list': HTMLOntarioSummaryListElement;
 		'ontario-summary-list-item': HTMLOntarioSummaryListItemElement;
@@ -5428,6 +5762,41 @@ declare namespace LocalJSX {
 		 * @default 'teal'
 		 */
 		highlightColour?: HighlightColourOptions;
+	}
+	/**
+	 * Ontario Back Button renders a consistent, accessible back action shell.
+	 * This component is intentionally navigation-strategy agnostic.
+	 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/back-button.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+	 */
+	interface OntarioBackButton {
+		/**
+		 * Optional navigation strategy override: - `history`: emits event, then calls browser history back. - `href`: emits event, then navigates using `href`. - `event`: emits event only.  When omitted, runtime mode is inferred: - uses `href` mode if `href` exists - otherwise defaults to `history`
+		 */
+		backMode?: BackMode;
+		/**
+		 * Disables user interaction.  Policy note: This is intended for temporary/transient states only (for example, save-in-progress or step-transition lock), not as a general-purpose way to gate back navigation in normal usage. Whether going back is actually valid should be determined by application logic/validation before this prop is ever set to `true`, not used as a substitute for that validation.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional destination URL used by href mode.
+		 */
+		href?: string;
+		/**
+		 * Optional visible text override for the back action. If not provided, translated defaults are used: - `Back` for English - `Retour` for French
+		 */
+		label?: string;
+		/**
+		 * The language of the component. If no language is passed, it defaults to English (`en`).
+		 */
+		language?: Language;
+		/**
+		 * Emitted when the user activates the back control. Emitted before navigation when applicable.
+		 */
+		onBackClick?: (event: OntarioBackButtonCustomEvent<MouseEvent | KeyboardEvent>) => void;
 	}
 	/**
 	 * Ontario Back to Top helps users quickly return to the top of long pages.
@@ -8185,6 +8554,66 @@ declare namespace LocalJSX {
 		isDecorative?: boolean;
 	}
 	/**
+	 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+	 */
+	interface OntarioInPageNavigation {
+		/**
+		 * Optional heading text. If omitted, the heading is resolved from i18n.
+		 */
+		heading?: string;
+		/**
+		 * Heading level used for the component heading.
+		 * @default 'h2'
+		 */
+		headingLevel?: OntarioInPageNavigationHeadingLevel;
+		/**
+		 * Language used for translated defaults.
+		 */
+		language?: Language;
+		/**
+		 * Removes the top border from the navigation container.
+		 * @default false
+		 */
+		noTopBorder?: boolean;
+		/**
+		 * Skip link target id (without #) or anchor (with #).
+		 * @default 'skip-to-main'
+		 */
+		skipLinkTarget?: string;
+		/**
+		 * Enables smooth scrolling and hash updates for in-page links.
+		 * @default true
+		 */
+		smoothScroll?: boolean;
+	}
+	/**
+	 * A single list item link used inside `ontario-in-page-navigation`.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+	 */
+	interface OntarioInPageNavigationItem {
+		/**
+		 * In-page anchor target, for example #eligibility.
+		 */
+		href?: string;
+		/**
+		 * Marks the current/active section.
+		 * @default false
+		 */
+		isCurrent?: boolean;
+		/**
+		 * Link label for the in-page navigation item.
+		 */
+		label?: string;
+		/**
+		 * Language used if localized text is required in the future.
+		 */
+		language?: Language;
+	}
+	/**
 	 * Ontario Input captures single-line text input.
 	 * This component intentionally does not expose `readOnly` or `disabled` props.
 	 * To support accessible and understandable form completion:
@@ -8380,7 +8809,6 @@ declare namespace LocalJSX {
 	interface OntarioPageAlert {
 		/**
 		 * The main content for the page alert. This can be rendered as either string or HTML content.
-		 * @example <ontario-page-alert content="Please look out for an email confirmation with your receipt and order number."> </ontario-page-alert>  or  <ontario-page-alert>  <p>This is a sample page alert component using slots. <a href="#">Learn more</a>.</p> </ontario-page-alert>
 		 */
 		content?: string;
 		/**
@@ -8494,7 +8922,7 @@ declare namespace LocalJSX {
 		 * The text to display as the input label
 		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
 		 */
-		caption?: Caption | string;
+		caption: Caption | string;
 		/**
 		 * Used to add a custom function to the input onBlur event.
 		 */
@@ -8512,9 +8940,23 @@ declare namespace LocalJSX {
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
+		 * Debounce delay in milliseconds before `getSuggestions` is called.
+		 * @default OntarioSearchBox.DEFAULT_DEBOUNCE_MS
+		 */
+		debounceMs?: number;
+		/**
 		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enables autocomplete behaviour on the search input.
+		 * @default false
+		 */
+		enableAutocomplete?: boolean;
+		/**
+		 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+		 */
+		getSuggestions?: (query: string) => Promise<Suggestion[]>;
 		/**
 		 * Used to include the ontario-hint-text component for the search-box. This is optional.
 		 */
@@ -8524,6 +8966,30 @@ declare namespace LocalJSX {
 		 * @default 'en'
 		 */
 		language?: Language;
+		/**
+		 * Maximum number of suggestions rendered in async mode.
+		 * @default OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS
+		 */
+		maxSuggestions?: number;
+		/**
+		 * Minimum number of characters required before suggestions are shown.
+		 * @default OntarioSearchBox.DEFAULT_MIN_CHARS
+		 */
+		minChars?: number;
+		/**
+		 * Emitted when the autocomplete query changes.
+		 */
+		onAutocompleteQueryUpdated?: (event: OntarioSearchBoxCustomEvent<{ query: string }>) => void;
+		/**
+		 * Emitted when a suggestion is selected.
+		 */
+		onAutocompleteSuggestionSelected?: (
+			event: OntarioSearchBoxCustomEvent<AutocompleteSuggestionSelectedEvent>,
+		) => void;
+		/**
+		 * Emitted after suggestions are updated from either slot content or async mode.
+		 */
+		onAutocompleteSuggestionsUpdated?: (event: OntarioSearchBoxCustomEvent<{ query: string; count: number }>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
@@ -8557,6 +9023,59 @@ declare namespace LocalJSX {
 		required?: boolean;
 		/**
 		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a non-disabled option is selected via click.
+		 */
+		onItemSelected?: (
+			event: OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>,
+		) => void;
+		/**
+		 * Ordered label segments used to render matched input text and completion text.
+		 */
+		segments?: Segment[];
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
 		 */
 		value?: string;
 	}
@@ -8733,10 +9252,10 @@ declare namespace LocalJSX {
 		 */
 		taskId?: string;
 		/**
-		 * Defines the status of the task, with default set to 'NotStarted'.  Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-		 * @default TaskStatuses.NotStarted
+		 * Defines the status of the task.  Falls back to the default status if not provided, or if an unrecognized value is passed.
+		 * @default TaskStatus.NotStarted
 		 */
-		taskStatus?: TaskStatuses;
+		taskStatus?: TaskStatus;
 	}
 	/**
 	 * Ontario Task List groups and summarizes related tasks.
@@ -8852,6 +9371,7 @@ declare namespace LocalJSX {
 	interface IntrinsicElements {
 		'ontario-accordion': OntarioAccordion;
 		'ontario-aside': OntarioAside;
+		'ontario-back-button': OntarioBackButton;
 		'ontario-back-to-top': OntarioBackToTop;
 		'ontario-badge': OntarioBadge;
 		'ontario-blockquote': OntarioBlockquote;
@@ -8990,12 +9510,15 @@ declare namespace LocalJSX {
 		'ontario-icon-wheelchair': OntarioIconWheelchair;
 		'ontario-icon-wifi': OntarioIconWifi;
 		'ontario-icon-youtube': OntarioIconYoutube;
+		'ontario-in-page-navigation': OntarioInPageNavigation;
+		'ontario-in-page-navigation-item': OntarioInPageNavigationItem;
 		'ontario-input': OntarioInput;
 		'ontario-language-toggle': OntarioLanguageToggle;
 		'ontario-loading-indicator': OntarioLoadingIndicator;
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-search-box': OntarioSearchBox;
+		'ontario-search-result-item': OntarioSearchResultItem;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-summary-list': OntarioSummaryList;
 		'ontario-summary-list-item': OntarioSummaryListItem;
@@ -9024,6 +9547,15 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-aside/
 			 */
 			'ontario-aside': LocalJSX.OntarioAside & JSXBase.HTMLAttributes<HTMLOntarioAsideElement>;
+			/**
+			 * Ontario Back Button renders a consistent, accessible back action shell.
+			 * This component is intentionally navigation-strategy agnostic.
+			 * Consumers choose whether back behaviour uses browser history, explicit href navigation, or event-only routing.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/back-button.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-button/
+			 */
+			'ontario-back-button': LocalJSX.OntarioBackButton & JSXBase.HTMLAttributes<HTMLOntarioBackButtonElement>;
 			/**
 			 * Ontario Back to Top helps users quickly return to the top of long pages.
 			 * For component guidance, see:
@@ -9393,6 +9925,21 @@ declare module '@stencil/core' {
 			'ontario-icon-wifi': LocalJSX.OntarioIconWifi & JSXBase.HTMLAttributes<HTMLOntarioIconWifiElement>;
 			'ontario-icon-youtube': LocalJSX.OntarioIconYoutube & JSXBase.HTMLAttributes<HTMLOntarioIconYoutubeElement>;
 			/**
+			 * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-in-page-navigation/
+			 */
+			'ontario-in-page-navigation': LocalJSX.OntarioInPageNavigation &
+				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationElement>;
+			/**
+			 * A single list item link used inside `ontario-in-page-navigation`.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/in-page-navigation.html
+			 */
+			'ontario-in-page-navigation-item': LocalJSX.OntarioInPageNavigationItem &
+				JSXBase.HTMLAttributes<HTMLOntarioInPageNavigationItemElement>;
+			/**
 			 * Ontario Input captures single-line text input.
 			 * This component intentionally does not expose `readOnly` or `disabled` props.
 			 * To support accessible and understandable form completion:
@@ -9455,6 +10002,13 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
+			/**
+			 * Ontario Search Result Item renders a semantic option row for search suggestions.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+			 */
+			'ontario-search-result-item': LocalJSX.OntarioSearchResultItem &
+				JSXBase.HTMLAttributes<HTMLOntarioSearchResultItemElement>;
 			/**
 			 * Ontario Step Indicator communicates progress through multi-step flows.
 			 * For component guidance, see:

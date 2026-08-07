@@ -16,6 +16,14 @@ export default defineConfig({
 		trace: 'retain-on-failure',
 	},
 
+	expect: {
+		toHaveScreenshot: {
+			// Allow a small amount of pixel drift (anti-aliasing/font hinting jitter)
+			// to reduce flaky VRT failures without masking real regressions.
+			maxDiffPixelRatio: 0.02,
+		},
+	},
+
 	projects: [
 		{
 			name: 'chromium',

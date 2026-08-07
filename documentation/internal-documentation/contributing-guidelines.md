@@ -62,11 +62,31 @@ Learn more through the [commit guidelines documentation](../../COMMIT-GUIDELINES
 
 ## Testing
 
-- Run unit and e2e tests using Jest before submitting code:
+- Run the unit (Stencil/Jest) and end-to-end (Playwright) suites before submitting code:
 
   ```bash
-  pnpm run test:e2e
   pnpm run test:unit
+  pnpm run test:e2e
+  ```
+
+- The component library and the demo apps also ship visual regression tests (VRT) that compare rendered screenshots against committed baselines. Run them, and refresh the baselines whenever an intentional visual change is made:
+
+  ```bash
+  # Run all visual regression suites
+  pnpm run test:vrt
+
+  # Component library only (or apps only)
+  pnpm run test:vrt:stencil
+  pnpm run test:vrt:apps
+
+  # Refresh baselines after an intentional visual change
+  pnpm --filter @ongov/ontario-design-system-component-library run test:update-snapshots
+  ```
+
+  To keep baselines consistent with CI, prefer running VRT through the Docker runner (see [`docker/README.md`](../../docker/README.md)):
+
+  ```bash
+  pnpm --filter @ongov/ontario-design-system-component-library run test:vrt:docker
   ```
 
 ## Release Process

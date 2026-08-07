@@ -1,0 +1,4 @@
+// Local theme wrapper for app-nextjs:
+@forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
+	$asset-base-path: '/assets'
+);

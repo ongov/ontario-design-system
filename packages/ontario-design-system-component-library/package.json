@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-library",
-	"version": "9.0.0-alpha.2",
+	"version": "9.0.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ongov/ontario-design-system",
@@ -78,24 +78,30 @@
 		"test:unit": "vitest run",
 		"test:unit:watch": "vitest",
 		"pretest:e2e": "pnpm run build:config",
-		"test:e2e": "playwright test",
-		"test:e2e:docker": "../../scripts/docker-compose.sh run --rm stencil-e2e-runner"
+		"test:e2e": "playwright test e2e.ts",
+		"test:e2e:docker": "../../scripts/docker-compose.sh run --rm stencil-e2e-runner",
+		"pretest:vrt": "pnpm run build:config",
+		"test:vrt": "playwright test vrt.ts --retries=0",
+		"test:vrt:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner",
+		"pretest:update-snapshots": "pnpm run build:config",
+		"test:update-snapshots": "playwright test vrt.ts --retries=0 --update-snapshots",
+		"test:update-snapshots:docker": "../../scripts/docker-compose.sh run --rm stencil-vrt-runner sh -c \"pnpm install --frozen-lockfile && pnpm -w run build-libs && sh /app/scripts/docker-playwright-runner.sh pnpm --filter @ongov/ontario-design-system-component-library run test:update-snapshots\""
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
-		"dotenv": "^16.4.5",
+		"dotenv": "^17.0.0",
 		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.11.3",
-		"@playwright/test": "1.60.0",
+		"@playwright/test": "1.61.1",
 		"@stencil/angular-output-target": "^1.1.1",
 		"@stencil/playwright": "^0.4.3",
 		"@stencil/react-output-target": "^1.4.0",
 		"@stencil/sass": "^3.2.2",
-		"@stencil/vitest": "1.13.0",
+		"@stencil/vitest": "1.13.3",
 		"@types/mock-fs": "^4.13.4",
 		"@types/node": "^24.0.0",
 		"@types/react": "^19.0.8",

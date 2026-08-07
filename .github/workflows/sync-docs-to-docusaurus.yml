@@ -39,7 +39,7 @@ jobs:
         # Target repo name lives in the `DOCS_REPO` repository variable (Settings >
         # Secrets and variables > Actions > Variables), not hardcoded here -- update
         # it there if the docs repo is ever renamed or transferred.
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: ${{ vars.DOCS_REPO }}
           token: ${{ secrets.GH_TOKEN }}

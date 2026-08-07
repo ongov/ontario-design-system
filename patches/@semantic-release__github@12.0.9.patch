@@ -1,0 +1,117 @@
+diff --git a/lib/success.js b/lib/success.js
+index 48246f29a2162ce0abc0d044112de94bab39becb..e106ddf9ba078c9f75ef06ef1c358183654af40f 100644
+--- a/lib/success.js
++++ b/lib/success.js
+@@ -78,10 +78,20 @@ export default async function success(pluginConfig, context, { Octokit }) {
+     // Get associatedPRs
+     const associatedPRs = await inChunks(shas, 100, async (chunk) => {
+       const responsePRs = [];
+-      const { repository } = await octokit.graphql(
+-        buildAssociatedPRsQuery(chunk),
+-        { owner, repo },
+-      );
++      let repository;
++      try {
++        ({ repository } = await octokit.graphql(
++          buildAssociatedPRsQuery(chunk),
++          { owner, repo },
++        ));
++      } catch (error) {
++        logger.error(
++          "Failed to resolve associated pull requests for commits %O: %s",
++          chunk,
++          error.message,
++        );
++        return responsePRs;
++      }
+       const responseAssociatedPRs = Object.values(repository).map(
+         (item) => item.associatedPullRequests,
+       );
+@@ -118,26 +128,35 @@ export default async function success(pluginConfig, context, { Octokit }) {
+     const uniqueAssociatedPRs = uniqBy(flatten(associatedPRs), "number");
+ 
+     const prs = await pFilter(uniqueAssociatedPRs, async ({ number }) => {
+-      const commits = await octokit.paginate(
+-        "GET /repos/{owner}/{repo}/pulls/{pull_number}/commits",
+-        {
+-          owner,
+-          repo,
+-          pull_number: number,
+-        },
+-      );
+-      const matchingCommit = commits.find(({ sha }) => shas.includes(sha));
+-      if (matchingCommit) return matchingCommit;
+-
+-      const { data: pullRequest } = await octokit.request(
+-        "GET /repos/{owner}/{repo}/pulls/{pull_number}",
+-        {
+-          owner,
+-          repo,
+-          pull_number: number,
+-        },
+-      );
+-      return shas.includes(pullRequest.merge_commit_sha);
++      try {
++        const commits = await octokit.paginate(
++          "GET /repos/{owner}/{repo}/pulls/{pull_number}/commits",
++          {
++            owner,
++            repo,
++            pull_number: number,
++          },
++        );
++        const matchingCommit = commits.find(({ sha }) => shas.includes(sha));
++        if (matchingCommit) return matchingCommit;
++
++        const { data: pullRequest } = await octokit.request(
++          "GET /repos/{owner}/{repo}/pulls/{pull_number}",
++          {
++            owner,
++            repo,
++            pull_number: number,
++          },
++        );
++        return shas.includes(pullRequest.merge_commit_sha);
++      } catch (error) {
++        logger.error(
++          "Failed to verify pull request #%d, skipping it: %s",
++          number,
++          error.message,
++        );
++        return false;
++      }
+     });
+ 
+     debug(
+@@ -173,10 +192,27 @@ export default async function success(pluginConfig, context, { Octokit }) {
+ 
+       // Get relatedIssues (or relatedPRs i.e. Issues/PRs that are closed by an associatedPR)
+       issues = await inChunks(uniqueParsedIssues, 100, async (chunk) => {
+-        const { repository } = await octokit.graphql(
+-          buildRelatedIssuesQuery(chunk.map((issue) => issue.number)),
+-          { owner, repo },
+-        );
++        let repository;
++        try {
++          ({ repository } = await octokit.graphql(
++            buildRelatedIssuesQuery(chunk.map((issue) => issue.number)),
++            { owner, repo },
++          ));
++        } catch (error) {
++          // A parsed "closes #N" reference may point at an issue/PR number
++          // that doesn't actually exist (e.g. a Renovate-escaped `&#8203;`
++          // zero-width-space HTML entity misidentified as an issue
++          // reference by the commit-message parser). GraphQL returns a
++          // top-level error for the whole query in that case, so we can't
++          // tell which alias failed - log and skip this whole chunk rather
++          // than crashing the release.
++          logger.error(
++            "Failed to resolve related issues/PRs for %O, skipping: %s",
++            chunk.map((issue) => issue.number),
++            error.message,
++          );
++          return [];
++        }
+         const responseRelatedIssues = Object.values(repository).map(
+           (issue) => issue,
+         );

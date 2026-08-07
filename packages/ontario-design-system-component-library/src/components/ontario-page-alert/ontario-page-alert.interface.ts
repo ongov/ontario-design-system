@@ -1,4 +1,4 @@
-export type PageAlertType = 'informational' | 'warning' | 'success' | 'error';
+import { PageAlertType } from './ontario-page-alert.types';
 
 export interface PageAlert {
 	/**

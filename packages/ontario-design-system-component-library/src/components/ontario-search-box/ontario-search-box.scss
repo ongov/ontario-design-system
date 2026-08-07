@@ -6,6 +6,7 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/line-heights.variables' as lineheight;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
@@ -25,6 +26,8 @@ $ontario-search-input-padding: 8.5rem;
 $ontario-search-input-padding--mobile: 7.75rem;
 $ontario-search-desktop-width: 34rem;
 $ontario-search-mobile-width: 20.5rem;
+$ontario-search-autosuggest-box-shadow: #0000001a;
+$ontario-search-autocomplete-disabled-opacity: 0.65;
 
 .ontario-search__container {
 	max-width: $ontario-search-desktop-width;
@@ -32,6 +35,10 @@ $ontario-search-mobile-width: 20.5rem;
 }
 
 .ontario-search__input-container {
+	position: relative;
+}
+
+.ontario-search__input-suggestion-container {
 	position: relative;
 }
 
@@ -134,6 +141,126 @@ input[type='reset'].ontario-search__reset {
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		width: $ontario-search-button-width--mobile;
 	}
+}
+
+.ontario-search-autocomplete__suggestion-list {
+	background-color: colours.$ontario-colour-white;
+	border-radius: 0 0 globalVariables.$global-radius globalVariables.$global-radius;
+	border-top: globalFunctions.px-to-rem(2) solid $ontario-search-autosuggest-box-shadow;
+	box-shadow: 0 globalFunctions.px-to-rem(3) globalFunctions.px-to-rem(8) globalFunctions.px-to-rem(1)
+		$ontario-search-autosuggest-box-shadow;
+	clip-path: inset(0 globalFunctions.px-to-rem(-8) globalFunctions.px-to-rem(-8) globalFunctions.px-to-rem(-8));
+	display: none;
+	list-style: none;
+	margin: globalFunctions.px-to-rem(-2) spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-0;
+	padding: spacing.$spacing-0;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	z-index: zIndex.$ontario-z-index-above-medium;
+}
+
+.ontario-search-autocomplete__suggestion-list--open {
+	display: block;
+}
+
+.ontario-search-autocomplete__suggestion-option {
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-4;
+	background-color: colours.$ontario-colour-white;
+	cursor: pointer;
+	box-sizing: border-box;
+	line-height: lineheight.$ontario-line-height-8;
+
+	&:hover {
+		background-color: colours.$ontario-colour-button-tertiary--hover;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.ontario-search-autocomplete__suggestion-option:last-child {
+	padding-bottom: spacing.$spacing-2;
+}
+
+.ontario-search-autocomplete__suggestion-option--active,
+.ontario-search-autocomplete__suggestion-option--hovered {
+	background-color: colours.$ontario-colour-button-tertiary--hover;
+}
+
+.ontario-search-autocomplete__suggestion-option--disabled {
+	opacity: $ontario-search-autocomplete-disabled-opacity;
+	cursor: default;
+}
+
+.ontario-search-autocomplete__suggestion-content {
+	display: block;
+	width: 100%;
+}
+
+.ontario-search-autocomplete__suggestion-label {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+}
+
+.ontario-search-autocomplete__suggestion-match {
+	font-weight: fontWeights.$ontario-font-weights-normal;
+}
+
+.ontario-search-autocomplete__suggestion-completion {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+}
+
+::slotted(.ontario-search-autocomplete__slot-option--hovered),
+::slotted([slot='suggestions']:hover) {
+	background-color: colours.$ontario-colour-button-tertiary--hover;
+}
+
+::slotted(.ontario-search-autocomplete__slot-option) {
+	display: block;
+	list-style: none;
+	padding: spacing.$spacing-2 spacing.$spacing-4;
+	margin: spacing.$spacing-0;
+	line-height: lineheight.$ontario-line-height-8;
+	background-color: colours.$ontario-colour-white;
+	cursor: pointer;
+	box-sizing: border-box;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+}
+
+// Required to keep hidden slotted options out of the rendered list regardless of consumer-provided slot styles.
+::slotted([slot='suggestions'][hidden]),
+::slotted(.ontario-search-autocomplete__slot-option[hidden]) {
+	display: none !important;
+}
+
+::slotted(.ontario-search-autocomplete__slot-option--active),
+::slotted(.ontario-search-autocomplete__slot-option--hovered) {
+	background-color: colours.$ontario-colour-button-tertiary--hover;
+}
+
+::slotted(.ontario-search-autocomplete__slot-option[aria-disabled='true']) {
+	opacity: $ontario-search-autocomplete-disabled-opacity;
+	cursor: default;
+}
+
+$search-autocomplete-suggestion-description-line-height: 1.35;
+
+.ontario-search-autocomplete__suggestion-description {
+	line-height: $search-autocomplete-suggestion-description-line-height;
+}
+
+.ontario-search__visually-hidden {
+	position: absolute;
+	width: globalFunctions.px-to-rem(1);
+	height: globalFunctions.px-to-rem(1);
+	// Offset the element by 1px while keeping it available to assistive technologies.
+	margin: globalFunctions.px-to-rem(-1);
+	padding: spacing.$spacing-0;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
 }
 
 // remove default cancel button for input with type="search"

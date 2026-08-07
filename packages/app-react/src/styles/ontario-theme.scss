@@ -1,5 +1,4 @@
-// App-level theme wrapper for the React component-library Sass entrypoint.
-// `$asset-base-path` sets where fonts/icons are loaded from at runtime.
+// Local theme wrapper for app-react:
 @forward 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' with (
 	$asset-base-path: '/assets'
 );

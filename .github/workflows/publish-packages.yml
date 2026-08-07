@@ -22,7 +22,7 @@ jobs:
       release_tag: ${{ steps.publish.outputs.release_tag }}
     steps:
       # Checkout the repo
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       # Install pnpm
       - name: Install pnpm
