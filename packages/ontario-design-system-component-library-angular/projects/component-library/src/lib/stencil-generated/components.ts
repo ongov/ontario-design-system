@@ -426,6 +426,29 @@ export declare interface OntarioDropdownList extends Components.OntarioDropdownL
 
 
 @ProxyCmp({
+  inputs: ['selected', 'value']
+})
+@Component({
+  selector: 'ontario-dropdown-option',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['selected', 'value'],
+  standalone: false
+})
+export class OntarioDropdownOption {
+  protected el: HTMLOntarioDropdownOptionElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioDropdownOption extends Components.OntarioDropdownOption {}
+
+
+@ProxyCmp({
   inputs: ['legend', 'legendSize']
 })
 @Component({
