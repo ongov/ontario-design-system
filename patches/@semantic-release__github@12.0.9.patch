@@ -1,7 +1,16 @@
 diff --git a/lib/success.js b/lib/success.js
-index 48246f29a2162ce0abc0d044112de94bab39becb..e106ddf9ba078c9f75ef06ef1c358183654af40f 100644
+index 48246f29a2162ce0abc0d044112de94bab39becb..f62d389a8e151384d2bf51f1c6e5b51362fe0e1c 100644
 --- a/lib/success.js
 +++ b/lib/success.js
+@@ -14,7 +14,7 @@ import getReleaseLinks from "./get-release-links.js";
+ 
+ const debug = debugFactory("semantic-release:github");
+ 
+-export default async function success(pluginConfig, context, { Octokit }) {
++async function successImpl(pluginConfig, context, { Octokit }) {
+   const {
+     options: { repositoryUrl },
+     commits,
 @@ -78,10 +78,20 @@ export default async function success(pluginConfig, context, { Octokit }) {
      // Get associatedPRs
      const associatedPRs = await inChunks(shas, 100, async (chunk) => {
@@ -83,7 +92,7 @@ index 48246f29a2162ce0abc0d044112de94bab39becb..e106ddf9ba078c9f75ef06ef1c358183
      });
  
      debug(
-@@ -173,10 +192,27 @@ export default async function success(pluginConfig, context, { Octokit }) {
+@@ -173,10 +192,24 @@ export default async function success(pluginConfig, context, { Octokit }) {
  
        // Get relatedIssues (or relatedPRs i.e. Issues/PRs that are closed by an associatedPR)
        issues = await inChunks(uniqueParsedIssues, 100, async (chunk) => {
@@ -98,13 +107,10 @@ index 48246f29a2162ce0abc0d044112de94bab39becb..e106ddf9ba078c9f75ef06ef1c358183
 +            { owner, repo },
 +          ));
 +        } catch (error) {
-+          // A parsed "closes #N" reference may point at an issue/PR number
-+          // that doesn't actually exist (e.g. a Renovate-escaped `&#8203;`
-+          // zero-width-space HTML entity misidentified as an issue
-+          // reference by the commit-message parser). GraphQL returns a
-+          // top-level error for the whole query in that case, so we can't
-+          // tell which alias failed - log and skip this whole chunk rather
-+          // than crashing the release.
++          // A parsed close reference can point at an issue/PR number that
++          // doesn't exist (e.g. Renovate's `&#8203;` HTML entity). GraphQL
++          // fails the whole query in that case, so skip this chunk instead
++          // of crashing the release.
 +          logger.error(
 +            "Failed to resolve related issues/PRs for %O, skipping: %s",
 +            chunk.map((issue) => issue.number),
@@ -115,3 +121,36 @@ index 48246f29a2162ce0abc0d044112de94bab39becb..e106ddf9ba078c9f75ef06ef1c358183
          const responseRelatedIssues = Object.values(repository).map(
            (issue) => issue,
          );
+@@ -332,6 +365,32 @@ export default async function success(pluginConfig, context, { Octokit }) {
+   }
+ }
+ 
++/**
++ * By the time this step runs, the release (npm publish + GitHub release/tag)
++ * has already succeeded in the "publish" step - everything below is
++ * best-effort notification (comments, labels, closing stale issues) and
++ * should never fail the CI job. Individual calls are already guarded, but
++ * this outer try/catch is the real fix: any error that still escapes is
++ * logged, not rethrown.
++ *
++ * @see https://github.com/semantic-release/github/issues/1092
++ */
++export default async function success(pluginConfig, context, options) {
++  const { logger } = context;
++  try {
++    await successImpl(pluginConfig, context, options);
++  } catch (error) {
++    const errors = error && error.errors ? error.errors : [error];
++    logger.error(
++      "The \"success\" step failed after the release had already completed successfully. Suppressing %d error(s) so they don't fail the release job:",
++      errors.length,
++    );
++    for (const err of errors) {
++      logger.error(" - %s", (err && err.message) || err);
++    }
++  }
++}
++
+ /**
+  * In order to speed up a function call that handles a big array of items, we split up the
+  * array in chunks and call the function for each chunk in parallel. At the end we combine the
