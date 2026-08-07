@@ -46,62 +46,54 @@ test.describe('ontario-dropdown-list', () => {
 	});
 });
 
-test.describe('ontario-dropdown-list - slotted option children', () => {
-	test('renders options passed as light DOM <option> children', async ({ page }) => {
+test.describe('ontario-dropdown-list - ontario-dropdown-option children', () => {
+	test('renders ontario-dropdown-option children as native option elements', async ({ page }) => {
 		await page.setContent(`
 			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="audi">Audi</option>
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+				<ontario-dropdown-option value="dropdown-option-2">Option 2</ontario-dropdown-option>
 			</ontario-dropdown-list>
 		`);
 		await page.waitForChanges();
 
-		const host = page.locator('ontario-dropdown-list').first();
-		const select = host.locator('select').first();
-		const renderedOptions = select.locator('option');
+		const select = page.locator('ontario-dropdown-list select').first();
+		const options = select.locator('option');
 
-		await expect(renderedOptions).toHaveCount(3);
-		await expect(renderedOptions.nth(0)).toHaveText('Volvo');
-		await expect(renderedOptions.nth(1)).toHaveText('Saab');
-		await expect(renderedOptions.nth(2)).toHaveText('Audi');
+		await expect(options).toHaveCount(2);
+		await expect(options.nth(0)).toHaveText('Option 1');
+		await expect(options.nth(1)).toHaveText('Option 2');
 	});
 
-	test('respects a selected attribute on a slotted <option>', async ({ page }) => {
+	test('respects the selected attribute on an ontario-dropdown-option child', async ({ page }) => {
 		await page.setContent(`
 			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
-				<option value="volvo">Volvo</option>
-				<option value="saab" selected>Saab</option>
-				<option value="audi">Audi</option>
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+				<ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
 			</ontario-dropdown-list>
 		`);
 		await page.waitForChanges();
 
-		const host = page.locator('ontario-dropdown-list').first();
-		const select = host.locator('select').first();
-
-		await expect(select).toHaveValue('saab');
-		expect(await host.evaluate((element: HTMLOntarioDropdownListElement) => element.value)).toBe('saab');
+		const select = page.locator('ontario-dropdown-list select').first();
+		await expect(select).toHaveValue('dropdown-option-2');
 	});
 
-	test('the options prop takes precedence over slotted <option> children', async ({ page }) => {
+	test('options prop takes precedence over ontario-dropdown-option children', async ({ page }) => {
 		await page.setContent(`
 			<ontario-dropdown-list
 				name="dropdown-options"
 				element-id="dropdown-list"
-				options='[{ "value": "dropdown-option-1", "label": "Option 1" }]'
+				options='[{ "value": "prop-option-1", "label": "Prop Option 1" }]'
 			>
-				<option value="volvo">Volvo</option>
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
 			</ontario-dropdown-list>
 		`);
 		await page.waitForChanges();
 
-		const host = page.locator('ontario-dropdown-list').first();
-		const select = host.locator('select').first();
-		const renderedOptions = select.locator('option');
+		const select = page.locator('ontario-dropdown-list select').first();
+		const options = select.locator('option');
 
-		await expect(renderedOptions).toHaveCount(1);
-		await expect(renderedOptions.nth(0)).toHaveText('Option 1');
+		await expect(options).toHaveCount(1);
+		await expect(options.nth(0)).toHaveText('Prop Option 1');
 	});
 });
 
