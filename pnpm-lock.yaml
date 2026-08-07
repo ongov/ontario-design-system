@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  '@semantic-release/github@12.0.9': 826e5cbb6700db04222c040149bc19773d1fa6dd4429938ea7080b63e0fca2dd
+  '@semantic-release/github@12.0.9': 5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d
   conventional-changelog-angular@8.0.0: 9ac24139b82ad3e25555c1e04b46d9fab38c7ad72cff37147c63e61f83e7d6aa
 
 importers:
@@ -31,7 +31,7 @@ importers:
         version: 10.0.1(semantic-release@25.0.2(typescript@6.0.3))
       '@semantic-release/github':
         specifier: 12.0.9
-        version: 12.0.9(patch_hash=826e5cbb6700db04222c040149bc19773d1fa6dd4429938ea7080b63e0fca2dd)(semantic-release@25.0.2(typescript@6.0.3))
+        version: 12.0.9(patch_hash=5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d)(semantic-release@25.0.2(typescript@6.0.3))
       '@semantic-release/npm':
         specifier: ^13.1.1
         version: 13.1.1(semantic-release@25.0.2(typescript@6.0.3))
@@ -17126,7 +17126,7 @@ snapshots:
       - kerberos
       - supports-color
 
-  '@semantic-release/github@12.0.9(patch_hash=826e5cbb6700db04222c040149bc19773d1fa6dd4429938ea7080b63e0fca2dd)(semantic-release@25.0.2(typescript@6.0.3))':
+  '@semantic-release/github@12.0.9(patch_hash=5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d)(semantic-release@25.0.2(typescript@6.0.3))':
     dependencies:
       '@octokit/core': 7.0.6
       '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
