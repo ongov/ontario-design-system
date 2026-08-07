@@ -643,7 +643,8 @@ export namespace Components {
 		name: string;
 		/**
 		 * The options for dropdown list.  Each option will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML.  In the example below, the options are being passed in as a string and there are three dropdown options displayed.
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>
+		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>  As an alternative to `options`, `ontario-dropdown-option` elements can instead be passed as light DOM children.  Note: these `<ontario-dropdown-option>` children are read once from the host's light DOM and re-rendered as native `<option>` elements inside the component's shadow root; they are not projected via a native `<slot>`. This is because browsers do not support slotting custom elements into a `<select>` rendered in a shadow root, so a `<slot>`-based approach silently fails to display any options.  If both `options` and `<ontario-dropdown-option>` children are provided, the `options` prop takes precedence.
+		 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option> </ontario-dropdown-list>
 		 */
 		options: string | DropdownOption[];
 		/**
@@ -655,6 +656,37 @@ export namespace Components {
 		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
 		 */
 		value?: string;
+	}
+	/**
+	 * Ontario Dropdown Option represents a single, pre-defined option to be consumed by an
+	 * `ontario-dropdown-list`.
+	 * This component does not render any visible UI of its own. Native `<option>` elements cannot be
+	 * slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-list`
+	 * instead reads its `ontario-dropdown-option` light DOM children directly (their `value`,
+	 * `selected`, and text content) and re-renders them as native `<option>` elements inside its own
+	 * shadow root.
+	 * As an alternative to `ontario-dropdown-option` children, options can also be passed to
+	 * `ontario-dropdown-list` using its `options` prop, as an array of objects (or a JSON string).
+	 * If both are provided, the `options` prop takes precedence.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+	 *   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option>
+	 * </ontario-dropdown-list>
+	 */
+	interface OntarioDropdownOption {
+		/**
+		 * A boolean value to determine whether or not the dropdown option is pre-selected. If no option is marked as selected, the first available option (or the empty start option, if `isEmptyStartOption` is enabled on the parent `ontario-dropdown-list`) will be selected.
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * The value for the dropdown option. Each value must be unique to the option within the parent `ontario-dropdown-list`.
+		 */
+		value: string;
 	}
 	/**
 	 * Ontario Fieldset groups related form controls under a shared legend.
@@ -4108,6 +4140,31 @@ declare global {
 		new (): HTMLOntarioDropdownListElement;
 	};
 	/**
+	 * Ontario Dropdown Option represents a single, pre-defined option to be consumed by an
+	 * `ontario-dropdown-list`.
+	 * This component does not render any visible UI of its own. Native `<option>` elements cannot be
+	 * slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-list`
+	 * instead reads its `ontario-dropdown-option` light DOM children directly (their `value`,
+	 * `selected`, and text content) and re-renders them as native `<option>` elements inside its own
+	 * shadow root.
+	 * As an alternative to `ontario-dropdown-option` children, options can also be passed to
+	 * `ontario-dropdown-list` using its `options` prop, as an array of objects (or a JSON string).
+	 * If both are provided, the `options` prop takes precedence.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+	 *   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option>
+	 * </ontario-dropdown-list>
+	 */
+	interface HTMLOntarioDropdownOptionElement extends Components.OntarioDropdownOption, HTMLStencilElement {}
+	var HTMLOntarioDropdownOptionElement: {
+		prototype: HTMLOntarioDropdownOptionElement;
+		new (): HTMLOntarioDropdownOptionElement;
+	};
+	/**
 	 * Ontario Fieldset groups related form controls under a shared legend.
 	 * For component guidance, see:
 	 * - https://designsystem.ontario.ca/components/detail/fieldsets.html
@@ -5554,6 +5611,7 @@ declare global {
 		'ontario-critical-alert': HTMLOntarioCriticalAlertElement;
 		'ontario-date-input': HTMLOntarioDateInputElement;
 		'ontario-dropdown-list': HTMLOntarioDropdownListElement;
+		'ontario-dropdown-option': HTMLOntarioDropdownOptionElement;
 		'ontario-fieldset': HTMLOntarioFieldsetElement;
 		'ontario-footer': HTMLOntarioFooterElement;
 		'ontario-form-container': HTMLOntarioFormContainerElement;
@@ -6273,7 +6331,8 @@ declare namespace LocalJSX {
 		onInputErrorOccurred?: (event: OntarioDropdownListCustomEvent<{ errorMessage: string }>) => void;
 		/**
 		 * The options for dropdown list.  Each option will be passed in through an object in the options array. This can either be passed in as an object directly (if using react), or as a string in HTML.  In the example below, the options are being passed in as a string and there are three dropdown options displayed.
-		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>
+		 * @example <ontario-dropdown-list   caption='{     "captionText": "Label",     "captionType": "heading",   }'   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]' > </ontario-dropdown-list>  As an alternative to `options`, `ontario-dropdown-option` elements can instead be passed as light DOM children.  Note: these `<ontario-dropdown-option>` children are read once from the host's light DOM and re-rendered as native `<option>` elements inside the component's shadow root; they are not projected via a native `<slot>`. This is because browsers do not support slotting custom elements into a `<select>` rendered in a shadow root, so a `<slot>`-based approach silently fails to display any options.  If both `options` and `<ontario-dropdown-option>` children are provided, the `options` prop takes precedence.
+		 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option> </ontario-dropdown-list>
 		 */
 		options?: string | DropdownOption[];
 		/**
@@ -6283,6 +6342,37 @@ declare namespace LocalJSX {
 		required?: boolean;
 		/**
 		 * The currently selected dropdown value.  The component keeps the host `value` in sync as users interact with the dropdown. If `value` is provided, it takes precedence over any `selected` flags passed through `options`.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Dropdown Option represents a single, pre-defined option to be consumed by an
+	 * `ontario-dropdown-list`.
+	 * This component does not render any visible UI of its own. Native `<option>` elements cannot be
+	 * slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-list`
+	 * instead reads its `ontario-dropdown-option` light DOM children directly (their `value`,
+	 * `selected`, and text content) and re-renders them as native `<option>` elements inside its own
+	 * shadow root.
+	 * As an alternative to `ontario-dropdown-option` children, options can also be passed to
+	 * `ontario-dropdown-list` using its `options` prop, as an array of objects (or a JSON string).
+	 * If both are provided, the `options` prop takes precedence.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+	 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+	 *   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option>
+	 * </ontario-dropdown-list>
+	 */
+	interface OntarioDropdownOption {
+		/**
+		 * A boolean value to determine whether or not the dropdown option is pre-selected. If no option is marked as selected, the first available option (or the empty start option, if `isEmptyStartOption` is enabled on the parent `ontario-dropdown-list`) will be selected.
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * The value for the dropdown option. Each value must be unique to the option within the parent `ontario-dropdown-list`.
 		 */
 		value?: string;
 	}
@@ -9383,6 +9473,7 @@ declare namespace LocalJSX {
 		'ontario-critical-alert': OntarioCriticalAlert;
 		'ontario-date-input': OntarioDateInput;
 		'ontario-dropdown-list': OntarioDropdownList;
+		'ontario-dropdown-option': OntarioDropdownOption;
 		'ontario-fieldset': OntarioFieldset;
 		'ontario-footer': OntarioFooter;
 		'ontario-form-container': OntarioFormContainer;
@@ -9658,6 +9749,28 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-dropdown-list': LocalJSX.OntarioDropdownList & JSXBase.HTMLAttributes<HTMLOntarioDropdownListElement>;
+			/**
+			 * Ontario Dropdown Option represents a single, pre-defined option to be consumed by an
+			 * `ontario-dropdown-list`.
+			 * This component does not render any visible UI of its own. Native `<option>` elements cannot be
+			 * slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-list`
+			 * instead reads its `ontario-dropdown-option` light DOM children directly (their `value`,
+			 * `selected`, and text content) and re-renders them as native `<option>` elements inside its own
+			 * shadow root.
+			 * As an alternative to `ontario-dropdown-option` children, options can also be passed to
+			 * `ontario-dropdown-list` using its `options` prop, as an array of objects (or a JSON string).
+			 * If both are provided, the `options` prop takes precedence.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/dropdown-lists.html
+			 * - https://designsystem.ontario.ca/developer-docs/components/ontario-dropdown-list/
+			 * @example <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+			 *   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+			 *   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+			 *   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option>
+			 * </ontario-dropdown-list>
+			 */
+			'ontario-dropdown-option': LocalJSX.OntarioDropdownOption &
+				JSXBase.HTMLAttributes<HTMLOntarioDropdownOptionElement>;
 			/**
 			 * Ontario Fieldset groups related form controls under a shared legend.
 			 * For component guidance, see:

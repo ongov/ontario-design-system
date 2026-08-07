@@ -24,6 +24,7 @@ export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCh
 export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDateInput = /*@__PURE__*/createReactComponent<JSX.OntarioDateInput, HTMLOntarioDateInputElement>('ontario-date-input');
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
+export const OntarioDropdownOption = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownOption, HTMLOntarioDropdownOptionElement>('ontario-dropdown-option');
 export const OntarioFieldset = /*@__PURE__*/createReactComponent<JSX.OntarioFieldset, HTMLOntarioFieldsetElement>('ontario-fieldset');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');
 export const OntarioFormContainer = /*@__PURE__*/createReactComponent<JSX.OntarioFormContainer, HTMLOntarioFormContainerElement>('ontario-form-container');
