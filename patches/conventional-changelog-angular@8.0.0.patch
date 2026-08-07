@@ -1,0 +1,81 @@
+diff --git a/src/templates/commit.hbs b/src/templates/commit.hbs
+index e10a0d90127ccede198df1c1959e1e14ca96fe40..2ae592ccb368209185cc3f1caa3f8c8108ce45db 100644
+--- a/src/templates/commit.hbs
++++ b/src/templates/commit.hbs
+@@ -24,38 +24,47 @@
+ {{~/if}}
+ 
+ {{~!-- commit references --}}
+-{{~#if references~}}
+-  , closes
+-  {{~#each references}} {{#if @root.linkReferences~}}
+-    [
+-    {{~#if this.owner}}
+-      {{~this.owner}}/
+-    {{~/if}}
+-    {{~this.repository}}#{{this.issue}}](
+-    {{~#if @root.repository}}
+-      {{~#if @root.host}}
+-        {{~@root.host}}/
++{{~!-- Only render ", closes #N" for references that actually matched a real
++  close/fix/resolve keyword (this.action). Without this guard, any bare
++  "#<digits>" text in a commit body/footer with no adjacent action keyword
++  still gets recorded as a reference with action: null (upstream parser
++  behaviour), and was previously rendered here as a spurious "closes #N"
++  regardless. This is what allowed Renovate's constant "&#8203;" escape
++  (used to prevent GitHub from pinging non-existent @scope users) to be
++  misread as "closes #8203" in generated changelogs/release notes. --}}
++{{~#each references}}
++  {{~#if this.action}}
++    , closes {{#if @root.linkReferences~}}
++      [
++      {{~#if this.owner}}
++        {{~this.owner}}/
+       {{~/if}}
+-      {{~#if this.repository}}
+-        {{~#if this.owner}}
+-          {{~this.owner}}/
++      {{~this.repository}}#{{this.issue}}](
++      {{~#if @root.repository}}
++        {{~#if @root.host}}
++          {{~@root.host}}/
+         {{~/if}}
+-        {{~this.repository}}
++        {{~#if this.repository}}
++          {{~#if this.owner}}
++            {{~this.owner}}/
++          {{~/if}}
++          {{~this.repository}}
++        {{~else}}
++          {{~#if @root.owner}}
++            {{~@root.owner}}/
++          {{~/if}}
++            {{~@root.repository}}
++          {{~/if}}
+       {{~else}}
+-        {{~#if @root.owner}}
+-          {{~@root.owner}}/
+-        {{~/if}}
+-          {{~@root.repository}}
+-        {{~/if}}
++        {{~@root.repoUrl}}
++      {{~/if}}/
++      {{~@root.issue}}/{{this.issue}})
+     {{~else}}
+-      {{~@root.repoUrl}}
+-    {{~/if}}/
+-    {{~@root.issue}}/{{this.issue}})
+-  {{~else}}
+-    {{~#if this.owner}}
+-      {{~this.owner}}/
++      {{~#if this.owner}}
++        {{~this.owner}}/
++      {{~/if}}
++      {{~this.repository}}#{{this.issue}}
+     {{~/if}}
+-    {{~this.repository}}#{{this.issue}}
+-  {{~/if}}{{/each}}
+-{{~/if}}
++  {{~/if}}
++{{~/each}}
+ 
