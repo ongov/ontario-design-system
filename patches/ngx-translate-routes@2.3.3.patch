@@ -1,0 +1,12 @@
+diff --git a/lib/ngx-translate-routes.module.d.ts b/lib/ngx-translate-routes.module.d.ts
+index 6583b707a7ee5ecbf99ac61772617b18b9b68cd1..6a74bfc8fdc817582ca08b830453cd4dae70930a 100644
+--- a/lib/ngx-translate-routes.module.d.ts
++++ b/lib/ngx-translate-routes.module.d.ts
+@@ -8,6 +8,6 @@ export declare class NgxTranslateRoutesModule {
+     constructor(parentModule?: NgxTranslateRoutesModule);
+     static forRoot(config?: NgxTranslateRoutesConfig): ModuleWithProviders<NgxTranslateRoutesModule>;
+     static ɵfac: i0.ɵɵFactoryDeclaration<NgxTranslateRoutesModule, [{ optional: true; skipSelf: true; }]>;
+-    static ɵmod: i0.ɵɵNgModuleDeclaration<NgxTranslateRoutesModule, never, [typeof i1.CommonModule, typeof i2.TranslateModule], never>;
++    static ɵmod: i0.ɵɵNgModuleDeclaration<NgxTranslateRoutesModule, never, [typeof i1.CommonModule, unknown], never>;
+     static ɵinj: i0.ɵɵInjectorDeclaration<NgxTranslateRoutesModule>;
+ }
