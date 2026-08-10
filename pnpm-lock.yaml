@@ -7,7 +7,7 @@ settings:
 patchedDependencies:
   '@semantic-release/github@12.0.9': 826e5cbb6700db04222c040149bc19773d1fa6dd4429938ea7080b63e0fca2dd
   conventional-changelog-angular@8.0.0: 9ac24139b82ad3e25555c1e04b46d9fab38c7ad72cff37147c63e61f83e7d6aa
-  ngx-translate-routes@2.3.3: 6b98252be00dc62de749490e67670077ae93950afbfab71b6e0afd484eea1578
+  ngx-translate-routes@2.3.3: 0bfa1124fadb71676774f04432876c6deb42b37da750fee7506d83d06c27899b
 
 importers:
   .:
@@ -156,7 +156,7 @@ importers:
         version: 2.4.1
       ngx-translate-routes:
         specifier: ^2.0.0
-        version: 2.3.3(patch_hash=6b98252be00dc62de749490e67670077ae93950afbfab71b6e0afd484eea1578)(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1)
+        version: 2.3.3(patch_hash=0bfa1124fadb71676774f04432876c6deb42b37da750fee7506d83d06c27899b)(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1
@@ -22207,7 +22207,7 @@ snapshots:
       rollup: 4.60.2
       tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@24.12.2)(typescript@6.0.3))
 
-  ngx-translate-routes@2.3.3(patch_hash=6b98252be00dc62de749490e67670077ae93950afbfab71b6e0afd484eea1578)(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1):
+  ngx-translate-routes@2.3.3(patch_hash=0bfa1124fadb71676774f04432876c6deb42b37da750fee7506d83d06c27899b)(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(@ngx-translate/core@18.0.0(@angular/common@22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(rxjs@7.8.1):
     dependencies:
       '@angular/common': 22.1.1(@angular/core@22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       '@angular/core': 22.1.1(@angular/compiler@22.1.1)(rxjs@7.8.1)(zone.js@0.16.2)
