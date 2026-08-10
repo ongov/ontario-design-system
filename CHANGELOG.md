@@ -1,3 +1,9 @@
+# 9.1.0-alpha.2 (2026-08-10)
+
+### Bug Fixes
+
+- **ci:** make semantic-release github success step non-fatal 05a9b64 , closes #323
+
 # 9.1.0-alpha.1 (2026-08-07)
 
 ### Bug Fixes
