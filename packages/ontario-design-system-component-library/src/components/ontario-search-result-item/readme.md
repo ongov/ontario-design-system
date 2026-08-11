@@ -52,17 +52,6 @@ Use `ontario-search-result-item` to render a semantic option row for search sugg
 </Tabs>
 ```
 
-## Example with custom slotted content
-
-```html
-<ontario-search-result-item value="Toronto">
-	<div>
-		<strong>Toronto</strong>
-		<p>Population: 2.9M</p>
-	</div>
-</ontario-search-result-item>
-```
-
 <!-- Auto Generated Below -->
 
 ## Overview
