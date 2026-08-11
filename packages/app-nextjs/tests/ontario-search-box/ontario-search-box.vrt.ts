@@ -117,15 +117,13 @@ test.describe('Search Box - focus states', () => {
 		await gotoSearchPage(page);
 	});
 
-	test('search input focused', async ({ page, browserName }) => {
+	test('search input focused', async ({ page }) => {
 		const search = searchBox(page);
 		const input = search.locator('input[type="search"]');
 
 		await focusControl(input);
 		await waitForInteractionPaint(page);
-			await expectVrtScreenshot(searchForm(search), {
-				maxDiffPixels: browserName === 'chromium' ? 2500 : 700,
-			});
+		await expectVrtScreenshot(searchForm(search), { maxDiffPixels: 700 });
 	});
 
 	test('reset button focused with entered value', async ({ page }) => {
