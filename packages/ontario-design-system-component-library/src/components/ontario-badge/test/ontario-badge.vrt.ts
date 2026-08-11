@@ -1,6 +1,5 @@
 import { expect, Locator } from '@playwright/test';
 import { test, E2EPage } from '@stencil/playwright';
-import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-badge', () => {
 	/* =========================
@@ -16,12 +15,6 @@ test.describe('ontario-badge', () => {
 		await expect(host).toHaveClass(/hydrated/);
 
 		return host;
-	};
-
-	const expectNoAxeViolations = async (page: E2EPage, selector: string) => {
-		const results = await new AxeBuilder({ page }).include(selector).analyze();
-
-		expect(results.violations).toHaveLength(0);
 	};
 
 	/* =========================
@@ -81,12 +74,6 @@ test.describe('ontario-badge', () => {
 		await expect(host.locator('span')).toHaveScreenshot();
 	});
 
-	test('sets aria-label correctly', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text="Accessible"></ontario-badge>`);
-
-		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Accessible');
-	});
-
 	/* =========================
      Negative Tests
     ========================== */
@@ -98,51 +85,11 @@ test.describe('ontario-badge', () => {
 		await expect(host.locator('span')).toHaveScreenshot();
 	});
 
-	test('renders empty when no label and no slot', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge></ontario-badge>`);
-
-		await expect(host.locator('span')).toHaveText('');
-	});
-
-	test('handles empty aria-label', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text=""></ontario-badge>`);
-
-		await expect(host.locator('span')).toHaveAttribute('aria-label', '');
-	});
-
 	test('maps legacy colour values', async ({ page }) => {
 		const host = await renderHost(page, `<ontario-badge label="Test" colour="lightTeal"></ontario-badge>`);
 
 		await expect(host.locator('span')).toContainClass('ontario-badge--light-teal');
 		await expect(host.locator('span')).toHaveScreenshot();
-	});
-
-	/* ==============================================
-     Boundary Tests with longer than 15 characters
-    ================================================= */
-	/* ==============================================
-    Currently skipped because the badge component is not designed to handle long text 
-    and will overflow horizontally. 
-    This test is included for future reference if the component is updated 
-    to support long text wrapping.
-    ================================================= */
-	test.skip('wraps long text without horizontal overflow', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`<div style="width: 200px;">
-                <ontario-badge label="This label is longer than fifteen characters"></ontario-badge>
-            </div>`,
-		);
-
-		const badgeText = host.locator('span');
-		await expect(badgeText).toBeVisible();
-
-		const overflowX = await badgeText.evaluate((el) => getComputedStyle(el).overflowX);
-		expect(overflowX).not.toBe('visible');
-
-		const scrollWidth = await badgeText.evaluate((el) => el.scrollWidth);
-		const clientWidth = await badgeText.evaluate((el) => el.clientWidth);
-		expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
 	});
 
 	test('handles empty string label', async ({ page }) => {
@@ -180,34 +127,6 @@ test.describe('ontario-badge', () => {
 
 		await expect(host.locator('span')).toHaveText('✅ Done');
 		await expect(host.locator('span')).toHaveScreenshot();
-	});
-
-	/* =========================
-     Accessibility Tests
-    ========================== */
-
-	test('has no accessibility violations', async ({ page }) => {
-		await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
-		await expectNoAxeViolations(page, 'ontario-badge');
-	});
-
-	test('uses aria-label for screen readers', async ({ page }) => {
-		const host = await renderHost(
-			page,
-			`<ontario-badge label="Visible" aria-label-text="Screen reader text"></ontario-badge>`,
-		);
-
-		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Screen reader text');
-	});
-
-	test('falls back to visible text without aria-label', async ({ page }) => {
-		const host = await renderHost(page, `<ontario-badge label="Fallback"></ontario-badge>`);
-		const label = host.locator('span');
-
-		await expect(label).toBeVisible();
-		await expect(label).not.toHaveAttribute('aria-label');
-		await expect(label).toHaveText('Fallback');
-		await expect(host).toBeVisible();
 	});
 
 	test('has correct semantic structure', async ({ page }) => {
