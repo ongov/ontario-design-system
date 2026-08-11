@@ -28,6 +28,6 @@ test.describe('Ontario In-Page Navigation - Next.js E2E', () => {
 
 	test('no-top-border variant has expected class in rendered output', async ({ page }) => {
 		const borderlessNav = page.locator('ontario-in-page-navigation').nth(1);
-		await expect(borderlessNav.locator('.ontario-in-page-navigation')).toHaveClass(/ontario-in-page-navigation--no-top-border/);
+		await expect(borderlessNav.locator('.ontario-page-navigation')).toHaveClass(/ontario-page-navigation--no-top-border/);
 	});
 });
