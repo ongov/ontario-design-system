@@ -143,7 +143,7 @@ Row-level change link using `actionLink`.
 	</OntarioSummaryList>
 </div>
 
-Slot override pattern. Use the `action` slot when a router-aware link is required. Supply screen-reader text manually inside the slotted element.
+Slot override pattern. Use the `action` slot when a router-aware link is required. Provide an explicit accessible label on the slotted link.
 
 ```mdx-code-block
 <Tabs
@@ -160,11 +160,8 @@ Slot override pattern. Use the `action` slot when a router-aware link is require
 ```tsx
 <OntarioSummaryList caption="Personal information" headingLevel="h3">
 	<OntarioSummaryListItem name="Last name" description="Smith">
-		<Link slot="action" href="/step/personal-info">
+		<Link slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">
 			Change
-			<span className="ontario-show-for-sr">
-				your answer for: <q>Last name</q>
-			</span>
 		</Link>
 	</OntarioSummaryListItem>
 </OntarioSummaryList>
@@ -178,10 +175,7 @@ Slot override pattern. Use the `action` slot when a router-aware link is require
 ```html
 <ontario-summary-list [caption]="'Personal information'" [headingLevel]="'h3'">
 	<ontario-summary-list-item [name]="'Last name'" [description]="'Smith'">
-		<a slot="action" routerLink="/step/personal-info">
-			Change
-			<span class="ontario-show-for-sr">your answer for: <q>Last name</q></span>
-		</a>
+		<a slot="action" routerLink="/step/personal-info" aria-label="Change your answer for: Last name">Change</a>
 	</ontario-summary-list-item>
 </ontario-summary-list>
 ```
@@ -194,12 +188,7 @@ Slot override pattern. Use the `action` slot when a router-aware link is require
 <div>
 	<OntarioSummaryList caption="Personal information" headingLevel="h3">
 		<OntarioSummaryListItem name="Last name" description="Smith">
-			<a slot="action" href="#">
-				Change
-				<span className="ontario-show-for-sr">
-					your answer for: <q>Last name</q>
-				</span>
-			</a>
+			<a slot="action" href="#" aria-label="Change your answer for: Last name">Change</a>
 		</OntarioSummaryListItem>
 	</OntarioSummaryList>
 </div>
