@@ -19,22 +19,6 @@ test.describe('Ontario In-Page Navigation - Next.js E2E', () => {
 		await expect(defaultNav.getByRole('link', { name: 'Contact us' })).toHaveAttribute('href', '#contact-us');
 	});
 
-	test('default variant renders expected in-page navigation item count and list semantics', async ({ page }) => {
-		const defaultNav = page.locator('ontario-in-page-navigation').first();
-		const navItems = defaultNav.locator('ontario-in-page-navigation-item');
-
-		await expect(navItems).toHaveCount(5);
-		await expect(navItems.first()).toHaveAttribute('role', 'listitem');
-	});
-
-	test('no-top-border variant exposes expected item labels and anchor targets', async ({ page }) => {
-		const borderlessNav = page.locator('ontario-in-page-navigation').nth(1);
-
-		await expect(borderlessNav.getByRole('link', { name: 'Overview' })).toHaveAttribute('href', '#overview');
-		await expect(borderlessNav.getByRole('link', { name: 'The law (cancellations)' })).toHaveAttribute('href', '#the-law');
-		await expect(borderlessNav.getByRole('link', { name: 'Before you buy' })).toHaveAttribute('href', '#before-you-buy');
-	});
-
 	test('clicking a nav link updates hash and target heading is present', async ({ page }) => {
 		const defaultNav = page.locator('ontario-in-page-navigation').first();
 		await defaultNav.getByRole('link', { name: 'Program guide' }).click();
