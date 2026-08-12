@@ -1,4 +1,4 @@
-import { Page, test } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
 
 import { expectVrtScreenshot, waitForInteractionPaint } from '../vrt-helpers';
 
@@ -42,5 +42,16 @@ test.describe('In-Page Navigation Item - interaction states', () => {
 
 		await link.hover();
 		await expectVrtScreenshot(item, { maxDiffPixels: 700 });
+	});
+
+	test('clicked item link after reload with hash', async ({ page }) => {
+		const link = defaultFirstItem(page).getByRole('link', { name: 'About the program' });
+
+		await link.click();
+		await expect(page).toHaveURL(/#about-program$/);
+		await page.reload();
+		await expect(page).toHaveURL(/#about-program$/);
+		await waitForInteractionPaint(page);
+		await expectVrtScreenshot(defaultFirstItem(page), { maxDiffPixels: 800 });
 	});
 });
