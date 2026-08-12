@@ -163,7 +163,7 @@ Full `captionActionLink` usage. Passing `{ href, label }` overrides the visible 
 	</OntarioSummaryList>
 </div>
 
-Slot override pattern. Use the `caption-action` slot when a router-aware link is required. Supply screen-reader text manually inside the slotted element.
+Slot override pattern. Use the `caption-action` slot when a router-aware link is required. Provide an explicit accessible label on the slotted link.
 
 ```mdx-code-block
 <Tabs
@@ -179,11 +179,8 @@ Slot override pattern. Use the `caption-action` slot when a router-aware link is
 
 ```tsx
 <OntarioSummaryList caption="Contact details" headingLevel="h3">
-	<Link slot="caption-action" href="/step/contact">
+	<Link slot="caption-action" href="/step/contact" aria-label="Change your answer for: Contact details">
 		Change
-		<span className="ontario-show-for-sr">
-			your answer for: <q>Contact details</q>
-		</span>
 	</Link>
 	<OntarioSummaryListItem name="Email" description="gsmith@gmail.com" />
 	<OntarioSummaryListItem name="Phone number" description="123-456-7890" />
@@ -197,10 +194,7 @@ Slot override pattern. Use the `caption-action` slot when a router-aware link is
 
 ```html
 <ontario-summary-list caption="Contact details" heading-level="h3">
-	<a slot="caption-action" routerLink="/step/contact">
-		Change
-		<span class="ontario-show-for-sr">your answer for: <q>Contact details</q></span>
-	</a>
+	<a slot="caption-action" routerLink="/step/contact" aria-label="Change your answer for: Contact details">Change</a>
 	<ontario-summary-list-item name="Email" description="gsmith@gmail.com"></ontario-summary-list-item>
 	<ontario-summary-list-item name="Phone number" description="123-456-7890"></ontario-summary-list-item>
 </ontario-summary-list>
@@ -228,16 +222,10 @@ Row-level action links are consumer-authored through slotted children. Each `ont
 ```html
 <ontario-summary-list caption="Personal information" heading-level="h3">
 	<ontario-summary-list-item name="Last name" description="Smith">
-		<a slot="action" href="/step/personal-info">
-			Change
-			<span class="ontario-show-for-sr">your answer for: <q>Last name</q></span>
-		</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">Change</a>
 	</ontario-summary-list-item>
 	<ontario-summary-list-item name="First name" description="George">
-		<a slot="action" href="/step/personal-info">
-			Change
-			<span class="ontario-show-for-sr">your answer for: <q>First name</q></span>
-		</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: First name">Change</a>
 	</ontario-summary-list-item>
 </ontario-summary-list>
 ```
@@ -250,20 +238,10 @@ Row-level action links are consumer-authored through slotted children. Each `ont
 ```tsx
 <OntarioSummaryList caption="Personal information" headingLevel="h3">
 	<OntarioSummaryListItem name="Last name" description="Smith">
-		<a slot="action" href="/step/personal-info">
-			Change
-			<span className="ontario-show-for-sr">
-				your answer for: <q>Last name</q>
-			</span>
-		</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">Change</a>
 	</OntarioSummaryListItem>
 	<OntarioSummaryListItem name="First name" description="George">
-		<a slot="action" href="/step/personal-info">
-			Change
-			<span className="ontario-show-for-sr">
-				your answer for: <q>First name</q>
-			</span>
-		</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: First name">Change</a>
 	</OntarioSummaryListItem>
 </OntarioSummaryList>
 ```
@@ -272,6 +250,17 @@ Row-level action links are consumer-authored through slotted children. Each `ont
 </TabItem>
 </Tabs>
 ```
+
+<div>
+	<OntarioSummaryList caption="Personal information" headingLevel="h3">
+		<OntarioSummaryListItem name="Last name" description="Smith">
+			<a slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">Change</a>
+		</OntarioSummaryListItem>
+		<OntarioSummaryListItem name="First name" description="George">
+			<a slot="action" href="/step/personal-info" aria-label="Change your answer for: First name">Change</a>
+		</OntarioSummaryListItem>
+	</OntarioSummaryList>
+</div>
 
 ## Custom property types
 
