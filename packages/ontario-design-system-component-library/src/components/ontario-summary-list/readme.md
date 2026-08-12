@@ -238,10 +238,14 @@ Row-level action links are consumer-authored through slotted children. Each `ont
 ```tsx
 <OntarioSummaryList caption="Personal information" headingLevel="h3">
 	<OntarioSummaryListItem name="Last name" description="Smith">
-		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">Change</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: Last name">
+			Change
+		</a>
 	</OntarioSummaryListItem>
 	<OntarioSummaryListItem name="First name" description="George">
-		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: First name">Change</a>
+		<a slot="action" href="/step/personal-info" aria-label="Change your answer for: First name">
+			Change
+		</a>
 	</OntarioSummaryListItem>
 </OntarioSummaryList>
 ```
