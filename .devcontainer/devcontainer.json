@@ -1,0 +1,68 @@
+{
+	// What this file is:
+	// - VS Code Dev Container configuration for the Ontario Design System monorepo.
+	//
+	// What it does:
+	// - Uses the standard Microsoft base dev container image (includes the
+	//   non-root "vscode" user with passwordless sudo, git, and general VS
+	//   Code Server compatibility) plus the official "node" feature for
+	//   nvm/corepack/pnpm tooling with proper shell/PATH integration.
+	// - Resolves the actual Node.js and pnpm versions to install from this
+	//   repo's own ".nvmrc" and package.json "packageManager" field (see
+	//   postCreate.sh), instead of hardcoding version numbers here, so there
+	//   is a single source of truth to keep in sync.
+	// - Caches the root node_modules, the pnpm store, and the Playwright
+	//   browser download cache in named volumes, so dependencies and browser
+	//   binaries survive container rebuilds and never touch the host's copy
+	//   (important for Mac/Windows hosts, where native-arch binaries built
+	//   for Linux inside the container must not overwrite the host's).
+	// - Installs Playwright's browsers directly (matching the version pinned
+	//   in the component library's package.json), so e2e/vrt tests run
+	//   natively in this one container without any Docker-in-Docker layers.
+	//
+	// Why we use it:
+	// - Gives contributors one complete, native environment to build, lint,
+	//   unit test, and run e2e/vrt tests, without needing separate docker
+	//   compose scripts.
+	"name": "ods-components",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	"features": {
+		// Version/pnpmVersion are intentionally left at their defaults; the
+		// exact versions are installed dynamically in postCreate.sh from
+		// .nvmrc and package.json so there's no second place to maintain them.
+		"ghcr.io/devcontainers/features/node:2": {}
+	},
+	"remoteUser": "vscode",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/ods-components,type=bind,consistency=cached",
+	"workspaceFolder": "/workspaces/ods-components",
+	"mounts": [
+		"source=ods-components-node-modules-root,target=/workspaces/ods-components/node_modules,type=volume",
+		"source=ods-components-pnpm-store,target=/workspaces/ods-components/.pnpm-store,type=volume",
+		"source=ods-components-playwright-cache,target=/home/vscode/.cache/ms-playwright,type=volume"
+	],
+	"forwardPorts": [3000, 4200, 5173],
+	"portsAttributes": {
+		"3000": { "label": "app-nextjs" },
+		"4200": { "label": "app-angular" },
+		"5173": { "label": "app-react (Vite)" }
+	},
+	"postCreateCommand": "bash .devcontainer/postCreate.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"stencil-tools.hyperclick",
+				"ionic.ionic",
+				"angular.ng-template",
+				"editorconfig.editorconfig",
+				"streetsidesoftware.code-spell-checker",
+				"ms-playwright.playwright"
+			],
+			"settings": {
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"editor.formatOnSave": true
+			}
+		}
+	}
+}
