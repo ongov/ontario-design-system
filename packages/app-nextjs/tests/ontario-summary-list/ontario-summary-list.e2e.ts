@@ -24,7 +24,9 @@ test.describe('Ontario Summary List - Next.js E2E', () => {
 		const contactList = page.locator('ontario-summary-list', {
 			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Contact details' }),
 		});
-		await expect(contactList.locator('a.ontario-summary-list__change-button')).toBeVisible();
+		const headingActionLink = contactList.locator('a.ontario-summary-list__change-button');
+		await expect(headingActionLink).toBeVisible();
+		await expect(headingActionLink).toHaveAttribute('href', '#summary-list');
 	});
 
 	test('supports custom action slot row with screen-reader text', async ({ page }) => {
@@ -32,6 +34,20 @@ test.describe('Ontario Summary List - Next.js E2E', () => {
 			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Mixed rows (action slot override)' }),
 		});
 		await expect(mixedList.getByRole('link', { name: /Change\s+your answer for: First name/i })).toBeVisible();
+	});
+
+	test('renders row without action link when actionLink is omitted', async ({ page }) => {
+		const noActionList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Row without action link' }),
+		});
+		await expect(noActionList.locator('a.ontario-summary-list-item__change-button')).toHaveCount(0);
+	});
+
+	test('renders custom row action label when provided', async ({ page }) => {
+		const customLabelList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Row with custom action label' }),
+		});
+		await expect(customLabelList.getByRole('link', { name: /Edit\s+your answer for: Address/i })).toBeVisible();
 	});
 
 	test('renders semantic definition list structure', async ({ page }) => {
