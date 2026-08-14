@@ -1,12 +1,16 @@
-// Custom Style Dictionary value transforms for the primitive token layer.
-//
-// These are registered in build.mjs so they are available when the primitive
-// output platforms are configured (DS-2691 / PR 5). They are defined here as
-// plain objects so the conversion logic can be unit-tested without running a
-// full Style Dictionary build.
-//
-// Source token values are authored in px; the unit policy (which categories emit
-// rem vs em vs unitless) is applied per-platform in DS-2691.
+/**
+ * @file Custom Style Dictionary value transforms.
+ *
+ * Home for any hand-written transform this package needs, registered in
+ * build.mjs so they're available to whichever platform configs
+ * (scripts/config/*.config.mjs) reference them by name. Defined here as
+ * plain objects so the conversion logic can be unit-tested without running a
+ * full Style Dictionary build.
+ *
+ * Currently home to the primitive tier's px unit transforms (DS-2691):
+ * source token values are authored in px, and the unit policy (which
+ * categories emit rem vs em vs unitless) is applied per-platform.
+ */
 
 /** Token categories (first path segment) whose px values convert to rem. */
 const REM_CATEGORIES = ['space', 'font', 'lineHeight', 'letterSpacing', 'radius', 'border'];
