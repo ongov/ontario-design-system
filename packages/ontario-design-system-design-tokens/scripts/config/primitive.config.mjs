@@ -1,12 +1,15 @@
-// Style Dictionary platform configuration for the primitive output layer
-// (DS-2691). These platforms are additive: they emit new `primitives.*` entry
-// points under an `ods-` prefix and leave the legacy flat outputs (served from
-// the frozen legacy/ snapshot, see build.mjs) byte-for-byte unchanged.
-//
-// Source token values are authored in px; `size/pxToRem` and `size/pxToEm`
-// (registered in build.mjs) apply the unit output policy documented on
-// DS-2691 (text-relative categories -> rem, breakpoints -> em, everything
-// else -> unitless/left as authored).
+/**
+ * @file Style Dictionary platform configuration — primitive tier (DS-2691).
+ *
+ * Additive `primitives.*` build outputs (css/scss/js/ts) under an `ods-`
+ * prefix, wrapped in the `ods-tokens` CSS layer. Does not modify the frozen
+ * `legacy/` snapshot served by build.mjs.
+ *
+ * Source values are authored in px. Unit conversion (`size/pxToRem`,
+ * `size/pxToEm` — see scripts/lib/transforms.mjs, registered in build.mjs)
+ * applies the policy: text-relative categories -> rem, breakpoints -> em,
+ * everything else -> unitless/left as authored.
+ */
 
 /** Shared value/name transforms applied ahead of each platform's naming transform. */
 const CSS_LIKE_TRANSFORMS = ['attribute/cti', 'name/kebab', 'color/hsl', 'size/pxToRem', 'size/pxToEm'];
