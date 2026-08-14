@@ -1,14 +1,16 @@
-// Tests for the primitive layer's Style Dictionary output platforms (DS-2691):
-// the `primitives.*` CSS/SCSS/JS/TS entry points built from
-// `scripts/config/primitive.config.mjs`, registered via the transforms in
-// `scripts/lib/transforms.mjs`.
+/**
+ * @file Tests for the primitive layer's Style Dictionary output platforms
+ * (DS-2691): the `primitives.*` CSS/SCSS/JS/TS entry points built from
+ * scripts/config/primitive.config.mjs, registered via the transforms in
+ * scripts/lib/transforms.ts.
+ */
 import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import StyleDictionary from 'style-dictionary';
 
-import { primitiveTransforms } from '../scripts/lib/transforms.mjs';
+import { primitiveTransforms } from '../scripts/lib/transforms.ts';
 import { primitivePlatformsConfig } from '../scripts/config/primitive.config.mjs';
 
 const packageRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
