@@ -40,7 +40,7 @@ describe('primitive colour tokens', () => {
 
 describe('token linter', () => {
 	it('passes with no alias/integrity errors against the committed primitives', async () => {
-		const { lintTokens } = await import('../scripts/lib/token-tooling.mjs');
+		const { lintTokens } = await import('../scripts/lib/token-tooling.ts');
 		const results = lintTokens({ fix: false });
 
 		expect(results.filesChecked).toBeGreaterThan(0);
