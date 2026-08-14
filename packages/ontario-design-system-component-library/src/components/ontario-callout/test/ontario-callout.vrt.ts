@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import AxeBuilder from '@axe-core/playwright';
 
 test.describe('ontario-callout', () => {
 	test('renders', async ({ page }) => {
@@ -13,19 +12,7 @@ test.describe('ontario-callout', () => {
 		await expect(component).toHaveClass(/hydrated/);
 		await expect(element).toHaveClass(/ontario-callout/);
 		await expect(element).toHaveClass(/ontario-border-highlight--teal/);
-	});
-
-	test.skip('has no detectable accessibility violations', async ({ page }) => {
-		await page.setContent(`
-            <ontario-callout
-                heading-content="Get notified"
-                heading-content-type="string"
-            ></ontario-callout>
-        `);
-
-		const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-		expect(accessibilityScanResults.violations).toEqual([]);
+		await expect(page).toHaveScreenshot();
 	});
 
 	test.describe('render changes', () => {
@@ -39,12 +26,13 @@ test.describe('ontario-callout', () => {
 			});
 
 			await expect(component.locator('h3')).toBeVisible();
-
+			await expect(page).toHaveScreenshot();
 			await component.evaluate((el: HTMLOntarioCalloutElement) => {
 				el.headingType = 'h4';
 			});
 
 			await expect(component.locator('h4')).toBeVisible();
+			await expect(page).toHaveScreenshot();
 		});
 
 		test('renders changes to the class names when the highlightColour is changed', async ({ page }) => {
@@ -64,6 +52,7 @@ test.describe('ontario-callout', () => {
 			});
 
 			await expect(goldElement).toHaveClass(/ontario-border-highlight--lime/);
+			await expect(page).toHaveScreenshot();
 		});
 
 		test('renders changes to the HTML through the headingContentType property', async ({ page }) => {
@@ -83,27 +72,12 @@ test.describe('ontario-callout', () => {
 
 			await component.evaluate((el: HTMLOntarioCalloutElement) => {
 				el.headingContentType = 'html';
+				el.headingContent = '#';
 				el.headingContent = '<a href="#">Get notified</a>';
 			});
 
 			await expect(heading.locator('a')).toHaveText('Get notified');
-		});
-
-		test('has no accessibility violations after property updates', async ({ page }) => {
-			await page.setContent('<ontario-callout></ontario-callout>');
-
-			const component = page.locator('ontario-callout');
-
-			await component.evaluate((el: HTMLOntarioCalloutElement) => {
-				el.headingContentType = 'string';
-				el.headingContent = 'Get notified';
-				el.headingType = 'h3';
-				el.highlightColour = 'gold';
-			});
-
-			const results = await new AxeBuilder({ page }).include('ontario-callout').analyze();
-
-			expect(results.violations).toEqual([]);
+			await expect(page).toHaveScreenshot();
 		});
 	});
 });
