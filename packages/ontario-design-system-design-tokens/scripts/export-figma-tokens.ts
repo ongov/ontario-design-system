@@ -1,21 +1,23 @@
-// Exports the primitive tokens as a Figma Variables-compatible JSON bundle
-// (exports/figma/figma-tokens.json). Runs the linter as a pre-flight check and
-// infers Figma token types from token paths and values. Scoped to the Core
-// (primitive) layer for the DS-2685 work.
+/**
+ * @file Exports the primitive tokens as a Figma Variables-compatible JSON
+ * bundle (exports/figma/figma-tokens.json). Runs the linter as a pre-flight
+ * check and infers Figma token types from token paths and values. Scoped to
+ * the Core (primitive) layer for the DS-2685 work.
+ */
 import fs from 'node:fs';
 import path from 'node:path';
-import { lintTokens, loadLayerTrees, normaliseReference, rootDir } from './lib/token-tooling.mjs';
+import { lintTokens, loadLayerTrees, normaliseReference, rootDir } from './lib/token-tooling.ts';
 
 const outputFile = path.join(rootDir, 'exports', 'figma', 'figma-tokens.json');
 
-const warnings = [];
+const warnings: string[] = [];
 
 /**
  * Normalise a single path segment for heuristic matching (lowercase, no separators).
- * @param {string} part - The path segment.
- * @returns {string} The normalised segment.
+ * @param part - The path segment.
+ * @returns The normalised segment.
  */
-function normalisePart(part) {
+function normalisePart(part: string): string {
 	return String(part)
 		.toLowerCase()
 		.replace(/[-_\s]/g, '');
@@ -23,11 +25,11 @@ function normalisePart(part) {
 
 /**
  * Infer a Figma token type from a token's path and value using heuristics.
- * @param {string[]} pathParts - The token's key path.
- * @param {*} value - The token's value.
- * @returns {string|null} The inferred Figma type, or null if none matched.
+ * @param pathParts - The token's key path.
+ * @param value - The token's value.
+ * @returns The inferred Figma type, or null if none matched.
  */
-function inferTokenType(pathParts, value) {
+function inferTokenType(pathParts: string[], value: unknown): string | null {
 	const parts = pathParts.map(normalisePart);
 	const valueString = typeof value === 'string' ? value : '';
 	const pathString = parts.join('.');
@@ -103,13 +105,14 @@ function inferTokenType(pathParts, value) {
 /**
  * Recursively convert a token tree into Figma token nodes, adding an inferred
  * type to each leaf. Records a warning for any leaf whose type cannot be inferred.
- * @param {*} node - The current token node.
- * @param {string[]} [pathParts] - Accumulated key path to the current node.
- * @returns {*} The converted node.
+ * @param node - The current token node.
+ * @param pathParts - Accumulated key path to the current node.
+ * @returns The converted node.
  */
-function convertNode(node, pathParts = []) {
+function convertNode(node: unknown, pathParts: string[] = []): unknown {
 	if (node && typeof node === 'object' && !Array.isArray(node) && Object.prototype.hasOwnProperty.call(node, 'value')) {
-		const tokenValue = normaliseReference(node.value);
+		const tree = node as Record<string, unknown>;
+		const tokenValue = normaliseReference(tree.value);
 		const tokenType = inferTokenType(pathParts, tokenValue);
 
 		if (!tokenType) {
@@ -127,8 +130,8 @@ function convertNode(node, pathParts = []) {
 		return node;
 	}
 
-	const output = {};
-	Object.entries(node).forEach(([key, value]) => {
+	const output: Record<string, unknown> = {};
+	Object.entries(node as Record<string, unknown>).forEach(([key, value]) => {
 		output[key] = convertNode(value, [...pathParts, key]);
 	});
 	return output;
@@ -136,10 +139,9 @@ function convertNode(node, pathParts = []) {
 
 /**
  * Build the Figma export bundle from the loaded layer trees.
- * @returns {{ version: string, updatedAt: string, updatedBy: string, values: Record<string, any> }}
- *   The Figma-compatible export payload.
+ * @returns The Figma-compatible export payload.
  */
-function buildExportBundle() {
+function buildExportBundle(): { version: string; updatedAt: string; updatedBy: string; values: Record<string, any> } {
 	const layerTrees = loadLayerTrees();
 	const values = {
 		Core: convertNode(layerTrees.Core),
