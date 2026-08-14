@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import StyleDictionary from 'style-dictionary';
 
-import { primitiveTransforms } from './scripts/lib/transforms.mjs';
+import { primitiveTransforms } from './scripts/lib/transforms.ts';
 
 // Register the primitive value transforms so they are available when the
 // primitive output platforms are configured (DS-2691 / PR 5). They are not yet

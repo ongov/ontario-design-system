@@ -1,8 +1,31 @@
-// Generates the colour primitive tokens (greyscale, 12 accent ramps, and system
-// colours) from seed anchors using HSL interpolation, writing one JSON file per
-// hue to tokens/primitives/colour/. Idempotent: only rewrites files that change.
+/**
+ * @file Generates the colour primitive tokens (greyscale, 12 accent ramps, and
+ * system colours) from seed anchors using HSL interpolation, writing one JSON
+ * file per hue to tokens/primitives/colour/. Idempotent: only rewrites files
+ * that change.
+ */
 import fs from 'node:fs';
 import path from 'node:path';
+
+/** An RGB colour: each channel in the 0–255 range. */
+interface Rgb {
+	r: number;
+	g: number;
+	b: number;
+}
+
+/** An HSL colour: hue in 0–360, saturation/lightness as fractions (0–1). */
+interface Hsl {
+	h: number;
+	s: number;
+	l: number;
+}
+
+/** A Style Dictionary colour token. */
+interface ColourToken {
+	value: string;
+	type: 'color';
+}
 
 const rootDir = process.cwd();
 const outputDir = path.join(rootDir, 'tokens', 'primitives', 'colour');
@@ -40,29 +63,29 @@ const rampSeeds = {
  * Every token this generator emits is a colour. The `type: 'color'` keyword is
  * Style Dictionary's fixed identifier (American spelling), required so the colour
  * transforms (e.g. color/hsl) match these tokens.
- * @param {string} value - The token value (an `hsl(...)` string or `{alias}`).
- * @returns {{ value: string, type: 'color' }} The colour token object.
+ * @param value - The token value (an `hsl(...)` string or `{alias}`).
+ * @returns The colour token object.
  */
-function token(value) {
+function token(value: string): ColourToken {
 	return { value, type: 'color' };
 }
 
 /**
  * Clamp a colour channel to an integer in the 0–255 range.
- * @param {number} channel - The raw channel value.
- * @returns {number} The clamped, rounded channel.
+ * @param channel - The raw channel value.
+ * @returns The clamped, rounded channel.
  */
-function clampChannel(channel) {
+function clampChannel(channel: number): number {
 	return Math.max(0, Math.min(255, Math.round(channel)));
 }
 
 /**
  * Parse a 6-digit hex colour into RGB channels.
- * @param {string} hex - A `#rrggbb` colour string.
- * @returns {{ r: number, g: number, b: number }} The RGB channels.
+ * @param hex - A `#rrggbb` colour string.
+ * @returns The RGB channels.
  * @throws {Error} If the hex string is not a 6-digit colour.
  */
-function hexToRgb(hex) {
+function hexToRgb(hex: string): Rgb {
 	const clean = String(hex).trim().replace(/^#/, '');
 	if (!/^[0-9a-fA-F]{6}$/.test(clean)) {
 		throw new Error(`Unsupported hex colour format: ${hex}`);
@@ -76,20 +99,20 @@ function hexToRgb(hex) {
 
 /**
  * Format RGB channels as an uppercase `#rrggbb` hex string.
- * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
- * @returns {string} The hex colour string.
+ * @param rgb - The RGB channels.
+ * @returns The hex colour string.
  */
-function rgbToHex(rgb) {
-	const format = (channel) => clampChannel(channel).toString(16).padStart(2, '0').toUpperCase();
+function rgbToHex(rgb: Rgb): string {
+	const format = (channel: number) => clampChannel(channel).toString(16).padStart(2, '0').toUpperCase();
 	return `#${format(rgb.r)}${format(rgb.g)}${format(rgb.b)}`;
 }
 
 /**
  * Convert RGB channels to HSL components.
- * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
- * @returns {{ h: number, s: number, l: number }} Hue (0–360), saturation and lightness (0–1).
+ * @param rgb - The RGB channels.
+ * @returns Hue (0–360), saturation and lightness (0–1).
  */
-function rgbToHsl(rgb) {
+function rgbToHsl(rgb: Rgb): Hsl {
 	const r = clampChannel(rgb.r) / 255;
 	const g = clampChannel(rgb.g) / 255;
 	const b = clampChannel(rgb.b) / 255;
@@ -120,10 +143,10 @@ function rgbToHsl(rgb) {
 
 /**
  * Format RGB channels as a space-separated `hsl(h s% l%)` string.
- * @param {{ r: number, g: number, b: number }} rgb - The RGB channels.
- * @returns {string} The HSL colour string.
+ * @param rgb - The RGB channels.
+ * @returns The HSL colour string.
  */
-function toHslString(rgb) {
+function toHslString(rgb: Rgb): string {
 	const hsl = rgbToHsl(rgb);
 	const h = Math.round(hsl.h);
 	const s = Math.round(hsl.s * 100);
@@ -131,15 +154,21 @@ function toHslString(rgb) {
 	return `hsl(${h} ${s}% ${l}%)`;
 }
 
+/** A ramp anchor point: the step it sits at, and its RGB colour. */
+interface RampPoint {
+	step: number;
+	rgb: Rgb;
+}
+
 /**
  * Linearly interpolate a ramp colour at a given step between sorted anchor points.
  * Steps outside the anchor range are extrapolated from the nearest segment.
- * @param {number} step - The ramp step to compute.
- * @param {{ step: number, rgb: { r: number, g: number, b: number } }[]} points - Sorted anchor points.
- * @returns {string} The interpolated `#rrggbb` colour.
+ * @param step - The ramp step to compute.
+ * @param points - Sorted anchor points.
+ * @returns The interpolated `#rrggbb` colour.
  * @throws {Error} If fewer than two anchor points are supplied.
  */
-function interpolate(step, points) {
+function interpolate(step: number, points: RampPoint[]): string {
 	if (points.length < 2) {
 		throw new Error('At least two colour anchors are required to build a ramp.');
 	}
@@ -183,10 +212,10 @@ function interpolate(step, points) {
 
 /**
  * Build a full ramp of colour tokens from a sparse map of anchor colours.
- * @param {Record<string, string>} anchorMap - Map of step to anchor hex colour.
- * @returns {Record<string, { value: string, type: 'color' }>} The ramp keyed by step.
+ * @param anchorMap - Map of step to anchor hex colour.
+ * @returns The ramp keyed by step.
  */
-function buildRamp(anchorMap) {
+function buildRamp(anchorMap: Record<string, string>): Record<string, ColourToken> {
 	const points = Object.entries(anchorMap)
 		.map(([step, colour]) => ({
 			step: Number.parseInt(step, 10),
@@ -194,7 +223,7 @@ function buildRamp(anchorMap) {
 		}))
 		.sort((a, b) => a.step - b.step);
 
-	const ramp = {};
+	const ramp: Record<string, ColourToken> = {};
 	rampSteps.forEach((step) => {
 		const rgb = hexToRgb(interpolate(step, points));
 		ramp[String(step)] = token(toHslString(rgb));
@@ -204,22 +233,25 @@ function buildRamp(anchorMap) {
 
 /**
  * Build a single colour token from a hex value (converted to HSL).
- * @param {string} hex - A `#rrggbb` colour string.
- * @returns {{ value: string, type: 'color' }} The colour token.
+ * @param hex - A `#rrggbb` colour string.
+ * @returns The colour token.
  */
-function tokenFromHex(hex) {
+function tokenFromHex(hex: string): ColourToken {
 	return token(toHslString(hexToRgb(hex)));
 }
 
+/** An accent ramp's steps, plus its light/base/dark semantic aliases. */
+type AccentRamp = Record<string, ColourToken>;
+
 /**
  * Build the 12 accent hue ramps, each with light/base/dark aliases.
- * @returns {Record<string, Record<string, { value: string, type: 'color' }>>} The accent ramps keyed by hue.
+ * @returns The accent ramps keyed by hue.
  */
-function buildAccentRamps() {
-	const accent = {};
+function buildAccentRamps(): Record<string, AccentRamp> {
+	const accent: Record<string, AccentRamp> = {};
 
 	Object.entries(rampSeeds.accent).forEach(([family, anchors]) => {
-		const familyRamp = buildRamp(anchors);
+		const familyRamp: AccentRamp = buildRamp(anchors);
 		familyRamp.light = token(`{colour.accent.${family}.10}`);
 		familyRamp.base = token(`{colour.accent.${family}.50}`);
 		familyRamp.dark = token(`{colour.accent.${family}.90}`);
@@ -232,9 +264,9 @@ function buildAccentRamps() {
 /**
  * Build the system colour tokens (alert, success, warning, information, link,
  * focus, and the secondary/tertiary button states).
- * @returns {Record<string, any>} The system colour token tree.
+ * @returns The system colour token tree.
  */
-function buildSystemTokens() {
+function buildSystemTokens(): Record<string, any> {
 	return {
 		alert: {
 			base: tokenFromHex('#CD0000'),
@@ -272,9 +304,9 @@ function buildSystemTokens() {
 
 /**
  * Assemble the full colour token tree (greyscale, neutral aliases, accents, system).
- * @returns {{ colour: Record<string, any> }} The complete colour token tree.
+ * @returns The complete colour token tree.
  */
-function buildTokenTree() {
+function buildTokenTree(): { colour: Record<string, any> } {
 	const greyscaleRamp = buildRamp(rampSeeds.grey);
 	const accent = buildAccentRamps();
 
@@ -293,11 +325,11 @@ function buildTokenTree() {
 
 /**
  * Write a file only if its content differs, so the generator stays idempotent.
- * @param {string} filePath - Absolute path of the file to write.
- * @param {string} content - The desired file content.
- * @returns {boolean} True if the file was written (changed), false if unchanged.
+ * @param filePath - Absolute path of the file to write.
+ * @param content - The desired file content.
+ * @returns True if the file was written (changed), false if unchanged.
  */
-function writeIfChanged(filePath, content) {
+function writeIfChanged(filePath: string, content: string): boolean {
 	const current = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
 	if (current === content) {
 		return false;
