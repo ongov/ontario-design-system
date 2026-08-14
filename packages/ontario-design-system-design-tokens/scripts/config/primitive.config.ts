@@ -11,12 +11,14 @@
  * everything else -> unitless/left as authored.
  */
 
+import type { Config } from 'style-dictionary/types';
+
 /** Shared value/name transforms applied ahead of each platform's naming transform. */
 const CSS_LIKE_TRANSFORMS = ['attribute/cti', 'name/kebab', 'color/hsl', 'size/pxToRem', 'size/pxToEm'];
 const JS_LIKE_TRANSFORMS = ['attribute/cti', 'name/pascal', 'color/hsl', 'size/pxToRem', 'size/pxToEm'];
 
 /** Style Dictionary config for the primitive layer's `primitives.*` outputs. */
-export const primitivePlatformsConfig = {
+export const primitivePlatformsConfig: Config = {
 	source: ['tokens/primitives/**/*.json'],
 	platforms: {
 		'css/primitives': {
