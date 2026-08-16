@@ -70,5 +70,5 @@
 		"@nrwl/nx-win32-x64-msvc": "15.9.3",
 		"bl": "^7.0.0"
 	},
-	"packageManager": "pnpm@11.10.0"
+	"packageManager": "pnpm@11.22.0"
 }
