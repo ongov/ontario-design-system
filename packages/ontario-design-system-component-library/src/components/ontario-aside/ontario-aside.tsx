@@ -14,6 +14,7 @@ import {
 } from '../../utils/components/callout-aside/callout-aside-helpers';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 
 /**
  * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
@@ -128,18 +129,13 @@ export class OntarioAside implements CalloutAside {
 	 * @returns default type ('string')
 	 */
 	private warnDefaultType() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' headingContentType ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-aside> ')
-			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' string or html ')
-			.addRegularText('are supported. The default type')
-			.addMonospaceText(' string ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'headingContentType',
+			componentTag: '<ontario-aside>',
+			allowedValues: HeadingContentTypes,
+			defaultValue: 'string',
+			conjunction: 'or',
+		});
 		return (this.headingContentType = 'string');
 	}
 
