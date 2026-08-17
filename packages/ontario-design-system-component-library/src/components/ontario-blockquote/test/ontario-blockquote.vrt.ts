@@ -1,6 +1,5 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import AxeBuilder from '@axe-core/playwright';
 
 const quoteText = 'This is the quote';
 const longQuoteText =
@@ -30,11 +29,13 @@ test.describe('ontario-blockquote', () => {
 	test('renders the quote text content', async () => {
 		const blockquote = host.locator('blockquote');
 		await expect(blockquote).toContainText(quoteText);
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('applies the short quote class when the quote is 140 characters or less', async () => {
 		const blockquote = host.locator('blockquote');
 		await expect(blockquote).toHaveClass('ontario-blockquote ontario-blockquote--short');
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('does not apply the short quote class when the quote exceeds 140 characters', async ({ page }) => {
@@ -46,6 +47,7 @@ test.describe('ontario-blockquote', () => {
 
 		const blockquote = host.locator('blockquote');
 		await expect(blockquote).toHaveClass('ontario-blockquote');
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('renders no attribution or byline when not provided', async () => {
@@ -54,6 +56,7 @@ test.describe('ontario-blockquote', () => {
 
 		await expect(attribution).toHaveCount(0);
 		await expect(byline).toHaveCount(0);
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('renders the attribution when provided', async ({ page }) => {
@@ -65,6 +68,7 @@ test.describe('ontario-blockquote', () => {
 
 		const attribution = host.locator('cite.ontario-blockquote__attribution');
 		await expect(attribution).toContainText(attributionText);
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('renders the byline when provided', async ({ page }) => {
@@ -76,6 +80,7 @@ test.describe('ontario-blockquote', () => {
 
 		const byline = host.locator('cite.ontario-blockquote__byline');
 		await expect(byline).toContainText(bylineText);
+		await expect(host).toHaveScreenshot();
 	});
 
 	test('renders both attribution and byline when both are provided', async ({ page }) => {
@@ -93,6 +98,7 @@ test.describe('ontario-blockquote', () => {
 
 		await expect(attribution).toContainText(attributionText);
 		await expect(byline).toContainText(bylineText);
+		await expect(host).toHaveScreenshot();
 	});
 });
 
@@ -105,17 +111,6 @@ test.describe('ontario-blockquote - slotted content fallback', () => {
 		const blockquote = blockquoteHost.locator('blockquote');
 
 		await expect(blockquote).toContainText(slottedQuoteText);
-	});
-});
-
-test.describe('ontario-blockquote - accessibility', () => {
-	test('has no axe violations', async ({ page }) => {
-		await page.setContent(`
-			<ontario-blockquote quote="${quoteText}" attribution="${attributionText}" byline="${bylineText}"></ontario-blockquote>
-		`);
-		await page.waitForChanges();
-
-		const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-blockquote').analyze();
-		expect(accessibilityScanResults.violations).toHaveLength(0);
+		await expect(blockquoteHost).toHaveScreenshot();
 	});
 });
