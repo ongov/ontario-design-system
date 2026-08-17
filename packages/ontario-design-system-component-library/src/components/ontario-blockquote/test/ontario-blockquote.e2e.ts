@@ -38,10 +38,7 @@ test.describe('ontario-blockquote', () => {
 	});
 
 	test('does not apply the short quote class when the quote exceeds 140 characters', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('quote', value),
-			longQuoteText,
-		);
+		await host.evaluate((el: Element, value: string) => el.setAttribute('quote', value), longQuoteText);
 		await page.waitForChanges();
 
 		const blockquote = host.locator('blockquote');
@@ -57,10 +54,7 @@ test.describe('ontario-blockquote', () => {
 	});
 
 	test('renders the attribution when provided', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('attribution', value),
-			attributionText,
-		);
+		await host.evaluate((el: Element, value: string) => el.setAttribute('attribution', value), attributionText);
 		await page.waitForChanges();
 
 		const attribution = host.locator('cite.ontario-blockquote__attribution');
@@ -68,10 +62,7 @@ test.describe('ontario-blockquote', () => {
 	});
 
 	test('renders the byline when provided', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('byline', value),
-			bylineText,
-		);
+		await host.evaluate((el: Element, value: string) => el.setAttribute('byline', value), bylineText);
 		await page.waitForChanges();
 
 		const byline = host.locator('cite.ontario-blockquote__byline');
@@ -80,7 +71,7 @@ test.describe('ontario-blockquote', () => {
 
 	test('renders both attribution and byline when both are provided', async ({ page }) => {
 		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, values: { attribution: string; byline: string }) => {
+			(el: Element, values: { attribution: string; byline: string }) => {
 				el.setAttribute('attribution', values.attribution);
 				el.setAttribute('byline', values.byline);
 			},
