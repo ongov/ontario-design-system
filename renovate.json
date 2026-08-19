@@ -27,10 +27,17 @@
 	],
 	"packageRules": [
 		{
-			"description": "Automerge devDependencies",
+			"description": "Automerge non-major devDependencies",
 			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
 			"automerge": true,
 			"groupName": "devDependencies"
+		},
+		{
+			"description": "Never automerge major devDependency updates, and keep each as its own PR instead of bundling unrelated majors together (e.g. a blocked update like typescript v7 shouldn't hold up an unrelated one like semantic-release v11)",
+			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["major"],
+			"automerge": false
 		}
 	]
 }
