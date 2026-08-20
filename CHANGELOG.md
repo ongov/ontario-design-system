@@ -1,3 +1,94 @@
+# 9.1.0 (2026-08-20)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-react:** fixing tests by ensuring imports work 1a9bee4
+- **@ongov/ontario-design-system-component-library-react:** log resolution errors for sass pkg importer helper, add comments for clearer dev info c8aec05
+- **angular:** correct AutocompleteSuggestion type in generated wrapper 5d43ac6
+- **app-angular:** pin @angular/\* deps to 22.0.5 to resolve duplicate Angular install eadd734
+- **app-angular:** pin @ngx-translate/core to v17 to fix build 9f723dd
+- **ci:** add pre-flight checks, fail build on Stencil drift, remove git reset c38d97c
+- **ci:** add Size column to Build Apps summary to match Build summary 5942cc5
+- **ci:** centralize docs repo name into a DOCS_REPO repository variable c0b9615
+- **ci:** include hidden .next directory in app-build-artifacts upload 596e9f3
+- **ci:** make semantic-release github success step non-fatal 05a9b64 , closes #323
+- **ci:** scope Apps VRT job to apps only 73ffdcd
+- **component-library:** keep Stencil E2E chromium-only d1a674c
+- **deps:** update all non-major dependencies c65cd6f
+- **deps:** update all non-major dependencies ([#275](undefined/ongov/ontario-design-system/issues/275)) 4d88ed2
+- **deps:** update dependency @ngx-translate/core to v18 929dd49
+- **deps:** update dependency @ngx-translate/core to v18 ([#288](undefined/ongov/ontario-design-system/issues/288)) 78febdb
+- **deps:** update dependency @uirouter/angular to v21 9634bec
+- **deps:** update dependency @uirouter/angular to v21 ([#290](undefined/ongov/ontario-design-system/issues/290)) 4f6db65
+- **deps:** update dependency commander to v15 3a4c8db
+- **deps:** update dependency commander to v15 ([#297](undefined/ongov/ontario-design-system/issues/297)) de3d898
+- **deps:** update dependency dotenv to v17 d1ef5d6
+- **deps:** update dependency dotenv to v17 ([#298](undefined/ongov/ontario-design-system/issues/298)) 96f5988
+- **footer:** resolve supergraphic asset path and use auto-generated VRT snapshot names 5ca2b36
+- **header:** resolve logo asset path after client-side hydration a55ec69
+- **in-page-navigation-item:** align visited link colour state 55f2363
+- **in-page-navigation-item:** omit empty href fallback f5ad336
+- **in-page-navigation-item:** use aria-current="location" for active nav item 1645734
+- **in-page-navigation:** allow language updates after initialization a5706bf
+- **in-page-navigation:** remove redundant list navigation landmark 3cd1831
+- **in-page-navigation:** resolve axe role violation ec7bb85
+- **in-page-navigation:** use valid list semantics for custom items 41f2382
+- **lockfile:** restore missing estree-walker@3.0.3 entry e1c1ff8
+- **nextjs:** resolve SSR loader/export chain and update stale VRT snapshots d62d867
+- **ontario-footer:** fixes dates for ontario-footer tests 1507a92
+- **ontario-in-page-navigation-item:** place JSDoc above @Component decorator 76d286d
+- **ontario-task:** correct stale taskStatus documentation to match real values c858965
+- **ontario-task:** restore lowercase taskStatus values in readme 2560616
+- **page-alert:** default invalid type to informational and add E2E coverage c6624cf
+- **react:** add OntarioInPageNavigation export to legacy react proxy components 8d3da9a
+- **react:** add OntarioInPageNavigation(Item) to legacy react proxy components 4c69a58
+- **release:** patch semantic-release/github crash and stop bogus closes refs 2e08b82
+- **search-box:** apply reviewer scss cleanup 468e5c6
+- **search-box:** extract event payload as named type to fix Angular wrapper codegen 780f66f
+- **search-box:** move suggestion selection to click for WCAG 2.5.2 pointer cancellation e05ff81
+- **search-box:** refine autocomplete slot handling and docs a92d565
+- **search-box:** remove obsolete snapshots and fix toggleAttribute compatibility 7da2c94
+- **search-box:** remove pre-release boldRanges/highlightParts from AutocompleteSuggestion d778c14
+- **search-box:** remove unused computeHighlightSegments import and stale getSlotOptionLabel call a382ab0
+- **search-box:** replace brittle snapshot assertion with focused assertions e35604a
+- **search-box:** replace replaceChildren with appendChild for mock DOM compatibility 1c099cf
+- **search-box:** restore hidden filtering for slotted autocomplete options 4b73887
+- **search-box:** stabilize unit tests and update snapshots 50095c1
+- **search-box:** type translations state as typeof translations instead of any b6ae69b
+- **search-box:** update E2E tests to use enable-autocomplete attribute 044c76d
+- **search-result-item:** add missing React wrapper barrel export 0080b59
+- **search-result-item:** use assignedElements to ignore whitespace text nodes in slot detection 17fd6d9
+- **summary-list-item:** align row classes and no-action rendering 161d9fb
+- **summary-list-item:** fix row alignment with hidden buttons 4604e51
+- **summary-list-item:** keep keyboard test focused d4c5db3
+- **summary-list-item:** restore no-action row spacing 1a342e8
+- **summary-list-item:** use clip-path for hidden button container to preserve keyboard focus 96580d6
+- **summary-list:** add missing items to live demo examples 02509c2
+- **summary-list:** update app VRT snapshots for no-action layout 4dd0058
+- **vrt:** reduce flaky accordion VRT diffs and fix dist clobbering 0b31c05
+- **vrt:** regenerate VRT snapshots using Linux Docker runner 2ffabf3
+
+### Features
+
+- added consistent syntax c1dbb6e
+- **app-nextjs:** add summary-list demo route and fixtures for test coverage a456a71
+- create poc test page for ontario-accordion a095fc7
+- **form-container:** add test page for ontario-form-container 00faae6
+- **in-page-navigation-item:** add item behavior and minimal test 83b56d5
+- **in-page-navigation:** add host behavior and minimal tests c78199f
+- **search-box:** add autocomplete support 563755b
+- **search-box:** add shared segment matcher 63b21c6
+- **search-box:** migrate autocomplete rendering to segments 88593a7
+- **search-box:** refine slotted autocomplete behaviour 2131615
+- **search-result-item:** add generated wrapper outputs 7f03700
+- **search-result-item:** add semantic result item component ab2def0
+- updates based on MR feedback, added more tests for expand-collapse buttons 4fc888b
+
+### Reverts
+
+- **search-box:** remove updateSlotSuggestionVisibility — slot stays consumer-owned 9f054b7
+- **search-box:** restore translations: any to avoid JSON import in emitted .d.ts 5fe6919
+
 # 9.1.0-alpha.2 (2026-08-10)
 
 ### Bug Fixes
