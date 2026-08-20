@@ -105,9 +105,30 @@
 }
 
 .ontario-accordion__content {
-	display: none;
 	padding: spacing.$spacing-3 spacing.$spacing-3 spacing.$spacing-6 spacing.$spacing-3;
 	margin-left: spacing.$spacing-0;
+
+	// Collapsed content is hidden via the native `hidden="until-found"` attribute rather than
+	// `display: none`, so it stays in the DOM and is discoverable by the browser's built-in
+	// find-in-page (Ctrl+F/Cmd+F) search. `content-visibility: hidden` keeps it out of the
+	// render/paint path without removing it from the accessibility tree or search index.
+	// (This mirrors the browser's default UA styling for `[hidden="until-found"]`, made
+	// explicit here so it isn't accidentally overridden by other component styles.)
+	//
+	// Note: `content-visibility: hidden` only skips rendering of the element's *contents* -
+	// it does NOT collapse the element's own box model. Padding must be reset to 0 here,
+	// otherwise the section would still reserve visual space (a gap) while collapsed.
+	&[hidden='until-found'] {
+		content-visibility: hidden;
+		padding: spacing.$spacing-0;
+	}
+
+	// Fallback for browsers that don't support `hidden="until-found"`: falls back to a
+	// standard `hidden` attribute, which fully hides the content (matching the previous
+	// CSS-only hiding behaviour).
+	&[hidden]:not([hidden='until-found']) {
+		display: none;
+	}
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		margin-left: spacing.$spacing-6;
@@ -134,7 +155,6 @@
 	display: none;
 }
 
-.ontario-expander--active ~ .ontario-accordion__content,
 .ontario-expander--active .ontario-accordion__button-icon--close {
 	display: block;
 }
