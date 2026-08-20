@@ -19,7 +19,7 @@
 
 // 	it('applies the correct task status class', async () => {
 // 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-task task-id="task-3" task-status="InProgress"></ontario-task>');
+// 		await page.setContent('<ontario-task task-id="task-3" task-status="inProgress"></ontario-task>');
 
 // 		const element = await page.find('ontario-task');
 // 		const className = await element.getProperty('className');
@@ -28,7 +28,7 @@
 
 // 	it('displays the badge with the correct status', async () => {
 // 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-task task-id="task-4" task-status="Completed"></ontario-task>');
+// 		await page.setContent('<ontario-task task-id="task-4" task-status="completed"></ontario-task>');
 
 // 		const badge = await page.find('ontario-task >>> .ontario-task__badge');
 // 		expect(badge).toBeTruthy();

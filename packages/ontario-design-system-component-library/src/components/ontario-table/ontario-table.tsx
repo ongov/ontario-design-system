@@ -267,30 +267,28 @@ export class OntarioTable implements Table {
 
 	// The following logic adds scrollbar functionality to the tops of tables depending on their size.
 	componentDidLoad() {
-		const tables = this.table;
-		const scrollerDivs = this.tableScrollDiv;
-		const scrollerWrappers = this.tableScrollWrapper;
+		const table = this.table;
+		const scrollerDiv = this.tableScrollDiv;
+		const scrollerWrapper = this.tableScrollWrapper;
 
-		if (typeof window !== 'undefined') {
-			let resizeObserver = new ResizeObserver(() => {
-				this.applyScrollbar(tables, scrollerDivs);
-			});
+		if (typeof window === 'undefined' || !table || !scrollerDiv || !scrollerWrapper) return;
 
-			this.applyScrollbar(tables, scrollerDivs);
-			resizeObserver.observe(tables);
+		const resizeObserver = new ResizeObserver(() => {
+			this.applyScrollbar(table, scrollerDiv);
+		});
 
-			tables.addEventListener('scroll', () => {
-				this.applyScrollbar(tables, scrollerDivs);
+		this.applyScrollbar(table, scrollerDiv);
+		resizeObserver.observe(table);
 
-				scrollerWrappers.scrollLeft = tables.scrollLeft;
-			});
+		table.addEventListener('scroll', () => {
+			this.applyScrollbar(table, scrollerDiv);
+			scrollerWrapper.scrollLeft = table.scrollLeft;
+		});
 
-			scrollerWrappers.addEventListener('scroll', () => {
-				this.applyScrollbar(tables, scrollerDivs);
-
-				tables.scrollLeft = scrollerWrappers.scrollLeft;
-			});
-		}
+		scrollerWrapper.addEventListener('scroll', () => {
+			this.applyScrollbar(table, scrollerDiv);
+			table.scrollLeft = scrollerWrapper.scrollLeft;
+		});
 	}
 
 	componentWillLoad() {

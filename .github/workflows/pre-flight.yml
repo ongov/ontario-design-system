@@ -1,0 +1,58 @@
+name: Pre-flight Checks
+
+on:
+  workflow_call:
+
+jobs:
+  pre-flight:
+    name: Pre-flight Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Catches a pnpm upgrade in this monorepo (e.g. the `packageManager` field bump)
+      # that doesn't carry across to the docs repo. Left unchecked, the docs repo's own
+      # CI and the sync-docs-to-docusaurus install step run against a mismatched pnpm
+      # version, which can fail a lockfile install right after packages have published.
+      #
+      # The docs repo's full name lives in the `DOCS_REPO` repository variable (Settings
+      # > Secrets and variables > Actions > Variables), not hardcoded here -- update it
+      # there if the docs repo is ever renamed or transferred.
+      - name: Verify docs repo pnpm version matches monorepo
+        id: pnpm_check
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DOCS_REPO: ${{ vars.DOCS_REPO }}
+        run: |
+          monorepo_pnpm=$(node -p "require('./package.json').packageManager")
+          docs_pnpm=$(gh api "repos/${DOCS_REPO}/contents/package.json" \
+            --jq '.content' | base64 -d | \
+            node -p "JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).packageManager")
+
+          echo "monorepo_pnpm=${monorepo_pnpm}" >> "$GITHUB_OUTPUT"
+          echo "docs_pnpm=${docs_pnpm}" >> "$GITHUB_OUTPUT"
+
+          if [ "$monorepo_pnpm" != "$docs_pnpm" ]; then
+            echo "::error::pnpm version mismatch — monorepo: '$monorepo_pnpm', docs repo: '$docs_pnpm'."
+            echo "Update the docs repo packageManager field (and pnpm/action-setup version in its workflows) to match before the next release."
+            exit 1
+          fi
+
+          echo "pnpm versions aligned: $monorepo_pnpm ✓"
+
+      - name: Summarise pre-flight checks
+        if: ${{ always() }}
+        run: |
+          {
+            echo '## Pre-flight Checks'
+            echo ''
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Repository | \`${{ github.repository }}\` |"
+            echo "| Event | \`${{ github.event_name }}\` |"
+            echo "| Ref | \`${{ github.ref_name }}\` |"
+            echo "| Workflow run | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+            echo "| pnpm version check | \`${{ steps.pnpm_check.outcome }}\` |"
+            echo "| Monorepo pnpm | \`${{ steps.pnpm_check.outputs.monorepo_pnpm }}\` |"
+            echo "| Docs repo pnpm | \`${{ steps.pnpm_check.outputs.docs_pnpm }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"

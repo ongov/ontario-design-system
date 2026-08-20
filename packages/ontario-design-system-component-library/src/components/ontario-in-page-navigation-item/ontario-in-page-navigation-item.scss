@@ -1,0 +1,44 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+
+$ontario-in-page-navigation-item-spacing-bottom: spacing.$spacing-4 + spacing.$spacing-1;
+$ontario-in-page-navigation-item-font-size: globalFunctions.px-to-rem(18);
+$ontario-in-page-navigation-item-line-height: globalFunctions.px-to-rem(25.6);
+
+:host {
+	display: list-item;
+	list-style-type: disc;
+	padding-bottom: $ontario-in-page-navigation-item-spacing-bottom;
+	padding-left: spacing.$spacing-0;
+}
+
+:host(:last-child) {
+	padding-bottom: spacing.$spacing-0;
+}
+
+.ontario-in-page-navigation-item__link {
+	font-family: fonts.$ontario-font-open-sans;
+	font-size: $ontario-in-page-navigation-item-font-size;
+	line-height: $ontario-in-page-navigation-item-line-height;
+	font-weight: fontWeights.$ontario-font-weights-semi-bold;
+	font-style: normal;
+	margin-left: spacing.$spacing-0;
+	color: colours.$ontario-colour-link;
+	text-decoration: none;
+
+	&:visited {
+		color: colours.$ontario-colour-link--visited;
+	}
+
+	&:hover {
+		color: colours.$ontario-colour-link--hover;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+		text-decoration: underline;
+	}
+}

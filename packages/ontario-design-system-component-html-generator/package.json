@@ -1,6 +1,6 @@
 {
 	"name": "@ongov/ontario-design-system-component-html-generator",
-	"version": "9.0.0",
+	"version": "9.1.0-alpha.2",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ongov/ontario-design-system",
@@ -41,7 +41,7 @@
 	},
 	"dependencies": {
 		"@ongov/ontario-design-system-component-library": "workspace:*",
-		"commander": "^11.0.0"
+		"commander": "^15.0.0"
 	},
 	"devDependencies": {
 		"@stencil/core": "^4.38.3",

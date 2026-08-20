@@ -1,6 +1,6 @@
 import { h, Component, Prop, Watch, State, Listen, Element } from '@stencil/core';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { TaskStatuses, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
+import { TaskStatus, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
@@ -71,16 +71,11 @@ export class OntarioTask {
 	@Prop({ mutable: true }) hintText?: string | Hint;
 
 	/**
-	 * Defines the status of the task, with default set to 'NotStarted'.
+	 * Defines the status of the task.
 	 *
-	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`.
+	 * Falls back to the default status if not provided, or if an unrecognized value is passed.
 	 */
-	/**
-	 * Defines the status of the task, with default set to 'NotStarted'.
-	 *
-	 * Accepts values from `TaskStatuses` enum: `NotStarted`, `InProgress`, `Completed`, etc.
-	 */
-	@Prop() taskStatus: TaskStatuses = TaskStatuses.NotStarted;
+	@Prop() taskStatus: TaskStatus = TaskStatus.NotStarted;
 
 	/**
 	 * Allows consumers to define the heading level for the task label.
@@ -99,7 +94,7 @@ export class OntarioTask {
 	 *
 	 * Set the task's status state depending on validation result.
 	 */
-	@State() private taskStatusState: TaskStatuses = TaskStatuses.NotStarted;
+	@State() private taskStatusState: TaskStatus = TaskStatus.NotStarted;
 
 	/**
 	 * Watch for changes in `headingLevel` prop to validate its value.
@@ -147,14 +142,13 @@ export class OntarioTask {
 	 * Watch for changes in `taskStatus` prop to validate its value.
 	 */
 	@Watch('taskStatus')
-	validateTaskStatus(newValue: TaskStatuses) {
-		const validStatuses = Object.values(TaskStatuses);
+	validateTaskStatus(newValue: TaskStatus) {
+		const validStatuses = Object.values(TaskStatus);
 		const isValidStatus = validStatuses.includes(newValue);
 
 		if (isValidStatus) {
-			this.taskStatusState = newValue;
+			this.taskStatusState = newValue as TaskStatus;
 		} else {
-			// If the status is invalid, log a warning and use the default
 			this.taskStatusState = this.warnAndGetDefaultTaskStatus();
 		}
 
@@ -231,8 +225,8 @@ export class OntarioTask {
 	 *
 	 * @returns The default task status `'notStarted'`.
 	 */
-	private warnAndGetDefaultTaskStatus(): TaskStatuses {
-		const validStatuses = Object.values(TaskStatuses).join(', ');
+	private warnAndGetDefaultTaskStatus(): TaskStatus {
+		const validStatuses = Object.values(TaskStatus).join(', ');
 		const message = new ConsoleMessageClass();
 		message
 			.addDesignSystemTag()
@@ -242,10 +236,10 @@ export class OntarioTask {
 			.addRegularText('was set to an invalid taskStatus; only ')
 			.addMonospaceText(validStatuses)
 			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText(TaskStatuses.NotStarted)
+			.addMonospaceText(TaskStatus.NotStarted)
 			.addRegularText(' is assumed.')
 			.printMessage();
-		return TaskStatuses.NotStarted;
+		return TaskStatus.NotStarted;
 	}
 
 	/**

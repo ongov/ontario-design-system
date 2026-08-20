@@ -1,25 +1,26 @@
-// Define an enum for task statuses
-export enum TaskStatuses {
-	NotStarted = 'notStarted',
-	InProgress = 'inProgress',
-	Completed = 'completed',
-	CannotStartYet = 'cannotStartYet',
-	Error = 'error',
-	Optional = 'optional',
-}
-
-// Map task statuses to badge colours
-export const TaskToBadgeColour = {
-	[TaskStatuses.NotStarted]: 'light-teal',
-	[TaskStatuses.InProgress]: 'teal',
-	[TaskStatuses.Completed]: 'white',
-	[TaskStatuses.CannotStartYet]: 'dark-grey',
-	[TaskStatuses.Error]: 'red',
-	[TaskStatuses.Optional]: 'grey',
+export const TaskStatus = {
+	NotStarted: 'notStarted',
+	InProgress: 'inProgress',
+	Completed: 'completed',
+	CannotStartYet: 'cannotStartYet',
+	Error: 'error',
+	Optional: 'optional',
 } as const;
 
-// Define the type for task statuses
-export type TaskStatus = keyof typeof TaskStatuses;
+export type TaskStatus = (typeof TaskStatus)[keyof typeof TaskStatus];
 
-// Define the type for badge colours
-export type TaskBadgeColour = (typeof TaskToBadgeColour)[TaskStatuses];
+export const TaskStatusValues = Object.values(TaskStatus) as ReadonlyArray<TaskStatus>;
+
+export const DefaultTaskStatus: TaskStatus = TaskStatus.NotStarted;
+export const CompletedTaskStatus: TaskStatus = TaskStatus.Completed;
+
+export const TaskToBadgeColour = {
+	notStarted: 'light-teal',
+	inProgress: 'teal',
+	completed: 'white',
+	cannotStartYet: 'dark-grey',
+	error: 'red',
+	optional: 'grey',
+} as const satisfies Record<TaskStatus, string>;
+
+export type TaskBadgeColour = (typeof TaskToBadgeColour)[TaskStatus];

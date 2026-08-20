@@ -57,6 +57,22 @@
 			"fr": "Haut"
 		}
 	},
+	"inPageNavigation": {
+		"heading": {
+			"en": "On this page",
+			"fr": "Dans cette page"
+		},
+		"skip": {
+			"en": "Skip this page navigation",
+			"fr": "Sauter cette navigation"
+		}
+	},
+	"backButton": {
+		"back": {
+			"en": "Back",
+			"fr": "Retour"
+		}
+	},
 	"contactUs": {
 		"en": "Contact us",
 		"fr": "Contactez-nous"

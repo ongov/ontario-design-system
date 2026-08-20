@@ -12,7 +12,7 @@ container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of
 
 ## CI Usage
 
-GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.55.0-noble`
+GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.60.0-noble`
 job container. In CI we do not use Docker Compose or bind mounts; the workflow
 installs dependencies with pnpm and executes the existing test scripts inside
 the container.
@@ -37,6 +37,12 @@ Run Next.js E2E tests:
 
 ```bash
 pnpm --filter app-nextjs run test:e2e:docker
+```
+
+Run component library VRT tests:
+
+```bash
+pnpm --filter @ongov/ontario-design-system-component-library run test:vrt:docker
 ```
 
 Run Next.js VRT tests:
@@ -92,6 +98,12 @@ Run Next.js E2E tests:
 
 ```bash
 ./scripts/docker-compose.sh run --rm app-e2e-runner
+```
+
+Run component library VRT tests:
+
+```bash
+./scripts/docker-compose.sh run --rm stencil-vrt-runner
 ```
 
 Run Next.js VRT tests:

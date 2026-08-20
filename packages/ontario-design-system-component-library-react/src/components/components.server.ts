@@ -6,10 +6,11 @@
 /* eslint-disable */
 
 // @ts-ignore - ignore potential type issues as the project is importing itself
-import { type AccordionChangeDetail, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import * as clientComponents from '@ongov/ontario-design-system-component-library-react';
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
+import { OntarioBackButton as OntarioBackButtonElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-button.js";
 import { OntarioBackToTop as OntarioBackToTopElement } from "@ongov/ontario-design-system-component-library/components/ontario-back-to-top.js";
 import { OntarioBadge as OntarioBadgeElement } from "@ongov/ontario-design-system-component-library/components/ontario-badge.js";
 import { OntarioBlockquote as OntarioBlockquoteElement } from "@ongov/ontario-design-system-component-library/components/ontario-blockquote.js";
@@ -148,12 +149,15 @@ import { OntarioIconVpnKey as OntarioIconVpnKeyElement } from "@ongov/ontario-de
 import { OntarioIconWheelchair as OntarioIconWheelchairElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wheelchair.js";
 import { OntarioIconWifi as OntarioIconWifiElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-wifi.js";
 import { OntarioIconYoutube as OntarioIconYoutubeElement } from "@ongov/ontario-design-system-component-library/components/ontario-icon-youtube.js";
+import { OntarioInPageNavigationItem as OntarioInPageNavigationItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-in-page-navigation-item.js";
+import { OntarioInPageNavigation as OntarioInPageNavigationElement } from "@ongov/ontario-design-system-component-library/components/ontario-in-page-navigation.js";
 import { OntarioInput as OntarioInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-input.js";
 import { OntarioLanguageToggle as OntarioLanguageToggleElement } from "@ongov/ontario-design-system-component-library/components/ontario-language-toggle.js";
 import { OntarioLoadingIndicator as OntarioLoadingIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-loading-indicator.js";
 import { OntarioPageAlert as OntarioPageAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-page-alert.js";
 import { OntarioRadioButtons as OntarioRadioButtonsElement } from "@ongov/ontario-design-system-component-library/components/ontario-radio-buttons.js";
 import { OntarioSearchBox as OntarioSearchBoxElement } from "@ongov/ontario-design-system-component-library/components/ontario-search-box.js";
+import { OntarioSearchResultItem as OntarioSearchResultItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-search-result-item.js";
 import { OntarioStepIndicator as OntarioStepIndicatorElement } from "@ongov/ontario-design-system-component-library/components/ontario-step-indicator.js";
 import { OntarioSummaryListItem as OntarioSummaryListItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
@@ -194,6 +198,22 @@ export const OntarioAside: StencilReactComponent<OntarioAsideElement, OntarioAsi
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioAside as ReactWebComponent<OntarioAsideElement, OntarioAsideEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioBackButtonEvents = { onBackClick: EventName<OntarioBackButtonCustomEvent<MouseEvent | KeyboardEvent>> };
+
+export const OntarioBackButton: StencilReactComponent<OntarioBackButtonElement, OntarioBackButtonEvents> = /*@__PURE__*/ createComponent<OntarioBackButtonElement, OntarioBackButtonEvents>({
+    tagName: 'ontario-back-button',
+    properties: {
+        label: 'label',
+        language: 'language',
+        href: 'href',
+        backMode: 'back-mode',
+        disabled: 'disabled'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioBackButton as ReactWebComponent<OntarioBackButtonElement, OntarioBackButtonEvents>,
     serializeShadowRoot
 });
 
@@ -2186,6 +2206,38 @@ export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement
     serializeShadowRoot
 });
 
+export type OntarioInPageNavigationEvents = NonNullable<unknown>;
+
+export const OntarioInPageNavigation: StencilReactComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents> = /*@__PURE__*/ createComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents>({
+    tagName: 'ontario-in-page-navigation',
+    properties: {
+        heading: 'heading',
+        headingLevel: 'heading-level',
+        noTopBorder: 'no-top-border',
+        skipLinkTarget: 'skip-link-target',
+        smoothScroll: 'smooth-scroll',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioInPageNavigation as ReactWebComponent<OntarioInPageNavigationElement, OntarioInPageNavigationEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioInPageNavigationItemEvents = NonNullable<unknown>;
+
+export const OntarioInPageNavigationItem: StencilReactComponent<OntarioInPageNavigationItemElement, OntarioInPageNavigationItemEvents> = /*@__PURE__*/ createComponent<OntarioInPageNavigationItemElement, OntarioInPageNavigationItemEvents>({
+    tagName: 'ontario-in-page-navigation-item',
+    properties: {
+        label: 'label',
+        href: 'href',
+        isCurrent: 'is-current',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioInPageNavigationItem as ReactWebComponent<OntarioInPageNavigationItemElement, OntarioInPageNavigationItemEvents>,
+    serializeShadowRoot
+});
+
 export type OntarioInputEvents = {
     onInputOnInput: EventName<OntarioInputCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioInputCustomEvent<InputInteractionEvent>>,
@@ -2302,7 +2354,10 @@ export type OntarioSearchBoxEvents = {
     onInputOnInput: EventName<OntarioSearchBoxCustomEvent<InputInputEvent>>,
     onInputOnChange: EventName<OntarioSearchBoxCustomEvent<InputInteractionEvent>>,
     onInputOnBlur: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
-    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>
+    onInputOnFocus: EventName<OntarioSearchBoxCustomEvent<InputFocusBlurEvent>>,
+    onAutocompleteQueryUpdated: EventName<OntarioSearchBoxCustomEvent<{ query: string }>>,
+    onAutocompleteSuggestionsUpdated: EventName<OntarioSearchBoxCustomEvent<{ query: string; count: number }>>,
+    onAutocompleteSuggestionSelected: EventName<OntarioSearchBoxCustomEvent<AutocompleteSuggestionSelectedEvent>>
 };
 
 export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents> = /*@__PURE__*/ createComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>({
@@ -2311,6 +2366,11 @@ export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, On
         language: 'language',
         elementId: 'element-id',
         value: 'value',
+        enableAutocomplete: 'enable-autocomplete',
+        getSuggestions: 'get-suggestions',
+        minChars: 'min-chars',
+        debounceMs: 'debounce-ms',
+        maxSuggestions: 'max-suggestions',
         caption: 'caption',
         required: 'required',
         performSearch: 'perform-search',
@@ -2322,6 +2382,26 @@ export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, On
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioSearchBox as ReactWebComponent<OntarioSearchBoxElement, OntarioSearchBoxEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioSearchResultItemEvents = { onItemSelected: EventName<OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>> };
+
+export const OntarioSearchResultItem: StencilReactComponent<OntarioSearchResultItemElement, OntarioSearchResultItemEvents> = /*@__PURE__*/ createComponent<OntarioSearchResultItemElement, OntarioSearchResultItemEvents>({
+    tagName: 'ontario-search-result-item',
+    properties: {
+        label: 'label',
+        description: 'description',
+        value: 'value',
+        href: 'href',
+        segments: 'segments',
+        disabled: 'disabled',
+        selected: 'selected',
+        active: 'active',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioSearchResultItem as ReactWebComponent<OntarioSearchResultItemElement, OntarioSearchResultItemEvents>,
     serializeShadowRoot
 });
 

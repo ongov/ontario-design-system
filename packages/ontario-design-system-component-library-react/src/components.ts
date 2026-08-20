@@ -1,7 +1,9 @@
+'use client';
+
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-import { createReactComponent } from './react-component-lib';
+import { createReactComponent } from './react-component-lib/index.js';
 
 import type { JSX } from '@ongov/ontario-design-system-component-library';
 
@@ -10,6 +12,7 @@ import { defineCustomElements } from '@ongov/ontario-design-system-component-lib
 defineCustomElements();
 export const OntarioAccordion = /*@__PURE__*/createReactComponent<JSX.OntarioAccordion, HTMLOntarioAccordionElement>('ontario-accordion');
 export const OntarioAside = /*@__PURE__*/createReactComponent<JSX.OntarioAside, HTMLOntarioAsideElement>('ontario-aside');
+export const OntarioBackButton = /*@__PURE__*/createReactComponent<JSX.OntarioBackButton, HTMLOntarioBackButtonElement>('ontario-back-button');
 export const OntarioBackToTop = /*@__PURE__*/createReactComponent<JSX.OntarioBackToTop, HTMLOntarioBackToTopElement>('ontario-back-to-top');
 export const OntarioBadge = /*@__PURE__*/createReactComponent<JSX.OntarioBadge, HTMLOntarioBadgeElement>('ontario-badge');
 export const OntarioBlockquote = /*@__PURE__*/createReactComponent<JSX.OntarioBlockquote, HTMLOntarioBlockquoteElement>('ontario-blockquote');
@@ -23,7 +26,10 @@ export const OntarioDateInput = /*@__PURE__*/createReactComponent<JSX.OntarioDat
 export const OntarioDropdownList = /*@__PURE__*/createReactComponent<JSX.OntarioDropdownList, HTMLOntarioDropdownListElement>('ontario-dropdown-list');
 export const OntarioFieldset = /*@__PURE__*/createReactComponent<JSX.OntarioFieldset, HTMLOntarioFieldsetElement>('ontario-fieldset');
 export const OntarioFooter = /*@__PURE__*/createReactComponent<JSX.OntarioFooter, HTMLOntarioFooterElement>('ontario-footer');
+export const OntarioFormContainer = /*@__PURE__*/createReactComponent<JSX.OntarioFormContainer, HTMLOntarioFormContainerElement>('ontario-form-container');
 export const OntarioHeader = /*@__PURE__*/createReactComponent<JSX.OntarioHeader, HTMLOntarioHeaderElement>('ontario-header');
+export const OntarioHeaderMenuTabs = /*@__PURE__*/createReactComponent<JSX.OntarioHeaderMenuTabs, HTMLOntarioHeaderMenuTabsElement>('ontario-header-menu-tabs');
+export const OntarioHeaderOverflowMenu = /*@__PURE__*/createReactComponent<JSX.OntarioHeaderOverflowMenu, HTMLOntarioHeaderOverflowMenuElement>('ontario-header-overflow-menu');
 export const OntarioHintExpander = /*@__PURE__*/createReactComponent<JSX.OntarioHintExpander, HTMLOntarioHintExpanderElement>('ontario-hint-expander');
 export const OntarioHintText = /*@__PURE__*/createReactComponent<JSX.OntarioHintText, HTMLOntarioHintTextElement>('ontario-hint-text');
 export const OntarioIconAccessibility = /*@__PURE__*/createReactComponent<JSX.OntarioIconAccessibility, HTMLOntarioIconAccessibilityElement>('ontario-icon-accessibility');
@@ -92,6 +98,7 @@ export const OntarioIconMenu = /*@__PURE__*/createReactComponent<JSX.OntarioIcon
 export const OntarioIconMenuHeader = /*@__PURE__*/createReactComponent<JSX.OntarioIconMenuHeader, HTMLOntarioIconMenuHeaderElement>('ontario-icon-menu-header');
 export const OntarioIconMicrophoneOff = /*@__PURE__*/createReactComponent<JSX.OntarioIconMicrophoneOff, HTMLOntarioIconMicrophoneOffElement>('ontario-icon-microphone-off');
 export const OntarioIconMicrophoneOn = /*@__PURE__*/createReactComponent<JSX.OntarioIconMicrophoneOn, HTMLOntarioIconMicrophoneOnElement>('ontario-icon-microphone-on');
+export const OntarioIconMoreAccounts = /*@__PURE__*/createReactComponent<JSX.OntarioIconMoreAccounts, HTMLOntarioIconMoreAccountsElement>('ontario-icon-more-accounts');
 export const OntarioIconMoreVertical = /*@__PURE__*/createReactComponent<JSX.OntarioIconMoreVertical, HTMLOntarioIconMoreVerticalElement>('ontario-icon-more-vertical');
 export const OntarioIconNewWindow = /*@__PURE__*/createReactComponent<JSX.OntarioIconNewWindow, HTMLOntarioIconNewWindowElement>('ontario-icon-new-window');
 export const OntarioIconNext = /*@__PURE__*/createReactComponent<JSX.OntarioIconNext, HTMLOntarioIconNextElement>('ontario-icon-next');
@@ -118,10 +125,16 @@ export const OntarioIconSentiment4 = /*@__PURE__*/createReactComponent<JSX.Ontar
 export const OntarioIconSentiment5 = /*@__PURE__*/createReactComponent<JSX.OntarioIconSentiment5, HTMLOntarioIconSentiment5Element>('ontario-icon-sentiment-5');
 export const OntarioIconSettings = /*@__PURE__*/createReactComponent<JSX.OntarioIconSettings, HTMLOntarioIconSettingsElement>('ontario-icon-settings');
 export const OntarioIconShare = /*@__PURE__*/createReactComponent<JSX.OntarioIconShare, HTMLOntarioIconShareElement>('ontario-icon-share');
+export const OntarioIconSortAlphabeticalAscending = /*@__PURE__*/createReactComponent<JSX.OntarioIconSortAlphabeticalAscending, HTMLOntarioIconSortAlphabeticalAscendingElement>('ontario-icon-sort-alphabetical-ascending');
+export const OntarioIconSortAlphabeticalDescending = /*@__PURE__*/createReactComponent<JSX.OntarioIconSortAlphabeticalDescending, HTMLOntarioIconSortAlphabeticalDescendingElement>('ontario-icon-sort-alphabetical-descending');
+export const OntarioIconSortAscending = /*@__PURE__*/createReactComponent<JSX.OntarioIconSortAscending, HTMLOntarioIconSortAscendingElement>('ontario-icon-sort-ascending');
+export const OntarioIconSortDescending = /*@__PURE__*/createReactComponent<JSX.OntarioIconSortDescending, HTMLOntarioIconSortDescendingElement>('ontario-icon-sort-descending');
 export const OntarioIconSort = /*@__PURE__*/createReactComponent<JSX.OntarioIconSort, HTMLOntarioIconSortElement>('ontario-icon-sort');
+export const OntarioIconSortVariant = /*@__PURE__*/createReactComponent<JSX.OntarioIconSortVariant, HTMLOntarioIconSortVariantElement>('ontario-icon-sort-variant');
 export const OntarioIconTag = /*@__PURE__*/createReactComponent<JSX.OntarioIconTag, HTMLOntarioIconTagElement>('ontario-icon-tag');
 export const OntarioIconTextMessage = /*@__PURE__*/createReactComponent<JSX.OntarioIconTextMessage, HTMLOntarioIconTextMessageElement>('ontario-icon-text-message');
 export const OntarioIconTimer = /*@__PURE__*/createReactComponent<JSX.OntarioIconTimer, HTMLOntarioIconTimerElement>('ontario-icon-timer');
+export const OntarioIconTune = /*@__PURE__*/createReactComponent<JSX.OntarioIconTune, HTMLOntarioIconTuneElement>('ontario-icon-tune');
 export const OntarioIconTransportBicycle = /*@__PURE__*/createReactComponent<JSX.OntarioIconTransportBicycle, HTMLOntarioIconTransportBicycleElement>('ontario-icon-transport-bicycle');
 export const OntarioIconTransportBus = /*@__PURE__*/createReactComponent<JSX.OntarioIconTransportBus, HTMLOntarioIconTransportBusElement>('ontario-icon-transport-bus');
 export const OntarioIconTransportCar = /*@__PURE__*/createReactComponent<JSX.OntarioIconTransportCar, HTMLOntarioIconTransportCarElement>('ontario-icon-transport-car');
@@ -138,13 +151,18 @@ export const OntarioIconVpnKey = /*@__PURE__*/createReactComponent<JSX.OntarioIc
 export const OntarioIconWheelchair = /*@__PURE__*/createReactComponent<JSX.OntarioIconWheelchair, HTMLOntarioIconWheelchairElement>('ontario-icon-wheelchair');
 export const OntarioIconWifi = /*@__PURE__*/createReactComponent<JSX.OntarioIconWifi, HTMLOntarioIconWifiElement>('ontario-icon-wifi');
 export const OntarioIconYoutube = /*@__PURE__*/createReactComponent<JSX.OntarioIconYoutube, HTMLOntarioIconYoutubeElement>('ontario-icon-youtube');
+export const OntarioInPageNavigation = /*@__PURE__*/createReactComponent<JSX.OntarioInPageNavigation, HTMLOntarioInPageNavigationElement>('ontario-in-page-navigation');
+export const OntarioInPageNavigationItem = /*@__PURE__*/createReactComponent<JSX.OntarioInPageNavigationItem, HTMLOntarioInPageNavigationItemElement>('ontario-in-page-navigation-item');
 export const OntarioInput = /*@__PURE__*/createReactComponent<JSX.OntarioInput, HTMLOntarioInputElement>('ontario-input');
 export const OntarioLanguageToggle = /*@__PURE__*/createReactComponent<JSX.OntarioLanguageToggle, HTMLOntarioLanguageToggleElement>('ontario-language-toggle');
 export const OntarioLoadingIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioLoadingIndicator, HTMLOntarioLoadingIndicatorElement>('ontario-loading-indicator');
 export const OntarioPageAlert = /*@__PURE__*/createReactComponent<JSX.OntarioPageAlert, HTMLOntarioPageAlertElement>('ontario-page-alert');
 export const OntarioRadioButtons = /*@__PURE__*/createReactComponent<JSX.OntarioRadioButtons, HTMLOntarioRadioButtonsElement>('ontario-radio-buttons');
 export const OntarioSearchBox = /*@__PURE__*/createReactComponent<JSX.OntarioSearchBox, HTMLOntarioSearchBoxElement>('ontario-search-box');
+export const OntarioSearchResultItem = /*@__PURE__*/createReactComponent<JSX.OntarioSearchResultItem, HTMLOntarioSearchResultItemElement>('ontario-search-result-item');
 export const OntarioStepIndicator = /*@__PURE__*/createReactComponent<JSX.OntarioStepIndicator, HTMLOntarioStepIndicatorElement>('ontario-step-indicator');
+export const OntarioSummaryList = /*@__PURE__*/createReactComponent<JSX.OntarioSummaryList, HTMLOntarioSummaryListElement>('ontario-summary-list');
+export const OntarioSummaryListItem = /*@__PURE__*/createReactComponent<JSX.OntarioSummaryListItem, HTMLOntarioSummaryListItemElement>('ontario-summary-list-item');
 export const OntarioTable = /*@__PURE__*/createReactComponent<JSX.OntarioTable, HTMLOntarioTableElement>('ontario-table');
 export const OntarioTask = /*@__PURE__*/createReactComponent<JSX.OntarioTask, HTMLOntarioTaskElement>('ontario-task');
 export const OntarioTaskList = /*@__PURE__*/createReactComponent<JSX.OntarioTaskList, HTMLOntarioTaskListElement>('ontario-task-list');

@@ -9,6 +9,9 @@ on:
       docs-artifacts-name:
         required: true
         type: string
+      app-build-artifacts-name:
+        required: true
+        type: string
     outputs: # https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
       build-artifacts-name:
         description: 'Name of the artifacts archive of the built libraries'
@@ -16,13 +19,16 @@ on:
       docs-artifacts-name:
         description: 'Name of the artifacts archive of the built docs'
         value: ${{ inputs.docs-artifacts-name }}
+      app-build-artifacts-name:
+        description: 'Name of the artifacts archive of the built apps'
+        value: ${{ inputs.app-build-artifacts-name }}
 
 jobs:
-  build:
+  build-libs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the repo
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       # Install pnpm
       - name: Install pnpm
@@ -84,6 +90,7 @@ jobs:
         with:
           name: ${{ inputs.build-artifacts-name }} # Artifact name
           compression-level: 9 # Best compression
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
           path: | # Collect all package artifacts
             packages/**/*
             !**/node_modules/**/*
@@ -96,6 +103,7 @@ jobs:
         with:
           name: ${{ inputs.docs-artifacts-name }}
           compression-level: 9 # Best compression
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
           path: packages/docusaurus/docs/
 
       - name: Summarise build outputs
@@ -117,4 +125,76 @@ jobs:
             echo "| --- | --- | --- | --- |"
             echo "| Build | \`${{ inputs.build-artifacts-name }}\` | \`${build_size:-unknown}\` | \`${{ steps.upload_build_artifacts.outcome }}\` |"
             echo "| Docs | \`${{ inputs.docs-artifacts-name }}\` | \`${docs_size:-unknown}\` | \`${{ steps.upload_docs_artifact.outcome }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # Build the framework demo apps (app-angular, app-react, app-nextjs) against the
+  # libraries built above. Catches dependency bumps (e.g. Renovate PRs) that compile
+  # cleanly for the libs but break a consuming app, before any Playwright jobs spin up.
+  build-apps:
+    needs: ['build-libs']
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v7
+
+      # Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      # Setup Node.js
+      - name: Use Node.js from .nvmrc
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      # Download the built libraries from build-libs
+      - name: Download build artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ inputs.build-artifacts-name }}
+          path: ./packages
+
+      # Install dependencies with lockfile verification
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Build the demo apps
+      - name: Build the apps
+        id: build_apps
+        run: pnpm run build-apps
+
+      # Upload app build artifacts so downstream test jobs (e.g. apps-e2e-test,
+      # apps-vrt-test) can reuse the already-built output instead of rebuilding.
+      - name: Upload app build artifacts
+        id: upload_app_build_artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ inputs.app-build-artifacts-name }}
+          compression-level: 9 # Best compression
+          include-hidden-files: true # app-nextjs's build output lives in the hidden .next directory
+          if-no-files-found: error # Fail fast instead of silently uploading a partial artifact
+          path: | # Collect built app output only
+            packages/app-angular/dist/**/*
+            packages/app-react/build/**/*
+            packages/app-nextjs/.next/**/*
+
+      - name: Summarise app build outputs
+        if: ${{ always() }}
+        run: |
+          app_build_size="$(du -ch packages/app-angular/dist packages/app-react/build packages/app-nextjs/.next 2>/dev/null | tail -1 | cut -f1)"
+
+          {
+            echo '## Build Apps'
+            echo ''
+            echo "| Repository | Event | Ref | SHA | Run | Build Step |"
+            echo "| --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_apps.outcome }}\` |"
+            echo ''
+            echo '### Artifacts'
+            echo ''
+            echo "| Artifact | Name | Size | Upload |"
+            echo "| --- | --- | --- | --- |"
+            echo "| App Build | \`${{ inputs.app-build-artifacts-name }}\` | \`${app_build_size:-unknown}\` | \`${{ steps.upload_app_build_artifacts.outcome }}\` |"
           } >> "$GITHUB_STEP_SUMMARY"
