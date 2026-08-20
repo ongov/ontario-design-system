@@ -59,6 +59,11 @@ import { HeaderLanguageToggleEventDetails } from './utils/events/common-events.i
 import { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 import { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
 import {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
+import { Segment } from './utils/components/search-box-autocomplete';
+import {
 	SummaryListActionLink,
 	SummaryListColumnRatio,
 	SummaryListHeadingLevel,
@@ -120,6 +125,11 @@ export { OntarioInPageNavigationHeadingLevel } from './components/ontario-in-pag
 export { HeaderLanguageToggleEventDetails } from './utils/events/common-events.interface';
 export { PageAlertType } from './components/ontario-page-alert/ontario-page-alert.types';
 export { RadioOption } from './components/ontario-radio-buttons/radio-option.interface';
+export {
+	AutocompleteSuggestionSelectedEvent,
+	Suggestion,
+} from './components/ontario-search-box/ontario-search-box.interface';
+export { Segment } from './utils/components/search-box-autocomplete';
 export {
 	SummaryListActionLink,
 	SummaryListColumnRatio,
@@ -3221,9 +3231,23 @@ export namespace Components {
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
+		 * Debounce delay in milliseconds before `getSuggestions` is called.
+		 * @default OntarioSearchBox.DEFAULT_DEBOUNCE_MS
+		 */
+		debounceMs?: number;
+		/**
 		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enables autocomplete behaviour on the search input.
+		 * @default false
+		 */
+		enableAutocomplete?: boolean;
+		/**
+		 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+		 */
+		getSuggestions?: (query: string) => Promise<Suggestion[]>;
 		/**
 		 * Used to include the ontario-hint-text component for the search-box. This is optional.
 		 */
@@ -3233,6 +3257,16 @@ export namespace Components {
 		 * @default 'en'
 		 */
 		language?: Language;
+		/**
+		 * Maximum number of suggestions rendered in async mode.
+		 * @default OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS
+		 */
+		maxSuggestions?: number;
+		/**
+		 * Minimum number of characters required before suggestions are shown.
+		 * @default OntarioSearchBox.DEFAULT_MIN_CHARS
+		 */
+		minChars?: number;
 		/**
 		 * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
 		 * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -3245,6 +3279,53 @@ export namespace Components {
 		required?: boolean;
 		/**
 		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Ordered label segments used to render matched input text and completion text.
+		 */
+		segments?: Segment[];
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
 		 */
 		value?: string;
 	}
@@ -3569,6 +3650,10 @@ export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioSearchBoxElement;
+}
+export interface OntarioSearchResultItemCustomEvent<T> extends CustomEvent<T> {
+	detail: T;
+	target: HTMLOntarioSearchResultItemElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
@@ -5190,6 +5275,9 @@ declare global {
 		inputOnChange: InputInteractionEvent;
 		inputOnBlur: InputFocusBlurEvent;
 		inputOnFocus: InputFocusBlurEvent;
+		autocompleteQueryUpdated: { query: string };
+		autocompleteSuggestionsUpdated: { query: string; count: number };
+		autocompleteSuggestionSelected: AutocompleteSuggestionSelectedEvent;
 	}
 	/**
 	 * Ontario Search Box captures and submits search queries.
@@ -5254,6 +5342,66 @@ declare global {
 	var HTMLOntarioSearchBoxElement: {
 		prototype: HTMLOntarioSearchBoxElement;
 		new (): HTMLOntarioSearchBoxElement;
+	};
+	interface HTMLOntarioSearchResultItemElementEventMap {
+		itemSelected: { label?: string; value?: string; href?: string };
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface HTMLOntarioSearchResultItemElement extends Components.OntarioSearchResultItem, HTMLStencilElement {
+		addEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		addEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | AddEventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLOntarioSearchResultItemElementEventMap>(
+			type: K,
+			listener: (
+				this: HTMLOntarioSearchResultItemElement,
+				ev: OntarioSearchResultItemCustomEvent<HTMLOntarioSearchResultItemElementEventMap[K]>,
+			) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof DocumentEventMap>(
+			type: K,
+			listener: (this: Document, ev: DocumentEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener<K extends keyof HTMLElementEventMap>(
+			type: K,
+			listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+			options?: boolean | EventListenerOptions,
+		): void;
+		removeEventListener(
+			type: string,
+			listener: EventListenerOrEventListenerObject,
+			options?: boolean | EventListenerOptions,
+		): void;
+	}
+	var HTMLOntarioSearchResultItemElement: {
+		prototype: HTMLOntarioSearchResultItemElement;
+		new (): HTMLOntarioSearchResultItemElement;
 	};
 	/**
 	 * Ontario Step Indicator communicates progress through multi-step flows.
@@ -5541,6 +5689,7 @@ declare global {
 		'ontario-page-alert': HTMLOntarioPageAlertElement;
 		'ontario-radio-buttons': HTMLOntarioRadioButtonsElement;
 		'ontario-search-box': HTMLOntarioSearchBoxElement;
+		'ontario-search-result-item': HTMLOntarioSearchResultItemElement;
 		'ontario-step-indicator': HTMLOntarioStepIndicatorElement;
 		'ontario-summary-list': HTMLOntarioSummaryListElement;
 		'ontario-summary-list-item': HTMLOntarioSummaryListItemElement;
@@ -8773,7 +8922,7 @@ declare namespace LocalJSX {
 		 * The text to display as the input label
 		 * @example <ontario-search-box   caption='{ 		"captionText": "Search directory", 		"captionType": "default" 	}' 	required = "true" > </ontario-search-box>
 		 */
-		caption?: Caption | string;
+		caption: Caption | string;
 		/**
 		 * Used to add a custom function to the input onBlur event.
 		 */
@@ -8791,9 +8940,23 @@ declare namespace LocalJSX {
 		 */
 		customOnInput?: (event: globalThis.Event) => void;
 		/**
+		 * Debounce delay in milliseconds before `getSuggestions` is called.
+		 * @default OntarioSearchBox.DEFAULT_DEBOUNCE_MS
+		 */
+		debounceMs?: number;
+		/**
 		 * The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.
 		 */
 		elementId?: string;
+		/**
+		 * Enables autocomplete behaviour on the search input.
+		 * @default false
+		 */
+		enableAutocomplete?: boolean;
+		/**
+		 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+		 */
+		getSuggestions?: (query: string) => Promise<Suggestion[]>;
 		/**
 		 * Used to include the ontario-hint-text component for the search-box. This is optional.
 		 */
@@ -8803,6 +8966,30 @@ declare namespace LocalJSX {
 		 * @default 'en'
 		 */
 		language?: Language;
+		/**
+		 * Maximum number of suggestions rendered in async mode.
+		 * @default OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS
+		 */
+		maxSuggestions?: number;
+		/**
+		 * Minimum number of characters required before suggestions are shown.
+		 * @default OntarioSearchBox.DEFAULT_MIN_CHARS
+		 */
+		minChars?: number;
+		/**
+		 * Emitted when the autocomplete query changes.
+		 */
+		onAutocompleteQueryUpdated?: (event: OntarioSearchBoxCustomEvent<{ query: string }>) => void;
+		/**
+		 * Emitted when a suggestion is selected.
+		 */
+		onAutocompleteSuggestionSelected?: (
+			event: OntarioSearchBoxCustomEvent<AutocompleteSuggestionSelectedEvent>,
+		) => void;
+		/**
+		 * Emitted after suggestions are updated from either slot content or async mode.
+		 */
+		onAutocompleteSuggestionsUpdated?: (event: OntarioSearchBoxCustomEvent<{ query: string; count: number }>) => void;
 		/**
 		 * Emitted when a keyboard input event occurs when an input has lost focus.
 		 */
@@ -8836,6 +9023,59 @@ declare namespace LocalJSX {
 		required?: boolean;
 		/**
 		 * The value of the search term. This is optional.
+		 */
+		value?: string;
+	}
+	/**
+	 * Ontario Search Result Item renders a semantic option row for search suggestions.
+	 * For component guidance, see:
+	 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+	 */
+	interface OntarioSearchResultItem {
+		/**
+		 * Marks the option as active during keyboard navigation (parent-managed).
+		 * @default false
+		 */
+		active?: boolean;
+		/**
+		 * Optional secondary text shown below the label.
+		 */
+		description?: string;
+		/**
+		 * Marks the option as disabled and non-interactive.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Optional URL to represent a navigable search result.
+		 */
+		href?: string;
+		/**
+		 * Primary text for the suggestion row.
+		 */
+		label?: string;
+		/**
+		 * Optional language prop to align with component API conventions.
+		 * @default 'en'
+		 */
+		language?: Language;
+		/**
+		 * Emitted when a non-disabled option is selected via click.
+		 */
+		onItemSelected?: (
+			event: OntarioSearchResultItemCustomEvent<{ label?: string; value?: string; href?: string }>,
+		) => void;
+		/**
+		 * Ordered label segments used to render matched input text and completion text.
+		 */
+		segments?: Segment[];
+		/**
+		 * Marks the option as selected (parent-managed).
+		 * @default false
+		 */
+		selected?: boolean;
+		/**
+		 * Optional value used by parent components during selection. Falls back to `label` when not set.
 		 */
 		value?: string;
 	}
@@ -9278,6 +9518,7 @@ declare namespace LocalJSX {
 		'ontario-page-alert': OntarioPageAlert;
 		'ontario-radio-buttons': OntarioRadioButtons;
 		'ontario-search-box': OntarioSearchBox;
+		'ontario-search-result-item': OntarioSearchResultItem;
 		'ontario-step-indicator': OntarioStepIndicator;
 		'ontario-summary-list': OntarioSummaryList;
 		'ontario-summary-list-item': OntarioSummaryListItem;
@@ -9761,6 +10002,13 @@ declare module '@stencil/core' {
 			 * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 			 */
 			'ontario-search-box': LocalJSX.OntarioSearchBox & JSXBase.HTMLAttributes<HTMLOntarioSearchBoxElement>;
+			/**
+			 * Ontario Search Result Item renders a semantic option row for search suggestions.
+			 * For component guidance, see:
+			 * - https://designsystem.ontario.ca/components/detail/autocomplete.html
+			 */
+			'ontario-search-result-item': LocalJSX.OntarioSearchResultItem &
+				JSXBase.HTMLAttributes<HTMLOntarioSearchResultItemElement>;
 			/**
 			 * Ontario Step Indicator communicates progress through multi-step flows.
 			 * For component guidance, see:

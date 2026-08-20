@@ -123,6 +123,141 @@ The following example registers a simple function on `window` `load` that adds a
 </script>
 ```
 
+## Autocomplete examples
+
+### Async suggestions with `getSuggestions(query)`
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-search-box
+	id="search-with-autocomplete"
+	caption="Search Ontario cities"
+	enableAutocomplete
+></ontario-search-box>
+
+<script>
+	window.addEventListener('load', () => {
+		const cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+		const searchBox = document.getElementById('search-with-autocomplete');
+
+		searchBox.getSuggestions = async (query) => {
+			return cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+		};
+	});
+</script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+import { useState } from 'react';
+import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
+
+export default function AutocompleteExample() {
+	const cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+
+	const handleGetSuggestions = async (query) => {
+		return cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+	};
+
+	return (
+		<OntarioSearchBox
+			id="search-with-autocomplete"
+			caption="Search Ontario cities"
+			enableAutocomplete
+			getSuggestions={handleGetSuggestions}
+		/>
+	);
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+	selector: 'app-search-autocomplete',
+	template: `
+		<ontario-search-box
+			id="search-with-autocomplete"
+			[caption]="'Search Ontario cities'"
+			[enableAutocomplete]="true"
+		></ontario-search-box>
+	`,
+})
+export class SearchAutocompleteComponent {
+	cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+
+	ngAfterViewInit() {
+		const searchBox = document.getElementById('search-with-autocomplete');
+		searchBox.getSuggestions = async (query) => {
+			return this.cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+		};
+	}
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Slotted semantic and custom HTML suggestions
+
+```html
+<ontario-search-box id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
+	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
+	<div slot="suggestions" data-value="Waterloo" role="option">
+		<span data-ontario-search-highlight>Waterloo</span>
+		<span class="ontario-search-result-meta">Custom HTML option</span>
+	</div>
+</ontario-search-box>
+```
+
+### Grouping suggestions with static headers
+
+For search results with multiple categories, you can add non-interactive header elements to group suggestions:
+
+```html
+<ontario-search-box id="search-grouped" caption="Search Ontario" enableAutocomplete>
+	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Cities</div>
+	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
+
+	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Regions</div>
+	<ontario-search-result-item slot="suggestions" label="Durham Region" value="durham"></ontario-search-result-item>
+	<ontario-search-result-item slot="suggestions" label="York Region" value="york"></ontario-search-result-item>
+</ontario-search-box>
+```
+
+### Important notes about autocomplete
+
+Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+
+For custom HTML suggestions, plain text-only options are highlighted automatically. If your custom option contains extra markup, wrap the text that should receive highlighting in an element with `data-ontario-search-highlight`.
+
+Both semantic (`ontario-search-result-item`) and custom HTML options are filtered by the current query in slot mode, and non-matching options are hidden.
+
 ## Custom property types
 
 ### caption
@@ -170,41 +305,51 @@ Disabled/read-only policy source:
 
 ## Properties
 
-| Property         | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                            | Type                                                            | Default     |
-| ---------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `caption`        | `caption`          | The text to display as the input label                                                                                                                                                                                                                                                                                                                                                 | `Caption \| string`                                             | `undefined` |
-| `customOnBlur`   | `custom-on-blur`   | Used to add a custom function to the input onBlur event.                                                                                                                                                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                         | `undefined` |
-| `customOnChange` | `custom-on-change` | Used to add a custom function to the input onChange event.                                                                                                                                                                                                                                                                                                                             | `((event: Event) => void) \| undefined`                         | `undefined` |
-| `customOnFocus`  | `custom-on-focus`  | Used to add a custom function to the input onFocus event.                                                                                                                                                                                                                                                                                                                              | `((event: Event) => void) \| undefined`                         | `undefined` |
-| `customOnInput`  | `custom-on-input`  | Used to add a custom function to the input onInput event.                                                                                                                                                                                                                                                                                                                              | `((event: Event) => void) \| undefined`                         | `undefined` |
-| `elementId`      | `element-id`       | The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                                                                       | `string \| undefined`                                           | `undefined` |
-| `hintText`       | `hint-text`        | Used to include the ontario-hint-text component for the search-box. This is optional.                                                                                                                                                                                                                                                                                                  | `Hint \| string \| undefined`                                   | `undefined` |
-| `language`       | `language`         | The language of the component. This is used for translations. If none is passed, it will default to English.                                                                                                                                                                                                                                                                           | `"en" \| "fr" \| undefined`                                     | `'en'`      |
-| `performSearch`  | `perform-search`   | This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted. | `((value?: string \| undefined) => Promise<void>) \| undefined` | `undefined` |
-| `required`       | `required`         | This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                                                                                         | `boolean \| undefined`                                          | `false`     |
-| `value`          | `value`            | The value of the search term. This is optional.                                                                                                                                                                                                                                                                                                                                        | `string \| undefined`                                           | `undefined` |
+| Property               | Attribute             | Description                                                                                                                                                                                                                                                                                                                                                                            | Type                                                            | Default                                    |
+| ---------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------ |
+| `caption` _(required)_ | `caption`             | The text to display as the input label                                                                                                                                                                                                                                                                                                                                                 | `Caption \| string`                                             | `undefined`                                |
+| `customOnBlur`         | `custom-on-blur`      | Used to add a custom function to the input onBlur event.                                                                                                                                                                                                                                                                                                                               | `((event: Event) => void) \| undefined`                         | `undefined`                                |
+| `customOnChange`       | `custom-on-change`    | Used to add a custom function to the input onChange event.                                                                                                                                                                                                                                                                                                                             | `((event: Event) => void) \| undefined`                         | `undefined`                                |
+| `customOnFocus`        | `custom-on-focus`     | Used to add a custom function to the input onFocus event.                                                                                                                                                                                                                                                                                                                              | `((event: Event) => void) \| undefined`                         | `undefined`                                |
+| `customOnInput`        | `custom-on-input`     | Used to add a custom function to the input onInput event.                                                                                                                                                                                                                                                                                                                              | `((event: Event) => void) \| undefined`                         | `undefined`                                |
+| `debounceMs`           | `debounce-ms`         | Debounce delay in milliseconds before `getSuggestions` is called.                                                                                                                                                                                                                                                                                                                      | `number \| undefined`                                           | `OntarioSearchBox.DEFAULT_DEBOUNCE_MS`     |
+| `elementId`            | `element-id`          | The unique identifier of the search-box component. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                                                                       | `string \| undefined`                                           | `undefined`                                |
+| `enableAutocomplete`   | `enable-autocomplete` | Enables autocomplete behaviour on the search input.                                                                                                                                                                                                                                                                                                                                    | `boolean \| undefined`                                          | `false`                                    |
+| `getSuggestions`       | `get-suggestions`     | Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.                                                                                                                                                                                                                                                                                       | `((query: string) => Promise<Suggestion[]>) \| undefined`       | `undefined`                                |
+| `hintText`             | `hint-text`           | Used to include the ontario-hint-text component for the search-box. This is optional.                                                                                                                                                                                                                                                                                                  | `Hint \| string \| undefined`                                   | `undefined`                                |
+| `language`             | `language`            | The language of the component. This is used for translations. If none is passed, it will default to English.                                                                                                                                                                                                                                                                           | `"en" \| "fr" \| undefined`                                     | `'en'`                                     |
+| `maxSuggestions`       | `max-suggestions`     | Maximum number of suggestions rendered in async mode.                                                                                                                                                                                                                                                                                                                                  | `number \| undefined`                                           | `OntarioSearchBox.DEFAULT_MAX_SUGGESTIONS` |
+| `minChars`             | `min-chars`           | Minimum number of characters required before suggestions are shown.                                                                                                                                                                                                                                                                                                                    | `number \| undefined`                                           | `OntarioSearchBox.DEFAULT_MIN_CHARS`       |
+| `performSearch`        | `perform-search`      | This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted. | `((value?: string \| undefined) => Promise<void>) \| undefined` | `undefined`                                |
+| `required`             | `required`            | This is used to determine whether the dropdown list is required or not. This prop gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).                                                                                                                                         | `boolean \| undefined`                                          | `false`                                    |
+| `value`                | `value`               | The value of the search term. This is optional.                                                                                                                                                                                                                                                                                                                                        | `string \| undefined`                                           | `undefined`                                |
 
 ## Events
 
-| Event            | Description                                                                                                       | Type                                                                        |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `inputOnBlur`    | Emitted when a keyboard input event occurs when an input has lost focus.                                          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnChange`  | Emitted when a keyboard input or mouse event occurs when an input has been changed.                               | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
-| `inputOnFocus`   | Emitted when a keyboard input event occurs when an input has gained focus.                                        | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnInput`   | Emitted when a input  occurs when an input has been changed.                                                      | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
-| `searchOnSubmit` | Emitted when the search is submitted. Below is an example on how to hook into the event to get the event details. | `CustomEvent<string>`                                                       |
+| Event                            | Description                                                                                                       | Type                                                                        |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `autocompleteQueryUpdated`       | Emitted when the autocomplete query changes.                                                                      | `CustomEvent<{ query: string; }>`                                           |
+| `autocompleteSuggestionSelected` | Emitted when a suggestion is selected.                                                                            | `CustomEvent<AutocompleteSuggestionSelectedEvent>`                          |
+| `autocompleteSuggestionsUpdated` | Emitted after suggestions are updated from either slot content or async mode.                                     | `CustomEvent<{ query: string; count: number; }>`                            |
+| `inputOnBlur`                    | Emitted when a keyboard input event occurs when an input has lost focus.                                          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnChange`                  | Emitted when a keyboard input or mouse event occurs when an input has been changed.                               | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
+| `inputOnFocus`                   | Emitted when a keyboard input event occurs when an input has gained focus.                                        | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
+| `inputOnInput`                   | Emitted when a input  occurs when an input has been changed.                                                      | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
+| `searchOnSubmit`                 | Emitted when the search is submitted. Below is an example on how to hook into the event to get the event details. | `CustomEvent<string>`                                                       |
 
 ## Dependencies
 
 ### Depends on
 
 - [ontario-hint-text](../ontario-hint-text)
+- [ontario-search-result-item](../ontario-search-result-item)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-search-box --> ontario-hint-text
+  ontario-search-box --> ontario-search-result-item
   style ontario-search-box fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
