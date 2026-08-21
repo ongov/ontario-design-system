@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import { render } from '@stencil/vitest';
 
 describe('ontario-checkbox', () => {
@@ -39,7 +40,7 @@ describe('ontario-checkbox', () => {
 			`<ontario-checkboxes options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label", "checked": true }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label", "checked": true }]'></ontario-checkboxes>`,
 		);
 
-		expect(page.root?.value).toEqual(['checkbox-option-1', 'checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement)?.value).toEqual(['checkbox-option-1', 'checkbox-option-2']);
 	});
 
 	it('should apply the provided value over checked option flags', async () => {
@@ -50,7 +51,7 @@ describe('ontario-checkbox', () => {
 		const checkboxOne = page.root?.shadowRoot?.querySelector('#checkbox-1') as HTMLInputElement;
 		const checkboxTwo = page.root?.shadowRoot?.querySelector('#checkbox-2') as HTMLInputElement;
 
-		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement)?.value).toEqual(['checkbox-option-2']);
 		expect(checkboxOne.checked).toBe(false);
 		expect(checkboxTwo.checked).toBe(true);
 	});
@@ -69,7 +70,7 @@ describe('ontario-checkbox', () => {
 		await page.waitForChanges();
 
 		expect(onChange).toHaveBeenCalledTimes(1);
-		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement)?.value).toEqual(['checkbox-option-2']);
 		expect(onChange.mock.calls[0][0].detail.value).toEqual(['checkbox-option-2']);
 	});
 
@@ -105,17 +106,17 @@ describe('ontario-checkbox', () => {
 		checkboxOne.checked = true;
 		checkboxOne.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
 		await page.waitForChanges();
-		expect(page.root?.value).toEqual(['checkbox-option-1']);
+		expect((page.root as HTMLOntarioCheckboxesElement).value).toEqual(['checkbox-option-1']);
 
 		checkboxTwo.checked = true;
 		checkboxTwo.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
 		await page.waitForChanges();
-		expect(page.root?.value).toEqual(['checkbox-option-1', 'checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement).value).toEqual(['checkbox-option-1', 'checkbox-option-2']);
 
 		checkboxOne.checked = false;
 		checkboxOne.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
 		await page.waitForChanges();
-		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement).value).toEqual(['checkbox-option-2']);
 	});
 
 	it('should warn and ignore provided values that do not match an option', async () => {
@@ -125,7 +126,7 @@ describe('ontario-checkbox', () => {
 			`<ontario-checkboxes value='["checkbox-option-2", "missing-option"]' options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label", "checked": true }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label" }]'></ontario-checkboxes>`,
 		);
 
-		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement).value).toEqual(['checkbox-option-2']);
 		expect(warnSpy).toHaveBeenCalled();
 
 		warnSpy.mockRestore();
@@ -144,8 +145,18 @@ describe('ontario-checkbox', () => {
 		(page.root as HTMLOntarioCheckboxesElement).value = ['checkbox-option-2'];
 		await page.waitForChanges();
 
-		expect(page.root?.value).toEqual(['checkbox-option-2']);
+		expect((page.root as HTMLOntarioCheckboxesElement).value).toEqual(['checkbox-option-2']);
 		expect(checkboxOne.checked).toBe(false);
 		expect(checkboxTwo.checked).toBe(true);
+	});
+
+	it('should expose the checkbox background variable on both :root and :host selectors', async () => {
+		const page = await render(`<ontario-checkboxes></ontario-checkboxes>`);
+
+		const styles = Array.from(page.root?.shadowRoot?.querySelectorAll('style') ?? [])
+			.map((s) => s.textContent ?? '')
+			.join('\n');
+
+		expect(styles).toMatch(/:root\s*,\s*:host\s*\{[^}]*--checkbox-bg:/);
 	});
 });
