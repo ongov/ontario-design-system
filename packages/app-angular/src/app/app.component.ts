@@ -1,14 +1,13 @@
-import { Component, Renderer2, OnInit, NgZone, ChangeDetectorRef } from '@angular/core';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { AppConfigService } from './app-config.service';
+import { ChangeDetectorRef, Component, OnInit, NgZone } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UrlGeneratorService } from './url-generator.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
-import { getLanguage, isEnglish } from '../utils/get-language.utils';
-
 import { isAngularPOCEnvironment } from './translation.config';
+
+type AppLanguage = 'en' | 'fr';
 
 @Component({
 	selector: 'app-root',
@@ -18,25 +17,37 @@ import { isAngularPOCEnvironment } from './translation.config';
 })
 export class AppComponent implements OnInit {
 	title = 'app-angular';
-	public currentLang!: string;
+	public currentLang: AppLanguage = 'en';
+	private languageRequestId = 0;
 
 	constructor(
 		private translate: TranslateService,
-		private renderer: Renderer2,
 		private router: Router,
 		private zone: NgZone,
 		private cdr: ChangeDetectorRef,
 		private urlGenerator: UrlGeneratorService,
-		private appConfigService: AppConfigService,
 		private titleService: Title,
 	) {
 		translate.setDefaultLang('en');
-		translate.use('en');
+	}
 
-		translate.onLangChange.subscribe((event: LangChangeEvent) => {
-			this.currentLang = event.lang;
-			this.cdr.detectChanges();
-		});
+	get footerLinks() {
+		const translation = this.getTranslation();
+
+		return {
+			accessibilityLink: {
+				text: translation.accessibility,
+				href: translation.accessibilityLink,
+			},
+			privacyLink: {
+				text: translation.privacy,
+				href: translation.privacyLink,
+			},
+			contactLink: {
+				text: translation.contactUs,
+				href: translation.contactUsLink,
+			},
+		};
 	}
 
 	getTranslation() {
@@ -67,13 +78,13 @@ export class AppComponent implements OnInit {
 		};
 	}
 
-	getLanguageFromURL() {
+	getLanguageFromURL(): AppLanguage {
 		return window.location.hash.includes('/fr/') ? 'fr' : 'en';
 	}
 
 	getRoute() {
-		const getStarted = isEnglish() ? 'get-started' : 'fr/demarrer';
-		const register = isEnglish() ? 'create-account' : 'fr/creer-compte';
+		const getStarted = this.currentLang === 'en' ? 'get-started' : 'fr/demarrer';
+		const register = this.currentLang === 'en' ? 'create-account' : 'fr/creer-compte';
 		const homeIsActive = window.location.hash.includes(getStarted);
 		const registerIsActive = window.location.hash.includes(register);
 
@@ -85,23 +96,34 @@ export class AppComponent implements OnInit {
 		};
 	}
 
-	useLanguage = (e: any) => {
+	useLanguage = (e: Event) => {
 		e.preventDefault();
-		const lang = getLanguage();
-		this.translate.use(lang);
-		this.translate.setDefaultLang(lang);
-
-		// Manually trigger change detection
-		this.cdr.detectChanges();
-
-		// get and navigate to the translated route
-		const routes = this.translate.instant(`routes`);
-
-		this.zone.run(() => {
-			const pathname = window.location.hash.replace('#', '');
-			this.router.navigateByUrl(routes[pathname]);
-		});
+		const language: AppLanguage = this.currentLang === 'en' ? 'fr' : 'en';
+		this.setLanguage(language, true);
 	};
+
+	private setLanguage(language: AppLanguage, navigateToTranslatedRoute = false) {
+		const languageRequestId = ++this.languageRequestId;
+		this.currentLang = language;
+		// Keeps <html lang> aligned on toggle; the initial value is set in index.html before hydration.
+		document.documentElement.lang = language;
+		this.translate.setDefaultLang(language);
+
+		this.translate.use(language).subscribe(() => {
+			if (languageRequestId !== this.languageRequestId) return;
+
+			this.cdr.detectChanges();
+
+			if (navigateToTranslatedRoute) {
+				const routes = this.translate.instant('routes') as Record<string, string>;
+				const pathname = window.location.hash.replace('#', '');
+
+				this.zone.run(() => {
+					this.router.navigateByUrl(routes[pathname]);
+				});
+			}
+		});
+	}
 
 	updateTitleFromRoute() {
 		const route = this.router.routerState.snapshot.root;
@@ -123,15 +145,7 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		const lang = this.getLanguageFromURL();
-
-		// Set the default language
-		this.translate.setDefaultLang(lang);
-		this.translate.use(lang);
-
-		// Update the header language prop
-		const header = document.getElementsByTagName('ontario-header')[0];
-		this.renderer.setProperty(header, 'language', lang);
+		this.setLanguage(this.getLanguageFromURL());
 
 		// Listen for route changes
 		this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
