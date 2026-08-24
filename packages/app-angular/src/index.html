@@ -11,6 +11,11 @@
 		<link rel="icon" href="./assets/favicons/favicon-48x48.png" type="image/png" />
 		<link rel="icon" href="./assets/favicons/apple-touch-icon.png" type="image/png" />
 		<link rel="manifest" href="./assets/manifest.json" />
+		<script>
+			// Ontario components read <html lang> as they hydrate, which happens before Angular can
+			// set it, so the language is resolved from the URL here first.
+			document.documentElement.lang = window.location.hash.includes('/fr/') ? 'fr' : 'en';
+		</script>
 	</head>
 	<body>
 		<app-root></app-root>
