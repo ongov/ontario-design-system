@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  semantic-release>@semantic-release/github: 12.0.9
+
 patchedDependencies:
   '@semantic-release/github@12.0.9': 5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d
   conventional-changelog-angular@8.0.0: 9ac24139b82ad3e25555c1e04b46d9fab38c7ad72cff37147c63e61f83e7d6aa
@@ -4579,13 +4582,6 @@ packages:
     engines: { node: '>=14.17' }
     peerDependencies:
       semantic-release: '>=18.0.0'
-
-  '@semantic-release/github@12.0.8':
-    resolution:
-      { integrity: sha512-tej5AAgK5X9wHRoDmYhecMXEHEkFeGOY1XsEblKxu8pIQwahzf1STYyr7iPU6Lpbg6C5I3N2w/ocXrBo+L7jhw== }
-    engines: { node: ^22.14.0 || >= 24.10.0 }
-    peerDependencies:
-      semantic-release: '>=24.1.0'
 
   '@semantic-release/github@12.0.9':
     resolution:
@@ -17102,30 +17098,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@12.0.8(semantic-release@25.0.2(typescript@6.0.3))':
-    dependencies:
-      '@octokit/core': 7.0.6
-      '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
-      '@octokit/plugin-retry': 8.0.3(@octokit/core@7.0.6)
-      '@octokit/plugin-throttling': 11.0.3(@octokit/core@7.0.6)
-      '@semantic-release/error': 4.0.0
-      aggregate-error: 5.0.0
-      debug: 4.4.3
-      dir-glob: 3.0.1
-      http-proxy-agent: 9.1.0
-      https-proxy-agent: 9.0.0
-      issue-parser: 7.0.1
-      lodash-es: 4.17.21
-      mime: 4.0.6
-      p-filter: 4.1.0
-      semantic-release: 25.0.2(typescript@6.0.3)
-      tinyglobby: 0.2.17
-      undici: 7.16.0
-      url-join: 5.0.0
-    transitivePeerDependencies:
-      - kerberos
-      - supports-color
-
   '@semantic-release/github@12.0.9(patch_hash=5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d)(semantic-release@25.0.2(typescript@6.0.3))':
     dependencies:
       '@octokit/core': 7.0.6
@@ -23932,7 +23904,7 @@ snapshots:
     dependencies:
       '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.2(typescript@6.0.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 12.0.8(semantic-release@25.0.2(typescript@6.0.3))
+      '@semantic-release/github': 12.0.9(patch_hash=5946a9b3da3b40f6ef0639eb57fb67fa27a675dcfb85c8183dde88ac9542542d)(semantic-release@25.0.2(typescript@6.0.3))
       '@semantic-release/npm': 13.1.1(semantic-release@25.0.2(typescript@6.0.3))
       '@semantic-release/release-notes-generator': 14.1.0(semantic-release@25.0.2(typescript@6.0.3))
       aggregate-error: 5.0.0
