@@ -150,8 +150,8 @@ importers:
         specifier: workspace:*
         version: link:../ontario-design-system-global-styles
       '@uirouter/angular':
-        specifier: ^21.0.0
-        version: 21.0.0(@angular/common@22.1.2(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(@uirouter/core@6.1.2)(@uirouter/rx@1.0.0(@uirouter/core@6.1.2)(rxjs@7.8.1))
+        specifier: ^22.0.0
+        version: 22.0.0(@angular/common@22.1.2(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(@uirouter/core@6.1.2)(@uirouter/rx@1.0.0(@uirouter/core@6.1.2)(rxjs@7.8.1))
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
@@ -4872,12 +4872,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@uirouter/angular@21.0.0':
-    resolution: {integrity: sha512-KUvyNb5lJ293Lzym+UwfgzX7U/5LpOp4nmp8EAzwAOBu/K8A+wZeVTS1NYQAf/ziO+N3nqI0I8+GnXYOzSOtaA==}
+  '@uirouter/angular@22.0.0':
+    resolution: {integrity: sha512-wNvtdLCm/bS/o29XjxQmy7iYL5+i8+pLeel8h9LFs/Wc/pyltJlJ7XEm2wRPIHaZCawSQTOngaJZpHs/Pq/l7A==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
-      '@angular/common': ^21.0.0
-      '@angular/core': ^21.0.0
+      '@angular/common': ^22.0.0
+      '@angular/core': ^22.0.0
       '@uirouter/core': ^6.1.2
       '@uirouter/rx': ^1.0.0
 
@@ -15795,7 +15795,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@uirouter/angular@21.0.0(@angular/common@22.1.2(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(@uirouter/core@6.1.2)(@uirouter/rx@1.0.0(@uirouter/core@6.1.2)(rxjs@7.8.1))':
+  '@uirouter/angular@22.0.0(@angular/common@22.1.2(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1))(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(@uirouter/core@6.1.2)(@uirouter/rx@1.0.0(@uirouter/core@6.1.2)(rxjs@7.8.1))':
     dependencies:
       '@angular/common': 22.1.2(@angular/core@22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2))(rxjs@7.8.1)
       '@angular/core': 22.1.2(@angular/compiler@22.1.2)(rxjs@7.8.1)(zone.js@0.16.2)
