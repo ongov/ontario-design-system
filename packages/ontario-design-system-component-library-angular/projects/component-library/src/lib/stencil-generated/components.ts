@@ -3715,7 +3715,7 @@ Below is an example on how to hook into the event to get the event details. @exa
    */
   autocompleteQueryUpdated: EventEmitter<CustomEvent<{ query: string }>>;
   /**
-   * Emitted after suggestions are updated from either slot content or async mode.
+   * Emitted after asynchronous suggestions are updated.
    */
   autocompleteSuggestionsUpdated: EventEmitter<CustomEvent<{ query: string; count: number }>>;
   /**
