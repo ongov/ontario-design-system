@@ -46,6 +46,57 @@ test.describe('ontario-dropdown-list', () => {
 	});
 });
 
+test.describe('ontario-dropdown-list - ontario-dropdown-option children', () => {
+	test('renders ontario-dropdown-option children as native option elements', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+				<ontario-dropdown-option value="dropdown-option-2">Option 2</ontario-dropdown-option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const select = page.locator('ontario-dropdown-list select').first();
+		const options = select.locator('option');
+
+		await expect(options).toHaveCount(2);
+		await expect(options.nth(0)).toHaveText('Option 1');
+		await expect(options.nth(1)).toHaveText('Option 2');
+	});
+
+	test('respects the selected attribute on an ontario-dropdown-option child', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list name="dropdown-options" element-id="dropdown-list">
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+				<ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const select = page.locator('ontario-dropdown-list select').first();
+		await expect(select).toHaveValue('dropdown-option-2');
+	});
+
+	test('options prop takes precedence over ontario-dropdown-option children', async ({ page }) => {
+		await page.setContent(`
+			<ontario-dropdown-list
+				name="dropdown-options"
+				element-id="dropdown-list"
+				options='[{ "value": "prop-option-1", "label": "Prop Option 1" }]'
+			>
+				<ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+			</ontario-dropdown-list>
+		`);
+		await page.waitForChanges();
+
+		const select = page.locator('ontario-dropdown-list select').first();
+		const options = select.locator('option');
+
+		await expect(options).toHaveCount(1);
+		await expect(options.nth(0)).toHaveText('Prop Option 1');
+	});
+});
+
 // import { newE2EPage } from '@stencil/core/testing';
 
 // describe('ontario-dropdown-list', () => {

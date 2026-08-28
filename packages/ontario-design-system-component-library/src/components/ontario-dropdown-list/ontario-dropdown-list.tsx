@@ -126,6 +126,25 @@ export class OntarioDropdownList implements Dropdown {
 	 *   ]'
 	 * >
 	 * </ontario-dropdown-list>
+	 *
+	 * As an alternative to `options`, `ontario-dropdown-option` elements can instead be passed as
+	 * light DOM children.
+	 *
+	 * Note: these `<ontario-dropdown-option>` children are read once from the host's light DOM and
+	 * re-rendered as native `<option>` elements inside the component's shadow root; they are not
+	 * projected via a native `<slot>`. This is because browsers do not support slotting custom
+	 * elements into a `<select>` rendered in a shadow root, so a `<slot>`-based approach silently
+	 * fails to display any options.
+	 *
+	 * If both `options` and `<ontario-dropdown-option>` children are provided, the `options` prop
+	 * takes precedence.
+	 *
+	 * @example
+	 * <ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+	 *   <ontario-dropdown-option value="dropdown-option-1">Option 1</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-2" selected>Option 2</ontario-dropdown-option>
+	 *   <ontario-dropdown-option value="dropdown-option-3">Option 3</ontario-dropdown-option>
+	 * </ontario-dropdown-list>
 	 */
 	@Prop() options: string | DropdownOption[];
 
@@ -344,11 +363,54 @@ export class OntarioDropdownList implements Dropdown {
 					.printMessage();
 				this.internalOptions = [];
 			}
+		} else {
+			// No `options` prop was provided; fall back to any slotted `ontario-dropdown-option` light DOM children.
+			this.internalOptions = this.getSlottedOptions();
 		}
 
 		// Check selected status of options and set the selectedValue
 		this.validateSelectedOption(this.internalOptions);
 		this.syncValueFromOptions();
+	}
+
+	/**
+	 * Reads `ontario-dropdown-option` elements passed as light DOM children of the host and
+	 * converts them into the same `DropdownOption[]` shape used by the `options` prop.
+	 *
+	 * An empty-value option (for example `<ontario-dropdown-option value="">Please select</ontario-dropdown-option>`)
+	 * is skipped; this placeholder pattern is instead handled through the `isEmptyStartOption` prop,
+	 * so that slotted markup can't produce a duplicate blank entry alongside the generated empty
+	 * start option.
+	 */
+	private getSlottedOptions(): DropdownOption[] {
+		const optionElements = Array.from(this.element.querySelectorAll<HTMLElement>(':scope > ontario-dropdown-option'));
+
+		const hasEmptyValueOption = optionElements.some(
+			(optionElement) => (optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '') === '',
+		);
+		if (hasEmptyValueOption) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addRegularText('An')
+				.addMonospaceText(' <ontario-dropdown-option> ')
+				.addRegularText('child of')
+				.addMonospaceText(' <ontario-dropdown-list> ')
+				.addRegularText(
+					'was passed with an empty value. This will be ignored; use the `isEmptyStartOption` prop instead to render an empty start option.',
+				)
+				.printMessage();
+		}
+
+		return optionElements
+			.filter(
+				(optionElement) => (optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '') !== '',
+			)
+			.map((optionElement) => ({
+				value: optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '',
+				label: optionElement.textContent?.trim() ?? '',
+				selected: optionElement.hasAttribute('selected'),
+			}));
 	}
 
 	/**
