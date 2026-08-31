@@ -181,10 +181,6 @@
 	}
 }
 
-.ontario-overlay {
-	@extend %ontario-overlay;
-}
-
 .ontario-navigation--open {
 	.ontario-service-subheader .ontario-header-button:first-of-type {
 		display: none;

@@ -11,15 +11,15 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/line-heights.variables' as lineHeights;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/_grid.layout.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/grid.layout';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 @use '../../styles/text-inputs.scss';
 @use '../../styles/header.scss';
 
 // Variables
-$border-width-1: 1px;
-$border-width-2: 2px;
-$border-width-6: 6px;
+$_border-width-1: 1px;
+$_border-width-2: 2px;
+$_border-width-6: 6px;
 $font-size-18: globalFunctions.px-to-rem(18);
 $ontario-search-padding: 7.2rem;
 $ontario-search-padding--mobile: 6.4rem;
@@ -59,7 +59,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	list-style: none;
 	padding: spacing.$spacing-2 spacing.$spacing-0;
 	margin: spacing.$spacing-0;
-	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+	border-bottom: $_border-width-1 solid colours.$ontario-greyscale-20;
 
 	@media screen and (min-width: breakpoints.$medium-breakpoint) {
 		border-bottom: none;
@@ -67,12 +67,12 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 }
 
 @mixin navigation-item-styles {
-	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
+	border-top: $_border-width-1 solid colours.$ontario-greyscale-20;
 	padding: spacing.$spacing-0;
 	margin-bottom: spacing.$spacing-0;
 
 	&:last-of-type {
-		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+		border-bottom: $_border-width-1 solid colours.$ontario-greyscale-20;
 	}
 }
 
@@ -102,7 +102,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	&.ontario-link--active {
-		border-left: $border-width-6 solid colours.$ontario-colour-black;
+		border-left: $_border-width-6 solid colours.$ontario-colour-black;
 		background-color: colours.$ontario-greyscale-5;
 	}
 }
@@ -249,7 +249,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		@extend %ontario-header-button--with-outline;
 
 		&:hover {
-			border: $border-width-2 solid colours.$ontario-colour-white;
+			border: $_border-width-2 solid colours.$ontario-colour-white;
 			color: colours.$ontario-colour-white;
 		}
 
@@ -451,10 +451,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
-}
-
-.ontario-overlay {
-	@extend %ontario-overlay;
 }
 
 .ontario-icon-container {
