@@ -14,3 +14,4 @@ allowBuilds:
 patchedDependencies:
   '@semantic-release/github@12.0.9': patches/@semantic-release__github@12.0.9.patch
   conventional-changelog-angular@8.0.0: patches/conventional-changelog-angular@8.0.0.patch
+  ngx-translate-routes@2.3.3: patches/ngx-translate-routes@2.3.3.patch
