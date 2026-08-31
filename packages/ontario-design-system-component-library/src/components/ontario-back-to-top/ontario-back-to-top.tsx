@@ -1,8 +1,9 @@
-import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
+import { Component, h, Element, Prop, Listen, State, Watch } from '@stencil/core';
 
 import OntarioIconArrowUp from '../ontario-icon/assets/ontario-icon-arrow-up.svg';
 import { Language } from '../../utils/common/language-types';
-import { validateLanguage } from '../../utils/validation/validation-functions';
+import { validateCssLength, validateLanguage } from '../../utils/validation/validation-functions';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 import translations from '../../translations/global.i18n.json';
 import { isClientSideRendering } from '../../utils/common/environment';
@@ -21,7 +22,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 })
 export class OntarioBackToTop {
-	@Element() element: HTMLElement;
+	@Element() element!: HTMLElement;
 
 	/**
 	 * The language of the component.
@@ -31,25 +32,45 @@ export class OntarioBackToTop {
 
 	/**
 	 * An additional distance to add to the button's default `bottom: 5%` positioning, expressed as a
-	 * valid CSS length (for example `"63px"`, `"4rem"`).
+	 * valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`).
 	 *
 	 * This is useful when other fixed/sticky elements (for example, a feedback button or live chat
 	 * launcher) are stacked below the Back to Top button, and space needs to be reserved so the two
 	 * don't overlap as the viewport is resized.
 	 *
 	 * The value is added on top of the existing `5%` offset (that is, `bottom: calc(5% + <bottomOffset>)`),
-	 * rather than replacing it.
+	 * rather than replacing it. Avoid passing arbitrary CSS declarations; use a plain CSS length or CSS
+	 * variable instead.
 	 *
 	 * @example
 	 * <ontario-back-to-top bottom-offset="63px"></ontario-back-to-top>
 	 */
-	@Prop() bottomOffset?: string;
+	@Prop({ mutable: true }) bottomOffset?: string;
 
 	@State() translations: any = translations;
 
 	@State() private displayBackToTop: boolean = false;
 
 	@State() private scrollYValue: number = 200;
+
+	@Watch('bottomOffset')
+	validateBottomOffset() {
+		if (!this.bottomOffset) {
+			return;
+		}
+
+		if (!validateCssLength(this.bottomOffset)) {
+			const message = new ConsoleMessageClass();
+			message
+				.addDesignSystemTag()
+				.addMonospaceText(` bottomOffset ${this.bottomOffset} `)
+				.addRegularText('for')
+				.addMonospaceText(' <ontario-back-to-top> ')
+				.addRegularText('is not a valid CSS length. The component will ignore the value and use the default offset.')
+				.printMessage();
+			this.bottomOffset = undefined;
+		}
+	}
 
 	/**
 	 * This listens for the window Y scroll value to be above 200 pixels. Once it is, the Back to Top button will toggle the `displayBackToTop` state which will set an active class to control the components' visibility.
@@ -90,6 +111,7 @@ export class OntarioBackToTop {
 
 	componentWillLoad() {
 		this.language = validateLanguage(this.language);
+		this.validateBottomOffset();
 	}
 
 	render() {

@@ -1,4 +1,5 @@
 import { Language } from '../common/language-types';
+import { isClientSideRendering } from '../common/environment';
 
 export function validatePropExists(newValue: string | HTMLElement): boolean {
 	// Check if new value that is passed in is a string and is not empty
@@ -45,4 +46,35 @@ export function validateLanguage(language: CustomEvent<Language> | string | unde
 	}
 
 	return 'en';
+}
+
+/**
+ * Validate that a string is a safe CSS length value before using it in inline styles or CSS custom
+ * properties.
+ */
+export function validateCssLength(value: string | undefined): boolean {
+	if (typeof value !== 'string' || !value.trim()) {
+		return false;
+	}
+
+	const trimmedValue = value.trim();
+
+	if (
+		/[;{}<>]/.test(trimmedValue) ||
+		/(?:expression|url\s*\(|javascript:|data:|@import|behavior\s*:)/i.test(trimmedValue)
+	) {
+		return false;
+	}
+
+	if (isClientSideRendering()) {
+		const testElement = document.createElement('div');
+		testElement.style.bottom = trimmedValue;
+		return testElement.style.bottom !== '';
+	}
+
+	return (
+		/^[+-]?(?:\d+|\d*\.\d+)(?:[a-zA-Z%]+)?$/.test(trimmedValue) ||
+		/^(?:calc|min|max|clamp)\(.+\)$/i.test(trimmedValue) ||
+		/^var\(--[A-Za-z0-9_-]+(?:,\s*.+)?\)$/i.test(trimmedValue)
+	);
 }
