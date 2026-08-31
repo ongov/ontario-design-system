@@ -101,7 +101,7 @@ Emitted before navigation when applicable.
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['language'],
+  inputs: ['bottomOffset', 'language'],
   standalone: false
 })
 export class OntarioBackToTop {

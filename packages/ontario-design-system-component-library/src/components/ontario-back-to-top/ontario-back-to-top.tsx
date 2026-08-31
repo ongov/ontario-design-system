@@ -29,6 +29,22 @@ export class OntarioBackToTop {
 	 */
 	@Prop({ mutable: true }) language?: Language;
 
+	/**
+	 * An additional distance to add to the button's default `bottom: 5%` positioning, expressed as a
+	 * valid CSS length (for example `"63px"`, `"4rem"`).
+	 *
+	 * This is useful when other fixed/sticky elements (for example, a feedback button or live chat
+	 * launcher) are stacked below the Back to Top button, and space needs to be reserved so the two
+	 * don't overlap as the viewport is resized.
+	 *
+	 * The value is added on top of the existing `5%` offset (that is, `bottom: calc(5% + <bottomOffset>)`),
+	 * rather than replacing it.
+	 *
+	 * @example
+	 * <ontario-back-to-top bottom-offset="63px"></ontario-back-to-top>
+	 */
+	@Prop() bottomOffset?: string;
+
 	@State() translations: any = translations;
 
 	@State() private displayBackToTop: boolean = false;
@@ -80,6 +96,7 @@ export class OntarioBackToTop {
 		return (
 			<button
 				class={this.displayBackToTop ? `ontario-back-to-top active` : `ontario-back-to-top`}
+				style={this.bottomOffset ? { '--ontario-back-to-top-bottom-offset': this.bottomOffset } : undefined}
 				onClick={this.scrollToTop}
 				aria-label={this.translations.backToTop.ariaLabel[`${this.language}`]}
 			>
