@@ -5,8 +5,8 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-sizes.variables' as fontSizes;
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/global.elements';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 @use '../../styles/fieldsets.scss';
 @use '../../styles/labels.scss';
