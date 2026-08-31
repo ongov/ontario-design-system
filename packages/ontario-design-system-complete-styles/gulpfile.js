@@ -31,11 +31,21 @@ const compileSass = (input, outputFile, options) => {
 		sassOptions.sourceComments = true;
 	}
 
-	return src(input, { sourcemaps: options.sourcemaps })
-		.pipe(sass(sassOptions).on('error', sass.logError))
+	const sassStream = sass(sassOptions);
+	const outputStream = src(input, { sourcemaps: options.sourcemaps })
+		.pipe(sassStream)
 		.pipe(gulpif(options.compress, concat(`${outputFile}.min.css`), concat(`${outputFile}.css`)))
 		.pipe(gulpif(options.compress, minify()))
 		.pipe(dest(paths.output.theme, { sourcemaps: options.sourcemaps ? '.' : false }));
+
+	// gulp-sass logs compile errors but doesn't fail the pipeline by default; forward the
+	// error onto the returned stream so gulp treats a broken Sass compile as a build failure.
+	sassStream.on('error', (error) => {
+		sass.logError.call(sassStream, error);
+		outputStream.emit('error', error);
+	});
+
+	return outputStream;
 };
 
 task('clean:dist', async () => {
@@ -93,29 +103,19 @@ task('generate:components-import-file', async (done) => {
 	done();
 });
 
-task('sass:build', async (done) => {
-	try {
-		compileSass(paths.files.theme, 'ontario-theme', {
-			compress: false,
-			sourcemaps: true,
-		});
-		done();
-	} catch (error) {
-		done(error);
-	}
-});
+task('sass:build', () =>
+	compileSass(paths.files.theme, 'ontario-theme', {
+		compress: false,
+		sourcemaps: true,
+	}),
+);
 
-task('sass:minify', async (done) => {
-	try {
-		compileSass(paths.files.theme, 'ontario-theme', {
-			compress: true,
-			sourcemaps: false,
-		});
-		done();
-	} catch (error) {
-		done(error);
-	}
-});
+task('sass:minify', () =>
+	compileSass(paths.files.theme, 'ontario-theme', {
+		compress: true,
+		sourcemaps: false,
+	}),
+);
 
 task('sass:copy-dist', () => {
 	return src(paths.styles.all).pipe(dest(paths.output.styles));
