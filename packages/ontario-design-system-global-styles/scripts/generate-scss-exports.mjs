@@ -37,19 +37,6 @@ function logStep(label, message, colour = ANSI.blue) {
 	console.log(`${colour}[${label}]${ANSI.reset} ${message}`);
 }
 
-// Wildcard exports for source-facing SCSS imports.
-const STYLE_WILDCARD_EXPORTS = [
-	'./styles/scss/1-variables/*',
-	'./styles/scss/2-tools/functions/*',
-	'./styles/scss/2-tools/mixins/*',
-	'./styles/scss/2-tools/placeholder/*',
-	'./styles/scss/3-generics/*',
-	'./styles/scss/4-elements/*',
-	'./styles/scss/5-layout/*',
-	'./styles/scss/6-components/*',
-	'./styles/scss/7-overrides/*',
-];
-
 /**
  * Recursively collects underscore-prefixed `.scss` partial file paths from a root directory.
  *
@@ -140,12 +127,11 @@ function buildOrderedExports(existingExports, extensionlessSpecifiers) {
 		);
 	}
 
-	for (const wildcardKey of STYLE_WILDCARD_EXPORTS) {
-		setExport(wildcardKey, wildcardKey.replace('./styles/scss', DIST_SCSS_ROOT));
-	}
-
 	for (const [key, value] of Object.entries(existingExports)) {
-		if (!consumedKeys.has(key) && !key.startsWith('./dist/styles/scss/')) {
+		// Drop legacy wildcard SCSS exports: they overlap canonical keys above and cause
+		// Dart Sass's NodePackageImporter to report ambiguous "multiple potential resolutions".
+		const isLegacyStyleWildcard = key.startsWith('./styles/scss/') && key.endsWith('/*');
+		if (!consumedKeys.has(key) && !key.startsWith('./dist/styles/scss/') && !isLegacyStyleWildcard) {
 			setExport(key, value);
 		}
 	}

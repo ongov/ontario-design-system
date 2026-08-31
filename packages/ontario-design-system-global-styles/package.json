@@ -95,16 +95,7 @@
 		"./styles/scss/6-components/all.component": "./dist/styles/scss/6-components/_all.component.scss",
 		"./styles/scss/6-components/buttons.component": "./dist/styles/scss/6-components/_buttons.component.scss",
 		"./styles/scss/7-overrides/spacing.overrides": "./dist/styles/scss/7-overrides/_spacing.overrides.scss",
-		"./styles/scss/7-overrides/visibility.overrides": "./dist/styles/scss/7-overrides/_visibility.overrides.scss",
-		"./styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*",
-		"./styles/scss/2-tools/functions/*": "./dist/styles/scss/2-tools/functions/*",
-		"./styles/scss/2-tools/mixins/*": "./dist/styles/scss/2-tools/mixins/*",
-		"./styles/scss/2-tools/placeholder/*": "./dist/styles/scss/2-tools/placeholder/*",
-		"./styles/scss/3-generics/*": "./dist/styles/scss/3-generics/*",
-		"./styles/scss/4-elements/*": "./dist/styles/scss/4-elements/*",
-		"./styles/scss/5-layout/*": "./dist/styles/scss/5-layout/*",
-		"./styles/scss/6-components/*": "./dist/styles/scss/6-components/*",
-		"./styles/scss/7-overrides/*": "./dist/styles/scss/7-overrides/*"
+		"./styles/scss/7-overrides/visibility.overrides": "./dist/styles/scss/7-overrides/_visibility.overrides.scss"
 	},
 	"sass": "dist/styles/scss/theme.scss"
 }
