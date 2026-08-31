@@ -11,35 +11,35 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-sizes.variables' as fontSize;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/_grid.layout.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/grid.layout';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 @use '../../styles/header.scss';
 
 // Variables
 $ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
-$border-width-1: 1px;
-$border-width-6: 6px;
-$mobile-menu-tab-line-height: 2.1875rem;
+$_border-width-1: 1px;
+$_border-width-6: 6px;
+$_mobile-menu-tab-line-height: 2.1875rem;
 
 // Shared mixins
-@mixin menu-list-styles {
+@mixin _menu-list-styles {
 	list-style: none;
 	padding: spacing.$spacing-2 spacing.$spacing-0;
 	margin: spacing.$spacing-0;
-	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+	border-bottom: $_border-width-1 solid colours.$ontario-greyscale-20;
 }
 
-@mixin menu-list-item-styles {
-	border-top: $border-width-1 solid colours.$ontario-greyscale-20;
+@mixin _menu-list-item-styles {
+	border-top: $_border-width-1 solid colours.$ontario-greyscale-20;
 	padding: spacing.$spacing-0;
 	margin-bottom: spacing.$spacing-0;
 
 	&:last-of-type {
-		border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+		border-bottom: $_border-width-1 solid colours.$ontario-greyscale-20;
 	}
 }
 
-@mixin menu-link-base-styles {
+@mixin _menu-link-base-styles {
 	color: colours.$ontario-colour-black;
 	font-size: $ontario-header-overflow-menu-link-font-size;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
@@ -49,7 +49,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	display: block;
 }
 
-@mixin menu-link-interactive-styles {
+@mixin _menu-link-interactive-styles {
 	&:hover {
 		background-color: header.$navigation-link-bg--hover;
 
@@ -73,7 +73,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 
 	&.ontario-link--active {
-		border-left: $border-width-6 solid colours.$ontario-colour-black;
+		border-left: $_border-width-6 solid colours.$ontario-colour-black;
 		background-color: colours.$ontario-greyscale-5;
 	}
 }
@@ -109,7 +109,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 
 	ul {
-		@include menu-list-styles;
+		@include _menu-list-styles;
 
 		@media screen and (min-width: breakpoints.$medium-breakpoint) {
 			border-bottom: none;
@@ -117,18 +117,18 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 
 	li {
-		@include menu-list-item-styles;
+		@include _menu-list-item-styles;
 	}
 
 	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
+		@include _menu-link-base-styles;
+		@include _menu-link-interactive-styles;
 	}
 }
 
 .ontario-menu-list {
 	ul {
-		@include menu-list-styles;
+		@include _menu-list-styles;
 
 		@media screen and (min-width: breakpoints.$medium-breakpoint) {
 			border-bottom: none;
@@ -136,12 +136,12 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 
 	li {
-		@include menu-list-item-styles;
+		@include _menu-list-item-styles;
 	}
 
 	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
+		@include _menu-link-base-styles;
+		@include _menu-link-interactive-styles;
 	}
 }
 
@@ -191,7 +191,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 .ontario-mobile-menu__tabs {
 	display: flex;
 	background: colours.$ontario-colour-white;
-	border-bottom: $border-width-1 solid colours.$ontario-greyscale-20;
+	border-bottom: $_border-width-1 solid colours.$ontario-greyscale-20;
 }
 
 .ontario-mobile-menu__tab {
@@ -204,7 +204,7 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	border: none;
 	cursor: pointer;
 	color: colours.$ontario-colour-white;
-	line-height: $mobile-menu-tab-line-height;
+	line-height: $_mobile-menu-tab-line-height;
 
 	&:hover {
 		background: colours.$ontario-greyscale-60;
@@ -233,16 +233,16 @@ $mobile-menu-tab-line-height: 2.1875rem;
 	}
 
 	ul {
-		@include menu-list-styles;
+		@include _menu-list-styles;
 	}
 
 	li {
-		@include menu-list-item-styles;
+		@include _menu-list-item-styles;
 	}
 
 	a {
-		@include menu-link-base-styles;
-		@include menu-link-interactive-styles;
+		@include _menu-link-base-styles;
+		@include _menu-link-interactive-styles;
 	}
 }
 

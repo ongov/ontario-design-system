@@ -10,8 +10,8 @@
 	focusPlaceholders;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/_grid.layout.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/grid.layout';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 @use '../../styles/text-inputs.scss';
 @use '../../styles/header.scss';
@@ -23,7 +23,7 @@ $application-header-logo-height: 25px;
 $application-header-lang-toggle-font-size: globalFunctions.px-to-rem(16);
 $application-header-lang-toggle-line-height: globalFunctions.px-to-rem(22);
 $menu-button-icon-margin-right: 6px;
-$border-width-2: 2px;
+$_border-width-2: 2px;
 
 /* Ontario Application Header */
 .ontario-application-header {
