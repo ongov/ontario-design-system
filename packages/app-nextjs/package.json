@@ -26,7 +26,7 @@
 		"@ongov/ontario-design-system-component-library-react": "workspace:*",
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"copyfiles": "^2.4.1",
-		"next": "16.2.10",
+		"next": "16.2.12",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4"
 	},
@@ -35,9 +35,9 @@
 		"@stencil/ssr": "^0.4.0",
 		"@types/node": "^24.0.0",
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.4",
+		"@types/react-dom": "19.2.5",
 		"eslint": "^10.0.0",
-		"eslint-config-next": "16.3.2",
+		"eslint-config-next": "16.3.3",
 		"sass": "1.99.0",
 		"typescript": "^6.0.0"
 	}

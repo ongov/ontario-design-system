@@ -50,7 +50,7 @@
 		"commander": "^15.0.0",
 		"dotenv": "^17.0.0",
 		"husky": "^9.0.0",
-		"js-yaml": "^5.0.0",
+		"js-yaml": "^5.4.1",
 		"lerna": "^10.0.0",
 		"prettier": "^3.3.3",
 		"pretty-quick": "^4.0.0",
@@ -70,5 +70,5 @@
 		"@nrwl/nx-win32-x64-msvc": "15.9.3",
 		"bl": "^7.0.0"
 	},
-	"packageManager": "pnpm@11.22.0"
+	"packageManager": "pnpm@11.25.0"
 }

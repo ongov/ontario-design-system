@@ -23,7 +23,7 @@
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@types/node": "^24.0.0",
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.4",
+		"@types/react-dom": "19.2.5",
 		"@types/react-syntax-highlighter": "^15.5.5",
 		"caniuse-lite": "^1.0.30001687",
 		"react": "^19.2.4",
