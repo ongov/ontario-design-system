@@ -157,11 +157,6 @@ task('generate:index', async (done) => {
 	}
 });
 
-task('watch', (done) => {
-	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
-	done();
-});
-
 task(
 	'deploy',
 	series(
@@ -183,5 +178,26 @@ task(
 		'clean:src',
 	),
 );
+
+// `src/` is regenerated from the global-styles and component-library packages on every
+// build and deleted again at the end (see 'deploy'), so there's nothing under this
+// package's own `src/` to watch. Watch the upstream sources instead and re-run the full
+// deploy pipeline whenever they change.
+task('watch', (done) => {
+	watch(
+		[
+			paths.dsGlobalStyles.src,
+			paths.dsGlobalStyles.favicons,
+			paths.dsComponentLibrary.globalStyles,
+			paths.dsComponentLibrary.commonStyles,
+			paths.dsComponentLibrary.utils,
+			paths.dsComponentLibrary.components,
+			...paths.dsComponentLibrary.assets,
+		],
+		{ ignoreInitial: false },
+		series('deploy'),
+	);
+	done();
+});
 
 task('default', series('watch'));
