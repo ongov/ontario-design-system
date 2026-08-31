@@ -238,6 +238,11 @@ export namespace Components {
 	 */
 	interface OntarioBackToTop {
 		/**
+		 * An additional distance to add to the button's default `bottom: 5%` positioning, expressed as a valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`).  This is useful when other fixed/sticky elements (for example, a feedback button or live chat launcher) are stacked below the Back to Top button, and space needs to be reserved so the two don't overlap as the viewport is resized.  The value is added on top of the existing `5%` offset (that is, `bottom: calc(5% + <bottomOffset>)`), rather than replacing it. Avoid passing arbitrary CSS declarations; use a plain CSS length or CSS variable instead.
+		 * @example <ontario-back-to-top bottom-offset="63px"></ontario-back-to-top>
+		 */
+		bottomOffset?: string;
+		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 		 */
 		language?: Language;
@@ -3600,64 +3605,64 @@ export namespace Components {
 	}
 }
 export interface OntarioAccordionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioAccordionElement;
+	detail: T;
+	target: HTMLOntarioAccordionElement;
 }
 export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioBackButtonElement;
 }
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioCheckboxesElement;
+	detail: T;
+	target: HTMLOntarioCheckboxesElement;
 }
 export interface OntarioDateInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioDateInputElement;
+	detail: T;
+	target: HTMLOntarioDateInputElement;
 }
 export interface OntarioDropdownListCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioDropdownListElement;
+	detail: T;
+	target: HTMLOntarioDropdownListElement;
 }
 export interface OntarioHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderElement;
+	detail: T;
+	target: HTMLOntarioHeaderElement;
 }
 export interface OntarioHeaderMenuTabsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderMenuTabsElement;
+	detail: T;
+	target: HTMLOntarioHeaderMenuTabsElement;
 }
 export interface OntarioHeaderOverflowMenuCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHeaderOverflowMenuElement;
+	detail: T;
+	target: HTMLOntarioHeaderOverflowMenuElement;
 }
 export interface OntarioHintExpanderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioHintExpanderElement;
+	detail: T;
+	target: HTMLOntarioHintExpanderElement;
 }
 export interface OntarioInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioInputElement;
+	detail: T;
+	target: HTMLOntarioInputElement;
 }
 export interface OntarioLanguageToggleCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioLanguageToggleElement;
+	detail: T;
+	target: HTMLOntarioLanguageToggleElement;
 }
 export interface OntarioRadioButtonsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioRadioButtonsElement;
+	detail: T;
+	target: HTMLOntarioRadioButtonsElement;
 }
 export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioSearchBoxElement;
+	detail: T;
+	target: HTMLOntarioSearchBoxElement;
 }
 export interface OntarioSearchResultItemCustomEvent<T> extends CustomEvent<T> {
 	detail: T;
 	target: HTMLOntarioSearchResultItemElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOntarioTextareaElement;
+	detail: T;
+	target: HTMLOntarioTextareaElement;
 }
 declare global {
 	interface HTMLOntarioAccordionElementEventMap {
@@ -5805,6 +5810,11 @@ declare namespace LocalJSX {
 	 * - https://designsystem.ontario.ca/developer-docs/components/ontario-back-to-top/
 	 */
 	interface OntarioBackToTop {
+		/**
+		 * An additional distance to add to the button's default `bottom: 5%` positioning, expressed as a valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`).  This is useful when other fixed/sticky elements (for example, a feedback button or live chat launcher) are stacked below the Back to Top button, and space needs to be reserved so the two don't overlap as the viewport is resized.  The value is added on top of the existing `5%` offset (that is, `bottom: calc(5% + <bottomOffset>)`), rather than replacing it. Avoid passing arbitrary CSS declarations; use a plain CSS length or CSS variable instead.
+		 * @example <ontario-back-to-top bottom-offset="63px"></ontario-back-to-top>
+		 */
+		bottomOffset?: string;
 		/**
 		 * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.
 		 */
