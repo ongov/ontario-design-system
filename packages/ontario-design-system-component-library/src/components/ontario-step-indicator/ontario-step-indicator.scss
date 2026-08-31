@@ -2,10 +2,10 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/global.elements';
 @use '../ontario-button/ontario-button.scss';
 
-$ontario-icon-size: 24px;
+$_ontario-icon-size: 24px;
 
 .ontario-step-indicator {
 	margin-bottom: spacing.$spacing-7;
@@ -56,8 +56,8 @@ $ontario-icon-size: 24px;
 	.ontario-icon {
 		margin: spacing.$spacing-0 math.div(spacing.$spacing-3, 2) spacing.$spacing-0 spacing.$spacing-0;
 		padding: spacing.$spacing-0;
-		min-width: $ontario-icon-size;
-		min-height: $ontario-icon-size;
+		min-width: $_ontario-icon-size;
+		min-height: $_ontario-icon-size;
 	}
 }
 
