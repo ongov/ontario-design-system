@@ -114,7 +114,7 @@ Otherwise, a default Back to Top button can be used as follows:
 
 ### Reserving space for other fixed/sticky elements
 
-If another fixed or sticky element (for example, a feedback button or live chat launcher) is stacked below the Back to Top button, use the `bottomOffset` property to reserve additional vertical space so the two elements don't overlap as the viewport is resized. The value should be a valid CSS length (for example `"63px"`, `"4rem"`), and is added on top of the button's default `bottom: 5%` position, rather than replacing it.
+If another fixed or sticky element (for example, a feedback button or live chat launcher) is stacked below the Back to Top button, use the `bottomOffset` property to reserve additional vertical space so the two elements don't overlap as the viewport is resized. The value should be a valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`), and is added on top of the button's default `bottom: 5%` position, rather than replacing it. Pass a plain CSS length or CSS variable; avoid arbitrary CSS declarations.
 
 ```mdx-code-block
 <Tabs

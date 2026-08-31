@@ -27,6 +27,17 @@ test.describe('ontario-back-to-top - bottomOffset', () => {
 		// 800px viewport height * 5% = 40px, plus the 63px bottomOffset = 103px.
 		expect(bottom).toBeCloseTo(103, 0);
 	});
+
+	test('ignores invalid bottomOffset values and keeps the default offset', async ({ page }) => {
+		await page.setViewportSize({ width: 1024, height: 800 });
+		await page.setContent('<ontario-back-to-top bottom-offset="10px; background: red"></ontario-back-to-top>');
+		await page.waitForChanges();
+
+		const button = page.locator('ontario-back-to-top').locator('button');
+		const bottom = await button.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
+
+		expect(bottom).toBeCloseTo(40, 0);
+	});
 });
 
 // import { newE2EPage } from '@stencil/core/testing';
