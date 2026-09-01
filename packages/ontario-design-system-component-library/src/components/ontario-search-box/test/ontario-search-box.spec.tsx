@@ -14,6 +14,20 @@ describe('ontario-search-box', () => {
 		expect(input.getAttribute('aria-controls')).toBeNull();
 	});
 
+	it('should reflect inputMode and pattern onto the native input', async () => {
+		const page = await render(
+			`<ontario-search-box caption="Search codes" input-mode="numeric" pattern="[0-9]*"></ontario-search-box>`,
+		);
+		await page.waitForChanges();
+
+		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'#ontario-search-input-field',
+		) as HTMLInputElement;
+
+		expect(input.getAttribute('inputmode')).toBe('numeric');
+		expect(input.getAttribute('pattern')).toBe('[0-9]*');
+	});
+
 	it('should render async suggestions in autocomplete mode', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {

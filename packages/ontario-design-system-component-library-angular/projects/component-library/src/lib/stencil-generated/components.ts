@@ -3650,14 +3650,14 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'inputMode', 'language', 'maxSuggestions', 'minChars', 'pattern', 'performSearch', 'required', 'value']
 })
 @Component({
   selector: 'ontario-search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [{ name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value'],
+  inputs: [{ name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'inputMode', 'language', 'maxSuggestions', 'minChars', 'pattern', 'performSearch', 'required', 'value'],
   outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'autocompleteQueryUpdated', 'autocompleteSuggestionsUpdated', 'autocompleteSuggestionSelected'],
   standalone: false
 })

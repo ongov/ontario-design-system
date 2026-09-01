@@ -2375,6 +2375,8 @@ export const OntarioSearchBox: StencilReactComponent<OntarioSearchBoxElement, On
         maxSuggestions: 'max-suggestions',
         caption: 'caption',
         required: 'required',
+        inputMode: 'input-mode',
+        pattern: 'pattern',
         performSearch: 'perform-search',
         hintText: 'hint-text',
         customOnInput: 'custom-on-input',

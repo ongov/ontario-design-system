@@ -3192,6 +3192,11 @@ export namespace Components {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode": string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -3206,6 +3211,10 @@ export namespace Components {
           * @default OntarioSearchBox.DEFAULT_MIN_CHARS
          */
         "minChars"?: number;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -8478,6 +8487,11 @@ declare namespace LocalJSX {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode"?: string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -8525,6 +8539,10 @@ declare namespace LocalJSX {
           * @example <script> 	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {  		const searchValue = event.detail; 		console.log('Search submitted with value:', searchValue);   }; 	</script>
          */
         "onSearchOnSubmit"?: (event: OntarioSearchBoxCustomEvent<string>) => void;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
