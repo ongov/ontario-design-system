@@ -48,7 +48,7 @@
 		"@types/node": "^24.10.1",
 		"puppeteer": "^25.0.0",
 		"tsx": "^4.20.5",
-		"typescript": "^6.0.0",
+		"typescript": "^7.0.0",
 		"vitest": "^4.1.8"
 	}
 }
