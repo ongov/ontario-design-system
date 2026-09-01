@@ -3460,14 +3460,14 @@ export declare interface OntarioInPageNavigationItem extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputMode', 'inputValidator', 'inputWidth', 'language', 'name', 'pattern', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
   selector: 'ontario-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputMode', 'inputValidator', 'inputWidth', 'language', 'name', 'pattern', 'required', 'requiredValidationMessage', 'type', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })

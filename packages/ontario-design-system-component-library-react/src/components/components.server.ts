@@ -2256,6 +2256,8 @@ export const OntarioInput: StencilReactComponent<OntarioInputElement, OntarioInp
         hintText: 'hint-text',
         required: 'required',
         type: 'type',
+        inputMode: 'input-mode',
+        pattern: 'pattern',
         value: 'value',
         errorMessage: 'error-message',
         language: 'language',
