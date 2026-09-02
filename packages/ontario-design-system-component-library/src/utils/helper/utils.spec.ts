@@ -1,4 +1,14 @@
-import { format, isNumber, retrieveEnumKeys } from './utils';
+import { format, isNumber, retrieveEnumKeys, formatAllowedValues } from './utils';
+
+describe('formatAllowedValues', () => {
+	it('joins string values with and by default', () => {
+		expect(formatAllowedValues(['vertical', 'horizontal'])).toEqual('vertical and horizontal');
+	});
+
+	it('joins string values with or when requested', () => {
+		expect(formatAllowedValues(['string', 'html'], 'or')).toEqual('string or html');
+	});
+});
 
 describe('format', () => {
 	it('returns empty string for no names defined', () => {

@@ -4,6 +4,7 @@ import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours } from './icon.types';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import validateColor from 'validate-color';
 
 @Component({
@@ -99,18 +100,15 @@ export class OntarioIconEdit implements IconWithColour {
 	 * @returns default colour (black)
 	 */
 	private warnDefaultColour(): IconColour {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' colour ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-icon-edit> ')
-			.addRegularText('was set to an invalid colour; only')
-			.addMonospaceText(' black, blue, grey or white ')
-			.addRegularText('are supported. The default colour')
-			.addMonospaceText(' black ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'colour',
+			componentTag: '<ontario-icon-edit>',
+			allowedValues: IconColours,
+			defaultValue: 'black',
+			invalidDescriptor: 'colour',
+			defaultDescriptor: 'colour',
+			conjunction: 'or',
+		});
 		return 'black';
 	}
 
