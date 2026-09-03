@@ -10,6 +10,7 @@ import StyleDictionary from 'style-dictionary';
 
 import { primitiveTransforms } from './scripts/lib/transforms.ts';
 import { primitivePlatformsConfig } from './scripts/config/primitive.config.ts';
+import { exportPlatformsConfig } from './scripts/lib/export-platforms.ts';
 
 // Register the primitive value transforms so they are available to the
 // primitive output platforms configured below (DS-2691 / PR 5).
@@ -54,3 +55,11 @@ const primitivesDictionary = new StyleDictionary(primitivePlatformsConfig);
 await primitivesDictionary.hasInitialized;
 await primitivesDictionary.buildAllPlatforms();
 console.log('Built primitive layer output (primitives.*).');
+
+// Build the downstream/Tailwind JSON exports (DS-2692). Additive, alongside
+// the primitive layer outputs above; consumed by Figma/downstream/Tailwind
+// tooling rather than published as package entry points.
+const exportsDictionary = new StyleDictionary(exportPlatformsConfig);
+await exportsDictionary.hasInitialized;
+await exportsDictionary.buildAllPlatforms();
+console.log('Built downstream/Tailwind JSON exports (exports/downstream, exports/tailwind).');
