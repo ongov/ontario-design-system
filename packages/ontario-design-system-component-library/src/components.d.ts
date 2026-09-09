@@ -3206,7 +3206,7 @@ export namespace Components {
          */
         "enableAutocomplete"?: boolean;
         /**
-          * Async suggestion provider for autocomplete mode.
+          * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
         "getSuggestions"?: (query: string) => Promise<Suggestion[]>;
         /**
@@ -8541,7 +8541,7 @@ declare namespace LocalJSX {
          */
         "enableAutocomplete"?: boolean;
         /**
-          * Async suggestion provider for autocomplete mode.
+          * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
          */
         "getSuggestions"?: (query: string) => Promise<Suggestion[]>;
         /**
@@ -8572,7 +8572,7 @@ declare namespace LocalJSX {
          */
         "onAutocompleteSuggestionSelected"?: (event: OntarioSearchBoxCustomEvent<AutocompleteSuggestionSelectedEvent>) => void;
         /**
-          * Emitted after asynchronous suggestions are updated.
+          * Emitted after suggestions are updated from either slot content or async mode.
          */
         "onAutocompleteSuggestionsUpdated"?: (event: OntarioSearchBoxCustomEvent<{ query: string; count: number }>) => void;
         /**
