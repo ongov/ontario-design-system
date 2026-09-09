@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 import { ButtonTypes, HtmlTypes } from '../ontario-button.types';
 
 test.describe('ontario-button', () => {
@@ -221,4 +222,21 @@ test.describe('ontario-button', () => {
 		await host.locator('button').click();
 		await clickPromise;
 	});
+
+	for (const buttonType of ['primary', 'secondary', 'tertiary'] as const) {
+		test(`the ${buttonType} button has no axe violations`, async ({ page }) => {
+			await page.setContent('<ontario-button></ontario-button>');
+			await page.waitForChanges();
+
+			await page.locator('ontario-button').evaluate((button: HTMLOntarioButtonElement, type) => {
+				button.label = `${type} button`;
+				button.ariaLabelText = `${type} button`;
+				button.type = type;
+			}, buttonType);
+			await page.waitForChanges();
+
+			const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-button').analyze();
+			expect(accessibilityScanResults.violations).toHaveLength(0);
+		});
+	}
 });
