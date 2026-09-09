@@ -76,23 +76,6 @@ export default function OntarioSearchBoxPage() {
 				<div>
 					<h1>ontario-search-box</h1>
 
-					{/*
-					Stencil reference (original)
-
-					<ontario-search-box
-						id="ontario-search-box"
-						caption="Search directory"
-						hint-text="Search by employee name or organization name."
-					></ontario-search-box>
-
-					<script>
-						const searchBox = document.getElementById('ontario-search-autocomplete');
-						searchBox.getSuggestions = async (query) => cities.filter((city) => city.toLowerCase().includes(query.toLowerCase()));
-					</script>
-
-					<ontario-search-box id="ontario-search-autocomplete" caption="Search Ontario cities" enable-autocomplete></ontario-search-box>
-					*/}
-
 					<h2 id="search-box">Search box</h2>
 					<div className="ontario-row ontario-margin-top-24-!">
 						<h3 className="ontario-h4">Autocomplete with Ontario cities (async)</h3>
