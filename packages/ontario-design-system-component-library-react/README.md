@@ -42,11 +42,21 @@ To use the Ontario Design System React component library, follow these steps:
 
 2. Import the theme file into your project’s entry point.
 
+   This package ships a precompiled, ready-to-use CSS file — no Sass compiler is required in your app's build pipeline:
+
    ```tsx
-   import '@ongov/ontario-design-system-component-library-react/styles';
+   import '@ongov/ontario-design-system-component-library-react/theme.css';
    ```
 
-   If you need to override the asset base path, create a local theme wrapper:
+   This resolves to a single, monolithic `theme.css` file containing the Ontario Design System's base styles, global styles, and all component styles. It is pre-built with an `/assets` base path, so it expects fonts, images, and favicons to be available at `/assets` (see [Local assets](#local-assets) below for the copy step).
+
+   > **TypeScript note:** if your project doesn't already have an ambient module declaration for `*.css` (some starter templates only declare `*.module.css`), add one to a `.d.ts` file included in your `tsconfig.json`, otherwise TypeScript will report "Cannot find module" for this side-effect import:
+   >
+   > ```ts
+   > declare module '*.css';
+   > ```
+
+   If you need to override the asset base path (for example, if you serve fonts/images/favicons from a path other than `/assets`), you'll need to compile the Sass entry point yourself instead, so the `$asset-base-path` variable can be overridden at compile time. Create a local theme wrapper:
 
    ```scss
    // src/styles/ontario-theme.scss
@@ -56,7 +66,7 @@ To use the Ontario Design System React component library, follow these steps:
    );
    ```
 
-   Then import that wrapper in your app entry point.
+   Then import that wrapper in your app entry point, and make sure your bundler is configured to compile Sass (see [Next.js usage](#nextjs-usage) below for the `pkg:` resolution helper needed in that case).
 
 3. Configure the asset path (recommended when assets are not served from `/`).
 
@@ -94,9 +104,13 @@ Components can be improted directly:
 
 ### Next.js usage
 
+The recommended path for most Next.js apps is to import the precompiled `theme.css` (see step 2 above) — no Sass configuration is required for this path, including with Turbopack.
+
+The steps below (particularly the `pkg:` Sass resolution config) are only needed if you're compiling the Sass entry point yourself, for example to override `$asset-base-path`.
+
 When using this package with Next.js App Router, three additional steps are recommended:
 
-1. Configure Next.js for SSR and Sass `pkg:` support
+1. Configure Next.js for SSR and Sass `pkg:` support (only needed if compiling Sass yourself)
 
    Create or update `next.config.mjs` to include the following:
 
@@ -126,6 +140,8 @@ When using this package with Next.js App Router, three additional steps are reco
 
    The `pkgImporter` helper adds this support by resolving `pkg:` specifiers to the correct Sass files in `node_modules`.
 
+   If you're importing the precompiled `theme.css` instead (the default recommended path), skip this step — `pkg:` resolution is only relevant when compiling Sass.
+
 2. Import theme styles
 
    ```scss
@@ -148,12 +164,14 @@ When using this package with Next.js App Router, three additional steps are reco
 
 <hr />
 
-### Sass (optional)
+### Sass (optional, only needed for customization)
 
-If you use Sass and want `pkg:` resolution via `@use`, import the styles entry point:
+Most consumers should use the precompiled `theme.css` described above and do not need Sass at all — this avoids the `sass`/`sass-embedded` `pkg:` importer workaround entirely.
+
+If you need to customize the theme at compile time (for example, overriding `$asset-base-path`, or building your own modular subset of styles), you can still consume the Sass source directly:
 
 ```scss
-@use 'pkg:@ongov/ontario-design-system-component-library-react/styles' as ods;
+@use 'pkg:@ongov/ontario-design-system-component-library-react/styles/theme.scss' as ods;
 ```
 
 ### Local assets
