@@ -1,5 +1,7 @@
 import { test, expect, Locator } from '@playwright/test';
 
+import { gotoSearchBoxPage } from './utils/goto-search-box-page';
+
 const fillAutocomplete = async (search: Locator, value: string) => {
 	const input = search.locator('input[type="search"]');
 
@@ -12,33 +14,7 @@ const fillAutocomplete = async (search: Locator, value: string) => {
 
 test.describe('Ontario Search Box - Next.js E2E', () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto('/components/ontario-search-box');
-		await page.evaluate(() => customElements.whenDefined('ontario-search-box'));
-		await page.locator('ontario-search-box').evaluateAll((elements) =>
-			Promise.all(
-				elements.map((element) =>
-					(element as HTMLElement & { componentOnReady: () => Promise<HTMLElement> }).componentOnReady(),
-				),
-			),
-		);
-		await Promise.all([
-			expect
-				.poll(() =>
-					page
-						.locator('ontario-search-box')
-						.first()
-						.evaluate((element) => typeof (element as HTMLElement & { performSearch?: unknown }).performSearch),
-				)
-				.toBe('function'),
-			expect
-				.poll(() =>
-					page
-						.locator('ontario-search-box')
-							.first()
-						.evaluate((element) => typeof (element as HTMLElement & { getSuggestions?: unknown }).getSuggestions),
-				)
-				.toBe('function'),
-		]);
+		await gotoSearchBoxPage(page);
 	});
 
 	test('renders the autocomplete search box', async ({ page }) => {
@@ -76,7 +52,10 @@ test.describe('Ontario Search Box - Next.js E2E', () => {
 		await input.press('Enter');
 
 		await expect(input).toHaveValue('Toronto');
-		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute('aria-hidden', 'true');
+		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
+			'aria-hidden',
+			'true',
+		);
 	});
 
 	test('async autocomplete supports pointer selection', async ({ page }) => {
@@ -89,7 +68,10 @@ test.describe('Ontario Search Box - Next.js E2E', () => {
 		await suggestion.click();
 
 		await expect(input).toHaveValue('Toronto');
-		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute('aria-hidden', 'true');
+		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
+			'aria-hidden',
+			'true',
+		);
 	});
 
 	test('autocomplete supports Escape to close suggestion list', async ({ page }) => {
