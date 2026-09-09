@@ -86,7 +86,7 @@ export class OntarioSearchBox {
 	@Prop() enableAutocomplete?: boolean = false;
 
 	/**
-	 * Async suggestion provider for autocomplete mode.
+	 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
 	 */
 	@Prop()
 	getSuggestions?: (query: string) => Promise<Suggestion[]>;
@@ -217,7 +217,7 @@ export class OntarioSearchBox {
 	@Event() autocompleteQueryUpdated!: EventEmitter<{ query: string }>;
 
 	/**
-	 * Emitted after asynchronous suggestions are updated.
+	 * Emitted after suggestions are updated from either slot content or async mode.
 	 */
 	@Event() autocompleteSuggestionsUpdated!: EventEmitter<{ query: string; count: number }>;
 
