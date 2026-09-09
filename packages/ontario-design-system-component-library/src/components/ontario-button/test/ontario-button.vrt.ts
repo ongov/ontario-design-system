@@ -1,118 +1,107 @@
-import { expect } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 
 /**
  * Visual regression tests for ontario-button.
  *
- * Companion to the E2E suite: these assert pixel-level rendering of the button
- * variants and their focus states. Baselines are generated in (or matched
- * against) the CI Playwright Linux image - see `Stencil-VRT-CI-Plan.md`.
- *
- * Snapshots target the component host (a stable element) rather than inner
- * shadow nodes, with animations disabled and the caret hidden for determinism.
+ * These tests cover the button variants, interaction states, link rendering,
+ * and mobile layout using the shared VRT helpers.
  */
-test.describe('ontario-button - default states', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`
-			<ontario-button type="primary" element-id="ontario-button-primary">Primary</ontario-button>
-			<ontario-button type="secondary" element-id="ontario-button-secondary">Secondary</ontario-button>
-			<ontario-button type="tertiary" element-id="ontario-button-tertiary">Tertiary</ontario-button>
-		`);
-		await page.waitForChanges();
-	});
+const buttonTypes = ['primary', 'secondary', 'tertiary'] as const;
 
-	test('primary button - default state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="primary"]');
-		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot('ontarioButtonPrimary.png', {
-			animations: 'disabled',
-			caret: 'hide',
+const setButtonContent = async (host: Locator, type: (typeof buttonTypes)[number]) => {
+	await host.evaluate((button: HTMLOntarioButtonElement, buttonType) => {
+		button.label = `${buttonType} button`;
+		button.ariaLabelText = `${buttonType} button`;
+		button.type = buttonType;
+	}, type);
+};
+
+test.describe('ontario-button - interaction states', () => {
+	for (const buttonType of buttonTypes) {
+		test(`${buttonType} button - default state`, async ({ page }) => {
+			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
+			await page.waitForChanges();
+			const host = page.locator('ontario-button');
+			await setButtonContent(host, buttonType);
+			await page.waitForChanges();
+
+			const button = host.locator('button');
+			await expect(button).toBeVisible();
+			await expectVrtScreenshot(button);
 		});
-	});
 
-	test('secondary button - default state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="secondary"]');
-		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot('ontarioButtonSecondary.png', {
-			animations: 'disabled',
-			caret: 'hide',
+		test(`${buttonType} button - hover state`, async ({ page }) => {
+			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
+			await page.waitForChanges();
+			const host = page.locator('ontario-button');
+			await setButtonContent(host, buttonType);
+			await page.waitForChanges();
+
+			const button = host.locator('button');
+			await button.hover();
+			await expectVrtScreenshot(button);
 		});
-	});
 
-	test('tertiary button - default state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="tertiary"]');
-		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot('ontarioButtonTertiary.png', {
-			animations: 'disabled',
-			caret: 'hide',
+		test(`${buttonType} button - focus state`, async ({ page }) => {
+			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
+			await page.waitForChanges();
+			const host = page.locator('ontario-button');
+			await setButtonContent(host, buttonType);
+			await page.waitForChanges();
+
+			const button = host.locator('button');
+			await button.focus();
+			await expectVrtScreenshot(button);
 		});
-	});
-});
 
-test.describe('ontario-button - focus states', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`
-			<ontario-button type="primary" element-id="ontario-button-primary">Primary</ontario-button>
-			<ontario-button type="secondary" element-id="ontario-button-secondary">Secondary</ontario-button>
-			<ontario-button type="tertiary" element-id="ontario-button-tertiary">Tertiary</ontario-button>
-		`);
-		await page.waitForChanges();
-	});
+		test(`${buttonType} button - active state`, async ({ page }) => {
+			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
+			await page.waitForChanges();
+			const host = page.locator('ontario-button');
+			await setButtonContent(host, buttonType);
+			await page.waitForChanges();
 
-	test('primary button - focus state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="primary"]');
-		await expect(host).toHaveClass('hydrated');
-		await host.locator('button').focus();
-		await expect(host).toHaveScreenshot('ontarioButtonPrimary-focus.png', {
-			animations: 'disabled',
-			caret: 'hide',
+			const button = host.locator('button');
+			await button.hover();
+			await page.mouse.down();
+			try {
+				await expectVrtScreenshot(button);
+			} finally {
+				await page.mouse.up();
+			}
 		});
-	});
-
-	test('secondary button - focus state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="secondary"]');
-		await expect(host).toHaveClass('hydrated');
-		await host.locator('button').focus();
-		await expect(host).toHaveScreenshot('ontarioButtonSecondary-focus.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
-	});
-
-	test('tertiary button - focus state', async ({ page }) => {
-		const host = page.locator('ontario-button[type="tertiary"]');
-		await expect(host).toHaveClass('hydrated');
-		await host.locator('button').focus();
-		await expect(host).toHaveScreenshot('ontarioButtonTertiary-focus.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
-	});
+	}
 });
 
 test.describe('ontario-button - link and responsive states', () => {
 	test('link mode', async ({ page }) => {
-		await page.setContent('<ontario-button href="/details" label="View details"></ontario-button>');
+		await page.setContent(withGlobalStyles('<ontario-button href="/details" label="View details"></ontario-button>'));
 		await page.waitForChanges();
 
-		const host = page.locator('ontario-button');
-		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot('ontarioButton-link.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		const link = page.locator('ontario-button').locator('a');
+		await expect(link).toBeVisible();
+		await expectVrtScreenshot(link);
 	});
 
 	test('primary button - mobile layout', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 812 });
-		await page.setContent('<ontario-button type="primary" label="Continue"></ontario-button>');
+		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Continue"></ontario-button>'));
 		await page.waitForChanges();
 
-		const host = page.locator('ontario-button');
-		await expect(host).toHaveClass('hydrated');
-		await expect(host).toHaveScreenshot('ontarioButtonPrimary-mobile.png', {
-			animations: 'disabled',
-			caret: 'hide',
-		});
+		const button = page.locator('ontario-button').locator('button');
+		await expect(button).toBeVisible();
+		await expectVrtScreenshot(button);
+	});
+
+	test('primary button - tablet layout', async ({ page }) => {
+		await page.setViewportSize({ width: 900, height: 800 });
+		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Continue"></ontario-button>'));
+		await page.waitForChanges();
+
+		const button = page.locator('ontario-button').locator('button');
+		await expect(button).toBeVisible();
+		await expectVrtScreenshot(button);
 	});
 });
