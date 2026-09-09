@@ -1,6 +1,7 @@
 import { expect, Locator, Page, test } from '@playwright/test';
 
 import { expectVrtScreenshot, waitForInteractionPaint } from '../vrt-helpers';
+import { gotoSearchBoxPage } from './utils/goto-search-box-page';
 
 const searchBox = (page: Page) => page.locator('ontario-search-box').first();
 
@@ -36,29 +37,9 @@ const includeSuggestionsInScreenshot = async (search: Locator) => {
 	}, listHeight);
 };
 
-const gotoSearchPage = async (page: Page) => {
-	await page.goto('/components/ontario-search-box');
-	await page.evaluate(() => customElements.whenDefined('ontario-search-box'));
-	await page.locator('ontario-search-box').evaluateAll((elements) =>
-		Promise.all(
-			elements.map((element) =>
-				(element as HTMLElement & { componentOnReady: () => Promise<HTMLElement> }).componentOnReady(),
-			),
-		),
-	);
-	await Promise.all([
-		expect
-			.poll(() => searchBox(page).evaluate((element) => typeof (element as HTMLElement & { performSearch?: unknown }).performSearch))
-			.toBe('function'),
-		expect
-			.poll(() => searchBox(page).evaluate((element) => typeof (element as HTMLElement & { getSuggestions?: unknown }).getSuggestions))
-			.toBe('function'),
-	]);
-};
-
 test.describe('Search Box - default states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchPage(page);
+		await gotoSearchBoxPage(page);
 	});
 
 	test('search box default', async ({ page }) => {
@@ -69,7 +50,10 @@ test.describe('Search Box - default states', () => {
 		const search = searchBox(page);
 
 		await fillAutocomplete(page, search, 'to');
-		await expect(search.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute('aria-hidden', 'false');
+		await expect(search.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
+			'aria-hidden',
+			'false',
+		);
 		await expect(search.locator('ontario-search-result-item').first()).toBeVisible();
 		await includeSuggestionsInScreenshot(search);
 		await waitForInteractionPaint(page);
@@ -114,7 +98,7 @@ test.describe('Search Box - default states', () => {
 
 test.describe('Search Box - focus states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchPage(page);
+		await gotoSearchBoxPage(page);
 	});
 
 	test('search input focused', async ({ page }) => {
@@ -151,7 +135,7 @@ test.describe('Search Box - focus states', () => {
 
 test.describe('Search Box - hover states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchPage(page);
+		await gotoSearchBoxPage(page);
 	});
 
 	test('search button hovered', async ({ page }) => {
@@ -165,7 +149,7 @@ test.describe('Search Box - hover states', () => {
 
 test.describe('Search Box - active states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchPage(page);
+		await gotoSearchBoxPage(page);
 	});
 
 	test('search button active', async ({ page }) => {
