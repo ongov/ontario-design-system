@@ -51,11 +51,17 @@ async function buildCss() {
 	});
 
 	await mkdir(outDir, { recursive: true });
-	await writeFile(outFile, result.css, 'utf8');
 
+	// sass-embedded doesn't append the `sourceMappingURL` comment itself (see
+	// https://sass-lang.com/documentation/js-api/interfaces/options/#sourceMap),
+	// so without this, devtools won't associate theme.css.map with theme.css.
+	let css = result.css;
 	if (result.sourceMap) {
+		css += `\n/*# sourceMappingURL=${path.basename(outFile)}.map */`;
 		await writeFile(`${outFile}.map`, JSON.stringify(result.sourceMap), 'utf8');
 	}
+
+	await writeFile(outFile, css, 'utf8');
 
 	console.log(`[build-css] Compiled ${path.relative(packageRoot, input)} -> ${path.relative(packageRoot, outFile)}`);
 	console.log(`[build-css] Asset base path baked into output: ${DEFAULT_ASSET_BASE_PATH}`);
