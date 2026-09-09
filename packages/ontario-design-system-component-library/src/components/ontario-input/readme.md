@@ -185,6 +185,19 @@ property.
 
 Example of the `inputOnInput` event:
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-input id="input-1" name="input-1" caption="What is your name?" required></ontario-input>
 <script>
@@ -197,6 +210,49 @@ Example of the `inputOnInput` event:
 		});
 	};
 </script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+**Note:** in React, you don't attach these events with `addEventListener` like
+in the HTML example above. Instead, the React wrapper turns each custom event
+into its own prop, named by prefixing `on` and capitalizing the event name.
+So the `inputOnInput` custom event becomes the `onInputOnInput` prop, and
+`inputOnChange` becomes the `onInputOnChange` prop, as shown below.
+
+```tsx
+<OntarioInput
+	elementId="input-1"
+	name="input-1"
+	caption="What is your name?"
+	required
+	onInputOnInput={(event) => {
+		console.log('OnInput detail:', event.detail);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input
+	[elementId]="'input-1'"
+	[name]="'input-1'"
+	[caption]="'What is your name?'"
+	[required]="true"
+	(inputOnInput)="onInputOnInput($event)"
+></ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 If the letter `i` is typed into `input-1`, the value of `event.detail` is the object emitted along with the `inputOnInput` event.
@@ -217,6 +273,19 @@ Events, such as the native `input` event, deliver data from inside of the compon
 
 This isn't the case for the native `change` event, this event hits the ShadowDOM boundary and stops propagating. The implication of this is that it can't be listened for outside the component. To attempt to overcome this, a synthetic change event is generated and emitted. The original `change` event is available via the `detail` property on the emitted event.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```js
 document.querySelector('ontario-input').addEventListener('input', (event) => {
 	console.log(event.target.value);
@@ -225,6 +294,48 @@ document.querySelector('ontario-input').addEventListener('input', (event) => {
 document.querySelector('ontario-input').addEventListener('change', (event) => {
 	console.log(event.target.value);
 });
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+React normalizes the native `input` event to `onChange`. Because the native
+`change` event does not cross the ShadowDOM boundary (see above), use
+`onInputOnChange` (mapped from the component's `inputOnChange` custom event)
+if you need to react to changes from React, rather than `onChange`.
+
+```tsx
+<OntarioInput
+	elementId="input-1"
+	name="input-1"
+	caption="What is your name?"
+	required
+	onInputOnChange={(event) => {
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-input
+	[elementId]="'input-1'"
+	[name]="'input-1'"
+	[caption]="'What is your name?'"
+	[required]="true"
+	(inputOnChange)="onInputChange($event)"
+></ontario-input>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
@@ -513,6 +624,8 @@ Disabled/read-only policy source:
 | `value`                     | `value`                       | The input content value. This is optional.                                                                                                                                                                                                                                                                                                  | `string \| undefined`                                                                                                                       | `undefined` |
 
 ## Events
+
+_Note: when using the React wrapper (`@ongov/ontario-design-system-component-library-react`), each event below is exposed as a prop named `on` + the event name with the first letter capitalized. For example, `inputOnChange` becomes `onInputOnChange`, and `inputOnInput` becomes `onInputOnInput`. See the [Event model](#event-model) section above for React usage examples._
 
 | Event                | Description                                                                         | Type                                                                        |
 | -------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
