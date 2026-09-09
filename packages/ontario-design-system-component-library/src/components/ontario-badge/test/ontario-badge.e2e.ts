@@ -235,10 +235,9 @@ test.describe('ontario-badge', () => {
 
 		const start = performance.now();
 		await page.waitForChanges();
+		const durationMs = performance.now() - start;
 
-		const end = performance.now();
-		console.log(`Applied 10 rapid colour updates in ${(end - start).toFixed(2)} ms`);
-
+		expect(durationMs).toBeLessThan(500); // tune this threshold
 		await expect(host).toBeAttached();
 	});
 });
