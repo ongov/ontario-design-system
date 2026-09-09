@@ -89,3 +89,30 @@ test.describe('ontario-button - focus states', () => {
 		});
 	});
 });
+
+test.describe('ontario-button - link and responsive states', () => {
+	test('link mode', async ({ page }) => {
+		await page.setContent('<ontario-button href="/details" label="View details"></ontario-button>');
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-button');
+		await expect(host).toHaveClass('hydrated');
+		await expect(host).toHaveScreenshot('ontarioButton-link.png', {
+			animations: 'disabled',
+			caret: 'hide',
+		});
+	});
+
+	test('primary button - mobile layout', async ({ page }) => {
+		await page.setViewportSize({ width: 375, height: 812 });
+		await page.setContent('<ontario-button type="primary" label="Continue"></ontario-button>');
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-button');
+		await expect(host).toHaveClass('hydrated');
+		await expect(host).toHaveScreenshot('ontarioButtonPrimary-mobile.png', {
+			animations: 'disabled',
+			caret: 'hide',
+		});
+	});
+});
