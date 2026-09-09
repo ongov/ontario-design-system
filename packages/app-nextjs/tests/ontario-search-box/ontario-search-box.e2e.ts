@@ -1,6 +1,6 @@
 import { test, expect, Locator } from '@playwright/test';
 
-import { gotoSearchBoxPage } from './utils/goto-search-box-page';
+import { gotoSearchPage, searchBox } from './search-box-helpers';
 
 const fillAutocomplete = async (search: Locator, value: string) => {
 	const input = search.locator('input[type="search"]');
@@ -14,72 +14,72 @@ const fillAutocomplete = async (search: Locator, value: string) => {
 
 test.describe('Ontario Search Box - Next.js E2E', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchBoxPage(page);
+		await gotoSearchPage(page);
 	});
 
 	test('renders the autocomplete search box', async ({ page }) => {
 		await expect(page.getByRole('heading', { level: 1, name: 'ontario-search-box' })).toBeVisible();
 		await expect(page.getByText('Autocomplete with Ontario cities (async)')).toBeVisible();
-		await expect(page.locator('ontario-search-box')).toHaveCount(1);
+		await expect(searchBox(page)).toHaveCount(1);
 	});
 
 	test('search box has caption and hint text', async ({ page }) => {
-		const search = page.locator('ontario-search-box');
+		const search = searchBox(page);
 		await expect(search.getByText('Search Ontario cities')).toBeVisible();
 		await expect(search.getByText('Start typing to see city suggestions.')).toBeVisible();
 	});
 
 	test('submitting invokes the React search callback with the entered value', async ({ page }) => {
-		const defaultSearch = page.locator('ontario-search-box').first();
+		const search = searchBox(page);
 		const searchMessage = page.waitForEvent('console', {
 			predicate: (message) => message.text() === 'Performing search with value: Toronto',
 		});
 
-		await defaultSearch.locator('input[type="search"]').fill('Toronto');
-		await defaultSearch.getByRole('button', { name: 'Submit' }).click();
+		await search.locator('input[type="search"]').fill('Toronto');
+		await search.getByRole('button', { name: 'Submit' }).click();
 
 		expect((await searchMessage).text()).toBe('Performing search with value: Toronto');
 	});
 
 	test('async autocomplete shows suggestions and supports keyboard selection', async ({ page }) => {
-		const autoSearch = page.locator('ontario-search-box');
-		const input = autoSearch.locator('input[type="search"]');
+		const search = searchBox(page);
+		const input = search.locator('input[type="search"]');
 
-		await fillAutocomplete(autoSearch, 'tor');
-		await expect(autoSearch.locator('ontario-search-result-item')).toHaveCount(1);
+		await fillAutocomplete(search, 'tor');
+		await expect(search.locator('ontario-search-result-item')).toHaveCount(1);
 
 		await input.press('ArrowDown');
 		await input.press('Enter');
 
 		await expect(input).toHaveValue('Toronto');
-		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
+		await expect(search.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
 			'aria-hidden',
 			'true',
 		);
 	});
 
 	test('async autocomplete supports pointer selection', async ({ page }) => {
-		const autoSearch = page.locator('ontario-search-box');
-		const input = autoSearch.locator('input[type="search"]');
+		const search = searchBox(page);
+		const input = search.locator('input[type="search"]');
 
-		await fillAutocomplete(autoSearch, 'tor');
-		const suggestion = autoSearch.locator('ontario-search-result-item').filter({ hasText: 'Toronto' });
+		await fillAutocomplete(search, 'tor');
+		const suggestion = search.locator('ontario-search-result-item').filter({ hasText: 'Toronto' });
 		await expect(suggestion).toBeVisible();
 		await suggestion.click();
 
 		await expect(input).toHaveValue('Toronto');
-		await expect(autoSearch.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
+		await expect(search.locator('.ontario-search-autocomplete__suggestion-list')).toHaveAttribute(
 			'aria-hidden',
 			'true',
 		);
 	});
 
 	test('autocomplete supports Escape to close suggestion list', async ({ page }) => {
-		const autoSearch = page.locator('ontario-search-box');
-		const input = autoSearch.locator('input[type="search"]');
+		const search = searchBox(page);
+		const input = search.locator('input[type="search"]');
 
-		await fillAutocomplete(autoSearch, 'wa');
-		const suggestions = autoSearch.locator('.ontario-search-autocomplete__suggestion-list');
+		await fillAutocomplete(search, 'wa');
+		const suggestions = search.locator('.ontario-search-autocomplete__suggestion-list');
 		await expect(suggestions).toHaveAttribute('aria-hidden', 'false');
 
 		await input.press('Escape');
@@ -87,11 +87,11 @@ test.describe('Ontario Search Box - Next.js E2E', () => {
 	});
 
 	test('reset clears entered text and returns focus to the input', async ({ page }) => {
-		const defaultSearch = page.locator('ontario-search-box').first();
-		const input = defaultSearch.locator('input[type="search"]');
+		const search = searchBox(page);
+		const input = search.locator('input[type="search"]');
 
 		await input.fill('Toronto');
-		await defaultSearch.getByRole('button', { name: 'Clear field' }).click();
+		await search.getByRole('button', { name: 'Clear field' }).click();
 
 		await expect(input).toHaveValue('');
 		await expect(input).toBeFocused();

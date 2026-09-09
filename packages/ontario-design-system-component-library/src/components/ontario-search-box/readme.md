@@ -263,8 +263,10 @@ export class SearchAutocompleteComponent {
 
 ### Slotted semantic and custom HTML suggestions
 
+Instead of (or in addition to) `getSuggestions(query)`, suggestions can be provided as slotted content. This is useful when the suggestion list is already known/rendered up front, or when a suggestion needs custom markup beyond what `ontario-search-result-item` offers.
+
 ```html
-<ontario-search-box id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
+<ontario-search-box element-id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
 	<div slot="suggestions" data-value="Waterloo" role="option">
@@ -279,7 +281,7 @@ export class SearchAutocompleteComponent {
 For search results with multiple categories, you can add non-interactive header elements to group suggestions:
 
 ```html
-<ontario-search-box id="search-grouped" caption="Search Ontario" enableAutocomplete>
+<ontario-search-box element-id="search-grouped" caption="Search Ontario" enableAutocomplete>
 	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Cities</div>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
@@ -292,7 +294,9 @@ For search results with multiple categories, you can add non-interactive header 
 
 ### Important notes about autocomplete
 
-Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+Autocomplete suggestions can come from either slotted content or `getSuggestions(query)`. Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+
+The component applies debouncing, keyboard navigation, active option state, and accessibility attributes while suggestions are open, regardless of which mode is supplying the list. Selecting a suggestion updates the input value. Submitting the form continues to call `performSearch` and emit `searchOnSubmit` with the current value.
 
 For custom HTML suggestions, plain text-only options are highlighted automatically. If your custom option contains extra markup, wrap the text that should receive highlighting in an element with `data-ontario-search-highlight`.
 

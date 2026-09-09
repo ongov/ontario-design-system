@@ -86,7 +86,8 @@ export class OntarioSearchBox {
 	@Prop() enableAutocomplete?: boolean = false;
 
 	/**
-	 * Async suggestion provider for autocomplete mode. Slot content has precedence over this callback.
+	 * Async suggestion provider for autocomplete mode.
+	 * Slot content has precedence over this callback.
 	 */
 	@Prop()
 	getSuggestions?: (query: string) => Promise<Suggestion[]>;

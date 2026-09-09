@@ -1,9 +1,7 @@
 import { expect, Locator, Page, test } from '@playwright/test';
 
 import { expectVrtScreenshot, waitForInteractionPaint } from '../vrt-helpers';
-import { gotoSearchBoxPage } from './utils/goto-search-box-page';
-
-const searchBox = (page: Page) => page.locator('ontario-search-box').first();
+import { gotoSearchPage, searchBox } from './search-box-helpers';
 
 const searchForm = (search: ReturnType<typeof searchBox>) => search.locator('form.ontario-search__container');
 
@@ -39,7 +37,7 @@ const includeSuggestionsInScreenshot = async (search: Locator) => {
 
 test.describe('Search Box - default states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchBoxPage(page);
+		await gotoSearchPage(page);
 	});
 
 	test('search box default', async ({ page }) => {
@@ -98,7 +96,7 @@ test.describe('Search Box - default states', () => {
 
 test.describe('Search Box - focus states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchBoxPage(page);
+		await gotoSearchPage(page);
 	});
 
 	test('search input focused', async ({ page }) => {
@@ -135,7 +133,7 @@ test.describe('Search Box - focus states', () => {
 
 test.describe('Search Box - hover states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchBoxPage(page);
+		await gotoSearchPage(page);
 	});
 
 	test('search button hovered', async ({ page }) => {
@@ -149,7 +147,7 @@ test.describe('Search Box - hover states', () => {
 
 test.describe('Search Box - active states', () => {
 	test.beforeEach(async ({ page }) => {
-		await gotoSearchBoxPage(page);
+		await gotoSearchPage(page);
 	});
 
 	test('search button active', async ({ page }) => {
