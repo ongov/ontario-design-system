@@ -4,7 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"ng": "ng",
-		"start": "pnpm run clean:full && pnpm i && ng serve --host 0.0.0.0",
+		"start": "pnpm run clean:full && pnpm i && pnpm run serve",
 		"serve": "ng serve --host 0.0.0.0",
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
