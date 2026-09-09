@@ -1,6 +1,7 @@
 'use client';
 
 import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
+import { useCallback } from 'react';
 import { Grid } from '../../grid';
 
 const ontarioCities = [
@@ -70,6 +71,26 @@ export default function OntarioSearchBoxPage() {
 		return ontarioCities.filter((city) => city.toLowerCase().includes(normalizedQuery)).slice(0, 8);
 	};
 
+	const handleCustomSearch = useCallback(async (value?: string) => {
+		alert(`Custom search triggered with value: ${value}`);
+	}, []);
+
+	const handleInput = (event: Event) => {
+		console.log('Input event:', (event.target as HTMLInputElement).value);
+	};
+
+	const handleChange = (event: Event) => {
+		console.log('Change event:', (event.target as HTMLInputElement).value);
+	};
+
+	const handleBlur = () => {
+		console.log('Blur event');
+	};
+
+	const handleFocus = () => {
+		console.log('Focus event');
+	};
+
 	return (
 		<main>
 			<Grid>
@@ -77,7 +98,7 @@ export default function OntarioSearchBoxPage() {
 					<h1>ontario-search-box</h1>
 
 					<h2 id="search-box">Search box</h2>
-					<div className="ontario-row ontario-margin-top-24-!">
+					<div id="autocomplete-demo" className="ontario-row ontario-margin-top-24-!">
 						<h3 className="ontario-h4">Autocomplete with Ontario cities (async)</h3>
 						<OntarioSearchBox
 							elementId="ontario-search-autocomplete"
@@ -93,6 +114,56 @@ export default function OntarioSearchBoxPage() {
 							performSearch={handleSearch}
 						></OntarioSearchBox>
 					</div>
+
+					<h2>&apos;language&apos; Prop Variants</h2>
+					<h3>En</h3>
+					<OntarioSearchBox elementId="search-language-en" caption="Search in English"></OntarioSearchBox>
+
+					<h3>Fr</h3>
+					<OntarioSearchBox
+						elementId="search-language-fr"
+						language="fr"
+						caption="Recherche en français"
+					></OntarioSearchBox>
+
+					<h2>&apos;required&apos; Prop Variants</h2>
+					<h3>True</h3>
+					<OntarioSearchBox
+						elementId="search-required-true"
+						required={true}
+						caption="Required field"
+					></OntarioSearchBox>
+
+					<h3>False</h3>
+					<OntarioSearchBox
+						elementId="search-required-false"
+						required={false}
+						caption="Optional field"
+					></OntarioSearchBox>
+
+					<h2>&apos;hint-text&apos; - Prop Variants</h2>
+					<OntarioSearchBox
+						elementId="search-hint-text"
+						caption="Search with hint"
+						hintText="This is a simple hint string."
+					></OntarioSearchBox>
+
+					<h2>performSearch - custom function</h2>
+					<OntarioSearchBox
+						elementId="search-custom"
+						caption="Search with custom function"
+						performSearch={handleCustomSearch}
+					></OntarioSearchBox>
+
+					<h2>Custom Event Handlers</h2>
+					<OntarioSearchBox
+						elementId="search-events"
+						caption="Search with custom event handlers"
+						customOnInput={handleInput}
+						customOnChange={handleChange}
+						customOnBlur={handleBlur}
+						customOnFocus={handleFocus}
+					></OntarioSearchBox>
 				</div>
 			</Grid>
 		</main>
