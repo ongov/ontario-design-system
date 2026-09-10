@@ -73,7 +73,7 @@ test.describe('ontario-button - interaction states', () => {
 	}
 });
 
-test.describe.only('ontario-button - link and responsive states', () => {
+test.describe('ontario-button - link and responsive states', () => {
 	test('link mode', async ({ page }) => {
 		await page.setContent(withGlobalStyles('<ontario-button href="/details" label="View details"></ontario-button>'));
 		await page.waitForChanges();
