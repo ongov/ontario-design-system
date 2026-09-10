@@ -169,8 +169,8 @@ importers:
         version: 0.16.2
     devDependencies:
       '@angular-devkit/build-angular':
-        specifier: 22.1.6
-        version: 22.1.6(44423afa13223b762ed2c3a397a64f9c)
+        specifier: 22.0.5
+        version: 22.0.5(d0bcb0394f09e87ca18ede4742f7a59c)
       '@angular/cli':
         specifier: ~22.1.0
         version: 22.1.2(@types/node@24.12.2)(chokidar@5.0.0)(supports-color@8.1.1)
@@ -217,8 +217,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       next:
-        specifier: 16.2.12
-        version: 16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0)
+        specifier: 15.5.20
+        version: 15.5.20(@playwright/test@1.61.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0)
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -231,7 +231,7 @@ importers:
         version: 1.62.1
       '@stencil/ssr':
         specifier: ^0.4.0
-        version: 0.4.0(next@16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0))(vite@6.4.3(@types/node@24.12.2)(jiti@2.6.1)(less@4.6.7)(lightningcss@1.32.0)(sass-embedded@1.93.2)(sass@1.99.0)(terser@5.49.0)(tsx@4.21.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.25)(uglify-js@3.19.3))
+        version: 0.4.0(next@15.5.20(@playwright/test@1.61.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0))(vite@8.0.16(@types/node@24.12.2)(esbuild@0.28.1)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.99.0)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))(webpack@5.106.2(esbuild@0.28.1))
       '@types/node':
         specifier: ^24.0.0
         version: 24.12.2
@@ -502,8 +502,8 @@ importers:
         version: 2.4.1
     devDependencies:
       '@angular-devkit/build-angular':
-        specifier: 22.1.6
-        version: 22.1.6(44423afa13223b762ed2c3a397a64f9c)
+        specifier: 22.0.5
+        version: 22.0.5(b3a9e494b0e3478e8b594b812739d4ef)
       '@angular/animations':
         specifier: 22.1.4
         version: 22.1.4(@angular/core@22.1.4(@angular/compiler@22.1.4)(rxjs@7.8.1)(zone.js@0.16.2))
@@ -595,6 +595,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      sass-embedded:
+        specifier: ^1.93.2
+        version: 1.93.2
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -15112,14 +15115,14 @@ snapshots:
       '@stencil/core': 4.36.2
       sass-embedded: 1.93.2
 
-  '@stencil/ssr@0.4.0(next@16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0))(vite@6.4.3(@types/node@24.12.2)(jiti@2.6.1)(less@4.6.7)(lightningcss@1.32.0)(sass-embedded@1.93.2)(sass@1.99.0)(terser@5.49.0)(tsx@4.21.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.25)(uglify-js@3.19.3))':
+  '@stencil/ssr@0.4.0(next@15.5.20(@playwright/test@1.61.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0))(vite@8.0.16(@types/node@24.12.2)(esbuild@0.28.1)(jiti@2.6.1)(less@4.6.4)(sass-embedded@1.93.2)(sass@1.99.0)(terser@5.46.2)(tsx@4.21.0)(yaml@2.9.0))(webpack@5.106.2(esbuild@0.28.1))':
     dependencies:
       ast-types: 0.14.2
       decamelize: 6.0.0
       esbuild: 0.25.3
       imports-loader: 5.0.0(webpack@5.109.2(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.25)(uglify-js@3.19.3))
       mlly: 1.7.4
-      next: 16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0)
+      next: 15.5.20(@playwright/test@1.61.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0)
       recast: 0.23.11
       vite: 6.4.3(@types/node@24.12.2)(jiti@2.6.1)(less@4.6.7)(lightningcss@1.32.0)(sass-embedded@1.93.2)(sass@1.99.0)(terser@5.49.0)(tsx@4.21.0)(yaml@2.9.0)
       webpack: 5.109.2(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.25)(uglify-js@3.19.3)
@@ -19832,7 +19835,7 @@ snapshots:
 
   nerf-dart@1.0.0: {}
 
-  next@16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0):
+  next@15.5.20(@playwright/test@1.61.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.99.0):
     dependencies:
       '@next/env': 16.2.12
       '@swc/helpers': 0.5.15
