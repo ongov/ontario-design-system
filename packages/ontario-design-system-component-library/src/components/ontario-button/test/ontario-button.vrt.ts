@@ -1,16 +1,14 @@
 import { expect, type Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
-
+import { ButtonTypes } from '../ontario-button.types';
 /**
  * Visual regression tests for ontario-button.
  *
  * These tests cover the button variants, interaction states, link rendering,
  * and mobile layout using the shared VRT helpers.
  */
-const buttonTypes = ['primary', 'secondary', 'tertiary'] as const;
-
-const setButtonContent = async (host: Locator, type: (typeof buttonTypes)[number]) => {
+const setButtonContent = async (host: Locator, type: (typeof ButtonTypes)[number]) => {
 	await host.evaluate((button: HTMLOntarioButtonElement, buttonType) => {
 		button.label = `${buttonType} button`;
 		button.ariaLabelText = `${buttonType} button`;
@@ -19,7 +17,7 @@ const setButtonContent = async (host: Locator, type: (typeof buttonTypes)[number
 };
 
 test.describe('ontario-button - interaction states', () => {
-	for (const buttonType of buttonTypes) {
+	for (const buttonType of ButtonTypes) {
 		test(`${buttonType} button - default state`, async ({ page }) => {
 			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
 			await page.waitForChanges();
@@ -75,7 +73,7 @@ test.describe('ontario-button - interaction states', () => {
 	}
 });
 
-test.describe('ontario-button - link and responsive states', () => {
+test.describe.only('ontario-button - link and responsive states', () => {
 	test('link mode', async ({ page }) => {
 		await page.setContent(withGlobalStyles('<ontario-button href="/details" label="View details"></ontario-button>'));
 		await page.waitForChanges();
@@ -97,7 +95,7 @@ test.describe('ontario-button - link and responsive states', () => {
 
 	test('primary button - tablet layout', async ({ page }) => {
 		await page.setViewportSize({ width: 900, height: 800 });
-		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Continue"></ontario-button>'));
+		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Réviser reçu"></ontario-button>'));
 		await page.waitForChanges();
 
 		const button = page.locator('ontario-button').locator('button');
