@@ -1,70 +1,64 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Ontario Summary List - React Framework Tests', () => {
+test.describe('Ontario Summary List - Next.js E2E', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-summary-list');
 	});
 
-	// React prop binding tests
-	test('should render caption prop correctly in React wrapper', async ({ page }) => {
-		const caption = page.locator('#ontario-summary-list-default').locator('h3.ontario-summary-list__heading');
-		await expect(caption).toHaveText('Personal information');
+	test('renders page heading and default summary caption', async ({ page }) => {
+		await expect(page.getByRole('heading', { level: 1, name: 'ontario-summary-list' })).toBeVisible();
+		await expect(page.locator('h3.ontario-summary-list__heading', { hasText: 'Personal information' })).toBeVisible();
 	});
 
-	test('should render full-width variant when fullWidth prop is true', async ({ page }) => {
-		const fullWidthList = page.locator('#ontario-summary-list-full-width').locator('.ontario-summary-list');
-		await expect(fullWidthList).toHaveClass(/summary-list-full-width/);
+	test('default list has no caption action link when prop is omitted', async ({ page }) => {
+		const defaultList = page.locator('ontario-summary-list').first();
+		await expect(defaultList.locator('a.ontario-summary-list__change-button')).toHaveCount(0);
 	});
 
-	test('should render caption action link from captionActionLink prop', async ({ page }) => {
-		const actionLink = page
-			.locator('#ontario-summary-list-heading-action')
-			.locator('a.ontario-summary-list__change-button');
-		await expect(actionLink).toBeVisible();
-		await expect(actionLink).toHaveAttribute('href', '/change-personal-info');
+	test('renders expected row count for personal information list', async ({ page }) => {
+		const defaultList = page.locator('ontario-summary-list').first();
+		await expect(defaultList.locator('ontario-summary-list-item')).toHaveCount(5);
 	});
 
-	test('should not render caption action link when captionActionLink prop is omitted', async ({ page }) => {
-		const defaultList = page.locator('#ontario-summary-list-default');
-		const actionLink = defaultList.locator('a.ontario-summary-list__change-button');
-		await expect(actionLink).toHaveCount(0);
+	test('renders caption action link for contact details variant', async ({ page }) => {
+		const contactList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Contact details' }),
+		});
+		const headingActionLink = contactList.locator('a.ontario-summary-list__change-button');
+		await expect(headingActionLink).toBeVisible();
+		await expect(headingActionLink).toHaveAttribute('href', '#summary-list');
 	});
 
-	// Accessibility tests
-	test('should have accessible heading with correct level', async ({ page }) => {
-		const heading = page.locator('#ontario-summary-list-default').locator('h3.ontario-summary-list__heading');
-		await expect(heading).toBeVisible();
-		const headingLevel = await heading.evaluate((el) => el.tagName);
-		expect(headingLevel).toBe('H3');
+	test('supports custom action slot row with screen-reader text', async ({ page }) => {
+		const mixedList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Mixed rows (action slot override)' }),
+		});
+		await expect(mixedList.getByRole('link', { name: /Change\s+your answer for: First name/i })).toBeVisible();
 	});
 
-	test('should have accessible change button with descriptive text', async ({ page }) => {
-		const changeButton = page
-			.locator('#ontario-summary-list-default')
-			.locator('a.ontario-summary-list-item__change-button')
-			.first();
-		const accessibleName = await changeButton.textContent();
-		expect(accessibleName).toContain('Change');
-		expect(accessibleName).toContain('your answer for:');
+	test('renders row without action link when actionLink is omitted', async ({ page }) => {
+		const noActionList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Row without action link' }),
+		});
+		await expect(noActionList.locator('a.ontario-summary-list-item__change-button')).toHaveCount(0);
 	});
 
-	// Hydration & Client-side rendering tests
-	test('should be hydrated and interactive after page load', async ({ page }) => {
-		const container = page.locator('#ontario-summary-list-default').locator('.ontario-summary-list');
-		await expect(container).toBeAttached();
-		// Verify web component is hydrated
-		const classList = await container.evaluate((el) => Array.from(el.classList));
-		expect(classList.length).toBeGreaterThan(0);
+	test('renders custom row action label when provided', async ({ page }) => {
+		const customLabelList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Row with custom action label' }),
+		});
+		await expect(customLabelList.getByRole('link', { name: /Edit\s+your answer for: Address/i })).toBeVisible();
 	});
 
-	// Layout variant tests
-	test('should apply default layout when full-width is false', async ({ page }) => {
-		const defaultList = page.locator('#ontario-summary-list-default').locator('.ontario-summary-list');
-		await expect(defaultList).not.toHaveClass(/summary-list-full-width/);
+	test('renders semantic definition list structure', async ({ page }) => {
+		const defaultList = page.locator('ontario-summary-list').first();
+		await expect(defaultList.locator('dl.ontario-summary-list__container')).toBeVisible();
 	});
 
-	test('should display definition list structure for semantic HTML', async ({ page }) => {
-		const dl = page.locator('#ontario-summary-list-default').locator('dl.ontario-summary-list__container');
-		await expect(dl).toBeAttached();
+	test('renders full-width variant class in Next page output', async ({ page }) => {
+		const fullWidthList = page.locator('ontario-summary-list', {
+			has: page.locator('h3.ontario-summary-list__heading', { hasText: 'Full width (12-column)' }),
+		});
+		await expect(fullWidthList.locator('.ontario-summary-list')).toHaveClass(/summary-list-full-width/);
 	});
 });
