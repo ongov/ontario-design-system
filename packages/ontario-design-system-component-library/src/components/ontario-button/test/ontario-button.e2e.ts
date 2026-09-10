@@ -223,32 +223,26 @@ test.describe('ontario-button', () => {
 		await clickPromise;
 	});
 
-	for (const buttonType of ['primary', 'secondary', 'tertiary'] as const) {
-		for (const language of [
-			{ name: 'English', label: 'Save profile' },
-			{ name: 'French', label: 'Enregistrer le profil' },
-		]) {
-			test(`the ${language.name} ${buttonType} button has no axe violations`, async ({ page }) => {
-				await page.setContent('<ontario-button></ontario-button>');
-				await page.waitForChanges();
+	for (const buttonType of ButtonTypes) {
+		test(`the ${buttonType} button with non-ASCII text has no axe violations`, async ({ page }) => {
+			const label = 'Réviser les données reçues';
 
-				await page.locator('ontario-button').evaluate(
-					(button: HTMLOntarioButtonElement, properties) => {
-						button.label = properties.label;
-						button.ariaLabelText = properties.label;
-						button.type = properties.type;
-					},
-					{ label: language.label, type: buttonType },
-				);
-				await page.waitForChanges();
+			await host.evaluate(
+				(button: HTMLOntarioButtonElement, properties) => {
+					button.label = properties.label;
+					button.ariaLabelText = properties.label;
+					button.type = properties.type;
+				},
+				{ label, type: buttonType },
+			);
+			await page.waitForChanges();
 
-				const button = page.locator('ontario-button').locator('button');
-				await expect(button).toHaveText(language.label);
-				await expect(button).toHaveAttribute('aria-label', language.label);
+			const button = host.locator('button');
+			await expect(button).toHaveText(label);
+			await expect(button).toHaveAttribute('aria-label', label);
 
-				const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-button').analyze();
-				expect(accessibilityScanResults.violations).toHaveLength(0);
-			});
-		}
+			const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-button').analyze();
+			expect(accessibilityScanResults.violations).toHaveLength(0);
+		});
 	}
 });
