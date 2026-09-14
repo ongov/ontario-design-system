@@ -3460,14 +3460,14 @@ export declare interface OntarioInPageNavigationItem extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputMode', 'inputValidator', 'inputWidth', 'language', 'name', 'pattern', 'required', 'requiredValidationMessage', 'type', 'value']
 })
 @Component({
   selector: 'ontario-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputMode', 'inputValidator', 'inputWidth', 'language', 'name', 'pattern', 'required', 'requiredValidationMessage', 'type', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -3650,14 +3650,14 @@ export declare interface OntarioRadioButtons extends Components.OntarioRadioButt
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'inputMode', 'language', 'maxSuggestions', 'minChars', 'pattern', 'performSearch', 'required', 'value']
 })
 @Component({
   selector: 'ontario-search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [{ name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'language', 'maxSuggestions', 'minChars', 'performSearch', 'required', 'value'],
+  inputs: [{ name: 'caption', required: true }, 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'debounceMs', 'elementId', 'enableAutocomplete', 'getSuggestions', 'hintText', 'inputMode', 'language', 'maxSuggestions', 'minChars', 'pattern', 'performSearch', 'required', 'value'],
   outputs: ['searchOnSubmit', 'inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'autocompleteQueryUpdated', 'autocompleteSuggestionsUpdated', 'autocompleteSuggestionSelected'],
   standalone: false
 })

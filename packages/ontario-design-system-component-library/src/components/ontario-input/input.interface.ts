@@ -19,4 +19,20 @@ export interface TextInput extends Input {
 	 * If no prop is set, it will default to false (optional).
 	 */
 	required?: boolean;
+
+	/**
+	 * Hints the browser/virtual keyboard which layout to present (for example, a numeric keypad).
+	 * Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`).
+	 * This is a UX hint only and does not perform or replace validation.
+	 *
+	 * Typed as `string` (rather than a literal union) so it matches the native `HTMLElement.inputMode`
+	 * type Stencil merges into the component's element interface.
+	 */
+	inputMode?: string;
+
+	/**
+	 * A regular expression the browser can use as a hint when validating input and choosing a mobile keyboard layout.
+	 * This is a browser hint only and does not replace server-side or component-level validation.
+	 */
+	pattern?: string;
 }
