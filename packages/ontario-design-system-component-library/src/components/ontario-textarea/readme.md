@@ -163,6 +163,19 @@ Each event emitted by the component uses the [`CustomEvent`](https://developer.m
 
 Eg. To access the value of any input entered into this component from the `inputOnInput` event, use the following code to wire up to listen for the the `inputOnInput` event.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-textarea id="textarea-1" name="textarea-1" caption="Text area"></ontario-textarea>
 <script>
@@ -175,6 +188,47 @@ Eg. To access the value of any input entered into this component from the `input
 		});
 	};
 </script>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+**Note:** in React, you don't attach these events with `addEventListener` like
+in the HTML example above. Instead, the React wrapper turns each custom event
+into its own prop, named by prefixing `on` and capitalizing the event name.
+So the `inputOnInput` custom event becomes the `onInputOnInput` prop, and
+`inputOnChange` becomes the `onInputOnChange` prop, as shown below.
+
+```tsx
+<OntarioTextarea
+	elementId="textarea-1"
+	name="textarea-1"
+	caption="Text area"
+	onInputOnInput={(event) => {
+		console.log('OnInput detail:', event.detail);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[elementId]="'textarea-1'"
+	[name]="'textarea-1'"
+	[caption]="'Text area'"
+	(inputOnInput)="onInputOnInput($event)"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 If the letter `i` is typed into `textarea-1`, the value of `event.detail` is the object emitted along with the `inputOnInput` event.
@@ -199,6 +253,19 @@ This isn't the case for the native `change` event, this event hits the ShadowDOM
 
 If you are observing the component from the outside, prefer reading the current textarea content from `event.target.value` on the host `input` or `change` event. Use `inputOnInput` and `inputOnChange` when you specifically want the component's richer custom event detail.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```js
 document.querySelector('ontario-textarea').addEventListener('input', (event) => {
 	console.log(event.target.value);
@@ -207,6 +274,46 @@ document.querySelector('ontario-textarea').addEventListener('input', (event) => 
 document.querySelector('ontario-textarea').addEventListener('change', (event) => {
 	console.log(event.target.value);
 });
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+React normalizes the native `input` event to `onChange`. Because the native
+`change` event does not cross the ShadowDOM boundary (see above), use
+`onInputOnChange` (mapped from the component's `inputOnChange` custom event)
+if you need to react to changes from React, rather than `onChange`.
+
+```tsx
+<OntarioTextarea
+	elementId="textarea-1"
+	name="textarea-1"
+	caption="Text area"
+	onInputOnChange={(event) => {
+		console.log(event.detail.value);
+	}}
+/>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-textarea
+	[elementId]="'textarea-1'"
+	[name]="'textarea-1'"
+	[caption]="'Text area'"
+	(inputOnChange)="onInputOnChange($event)"
+></ontario-textarea>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
@@ -383,6 +490,8 @@ Disabled/read-only policy source:
 | `value`          | `value`            | The textarea content value.                                                                                                                                                                                                                    | `string \| undefined`                   | `undefined` |
 
 ## Events
+
+_Note: when using the React wrapper (`@ongov/ontario-design-system-component-library-react`), each event below is exposed as a prop named `on` + the event name with the first letter capitalized. For example, `inputOnChange` becomes `onInputOnChange`, and `inputOnInput` becomes `onInputOnInput`._
 
 | Event                | Description                                                                         | Type                                                                        |
 | -------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
