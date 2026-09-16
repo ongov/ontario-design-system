@@ -381,6 +381,7 @@ export class OntarioDropdownList implements Dropdown {
 	 * is skipped; this placeholder pattern is instead handled through the `isEmptyStartOption` prop,
 	 * so that slotted markup can't produce a duplicate blank entry alongside the generated empty
 	 * start option.
+	 * Slotted options are read during initialization; later DOM additions or removals are not observed.
 	 */
 	private getSlottedOptions(): DropdownOption[] {
 		const optionElements = Array.from(

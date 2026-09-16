@@ -124,7 +124,7 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 
 As an alternative to the `options` prop, options can be passed as [`ontario-dropdown-option`](../ontario-dropdown-option/readme.md) light DOM children, using a markup pattern similar to a plain HTML `<select>` with `<option>` children.
 
-Note: native `<option>` elements cannot be slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-option` children are read once from the host's light DOM and re-rendered as native `<option>` elements inside the component's shadow root; they are not projected via a native `<slot>`.
+Note: native `<option>` elements cannot be slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-option` children are read once during initialization from the host's light DOM and re-rendered as native `<option>` elements inside the component's shadow root; they are not projected via a native `<slot>`, and later DOM additions or removals are not observed.
 
 If both `options` and `ontario-dropdown-option` children are provided, the `options` prop takes precedence.
 
