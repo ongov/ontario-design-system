@@ -388,9 +388,7 @@ export class OntarioDropdownList implements Dropdown {
 			this.element.querySelectorAll<HTMLOntarioDropdownOptionElement>(':scope > ontario-dropdown-option'),
 		);
 
-		const hasEmptyValueOption = optionElements.some(
-			(optionElement) => (optionElement.value ?? optionElement.textContent?.trim() ?? '') === '',
-		);
+		const hasEmptyValueOption = optionElements.some((optionElement) => this.getOptionValue(optionElement) === '');
 		if (hasEmptyValueOption) {
 			const message = new ConsoleMessageClass();
 			message
@@ -406,12 +404,19 @@ export class OntarioDropdownList implements Dropdown {
 		}
 
 		return optionElements
-			.filter((optionElement) => (optionElement.value ?? optionElement.textContent?.trim() ?? '') !== '')
+			.filter((optionElement) => this.getOptionValue(optionElement) !== '')
 			.map((optionElement) => ({
-				value: optionElement.value ?? optionElement.textContent?.trim() ?? '',
+				value: this.getOptionValue(optionElement),
 				label: optionElement.textContent?.trim() ?? '',
 				selected: !!optionElement.selected,
 			}));
+	}
+
+	/**
+	 * Returns the value used for a slotted dropdown option.
+	 */
+	private getOptionValue(optionElement: HTMLOntarioDropdownOptionElement): string {
+		return optionElement.value ?? optionElement.textContent?.trim() ?? '';
 	}
 
 	/**
