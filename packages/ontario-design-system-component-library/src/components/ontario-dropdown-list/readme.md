@@ -618,6 +618,24 @@ For more guidance, visit the [Error messaging guidance page](https://designsyste
 
 Keep the control available and validate selection on interaction (for example, on blur or submit). When validation fails, set a contextual error message that explains how to fix the issue.
 
+### Passing options as HTML `<option>` children
+
+As an alternative to the `options` prop, native `<option>` elements can be passed as light DOM children of `<ontario-dropdown-list>`, using the same markup pattern as a plain HTML `<select>`. This is provided for authors who are more familiar with writing `<option>` elements directly than constructing the `options` array/JSON string.
+
+```html
+<ontario-dropdown-list caption="Do you like cats?" name="cat-dropdown">
+	<option value="dropdown-option-1">Option 1</option>
+	<option value="dropdown-option-2" selected>Option 2</option>
+	<option value="dropdown-option-3">Option 3</option>
+</ontario-dropdown-list>
+```
+
+Notes:
+
+- These `<option>` children are read once from the host's light DOM and re-rendered inside the component's shadow root; they are not projected via a native `<slot>`. Browsers do not support slotting `<option>` elements into a `<select>` rendered in a shadow root, so a `<slot>`-based approach silently fails to display any options.
+- If both `options` and `<option>` children are provided, the `options` prop takes precedence and the `<option>` children are ignored.
+- Use the `isEmptyStartOption` prop to render an empty/placeholder start option rather than including an `<option value="">` child directly; a slotted `<option>` with an empty `value` will be ignored in favour of the `isEmptyStartOption` prop, to avoid rendering a duplicate blank option.
+
 ## Custom property types
 
 ### Caption
