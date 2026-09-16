@@ -27,7 +27,7 @@ import { Component, Prop } from '@stencil/core';
  */
 @Component({
 	tag: 'ontario-dropdown-option',
-	shadow: false,
+	shadow: true,
 })
 export class OntarioDropdownOption {
 	/**
