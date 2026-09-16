@@ -31,10 +31,11 @@ import { Component, Prop } from '@stencil/core';
 })
 export class OntarioDropdownOption {
 	/**
-	 * The value for the dropdown option.
+	 * The value for the dropdown option. When omitted, the parent
+	 * `ontario-dropdown-list` uses the option's text content.
 	 * Each value must be unique to the option within the parent `ontario-dropdown-list`.
 	 */
-	@Prop() value: string;
+	@Prop() value?: string;
 
 	/**
 	 * A boolean value to determine whether or not the dropdown option is pre-selected.
