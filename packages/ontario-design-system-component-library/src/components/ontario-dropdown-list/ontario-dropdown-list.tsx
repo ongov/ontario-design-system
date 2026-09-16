@@ -383,10 +383,12 @@ export class OntarioDropdownList implements Dropdown {
 	 * start option.
 	 */
 	private getSlottedOptions(): DropdownOption[] {
-		const optionElements = Array.from(this.element.querySelectorAll<HTMLElement>(':scope > ontario-dropdown-option'));
+		const optionElements = Array.from(
+			this.element.querySelectorAll<HTMLOntarioDropdownOptionElement>(':scope > ontario-dropdown-option'),
+		);
 
 		const hasEmptyValueOption = optionElements.some(
-			(optionElement) => (optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '') === '',
+			(optionElement) => (optionElement.value ?? optionElement.textContent?.trim() ?? '') === '',
 		);
 		if (hasEmptyValueOption) {
 			const message = new ConsoleMessageClass();
@@ -403,13 +405,11 @@ export class OntarioDropdownList implements Dropdown {
 		}
 
 		return optionElements
-			.filter(
-				(optionElement) => (optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '') !== '',
-			)
+			.filter((optionElement) => (optionElement.value ?? optionElement.textContent?.trim() ?? '') !== '')
 			.map((optionElement) => ({
-				value: optionElement.getAttribute('value') ?? optionElement.textContent?.trim() ?? '',
+				value: optionElement.value ?? optionElement.textContent?.trim() ?? '',
 				label: optionElement.textContent?.trim() ?? '',
-				selected: optionElement.hasAttribute('selected'),
+				selected: !!optionElement.selected,
 			}));
 	}
 
