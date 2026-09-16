@@ -27,7 +27,7 @@ For component guidance, see:
 | Property   | Attribute  | Description                                                                                                                                                                                                                                                             | Type                   | Default     |
 | ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
 | `selected` | `selected` | A boolean value to determine whether or not the dropdown option is pre-selected. If no option is marked as selected, the first available option (or the empty start option, if `isEmptyStartOption` is enabled on the parent `ontario-dropdown-list`) will be selected. | `boolean \| undefined` | `false`     |
-| `value`    | `value`    | The value for the dropdown option. Each value must be unique to the option within the parent `ontario-dropdown-list`.                                                                                                                                                   | `string`               | `undefined` |
+| `value`    | `value`    | The value for the dropdown option. When omitted, the parent `ontario-dropdown-list` uses the option's text content. Each value must be unique to the option within the parent `ontario-dropdown-list`.                                                                  | `string \| undefined`  | `undefined` |
 
 ---
 
