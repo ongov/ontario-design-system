@@ -61,4 +61,30 @@ test.describe('Ontario Summary List - Next.js E2E', () => {
 		});
 		await expect(fullWidthList.locator('.ontario-summary-list')).toHaveClass(/summary-list-full-width/);
 	});
+
+	test('default list does not apply the full-width class', async ({ page }) => {
+		const defaultList = page.locator('ontario-summary-list').first();
+		await expect(defaultList.locator('.ontario-summary-list')).not.toHaveClass(/summary-list-full-width/);
+	});
+
+	test('renders caption heading at the configured heading level', async ({ page }) => {
+		const heading = page.locator('ontario-summary-list').first().locator('h3.ontario-summary-list__heading');
+		await expect(heading).toBeVisible();
+		const tagName = await heading.evaluate((el) => el.tagName);
+		expect(tagName).toBe('H3');
+	});
+
+	test('renders row action link href from the actionLink prop', async ({ page }) => {
+		const actionLink = page
+			.locator('#ontario-summary-list-item-with-action')
+			.locator('a.ontario-summary-list-item__change-button');
+		await expect(actionLink).toHaveAttribute('href', '/change-address');
+	});
+
+	test('is hydrated and interactive after page load', async ({ page }) => {
+		const defaultList = page.locator('ontario-summary-list').first();
+		await expect(defaultList).toBeAttached();
+		const classList = await defaultList.evaluate((el) => Array.from(el.classList));
+		expect(classList.length).toBeGreaterThan(0);
+	});
 });
