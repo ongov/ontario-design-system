@@ -94,7 +94,7 @@ Emitted before navigation when applicable.
 
 
 @ProxyCmp({
-  inputs: ['language']
+  inputs: ['bottomOffset', 'language']
 })
 @Component({
   selector: 'ontario-back-to-top',
