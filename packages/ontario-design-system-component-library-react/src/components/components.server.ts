@@ -221,7 +221,10 @@ export type OntarioBackToTopEvents = NonNullable<unknown>;
 
 export const OntarioBackToTop: StencilReactComponent<OntarioBackToTopElement, OntarioBackToTopEvents> = /*@__PURE__*/ createComponent<OntarioBackToTopElement, OntarioBackToTopEvents>({
     tagName: 'ontario-back-to-top',
-    properties: { language: 'language' },
+    properties: {
+        language: 'language',
+        bottomOffset: 'bottom-offset'
+    },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioBackToTop as ReactWebComponent<OntarioBackToTopElement, OntarioBackToTopEvents>,
     serializeShadowRoot
