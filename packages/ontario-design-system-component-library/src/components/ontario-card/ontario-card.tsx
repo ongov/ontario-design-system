@@ -11,7 +11,7 @@ import {
 } from './ontario-card-types';
 import { headingLevelDefinitions, HeadingLevel } from '../../utils/common/common.interface';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { printArray } from '../../utils/helper/utils';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 /**
@@ -256,20 +256,13 @@ export class OntarioCard {
 		acceptableValues: readonly any[],
 		defaultValue: string,
 	) {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(` ${propName} `)
-			.addRegularText('on')
-			.addMonospaceText(` ${component} `)
-			.addRegularText('was set to an invalid value of ')
-			.addMonospaceText(` ${propValue} `)
-			.addRegularText('. Only ')
-			.addMonospaceText(printArray([...acceptableValues]))
-			.addRegularText(' are supported values. The default value of')
-			.addMonospaceText(` ${defaultValue} `)
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName,
+			componentTag: component,
+			propValue,
+			allowedValues: acceptableValues,
+			defaultValue,
+		});
 	}
 
 	/**
