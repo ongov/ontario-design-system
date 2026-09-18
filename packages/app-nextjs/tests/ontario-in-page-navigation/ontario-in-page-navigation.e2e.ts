@@ -28,6 +28,24 @@ test.describe('Ontario In-Page Navigation - Next.js E2E', () => {
 
 	test('no-top-border variant has expected class in rendered output', async ({ page }) => {
 		const borderlessNav = page.locator('ontario-in-page-navigation').nth(1);
-		await expect(borderlessNav.locator('.ontario-page-navigation')).toHaveClass(/ontario-page-navigation--no-top-border/);
+		await expect(borderlessNav.locator('.ontario-page-navigation')).toHaveClass(
+			/ontario-page-navigation--no-top-border/,
+		);
+	});
+
+	test('skip link targets an existing element on the page', async ({ page }) => {
+		const skipLink = page.locator('ontario-in-page-navigation').first().locator('.ontario-page-navigation__skip-link');
+		await expect(skipLink).toHaveAttribute('href', '#skip-to-main');
+		await expect(page.locator('#skip-to-main')).toBeAttached();
+	});
+
+	test('activating the skip link moves focus to the main content', async ({ page }) => {
+		// The skip link is visually hidden until focused (`ontario-show-on-focus`), so it
+		// must be focused via keyboard before it becomes visible/clickable, mirroring how
+		// keyboard and assistive-technology users would actually reach and activate it.
+		const skipLink = page.locator('ontario-in-page-navigation').first().locator('.ontario-page-navigation__skip-link');
+		await skipLink.focus();
+		await page.keyboard.press('Enter');
+		await expect(page).toHaveURL(/#skip-to-main$/);
 	});
 });
