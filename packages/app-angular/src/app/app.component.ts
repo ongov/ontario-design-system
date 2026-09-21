@@ -79,7 +79,9 @@ export class AppComponent implements OnInit {
 	}
 
 	getLanguageFromURL(): AppLanguage {
-		return window.location.hash.includes('/fr/') ? 'fr' : 'en';
+		// The base href can generate hashes with or without a slash after '#' (e.g.
+		// '#/fr/demarrer' or '#fr/demarrer'), so match both forms.
+		return /^#\/?fr\//.test(window.location.hash) ? 'fr' : 'en';
 	}
 
 	getRoute() {
