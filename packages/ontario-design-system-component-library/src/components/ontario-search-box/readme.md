@@ -110,19 +110,6 @@ As an alternative to using a custom `performSearch()` function the search box al
 
 The following example registers a simple function on `window` `load` that adds an event listener to the search box listening for the `searchOnSubmit` event and outputs the value of the `detail` property.
 
-```mdx-code-block
-<Tabs
-	defaultValue="html"
-	values={[
-		{label: 'HTML', value: 'html'},
-		{label: 'React', value: 'react'},
-		{label: 'Angular', value: 'angular'},
-	]}
-	groupId="framework"
-	queryString="framework">
-<TabItem value="html">
-```
-
 ```html
 <script>
 	window.addEventListener('load', () => {
@@ -134,44 +121,6 @@ The following example registers a simple function on `window` `load` that adds a
 		});
 	});
 </script>
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="react">
-```
-
-**Note:** in React, you don't attach this event with `addEventListener` like
-in the HTML example above. Instead, the React wrapper turns the
-`searchOnSubmit` custom event into its own prop, `onSearchOnSubmit`, as shown
-below.
-
-```tsx
-<OntarioSearchBox
-	id="ontario-search-box"
-	caption="Search the directory"
-	onSearchOnSubmit={(event) => {
-		console.log('Search Event Detail:', event.detail);
-	}}
-/>
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="angular">
-```
-
-```html
-<ontario-search-box
-	id="ontario-search-box"
-	caption="Search the directory"
-	(searchOnSubmit)="onSearchOnSubmit($event)"
-></ontario-search-box>
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
 ```
 
 ## Autocomplete examples
@@ -377,8 +326,6 @@ Disabled/read-only policy source:
 
 ## Events
 
-\_Note: when using the React wrapper (`@ongov/ontario-design-system-component-library-react`), each event below is exposed as a prop named `on` + the event name with the first letter capitalized. For example, `inputOnChange` becomes `onInputOnChange`, and `searchOnSubmit` becomes `onSearchOnSubmit`.
-
 | Event                            | Description                                                                                                       | Type                                                                        |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `autocompleteQueryUpdated`       | Emitted when the autocomplete query changes.                                                                      | `CustomEvent<{ query: string; }>`                                           |
@@ -387,7 +334,7 @@ Disabled/read-only policy source:
 | `inputOnBlur`                    | Emitted when a keyboard input event occurs when an input has lost focus.                                          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
 | `inputOnChange`                  | Emitted when a keyboard input or mouse event occurs when an input has been changed.                               | `CustomEvent<{ id?: string \| undefined; value?: string \| undefined; }>`   |
 | `inputOnFocus`                   | Emitted when a keyboard input event occurs when an input has gained focus.                                        | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
-| `inputOnInput`                   | Emitted when a input occurs when an input has been changed.                                                       | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
+| `inputOnInput`                   | Emitted when a input  occurs when an input has been changed.                                                      | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 | `searchOnSubmit`                 | Emitted when the search is submitted. Below is an example on how to hook into the event to get the event details. | `CustomEvent<string>`                                                       |
 
 ## Dependencies

@@ -337,19 +337,6 @@ Each event emitted by the component uses the [`CustomEvent`](https://developer.m
 
 Eg. To access the value of any change made to this component from the `inputOnInput` event, use the following code to wire up to listen for the the `inputOnInput` event.
 
-```mdx-code-block
-<Tabs
-	defaultValue="html"
-	values={[
-		{label: 'HTML', value: 'html'},
-		{label: 'React', value: 'react'},
-		{label: 'Angular', value: 'angular'},
-	]}
-	groupId="framework"
-	queryString="framework">
-<TabItem value="html">
-```
-
 ```html
 <ontario-date-input
 	element-id="date-input-example-id"
@@ -381,52 +368,6 @@ Eg. To access the value of any change made to this component from the `inputOnIn
 </script>
 ```
 
-```mdx-code-block
-</TabItem>
-<TabItem value="react">
-```
-
-**Note:** in React, you don't attach these events with `addEventListener` like
-in the HTML example above. Instead, the React wrapper turns each custom event
-into its own prop, named by prefixing `on` and capitalizing the event name.
-So the `inputOnInput` custom event becomes the `onInputOnInput` prop, and
-`inputOnChange` becomes the `onInputOnChange` prop, as shown below.
-
-```tsx
-<OntarioDateInput
-	elementId="date-input-example-id"
-	id="date-input-1"
-	placeholder={{ day: 'DD', month: 'MM', year: 'YYYY' }}
-	minYear={999}
-	maxYear={9999}
-	required
-	dateOptions={['day', 'month', 'year']}
-	hintText="For example 2000 03 01"
-	caption={{ captionText: 'Exact Date', captionType: 'default' }}
-	onInputOnInput={(event) => {
-		console.log('OnInput detail:', event.detail);
-	}}
-/>
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="angular">
-```
-
-```html
-<ontario-date-input
-	[elementId]="'date-input-example-id'"
-	id="date-input-1"
-	(inputOnInput)="onInputOnInput($event)"
-></ontario-date-input>
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
 If the number `2` is entered into the year input within `date-input-1`, the value of `event.detail` is the object emitted along with the `inputOnInput` event.
 
 ```js
@@ -445,7 +386,7 @@ names. Read the aggregate ISO value from `event.target.value`.
 
 The same aggregate value is also included in `event.detail.value` for consumers that prefer event payloads.
 
-The field-level `inputOnInput` and `inputOnChange` custom events remain available when you need to know which sub-field changed. When using React, these are exposed as `onInputOnInput` and `onInputOnChange` props respectively.
+The field-level `inputOnInput` and `inputOnChange` custom events remain available when you need to know which sub-field changed.
 
 When using libraries that listen for events, this process may not work with them and a workaround might be required depending on the framework or library in use.
 
@@ -631,8 +572,6 @@ Disabled/read-only policy source:
 | `value`         | `value`          | The aggregate date value for the component. Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`). | `string \| undefined`                                                                                            | `undefined`                |
 
 ## Events
-
-_Note: when using the React wrapper (`@ongov/ontario-design-system-component-library-react`), each event below is exposed as a prop named `on` + the event name with the first letter capitalized. For example, `inputOnChange` becomes `onInputOnChange`, and `inputOnInput` becomes `onInputOnInput`. See the [`onInputOnChange` example](/packages/app-nextjs/src/app/components/ontario-date-input/client-side/page.tsx) for reference._
 
 | Event                | Description                                                                | Type                                                                     |
 | -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
