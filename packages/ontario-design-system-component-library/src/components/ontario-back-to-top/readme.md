@@ -112,6 +112,52 @@ Otherwise, a default Back to Top button can be used as follows:
     </div>
 </div>
 
+### Reserving space for other fixed/sticky elements
+
+If another fixed or sticky element (for example, a feedback button or live chat launcher) is stacked below the Back to Top button, use the `bottomOffset` property to reserve additional vertical space so the two elements don't overlap as the viewport is resized. The value should be a valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`), and is added on top of the button's default `bottom: 5%` position, rather than replacing it. Pass a plain CSS length or CSS variable; avoid arbitrary CSS declarations.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-back-to-top bottom-offset="63px"> </ontario-back-to-top>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioBackToTop bottomOffset="63px"> </OntarioBackToTop>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-back-to-top [bottomOffset]="'63px'"> </ontario-back-to-top>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+If more advanced positioning is needed than `bottomOffset` supports, overriding the component's positioning with custom CSS is also a supported pattern.
+
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 
 The Ontario Back to Top component supports server-side rendering, with a few considerations:
@@ -133,9 +179,10 @@ For component guidance, see:
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                              | Type                        | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- | ----------- |
-| `language` | `language` | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English. | `"en" \| "fr" \| undefined` | `undefined` |
+| Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Type                        | Default     |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
+| `bottomOffset` | `bottom-offset` | An additional distance to add to the button's default `bottom: 5%` positioning, expressed as a valid CSS length (for example `"63px"`, `"4rem"`, or `var(--my-offset)`). This is useful when other fixed/sticky elements (for example, a feedback button or live chat launcher) are stacked below the Back to Top button, and space needs to be reserved so the two don't overlap as the viewport is resized. The value is added on top of the existing `5%` offset (that is, `bottom: calc(5% + <bottomOffset>)`), rather than replacing it. Avoid passing arbitrary CSS declarations; use a plain CSS length or CSS variable instead. | `string \| undefined`       | `undefined` |
+| `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language prop is passed, it will default to English.                                                                                                                                                                                                                                                                                                                                                                                                                | `"en" \| "fr" \| undefined` | `undefined` |
 
 ---
 

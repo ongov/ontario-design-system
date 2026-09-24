@@ -20,7 +20,9 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 // Fractal component style coverage ↓
 .ontario-back-to-top--default {
 	position: fixed;
-	bottom: 5%;
+	// Adds any consumer-provided `bottomOffset` on top of the default 5% offset, so other fixed/sticky
+	// elements (e.g. a feedback button) stacked below the Back to Top button don't overlap it.
+	bottom: calc(5% + var(--ontario-back-to-top-bottom-offset, #{spacing.$spacing-0}));
 	right: 2%;
 	visibility: hidden;
 	opacity: 0;
