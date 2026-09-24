@@ -6,7 +6,7 @@ elements.
 
 ## ODS controls compared with React form controls
 
-The main difference is that the ODS form controls are [web components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) that are styled and functionally managed by the Ontario Design System, while [React's built-in form controls](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) are native DOM elements. They look similar in JSX, but their value and event APIs are different:
+The main difference is that the ODS form controls are [web components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) that are styled and functionally managed by the Ontario Design System, while [React's built-in form controls](https://react.dev/reference/react-dom/components#form-components) are native DOM elements. They look similar in JSX, but their value and event APIs are different:
 
 | Area            | ODS form controls                                                                                                                                                  | React built-in controls                                                                                                             |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,17 +98,24 @@ import { OntarioInput } from '@ongov/ontario-design-system-component-library-rea
 export function UncontrolledTextInput() {
 	const inputRef = useRef<HTMLOntarioInputElement>(null);
 	const [submittedName, setSubmittedName] = useState('');
+	const [hasBeenReset, setHasBeenReset] = useState(false);
 
 	const submit = (event: FormEvent) => {
 		event.preventDefault();
 		setSubmittedName(inputRef.current?.value ?? '');
 	};
 
+	const reset = (event: FormEvent) => {
+		event.preventDefault();
+		setHasBeenReset(true);
+	};
+
 	return (
-		<form onSubmit={submit}>
+		<form onSubmit={submit} onReset={reset}>
 			<OntarioInput ref={inputRef} caption="Name" name="name" value="Default value" />
 			<button type="submit">Read current value</button>
-			<p>Current value: {inputRef.current?.value}</p>
+			<p>Current value: {submittedName}</p>
+			<button type="reset">Reset to default</button>
 			<p>Form has been reset to default: {hasBeenReset ? 'Yes' : 'No'}</p>
 		</form>
 	);
