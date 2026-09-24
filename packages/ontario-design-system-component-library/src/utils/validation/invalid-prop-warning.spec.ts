@@ -27,7 +27,7 @@ describe('printInvalidPropWarning', () => {
 		warnSpy.mockRestore();
 	});
 
-	it('prints a simple invalid prop warning from allowed values', () => {
+	it('prints a full invalid type warning from allowed values', () => {
 		printInvalidPropWarning({
 			propName: 'type',
 			componentTag: '<ontario-button>',
@@ -37,12 +37,21 @@ describe('printInvalidPropWarning', () => {
 		});
 
 		expect(warnSpy).toHaveBeenCalledTimes(1);
-		expect(warnSpy.mock.calls[0][0]).toContain('type');
-		expect(warnSpy.mock.calls[0][0]).toContain('primary, secondary, tertiary or internalThemeDark');
-		expect(warnSpy.mock.calls[0][0]).toContain('secondary');
+		expect(warnSpy.mock.calls[0][0]).toEqual(
+			'%cOntario Design System' +
+				'%c type ' +
+				'%con' +
+				'%c <ontario-button> ' +
+				'%cwas set to an invalid type; only ' +
+				'%c primary, secondary, tertiary or internalThemeDark ' +
+				'%care supported. The default ' +
+				'%ctype' +
+				'%c secondary ' +
+				'%cis assumed.',
+		);
 	});
 
-	it('prints an invalid prop warning that includes the provided value', () => {
+	it('prints a full invalid value warning that includes the provided value', () => {
 		printInvalidPropWarning({
 			propName: 'layout-direction',
 			componentTag: '<ontario-card>',
@@ -52,7 +61,18 @@ describe('printInvalidPropWarning', () => {
 		});
 
 		expect(warnSpy).toHaveBeenCalledTimes(1);
-		expect(warnSpy.mock.calls[0][0]).toContain('diagonal');
-		expect(warnSpy.mock.calls[0][0]).toContain('vertical and horizontal');
+		expect(warnSpy.mock.calls[0][0]).toEqual(
+			'%cOntario Design System' +
+				'%c layout-direction ' +
+				'%con' +
+				'%c <ontario-card> ' +
+				'%cwas set to an invalid value of ' +
+				'%c diagonal ' +
+				'%c. Only ' +
+				'%cvertical and horizontal' +
+				'%c are supported values. The default value of' +
+				'%c vertical ' +
+				'%cis assumed.',
+		);
 	});
 });
