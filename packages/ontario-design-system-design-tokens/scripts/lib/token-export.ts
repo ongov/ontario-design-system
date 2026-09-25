@@ -1,12 +1,15 @@
 /**
  * @file Shared token-tree conversion helpers for the primitive export
  * scripts (export-figma-tokens.ts, export-platforms.ts). Both exports need
- * the same "infer a portable type from path/value" heuristic so a primitive
- * token (for example `border.width.100`) is described identically regardless
- * of which downstream tool consumes it. Type vocabulary (`fontFamilies`,
- * `fontSizes`, `borderRadius`, `spacing`, `sizing`, etc.) follows the
- * convention used by the GC Design System's token export
- * (github.com/cds-snc/gcds-tokens).
+ * the same "infer a portable type from path/value" heuristic as a fallback
+ * for any token whose source JSON omits an explicit `type` (in normal
+ * operation this should not happen: `scripts/lib/token-tooling.ts`'s linter
+ * hard-fails the build on a missing or invalid declared type). Type
+ * vocabulary (`fontFamilies`, `fontSizes`, `borderRadius`, `spacing`,
+ * `sizing`, etc.) follows the convention used by the GC Design System's
+ * token export (github.com/cds-snc/gcds-tokens); see the closed
+ * `TOKEN_TYPES` vocabulary in `scripts/lib/token-types.ts` for the full,
+ * authoritative list — add a new type there first, then use it here.
  */
 import { normaliseReference, type TokenTree } from './token-tooling.ts';
 
