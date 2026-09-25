@@ -11,6 +11,20 @@ import StyleDictionary from 'style-dictionary';
 import { primitiveTransforms } from './scripts/lib/transforms.ts';
 import { primitivePlatformsConfig } from './scripts/config/primitive.config.ts';
 import { exportPlatformsConfig } from './scripts/lib/export-platforms.ts';
+import { lintTokens } from './scripts/lib/token-tooling.ts';
+
+// Lint every primitive token file up front, before any platform builds. A
+// missing or invalid `type` (or a broken alias) hard-fails the build rather
+// than silently shipping an untyped or mistyped export (DS-2692).
+const lintResults = lintTokens({ fix: false });
+if (lintResults.errors.length > 0) {
+	console.error(`Token lint failed: ${lintResults.errors.length} error(s) across ${lintResults.filesChecked} files.`);
+	lintResults.errors.forEach((error) => {
+		console.error(` - [${error.code}] ${error.file} :: ${error.tokenPath} ${error.message}`);
+	});
+	process.exit(1);
+}
+console.log(`Token lint passed: ${lintResults.filesChecked} files checked, 0 errors.`);
 
 // Register the primitive value transforms so they are available to the
 // primitive output platforms configured below (DS-2691 / PR 5).
