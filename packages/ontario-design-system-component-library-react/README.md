@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Installation and usage](#installation-and-usage)
   - [React usage](#react-usage)
+  - [Handling component events](#handling-component-events)
   - [Next.js usage](#nextjs-usage)
 - [Support](#support)
 
@@ -91,7 +92,7 @@ To use the Ontario Design System React component library, follow these steps:
 
 No additional configuration is required.
 
-Components can be improted directly:
+Components can be imported directly:
 
 ```tsx
 <OntarioButton type="primary">Click me!</OntarioButton>
@@ -103,6 +104,23 @@ Components can be improted directly:
 	quote="Access to high-quality child care is an issue that impacts our entire society."
 ></OntarioBlockquote>
 ```
+
+### Handling component events
+
+The React components expose each custom event as a prop named by prefixing `on` and capitalizing the first letter of the event name. For example, the `inputOnChange` custom event becomes the `onInputOnChange` prop:
+
+```tsx
+<OntarioInput
+	elementId="input-1"
+	name="input-1"
+	caption="What is your name?"
+	onInputOnChange={(event) => {
+		console.log(event.detail);
+	}}
+/>
+```
+
+Use the component's custom event props when you need the event payload in `event.detail`. Native `input` events are exposed through React's `onChange` prop, while native `change` events do not cross the component's Shadow DOM boundary. Components that provide a custom change event expose it through the corresponding mapped prop, such as `onInputOnChange`.
 
 ### Next.js usage
 
