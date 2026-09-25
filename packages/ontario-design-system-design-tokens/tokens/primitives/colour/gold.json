@@ -1,0 +1,72 @@
+{
+  "colour": {
+    "accent": {
+      "gold": {
+        "0": {
+          "value": "hsl(0 0% 100%)",
+          "type": "color"
+        },
+        "5": {
+          "value": "hsl(43 56% 94%)",
+          "type": "color"
+        },
+        "10": {
+          "value": "hsl(45 55% 87%)",
+          "type": "color"
+        },
+        "20": {
+          "value": "hsl(45 58% 78%)",
+          "type": "color"
+        },
+        "30": {
+          "value": "hsl(45 60% 68%)",
+          "type": "color"
+        },
+        "40": {
+          "value": "hsl(46 59% 58%)",
+          "type": "color"
+        },
+        "50": {
+          "value": "hsl(45 63% 49%)",
+          "type": "color"
+        },
+        "60": {
+          "value": "hsl(45 58% 46%)",
+          "type": "color"
+        },
+        "70": {
+          "value": "hsl(45 52% 44%)",
+          "type": "color"
+        },
+        "80": {
+          "value": "hsl(45 45% 41%)",
+          "type": "color"
+        },
+        "90": {
+          "value": "hsl(45 37% 38%)",
+          "type": "color"
+        },
+        "95": {
+          "value": "hsl(45 37% 19%)",
+          "type": "color"
+        },
+        "100": {
+          "value": "hsl(0 0% 0%)",
+          "type": "color"
+        },
+        "light": {
+          "value": "{colour.accent.gold.10}",
+          "type": "color"
+        },
+        "base": {
+          "value": "{colour.accent.gold.50}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{colour.accent.gold.90}",
+          "type": "color"
+        }
+      }
+    }
+  }
+}
