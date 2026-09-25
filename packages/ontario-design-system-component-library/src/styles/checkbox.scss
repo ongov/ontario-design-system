@@ -1,0 +1,170 @@
+@use 'sass:math';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
+
+// Shared checkbox visual tokens, reused by both the `ontario-checkboxes` group component and the
+// standalone `ontario-checkbox` component. Kept here (rather than inside either component's own
+// folder) so the `ontario-design-system-complete-styles` build - which auto-forwards every `.scss`
+// file it finds under a component folder - doesn't pick this up and forward it a second time.
+$ontario-checkbox-size: globalFunctions.px-to-rem(28);
+$ontario-checkbox-size-mobile: globalFunctions.px-to-rem(32);
+$ontario-checkbox-border-size: globalFunctions.px-to-rem(2);
+$ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
+
+// DS-2191: Assign --checkbox-bg for both native DOM and shadow DOM display of checkbox elements.
+// :root supports native DOM display exclusively while :host is ignored.
+// :host supports shadow DOM display exclusively while :root is ignored.
+:root,
+:host {
+	--checkbox-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 2.667C0 1.194 1.194 0 2.667 0h18.667C22.806 0 24 1.194 24 2.667v18.667C24 22.806 22.806 24 21.333 24H2.667C1.194 24 0 22.806 0 21.333V2.667z' fill='%231a1a1a'/%3E%3Cpath d='M2.667 12.616l6.667 6.718 12-12.092-1.88-1.908L9.333 15.53l-4.787-4.8-1.88 1.894z' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+// Emits the checkbox item/input/label markup states (default, focus, checked) for a given BEM
+// block name, e.g. "ontario-checkboxes" (group) or "ontario-checkbox" (standalone). This keeps the
+// visual tokens and behaviour in one place while letting each component keep its own class names.
+@mixin checkbox-states($block) {
+	.#{$block}__item {
+		position: relative;
+		margin: 0 0 spacing.$spacing-4;
+		padding: 0 0 0 spacing.$spacing-6;
+		min-height: $ontario-checkbox-size;
+		box-sizing: content-box;
+
+		&:last-of-type {
+			margin: 0;
+		}
+
+		.#{$block}__hint-expander {
+			margin: spacing.$spacing-3 0 0 spacing.$spacing-3;
+
+			@media screen and (max-width: breakpoints.$small-breakpoint) {
+				margin-top: spacing.$spacing-4;
+			}
+		}
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			padding: 0 0 0 spacing.$spacing-7;
+			min-height: $ontario-checkbox-size-mobile;
+		}
+	}
+
+	.#{$block}__input {
+		cursor: pointer;
+		margin: 0;
+		position: absolute;
+		top: -$ontario-checkbox-border-size;
+		left: -$ontario-checkbox-border-size;
+		opacity: 0;
+		width: globalVariables.$touch-target-size;
+		height: globalVariables.$touch-target-size;
+		z-index: zIndex.$ontario-z-index-neutral;
+
+		// prevent blue default highlighting of input on android
+		-webkit-tap-highlight-color: transparent;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			width: globalVariables.$touch-target-size-mobile;
+			height: globalVariables.$touch-target-size-mobile;
+		}
+	}
+
+	.#{$block}__label {
+		display: inline-block;
+		cursor: pointer;
+		line-height: globalVariables.$line-height-default;
+		// Specific spacing required in order to visually align label with input
+		margin: spacing.$spacing-1 0;
+		padding: 0 spacing.$spacing-4;
+		width: auto;
+		white-space: normal;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			// Specific spacing required in order to visually align label with input
+			margin: 0.33rem 0;
+		}
+
+		// [ ] Check box styles
+		&:before {
+			content: '';
+			border: $ontario-checkbox-border-size solid colours.$ontario-colour-black;
+			background-color: colours.$ontario-colour-white;
+			border-radius: globalVariables.$global-radius;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: $ontario-checkbox-size-mobile;
+			height: $ontario-checkbox-size-mobile;
+			transition: border 0.1s ease-in-out;
+			display: block;
+
+			@media screen and (min-width: breakpoints.$small-breakpoint) {
+				width: $ontario-checkbox-size;
+				height: $ontario-checkbox-size;
+			}
+		}
+
+		// ✔✔✔ Check mark styles ✔✔✔
+		&:after {
+			content: '';
+			background-image: var(--checkbox-bg);
+			background-repeat: no-repeat;
+			height: $ontario-checkbox-size + $ontario-checkbox-border-size;
+			width: $ontario-checkbox-size + $ontario-checkbox-border-size;
+			position: absolute;
+			top: math.div($ontario-checkbox-border-size, 2);
+			left: math.div($ontario-checkbox-border-size, 2);
+			right: 0;
+			bottom: 0;
+			opacity: 0;
+			display: block;
+
+			@media screen and (max-width: breakpoints.$small-breakpoint) {
+				height: $ontario-checkbox-size-mobile + $ontario-checkbox-border-size;
+				width: $ontario-checkbox-size-mobile + $ontario-checkbox-border-size;
+			}
+		}
+	}
+
+	.#{$block}__input:focus + .#{$block}__label:before {
+		-moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
+		-webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
+		box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
+		outline: $ontario-checkbox-box-shadow-outline solid transparent;
+		transition: all 0.1s ease-in-out;
+	}
+
+	.#{$block}__input:checked + .#{$block}__label:after {
+		opacity: 1;
+	}
+
+	.#{$block}__input:checked + .#{$block}__label:before {
+		background-color: colours.$ontario-colour-black;
+	}
+
+	.#{$block}__hint-expander {
+		margin: spacing.$spacing-3 0 0 0;
+
+		@media screen and (max-width: breakpoints.$small-breakpoint) {
+			margin-top: spacing.$spacing-4;
+		}
+	}
+}
+
+// A required checkbox left unchecked displays an error state, including red checkbox
+// box/checkmark styling. Opt-in per component - call this mixin only from components that
+// support automatic required-field validation.
+@mixin checkbox-error-state($block) {
+	.ontario-input--error {
+		.#{$block}__label:before {
+			border-color: colours.$ontario-colour-alert;
+		}
+
+		.#{$block}__input:checked + .#{$block}__label:before {
+			background-color: colours.$ontario-colour-alert;
+		}
+	}
+}

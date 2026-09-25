@@ -17,8 +17,8 @@ import { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Lay
 import { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 import { Caption } from "./utils/common/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
-import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+import { CheckboxOption } from "./components/ontario-checkboxes/checkbox-option.interface";
 import { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -49,8 +49,8 @@ export { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Lay
 export { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 export { Caption } from "./utils/common/input-caption/caption.interface";
 export { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
-export { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+export { CheckboxOption } from "./components/ontario-checkboxes/checkbox-option.interface";
 export { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 export { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 export { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -368,6 +368,81 @@ export namespace Components {
           * @default 3
          */
         "cardsPerRow": CardsPerRow;
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface OntarioCheckbox {
+        /**
+          * Whether the checkbox is checked. This is mutable and is kept in sync with user interaction.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Used to add a custom function to the checkbox onBlur event.
+         */
+        "customOnBlur"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onChange event.
+         */
+        "customOnChange"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onFocus event.
+         */
+        "customOnFocus"?: (event: globalThis.Event) => void;
+        /**
+          * The unique identifier of the checkbox. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * Set this to display an error message
+         */
+        "errorMessage"?: string;
+        /**
+          * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
+          * @example <ontario-checkbox   label="I agree to the terms and conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Why do we ask for this?",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Used to include the ontario-hint-text component for the checkbox. This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The text to display as the checkbox label.
+          * @example <ontario-checkbox   label='{     "captionText": "I agree to the terms and conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+         */
+        "label": Caption | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The name for the checkbox. The name value is used to reference form data after a form is submitted.
+         */
+        "name": string;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The message to display when the checkbox is required and left unchecked. If not provided, a translated default message is used instead.
+         */
+        "requiredValidationMessage"?: string;
+        /**
+          * The value submitted with the form data when the checkbox is checked.
+         */
+        "value"?: string;
     }
     /**
      * Ontario Checkboxes collects one or more selections from a defined option set.
@@ -3536,6 +3611,10 @@ export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioBackButtonElement;
 }
+export interface OntarioCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioCheckboxElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioCheckboxesElement;
@@ -3739,6 +3818,39 @@ declare global {
     var HTMLOntarioCardCollectionElement: {
         prototype: HTMLOntarioCardCollectionElement;
         new (): HTMLOntarioCardCollectionElement;
+    };
+    interface HTMLOntarioCheckboxElementEventMap {
+        "checkboxOnChange": RadioAndCheckboxChangeEvent;
+        "checkboxOnBlur": InputFocusBlurEvent;
+        "checkboxOnFocus": InputFocusBlurEvent;
+        "inputErrorOccurred": { errorMessage: string };
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface HTMLOntarioCheckboxElement extends Components.OntarioCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioCheckboxElementEventMap>(type: K, listener: (this: HTMLOntarioCheckboxElement, ev: OntarioCheckboxCustomEvent<HTMLOntarioCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioCheckboxElementEventMap>(type: K, listener: (this: HTMLOntarioCheckboxElement, ev: OntarioCheckboxCustomEvent<HTMLOntarioCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOntarioCheckboxElement: {
+        prototype: HTMLOntarioCheckboxElement;
+        new (): HTMLOntarioCheckboxElement;
     };
     interface HTMLOntarioCheckboxesElementEventMap {
         "checkboxOnChange": RadioAndCheckboxChangeEvent;
@@ -5051,6 +5163,7 @@ declare global {
         "ontario-callout": HTMLOntarioCalloutElement;
         "ontario-card": HTMLOntarioCardElement;
         "ontario-card-collection": HTMLOntarioCardCollectionElement;
+        "ontario-checkbox": HTMLOntarioCheckboxElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-critical-alert": HTMLOntarioCriticalAlertElement;
         "ontario-date-input": HTMLOntarioDateInputElement;
@@ -5507,6 +5620,97 @@ declare namespace LocalJSX {
           * @default 3
          */
         "cardsPerRow"?: CardsPerRow;
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface OntarioCheckbox {
+        /**
+          * Whether the checkbox is checked. This is mutable and is kept in sync with user interaction.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Used to add a custom function to the checkbox onBlur event.
+         */
+        "customOnBlur"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onChange event.
+         */
+        "customOnChange"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onFocus event.
+         */
+        "customOnFocus"?: (event: globalThis.Event) => void;
+        /**
+          * The unique identifier of the checkbox. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * Set this to display an error message
+         */
+        "errorMessage"?: string;
+        /**
+          * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
+          * @example <ontario-checkbox   label="I agree to the terms and conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Why do we ask for this?",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Used to include the ontario-hint-text component for the checkbox. This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The text to display as the checkbox label.
+          * @example <ontario-checkbox   label='{     "captionText": "I agree to the terms and conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+         */
+        "label"?: Caption | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The name for the checkbox. The name value is used to reference form data after a form is submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input event occurs when the checkbox has lost focus.
+         */
+        "onCheckboxOnBlur"?: (event: OntarioCheckboxCustomEvent<InputFocusBlurEvent>) => void;
+        /**
+          * Emitted when a keyboard input or mouse event occurs when the checkbox has been changed.
+         */
+        "onCheckboxOnChange"?: (event: OntarioCheckboxCustomEvent<RadioAndCheckboxChangeEvent>) => void;
+        /**
+          * Emitted when a keyboard input event occurs when the checkbox has gained focus.
+         */
+        "onCheckboxOnFocus"?: (event: OntarioCheckboxCustomEvent<InputFocusBlurEvent>) => void;
+        /**
+          * Emitted when an error message is reported to the component.
+         */
+        "onInputErrorOccurred"?: (event: OntarioCheckboxCustomEvent<{ errorMessage: string }>) => void;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The message to display when the checkbox is required and left unchecked. If not provided, a translated default message is used instead.
+         */
+        "requiredValidationMessage"?: string;
+        /**
+          * The value submitted with the form data when the checkbox is checked.
+         */
+        "value"?: string;
     }
     /**
      * Ontario Checkboxes collects one or more selections from a defined option set.
@@ -8871,6 +9075,7 @@ declare namespace LocalJSX {
         "ontario-callout": OntarioCallout;
         "ontario-card": OntarioCard;
         "ontario-card-collection": OntarioCardCollection;
+        "ontario-checkbox": OntarioCheckbox;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-critical-alert": OntarioCriticalAlert;
         "ontario-date-input": OntarioDateInput;
@@ -9103,6 +9308,20 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
              */
             "ontario-card-collection": LocalJSX.OntarioCardCollection & JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
+            /**
+             * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+             * This component intentionally does not expose a `disabled` prop.
+             * For a set of related checkbox options, use `ontario-checkboxes` instead.
+             * To support accessible and understandable form completion:
+             * - keep the checkbox and submission actions available
+             * - use validation and error messaging to guide corrections
+             * For component guidance, see:
+             * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+             * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+             * Disabled/read-only policy source:
+             * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+             */
+            "ontario-checkbox": LocalJSX.OntarioCheckbox & JSXBase.HTMLAttributes<HTMLOntarioCheckboxElement>;
             /**
              * Ontario Checkboxes collects one or more selections from a defined option set.
              * This component intentionally does not expose group-level `readOnly` or `disabled` props.

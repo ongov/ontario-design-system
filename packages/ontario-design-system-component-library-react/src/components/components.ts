@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackButton as OntarioBackButtonElement, defineCustomElement as defineOntarioBackButton } from "@ongov/ontario-design-system-component-library/components/ontario-back-button.js";
@@ -18,6 +18,7 @@ import { OntarioButton as OntarioButtonElement, defineCustomElement as defineOnt
 import { OntarioCallout as OntarioCalloutElement, defineCustomElement as defineOntarioCallout } from "@ongov/ontario-design-system-component-library/components/ontario-callout.js";
 import { OntarioCardCollection as OntarioCardCollectionElement, defineCustomElement as defineOntarioCardCollection } from "@ongov/ontario-design-system-component-library/components/ontario-card-collection.js";
 import { OntarioCard as OntarioCardElement, defineCustomElement as defineOntarioCard } from "@ongov/ontario-design-system-component-library/components/ontario-card.js";
+import { OntarioCheckbox as OntarioCheckboxElement, defineCustomElement as defineOntarioCheckbox } from "@ongov/ontario-design-system-component-library/components/ontario-checkbox.js";
 import { OntarioCheckboxes as OntarioCheckboxesElement, defineCustomElement as defineOntarioCheckboxes } from "@ongov/ontario-design-system-component-library/components/ontario-checkboxes.js";
 import { OntarioCriticalAlert as OntarioCriticalAlertElement, defineCustomElement as defineOntarioCriticalAlert } from "@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js";
 import { OntarioDateInput as OntarioDateInputElement, defineCustomElement as defineOntarioDateInput } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
@@ -277,6 +278,27 @@ export const OntarioCardCollection: StencilReactComponent<OntarioCardCollectionE
     react: React,
     events: {} as OntarioCardCollectionEvents,
     defineCustomElement: defineOntarioCardCollection
+});
+
+export type OntarioCheckboxEvents = {
+    onCheckboxOnChange: EventName<OntarioCheckboxCustomEvent<RadioAndCheckboxChangeEvent>>,
+    onCheckboxOnBlur: EventName<OntarioCheckboxCustomEvent<InputFocusBlurEvent>>,
+    onCheckboxOnFocus: EventName<OntarioCheckboxCustomEvent<InputFocusBlurEvent>>,
+    onInputErrorOccurred: EventName<OntarioCheckboxCustomEvent<{ errorMessage: string }>>
+};
+
+export const OntarioCheckbox: StencilReactComponent<OntarioCheckboxElement, OntarioCheckboxEvents> = /*@__PURE__*/ createComponent<OntarioCheckboxElement, OntarioCheckboxEvents>({
+    tagName: 'ontario-checkbox',
+    elementClass: OntarioCheckboxElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onCheckboxOnChange: 'checkboxOnChange',
+        onCheckboxOnBlur: 'checkboxOnBlur',
+        onCheckboxOnFocus: 'checkboxOnFocus',
+        onInputErrorOccurred: 'inputErrorOccurred'
+    } as OntarioCheckboxEvents,
+    defineCustomElement: defineOntarioCheckbox
 });
 
 export type OntarioCheckboxesEvents = {

@@ -78,22 +78,24 @@ export class InputCaption implements CaptionInfo {
 	 * @param captionFor Set the `htmlFor` attribute
 	 * @param hasHintExpander Indicate whether the component the label is for has a hint expander or not
 	 * @param disableRequiredFlag Disable the required/optional label text _(only use in highly special cases)_
+	 * @param additionalClass Extra class to append to the rendered `label`/`legend` (e.g. a component's own visual class)
 	 * @returns element containing the caption for the input
 	 */
 	getCaption = (
 		captionFor?: string | undefined,
 		hasHintExpander: boolean = false,
 		disableRequiredFlag: boolean = false,
+		additionalClass?: string,
 	): HTMLElement => {
 		const captionText = this.captionText && this.captionText.toLowerCase();
 		const captionContent = this.isLegend ? (
-			<legend class={this.getClass()}>
+			<legend class={this.getClass(additionalClass)}>
 				{this.captionType === 'heading' ? <h1>{this.captionText}</h1> : this.captionText}
 				{!disableRequiredFlag && this.getRequiredFlagElement()}
 				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
 			</legend>
 		) : (
-			<label htmlFor={captionFor} class={this.getClass()}>
+			<label htmlFor={captionFor} class={this.getClass(additionalClass)}>
 				{this.captionText}
 				{!disableRequiredFlag && this.getRequiredFlagElement()}
 				{hasHintExpander && this.getHintExpanderAccessibilityText(captionText, false)}
@@ -145,16 +147,20 @@ export class InputCaption implements CaptionInfo {
 
 	/**
 	 * Get the CSS class for the `label` element.
+	 * @param additionalClass Extra class to append (e.g. a component's own visual class)
 	 * @returns CSS class for the `label` element.
 	 */
-	private getClass(): string {
-		return this.captionType === 'large' || this.captionType === 'heading'
-			? this.isLegend
-				? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}`
-				: `ontario-label ontario-label--${this.captionType}`
-			: this.isLegend
-				? 'ontario-fieldset__legend'
-				: 'ontario-label';
+	private getClass(additionalClass?: string): string {
+		const baseClass =
+			this.captionType === 'large' || this.captionType === 'heading'
+				? this.isLegend
+					? `ontario-fieldset__legend ontario-fieldset__legend--${this.captionType}`
+					: `ontario-label ontario-label--${this.captionType}`
+				: this.isLegend
+					? 'ontario-fieldset__legend'
+					: 'ontario-label';
+
+		return additionalClass ? `${baseClass} ${additionalClass}` : baseClass;
 	}
 
 	/**

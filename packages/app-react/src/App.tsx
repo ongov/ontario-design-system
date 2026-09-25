@@ -12,6 +12,7 @@ import Icon from './stories/icon-page/Icon';
 import Header from './stories/header-page/HeaderComponent';
 import Footer from './stories/footer-page/FooterComponent';
 import Checkbox from './stories/checkbox-page/Checkbox';
+import StandaloneCheckbox from './stories/standalone-checkbox-page/StandaloneCheckbox';
 import RadioButton from './stories/radio-button-page/RadioButton';
 import DropdownList from './stories/dropdown-list-page/DropdownList';
 import Blockquote from './stories/blockquote-page/Blockquote';
@@ -105,6 +106,16 @@ const App = () => {
 				element={
 					<Layout>
 						<Checkbox />
+					</Layout>
+				}
+			/>
+
+			{/* Standalone Checkbox */}
+			<Route
+				path="/ontario-standalone-checkbox"
+				element={
+					<Layout>
+						<StandaloneCheckbox />
 					</Layout>
 				}
 			/>
