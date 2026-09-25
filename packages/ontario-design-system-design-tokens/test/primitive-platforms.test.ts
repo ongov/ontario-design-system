@@ -4,7 +4,7 @@
  * scripts/config/primitive.config.ts, registered via the transforms in
  * scripts/lib/transforms.ts.
  */
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,6 +14,7 @@ import { primitiveTransforms } from '../scripts/lib/transforms.ts';
 import { primitivePlatformsConfig } from '../scripts/config/primitive.config.ts';
 
 const packageRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const originalCwd = process.cwd();
 
 // Style Dictionary resolves its `source` glob relative to process.cwd().
 beforeAll(() => {
@@ -23,6 +24,12 @@ beforeAll(() => {
 	for (const transform of primitiveTransforms) {
 		StyleDictionary.registerTransform(transform);
 	}
+});
+
+// Restore the original cwd so this suite doesn't leak global process state into
+// other test files running in the same worker.
+afterAll(() => {
+	process.chdir(originalCwd);
 });
 
 describe('primitive output platforms', () => {
