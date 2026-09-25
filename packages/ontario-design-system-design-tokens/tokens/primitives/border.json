@@ -1,14 +1,14 @@
 {
 	"border": {
 		"width": {
-			"0": { "value": "0px" },
-			"100": { "value": "1px" },
-			"200": { "value": "2px" },
-			"300": { "value": "3px" }
+			"0": { "value": "0px", "type": "borderWidth" },
+			"100": { "value": "1px", "type": "borderWidth" },
+			"200": { "value": "2px", "type": "borderWidth" },
+			"300": { "value": "3px", "type": "borderWidth" }
 		},
 		"style": {
-			"solid": { "value": "solid" },
-			"dashed": { "value": "dashed" }
+			"solid": { "value": "solid", "type": "other" },
+			"dashed": { "value": "dashed", "type": "other" }
 		}
 	}
 }
