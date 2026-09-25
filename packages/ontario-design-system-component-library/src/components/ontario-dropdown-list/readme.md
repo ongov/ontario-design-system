@@ -1,4 +1,4 @@
-import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioDropdownList, OntarioDropdownOption } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -128,6 +128,19 @@ Note: native `<option>` elements cannot be slotted into a `<select>` that is ren
 
 If both `options` and `ontario-dropdown-option` children are provided, the `options` prop takes precedence.
 
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
 ```html
 <ontario-dropdown-list
 	name="streaming-service"
@@ -144,6 +157,52 @@ If both `options` and `ontario-dropdown-option` children are provided, the `opti
 </ontario-dropdown-list>
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption={{
+		captionText: 'Select a streaming service',
+		captionType: 'default',
+	}}
+	required
+>
+	<OntarioDropdownOption value="netflix">Netflix</OntarioDropdownOption>
+	<OntarioDropdownOption value="disney-plus">Disney Plus</OntarioDropdownOption>
+	<OntarioDropdownOption value="crave" selected>
+		Crave
+	</OntarioDropdownOption>
+	<OntarioDropdownOption value="prime">Prime Video</OntarioDropdownOption>
+</OntarioDropdownList>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="{ captionText: 'Select a streaming service', captionType: 'default' }"
+	required
+>
+	<ontario-dropdown-option value="netflix">Netflix</ontario-dropdown-option>
+	<ontario-dropdown-option value="disney-plus">Disney Plus</ontario-dropdown-option>
+	<ontario-dropdown-option value="crave" selected>Crave</ontario-dropdown-option>
+	<ontario-dropdown-option value="prime">Prime Video</ontario-dropdown-option>
+</ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDropdownList
 		name="streaming-service"
@@ -152,13 +211,14 @@ If both `options` and `ontario-dropdown-option` children are provided, the `opti
 			captionType: 'default',
 		}}
 		required
-		options={[
-			{ value: 'netflix', label: 'Netflix' },
-			{ value: 'disney-plus', label: 'Disney Plus' },
-			{ value: 'crave', label: 'Crave' },
-			{ value: 'prime', label: 'Prime Video' },
-		]}
-	></OntarioDropdownList>
+	>
+		<OntarioDropdownOption value="netflix">Netflix</OntarioDropdownOption>
+		<OntarioDropdownOption value="disney-plus">Disney Plus</OntarioDropdownOption>
+		<OntarioDropdownOption value="crave" selected>
+			Crave
+		</OntarioDropdownOption>
+		<OntarioDropdownOption value="prime">Prime Video</OntarioDropdownOption>
+	</OntarioDropdownList>
 </div>
 
 In the following example, the selected option is set using the component's
