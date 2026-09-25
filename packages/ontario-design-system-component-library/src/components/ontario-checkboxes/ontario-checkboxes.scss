@@ -1,0 +1,15 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+
+@use '../../styles/fieldsets.scss';
+@use '../../styles/labels.scss';
+@use '../../styles/text-inputs.scss';
+@use '../../styles/checkbox.scss';
+@forward '../../utils/components/error-message/error-message';
+
+.ontario-checkboxes {
+	max-width: globalVariables.$standard-width;
+}
+
+@include checkbox.checkbox-states('ontario-checkboxes');
