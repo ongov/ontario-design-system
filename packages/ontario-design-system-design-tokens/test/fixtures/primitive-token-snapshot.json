@@ -1,5 +1,5 @@
 {
-	"totalCount": 318,
+	"totalCount": 320,
 	"byCategory": {
 		"border": {
 			"count": 6,
@@ -316,8 +316,18 @@
 			]
 		},
 		"radius": {
-			"count": 7,
-			"names": ["radius.0", "radius.050", "radius.100", "radius.200", "radius.300", "radius.400", "radius.pill"]
+			"count": 9,
+			"names": [
+				"radius.0",
+				"radius.050",
+				"radius.100",
+				"radius.200",
+				"radius.300",
+				"radius.400",
+				"radius.500",
+				"radius.600",
+				"radius.pill"
+			]
 		},
 		"space": {
 			"count": 16,
