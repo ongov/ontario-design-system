@@ -5,6 +5,7 @@ import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.t
 
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { isServerSideRendering } from '../../utils/common/environment';
 
 /**
@@ -175,18 +176,13 @@ export class OntarioButton implements Button {
 	 * @returns default type (secondary)
 	 */
 	private warnDefaultType(): ButtonType {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' type ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-button> ')
-			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' primary, secondary, or tertiary ')
-			.addRegularText('are supported. The default type')
-			.addMonospaceText(' secondary ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'type',
+			componentTag: '<ontario-button>',
+			allowedValues: ButtonTypes,
+			defaultValue: 'secondary',
+			conjunction: 'or',
+		});
 		return 'secondary';
 	}
 
@@ -195,18 +191,14 @@ export class OntarioButton implements Button {
 	 * @returns default htmlType (button)
 	 */
 	private warnDefaultHtmlType(): HtmlType {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' htmlType ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-button> ')
-			.addRegularText('was set to an invalid htmlType; only')
-			.addMonospaceText(' button, reset, or submit ')
-			.addRegularText('are supported. The default type')
-			.addMonospaceText(' button ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'htmlType',
+			componentTag: '<ontario-button>',
+			allowedValues: HtmlTypes,
+			defaultValue: 'button',
+			invalidDescriptor: 'htmlType',
+			conjunction: 'or',
+		});
 		return 'button';
 	}
 
