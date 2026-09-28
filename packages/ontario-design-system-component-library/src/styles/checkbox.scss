@@ -129,7 +129,10 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 		}
 	}
 
-	.#{$block}__input:focus + .#{$block}__label:before {
+	// The heading label style wraps the label in an <h1>, so also match through that wrapper -
+	// "input + label" alone can't reach a label that's no longer an immediate sibling.
+	.#{$block}__input:focus + .#{$block}__label:before,
+	.#{$block}__input:focus + h1 .#{$block}__label:before {
 		-moz-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
 		-webkit-box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
 		box-shadow: 0 0 0 $ontario-checkbox-box-shadow-outline colours.$ontario-colour-focus;
@@ -137,11 +140,13 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 		transition: all 0.1s ease-in-out;
 	}
 
-	.#{$block}__input:checked + .#{$block}__label:after {
+	.#{$block}__input:checked + .#{$block}__label:after,
+	.#{$block}__input:checked + h1 .#{$block}__label:after {
 		opacity: 1;
 	}
 
-	.#{$block}__input:checked + .#{$block}__label:before {
+	.#{$block}__input:checked + .#{$block}__label:before,
+	.#{$block}__input:checked + h1 .#{$block}__label:before {
 		background-color: colours.$ontario-colour-black;
 	}
 
@@ -163,7 +168,8 @@ $ontario-checkbox-box-shadow-outline: globalFunctions.px-to-rem(4);
 			border-color: colours.$ontario-colour-alert;
 		}
 
-		.#{$block}__input:checked + .#{$block}__label:before {
+		.#{$block}__input:checked + .#{$block}__label:before,
+		.#{$block}__input:checked + h1 .#{$block}__label:before {
 			background-color: colours.$ontario-colour-alert;
 		}
 	}
