@@ -3244,7 +3244,7 @@ export namespace Components {
          */
         "minChars"?: number;
         /**
-          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation.
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
          */
         "pattern"?: string;
         /**
@@ -8631,7 +8631,7 @@ declare namespace LocalJSX {
          */
         "onSearchOnSubmit"?: (event: OntarioSearchBoxCustomEvent<string>) => void;
         /**
-          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation.
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
          */
         "pattern"?: string;
         /**
