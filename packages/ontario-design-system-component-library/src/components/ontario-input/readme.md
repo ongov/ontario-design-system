@@ -27,16 +27,18 @@ Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-
 
 ### Numeric entry and keyboard hints
 
-For constrained text entry such as postal codes, numeric identifiers, or one-time codes, use `inputMode` to request a
-more appropriate virtual keyboard, optionally paired with `pattern` as a browser hint.
+For constrained text entry such as numeric identifiers or one-time codes, use `inputMode` to request a more
+appropriate virtual keyboard, optionally paired with `pattern` as a browser hint. Avoid `inputMode="numeric"` for
+fields that can contain letters, such as Canadian postal codes - a numeric keyboard makes those characters harder to
+enter on mobile.
 
 ```html
 <ontario-input
-	name="postal-code"
-	caption="Postal code"
+	name="file-number"
+	caption="File number"
 	input-mode="numeric"
 	pattern="[0-9]*"
-	hint-text="For example, K1A0B1"
+	hint-text="For example, 123456789"
 ></ontario-input>
 ```
 
