@@ -1,6 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
-test;
+
 test.describe('ontario-back-button', () => {
 	let host: Locator;
 
