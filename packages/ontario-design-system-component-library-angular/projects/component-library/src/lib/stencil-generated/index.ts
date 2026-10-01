@@ -17,6 +17,7 @@ export const DIRECTIVES = [
   d.OntarioDateInput,
   d.OntarioDropdownList,
   d.OntarioDropdownOption,
+  d.OntarioErrorAlert,
   d.OntarioFieldset,
   d.OntarioFooter,
   d.OntarioFormContainer,

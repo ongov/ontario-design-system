@@ -23,6 +23,7 @@ import { OntarioCriticalAlert as OntarioCriticalAlertElement } from "@ongov/onta
 import { OntarioDateInput as OntarioDateInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
 import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
 import { OntarioDropdownOption as OntarioDropdownOptionElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-option.js";
+import { OntarioErrorAlert as OntarioErrorAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-error-alert.js";
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
@@ -429,6 +430,21 @@ export const OntarioDropdownOption: StencilReactComponent<OntarioDropdownOptionE
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioDropdownOption as ReactWebComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioErrorAlertEvents = NonNullable<unknown>;
+
+export const OntarioErrorAlert: StencilReactComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents> = /*@__PURE__*/ createComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents>({
+    tagName: 'ontario-error-alert',
+    properties: {
+        message: 'message',
+        errorId: 'error-id',
+        controlId: 'control-id',
+        elementId: 'element-id'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioErrorAlert as ReactWebComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents>,
     serializeShadowRoot
 });
 

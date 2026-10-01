@@ -618,6 +618,25 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface OntarioErrorAlert {
+        /**
+          * @default ''
+         */
+        "controlId": string;
+        /**
+          * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * @default ''
+         */
+        "errorId": string;
+        /**
+          * The text to display for the dropdown list label.
+          * @default ''
+         */
+        "message": string;
+    }
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
      * For component guidance, see:
@@ -3913,6 +3932,12 @@ declare global {
         prototype: HTMLOntarioDropdownOptionElement;
         new (): HTMLOntarioDropdownOptionElement;
     };
+    interface HTMLOntarioErrorAlertElement extends Components.OntarioErrorAlert, HTMLStencilElement {
+    }
+    var HTMLOntarioErrorAlertElement: {
+        prototype: HTMLOntarioErrorAlertElement;
+        new (): HTMLOntarioErrorAlertElement;
+    };
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
      * For component guidance, see:
@@ -5114,6 +5139,7 @@ declare global {
         "ontario-date-input": HTMLOntarioDateInputElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
         "ontario-dropdown-option": HTMLOntarioDropdownOptionElement;
+        "ontario-error-alert": HTMLOntarioErrorAlertElement;
         "ontario-fieldset": HTMLOntarioFieldsetElement;
         "ontario-footer": HTMLOntarioFooterElement;
         "ontario-form-container": HTMLOntarioFormContainerElement;
@@ -5873,6 +5899,25 @@ declare namespace LocalJSX {
           * The value for the dropdown option. When omitted, the parent `ontario-dropdown-list` uses the option's text content. Each value must be unique to the option within the parent `ontario-dropdown-list`.
          */
         "value"?: string;
+    }
+    interface OntarioErrorAlert {
+        /**
+          * @default ''
+         */
+        "controlId"?: string;
+        /**
+          * The unique identifier of the element. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * @default ''
+         */
+        "errorId"?: string;
+        /**
+          * The text to display for the dropdown list label.
+          * @default ''
+         */
+        "message"?: string;
     }
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
@@ -8967,6 +9012,7 @@ declare namespace LocalJSX {
         "ontario-date-input": OntarioDateInput;
         "ontario-dropdown-list": OntarioDropdownList;
         "ontario-dropdown-option": OntarioDropdownOption;
+        "ontario-error-alert": OntarioErrorAlert;
         "ontario-fieldset": OntarioFieldset;
         "ontario-footer": OntarioFooter;
         "ontario-form-container": OntarioFormContainer;
@@ -9262,6 +9308,7 @@ declare module "@stencil/core" {
              * </ontario-dropdown-list>
              */
             "ontario-dropdown-option": LocalJSX.OntarioDropdownOption & JSXBase.HTMLAttributes<HTMLOntarioDropdownOptionElement>;
+            "ontario-error-alert": LocalJSX.OntarioErrorAlert & JSXBase.HTMLAttributes<HTMLOntarioErrorAlertElement>;
             /**
              * Ontario Fieldset groups related form controls under a shared legend.
              * For component guidance, see:

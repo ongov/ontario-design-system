@@ -449,6 +449,29 @@ export declare interface OntarioDropdownOption extends Components.OntarioDropdow
 
 
 @ProxyCmp({
+  inputs: ['controlId', 'elementId', 'errorId', 'message']
+})
+@Component({
+  selector: 'ontario-error-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['controlId', 'elementId', 'errorId', 'message'],
+  standalone: false
+})
+export class OntarioErrorAlert {
+  protected el: HTMLOntarioErrorAlertElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioErrorAlert extends Components.OntarioErrorAlert {}
+
+
+@ProxyCmp({
   inputs: ['legend', 'legendSize']
 })
 @Component({
