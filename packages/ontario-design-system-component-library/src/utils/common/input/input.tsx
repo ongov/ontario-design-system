@@ -11,6 +11,7 @@ export type InputProps = {
 	checked?: boolean;
 	required?: boolean;
 	inputMode?: string;
+	pattern?: string;
 	placeholder?: string;
 	ariaLabel?: string;
 	ariaInvalid?: boolean;
@@ -56,6 +57,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 	ariaDescribedBy,
 	ref,
 	inputMode,
+	pattern,
 	...props
 }) => {
 	return (
@@ -77,6 +79,7 @@ export const Input: FunctionalComponent<InputProps> = ({
 			onFocus={onFocus}
 			onClick={onClick}
 			inputMode={inputMode}
+			pattern={pattern}
 			ref={ref}
 			aria-label={ariaLabel}
 			aria-invalid={ariaInvalid}
