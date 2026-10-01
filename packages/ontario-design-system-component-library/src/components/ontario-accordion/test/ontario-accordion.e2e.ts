@@ -87,6 +87,7 @@ test.describe('ontario-accordion', () => {
 			await expect(accordionContent).toHaveAttribute('aria-hidden', 'true');
 			await expect(accordionContent).toContainClass('ontario-accordion__content--closed');
 			await expect(accordionContent).not.toContainClass('ontario-expander__content--opened');
+			await expect(accordionContent).toHaveAttribute('hidden', 'until-found');
 		}
 	});
 
@@ -217,6 +218,56 @@ test.describe('ontario-accordion', () => {
 			openIndexes: [],
 			isBulk: true,
 			reason: 'toggle-all',
+		});
+	});
+
+	test('uses hidden="until-found" for closed content so it stays searchable by the browser', async ({ page }) => {
+		const firstElement = host.locator('.ontario-accordion').first();
+		const firstElementContent = firstElement.locator('section.ontario-accordion__content');
+		const firstElementToggleBtn = firstElement.locator('button.ontario-accordion__button');
+
+		// Closed content should use `hidden="until-found"` (rather than being fully removed
+		// from the accessibility tree/search index via `display: none`) on browsers that
+		// support it.
+		await expect(firstElementContent).toHaveAttribute('hidden', 'until-found');
+
+		// Opening the section should remove the `hidden` attribute entirely.
+		await firstElementToggleBtn.click();
+		await page.waitForChanges();
+		await expect(firstElementContent).not.toHaveAttribute('hidden');
+
+		// Closing it again should restore `hidden="until-found"`.
+		await firstElementToggleBtn.click();
+		await page.waitForChanges();
+		await expect(firstElementContent).toHaveAttribute('hidden', 'until-found');
+	});
+
+	test('syncs component state when the browser reveals a section via the beforematch event', async ({ page }) => {
+		const firstElement = host.locator('.ontario-accordion').first();
+		const firstElementContent = firstElement.locator('section.ontario-accordion__content');
+		const firstElementToggleBtn = firstElement.locator('button.ontario-accordion__button');
+		const firstElementHeading = firstElement.locator('h3.ontario-accordion__heading');
+
+		// Confirm it starts closed
+		await expect(firstElementToggleBtn).toHaveAttribute('aria-expanded', 'false');
+
+		// Simulate the browser's find-in-page feature about to reveal this section by
+		// dispatching the `beforematch` event directly on the content element.
+		await firstElementContent.dispatchEvent('beforematch');
+		await page.waitForChanges();
+
+		// Component state (icons, aria-expanded, aria-hidden, and the `hidden` attribute)
+		// should now reflect the open state, in sync with the browser-triggered reveal.
+		await expect(firstElementToggleBtn).toHaveAttribute('aria-expanded', 'true');
+		await expect(firstElementHeading).toContainClass('ontario-expander--active');
+		await expect(firstElementContent).toHaveAttribute('aria-hidden', 'false');
+		await expect(firstElementContent).not.toHaveAttribute('hidden');
+
+		// Confirm the accordionChange event fired with the expected reason
+		await expect(eventSpy).toHaveReceivedEventDetail({
+			openIndexes: [0],
+			changedIndex: 0,
+			reason: 'browser-search',
 		});
 	});
 });

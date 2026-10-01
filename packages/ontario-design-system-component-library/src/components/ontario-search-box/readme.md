@@ -10,6 +10,16 @@ Use a search box to let users complete keyword-based searches.
 
 Please refer to the [Ontario Design System](https://designsystem.ontario.ca/components/detail/search-box.html) for current documentation guidance.
 
+Use the standard search box when people can describe what they need with keywords and the application will display a separate results page.
+
+Enable autocomplete when:
+
+- the available suggestions come from a known or searchable data source
+- suggestions can help people enter a valid term or reach a result faster
+- the application can return relevant suggestions as the query changes
+
+Do not use autocomplete as a replacement for a select or radio button when people must choose from a short, fixed list. Suggestions should support text entry rather than require people to discover every available option.
+
 ### Disabled and read-only states
 
 This component intentionally does not provide `readOnly` or `disabled` props.
@@ -47,7 +57,7 @@ Once the component package has been installed (see Ontario Design System Compone
 ```
 
 ```html
-<ontario-search-box id="ontario-search-box" caption="Search the directory"></ontario-search-box>
+<ontario-search-box element-id="ontario-search-box" caption="Search the directory"></ontario-search-box>
 ```
 
 ```mdx-code-block
@@ -56,7 +66,7 @@ Once the component package has been installed (see Ontario Design System Compone
 ```
 
 ```tsx
-<OntarioSearchBox id="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
+<OntarioSearchBox elementId="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
 ```
 
 ```mdx-code-block
@@ -65,7 +75,7 @@ Once the component package has been installed (see Ontario Design System Compone
 ```
 
 ```html
-<ontario-search-box [id]="'ontario-search-box'" [caption]="'Search the directory'"></ontario-search-box>
+<ontario-search-box [elementId]="'ontario-search-box'" [caption]="'Search the directory'"></ontario-search-box>
 ```
 
 ```mdx-code-block
@@ -73,8 +83,8 @@ Once the component package has been installed (see Ontario Design System Compone
 </Tabs>
 ```
 
-<div>
-    <OntarioSearchBox id="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
+<div className="ontario-row">
+	<OntarioSearchBox elementId="ontario-search-box" caption="Search the directory"></OntarioSearchBox>
 </div>
 
 ### Handling searching
@@ -127,6 +137,10 @@ The following example registers a simple function on `window` `load` that adds a
 
 ### Async suggestions with `getSuggestions(query)`
 
+Set `enableAutocomplete` and provide an asynchronous `getSuggestions` function. The function receives the current input value and returns matching suggestion strings or suggestion objects. The component handles debouncing, list visibility, keyboard navigation, selection, and accessible status updates.
+
+Use `minChars` to avoid broad requests for short queries, `debounceMs` to limit requests while someone is typing, and `maxSuggestions` to keep the displayed list concise. Filtering, ranking, and retrieving suggestions remain the responsibility of the consuming application.
+
 ```mdx-code-block
 <Tabs
 	defaultValue="html"
@@ -165,22 +179,48 @@ The following example registers a simple function on `window` `load` that adds a
 ```
 
 ```tsx
-import { useState } from 'react';
 import { OntarioSearchBox } from '@ongov/ontario-design-system-component-library-react';
 
 export default function AutocompleteExample() {
-	const cities = ['Ajax', 'Barrie', 'Belleville', 'Hamilton', 'Ottawa', 'Toronto', 'Waterloo'];
+	const ontarioCities = [
+		'Ajax',
+		'Barrie',
+		'Belleville',
+		'Brampton',
+		'Brantford',
+		'Hamilton',
+		'Kingston',
+		'London',
+		'Ottawa',
+		'Toronto',
+		'Waterloo',
+		'Windsor',
+	];
 
-	const handleGetSuggestions = async (query) => {
-		return cities.filter((city) => city.toLowerCase().includes((query || '').toLowerCase()));
+	const getOntarioCitySuggestions = async (query: string) => {
+		const normalizedQuery = (query || '').toLowerCase();
+
+		return ontarioCities.filter((city) => city.toLowerCase().includes(normalizedQuery)).slice(0, 8);
+	};
+
+	const handleSearch = async (value?: string) => {
+		console.log('Performing search with value:', value);
 	};
 
 	return (
 		<OntarioSearchBox
-			id="search-with-autocomplete"
-			caption="Search Ontario cities"
+			elementId="search-with-autocomplete"
 			enableAutocomplete
-			getSuggestions={handleGetSuggestions}
+			minChars={0}
+			debounceMs={0}
+			maxSuggestions={8}
+			caption={{
+				captionText: 'Search Ontario cities',
+				captionType: 'default',
+			}}
+			hintText="Start typing to see city suggestions."
+			getSuggestions={getOntarioCitySuggestions}
+			performSearch={handleSearch}
 		/>
 	);
 }
@@ -223,8 +263,10 @@ export class SearchAutocompleteComponent {
 
 ### Slotted semantic and custom HTML suggestions
 
+Instead of (or in addition to) `getSuggestions(query)`, suggestions can be provided as slotted content. This is useful when the suggestion list is already known/rendered up front, or when a suggestion needs custom markup beyond what `ontario-search-result-item` offers.
+
 ```html
-<ontario-search-box id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
+<ontario-search-box element-id="search-with-slot" caption="Search Ontario cities" enableAutocomplete>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Barrie" value="Barrie"></ontario-search-result-item>
 	<div slot="suggestions" data-value="Waterloo" role="option">
@@ -239,7 +281,7 @@ export class SearchAutocompleteComponent {
 For search results with multiple categories, you can add non-interactive header elements to group suggestions:
 
 ```html
-<ontario-search-box id="search-grouped" caption="Search Ontario" enableAutocomplete>
+<ontario-search-box element-id="search-grouped" caption="Search Ontario" enableAutocomplete>
 	<div slot="suggestions" class="ontario-search-autocomplete__section-header" role="presentation">Cities</div>
 	<ontario-search-result-item slot="suggestions" label="Ajax" value="Ajax"></ontario-search-result-item>
 	<ontario-search-result-item slot="suggestions" label="Ottawa" value="Ottawa"></ontario-search-result-item>
@@ -252,7 +294,9 @@ For search results with multiple categories, you can add non-interactive header 
 
 ### Important notes about autocomplete
 
-Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+Autocomplete suggestions can come from either slotted content or `getSuggestions(query)`. Slot content takes precedence over `getSuggestions(query)` when both are supplied.
+
+The component applies debouncing, keyboard navigation, active option state, and accessibility attributes while suggestions are open, regardless of which mode is supplying the list. Selecting a suggestion updates the input value. Submitting the form continues to call `performSearch` and emit `searchOnSubmit` with the current value.
 
 For custom HTML suggestions, plain text-only options are highlighted automatically. If your custom option contains extra markup, wrap the text that should receive highlighting in an element with `data-ontario-search-highlight`.
 

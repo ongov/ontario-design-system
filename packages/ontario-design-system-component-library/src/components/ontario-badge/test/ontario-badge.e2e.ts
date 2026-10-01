@@ -1,105 +1,243 @@
-// import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+import { expect, Locator } from '@playwright/test';
+import { test, E2EPage } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
-// describe('ontario-badge', () => {
-// 	it('renders', async () => {
-// 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-badge></ontario-badge>');
-// 		const component = await page.find('ontario-badge');
-// 		const element = await page.find('ontario-badge >>> span');
+test.describe('ontario-badge', () => {
+	/* =========================
+     Helpers
+    ========================== */
 
-// 		expect(component).toHaveClass('hydrated');
-// 		expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--teal']);
-// 	});
+	const renderHost = async (page: E2EPage, html: string): Promise<Locator> => {
+		await page.setContent(html);
+		await page.waitForChanges();
 
-// 	describe('render prop changes', () => {
-// 		let page: E2EPage;
-// 		let component: E2EElement;
-// 		let element: E2EElement;
+		const host = page.locator('ontario-badge').last();
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass(/hydrated/);
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 			await page.setContent('<ontario-badge></ontario-badge>');
-// 			component = await page.find('ontario-badge');
-// 			element = await page.find('ontario-badge >>> span');
-// 		});
+		return host;
+	};
 
-// 		it('renders changes to the class names when the colour prop is changed', async () => {
-// 			component.setProperty('colour', 'light-teal');
-// 			await page.waitForChanges();
+	const expectNoAxeViolations = async (page: E2EPage, selector: string) => {
+		const results = await new AxeBuilder({ page }).include(selector).analyze();
 
-// 			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--light-teal']);
+		expect(results.violations).toHaveLength(0);
+	};
 
-// 			component.setProperty('colour', 'black');
-// 			await page.waitForChanges();
+	/* =========================
+     Positive Tests
+    ========================== */
 
-// 			expect(element).toHaveClasses(['ontario-badge', 'ontario-badge--black']);
-// 		});
+	test('renders and is hydrated', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Active"></ontario-badge>`);
 
-// 		/*
-// 		 * TODO: Haven't found an ideal way yet to test the aria-label-text property and how
-// 		 * it should create an aria-label attribute on the element.
-// 		 */
-// 		// it('renders changes to the aria-label-text property', async () => {
-// 		// component.setProperty('aria-label-text', 'This is aria label text.');
-// 		// await page.waitForChanges();
+		await expect(host).toBeAttached();
+		await expect(host).toHaveClass('hydrated');
+	});
 
-// 		// expect(element.getAttribute("ariaLabel")).toBe("This is aria label text.");
+	test('renders label text', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Active"></ontario-badge>`);
 
-// 		// expect(element).toHaveAttribute('aria-label');
+		await expect(host.locator('span')).toHaveText('Active');
+	});
 
-// 		// let v = await page.$eval(element, (element: { hasAttribute: (arg0: string) => any; }) => element.hasAttribute("aria-label"))
-// 		// expect(v).toBe(true);
-// 		// let el: any;
-// 		// let value = await page.evaluate(element => element ? element.getAttribute("aria-label") : null, el);
-// 		// expect(value).toBe(true);
+	test('renders slot text when label not provided', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge>Pending</ontario-badge>`);
 
-// 		// element.hasAttribute("aria-label").toBe(true);
-// 		// expect(hasAriaLabelAttribute).toBe(true);
-// 		// await page.evaluate(`${element}.getAttribute("data-Color")`)
+		await expect(host.locator('span')).toHaveText('Pending');
+	});
 
-// 		// expect(element.getAttribute('aria-label')).toBe('This is aria label text.');
-// 		// });
-// 	});
+	test('label typography', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Status"></ontario-badge>`);
+		const badgeSpan = host.locator('span').first();
+		await expect(badgeSpan).toHaveCSS('display', 'inline-block');
+		await expect(badgeSpan).toHaveCSS('font-weight', '700');
+		await expect(badgeSpan).toHaveCSS('text-transform', 'uppercase');
+	});
 
-// 	describe('render text content changes', () => {
-// 		let page: E2EPage;
+	test('applies correct styles for red badge', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Alert" colour="red"></ontario-badge>`);
+		const span = host.locator('span');
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 		});
+		// Check class mapping for alert colour
+		await expect(span).toContainClass('ontario-badge--red');
+	});
 
-// 		it('renders changes to the component content when the host textContent is changed', async () => {
-// 			await page.setContent('<ontario-badge>Not started</ontario-badge>');
-// 			const element = await page.find('ontario-badge >>> span');
+	test('updates colour dynamically', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Dynamic"></ontario-badge>`);
 
-// 			expect(element).toEqualText('Not started');
-// 		});
+		await host.evaluate((el: HTMLOntarioBadgeElement) => {
+			el.colour = 'red';
+		});
 
-// 		it('renders changes to the component content when the label prop is changed', async () => {
-// 			await page.setContent('<ontario-badge></ontario-badge>');
-// 			const component = await page.find('ontario-badge');
-// 			const element = await page.find('ontario-badge >>> span');
+		const span = host.locator('span');
 
-// 			component.setProperty('label', 'Completed');
-// 			await page.waitForChanges();
+		await expect(span).toContainClass('ontario-badge--red');
+	});
 
-// 			expect(element).toEqualText('Completed');
+	test('sets aria-label correctly', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text="Accessible"></ontario-badge>`);
 
-// 			component.setProperty('label', 'In progress');
-// 			await page.waitForChanges();
+		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Accessible');
+	});
 
-// 			expect(element).toEqualText('In progress');
-// 		});
+	/* =========================
+     Negative Tests
+    ========================== */
 
-// 		it('renders label content as priority even if host textContent is set', async () => {
-// 			await page.setContent('<ontario-badge>Not started</ontario-badge>');
-// 			const component = await page.find('ontario-badge');
-// 			const element = await page.find('ontario-badge >>> span');
+	test('falls back to teal for invalid colour', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Test" colour="invalid"></ontario-badge>`);
 
-// 			component.setProperty('label', 'In progress');
-// 			await page.waitForChanges();
+		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
+	});
 
-// 			expect(element).toEqualText('In progress');
-// 		});
-// 	});
-// });
+	test('renders empty when no label and no slot', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge></ontario-badge>`);
+
+		await expect(host.locator('span')).toHaveText('');
+	});
+
+	test('handles empty aria-label', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Test" aria-label-text=""></ontario-badge>`);
+
+		await expect(host.locator('span')).toHaveAttribute('aria-label', '');
+	});
+
+	test('maps legacy colour values', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Test" colour="lightTeal"></ontario-badge>`);
+
+		await expect(host.locator('span')).toContainClass('ontario-badge--light-teal');
+	});
+
+	/* ==============================================
+     Boundary Tests with longer than 15 characters
+    ================================================= */
+	/* ==============================================
+    Currently skipped because the badge component is not designed to handle long text 
+    and will overflow horizontally. 
+    This test is included for future reference if the component is updated 
+    to support long text wrapping.
+    ================================================= */
+	test.skip('wraps long text without horizontal overflow', async ({ page }) => {
+		const host = await renderHost(
+			page,
+			`<div style="width: 200px;">
+                <ontario-badge label="This label is longer than fifteen characters"></ontario-badge>
+            </div>`,
+		);
+
+		const badgeText = host.locator('span');
+		await expect(badgeText).toBeVisible();
+
+		const overflowX = await badgeText.evaluate((el) => getComputedStyle(el).overflowX);
+		expect(overflowX).not.toBe('visible');
+
+		const scrollWidth = await badgeText.evaluate((el) => el.scrollWidth);
+		const clientWidth = await badgeText.evaluate((el) => el.clientWidth);
+		expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
+	});
+
+	test('handles empty string label', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label=""></ontario-badge>`);
+
+		await expect(host.locator('span')).toHaveText('');
+	});
+
+	test('defaults to teal when colour not provided', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Default"></ontario-badge>`);
+
+		await expect(host.locator('span')).toContainClass('ontario-badge--teal');
+	});
+
+	test('handles rapid updates', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Stress"></ontario-badge>`);
+
+		await host.evaluate((el: HTMLOntarioBadgeElement) => {
+			el.colour = 'grey';
+			el.colour = 'teal';
+			el.colour = 'yellow';
+		});
+
+		await page.waitForChanges();
+
+		await expect(host.locator('span')).toBeAttached();
+		await expect(host.locator('span')).toContainClass('ontario-badge--yellow');
+	});
+
+	test('supports unicode label', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="✅ Done"></ontario-badge>`);
+
+		await expect(host.locator('span')).toHaveText('✅ Done');
+	});
+
+	/* =========================
+     Accessibility Tests
+    ========================== */
+
+	test('has no accessibility violations', async ({ page }) => {
+		await renderHost(page, `<ontario-badge label="Accessible"></ontario-badge>`);
+		await expectNoAxeViolations(page, 'ontario-badge');
+	});
+
+	test('uses aria-label for screen readers', async ({ page }) => {
+		const host = await renderHost(
+			page,
+			`<ontario-badge label="Visible" aria-label-text="Screen reader text"></ontario-badge>`,
+		);
+
+		await expect(host.locator('span')).toHaveAttribute('aria-label', 'Screen reader text');
+	});
+
+	test('falls back to visible text without aria-label', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Fallback"></ontario-badge>`);
+		const label = host.locator('span');
+
+		await expect(label).toBeVisible();
+		await expect(label).not.toHaveAttribute('aria-label');
+		await expect(label).toHaveText('Fallback');
+		await expect(host).toBeVisible();
+	});
+
+	test('has correct semantic structure', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Semantic"></ontario-badge>`);
+
+		const span = host.locator('span');
+		await expect(span).toBeAttached();
+		await expect(span).not.toHaveAttribute('role');
+	});
+
+	/* =========================
+     Performance Tests
+    ========================== */
+
+	test('renders multiple badges', async ({ page }) => {
+		const badgeCount = 50;
+		const html = Array.from({ length: badgeCount })
+			.map((_, i) => `<ontario-badge label="Badge ${i}"></ontario-badge>`)
+			.join('');
+
+		await page.setContent(`<div id="multiple-badges" style="display: inline-flex; flex-wrap: wrap;">${html}</div>`);
+		await page.waitForChanges();
+
+		const container = page.locator('#multiple-badges');
+		const badges = container.locator('ontario-badge');
+		await expect(badges).toHaveCount(badgeCount);
+	});
+
+	test('handles rapid re-rendering', async ({ page }) => {
+		const host = await renderHost(page, `<ontario-badge label="Perf"></ontario-badge>`);
+
+		await host.evaluate((el: HTMLOntarioBadgeElement) => {
+			for (let i = 0; i < 10; i++) {
+				el.colour = i % 2 ? 'red' : 'teal';
+			}
+		});
+
+		const start = performance.now();
+		await page.waitForChanges();
+		const durationMs = performance.now() - start;
+
+		expect(durationMs).toBeLessThan(500); // tune this threshold
+		await expect(host).toBeAttached();
+	});
+});

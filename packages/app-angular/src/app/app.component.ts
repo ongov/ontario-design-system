@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 		private appConfigService: AppConfigService,
 		private titleService: Title,
 	) {
-		translate.setDefaultLang('en');
+		translate.setFallbackLang('en');
 		translate.use('en');
 
 		translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
 		e.preventDefault();
 		const lang = getLanguage();
 		this.translate.use(lang);
-		this.translate.setDefaultLang(lang);
+		this.translate.setFallbackLang(lang);
 
 		// Manually trigger change detection
 		this.cdr.detectChanges();
@@ -126,7 +126,7 @@ export class AppComponent implements OnInit {
 		const lang = this.getLanguageFromURL();
 
 		// Set the default language
-		this.translate.setDefaultLang(lang);
+		this.translate.setFallbackLang(lang);
 		this.translate.use(lang);
 
 		// Update the header language prop

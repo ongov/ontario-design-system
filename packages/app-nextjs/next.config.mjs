@@ -4,7 +4,9 @@ import { pkgImporter } from '@ongov/ontario-design-system-component-library-reac
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	sassOptions: {
-		importer: [pkgImporter],
+		// `sassOptions.importer` (legacy Sass JS API) was removed in `sass-loader@17`,
+		// which Next.js 16 depends on — use the modern `importers` (FileImporter) API instead.
+		importers: [pkgImporter],
 	},
 };
 

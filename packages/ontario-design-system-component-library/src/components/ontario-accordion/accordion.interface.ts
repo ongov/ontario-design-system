@@ -34,6 +34,7 @@ export enum AccordionChangeDetailReasons {
 	Init = 'init',
 	ToggleOne = 'toggle-one',
 	ToggleAll = 'toggle-all',
+	BrowserSearch = 'browser-search',
 }
 
 /**
