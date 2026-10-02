@@ -106,7 +106,6 @@ export function UncontrolledTextInput() {
 	};
 
 	const reset = (event: FormEvent) => {
-		event.preventDefault();
 		setHasBeenReset(true);
 	};
 
