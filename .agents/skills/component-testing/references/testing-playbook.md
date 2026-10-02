@@ -56,11 +56,11 @@ At Playwright's default 16px root size, the canonical breakpoints are:
 
 During Phase 1, inspect the component SCSS and its fixture context for `min-width`, `max-width`, breakpoint variables, grid classes, visibility helpers, container constraints, and responsive JavaScript. Propose coverage only for boundaries that can change the component or its integration layout.
 
-For each applicable breakpoint $B$:
+For each applicable breakpoint width `B`:
 
-- Use Stencil E2E to assert behavioural, semantic, visibility, ordering, overflow, or interaction changes immediately below and above the boundary, normally at $B - 1$px and $B + 1$px.
-- Also test exactly $B$ when the SCSS uses inclusive `min-width` and `max-width`, visibility changes at the threshold, or overlapping rules make boundary ownership significant.
-- Use Stencil VRT for one stable viewport inside each visually distinct layout region. Do not create three nearly identical snapshots merely to cover $B - 1$, $B$, and $B + 1$.
+- Use Stencil E2E to assert behavioural, semantic, visibility, ordering, overflow, or interaction changes immediately below and above the boundary, normally at `B - 1` px and `B + 1` px.
+- Also test exactly `B` when the SCSS uses inclusive `min-width` and `max-width`, visibility changes at the threshold, or overlapping rules make boundary ownership significant.
+- Use Stencil VRT for one stable viewport inside each visually distinct layout region. Do not create three nearly identical snapshots merely to cover `B - 1`, `B`, and `B + 1`.
 - Use Next.js E2E when the React wrapper, fixture container, global grid, inherited styles, or page composition can change responsive behaviour.
 - Use Next.js VRT for responsive layouts that depend on the full app context. Avoid duplicating a self-contained Stencil screenshot when the rendered result is equivalent.
 
