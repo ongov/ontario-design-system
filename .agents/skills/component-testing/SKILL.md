@@ -88,3 +88,14 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 - Never add arbitrary sleeps. Use locator assertions, `page.waitForChanges()`, or the shared interaction-paint helper.
 - Do not loosen global screenshot tolerances to make a component test pass. Use a narrowly justified per-snapshot allowance only when necessary.
 - Use Canadian spelling in test names, fixture text, and comments unless an API or expected string requires otherwise.
+
+## Repository Conventions
+
+Follow the repository's `AGENTS.md`; the points below apply specifically to test work.
+
+- Formatting: tabs for indentation (width 2), single quotes, semicolons, trailing commas, and a print width of 120. Run Prettier on every touched file, for example `pnpm exec prettier --write <files>`.
+- Spelling: Canadian spelling (`colour`, `behaviour`, `centre`) in test names, fixture text, comments, and docs. Keep US spelling only where an API, attribute, or expected string requires it.
+- File naming: use the existing suffixes `*.spec.tsx` (unit), `*.e2e.ts`, and `*.vrt.ts`. Keep unit, E2E, and VRT cases in their own files rather than combining layers.
+- Markdown: do not hard-wrap markdown. Write each paragraph or list item as a single line.
+- Commits: use Conventional Commits with a lowercase imperative subject, for example `test(button): add keyboard coverage`. Use the `test` type for test-only changes, and keep subject and body lines under 100 characters. Keep snapshot updates in their own commit when practical so reviewers can inspect them separately.
+- Scope: keep changes limited to the approved component. Do not refactor unrelated tests or components.
