@@ -49,6 +49,6 @@
 		"puppeteer": "^25.0.0",
 		"tsx": "^4.20.5",
 		"typescript": "^7.0.0",
-		"vitest": "^4.1.8"
+		"vitest": "^5.0.0"
 	}
 }
