@@ -1,3 +1,38 @@
+# 9.2.0-alpha.1 (2026-10-05)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library-react:** resolved source mapping issue cf3b804
+- **@ongov/ontario-design-system-component-library:** resolved React event prop naming mismatch 7d7b8a8
+- **@ongov/ontario-design-system-component-library:** updated value prop based on MR feedback 1c2f43a
+- **app-angular:** align runtime Angular deps to 22.1.3 to match devDependency bump 3443a71
+- **app-angular:** migrate to @ngx-translate/core v18 standalone API ([#346](undefined/ongov/ontario-design-system/issues/346)) c5a05f1
+- **app-angular:** patch ngx-translate-routes runtime bundle for v18 compat 043fbcb
+- **app-nextjs:** add skip-link target and e2e coverage for in-page navigation fac4ecc
+- **app-nextjs:** pin next dev/build to webpack mode for Next 16 0d20183
+- **app-nextjs:** update lint script and eslint config for Next 16 / ESLint 10 dab8ab9
+- **apps:** address PR review comments on dev server host binding a173cd8
+- **apps:** bind app-angular and app-react dev servers to all interfaces 1f9d3e1
+- **apps:** fix app-angular/app-nextjs build breakage from Renovate bumps 92e1a95
+- **build:** scope package-level format scripts to root .prettierignore 6ab0b70
+- **checkbox-bg:** consistent display between shadow and real DOMs 6663f4f
+- **ci:** bump Playwright container images to v1.62.0-noble aa36d57
+- **deps:** update all non-major dependencies 5a2b60e
+- **deps:** update all non-major dependencies ([#332](undefined/ongov/ontario-design-system/issues/332)) 72436fd
+- **deps:** update dependency @ngx-translate/http-loader to v18 d2353f1
+- **deps:** update dependency @uirouter/angular to v22 cb9209a
+- **deps:** update dependency next to v16 3b000da
+- **deps:** update dependency ngx-translate-routes to v2 222a2f4
+- **deps:** update dependency react-router-dom to v7 bfde59e
+- **deps:** update dependency react-syntax-highlighter to v16 7703fbd
+- **deps:** update dependency typescript to v7 ([#335](undefined/ongov/ontario-design-system/issues/335)) 4b0fe64
+- **deps:** update node.js to v24 ([#336](undefined/ongov/ontario-design-system/issues/336)) 5b0a3e7
+- **renovate:** label the Dependency Dashboard issue so its trigger fires e8626fc
+
+### Features
+
+- **@ongov/ontario-design-system-component-library:** made accordion text content searchable fe3cd1a
+
 # 9.1.0 (2026-08-20)
 
 ### Bug Fixes
