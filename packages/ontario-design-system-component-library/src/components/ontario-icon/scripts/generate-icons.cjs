@@ -88,7 +88,8 @@ import { IconSize${hasColour ? `, IconColour, IconColours ` : ``} } from './icon
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';${
 		hasColour
 			? `
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';`
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';`
 			: ''
 	} ${
 		hasColour
@@ -194,18 +195,15 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	 * @returns default colour (black)
 	 */
 	private warnDefaultColour(): IconColour {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' colour ')
-			.addRegularText('on')
-			.addMonospaceText(' <${iconName}> ')
-			.addRegularText('was set to an invalid colour; only')
-			.addMonospaceText(' black, blue, grey or white ')
-			.addRegularText('are supported. The default colour')
-			.addMonospaceText(' black ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'colour',
+			componentTag: '<${iconName}>',
+			allowedValues: IconColours,
+			defaultValue: 'black',
+			invalidDescriptor: 'colour',
+			defaultDescriptor: 'colour',
+			conjunction: 'or',
+		});
 		return 'black';
 	}
 	`
