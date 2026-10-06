@@ -68,6 +68,7 @@
 		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
 		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
 		"./styles/scss/theme": "./dist/styles/scss/theme.scss",
+		"./styles/scss/1-variables/box-shadow.variables": "./dist/styles/scss/1-variables/_box-shadow.variables.scss",
 		"./styles/scss/1-variables/breakpoints.variables": "./dist/styles/scss/1-variables/_breakpoints.variables.scss",
 		"./styles/scss/1-variables/colours.variables": "./dist/styles/scss/1-variables/_colours.variables.scss",
 		"./styles/scss/1-variables/font-sizes.variables": "./dist/styles/scss/1-variables/_font-sizes.variables.scss",

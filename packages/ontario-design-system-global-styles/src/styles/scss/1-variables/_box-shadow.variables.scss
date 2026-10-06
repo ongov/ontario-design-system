@@ -1,0 +1,4 @@
+@use './colours.variables' as colours;
+
+$ontario-box-shadow: 0 0 0 4px;
+$ontario-focus-box-shadow: $ontario-box-shadow colours.$ontario-colour-focus;
