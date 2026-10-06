@@ -175,7 +175,8 @@ The ID of the hint text element, or undefined if no ID is set.
 
 ### Used by
 
-- [ontario-checkboxes](../ontario-checkbox)
+- [ontario-checkbox](../ontario-checkbox)
+- [ontario-checkboxes](../ontario-checkboxes)
 - [ontario-dropdown-list](../ontario-dropdown-list)
 - [ontario-input](../ontario-input)
 - [ontario-radio-buttons](../ontario-radio-buttons)
@@ -187,6 +188,7 @@ The ID of the hint text element, or undefined if no ID is set.
 
 ```mermaid
 graph TD;
+  ontario-checkbox --> ontario-hint-text
   ontario-checkboxes --> ontario-hint-text
   ontario-dropdown-list --> ontario-hint-text
   ontario-input --> ontario-hint-text
