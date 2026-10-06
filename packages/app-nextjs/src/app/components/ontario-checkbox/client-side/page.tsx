@@ -13,6 +13,7 @@ export default function OntarioCheckboxPage() {
 					<h2>Custom Event Props</h2>
 
 					<OntarioCheckbox
+						id="ontario-checkbox-custom-events"
 						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-default"
 						value="agreed"
