@@ -18,6 +18,12 @@ test.describe('Ontario Checkbox - label variants', () => {
 		await expectVrtScreenshot(checkbox);
 	});
 
+	test('default label - hover state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-default');
+		await checkbox.locator('.ontario-checkbox__label').hover();
+		await expectVrtScreenshot(checkbox);
+	});
+
 	test('large label', async ({ page }) => {
 		const checkbox = page.locator('#ontario-checkbox-label-large');
 		await expectVrtScreenshot(checkbox);
@@ -44,8 +50,58 @@ test.describe('Ontario Checkbox - state variants', () => {
 		await expectVrtScreenshot(checkbox);
 	});
 
+	test('not required state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-not-required');
+		await expectVrtScreenshot(checkbox);
+	});
+
 	test('error state', async ({ page }) => {
 		const checkbox = page.locator('#ontario-checkbox-error');
+		await expectVrtScreenshot(checkbox);
+	});
+});
+
+test.describe('Ontario Checkbox - hint-text variant', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/components/ontario-checkbox/server-side');
+	});
+
+	test('hint text set', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-hint-text');
+		await expectVrtScreenshot(checkbox);
+	});
+});
+
+test.describe('Ontario Checkbox - hint-expander variant', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/components/ontario-checkbox/server-side');
+	});
+
+	test('hint expander - default state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-hint-expander');
+		await expectVrtScreenshot(checkbox);
+	});
+
+	test('hint expander - expanded state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-hint-expander');
+		await checkbox.locator('ontario-hint-expander').getByRole('button').click();
+		await waitForInteractionPaint(page);
+		await expectVrtScreenshot(checkbox);
+	});
+});
+
+test.describe('Ontario Checkbox - language variants', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/components/ontario-checkbox/server-side');
+	});
+
+	test('english - default state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-language-english');
+		await expectVrtScreenshot(checkbox);
+	});
+
+	test('french - default state', async ({ page }) => {
+		const checkbox = page.locator('#ontario-checkbox-language-french');
 		await expectVrtScreenshot(checkbox);
 	});
 });
