@@ -239,9 +239,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		// svg-img-alt is disabled here: a required, unchecked checkbox shows the error state
-		// immediately, which renders the same shared alert icon with no accessible text as the
-		// manual "error state" test below - see that test's comment.
+		// svg-img-alt is disabled: the required, unchecked state shows the same shared error icon.
 		await expectNoAxeViolations(page, 'ontario-checkbox', ['svg-img-alt']);
 	});
 
@@ -257,11 +255,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		// svg-img-alt is disabled here: the alert icon rendered by the shared
-		// ErrorMessage/ontario-icon-alert-error utility has no accessible text.
-		// This is pre-existing and shared by every component with an errorMessage
-		// prop (ontario-checkboxes, ontario-input, ontario-textarea, etc.), not
-		// something introduced by this component - out of scope to fix here.
+		// svg-img-alt is disabled: the shared ontario-icon-alert-error used by error messages has no accessible text.
 		await expectNoAxeViolations(page, 'ontario-checkbox', ['svg-img-alt']);
 	});
 });
