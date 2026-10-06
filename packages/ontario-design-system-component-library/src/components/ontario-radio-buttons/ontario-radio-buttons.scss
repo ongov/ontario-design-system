@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables' as globalVariables;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/box-shadow.variables' as boxShadow;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
@@ -124,7 +125,7 @@ $ontario-input-offset: math.div((globalVariables.$touch-target-size - $ontario-r
 }
 
 .ontario-radios__input:focus + .ontario-radios__label:before {
-	-moz-box-shadow: placeholders.$ontario-focus-box-shadow;
+	-moz-box-shadow: boxShadow.$ontario-focus-box-shadow;
 	-webkit-box-shadow: colours.$ontario-colour-focus;
 	@extend %ontario-focus;
 }
