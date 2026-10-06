@@ -89,6 +89,15 @@ const Layout = ({ children }: any) => {
 			},
 		},
 		{
+			title: 'Standalone Checkbox',
+			href: generateHashPath('/ontario-standalone-checkbox'),
+			linkIsActive: false,
+			onClickHandler: (e: Event) => {
+				e.preventDefault();
+				navigate('/ontario-standalone-checkbox');
+			},
+		},
+		{
 			title: 'Radio Buttons',
 			href: generateHashPath('/ontario-radio-button'),
 			linkIsActive: false,

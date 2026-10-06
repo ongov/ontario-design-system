@@ -1,41 +1,25 @@
 'use client';
 
 import { Grid } from '../../../grid';
-import { OntarioCheckboxes } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioCheckbox } from '@ongov/ontario-design-system-component-library-react';
 
-export default function OntarioCheckboxesPage() {
+export default function OntarioCheckboxPage() {
 	return (
 		<main>
 			<Grid>
-				<h1>ontario-checkboxes (Client Side)</h1>
+				<h1>ontario-checkbox (Client Side)</h1>
 
 				<div>
 					<h2>Custom Event Props</h2>
 
-					<OntarioCheckboxes
-						caption={{ captionText: 'Checkbox legend (default)', captionType: 'default' }}
-						name="checkbox-caption-default"
-						options={[
-							{
-								value: 'checkbox-default-1',
-								label: 'Option 1',
-								elementId: 'checkbox-default-1',
-							},
-							{
-								value: 'checkbox-default-2',
-								label: 'Option 2',
-								elementId: 'checkbox-default-2',
-							},
-							{
-								value: 'checkbox-default-3',
-								label: 'Option 3',
-								elementId: 'checkbox-default-3',
-							},
-						]}
-						customOnChange={(e) => console.log(`customOnChange → ${(e.target as HTMLInputElement)?.value}`)}
+					<OntarioCheckbox
+						label="I agree to the terms and conditions"
+						name="checkbox-default"
+						value="agreed"
+						customOnChange={(e) => console.log(`customOnChange → ${(e.target as HTMLInputElement)?.checked}`)}
 						customOnFocus={(e) => console.log(`customOnFocus → ${(e.target as HTMLInputElement)?.value}`)}
 						customOnBlur={() => console.log(`customOnBlur`)}
-					></OntarioCheckboxes>
+					></OntarioCheckbox>
 				</div>
 			</Grid>
 		</main>
