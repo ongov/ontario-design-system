@@ -1,5 +1,6 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
 
 test.describe('ontario-aside', () => {
 	let host: Locator;
@@ -23,7 +24,8 @@ test.describe('ontario-aside', () => {
 		await page.waitForChanges();
 
 		host = page.locator('ontario-aside');
-		expect(page).toHaveScreenshot();
+
+		await expectVrtScreenshot(host);
 	});
 
 	test('applies and updates border-highlight class when highlight-colour changes', async ({ page }) => {
@@ -31,6 +33,9 @@ test.describe('ontario-aside', () => {
 		const hasPurple = await host.evaluate(
 			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--purple'),
 		);
+		/* wait for the purple highlight to be applied */
+		await page.waitForChanges();
+
 		expect(hasPurple).toBe(true);
 
 		// update prop to lime and wait for component to re-render
@@ -43,7 +48,7 @@ test.describe('ontario-aside', () => {
 		);
 		console.log('hasLime:', hasLime);
 		expect(hasLime).toBe(true);
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 
 	test('renders content prop inside a paragraph when content is provided', async ({ page }) => {
@@ -53,7 +58,7 @@ test.describe('ontario-aside', () => {
 		await page.waitForChanges();
 
 		await expect(host.locator('p').filter({ hasText: 'This is content passed via prop' })).toBeVisible();
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 
 	test('updates heading content when heading-content-type changes', async ({ page }) => {
@@ -72,7 +77,7 @@ test.describe('ontario-aside', () => {
 		const link = host.locator('h4 a');
 		await expect(link).toHaveAttribute('href', '#');
 		await expect(link).toHaveText('Quick fact:');
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 
 	// ============== CSS VALIDATION TESTS ==============
@@ -91,7 +96,7 @@ test.describe('ontario-aside', () => {
 			}, colour);
 			expect(hasColourClass).toBe(true);
 			console.log(`Verified highlight colour class for: ${colour} - ${hasColourClass}`);
-			await expect(page).toHaveScreenshot();
+			await expectVrtScreenshot(host);
 		}
 	});
 
@@ -111,7 +116,7 @@ test.describe('ontario-aside', () => {
 		expect(hasTealClass).toBe(true);
 
 		// take screenshot after replacing the element to verify default teal border colour
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 
 	test('border colour changes immediately when highlight-colour prop updates', async ({ page }) => {
@@ -123,7 +128,7 @@ test.describe('ontario-aside', () => {
 		});
 		expect(borderColour).toBeTruthy();
 		const initialColour = borderColour;
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 		// Change to gold
 		await host.evaluate((el) => {
 			el.setAttribute('highlight-colour', 'gold');
@@ -139,10 +144,10 @@ test.describe('ontario-aside', () => {
 
 		// Verify the colour has changed
 		expect(borderColour).not.toBe(initialColour);
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 
-	test('border is solid left border only', async ({ page }) => {
+	test('border is solid left border only', async () => {
 		const borderStyles = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');
 			if (!aside) return null;
@@ -162,6 +167,6 @@ test.describe('ontario-aside', () => {
 		expect(borderStyles?.borderBottomWidth).toBe('0px');
 		expect(borderStyles?.borderLeftWidth).not.toBe('0px');
 		expect(borderStyles?.borderLeftStyle).toBe('solid');
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(host);
 	});
 });
