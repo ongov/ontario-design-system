@@ -14,7 +14,7 @@
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
-	"styles": "./dist/styles/theme.scss",
+	"styles": "./dist/styles/theme.css",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -40,9 +40,9 @@
 			"default": "./dist/react-component-lib/index.js"
 		},
 		"./package.json": "./package.json",
-		"./styles": {
-			"default": "./dist/styles/theme.scss"
-		},
+		"./styles": "./dist/styles/theme.css",
+		"./styles/theme.scss": "./dist/styles/theme.scss",
+		"./theme.css": "./dist/styles/theme.css",
 		"./styles/*": "./dist/styles/*"
 	},
 	"files": [
@@ -54,7 +54,8 @@
 	],
 	"scripts": {
 		"build": "pnpm run clean && pnpm run compile && pnpm run docs:copy:readme && pnpm run docs:copy:docs",
-		"postbuild": "pnpm run copy:assets",
+		"postbuild": "pnpm run copy:assets && pnpm run build:css",
+		"build:css": "node ./scripts/build-css.mjs",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"compile": "pnpm run tsc",
@@ -82,6 +83,7 @@
 		"prettier": "^3.4.2",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
+		"sass-embedded": "^1.93.2",
 		"typescript": "^6.0.0"
 	},
 	"peerDependencies": {
