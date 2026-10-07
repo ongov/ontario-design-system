@@ -92,32 +92,29 @@ uncontrolled field, set its initial `value` and do not keep changing that prop.
 Read the live value from the custom-element ref:
 
 ```tsx
-import { FormEvent, useRef, useState } from 'react';
-import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
+import { useRef, useEffect, SubmitEvent, SyntheticEvent, useState } from 'react';
+import { OntarioInput, OntarioButton } from '@ongov/ontario-design-system-component-library-react';
 
-export function UncontrolledTextInput() {
+export default function UncontrolledTextInput() {
 	const inputRef = useRef<HTMLOntarioInputElement>(null);
+	const initialValue = 'Default value';
 	const [submittedName, setSubmittedName] = useState('');
 	const [hasBeenReset, setHasBeenReset] = useState(false);
 
-	const submit = (event: FormEvent) => {
+	const submit = (event: SubmitEvent) => {
 		event.preventDefault();
 		setSubmittedName(inputRef.current?.value ?? '');
-	};
-
-	const reset = (event: FormEvent) => {
 		setHasBeenReset(true);
 	};
 
-	return (
-		<form onSubmit={submit} onReset={reset}>
-			<OntarioInput ref={inputRef} caption="Name" name="name" value="Default value" />
-			<button type="submit">Read current value</button>
-			<p>Current value: {submittedName}</p>
-			<button type="reset">Reset to default</button>
-			<p>Form has been reset to default: {hasBeenReset ? 'Yes' : 'No'}</p>
-		</form>
-	);
+	const reset = (event: SyntheticEvent) => {
+		event.preventDefault();
+		if (inputRef.current) {
+			inputRef.current.value = initialValue;
+		}
+		setHasBeenReset(true);
+		setSubmittedName('');
+	};
 }
 ```
 
