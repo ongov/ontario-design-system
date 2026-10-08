@@ -246,8 +246,9 @@ $ontario-card-heading-colours: (
 			box-shadow: none;
 		}
 	}
+
 	.ontario-card--position-vertical & {
-		margin-bottom: spacing.$spacing-2 * -1;
+		margin-bottom: spacing.$spacing-2;
 	}
 
 	.ontario-card__card-type--horizontal & {
