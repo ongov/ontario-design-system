@@ -22,10 +22,10 @@ import { FrameFiveComponent } from './pages/framefive/framefive.component';
 import { FrameSixComponent } from './pages/framesix/framesix.component';
 
 // import ngx-translate and the http loader
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe, provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgxTranslateRoutesModule } from 'ngx-translate-routes';
+import { provideNgxTranslateRoutes } from 'ngx-translate-routes';
 
 import { environment } from '../environments/environment';
 
@@ -51,22 +51,19 @@ import { environment } from '../environments/environment';
 		RouterModule,
 		FormsModule,
 		HttpClientModule,
-		TranslateModule.forRoot({
-			defaultLanguage: 'en',
-			useDefaultLang: true,
-			loader: {
-				provide: TranslateLoader,
-				useClass: TranslateHttpLoader,
-			},
-		}),
-		NgxTranslateRoutesModule.forRoot({
-			enableRouteTranslate: true,
-			enableTitleTranslate: true,
-		}),
+		TranslatePipe,
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	providers: [
 		TemporaryStorageService,
+		provideTranslateService({
+			fallbackLang: 'en',
+			loader: provideTranslateLoader(TranslateHttpLoader),
+		}),
+		provideNgxTranslateRoutes({
+			enableRouteTranslate: true,
+			enableTitleTranslate: true,
+		}),
 		...provideTranslateHttpLoader({ prefix: environment.translationPath, suffix: '.json' }),
 	],
 	bootstrap: [AppComponent],

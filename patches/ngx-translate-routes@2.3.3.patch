@@ -1,0 +1,38 @@
+diff --git a/fesm2022/ngx-translate-routes.mjs b/fesm2022/ngx-translate-routes.mjs
+index cf5d835475f1ec0c07a596df30d436a3b8d0f826..1439e965b1e708d2df80685ae4e11168a72be1e1 100644
+--- a/fesm2022/ngx-translate-routes.mjs
++++ b/fesm2022/ngx-translate-routes.mjs
+@@ -2,13 +2,20 @@ import * as i0 from '@angular/core';
+ import { InjectionToken, makeStateKey, inject, TransferState, PLATFORM_ID, Injectable, DestroyRef, Optional, SkipSelf, NgModule, APP_INITIALIZER, makeEnvironmentProviders } from '@angular/core';
+ import { DOCUMENT, isPlatformServer, isPlatformBrowser, Location, CommonModule, TitleCasePipe } from '@angular/common';
+ import * as i1 from '@ngx-translate/core';
+-import { TranslateService, TranslateModule } from '@ngx-translate/core';
++import { TranslateService } from '@ngx-translate/core';
+ import { ActivatedRoute, Router, NavigationStart, NavigationEnd } from '@angular/router';
+ import { skip, filter } from 'rxjs/operators';
+ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+ import { Title } from '@angular/platform-browser';
+ import { firstValueFrom } from 'rxjs';
+ 
++// Patched: @ngx-translate/core v18 removed `TranslateModule` (NgModule API).
++// This local shim only backs the dead, deprecated `NgxTranslateRoutesModule`
++// NgModule wrapper's static declaration metadata below (never instantiated
++// since this app uses the standalone `provideNgxTranslateRoutes()` export).
++const TranslateModule = { forChild: () => ({ ngModule: class {
++        } , providers: [] }) };
++
+ const NGX_TRANSLATE_ROUTES_CONFIG = new InjectionToken('NGX_TRANSLATE_ROUTES_CONFIG');
+ 
+ const lastRouteKey = 'lastLocationPath';
+diff --git a/lib/ngx-translate-routes.module.d.ts b/lib/ngx-translate-routes.module.d.ts
+index 6583b707a7ee5ecbf99ac61772617b18b9b68cd1..6a74bfc8fdc817582ca08b830453cd4dae70930a 100644
+--- a/lib/ngx-translate-routes.module.d.ts
++++ b/lib/ngx-translate-routes.module.d.ts
+@@ -8,6 +8,6 @@ export declare class NgxTranslateRoutesModule {
+     constructor(parentModule?: NgxTranslateRoutesModule);
+     static forRoot(config?: NgxTranslateRoutesConfig): ModuleWithProviders<NgxTranslateRoutesModule>;
+     static ɵfac: i0.ɵɵFactoryDeclaration<NgxTranslateRoutesModule, [{ optional: true; skipSelf: true; }]>;
+-    static ɵmod: i0.ɵɵNgModuleDeclaration<NgxTranslateRoutesModule, never, [typeof i1.CommonModule, typeof i2.TranslateModule], never>;
++    static ɵmod: i0.ɵɵNgModuleDeclaration<NgxTranslateRoutesModule, never, [typeof i1.CommonModule, unknown], never>;
+     static ɵinj: i0.ɵɵInjectorDeclaration<NgxTranslateRoutesModule>;
+ }

@@ -22,6 +22,7 @@ import { OntarioCheckboxes as OntarioCheckboxesElement } from "@ongov/ontario-de
 import { OntarioCriticalAlert as OntarioCriticalAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js";
 import { OntarioDateInput as OntarioDateInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
 import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
+import { OntarioDropdownOption as OntarioDropdownOptionElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-option.js";
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
@@ -415,6 +416,19 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioDropdownList as ReactWebComponent<OntarioDropdownListElement, OntarioDropdownListEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioDropdownOptionEvents = NonNullable<unknown>;
+
+export const OntarioDropdownOption: StencilReactComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents> = /*@__PURE__*/ createComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents>({
+    tagName: 'ontario-dropdown-option',
+    properties: {
+        value: 'value',
+        selected: 'selected'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioDropdownOption as ReactWebComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents>,
     serializeShadowRoot
 });
 
