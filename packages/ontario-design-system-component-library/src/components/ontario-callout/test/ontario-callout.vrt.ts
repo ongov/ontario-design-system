@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
 
 test.describe('ontario-callout', () => {
 	test('renders', async ({ page }) => {
@@ -12,7 +13,7 @@ test.describe('ontario-callout', () => {
 		await expect(component).toHaveClass(/hydrated/);
 		await expect(element).toHaveClass(/ontario-callout/);
 		await expect(element).toHaveClass(/ontario-border-highlight--teal/);
-		await expect(page).toHaveScreenshot();
+		await expectVrtScreenshot(component);
 	});
 
 	test.describe('render changes', () => {
@@ -26,13 +27,13 @@ test.describe('ontario-callout', () => {
 			});
 
 			await expect(component.locator('h3')).toBeVisible();
-			await expect(page).toHaveScreenshot();
+			await expectVrtScreenshot(component);
 			await component.evaluate((el: HTMLOntarioCalloutElement) => {
 				el.headingType = 'h4';
 			});
 
 			await expect(component.locator('h4')).toBeVisible();
-			await expect(page).toHaveScreenshot();
+			await expectVrtScreenshot(component);
 		});
 
 		test('renders changes to the class names when the highlightColour is changed', async ({ page }) => {
@@ -46,13 +47,14 @@ test.describe('ontario-callout', () => {
 
 			const goldElement = component.locator('.ontario-callout');
 			await expect(goldElement).toHaveClass(/ontario-border-highlight--gold/);
+			await expectVrtScreenshot(component);
 
 			await component.evaluate((el: HTMLOntarioCalloutElement) => {
 				el.highlightColour = 'lime';
 			});
 
 			await expect(goldElement).toHaveClass(/ontario-border-highlight--lime/);
-			await expect(page).toHaveScreenshot();
+			await expectVrtScreenshot(component);
 		});
 
 		test('renders changes to the HTML through the headingContentType property', async ({ page }) => {
@@ -77,7 +79,7 @@ test.describe('ontario-callout', () => {
 			});
 
 			await expect(heading.locator('a')).toHaveText('Get notified');
-			await expect(page).toHaveScreenshot();
+			await expectVrtScreenshot(component);
 		});
 	});
 });
