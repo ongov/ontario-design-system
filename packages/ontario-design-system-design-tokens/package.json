@@ -27,6 +27,7 @@
 		"generate:colours": "node scripts/generate-colour-tokens.ts",
 		"lint:tokens": "node scripts/lint-tokens.ts",
 		"export:figma": "node scripts/export-figma-tokens.ts",
+		"generate:token-snapshot": "node scripts/generate-token-snapshot.ts",
 		"test": "vitest run",
 		"test:unit": "vitest run",
 		"test:watch": "vitest",
