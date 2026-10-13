@@ -15,7 +15,7 @@ test.describe('ontario-callout', () => {
 		await expect(element).toHaveClass(/ontario-border-highlight--teal/);
 	});
 
-	test.skip('has no detectable accessibility violations', async ({ page }) => {
+	test('has no detectable accessibility violations', async ({ page }) => {
 		await page.setContent(`
             <ontario-callout
                 heading-content="Get notified"
@@ -23,7 +23,7 @@ test.describe('ontario-callout', () => {
             ></ontario-callout>
         `);
 
-		const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+		const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-callout').analyze();
 
 		expect(accessibilityScanResults.violations).toEqual([]);
 	});
