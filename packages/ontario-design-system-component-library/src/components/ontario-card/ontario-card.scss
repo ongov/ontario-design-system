@@ -48,13 +48,6 @@
 	}
 }
 
-.ontario-card--image-true {
-	margin-top: spacing.$spacing-2 * -1;
-	@at-root .ontario-card__card-type--horizontal & {
-		margin-top: spacing.$spacing-0;
-	}
-}
-
 .ontario-card__card-type--horizontal {
 	display: flex;
 
@@ -247,7 +240,7 @@ $ontario-card-heading-colours: (
 		}
 	}
 	.ontario-card--position-vertical & {
-		margin-bottom: spacing.$spacing-2 * -1;
+		flex-shrink: 0;
 	}
 
 	.ontario-card__card-type--horizontal & {
@@ -266,6 +259,8 @@ $ontario-card-heading-colours: (
 	background-size: 100% 100%;
 
 	.ontario-card--position-vertical & {
+		display: block;
+		height: auto;
 		border-top-left-radius: globalVariables.$global-radius;
 		border-top-right-radius: globalVariables.$global-radius;
 	}
