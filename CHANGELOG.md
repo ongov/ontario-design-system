@@ -1,3 +1,10 @@
+# 9.2.0-alpha.2 (2026-10-14)
+
+### Bug Fixes
+
+- **@ongov/ontario-design-system-component-library:** fixing spacing on image cards 29860de
+- fixing spacing on image cards ([#415](undefined/ongov/ontario-design-system/issues/415)) 1988d26
+
 # 9.2.0-alpha.1 (2026-10-05)
 
 ### Bug Fixes
