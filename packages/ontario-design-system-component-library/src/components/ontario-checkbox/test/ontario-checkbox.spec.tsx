@@ -4,11 +4,11 @@ import { render } from '@stencil/vitest';
 describe('ontario-checkbox', () => {
 	it('renders', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		expect(page.root).toEqualHtml(`
-<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" class="hydrated">
+<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" class="hydrated">
   <mock:shadow-root>
     <div>
       <div role="alert" class="ontario-error-messaging ontario-error__hidden">
@@ -28,7 +28,7 @@ describe('ontario-checkbox', () => {
         <div class="ontario-checkbox__item">
           <input class="ontario-checkbox__input" id="terms" name="terms" type="checkbox" value="agreed">
           <label htmlfor="terms" class="ontario-label ontario-checkbox__label">
-            I agree to the terms and conditions
+            I have read and agree to the Terms and Conditions
             <span class="ontario-label__flag">
               (optional)
             </span>
@@ -43,7 +43,7 @@ describe('ontario-checkbox', () => {
 
 	it('should generate an elementId when none is provided', async () => {
 		const page = await render(
-			`<ontario-checkbox label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		expect((page.root as HTMLOntarioCheckboxElement).elementId).toBeTruthy();
@@ -51,7 +51,7 @@ describe('ontario-checkbox', () => {
 
 	it('should not be checked by default', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const input = page.root?.shadowRoot?.querySelector('#terms') as HTMLInputElement;
@@ -60,7 +60,7 @@ describe('ontario-checkbox', () => {
 
 	it('should reflect the checked prop on the rendered input', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
 		);
 
 		const input = page.root?.shadowRoot?.querySelector('#terms') as HTMLInputElement;
@@ -69,7 +69,7 @@ describe('ontario-checkbox', () => {
 
 	it('should emit checkboxOnChange with the current checked state when toggled', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const onCheckboxChange = vi.fn();
@@ -91,7 +91,7 @@ describe('ontario-checkbox', () => {
 
 	it('should emit a host change event when toggled', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const onChange = vi.fn();
@@ -107,7 +107,7 @@ describe('ontario-checkbox', () => {
 
 	it('should display the required flag and mark the input as required', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
 		);
 
 		const input = page.root?.shadowRoot?.querySelector('#terms') as HTMLInputElement;
@@ -119,7 +119,7 @@ describe('ontario-checkbox', () => {
 
 	it('should display an error message when errorMessage is set', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 
 		const errorMessage = page.root?.shadowRoot?.querySelector('.ontario-error-messaging__content');
@@ -128,7 +128,7 @@ describe('ontario-checkbox', () => {
 
 	it('should clear the error box/checkmark styling once checked, while keeping a manually-set errorMessage visible', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 
 		expect(page.root?.shadowRoot?.querySelector('.ontario-input--error')).toBeTruthy();
@@ -146,7 +146,7 @@ describe('ontario-checkbox', () => {
 
 	it('should immediately display a required-validation error when required and unchecked, with no interaction needed', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
 		);
 
 		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBe('You must select this checkbox to continue.');
@@ -154,7 +154,7 @@ describe('ontario-checkbox', () => {
 
 	it('should clear the required-validation error once the checkbox is checked', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
 		);
 
 		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBeTruthy();
@@ -177,7 +177,7 @@ describe('ontario-checkbox', () => {
 
 	it('should use requiredValidationMessage instead of the default translation when provided', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required required-validation-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required required-validation-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 
 		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBe(
@@ -189,7 +189,7 @@ describe('ontario-checkbox', () => {
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
 		await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" value="agreed"></ontario-checkbox>`,
 		);
 
 		expect(warnSpy).toHaveBeenCalled();
@@ -200,7 +200,7 @@ describe('ontario-checkbox', () => {
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
 		await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms"></ontario-checkbox>`,
 		);
 
 		expect(warnSpy).toHaveBeenCalled();
@@ -209,7 +209,7 @@ describe('ontario-checkbox', () => {
 
 	it('should call setFormValue with the value when checked', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const setFormValueSpy = vi.fn();
@@ -222,7 +222,7 @@ describe('ontario-checkbox', () => {
 
 	it('should call setFormValue with null when unchecked', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
 		);
 
 		const setFormValueSpy = vi.fn();
@@ -235,7 +235,7 @@ describe('ontario-checkbox', () => {
 
 	it('should call customOnChange when the checkbox is toggled', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const customOnChangeSpy = vi.fn();
@@ -251,7 +251,7 @@ describe('ontario-checkbox', () => {
 
 	it('should call customOnBlur when the checkbox loses focus', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const customOnBlurSpy = vi.fn();
@@ -266,7 +266,7 @@ describe('ontario-checkbox', () => {
 
 	it('should call customOnFocus when the checkbox gains focus', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 
 		const customOnFocusSpy = vi.fn();

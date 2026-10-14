@@ -13,7 +13,7 @@ test.describe('ontario-checkbox', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 			></ontario-checkbox>
@@ -85,7 +85,7 @@ test.describe('ontario-checkbox - required validation', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 				required
@@ -114,7 +114,7 @@ test.describe('ontario-checkbox - automatic required-field error', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 				required
@@ -141,7 +141,7 @@ test.describe('ontario-checkbox - automatic required-field error', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 			></ontario-checkbox>
@@ -157,7 +157,7 @@ test.describe('ontario-checkbox - automatic required-field error', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 				required
@@ -182,7 +182,7 @@ test.describe('ontario-checkbox - form association', () => {
 			<form id="test-form">
 				<ontario-checkbox
 					element-id="terms"
-					label="I agree to the terms and conditions"
+					label="I have read and agree to the Terms and Conditions"
 					name="terms"
 					value="agreed"
 				></ontario-checkbox>
@@ -217,7 +217,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 			></ontario-checkbox>
@@ -231,7 +231,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 				required
@@ -247,7 +247,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		await page.setContent(`
 			<ontario-checkbox
 				element-id="terms"
-				label="I agree to the terms and conditions"
+				label="I have read and agree to the Terms and Conditions"
 				name="terms"
 				value="agreed"
 				error-message="Please accept the Terms and Conditions to proceed."

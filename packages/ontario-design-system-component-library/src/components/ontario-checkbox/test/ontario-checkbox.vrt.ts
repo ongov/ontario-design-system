@@ -11,7 +11,7 @@ import { test } from '@stencil/playwright';
 test.describe('ontario-checkbox - default states', () => {
 	test('unchecked - default state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -25,7 +25,7 @@ test.describe('ontario-checkbox - default states', () => {
 
 	test('checked state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" checked></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -39,7 +39,7 @@ test.describe('ontario-checkbox - default states', () => {
 
 	test('hover state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -55,7 +55,7 @@ test.describe('ontario-checkbox - default states', () => {
 test.describe('ontario-checkbox - focus state', () => {
 	test('focus state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed"></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -71,7 +71,7 @@ test.describe('ontario-checkbox - focus state', () => {
 test.describe('ontario-checkbox - required state', () => {
 	test('required - default state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -86,7 +86,7 @@ test.describe('ontario-checkbox - required state', () => {
 test.describe('ontario-checkbox - error state', () => {
 	test('error state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
@@ -101,7 +101,7 @@ test.describe('ontario-checkbox - error state', () => {
 	// with no `error-message` prop set and no interaction needed.
 	test('required - automatic error state when unchecked', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 
