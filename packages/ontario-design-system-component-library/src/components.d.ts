@@ -225,6 +225,28 @@ export namespace Components {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon); it is
+     * sized to 24x24px automatically.
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface OntarioButton {
         /**
@@ -3729,6 +3751,28 @@ declare global {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon); it is
+     * sized to 24x24px automatically.
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
     }
@@ -5423,6 +5467,28 @@ declare namespace LocalJSX {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon); it is
+     * sized to 24x24px automatically.
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface OntarioButton {
         /**
@@ -9172,6 +9238,28 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
              * Disabled/read-only policy source:
              * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+             * ## Icons
+             * Icons can be added alongside a `label`/text content using the `leading-icon` and
+             * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+             * slotted sides needs an icon for the other to still collapse its spacing automatically.
+             * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+             * tracks the button's current text colour (including hover/focus/active state changes)
+             * instead of needing a colour set per button `type`.
+             * @example <ontario-button label="Save">
+             *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+             * </ontario-button>
+             * A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon); it is
+             * sized to 24x24px automatically.
+             * @example <ontario-button label="Save">
+             *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+             * </ontario-button>
+             * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+             * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+             * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+             * remains accessible.
+             * @example <ontario-button aria-label-text="Open map">
+             *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+             * </ontario-button>
              */
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             /**
