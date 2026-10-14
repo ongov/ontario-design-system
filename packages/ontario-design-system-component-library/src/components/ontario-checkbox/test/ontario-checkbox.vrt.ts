@@ -86,7 +86,7 @@ test.describe('ontario-checkbox - required state', () => {
 test.describe('ontario-checkbox - error state', () => {
 	test('error state', async ({ page }) => {
 		await page.setContent(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="You must agree to continue"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 		await page.waitForChanges();
 

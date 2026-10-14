@@ -119,16 +119,16 @@ describe('ontario-checkbox', () => {
 
 	it('should display an error message when errorMessage is set', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="You must agree to continue"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 
 		const errorMessage = page.root?.shadowRoot?.querySelector('.ontario-error-messaging__content');
-		expect(errorMessage?.textContent).toBe('You must agree to continue');
+		expect(errorMessage?.textContent).toBe('Please accept the Terms and Conditions to proceed.');
 	});
 
 	it('should clear the error box/checkmark styling once checked, while keeping a manually-set errorMessage visible', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="You must agree to continue"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="I agree to the terms and conditions" name="terms" value="agreed" error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
 		);
 
 		expect(page.root?.shadowRoot?.querySelector('.ontario-input--error')).toBeTruthy();
@@ -137,9 +137,11 @@ describe('ontario-checkbox', () => {
 		await page.waitForChanges();
 
 		expect(page.root?.shadowRoot?.querySelector('.ontario-input--error')).toBeFalsy();
-		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBe('You must agree to continue');
+		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBe(
+			'Please accept the Terms and Conditions to proceed.',
+		);
 		const errorMessage = page.root?.shadowRoot?.querySelector('.ontario-error-messaging__content');
-		expect(errorMessage?.textContent).toBe('You must agree to continue');
+		expect(errorMessage?.textContent).toBe('Please accept the Terms and Conditions to proceed.');
 	});
 
 	it('should immediately display a required-validation error when required and unchecked, with no interaction needed', async () => {
@@ -167,7 +169,7 @@ describe('ontario-checkbox', () => {
 
 	it('should not display a required-validation error when not required', async () => {
 		const page = await render(
-			`<ontario-checkbox element-id="terms" label="Subscribe to the newsletter" name="terms" value="subscribed"></ontario-checkbox>`,
+			`<ontario-checkbox element-id="terms" label="Subscribe to our newsletter" name="terms" value="subscribed"></ontario-checkbox>`,
 		);
 
 		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBeFalsy();

@@ -14,7 +14,7 @@ export interface Checkbox extends Base {
 	 * @example
 	 * <ontario-checkbox
 	 *   label='{
-	 *     "captionText": "I agree to the terms and conditions",
+	 *     "captionText": "I have read and agree to the Terms and Conditions",
 	 *     "captionType": "default"
 	 *   }'
 	 *   name="terms-and-conditions"

@@ -11,7 +11,7 @@ export default function OntarioCheckboxPage() {
 					<h2>Default</h2>
 					<OntarioCheckbox
 						id="ontario-checkbox-default"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-default"
 						value="agreed"
 					></OntarioCheckbox>
@@ -25,7 +25,7 @@ export default function OntarioCheckboxPage() {
 					<h3>Large</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-label-large"
-						label={{ captionText: 'I agree to the terms and conditions (large)', captionType: 'large' }}
+						label={{ captionText: 'I have read and agree to the Terms and Conditions (large)', captionType: 'large' }}
 						name="checkbox-label-large"
 						value="agreed"
 					></OntarioCheckbox>
@@ -33,7 +33,10 @@ export default function OntarioCheckboxPage() {
 					<h3>Heading</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-label-heading"
-						label={{ captionText: 'I agree to the terms and conditions (heading)', captionType: 'heading' }}
+						label={{
+							captionText: 'I have read and agree to the Terms and Conditions (heading)',
+							captionType: 'heading',
+						}}
 						name="checkbox-label-heading"
 						value="agreed"
 					></OntarioCheckbox>
@@ -45,7 +48,7 @@ export default function OntarioCheckboxPage() {
 					<h2>"checked" Prop Variant</h2>
 					<OntarioCheckbox
 						id="ontario-checkbox-checked"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-checked"
 						value="agreed"
 						checked
@@ -60,7 +63,7 @@ export default function OntarioCheckboxPage() {
 					<h3>Required</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-required"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-required"
 						value="agreed"
 						required
@@ -69,7 +72,7 @@ export default function OntarioCheckboxPage() {
 					<h3>Not required</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-not-required"
-						label="Subscribe to the newsletter"
+						label="Subscribe to our newsletter"
 						name="checkbox-not-required"
 						value="subscribed"
 					></OntarioCheckbox>
@@ -81,10 +84,10 @@ export default function OntarioCheckboxPage() {
 					<h2>"hint-text" Prop Variant</h2>
 					<OntarioCheckbox
 						id="ontario-checkbox-hint-text"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-hint-text"
 						value="agreed"
-						hintText="You must agree before you can continue."
+						hintText="This is hint text."
 					></OntarioCheckbox>
 				</div>
 
@@ -94,12 +97,12 @@ export default function OntarioCheckboxPage() {
 					<h2>"hint-expander" Prop Variant</h2>
 					<OntarioCheckbox
 						id="ontario-checkbox-hint-expander"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-hint-expander"
 						value="agreed"
 						hintExpander={{
-							hint: 'Why do we ask for this?',
-							content: 'We need your agreement to the terms and conditions before we can process your request.',
+							hint: 'Additional context here',
+							content: 'This is expander content.',
 						}}
 					></OntarioCheckbox>
 				</div>
@@ -110,10 +113,10 @@ export default function OntarioCheckboxPage() {
 					<h2>"error-message" Prop Variant</h2>
 					<OntarioCheckbox
 						id="ontario-checkbox-error"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-error"
 						value="agreed"
-						errorMessage="You must agree to the terms and conditions to continue"
+						errorMessage="Please accept the Terms and Conditions to proceed."
 					></OntarioCheckbox>
 				</div>
 
@@ -125,7 +128,7 @@ export default function OntarioCheckboxPage() {
 					<h3>English</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-language-english"
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-language-english"
 						value="agreed"
 						language="en"
@@ -134,7 +137,7 @@ export default function OntarioCheckboxPage() {
 					<h3>French</h3>
 					<OntarioCheckbox
 						id="ontario-checkbox-language-french"
-						label="J'accepte les modalités et conditions"
+						label="J’ai lu et j’accepte les conditions générales"
 						name="checkbox-language-french"
 						value="agreed"
 						language="fr"

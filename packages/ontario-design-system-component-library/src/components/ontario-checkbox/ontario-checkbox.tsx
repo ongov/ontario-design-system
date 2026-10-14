@@ -59,7 +59,7 @@ export class OntarioCheckbox implements Checkbox {
 	 * @example
 	 * <ontario-checkbox
 	 *   label='{
-	 *     "captionText": "I agree to the terms and conditions",
+	 *     "captionText": "I have read and agree to the Terms and Conditions",
 	 *     "captionType": "default"
 	 *   }'
 	 *   name="terms-and-conditions"
@@ -102,11 +102,11 @@ export class OntarioCheckbox implements Checkbox {
 	 *
 	 * @example
 	 * <ontario-checkbox
-	 *   label="I agree to the terms and conditions"
+	 *   label="I have read and agree to the Terms and Conditions"
 	 *   name="terms-and-conditions"
 	 *   value="agreed"
 	 *   hint-expander='{
-	 *    "hint": "Why do we ask for this?",
+	 *    "hint": "Additional context here",
 	 *    "content": "Example hint expander content for the checkbox"
 	 *   }'
 	 * >

@@ -8,11 +8,11 @@ export default function StandaloneCheckboxExample() {
 	const checkboxCodeExample = `import { OntarioCheckbox } from '@ongov/ontario-design-system-component-library-react'; \n\n
 <OntarioCheckbox
 	ref={componentRef}
-	label="I agree to the terms and conditions"
+	label="I have read and agree to the Terms and Conditions"
 	name="terms-and-conditions"
 	value="agreed"
 	required
-	hintText="You must agree before you can continue."
+	hintText="This is hint text."
 	customOnChange={(ev: any) => handleCheckboxOnChange(ev)}
 ></OntarioCheckbox>`;
 
@@ -46,11 +46,11 @@ export default function StandaloneCheckboxExample() {
 				<div className="ontario-margin-top-24-!">
 					<OntarioCheckbox
 						ref={componentRef}
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="terms-and-conditions"
 						value="agreed"
 						required
-						hintText="You must agree before you can continue."
+						hintText="This is hint text."
 						customOnChange={(ev: any) => handleCheckboxOnChange(ev)}
 					></OntarioCheckbox>
 

@@ -19,8 +19,8 @@ test.describe('Ontario Checkbox', () => {
 		const largeLabel = page.locator('#ontario-checkbox-label-large');
 		const headingLabel = page.locator('#ontario-checkbox-label-heading');
 
-		await expect(largeLabel).toContainText('I agree to the terms and conditions (large)');
-		await expect(headingLabel).toContainText('I agree to the terms and conditions (heading)');
+		await expect(largeLabel).toContainText('I have read and agree to the Terms and Conditions (large)');
+		await expect(headingLabel).toContainText('I have read and agree to the Terms and Conditions (heading)');
 	});
 
 	test('should render pre-checked when `checked` is provided', async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('Ontario Checkbox', () => {
 	test('should render hint text when `hintText` is provided', async ({ page }) => {
 		const component = page.locator('#ontario-checkbox-hint-text');
 
-		await expect(component).toContainText('You must agree before you can continue.');
+		await expect(component).toContainText('This is hint text.');
 	});
 
 	test('should render a hint expander when `hintExpander` is provided', async ({ page }) => {
@@ -50,15 +50,13 @@ test.describe('Ontario Checkbox', () => {
 
 		await expect(expanderButton).toBeVisible();
 		await expanderButton.click();
-		await expect(component).toContainText(
-			'We need your agreement to the terms and conditions before we can process your request.',
-		);
+		await expect(component).toContainText('This is expander content.');
 	});
 
 	test('should render an error message when `errorMessage` is provided', async ({ page }) => {
 		const component = page.locator('#ontario-checkbox-error');
 
-		await expect(component).toContainText('You must agree to the terms and conditions to continue');
+		await expect(component).toContainText('Please accept the Terms and Conditions to proceed.');
 	});
 
 	test('should render the correct language translations', async ({ page }) => {

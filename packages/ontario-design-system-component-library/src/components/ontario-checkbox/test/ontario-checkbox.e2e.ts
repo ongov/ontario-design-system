@@ -250,7 +250,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 				label="I agree to the terms and conditions"
 				name="terms"
 				value="agreed"
-				error-message="You must agree to continue"
+				error-message="Please accept the Terms and Conditions to proceed."
 			></ontario-checkbox>
 		`);
 		await page.waitForChanges();

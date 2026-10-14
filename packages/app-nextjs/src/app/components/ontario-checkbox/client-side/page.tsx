@@ -13,7 +13,7 @@ export default function OntarioCheckboxPage() {
 					<h2>Custom Event Props</h2>
 
 					<OntarioCheckbox
-						label="I agree to the terms and conditions"
+						label="I have read and agree to the Terms and Conditions"
 						name="checkbox-default"
 						value="agreed"
 						customOnChange={(e) => console.log(`customOnChange → ${(e.target as HTMLInputElement)?.checked}`)}

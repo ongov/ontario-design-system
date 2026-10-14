@@ -410,7 +410,7 @@ export namespace Components {
         "errorMessage"?: string;
         /**
           * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
-          * @example <ontario-checkbox   label="I agree to the terms and conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Why do we ask for this?",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+          * @example <ontario-checkbox   label="I have read and agree to the Terms and Conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Additional context here",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -419,7 +419,7 @@ export namespace Components {
         "hintText"?: string | Hint;
         /**
           * The text to display as the checkbox label.
-          * @example <ontario-checkbox   label='{     "captionText": "I agree to the terms and conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+          * @example <ontario-checkbox   label='{     "captionText": "I have read and agree to the Terms and Conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
          */
         "label": Caption | string;
         /**
@@ -5721,7 +5721,7 @@ declare namespace LocalJSX {
         "errorMessage"?: string;
         /**
           * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
-          * @example <ontario-checkbox   label="I agree to the terms and conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Why do we ask for this?",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+          * @example <ontario-checkbox   label="I have read and agree to the Terms and Conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Additional context here",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
          */
         "hintExpander"?: HintExpander | string;
         /**
@@ -5730,7 +5730,7 @@ declare namespace LocalJSX {
         "hintText"?: string | Hint;
         /**
           * The text to display as the checkbox label.
-          * @example <ontario-checkbox   label='{     "captionText": "I agree to the terms and conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+          * @example <ontario-checkbox   label='{     "captionText": "I have read and agree to the Terms and Conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
          */
         "label"?: Caption | string;
         /**
