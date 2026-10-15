@@ -1,3 +1,9 @@
+## 9.2.1 (2026-10-15)
+
+### Bug Fixes
+
+- **release:** trigger CI/CD release pipeline for v9.2.0 f92a9f5
+
 # 9.2.0 (2026-10-15)
 
 ### Bug Fixes
