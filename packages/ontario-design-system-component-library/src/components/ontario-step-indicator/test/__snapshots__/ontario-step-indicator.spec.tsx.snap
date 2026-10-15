@@ -30,7 +30,7 @@ exports[`ontario-step-indicator > renders > the percentage output shape with a b
               <ontario-icon-chevron-left aria-hidden="true" class="hydrated">
                 <mock:shadow-root>
                   <div class="ontario-icon ontario-icon--blue ontario-icon--width-24">
-                    <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-left">
+                    <svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-left">
                       <path d="M15.4 7.4L14 6l-6 6 6 6 1.4-1.4-4.58-4.6 4.58-4.6z"></path>
                     </svg>
                   </div>

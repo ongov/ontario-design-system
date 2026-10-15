@@ -17,7 +17,7 @@ describe('ontario-hint-expander', () => {
           <ontario-icon-chevron-up is-decorative="true" class="hydrated">
             <mock:shadow-root>
               <div class="ontario-icon ontario-icon--inherit ontario-icon--width-24">
-                <svg class="svg-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-up">
+                <svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-up">
                   <path d="M7.4 15.4l4.6-4.58 4.6 4.58L18 14l-6-6-6 6 1.4 1.4z"></path>
                 </svg>
               </div>
@@ -28,7 +28,7 @@ describe('ontario-hint-expander', () => {
           <ontario-icon-chevron-down is-decorative="true" class="hydrated">
             <mock:shadow-root>
               <div class="ontario-icon ontario-icon--inherit ontario-icon--width-24">
-                <svg class="svg-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-down">
+                <svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-down">
                   <path d="M7.4 8.6l4.6 4.58 4.6-4.58L18 10l-6 6-6-6 1.4-1.4z"></path>
                 </svg>
               </div>
