@@ -179,10 +179,10 @@ For component selection guidance, see:
 
 ### Depends on
 
-- [ontario-icon-alert-information](../ontario-icon)
-- [ontario-icon-alert-success](../ontario-icon)
-- [ontario-icon-alert-warning](../ontario-icon)
-- [ontario-icon-alert-error](../ontario-icon)
+- [ontario-icon-alert-information](../ontario-icon/ontario-icon-alert-information)
+- [ontario-icon-alert-success](../ontario-icon/ontario-icon-alert-success)
+- [ontario-icon-alert-warning](../ontario-icon/ontario-icon-alert-warning)
+- [ontario-icon-alert-error](../ontario-icon/ontario-icon-alert-error)
 
 ### Graph
 
