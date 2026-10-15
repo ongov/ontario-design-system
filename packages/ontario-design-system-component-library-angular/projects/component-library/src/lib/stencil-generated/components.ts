@@ -700,14 +700,14 @@ export declare interface OntarioHintText extends Components.OntarioHintText {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-accessibility',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAccessibility {
@@ -723,14 +723,14 @@ export declare interface OntarioIconAccessibility extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-account',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAccount {
@@ -746,14 +746,14 @@ export declare interface OntarioIconAccount extends Components.OntarioIconAccoun
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-add',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAdd {
@@ -769,14 +769,14 @@ export declare interface OntarioIconAdd extends Components.OntarioIconAdd {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-add-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAddAlt {
@@ -792,14 +792,14 @@ export declare interface OntarioIconAddAlt extends Components.OntarioIconAddAlt 
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-alert-error',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAlertError {
@@ -815,14 +815,14 @@ export declare interface OntarioIconAlertError extends Components.OntarioIconAle
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-alert-information',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAlertInformation {
@@ -838,14 +838,14 @@ export declare interface OntarioIconAlertInformation extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-alert-success',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAlertSuccess {
@@ -861,14 +861,14 @@ export declare interface OntarioIconAlertSuccess extends Components.OntarioIconA
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-alert-warning',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAlertWarning {
@@ -884,14 +884,14 @@ export declare interface OntarioIconAlertWarning extends Components.OntarioIconA
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-arrow-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconArrowUp {
@@ -907,14 +907,14 @@ export declare interface OntarioIconArrowUp extends Components.OntarioIconArrowU
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-attach',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconAttach {
@@ -930,14 +930,14 @@ export declare interface OntarioIconAttach extends Components.OntarioIconAttach 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-bookmark-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconBookmarkOff {
@@ -953,14 +953,14 @@ export declare interface OntarioIconBookmarkOff extends Components.OntarioIconBo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-bookmark-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconBookmarkOn {
@@ -976,14 +976,14 @@ export declare interface OntarioIconBookmarkOn extends Components.OntarioIconBoo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCalendar {
@@ -999,14 +999,14 @@ export declare interface OntarioIconCalendar extends Components.OntarioIconCalen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-camera',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCamera {
@@ -1022,14 +1022,14 @@ export declare interface OntarioIconCamera extends Components.OntarioIconCamera 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-chevron-down',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconChevronDown {
@@ -1045,14 +1045,14 @@ export declare interface OntarioIconChevronDown extends Components.OntarioIconCh
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-chevron-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconChevronLeft {
@@ -1068,14 +1068,14 @@ export declare interface OntarioIconChevronLeft extends Components.OntarioIconCh
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-chevron-right',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconChevronRight {
@@ -1091,14 +1091,14 @@ export declare interface OntarioIconChevronRight extends Components.OntarioIconC
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-chevron-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconChevronUp {
@@ -1114,14 +1114,14 @@ export declare interface OntarioIconChevronUp extends Components.OntarioIconChev
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-clock',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconClock {
@@ -1137,14 +1137,14 @@ export declare interface OntarioIconClock extends Components.OntarioIconClock {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-close',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconClose {
@@ -1160,14 +1160,14 @@ export declare interface OntarioIconClose extends Components.OntarioIconClose {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-close-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCloseHeader {
@@ -1183,14 +1183,14 @@ export declare interface OntarioIconCloseHeader extends Components.OntarioIconCl
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-cloud',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCloud {
@@ -1206,14 +1206,14 @@ export declare interface OntarioIconCloud extends Components.OntarioIconCloud {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-collapse',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCollapse {
@@ -1229,14 +1229,14 @@ export declare interface OntarioIconCollapse extends Components.OntarioIconColla
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-credit-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCreditCard {
@@ -1252,14 +1252,14 @@ export declare interface OntarioIconCreditCard extends Components.OntarioIconCre
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-critical-alert-warning',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconCriticalAlertWarning {
@@ -1275,14 +1275,14 @@ export declare interface OntarioIconCriticalAlertWarning extends Components.Onta
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-delete',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconDelete {
@@ -1298,14 +1298,14 @@ export declare interface OntarioIconDelete extends Components.OntarioIconDelete 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-document',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconDocument {
@@ -1321,14 +1321,14 @@ export declare interface OntarioIconDocument extends Components.OntarioIconDocum
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-download',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconDownload {
@@ -1344,14 +1344,14 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-dropdown-arrow',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconDropdownArrow {
@@ -1367,14 +1367,14 @@ export declare interface OntarioIconDropdownArrow extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-edit',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconEdit {
@@ -1390,14 +1390,14 @@ export declare interface OntarioIconEdit extends Components.OntarioIconEdit {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-email',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconEmail {
@@ -1413,14 +1413,14 @@ export declare interface OntarioIconEmail extends Components.OntarioIconEmail {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-expand',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconExpand {
@@ -1436,14 +1436,14 @@ export declare interface OntarioIconExpand extends Components.OntarioIconExpand 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-export',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconExport {
@@ -1459,14 +1459,14 @@ export declare interface OntarioIconExport extends Components.OntarioIconExport 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-facebook',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFacebook {
@@ -1482,14 +1482,14 @@ export declare interface OntarioIconFacebook extends Components.OntarioIconFaceb
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-facebook-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFacebookAlt {
@@ -1505,14 +1505,14 @@ export declare interface OntarioIconFacebookAlt extends Components.OntarioIconFa
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-favourite-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFavouriteOff {
@@ -1528,14 +1528,14 @@ export declare interface OntarioIconFavouriteOff extends Components.OntarioIconF
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-favourite-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFavouriteOn {
@@ -1551,14 +1551,14 @@ export declare interface OntarioIconFavouriteOn extends Components.OntarioIconFa
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-filter',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFilter {
@@ -1574,14 +1574,14 @@ export declare interface OntarioIconFilter extends Components.OntarioIconFilter 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-flickr',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconFlickr {
@@ -1597,14 +1597,14 @@ export declare interface OntarioIconFlickr extends Components.OntarioIconFlickr 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconGrid {
@@ -1620,14 +1620,14 @@ export declare interface OntarioIconGrid extends Components.OntarioIconGrid {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-help',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconHelp {
@@ -1643,14 +1643,14 @@ export declare interface OntarioIconHelp extends Components.OntarioIconHelp {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-instagram',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconInstagram {
@@ -1666,14 +1666,14 @@ export declare interface OntarioIconInstagram extends Components.OntarioIconInst
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-interac-en',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconInteracEn {
@@ -1689,14 +1689,14 @@ export declare interface OntarioIconInteracEn extends Components.OntarioIconInte
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-interac-en-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconInteracEnAlt {
@@ -1712,14 +1712,14 @@ export declare interface OntarioIconInteracEnAlt extends Components.OntarioIconI
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-interac-fr',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconInteracFr {
@@ -1735,14 +1735,14 @@ export declare interface OntarioIconInteracFr extends Components.OntarioIconInte
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-interac-fr-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconInteracFrAlt {
@@ -1758,14 +1758,14 @@ export declare interface OntarioIconInteracFrAlt extends Components.OntarioIconI
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-linkedin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLinkedin {
@@ -1781,14 +1781,14 @@ export declare interface OntarioIconLinkedin extends Components.OntarioIconLinke
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-linkedin-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLinkedinAlt {
@@ -1804,14 +1804,14 @@ export declare interface OntarioIconLinkedinAlt extends Components.OntarioIconLi
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconList {
@@ -1827,14 +1827,14 @@ export declare interface OntarioIconList extends Components.OntarioIconList {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-live-chat',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLiveChat {
@@ -1850,14 +1850,14 @@ export declare interface OntarioIconLiveChat extends Components.OntarioIconLiveC
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-location-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLocationOff {
@@ -1873,14 +1873,14 @@ export declare interface OntarioIconLocationOff extends Components.OntarioIconLo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-location-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLocationOn {
@@ -1896,14 +1896,14 @@ export declare interface OntarioIconLocationOn extends Components.OntarioIconLoc
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-lock-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLockOff {
@@ -1919,14 +1919,14 @@ export declare interface OntarioIconLockOff extends Components.OntarioIconLockOf
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-lock-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconLockOn {
@@ -1942,14 +1942,14 @@ export declare interface OntarioIconLockOn extends Components.OntarioIconLockOn 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-map',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMap {
@@ -1965,14 +1965,14 @@ export declare interface OntarioIconMap extends Components.OntarioIconMap {}
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-mastercard',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMastercard {
@@ -1988,14 +1988,14 @@ export declare interface OntarioIconMastercard extends Components.OntarioIconMas
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-mastercard-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMastercardAlt {
@@ -2011,14 +2011,14 @@ export declare interface OntarioIconMastercardAlt extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-media-fast-forward',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMediaFastForward {
@@ -2034,14 +2034,14 @@ export declare interface OntarioIconMediaFastForward extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-media-fast-rewind',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMediaFastRewind {
@@ -2057,14 +2057,14 @@ export declare interface OntarioIconMediaFastRewind extends Components.OntarioIc
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-media-pause',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMediaPause {
@@ -2080,14 +2080,14 @@ export declare interface OntarioIconMediaPause extends Components.OntarioIconMed
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-media-play',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMediaPlay {
@@ -2103,14 +2103,14 @@ export declare interface OntarioIconMediaPlay extends Components.OntarioIconMedi
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-media-stop',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMediaStop {
@@ -2126,14 +2126,14 @@ export declare interface OntarioIconMediaStop extends Components.OntarioIconMedi
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMenu {
@@ -2149,14 +2149,14 @@ export declare interface OntarioIconMenu extends Components.OntarioIconMenu {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-menu-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMenuHeader {
@@ -2172,14 +2172,14 @@ export declare interface OntarioIconMenuHeader extends Components.OntarioIconMen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-microphone-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMicrophoneOff {
@@ -2195,14 +2195,14 @@ export declare interface OntarioIconMicrophoneOff extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-microphone-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMicrophoneOn {
@@ -2218,14 +2218,14 @@ export declare interface OntarioIconMicrophoneOn extends Components.OntarioIconM
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-more-accounts',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMoreAccounts {
@@ -2241,14 +2241,14 @@ export declare interface OntarioIconMoreAccounts extends Components.OntarioIconM
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-more-vertical',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconMoreVertical {
@@ -2264,14 +2264,14 @@ export declare interface OntarioIconMoreVertical extends Components.OntarioIconM
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-new-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconNewWindow {
@@ -2287,14 +2287,14 @@ export declare interface OntarioIconNewWindow extends Components.OntarioIconNewW
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-next',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconNext {
@@ -2310,14 +2310,14 @@ export declare interface OntarioIconNext extends Components.OntarioIconNext {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-notification',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconNotification {
@@ -2333,14 +2333,14 @@ export declare interface OntarioIconNotification extends Components.OntarioIconN
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-password-hide',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPasswordHide {
@@ -2356,14 +2356,14 @@ export declare interface OntarioIconPasswordHide extends Components.OntarioIconP
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-password-show',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPasswordShow {
@@ -2379,14 +2379,14 @@ export declare interface OntarioIconPasswordShow extends Components.OntarioIconP
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-phone',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPhone {
@@ -2402,14 +2402,14 @@ export declare interface OntarioIconPhone extends Components.OntarioIconPhone {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-photo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPhoto {
@@ -2425,14 +2425,14 @@ export declare interface OntarioIconPhoto extends Components.OntarioIconPhoto {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-pin-location-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPinLocationOff {
@@ -2448,14 +2448,14 @@ export declare interface OntarioIconPinLocationOff extends Components.OntarioIco
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-pin-location-on',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPinLocationOn {
@@ -2471,14 +2471,14 @@ export declare interface OntarioIconPinLocationOn extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-previous',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPrevious {
@@ -2494,14 +2494,14 @@ export declare interface OntarioIconPrevious extends Components.OntarioIconPrevi
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-print',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconPrint {
@@ -2517,14 +2517,14 @@ export declare interface OntarioIconPrint extends Components.OntarioIconPrint {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-remove',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconRemove {
@@ -2540,14 +2540,14 @@ export declare interface OntarioIconRemove extends Components.OntarioIconRemove 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-remove-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconRemoveAlt {
@@ -2563,14 +2563,14 @@ export declare interface OntarioIconRemoveAlt extends Components.OntarioIconRemo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-replay',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconReplay {
@@ -2586,14 +2586,14 @@ export declare interface OntarioIconReplay extends Components.OntarioIconReplay 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-rss-feed',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconRssFeed {
@@ -2609,14 +2609,14 @@ export declare interface OntarioIconRssFeed extends Components.OntarioIconRssFee
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-save',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSave {
@@ -2632,14 +2632,14 @@ export declare interface OntarioIconSave extends Components.OntarioIconSave {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSearch {
@@ -2655,14 +2655,14 @@ export declare interface OntarioIconSearch extends Components.OntarioIconSearch 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-search-white',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSearchWhite {
@@ -2678,14 +2678,14 @@ export declare interface OntarioIconSearchWhite extends Components.OntarioIconSe
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sentiment-1',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSentiment1 {
@@ -2701,14 +2701,14 @@ export declare interface OntarioIconSentiment1 extends Components.OntarioIconSen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sentiment-2',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSentiment2 {
@@ -2724,14 +2724,14 @@ export declare interface OntarioIconSentiment2 extends Components.OntarioIconSen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sentiment-3',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSentiment3 {
@@ -2747,14 +2747,14 @@ export declare interface OntarioIconSentiment3 extends Components.OntarioIconSen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sentiment-4',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSentiment4 {
@@ -2770,14 +2770,14 @@ export declare interface OntarioIconSentiment4 extends Components.OntarioIconSen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sentiment-5',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSentiment5 {
@@ -2793,14 +2793,14 @@ export declare interface OntarioIconSentiment5 extends Components.OntarioIconSen
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-settings',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSettings {
@@ -2816,14 +2816,14 @@ export declare interface OntarioIconSettings extends Components.OntarioIconSetti
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-share',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconShare {
@@ -2839,14 +2839,14 @@ export declare interface OntarioIconShare extends Components.OntarioIconShare {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSort {
@@ -2862,14 +2862,14 @@ export declare interface OntarioIconSort extends Components.OntarioIconSort {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort-alphabetical-ascending',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSortAlphabeticalAscending {
@@ -2885,14 +2885,14 @@ export declare interface OntarioIconSortAlphabeticalAscending extends Components
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort-alphabetical-descending',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSortAlphabeticalDescending {
@@ -2908,14 +2908,14 @@ export declare interface OntarioIconSortAlphabeticalDescending extends Component
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort-ascending',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSortAscending {
@@ -2931,14 +2931,14 @@ export declare interface OntarioIconSortAscending extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort-descending',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSortDescending {
@@ -2954,14 +2954,14 @@ export declare interface OntarioIconSortDescending extends Components.OntarioIco
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-sort-variant',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconSortVariant {
@@ -2977,14 +2977,14 @@ export declare interface OntarioIconSortVariant extends Components.OntarioIconSo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-tag',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTag {
@@ -3000,14 +3000,14 @@ export declare interface OntarioIconTag extends Components.OntarioIconTag {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-text-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTextMessage {
@@ -3023,14 +3023,14 @@ export declare interface OntarioIconTextMessage extends Components.OntarioIconTe
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-timer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTimer {
@@ -3046,14 +3046,14 @@ export declare interface OntarioIconTimer extends Components.OntarioIconTimer {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-transport-bicycle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTransportBicycle {
@@ -3069,14 +3069,14 @@ export declare interface OntarioIconTransportBicycle extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-transport-bus',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTransportBus {
@@ -3092,14 +3092,14 @@ export declare interface OntarioIconTransportBus extends Components.OntarioIconT
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-transport-car',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTransportCar {
@@ -3115,14 +3115,14 @@ export declare interface OntarioIconTransportCar extends Components.OntarioIconT
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-transport-walk',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTransportWalk {
@@ -3138,14 +3138,14 @@ export declare interface OntarioIconTransportWalk extends Components.OntarioIcon
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-tty',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTty {
@@ -3161,14 +3161,14 @@ export declare interface OntarioIconTty extends Components.OntarioIconTty {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-tune',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTune {
@@ -3184,14 +3184,14 @@ export declare interface OntarioIconTune extends Components.OntarioIconTune {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-twitter',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTwitter {
@@ -3207,14 +3207,14 @@ export declare interface OntarioIconTwitter extends Components.OntarioIconTwitte
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-twitter-alt',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconTwitterAlt {
@@ -3230,14 +3230,14 @@ export declare interface OntarioIconTwitterAlt extends Components.OntarioIconTwi
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconUpload {
@@ -3253,14 +3253,14 @@ export declare interface OntarioIconUpload extends Components.OntarioIconUpload 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-video',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconVideo {
@@ -3276,14 +3276,14 @@ export declare interface OntarioIconVideo extends Components.OntarioIconVideo {}
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative']
+  inputs: ['iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-visa',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative'],
+  inputs: ['iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconVisa {
@@ -3299,14 +3299,14 @@ export declare interface OntarioIconVisa extends Components.OntarioIconVisa {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-vote-dislike',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconVoteDislike {
@@ -3322,14 +3322,14 @@ export declare interface OntarioIconVoteDislike extends Components.OntarioIconVo
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-vote-like',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconVoteLike {
@@ -3345,14 +3345,14 @@ export declare interface OntarioIconVoteLike extends Components.OntarioIconVoteL
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-vpn-key',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconVpnKey {
@@ -3368,14 +3368,14 @@ export declare interface OntarioIconVpnKey extends Components.OntarioIconVpnKey 
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-wheelchair',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconWheelchair {
@@ -3391,14 +3391,14 @@ export declare interface OntarioIconWheelchair extends Components.OntarioIconWhe
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-wifi',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconWifi {
@@ -3414,14 +3414,14 @@ export declare interface OntarioIconWifi extends Components.OntarioIconWifi {}
 
 
 @ProxyCmp({
-  inputs: ['colour', 'iconWidth', 'isDecorative']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-youtube',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['colour', 'iconWidth', 'isDecorative'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconYoutube {

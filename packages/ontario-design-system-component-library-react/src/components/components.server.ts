@@ -572,6 +572,7 @@ export const OntarioIconAccessibility: StencilReactComponent<OntarioIconAccessib
     tagName: 'ontario-icon-accessibility',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -586,6 +587,7 @@ export const OntarioIconAccount: StencilReactComponent<OntarioIconAccountElement
     tagName: 'ontario-icon-account',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -600,6 +602,7 @@ export const OntarioIconAdd: StencilReactComponent<OntarioIconAddElement, Ontari
     tagName: 'ontario-icon-add',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -614,6 +617,7 @@ export const OntarioIconAddAlt: StencilReactComponent<OntarioIconAddAltElement, 
     tagName: 'ontario-icon-add-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -628,6 +632,7 @@ export const OntarioIconAlertError: StencilReactComponent<OntarioIconAlertErrorE
     tagName: 'ontario-icon-alert-error',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -641,6 +646,7 @@ export const OntarioIconAlertInformation: StencilReactComponent<OntarioIconAlert
     tagName: 'ontario-icon-alert-information',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -654,6 +660,7 @@ export const OntarioIconAlertSuccess: StencilReactComponent<OntarioIconAlertSucc
     tagName: 'ontario-icon-alert-success',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -667,6 +674,7 @@ export const OntarioIconAlertWarning: StencilReactComponent<OntarioIconAlertWarn
     tagName: 'ontario-icon-alert-warning',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -680,6 +688,7 @@ export const OntarioIconArrowUp: StencilReactComponent<OntarioIconArrowUpElement
     tagName: 'ontario-icon-arrow-up',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -694,6 +703,7 @@ export const OntarioIconAttach: StencilReactComponent<OntarioIconAttachElement, 
     tagName: 'ontario-icon-attach',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -708,6 +718,7 @@ export const OntarioIconBookmarkOff: StencilReactComponent<OntarioIconBookmarkOf
     tagName: 'ontario-icon-bookmark-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -722,6 +733,7 @@ export const OntarioIconBookmarkOn: StencilReactComponent<OntarioIconBookmarkOnE
     tagName: 'ontario-icon-bookmark-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -736,6 +748,7 @@ export const OntarioIconCalendar: StencilReactComponent<OntarioIconCalendarEleme
     tagName: 'ontario-icon-calendar',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -750,6 +763,7 @@ export const OntarioIconCamera: StencilReactComponent<OntarioIconCameraElement, 
     tagName: 'ontario-icon-camera',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -764,6 +778,7 @@ export const OntarioIconChevronDown: StencilReactComponent<OntarioIconChevronDow
     tagName: 'ontario-icon-chevron-down',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -778,6 +793,7 @@ export const OntarioIconChevronLeft: StencilReactComponent<OntarioIconChevronLef
     tagName: 'ontario-icon-chevron-left',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -792,6 +808,7 @@ export const OntarioIconChevronRight: StencilReactComponent<OntarioIconChevronRi
     tagName: 'ontario-icon-chevron-right',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -806,6 +823,7 @@ export const OntarioIconChevronUp: StencilReactComponent<OntarioIconChevronUpEle
     tagName: 'ontario-icon-chevron-up',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -820,6 +838,7 @@ export const OntarioIconClock: StencilReactComponent<OntarioIconClockElement, On
     tagName: 'ontario-icon-clock',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -834,6 +853,7 @@ export const OntarioIconClose: StencilReactComponent<OntarioIconCloseElement, On
     tagName: 'ontario-icon-close',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -848,6 +868,7 @@ export const OntarioIconCloseHeader: StencilReactComponent<OntarioIconCloseHeade
     tagName: 'ontario-icon-close-header',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -862,6 +883,7 @@ export const OntarioIconCloud: StencilReactComponent<OntarioIconCloudElement, On
     tagName: 'ontario-icon-cloud',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -876,6 +898,7 @@ export const OntarioIconCollapse: StencilReactComponent<OntarioIconCollapseEleme
     tagName: 'ontario-icon-collapse',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -890,6 +913,7 @@ export const OntarioIconCreditCard: StencilReactComponent<OntarioIconCreditCardE
     tagName: 'ontario-icon-credit-card',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -904,6 +928,7 @@ export const OntarioIconCriticalAlertWarning: StencilReactComponent<OntarioIconC
     tagName: 'ontario-icon-critical-alert-warning',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -918,6 +943,7 @@ export const OntarioIconDelete: StencilReactComponent<OntarioIconDeleteElement, 
     tagName: 'ontario-icon-delete',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -932,6 +958,7 @@ export const OntarioIconDocument: StencilReactComponent<OntarioIconDocumentEleme
     tagName: 'ontario-icon-document',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -946,6 +973,7 @@ export const OntarioIconDownload: StencilReactComponent<OntarioIconDownloadEleme
     tagName: 'ontario-icon-download',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -960,6 +988,7 @@ export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdown
     tagName: 'ontario-icon-dropdown-arrow',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -973,6 +1002,7 @@ export const OntarioIconEdit: StencilReactComponent<OntarioIconEditElement, Onta
     tagName: 'ontario-icon-edit',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -987,6 +1017,7 @@ export const OntarioIconEmail: StencilReactComponent<OntarioIconEmailElement, On
     tagName: 'ontario-icon-email',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1001,6 +1032,7 @@ export const OntarioIconExpand: StencilReactComponent<OntarioIconExpandElement, 
     tagName: 'ontario-icon-expand',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1015,6 +1047,7 @@ export const OntarioIconExport: StencilReactComponent<OntarioIconExportElement, 
     tagName: 'ontario-icon-export',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1029,6 +1062,7 @@ export const OntarioIconFacebook: StencilReactComponent<OntarioIconFacebookEleme
     tagName: 'ontario-icon-facebook',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1043,6 +1077,7 @@ export const OntarioIconFacebookAlt: StencilReactComponent<OntarioIconFacebookAl
     tagName: 'ontario-icon-facebook-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1057,6 +1092,7 @@ export const OntarioIconFavouriteOff: StencilReactComponent<OntarioIconFavourite
     tagName: 'ontario-icon-favourite-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1071,6 +1107,7 @@ export const OntarioIconFavouriteOn: StencilReactComponent<OntarioIconFavouriteO
     tagName: 'ontario-icon-favourite-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1085,6 +1122,7 @@ export const OntarioIconFilter: StencilReactComponent<OntarioIconFilterElement, 
     tagName: 'ontario-icon-filter',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1099,6 +1137,7 @@ export const OntarioIconFlickr: StencilReactComponent<OntarioIconFlickrElement, 
     tagName: 'ontario-icon-flickr',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1113,6 +1152,7 @@ export const OntarioIconGrid: StencilReactComponent<OntarioIconGridElement, Onta
     tagName: 'ontario-icon-grid',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1127,6 +1167,7 @@ export const OntarioIconHelp: StencilReactComponent<OntarioIconHelpElement, Onta
     tagName: 'ontario-icon-help',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1141,6 +1182,7 @@ export const OntarioIconInstagram: StencilReactComponent<OntarioIconInstagramEle
     tagName: 'ontario-icon-instagram',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1155,6 +1197,7 @@ export const OntarioIconInteracEn: StencilReactComponent<OntarioIconInteracEnEle
     tagName: 'ontario-icon-interac-en',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1168,6 +1211,7 @@ export const OntarioIconInteracEnAlt: StencilReactComponent<OntarioIconInteracEn
     tagName: 'ontario-icon-interac-en-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1181,6 +1225,7 @@ export const OntarioIconInteracFr: StencilReactComponent<OntarioIconInteracFrEle
     tagName: 'ontario-icon-interac-fr',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1194,6 +1239,7 @@ export const OntarioIconInteracFrAlt: StencilReactComponent<OntarioIconInteracFr
     tagName: 'ontario-icon-interac-fr-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1207,6 +1253,7 @@ export const OntarioIconLinkedin: StencilReactComponent<OntarioIconLinkedinEleme
     tagName: 'ontario-icon-linkedin',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1221,6 +1268,7 @@ export const OntarioIconLinkedinAlt: StencilReactComponent<OntarioIconLinkedinAl
     tagName: 'ontario-icon-linkedin-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1235,6 +1283,7 @@ export const OntarioIconList: StencilReactComponent<OntarioIconListElement, Onta
     tagName: 'ontario-icon-list',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1249,6 +1298,7 @@ export const OntarioIconLiveChat: StencilReactComponent<OntarioIconLiveChatEleme
     tagName: 'ontario-icon-live-chat',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1263,6 +1313,7 @@ export const OntarioIconLocationOff: StencilReactComponent<OntarioIconLocationOf
     tagName: 'ontario-icon-location-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1277,6 +1328,7 @@ export const OntarioIconLocationOn: StencilReactComponent<OntarioIconLocationOnE
     tagName: 'ontario-icon-location-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1291,6 +1343,7 @@ export const OntarioIconLockOff: StencilReactComponent<OntarioIconLockOffElement
     tagName: 'ontario-icon-lock-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1305,6 +1358,7 @@ export const OntarioIconLockOn: StencilReactComponent<OntarioIconLockOnElement, 
     tagName: 'ontario-icon-lock-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1319,6 +1373,7 @@ export const OntarioIconMap: StencilReactComponent<OntarioIconMapElement, Ontari
     tagName: 'ontario-icon-map',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1333,6 +1388,7 @@ export const OntarioIconMastercard: StencilReactComponent<OntarioIconMastercardE
     tagName: 'ontario-icon-mastercard',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1346,6 +1402,7 @@ export const OntarioIconMastercardAlt: StencilReactComponent<OntarioIconMasterca
     tagName: 'ontario-icon-mastercard-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -1359,6 +1416,7 @@ export const OntarioIconMediaFastForward: StencilReactComponent<OntarioIconMedia
     tagName: 'ontario-icon-media-fast-forward',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1373,6 +1431,7 @@ export const OntarioIconMediaFastRewind: StencilReactComponent<OntarioIconMediaF
     tagName: 'ontario-icon-media-fast-rewind',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1387,6 +1446,7 @@ export const OntarioIconMediaPause: StencilReactComponent<OntarioIconMediaPauseE
     tagName: 'ontario-icon-media-pause',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1401,6 +1461,7 @@ export const OntarioIconMediaPlay: StencilReactComponent<OntarioIconMediaPlayEle
     tagName: 'ontario-icon-media-play',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1415,6 +1476,7 @@ export const OntarioIconMediaStop: StencilReactComponent<OntarioIconMediaStopEle
     tagName: 'ontario-icon-media-stop',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1429,6 +1491,7 @@ export const OntarioIconMenu: StencilReactComponent<OntarioIconMenuElement, Onta
     tagName: 'ontario-icon-menu',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1443,6 +1506,7 @@ export const OntarioIconMenuHeader: StencilReactComponent<OntarioIconMenuHeaderE
     tagName: 'ontario-icon-menu-header',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1457,6 +1521,7 @@ export const OntarioIconMicrophoneOff: StencilReactComponent<OntarioIconMicropho
     tagName: 'ontario-icon-microphone-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1471,6 +1536,7 @@ export const OntarioIconMicrophoneOn: StencilReactComponent<OntarioIconMicrophon
     tagName: 'ontario-icon-microphone-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1485,6 +1551,7 @@ export const OntarioIconMoreAccounts: StencilReactComponent<OntarioIconMoreAccou
     tagName: 'ontario-icon-more-accounts',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1499,6 +1566,7 @@ export const OntarioIconMoreVertical: StencilReactComponent<OntarioIconMoreVerti
     tagName: 'ontario-icon-more-vertical',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1513,6 +1581,7 @@ export const OntarioIconNewWindow: StencilReactComponent<OntarioIconNewWindowEle
     tagName: 'ontario-icon-new-window',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1527,6 +1596,7 @@ export const OntarioIconNext: StencilReactComponent<OntarioIconNextElement, Onta
     tagName: 'ontario-icon-next',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1541,6 +1611,7 @@ export const OntarioIconNotification: StencilReactComponent<OntarioIconNotificat
     tagName: 'ontario-icon-notification',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1555,6 +1626,7 @@ export const OntarioIconPasswordHide: StencilReactComponent<OntarioIconPasswordH
     tagName: 'ontario-icon-password-hide',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1569,6 +1641,7 @@ export const OntarioIconPasswordShow: StencilReactComponent<OntarioIconPasswordS
     tagName: 'ontario-icon-password-show',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1583,6 +1656,7 @@ export const OntarioIconPhone: StencilReactComponent<OntarioIconPhoneElement, On
     tagName: 'ontario-icon-phone',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1597,6 +1671,7 @@ export const OntarioIconPhoto: StencilReactComponent<OntarioIconPhotoElement, On
     tagName: 'ontario-icon-photo',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1611,6 +1686,7 @@ export const OntarioIconPinLocationOff: StencilReactComponent<OntarioIconPinLoca
     tagName: 'ontario-icon-pin-location-off',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1625,6 +1701,7 @@ export const OntarioIconPinLocationOn: StencilReactComponent<OntarioIconPinLocat
     tagName: 'ontario-icon-pin-location-on',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1639,6 +1716,7 @@ export const OntarioIconPrevious: StencilReactComponent<OntarioIconPreviousEleme
     tagName: 'ontario-icon-previous',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1653,6 +1731,7 @@ export const OntarioIconPrint: StencilReactComponent<OntarioIconPrintElement, On
     tagName: 'ontario-icon-print',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1667,6 +1746,7 @@ export const OntarioIconRemove: StencilReactComponent<OntarioIconRemoveElement, 
     tagName: 'ontario-icon-remove',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1681,6 +1761,7 @@ export const OntarioIconRemoveAlt: StencilReactComponent<OntarioIconRemoveAltEle
     tagName: 'ontario-icon-remove-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1695,6 +1776,7 @@ export const OntarioIconReplay: StencilReactComponent<OntarioIconReplayElement, 
     tagName: 'ontario-icon-replay',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1709,6 +1791,7 @@ export const OntarioIconRssFeed: StencilReactComponent<OntarioIconRssFeedElement
     tagName: 'ontario-icon-rss-feed',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1723,6 +1806,7 @@ export const OntarioIconSave: StencilReactComponent<OntarioIconSaveElement, Onta
     tagName: 'ontario-icon-save',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1737,6 +1821,7 @@ export const OntarioIconSearch: StencilReactComponent<OntarioIconSearchElement, 
     tagName: 'ontario-icon-search',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1751,6 +1836,7 @@ export const OntarioIconSearchWhite: StencilReactComponent<OntarioIconSearchWhit
     tagName: 'ontario-icon-search-white',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1765,6 +1851,7 @@ export const OntarioIconSentiment1: StencilReactComponent<OntarioIconSentiment1E
     tagName: 'ontario-icon-sentiment-1',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1779,6 +1866,7 @@ export const OntarioIconSentiment2: StencilReactComponent<OntarioIconSentiment2E
     tagName: 'ontario-icon-sentiment-2',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1793,6 +1881,7 @@ export const OntarioIconSentiment3: StencilReactComponent<OntarioIconSentiment3E
     tagName: 'ontario-icon-sentiment-3',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1807,6 +1896,7 @@ export const OntarioIconSentiment4: StencilReactComponent<OntarioIconSentiment4E
     tagName: 'ontario-icon-sentiment-4',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1821,6 +1911,7 @@ export const OntarioIconSentiment5: StencilReactComponent<OntarioIconSentiment5E
     tagName: 'ontario-icon-sentiment-5',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1835,6 +1926,7 @@ export const OntarioIconSettings: StencilReactComponent<OntarioIconSettingsEleme
     tagName: 'ontario-icon-settings',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1849,6 +1941,7 @@ export const OntarioIconShare: StencilReactComponent<OntarioIconShareElement, On
     tagName: 'ontario-icon-share',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1863,6 +1956,7 @@ export const OntarioIconSort: StencilReactComponent<OntarioIconSortElement, Onta
     tagName: 'ontario-icon-sort',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1877,6 +1971,7 @@ export const OntarioIconSortAlphabeticalAscending: StencilReactComponent<Ontario
     tagName: 'ontario-icon-sort-alphabetical-ascending',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1891,6 +1986,7 @@ export const OntarioIconSortAlphabeticalDescending: StencilReactComponent<Ontari
     tagName: 'ontario-icon-sort-alphabetical-descending',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1905,6 +2001,7 @@ export const OntarioIconSortAscending: StencilReactComponent<OntarioIconSortAsce
     tagName: 'ontario-icon-sort-ascending',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1919,6 +2016,7 @@ export const OntarioIconSortDescending: StencilReactComponent<OntarioIconSortDes
     tagName: 'ontario-icon-sort-descending',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1933,6 +2031,7 @@ export const OntarioIconSortVariant: StencilReactComponent<OntarioIconSortVarian
     tagName: 'ontario-icon-sort-variant',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1947,6 +2046,7 @@ export const OntarioIconTag: StencilReactComponent<OntarioIconTagElement, Ontari
     tagName: 'ontario-icon-tag',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1961,6 +2061,7 @@ export const OntarioIconTextMessage: StencilReactComponent<OntarioIconTextMessag
     tagName: 'ontario-icon-text-message',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1975,6 +2076,7 @@ export const OntarioIconTimer: StencilReactComponent<OntarioIconTimerElement, On
     tagName: 'ontario-icon-timer',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -1989,6 +2091,7 @@ export const OntarioIconTransportBicycle: StencilReactComponent<OntarioIconTrans
     tagName: 'ontario-icon-transport-bicycle',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2003,6 +2106,7 @@ export const OntarioIconTransportBus: StencilReactComponent<OntarioIconTransport
     tagName: 'ontario-icon-transport-bus',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2017,6 +2121,7 @@ export const OntarioIconTransportCar: StencilReactComponent<OntarioIconTransport
     tagName: 'ontario-icon-transport-car',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2031,6 +2136,7 @@ export const OntarioIconTransportWalk: StencilReactComponent<OntarioIconTranspor
     tagName: 'ontario-icon-transport-walk',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2045,6 +2151,7 @@ export const OntarioIconTty: StencilReactComponent<OntarioIconTtyElement, Ontari
     tagName: 'ontario-icon-tty',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2059,6 +2166,7 @@ export const OntarioIconTune: StencilReactComponent<OntarioIconTuneElement, Onta
     tagName: 'ontario-icon-tune',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2073,6 +2181,7 @@ export const OntarioIconTwitter: StencilReactComponent<OntarioIconTwitterElement
     tagName: 'ontario-icon-twitter',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2087,6 +2196,7 @@ export const OntarioIconTwitterAlt: StencilReactComponent<OntarioIconTwitterAltE
     tagName: 'ontario-icon-twitter-alt',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2101,6 +2211,7 @@ export const OntarioIconUpload: StencilReactComponent<OntarioIconUploadElement, 
     tagName: 'ontario-icon-upload',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2115,6 +2226,7 @@ export const OntarioIconVideo: StencilReactComponent<OntarioIconVideoElement, On
     tagName: 'ontario-icon-video',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2129,6 +2241,7 @@ export const OntarioIconVisa: StencilReactComponent<OntarioIconVisaElement, Onta
     tagName: 'ontario-icon-visa',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
@@ -2142,6 +2255,7 @@ export const OntarioIconVoteDislike: StencilReactComponent<OntarioIconVoteDislik
     tagName: 'ontario-icon-vote-dislike',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2156,6 +2270,7 @@ export const OntarioIconVoteLike: StencilReactComponent<OntarioIconVoteLikeEleme
     tagName: 'ontario-icon-vote-like',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2170,6 +2285,7 @@ export const OntarioIconVpnKey: StencilReactComponent<OntarioIconVpnKeyElement, 
     tagName: 'ontario-icon-vpn-key',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2184,6 +2300,7 @@ export const OntarioIconWheelchair: StencilReactComponent<OntarioIconWheelchairE
     tagName: 'ontario-icon-wheelchair',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2198,6 +2315,7 @@ export const OntarioIconWifi: StencilReactComponent<OntarioIconWifiElement, Onta
     tagName: 'ontario-icon-wifi',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
@@ -2212,6 +2330,7 @@ export const OntarioIconYoutube: StencilReactComponent<OntarioIconYoutubeElement
     tagName: 'ontario-icon-youtube',
     properties: {
         iconWidth: 'icon-width',
+        label: 'label',
         isDecorative: 'is-decorative',
         colour: 'colour'
     },
