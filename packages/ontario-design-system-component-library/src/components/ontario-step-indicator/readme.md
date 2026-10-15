@@ -436,7 +436,7 @@ For component guidance, see:
 
 ### Depends on
 
-- [ontario-icon-chevron-left](../ontario-icon)
+- [ontario-icon-chevron-left](../ontario-icon/ontario-icon-chevron-left)
 
 ### Graph
 
