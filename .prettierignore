@@ -10,6 +10,11 @@ loader/
 *.tmp
 *.tmp.*
 log.txt
+
+# pnpm writes its own YAML formatting for this file; letting Prettier
+# reformat it on every commit fights pnpm and creates unnecessary diff
+# churn each time the lockfile changes.
+pnpm-lock.yaml
 *.sublime-project
 *.sublime-workspace
 

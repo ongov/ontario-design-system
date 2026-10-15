@@ -1,3 +1,4 @@
+@use '../1-variables/box-shadow.variables' as boxShadow;
 @use '../1-variables/colours.variables' as colours;
 @use '../1-variables/font-weights.variables' as fontWeights;
 @use '../1-variables/font-sizes.variables' as fontSizes;
@@ -129,9 +130,9 @@ a {
 	}
 
 	&:focus {
-		-moz-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
-		-webkit-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
-		box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		-moz-box-shadow: boxShadow.$ontario-focus-box-shadow;
+		-webkit-box-shadow: boxShadow.$ontario-focus-box-shadow;
+		box-shadow: boxShadow.$ontario-focus-box-shadow;
 		outline: 4px solid transparent;
 		transition: all 0.1s ease-in-out;
 	}

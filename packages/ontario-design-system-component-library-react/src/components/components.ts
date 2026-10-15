@@ -22,6 +22,7 @@ import { OntarioCheckboxes as OntarioCheckboxesElement, defineCustomElement as d
 import { OntarioCriticalAlert as OntarioCriticalAlertElement, defineCustomElement as defineOntarioCriticalAlert } from "@ongov/ontario-design-system-component-library/components/ontario-critical-alert.js";
 import { OntarioDateInput as OntarioDateInputElement, defineCustomElement as defineOntarioDateInput } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
 import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement as defineOntarioDropdownList } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
+import { OntarioDropdownOption as OntarioDropdownOptionElement, defineCustomElement as defineOntarioDropdownOption } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-option.js";
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
@@ -353,6 +354,17 @@ export const OntarioDropdownList: StencilReactComponent<OntarioDropdownListEleme
         onInputErrorOccurred: 'inputErrorOccurred'
     } as OntarioDropdownListEvents,
     defineCustomElement: defineOntarioDropdownList
+});
+
+export type OntarioDropdownOptionEvents = NonNullable<unknown>;
+
+export const OntarioDropdownOption: StencilReactComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents> = /*@__PURE__*/ createComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents>({
+    tagName: 'ontario-dropdown-option',
+    elementClass: OntarioDropdownOptionElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioDropdownOptionEvents,
+    defineCustomElement: defineOntarioDropdownOption
 });
 
 export type OntarioFieldsetEvents = NonNullable<unknown>;

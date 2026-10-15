@@ -151,11 +151,19 @@ This event detail type is emitted by the `accordionChange` event whenever an ind
 
 This enum defines the possible values for the reason property in the event payload.
 
-| Enum Member | Value          | Description                                                 |
-| ----------- | -------------- | ----------------------------------------------------------- |
-| `Init`      | `'init'`       | Emitted when the component first initializes.               |
-| `ToggleOne` | `'toggle-one'` | Emitted when a single accordion item is toggled.            |
-| `ToggleAll` | `'toggle-all'` | Emitted when all accordion items are expanded or collapsed. |
+| Enum Member     | Value              | Description                                                                                           |
+| --------------- | ------------------ | ----------------------------------------------------------------------------------------------------- |
+| `Init`          | `'init'`           | Emitted when the component first initializes.                                                         |
+| `ToggleOne`     | `'toggle-one'`     | Emitted when a single accordion item is toggled.                                                      |
+| `ToggleAll`     | `'toggle-all'`     | Emitted when all accordion items are expanded or collapsed.                                           |
+| `BrowserSearch` | `'browser-search'` | Emitted when the browser's find-in-page (Ctrl+F/Cmd+F) search automatically expands a closed section. |
+
+## Technical Note: Browser find-in-page (Ctrl+F/Cmd+F) support
+
+Collapsed accordion content stays in the DOM using the `hidden="until-found"` attribute instead of `display: none`, so the browser's built-in find-in-page search can locate text inside collapsed sections. When a match is found, the browser automatically reveals the section and fires a `beforematch` event, which the component listens for to keep its own open/closed state (icons, `aria-expanded`, `aria-hidden`, and the `accordionChange` event) in sync with the browser-triggered reveal.
+
+- On browsers that don't support `hidden="until-found"` (detected via feature-detection on `beforematch`), the component falls back to a standard `hidden` attribute, matching prior behaviour.
+- This does not change screen reader behaviour; `aria-hidden` continues to reflect the section's open/closed state as before.
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 

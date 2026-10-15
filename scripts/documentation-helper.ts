@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 
 /**
  * documentation-helper.ts
@@ -12,17 +12,17 @@
  * Usage Examples:
  *
  *  Single file prepend:
- *    ts-node documentation-helper.ts -f <file> -p "---\\ntitle: My Title\\n---" [--df <destinationFile>]
+ *    tsx documentation-helper.ts -f <file> -p "---\\ntitle: My Title\\n---" [--df <destinationFile>]
  *
  *  Batch mode (recommended for repo-wide documentation management):
- *    ts-node documentation-helper.ts -i <inputDir> -o <destinationDir> [-m <mappingFile>]
+ *    tsx documentation-helper.ts -i <inputDir> -o <destinationDir> [-m <mappingFile>]
  *
  *  - <inputDir>: Directory containing the source documentation files and the mapping YAML file
  *  - <destinationDir>: Directory to write processed files to (directory structure is preserved)
  *  - <mappingFile>: (Optional) YAML mapping file name (default: docs-metadata.yaml)
  *
  *  Example:
- *    ts-node documentation-helper.ts -i ./docs -o ../../app-web-components-documentation/docs
+ *    tsx documentation-helper.ts -i ./docs -o ../../app-web-components-documentation/docs
  *
  *  The mapping YAML file (docs-metadata.yaml) should be structured as follows:
  *
@@ -51,7 +51,7 @@
  *          title: Another Section
  *          ---
  *
- * This script is intended to be run with ts-node or as a Node.js CLI tool.
+ * This script is intended to be run with tsx or as a Node.js CLI tool.
  */
 
 import { program } from 'commander';

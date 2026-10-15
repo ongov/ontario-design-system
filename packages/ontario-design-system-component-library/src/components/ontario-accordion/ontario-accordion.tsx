@@ -110,6 +110,19 @@ export class OntarioAccordion {
 	@State() private uidPrefix: string = `ontario-accordion-${uuid()}`;
 
 	/**
+	 * Whether the browser supports `hidden="until-found"` + the `beforematch` event.
+	 * Used to gracefully fall back to a standard `hidden` attribute on unsupported browsers.
+	 * This is set once in `componentWillLoad` and does not need to be reactive.
+	 */
+	private supportsUntilFound = false;
+
+	/**
+	 * Tracks which content section elements already have a `beforematch` listener bound,
+	 * so re-renders don't attach duplicate listeners to the same element.
+	 */
+	private beforematchBoundSections = new WeakSet<HTMLElement>();
+
+	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the input component loads.
 	 */
 	@Listen('setAppLanguage', { target: 'window' })
@@ -244,6 +257,65 @@ export class OntarioAccordion {
 	}
 
 	/**
+	 * Handles the browser's `beforematch` event, which fires just before the browser
+	 * automatically reveals a `hidden="until-found"` section (e.g. via Ctrl+F/Cmd+F
+	 * find-in-page). This keeps the component's open/closed state in sync with the
+	 * browser-triggered reveal.
+	 */
+	private handleBeforeMatch(index: number) {
+		if (this.openAccordionIndexes.includes(index)) {
+			return;
+		}
+
+		this.openAccordionIndexes = [...this.openAccordionIndexes, index];
+		this.updateLabel();
+
+		this.emitAccordionChange({
+			openIndexes: this.openAccordionIndexes,
+			changedIndex: index,
+			reason: AccordionChangeDetailReasons.BrowserSearch,
+		});
+	}
+
+	/**
+	 * Binds the `beforematch` listener (once per element) and syncs the native `hidden`
+	 * attribute on the accordion content section to reflect its current open/closed state.
+	 * Runs on every render so browser- and user-triggered state changes stay in sync.
+	 */
+	private bindContentRef = (el: HTMLElement | undefined, index: number) => {
+		if (!el) {
+			return;
+		}
+
+		if (!this.beforematchBoundSections.has(el)) {
+			el.addEventListener('beforematch', () => this.handleBeforeMatch(index));
+			this.beforematchBoundSections.add(el);
+		}
+
+		this.syncSectionHiddenState(el, index);
+	};
+
+	/**
+	 * Sets the section's native `hidden` attribute based on its open/closed state.
+	 *
+	 * - Open sections have the attribute removed entirely.
+	 * - Closed sections use `hidden="until-found"` on browsers that support it, keeping the
+	 *   content in the DOM and discoverable by the browser's find-in-page search.
+	 * - Closed sections fall back to a standard `hidden` attribute on unsupported browsers.
+	 */
+	private syncSectionHiddenState(el: HTMLElement, index: number) {
+		const isOpen = this.openAccordionIndexes.includes(index);
+
+		if (isOpen) {
+			el.removeAttribute('hidden');
+		} else if (this.supportsUntilFound) {
+			el.setAttribute('hidden', 'until-found');
+		} else {
+			el.setAttribute('hidden', '');
+		}
+	}
+
+	/**
 	 * Toggle all accordions open/close
 	 */
 	private toggleAll() {
@@ -283,6 +355,10 @@ export class OntarioAccordion {
 		this.parseAccordionData();
 		this.parseExpandCollapseButtonDetails();
 		this.language = validateLanguage(this.language);
+
+		// Feature detection for `hidden="until-found"` + `beforematch` support, used to
+		// gracefully fall back to a standard `hidden` attribute on unsupported browsers.
+		this.supportsUntilFound = typeof document !== 'undefined' && !!document.body && 'onbeforematch' in document.body;
 	}
 
 	render() {
@@ -340,6 +416,7 @@ export class OntarioAccordion {
 								</h3>
 								<section
 									id={sectionId}
+									ref={(el) => this.bindContentRef(el, index)}
 									class={`ontario-accordion__content ${
 										isOpen ? 'ontario-expander__content--opened' : 'ontario-accordion__content--closed'
 									}`}

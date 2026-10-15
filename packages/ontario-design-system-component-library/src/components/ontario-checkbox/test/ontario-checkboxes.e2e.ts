@@ -83,6 +83,21 @@ test.describe('ontario-checkboxes', () => {
 		await expect(checkboxes.nth(0)).not.toBeChecked();
 		await expect(checkboxes.nth(1)).toBeChecked();
 	});
+
+	test('uses the same --checkbox-bg value on host and shadow DOM content', async () => {
+		const values = await host.evaluate((element) => {
+			const shadowElement = element.shadowRoot?.querySelector('.ontario-checkboxes');
+
+			return {
+				host: getComputedStyle(element).getPropertyValue('--checkbox-bg').trim(),
+				shadow: shadowElement ? getComputedStyle(shadowElement).getPropertyValue('--checkbox-bg').trim() : '',
+			};
+		});
+
+		expect(values.host).toContain('data:image/svg+xml');
+		expect(values.shadow).toContain('data:image/svg+xml');
+		expect(values.shadow).toBe(values.host);
+	});
 });
 
 // import { newE2EPage } from '@stencil/core/testing';
