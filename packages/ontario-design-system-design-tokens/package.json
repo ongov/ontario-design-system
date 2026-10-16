@@ -23,7 +23,7 @@
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" --df ../docusaurus/docs/04-readme-design-tokens.md"
+		"docs:copy:readme": "tsx ../../scripts/dochttps://github.com/ongov/ontario-design-system/pull/421/conflict?name=packages%252Fontario-design-system-design-tokens%252Fpackage.json&ancestor_oid=190a50c2e727a82918d76efbcd40a8f648903013&base_oid=df8298737f440e18a7120d5745d30d4b1d0983d4&head_oid=1305aca5c8cb3c1d1cfae81d45f9bf4f5a80efa9umentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" --df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
 		"@types/node": "^24.0.0",
