@@ -51,6 +51,11 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	.ontario-icon {
 		margin-right: 4px;
 	}
+
+	::slotted(svg),
+	::slotted(img) {
+		vertical-align: middle;
+	}
 }
 
 .ontario-button--primary {
