@@ -1,4 +1,4 @@
-import { OntarioDropdownList } from '@ongov/ontario-design-system-component-library-react';
+import { OntarioDropdownList, OntarioDropdownOption } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -120,6 +120,89 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 </Tabs>
 ```
 
+### Passing options as `ontario-dropdown-option` children
+
+As an alternative to the `options` prop, options can be passed as [`ontario-dropdown-option`](../ontario-dropdown-option/readme.md) light DOM children, using a markup pattern similar to a plain HTML `<select>` with `<option>` children.
+
+Note: native `<option>` elements cannot be slotted into a `<select>` that is rendered inside a shadow root, so `ontario-dropdown-option` children are read once during initialization from the host's light DOM and re-rendered as native `<option>` elements inside the component's shadow root; they are not projected via a native `<slot>`, and later DOM additions or removals are not observed.
+
+If both `options` and `ontario-dropdown-option` children are provided, the `options` prop takes precedence.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-dropdown-list
+	name="streaming-service"
+	caption='{
+		"captionText": "Select a streaming service",
+		"captionType": "default"
+	}'
+	required
+>
+	<ontario-dropdown-option value="netflix">Netflix</ontario-dropdown-option>
+	<ontario-dropdown-option value="disney-plus">Disney Plus</ontario-dropdown-option>
+	<ontario-dropdown-option value="crave" selected>Crave</ontario-dropdown-option>
+	<ontario-dropdown-option value="prime">Prime Video</ontario-dropdown-option>
+</ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioDropdownList
+	name="streaming-service"
+	caption={{
+		captionText: 'Select a streaming service',
+		captionType: 'default',
+	}}
+	required
+>
+	<OntarioDropdownOption value="netflix">Netflix</OntarioDropdownOption>
+	<OntarioDropdownOption value="disney-plus">Disney Plus</OntarioDropdownOption>
+	<OntarioDropdownOption value="crave" selected>
+		Crave
+	</OntarioDropdownOption>
+	<OntarioDropdownOption value="prime">Prime Video</OntarioDropdownOption>
+</OntarioDropdownList>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-dropdown-list
+	[name]="'streaming-service'"
+	[caption]="{ captionText: 'Select a streaming service', captionType: 'default' }"
+	required
+>
+	<ontario-dropdown-option value="netflix">Netflix</ontario-dropdown-option>
+	<ontario-dropdown-option value="disney-plus">Disney Plus</ontario-dropdown-option>
+	<ontario-dropdown-option value="crave" selected>Crave</ontario-dropdown-option>
+	<ontario-dropdown-option value="prime">Prime Video</ontario-dropdown-option>
+</ontario-dropdown-list>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 <div>
 	<OntarioDropdownList
 		name="streaming-service"
@@ -128,13 +211,14 @@ Example of a dropdown list component with no `elementId` or `isEmptyStartOption`
 			captionType: 'default',
 		}}
 		required
-		options={[
-			{ value: 'netflix', label: 'Netflix' },
-			{ value: 'disney-plus', label: 'Disney Plus' },
-			{ value: 'crave', label: 'Crave' },
-			{ value: 'prime', label: 'Prime Video' },
-		]}
-	></OntarioDropdownList>
+	>
+		<OntarioDropdownOption value="netflix">Netflix</OntarioDropdownOption>
+		<OntarioDropdownOption value="disney-plus">Disney Plus</OntarioDropdownOption>
+		<OntarioDropdownOption value="crave" selected>
+			Crave
+		</OntarioDropdownOption>
+		<OntarioDropdownOption value="prime">Prime Video</OntarioDropdownOption>
+	</OntarioDropdownList>
 </div>
 
 In the following example, the selected option is set using the component's

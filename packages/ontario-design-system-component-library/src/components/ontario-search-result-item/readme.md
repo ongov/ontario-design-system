@@ -54,6 +54,8 @@ Use `ontario-search-result-item` to render a semantic option row for search sugg
 
 ## Example with custom slotted content
 
+When slotted into an `ontario-search-box` (see [Slotted semantic and custom HTML suggestions](../ontario-search-box/#slotted-semantic-and-custom-html-suggestions)), custom markup can be used in place of the built-in row layout:
+
 ```html
 <ontario-search-result-item value="Toronto">
 	<div>
