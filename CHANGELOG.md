@@ -3,9 +3,7 @@
 ### Bug Fixes
 
 - **changelog:** add notes for 9-2-0-alpha-3 9b3e6d9
-- **global-styles,component-library-react:** forward focus box-shadow var 52da045
-- **global-styles,component-library-react:** hotfix 9.2.2 forward focus box-shadow var ([#420](undefined/ongov/ontario-design-system/issues/420)) 015886b
-- **version:** align version 2e72a2f
+- **version:** align version to 9.2.2 2e72a2f
 
 # 9.2.0-alpha.3 (2026-10-16)
 
