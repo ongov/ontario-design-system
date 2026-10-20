@@ -195,20 +195,23 @@ Icons without a non-blank `label` now render as decorative images with `aria-hid
 
 The `icons` array in `icon-manifest.json` is the source of truth for icon metadata. Each entry must correspond to an SVG with the same basename in `assets/`.
 
-| Field        | Required | Meaning                                                                                                                    |
-| ------------ | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                   |
-| `category`   | Yes      | Icon category: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                    |
-| `viewBox`    | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                |
-| `colour`     | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
-| `aliases`    | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components. |
-| `deprecated` | Yes      | Deprecation metadata. This flag alone does not emit a component warning.                                                   |
-| `replacedBy` | No       | Replacement icon name recorded as metadata when an icon is deprecated.                                                     |
+| Field               | Required | Meaning                                                                                                                    |
+| ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `name`              | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                   |
+| `category`          | Yes      | Gallery grouping: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                 |
+| `viewBox`           | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                |
+| `colour`            | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
+| `aliases`           | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components. |
+| `deprecated`        | Yes      | Deprecation metadata. This flag alone does not emit a component warning.                                                   |
+| `replacedBy`        | No       | Replacement icon name recorded as metadata when an icon is deprecated.                                                     |
+| `previewBackground` | No       | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon.            |
 
 ### Add or update an icon
 
 1. Add or update the SVG artwork in `assets/` and its matching manifest entry. Preserve existing tag names and colour capabilities unless an approved change requires otherwise.
-2. From the component-library package directory, run `pnpm run generate:icons`. The generator validates the asset inventory and updates the per-icon TSX files.
+2. From the component-library package directory, run `pnpm run generate:icons`. The generator validates the asset inventory and updates the per-icon TSX files and the marked gallery section in `src/index.html`.
 3. Run `pnpm run build` to regenerate public types, framework wrappers and per-icon documentation. Each icon's component and README live in `ontario-icon/<icon-name>/`.
-4. Run `pnpm run check:icons`. This read-only command fails if generated components are missing, unexpected or out of date. CI runs the same check.
-5. Review and commit the intended source and generated output together. Do not edit generated TSX files manually; update the generator, manifest or SVG assets instead.
+4. Run `pnpm run check:icons`. This read-only command fails if generated components or gallery markup are missing, unexpected or out of date. CI runs the same check.
+5. Review and commit the intended source and generated output together. Do not edit generated TSX files or the marked gallery section manually; update the generator, manifest or SVG assets instead.
+
+To inspect all icons locally, run `pnpm run start` and open the server URL followed by `/#icons`. The Next.js demo intentionally shows only representative integration examples.
