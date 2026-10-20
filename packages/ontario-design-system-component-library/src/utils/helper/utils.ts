@@ -124,6 +124,19 @@ export function printArray(arr: Array<any>, conjunctionType: Conjunction = 'and'
 }
 
 /**
+ * Formats a readonly list of allowed prop values for use in validation warning messages.
+ *
+ * @param values - Runtime source-of-truth values, such as an `as const` array.
+ * @param conjunctionType - Whether the last value is joined with `and` or `or`.
+ */
+export function formatAllowedValues(
+	values: readonly (string | number)[],
+	conjunctionType: Conjunction = 'and',
+): string {
+	return printArray([...values], conjunctionType);
+}
+
+/**
  * Grabs the HTML element of the page.
  *
  * More targetted than document.documentElement as the documentElement could
