@@ -21,16 +21,16 @@ export const validateIconWidth = (width: number, iconName: string): number => {
 };
 
 export interface IconColourValidation {
-	colour: string;
-	customColour: string;
+	colour?: string;
+	customColour?: string;
 }
 
 export const validateIconColour = (colour: string, iconName: string): IconColourValidation => {
 	if (validateValueAgainstArray(colour, IconColours)) {
-		return { colour, customColour: '' };
+		return { colour };
 	}
 	if (validateColor(colour)) {
-		return { colour: '', customColour: colour };
+		return { customColour: colour };
 	}
 
 	new ConsoleMessageClass()
@@ -44,7 +44,7 @@ export const validateIconColour = (colour: string, iconName: string): IconColour
 		.addMonospaceText(' black ')
 		.addRegularText('is assumed.')
 		.printMessage();
-	return { colour: 'black', customColour: '' };
+	return { colour: 'black' };
 };
 
 export const validateFixedIconColour = (host: HTMLElement, iconName: string): void => {

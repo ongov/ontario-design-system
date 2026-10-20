@@ -48,8 +48,12 @@ export class OntarioIconLiveChat implements IconWithColour {
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-live-chat');
-		this.iconColourState = validatedColour.colour;
-		this.iconCustomColourState = validatedColour.customColour;
+		if (validatedColour.colour !== undefined) {
+			this.iconColourState = validatedColour.colour;
+		}
+		if (validatedColour.customColour !== undefined) {
+			this.iconCustomColourState = validatedColour.customColour;
+		}
 	}
 
 	componentWillLoad() {
