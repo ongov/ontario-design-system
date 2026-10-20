@@ -54,6 +54,11 @@ export class OntarioCheckbox implements Checkbox {
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
+	 * The last required-validation error set by this component, used to tell it apart from a consumer-provided `errorMessage`.
+	 */
+	private automaticErrorMessage: string | undefined;
+
+	/**
 	 * The text to display as the checkbox label.
 	 *
 	 * @example
@@ -334,6 +339,15 @@ export class OntarioCheckbox implements Checkbox {
 		this.applyRequiredValidation();
 	}
 
+	/**
+	 * Watch for changes to the `required` prop to update the required flag in the label and the automatic error.
+	 */
+	@Watch('required')
+	handleRequiredChange() {
+		this.updateCaptionState(this.label);
+		this.applyRequiredValidation();
+	}
+
 	@Watch('errorMessage')
 	broadcastInputErrorOccurredEvent() {
 		// Emit event to notify anyone who wants to listen for errors occurring
@@ -342,19 +356,32 @@ export class OntarioCheckbox implements Checkbox {
 
 	/**
 	 * A required, unchecked checkbox always displays the error state - checking it clears the error.
+	 * Only an error set by this component is cleared when the checkbox is no longer required,
+	 * so an `errorMessage` provided by the consumer is left untouched.
 	 */
 	private applyRequiredValidation() {
 		if (!this.required) {
+			this.clearAutomaticError();
 			return;
 		}
 
 		if (this.checked) {
 			this.errorMessage = undefined;
+			this.automaticErrorMessage = undefined;
 			return;
 		}
 
-		this.errorMessage =
+		this.automaticErrorMessage =
 			this.requiredValidationMessage ?? translations.checkbox.requiredFieldError[this.getComponentLanguage()];
+		this.errorMessage = this.automaticErrorMessage;
+	}
+
+	private clearAutomaticError() {
+		if (this.automaticErrorMessage !== undefined && this.errorMessage === this.automaticErrorMessage) {
+			this.errorMessage = undefined;
+		}
+
+		this.automaticErrorMessage = undefined;
 	}
 
 	private getComponentLanguage() {

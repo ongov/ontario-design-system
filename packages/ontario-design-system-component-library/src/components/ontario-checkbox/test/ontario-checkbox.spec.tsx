@@ -175,6 +175,52 @@ describe('ontario-checkbox', () => {
 		expect((page.root as HTMLOntarioCheckboxElement).errorMessage).toBeFalsy();
 	});
 
+	it('should show the required-validation error when required is enabled after load', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="Subscribe to our newsletter" name="terms" value="subscribed"></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		expect(checkbox.errorMessage).toBeFalsy();
+
+		checkbox.required = true;
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('You must select this checkbox to continue.');
+		expect(page.root?.shadowRoot?.querySelector('.ontario-label__flag')?.textContent).toContain('required');
+	});
+
+	it('should clear the required-validation error when required is disabled after load', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		expect(checkbox.errorMessage).toBeTruthy();
+
+		checkbox.required = false;
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBeFalsy();
+	});
+
+	it('should not clear a consumer-provided errorMessage when not required', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="Subscribe to our newsletter" name="terms" value="subscribed" error-message="Custom error"></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		expect(checkbox.errorMessage).toBe('Custom error');
+
+		checkbox.required = true;
+		await page.waitForChanges();
+		checkbox.errorMessage = 'Another custom error';
+		checkbox.required = false;
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('Another custom error');
+	});
+
 	it('should use requiredValidationMessage instead of the default translation when provided', async () => {
 		const page = await render(
 			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required required-validation-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
