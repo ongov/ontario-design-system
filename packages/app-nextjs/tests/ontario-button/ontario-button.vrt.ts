@@ -128,3 +128,69 @@ test.describe('Ontario Button - active states', () => {
 		await page.mouse.up(); // cleanup
 	});
 });
+
+test.describe('Ontario Button - icon variants (default state)', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/components/ontario-button');
+	});
+
+	test('primary icon-only button', async ({ page }) => {
+		const button = page.locator('#ontario-button-icon-only-primary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('secondary icon-only button', async ({ page }) => {
+		const button = page.locator('#ontario-button-icon-only-secondary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('tertiary icon-only button', async ({ page }) => {
+		const button = page.locator('#ontario-button-icon-only-tertiary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('primary button with a leading icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-leading-icon-primary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('secondary button with a leading icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-leading-icon-secondary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('tertiary button with a leading icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-leading-icon-tertiary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('primary button with a trailing icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-trailing-icon-primary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('secondary button with a trailing icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-trailing-icon-secondary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('tertiary button with a trailing icon', async ({ page }) => {
+		const button = page.locator('#ontario-button-trailing-icon-tertiary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('primary button with leading and trailing icons', async ({ page }) => {
+		const button = page.locator('#ontario-button-both-icons-primary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('secondary button with leading and trailing icons', async ({ page }) => {
+		const button = page.locator('#ontario-button-both-icons-secondary');
+		await expect(button).toHaveScreenshot();
+	});
+
+	test('tertiary button with leading and trailing icons', async ({ page }) => {
+		const button = page.locator('#ontario-button-both-icons-tertiary');
+		await expect(button).toHaveScreenshot();
+	});
+});
