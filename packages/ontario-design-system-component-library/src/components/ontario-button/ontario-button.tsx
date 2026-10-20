@@ -225,7 +225,14 @@ export class OntarioButton implements Button {
 		this.hasTrailingIcon = !!this.host.querySelector('[slot="trailing-icon"]');
 
 		const hasNamedIconSlots = this.hasLeadingIcon || this.hasTrailingIcon;
-		const hasVisibleLabel = !!this.labelState && this.labelState.trim() !== '';
+		// Checks direct child nodes rather than `labelState`/`textContent`, so that an SVG's own
+		// accessible name (e.g. a `<title>`/`<desc>`) isn't mistaken for a visible button label.
+		// Comment nodes (inserted by some frameworks) are also ignored.
+		const hasVisibleLabel =
+			!!this.label?.trim() ||
+			Array.from(this.host.childNodes).some(
+				(node) => !['svg', '#comment'].includes(node.nodeName.toLowerCase()) && !!node.textContent?.trim(),
+			);
 		const hasDefaultSlotElementContent = Array.from(this.host.children).some((child) => !child.hasAttribute('slot'));
 
 		this.isIconOnly = !hasNamedIconSlots && !hasVisibleLabel && hasDefaultSlotElementContent;
