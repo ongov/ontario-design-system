@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { test } from '@stencil/playwright';
+import manifest from '../icon-manifest.json' with { type: 'json' };
 
 const rotationFixture = `
 	<style>
@@ -24,6 +25,34 @@ const rotationFixture = `
 `;
 
 test.describe('ontario-icon', () => {
+	test('every manifest icon renders a decorative, non-focusable SVG', async ({ page }) => {
+		await page.setContent(`<main>${manifest.icons.map((icon) => `<${icon.name}></${icon.name}>`).join('')}</main>`);
+		await page.waitForChanges();
+		for (const icon of manifest.icons) {
+			const svg = page.locator(icon.name).locator('svg');
+			await expect(svg).toHaveCount(1);
+			await expect(svg).toHaveAttribute('aria-hidden', 'true');
+			await expect(svg).toHaveAttribute('focusable', 'false');
+			await expect(svg).not.toHaveAttribute('role');
+		}
+	});
+
+	test('colour updates clear a previous custom fill', async ({ page }) => {
+		await page.setContent('<ontario-icon-accessibility colour="#123456"></ontario-icon-accessibility>');
+		await page.waitForChanges();
+		const icon = page.locator('ontario-icon-accessibility');
+		const svg = icon.locator('svg');
+		await expect(svg).toHaveCSS('fill', 'rgb(18, 52, 86)');
+		await icon.evaluate((element: HTMLOntarioIconAccessibilityElement) => {
+			element.colour = 'white';
+		});
+		await expect(svg).toHaveCSS('fill', 'rgb(255, 255, 255)');
+		await icon.evaluate((element: HTMLOntarioIconAccessibilityElement) => {
+			element.setAttribute('colour', 'not-a-colour');
+		});
+		await expect(svg).toHaveCSS('fill', 'rgb(26, 26, 26)');
+	});
+
 	test('decorative and labelled icons pass axe accessibility checks', async ({ page }) => {
 		await page.setContent(`
 			<main>
