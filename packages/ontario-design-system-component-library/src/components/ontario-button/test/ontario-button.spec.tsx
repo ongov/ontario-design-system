@@ -177,6 +177,31 @@ it('should render an icon-only button when default-slotted with element content 
 `);
 });
 
+it('should still render as icon-only when the slotted SVG has its own accessible title', async () => {
+	const page = await render(
+		`<ontario-button aria-label-text="Open map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Open map</title><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></ontario-button>`,
+	);
+	const button = page.root?.shadowRoot?.querySelector('button');
+	expect(button?.className).toBe('ontario-button ontario-button--secondary ontario-button--icon-only');
+});
+
+it('should ignore comment nodes when detecting icon-only mode', async () => {
+	const page = await render(
+		`<ontario-button aria-label-text="Open map"><!-- marker --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></ontario-button>`,
+	);
+	expect(page.root).toEqualHtml(`
+<ontario-button aria-label-text="Open map" class="hydrated">
+  <mock:shadow-root>
+    <button type="button" class="ontario-button ontario-button--secondary ontario-button--icon-only" aria-label="Open map" id>
+      <slot></slot>
+    </button>
+  </mock:shadow-root>
+  <!-- marker -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path></svg>
+</ontario-button>
+`);
+});
+
 it('should render a leading icon slot alongside a label', async () => {
 	const page = await render(
 		`<ontario-button label="Save"><svg slot="leading-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12l5 5L20 7"/></svg></ontario-button>`,
