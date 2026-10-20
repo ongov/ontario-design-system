@@ -32,6 +32,28 @@ describe('ontario-icon', () => {
 		expect(svg?.hasAttribute('aria-hidden')).toBe(false);
 	});
 
+	it.each(['', '   '])('treats a blank label "%s" as decorative', async (label) => {
+		const page = await render(`<ontario-icon-accessibility label="${label}"></ontario-icon-accessibility>`);
+		const svg = page.root.shadowRoot?.querySelector('svg');
+		expect(svg?.getAttribute('aria-hidden')).toBe('true');
+		expect(svg?.getAttribute('focusable')).toBe('false');
+		expect(svg?.hasAttribute('role')).toBe(false);
+		expect(svg?.hasAttribute('aria-label')).toBe(false);
+	});
+
+	it('does not expose an unnamed image when the legacy prop is false', async () => {
+		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+		try {
+			const page = await render('<ontario-icon-accessibility is-decorative="false"></ontario-icon-accessibility>');
+			const svg = page.root.shadowRoot?.querySelector('svg');
+			expect(svg?.getAttribute('aria-hidden')).toBe('true');
+			expect(svg?.hasAttribute('role')).toBe(false);
+			expect(warning).toHaveBeenCalledWith(expect.stringContaining('isDecorative'));
+		} finally {
+			warning.mockRestore();
+		}
+	});
+
 	it('warns when the deprecated isDecorative prop is supplied', async () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
