@@ -3,7 +3,7 @@ import { Component, Prop, h, Watch, State, Element } from '@stencil/core';
 import { Icon } from '../icon.interface';
 import { IconSize } from '../icon.types';
 import { RenderIcon, warnIsDecorativeDeprecated } from '../render-icon';
-import { ConsoleMessageClass } from '../../../utils/console-message/console-message';
+import { validateIconWidth, validateFixedIconColour } from '../icon-validation';
 
 @Component({
 	tag: 'ontario-icon-interac-en',
@@ -36,36 +36,13 @@ export class OntarioIconInteracEn implements Icon {
 
 	@Watch('iconWidth')
 	validateWidth() {
-		if (isNaN(this.iconWidth) || this.iconWidth <= 0) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' icon-width ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-interac-en> ')
-				.addRegularText('was set to an invalid value; a positive number is allowed. The default size of')
-				.addMonospaceText(' 24px ')
-				.addRegularText('was assumed.')
-				.printMessage();
-			this.iconWidthState = 24;
-		} else {
-			this.iconWidthState = this.iconWidth;
-		}
+		this.iconWidthState = validateIconWidth(this.iconWidth, 'ontario-icon-interac-en');
 	}
 
 	@Element() host: HTMLElement;
 
 	validateColour() {
-		if (this.host.hasAttribute('colour')) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' colour ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-interac-en> ')
-				.addRegularText('cannot be set. The provided colour is ignored.')
-				.printMessage();
-		}
+		validateFixedIconColour(this.host, 'ontario-icon-interac-en');
 	}
 
 	componentWillLoad() {
