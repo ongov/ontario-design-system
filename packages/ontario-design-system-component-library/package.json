@@ -60,7 +60,7 @@
 	"scripts": {
 		"prebuild": "pnpm run build:config && pnpm run build:theme",
 		"build": "pnpm run build:stencil && pnpm run format && pnpm run docs:copy:readme",
-		"build:stencil": "stencil build --docs",
+		"build:stencil": "stencil build --docs && pnpm run docs:copy:icons",
 		"build:config": "tsx scripts/build-config.ts",
 		"build:theme": "tsx scripts/build-theme-scss.ts",
 		"clean": "rm -rf dist loader www",
@@ -69,6 +69,7 @@
 		"check:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs --check",
 		"docs:assemble": "tsx scripts/build-documentation-bundle.ts",
 		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f readme.md -p \"---\nslug: /\n---\n\" --df ../docusaurus/docs/01-readme.md",
+		"docs:copy:icons": "tsx scripts/build-icon-documentation.ts",
 		"format": "prettier --write . --ignore-path ../../.prettierignore",
 		"generate": "stencil generate",
 		"generate:icons": "node src/components/ontario-icon/scripts/generate-icons.cjs",
