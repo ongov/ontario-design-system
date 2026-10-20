@@ -15,13 +15,13 @@ describe('shared icon validation', () => {
 	});
 
 	it('accepts theme tokens and custom CSS colours', () => {
-		expect(validateIconColour('inherit', 'ontario-icon-search')).toEqual({ colour: 'inherit', customColour: '' });
-		expect(validateIconColour('#123456', 'ontario-icon-search')).toEqual({ colour: '', customColour: '#123456' });
+		expect(validateIconColour('inherit', 'ontario-icon-search')).toEqual({ colour: 'inherit' });
+		expect(validateIconColour('#123456', 'ontario-icon-search')).toEqual({ customColour: '#123456' });
 	});
 
 	it('warns and falls back to black for an invalid colour', () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-		expect(validateIconColour('not-a-colour', 'ontario-icon-search')).toEqual({ colour: 'black', customColour: '' });
+		expect(validateIconColour('not-a-colour', 'ontario-icon-search')).toEqual({ colour: 'black' });
 		expect(warning).toHaveBeenCalledOnce();
 	});
 

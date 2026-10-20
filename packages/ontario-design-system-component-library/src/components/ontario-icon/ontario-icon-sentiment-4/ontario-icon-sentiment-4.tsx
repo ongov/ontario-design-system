@@ -48,8 +48,12 @@ export class OntarioIconSentiment4 implements IconWithColour {
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-sentiment-4');
-		this.iconColourState = validatedColour.colour;
-		this.iconCustomColourState = validatedColour.customColour;
+		if (validatedColour.colour !== undefined) {
+			this.iconColourState = validatedColour.colour;
+		}
+		if (validatedColour.customColour !== undefined) {
+			this.iconCustomColourState = validatedColour.customColour;
+		}
 	}
 
 	componentWillLoad() {
