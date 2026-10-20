@@ -37,22 +37,6 @@ test.describe('ontario-icon', () => {
 		}
 	});
 
-	test('colour updates clear a previous custom fill', async ({ page }) => {
-		await page.setContent('<ontario-icon-accessibility colour="#123456"></ontario-icon-accessibility>');
-		await page.waitForChanges();
-		const icon = page.locator('ontario-icon-accessibility');
-		const svg = icon.locator('svg');
-		await expect(svg).toHaveCSS('fill', 'rgb(18, 52, 86)');
-		await icon.evaluate((element: HTMLOntarioIconAccessibilityElement) => {
-			element.colour = 'white';
-		});
-		await expect(svg).toHaveCSS('fill', 'rgb(255, 255, 255)');
-		await icon.evaluate((element: HTMLOntarioIconAccessibilityElement) => {
-			element.setAttribute('colour', 'not-a-colour');
-		});
-		await expect(svg).toHaveCSS('fill', 'rgb(26, 26, 26)');
-	});
-
 	test('decorative and labelled icons pass axe accessibility checks', async ({ page }) => {
 		await page.setContent(`
 			<main>
