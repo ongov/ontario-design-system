@@ -16,6 +16,8 @@ overrides:
   'semantic-release>@semantic-release/github': 12.0.9
 patchedDependencies:
   '@semantic-release/github@12.0.9': patches/@semantic-release__github@12.0.9.patch
+  # Forwards `slot` to the wrapper element. Drop this patch once a release includes the upstream fix:
+  # https://github.com/stenciljs/output-targets/pull/863 (issue: https://github.com/stenciljs/output-targets/issues/858)
   '@stencil/ssr@0.4.0': patches/@stencil__ssr@0.4.0.patch
   conventional-changelog-angular@8.0.0: patches/conventional-changelog-angular@8.0.0.patch
   ngx-translate-routes@2.3.3: patches/ngx-translate-routes@2.3.3.patch

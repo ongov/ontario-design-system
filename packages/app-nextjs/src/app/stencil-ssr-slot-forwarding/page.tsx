@@ -13,7 +13,8 @@ import { Grid } from '../grid';
  *
  * `@stencil/ssr` wraps every Stencil component in a `display:contents` div, and the browser only
  * slots the direct children of a shadow host. A `slot` prop therefore only takes effect if the
- * wrapper div carries it too (see `patches/@stencil__ssr@0.4.0.patch`).
+ * wrapper div carries it too (see `patches/@stencil__ssr@0.4.0.patch`). The same fix is up for review
+ * upstream: https://github.com/stenciljs/output-targets/pull/863
  */
 export default function StencilSsrSlotForwardingPage() {
 	return (
