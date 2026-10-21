@@ -8,6 +8,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { isTokenType } from './token-types.ts';
+
 /** A parsed token tree (or subtree) node. Kept loose since token shapes vary by layer. */
 export type TokenTree = Record<string, any>;
 
@@ -203,6 +205,37 @@ export interface LintIssue {
 	repairedAlias?: string;
 }
 
+/**
+ * Check a single leaf token's declared `type` against the closed
+ * {@link TOKEN_TYPES} vocabulary. Extracted from {@link lintTokens} so the
+ * check itself is unit-testable without touching the file system.
+ * @param node - The leaf token node (must have a `value` property).
+ * @param tokenPath - The token's dot-path, for the resulting issue.
+ * @param file - The relative file path the token was read from, for the resulting issue.
+ * @returns A `missing_type` or `invalid_type` {@link LintIssue}, or `null` if the type is valid.
+ */
+export function checkTokenType(node: TokenTree, tokenPath: string, file: string): LintIssue | null {
+	if (!Object.prototype.hasOwnProperty.call(node, 'type')) {
+		return {
+			code: 'missing_type',
+			message: 'Token has a value but no declared type.',
+			file,
+			tokenPath,
+		};
+	}
+
+	if (!isTokenType(node.type)) {
+		return {
+			code: 'invalid_type',
+			message: `Token's declared type "${node.type}" is not in the closed TOKEN_TYPES vocabulary.`,
+			file,
+			tokenPath,
+		};
+	}
+
+	return null;
+}
+
 /** The collected results of a lintTokens() run. */
 export interface LintResults {
 	errors: LintIssue[];
@@ -214,8 +247,10 @@ export interface LintResults {
 /**
  * Lint every token file for alias integrity and structural issues.
  *
- * Detects missing alias targets (error), legacy `.value` alias suffixes
- * (warning, auto-fixable), and tokens with a type but no value (warning).
+ * Detects missing alias targets (error), tokens missing a declared `type`
+ * (error), tokens whose declared `type` is outside the closed vocabulary
+ * (error), legacy `.value` alias suffixes (warning, auto-fixable), and
+ * tokens with a type but no value (warning).
  * @param options - When `fix` is true, repairs legacy alias suffixes in place.
  * @returns The collected lint results.
  */
@@ -256,6 +291,12 @@ export function lintTokens({ fix = false }: { fix?: boolean } = {}): LintResults
 
 			const value = node.value;
 			const tokenPath = pathParts.join('.');
+
+			const typeIssue = checkTokenType(node, tokenPath, relativePath);
+			if (typeIssue) {
+				issues.errors.push(typeIssue);
+			}
+
 			if (typeof value !== 'string') {
 				return;
 			}
