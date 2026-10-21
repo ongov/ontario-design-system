@@ -10,6 +10,11 @@ import { test, expect, type Locator } from '@playwright/test';
  *
  * The first three tests fail without the patch. The last two are controls that pass either way, so a
  * failure in the first three can only point at the wrapper.
+ *
+ * The same fix is up for review upstream: https://github.com/stenciljs/output-targets/pull/863
+ * (issue: https://github.com/stenciljs/output-targets/issues/858). Once a release includes it, bump
+ * `@stencil/ssr` and remove the patch and its entry in `pnpm-workspace.yaml`. Keep these tests: they
+ * then guard against the behaviour regressing.
  */
 const countAssigned = (host: Locator, slot: string) =>
 	host.locator(slot).evaluate((element) => (element as HTMLSlotElement).assignedElements({ flatten: true }).length);
