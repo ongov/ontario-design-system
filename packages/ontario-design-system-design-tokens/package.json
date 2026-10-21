@@ -90,6 +90,17 @@
 			"import": "./dist/js/tokens.js",
 			"types": "./dist/ts/tokens.d.ts",
 			"default": "./dist/js/tokens.js"
+		},
+		"./css/primitives": {
+			"style": "./dist/css/primitives.css"
+		},
+		"./scss/primitives": {
+			"sass": "./dist/scss/primitives.scss"
+		},
+		"./primitives": {
+			"import": "./dist/js/primitives.js",
+			"types": "./dist/ts/primitives.d.ts",
+			"default": "./dist/js/primitives.js"
 		}
 	}
 }
