@@ -4,7 +4,7 @@ import {
 	OntarioIconAlertError,
 	OntarioIconDropdownArrow,
 	OntarioIconMastercard,
-} from '@ongov/ontario-design-system-component-library-react';
+} from '@ongov/ontario-design-system-component-library-react/next';
 
 export default function OntarioIconPage() {
 	return (
