@@ -221,8 +221,11 @@ export class OntarioButton implements Button {
 	 * client-side hydration corrects it).
 	 */
 	private syncSlotState() {
-		this.hasLeadingIcon = !!this.host.querySelector('[slot="leading-icon"]');
-		this.hasTrailingIcon = !!this.host.querySelector('[slot="trailing-icon"]');
+		// Only direct children can be assigned to a slot by the browser, so a nested element that
+		// merely carries a `slot` attribute (e.g. inside a wrapper element) must not count.
+		const children = Array.from(this.host.children);
+		this.hasLeadingIcon = children.some((child) => child.getAttribute('slot') === 'leading-icon');
+		this.hasTrailingIcon = children.some((child) => child.getAttribute('slot') === 'trailing-icon');
 
 		const hasNamedIconSlots = this.hasLeadingIcon || this.hasTrailingIcon;
 		// Checks direct child nodes rather than `labelState`/`textContent`, so that an SVG's own
@@ -233,7 +236,7 @@ export class OntarioButton implements Button {
 			Array.from(this.host.childNodes).some(
 				(node) => !['svg', '#comment'].includes(node.nodeName.toLowerCase()) && !!node.textContent?.trim(),
 			);
-		const hasDefaultSlotElementContent = Array.from(this.host.children).some((child) => !child.hasAttribute('slot'));
+		const hasDefaultSlotElementContent = children.some((child) => !child.hasAttribute('slot'));
 
 		this.isIconOnly = !hasNamedIconSlots && !hasVisibleLabel && hasDefaultSlotElementContent;
 	}
