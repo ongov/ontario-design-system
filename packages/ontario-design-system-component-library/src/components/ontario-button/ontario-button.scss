@@ -156,6 +156,16 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	}
 }
 
+// Compensate for the border in the horizontal padding too (the vertical padding already does), so bordered buttons with
+// icons are the same width as the other types and their label gets the same space, and wraps in the same place.
+.ontario-button--secondary.ontario-button--icons-1,
+.ontario-button--secondary.ontario-button--icons-2,
+.ontario-button--internalThemeDark.ontario-button--icons-1,
+.ontario-button--internalThemeDark.ontario-button--icons-2 {
+	padding-left: calc(#{spacing.$spacing-5} - #{globalVariables.$border-size-standard});
+	padding-right: calc(#{spacing.$spacing-5} - #{globalVariables.$border-size-standard});
+}
+
 .ontario-button--icon-only.ontario-button--tertiary {
 	width: 3.25rem; // 52px
 	height: 3.25rem;
