@@ -10,6 +10,15 @@ import {
 	OntarioIconMap,
 } from '@ongov/ontario-design-system-component-library-react';
 
+/**
+ * NOTE: the leading/trailing icon examples below pass `slot` straight to the icon component, which only
+ * works in this app with the `@stencil/ssr` slot patch (PR #428, `patches/@stencil__ssr@0.4.0.patch`), or
+ * once a release includes the upstream fix: https://github.com/stenciljs/output-targets/pull/863
+ *
+ * Without either, `@stencil/ssr` wraps the icon in a `display:contents` div that doesn't carry `slot`, so
+ * the browser never slots the icon and the button renders without it. Wrapping the icon in a plain
+ * `<span slot="leading-icon">` works around that if this branch has to run without the patch.
+ */
 export default function OntarioButtonPage() {
 	const [submitted, setSubmitted] = useState(false);
 
@@ -77,23 +86,13 @@ export default function OntarioButtonPage() {
 					<h2>Buttons with a leading icon</h2>
 
 					<OntarioButton id="ontario-button-leading-icon-primary" type="primary" label="Add item">
-						{/* The generated React wrapper for icon components puts the real custom element inside an
-						extra `display:contents` div and doesn't forward `slot` onto that div, so native slot
-						assignment (which only looks at direct children) never finds it. Wrapping in a plain
-						`<span slot="...">` ourselves works around this. */}
-						<span slot="leading-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="leading-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-leading-icon-secondary" type="secondary" label="Add item">
-						<span slot="leading-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="leading-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-leading-icon-tertiary" type="tertiary" label="Add item">
-						<span slot="leading-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="leading-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 				</div>
 
@@ -101,19 +100,13 @@ export default function OntarioButtonPage() {
 					<h2>Buttons with a trailing icon</h2>
 
 					<OntarioButton id="ontario-button-trailing-icon-primary" type="primary" label="Next">
-						<span slot="trailing-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-trailing-icon-secondary" type="secondary" label="Next">
-						<span slot="trailing-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-trailing-icon-tertiary" type="tertiary" label="Next">
-						<span slot="trailing-icon">
-							<OntarioIconAdd colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconAdd slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 				</div>
 
@@ -121,28 +114,16 @@ export default function OntarioButtonPage() {
 					<h2>Buttons with leading and trailing icons</h2>
 
 					<OntarioButton id="ontario-button-both-icons-primary" type="primary" label="Download report">
-						<span key="leading-icon" slot="leading-icon">
-							<OntarioIconDownload colour="inherit" isDecorative={true} />
-						</span>
-						<span key="trailing-icon" slot="trailing-icon">
-							<OntarioIconChevronRight colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconDownload key="leading-icon" slot="leading-icon" colour="inherit" isDecorative={true} />
+						<OntarioIconChevronRight key="trailing-icon" slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-both-icons-secondary" type="secondary" label="Download report">
-						<span key="leading-icon" slot="leading-icon">
-							<OntarioIconDownload colour="inherit" isDecorative={true} />
-						</span>
-						<span key="trailing-icon" slot="trailing-icon">
-							<OntarioIconChevronRight colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconDownload key="leading-icon" slot="leading-icon" colour="inherit" isDecorative={true} />
+						<OntarioIconChevronRight key="trailing-icon" slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 					<OntarioButton id="ontario-button-both-icons-tertiary" type="tertiary" label="Download report">
-						<span key="leading-icon" slot="leading-icon">
-							<OntarioIconDownload colour="inherit" isDecorative={true} />
-						</span>
-						<span key="trailing-icon" slot="trailing-icon">
-							<OntarioIconChevronRight colour="inherit" isDecorative={true} />
-						</span>
+						<OntarioIconDownload key="leading-icon" slot="leading-icon" colour="inherit" isDecorative={true} />
+						<OntarioIconChevronRight key="trailing-icon" slot="trailing-icon" colour="inherit" isDecorative={true} />
 					</OntarioButton>
 				</div>
 			</Grid>
