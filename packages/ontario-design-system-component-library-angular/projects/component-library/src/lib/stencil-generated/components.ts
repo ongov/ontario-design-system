@@ -3871,6 +3871,47 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 
 
 @ProxyCmp({
+  inputs: ['ariaLabelText', 'customOnDismiss', 'customOnToggle', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'ontario-tag',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['ariaLabelText', 'customOnDismiss', 'customOnToggle', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
+  outputs: ['tagToggled', 'tagDismissed'],
+  standalone: false
+})
+export class OntarioTag {
+  protected el: HTMLOntarioTagElement;
+  @Output() tagToggled = new EventEmitter<CustomEvent<IOntarioTagTagToggledDetail>>();
+  @Output() tagDismissed = new EventEmitter<CustomEvent<IOntarioTagTagDismissedDetail>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+import type { TagToggledDetail as IOntarioTagTagToggledDetail } from '@ongov/ontario-design-system-component-library';
+import type { TagDismissedDetail as IOntarioTagTagDismissedDetail } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioTag extends Components.OntarioTag {
+  /**
+   * Emitted when a non-dismissible tag is selected or deselected by mouse, touch, or keyboard.
+   */
+  tagToggled: EventEmitter<CustomEvent<IOntarioTagTagToggledDetail>>;
+  /**
+   * Emitted when a dismissible tag is activated by mouse, touch, or keyboard.
+
+A tag never removes itself: the consumer removes it from the list in response to this event.
+   */
+  tagDismissed: EventEmitter<CustomEvent<IOntarioTagTagDismissedDetail>>;
+}
+
+
+@ProxyCmp({
   inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus']
 })
 @Component({
