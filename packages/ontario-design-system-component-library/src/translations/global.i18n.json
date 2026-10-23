@@ -277,6 +277,12 @@
 			"fr": "votre réponse pour :"
 		}
 	},
+	"tag": {
+		"dismiss": {
+			"en": "Remove {label}",
+			"fr": "Supprimer {label}"
+		}
+	},
 	"taskGroup": {
 		"completed": {
 			"en": "You have completed",
