@@ -6,7 +6,7 @@
 /* eslint-disable */
 
 // @ts-ignore - ignore potential type issues as the project is importing itself
-import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTagCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent, type TagDismissedDetail, type TagToggledDetail } from "@ongov/ontario-design-system-component-library";
 import * as clientComponents from '@ongov/ontario-design-system-component-library-react';
 import { OntarioAccordion as OntarioAccordionElement } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
@@ -163,6 +163,7 @@ import { OntarioStepIndicator as OntarioStepIndicatorElement } from "@ongov/onta
 import { OntarioSummaryListItem as OntarioSummaryListItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTag as OntarioTagElement } from "@ongov/ontario-design-system-component-library/components/ontario-tag.js";
 import { OntarioTaskList as OntarioTaskListElement } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
 import { OntarioTextarea as OntarioTextareaElement } from "@ongov/ontario-design-system-component-library/components/ontario-textarea.js";
@@ -2484,6 +2485,30 @@ export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTab
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioTable as ReactWebComponent<OntarioTableElement, OntarioTableEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioTagEvents = {
+    onTagToggled: EventName<OntarioTagCustomEvent<TagToggledDetail>>,
+    onTagDismissed: EventName<OntarioTagCustomEvent<TagDismissedDetail>>
+};
+
+export const OntarioTag: StencilReactComponent<OntarioTagElement, OntarioTagEvents> = /*@__PURE__*/ createComponent<OntarioTagElement, OntarioTagEvents>({
+    tagName: 'ontario-tag',
+    properties: {
+        label: 'label',
+        value: 'value',
+        selected: 'selected',
+        dismissible: 'dismissible',
+        dismissLabel: 'dismiss-label',
+        ariaLabelText: 'aria-label-text',
+        elementId: 'element-id',
+        language: 'language',
+        customOnToggle: 'custom-on-toggle',
+        customOnDismiss: 'custom-on-dismiss'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioTag as ReactWebComponent<OntarioTagElement, OntarioTagEvents>,
     serializeShadowRoot
 });
 

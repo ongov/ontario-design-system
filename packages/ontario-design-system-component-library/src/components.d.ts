@@ -34,6 +34,7 @@ import { AutocompleteSuggestionSelectedEvent, Suggestion } from "./components/on
 import { Segment } from "./utils/components/search-box-autocomplete";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+import { TagDismissedDetail, TagToggledDetail } from "./components/ontario-tag/tag.interface";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
 import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 import { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
@@ -66,6 +67,7 @@ export { AutocompleteSuggestionSelectedEvent, Suggestion } from "./components/on
 export { Segment } from "./utils/components/search-box-autocomplete";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
+export { TagDismissedDetail, TagToggledDetail } from "./components/ontario-tag/tag.interface";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
 export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 export { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
@@ -3426,6 +3428,58 @@ export namespace Components {
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
     /**
+     * Ontario Tag is a compact control used to filter content, show applied filters, and manage user-created labels.
+     * A non-dismissible tag toggles between selected and unselected. A dismissible tag is always shown as selected and emits an event when activated, leaving removal up to the consuming application.
+     */
+    interface OntarioTag {
+        /**
+          * Provides more context for the non-dismissible tag button, only if the label alone is not enough.  This property is optional.
+         */
+        "ariaLabelText"?: string;
+        /**
+          * A function called when a dismissible tag is activated, in addition to the `tagDismissed` event.  This property is optional.
+         */
+        "customOnDismiss"?: (detail: TagDismissedDetail) => void;
+        /**
+          * A function called when a non-dismissible tag is selected or deselected, in addition to the `tagToggled` event.  This property is optional.
+         */
+        "customOnToggle"?: (detail: TagToggledDetail) => void;
+        /**
+          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  This property is optional.
+         */
+        "dismissLabel"?: string;
+        /**
+          * Renders a close icon after the label, and makes activating the tag dismiss it.  A dismissible tag always uses the selected style.  This property is optional.
+          * @default false
+         */
+        "dismissible"?: boolean;
+        /**
+          * The unique identifier of the tag.  If no `elementId` is passed, one will be generated.  This property is optional.
+         */
+        "elementId"?: string;
+        /**
+          * The text displayed in the tag.  This overrides the text provided through the host element's text content.  If neither `label` nor the host text content is provided, a warning is printed and the tag is not rendered.
+         */
+        "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The selected state of a non-dismissible tag.  This is ignored, with a warning, when `dismissible` is also set.  This property is optional.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Focuses the tag's button.  This is used by `ontario-tag-group` to move focus after a removal.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * A stable identifier sent in events, so consumers are not tied to translated label text.  If no `value` is passed, the label text is used.  This property is optional.
+         */
+        "value"?: string;
+    }
+    /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/task-list.html
@@ -3615,6 +3669,10 @@ export interface OntarioSearchBoxCustomEvent<T> extends CustomEvent<T> {
 export interface OntarioSearchResultItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioSearchResultItemElement;
+}
+export interface OntarioTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioTagElement;
 }
 export interface OntarioTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5041,6 +5099,28 @@ declare global {
         prototype: HTMLOntarioTableElement;
         new (): HTMLOntarioTableElement;
     };
+    interface HTMLOntarioTagElementEventMap {
+        "tagToggled": TagToggledDetail;
+        "tagDismissed": TagDismissedDetail;
+    }
+    /**
+     * Ontario Tag is a compact control used to filter content, show applied filters, and manage user-created labels.
+     * A non-dismissible tag toggles between selected and unselected. A dismissible tag is always shown as selected and emits an event when activated, leaving removal up to the consuming application.
+     */
+    interface HTMLOntarioTagElement extends Components.OntarioTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioTagElementEventMap>(type: K, listener: (this: HTMLOntarioTagElement, ev: OntarioTagCustomEvent<HTMLOntarioTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioTagElementEventMap>(type: K, listener: (this: HTMLOntarioTagElement, ev: OntarioTagCustomEvent<HTMLOntarioTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOntarioTagElement: {
+        prototype: HTMLOntarioTagElement;
+        new (): HTMLOntarioTagElement;
+    };
     /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
@@ -5254,6 +5334,7 @@ declare global {
         "ontario-summary-list": HTMLOntarioSummaryListElement;
         "ontario-summary-list-item": HTMLOntarioSummaryListItemElement;
         "ontario-table": HTMLOntarioTableElement;
+        "ontario-tag": HTMLOntarioTagElement;
         "ontario-task": HTMLOntarioTaskElement;
         "ontario-task-list": HTMLOntarioTaskListElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
@@ -8798,6 +8879,62 @@ declare namespace LocalJSX {
         "zebraStripes"?: 'auto' | 'disabled' | 'enabled' | undefined;
     }
     /**
+     * Ontario Tag is a compact control used to filter content, show applied filters, and manage user-created labels.
+     * A non-dismissible tag toggles between selected and unselected. A dismissible tag is always shown as selected and emits an event when activated, leaving removal up to the consuming application.
+     */
+    interface OntarioTag {
+        /**
+          * Provides more context for the non-dismissible tag button, only if the label alone is not enough.  This property is optional.
+         */
+        "ariaLabelText"?: string;
+        /**
+          * A function called when a dismissible tag is activated, in addition to the `tagDismissed` event.  This property is optional.
+         */
+        "customOnDismiss"?: (detail: TagDismissedDetail) => void;
+        /**
+          * A function called when a non-dismissible tag is selected or deselected, in addition to the `tagToggled` event.  This property is optional.
+         */
+        "customOnToggle"?: (detail: TagToggledDetail) => void;
+        /**
+          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  This property is optional.
+         */
+        "dismissLabel"?: string;
+        /**
+          * Renders a close icon after the label, and makes activating the tag dismiss it.  A dismissible tag always uses the selected style.  This property is optional.
+          * @default false
+         */
+        "dismissible"?: boolean;
+        /**
+          * The unique identifier of the tag.  If no `elementId` is passed, one will be generated.  This property is optional.
+         */
+        "elementId"?: string;
+        /**
+          * The text displayed in the tag.  This overrides the text provided through the host element's text content.  If neither `label` nor the host text content is provided, a warning is printed and the tag is not rendered.
+         */
+        "label"?: string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Emitted when a dismissible tag is activated by mouse, touch, or keyboard.  A tag never removes itself: the consumer removes it from the list in response to this event.
+         */
+        "onTagDismissed"?: (event: OntarioTagCustomEvent<TagDismissedDetail>) => void;
+        /**
+          * Emitted when a non-dismissible tag is selected or deselected by mouse, touch, or keyboard.
+         */
+        "onTagToggled"?: (event: OntarioTagCustomEvent<TagToggledDetail>) => void;
+        /**
+          * The selected state of a non-dismissible tag.  This is ignored, with a warning, when `dismissible` is also set.  This property is optional.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * A stable identifier sent in events, so consumers are not tied to translated label text.  If no `value` is passed, the label text is used.  This property is optional.
+         */
+        "value"?: string;
+    }
+    /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/task-list.html
@@ -9107,6 +9244,7 @@ declare namespace LocalJSX {
         "ontario-summary-list": OntarioSummaryList;
         "ontario-summary-list-item": OntarioSummaryListItem;
         "ontario-table": OntarioTable;
+        "ontario-tag": OntarioTag;
         "ontario-task": OntarioTask;
         "ontario-task-list": OntarioTaskList;
         "ontario-textarea": OntarioTextarea;
@@ -9570,6 +9708,11 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-table/
              */
             "ontario-table": LocalJSX.OntarioTable & JSXBase.HTMLAttributes<HTMLOntarioTableElement>;
+            /**
+             * Ontario Tag is a compact control used to filter content, show applied filters, and manage user-created labels.
+             * A non-dismissible tag toggles between selected and unselected. A dismissible tag is always shown as selected and emits an event when activated, leaving removal up to the consuming application.
+             */
+            "ontario-tag": LocalJSX.OntarioTag & JSXBase.HTMLAttributes<HTMLOntarioTagElement>;
             /**
              * Ontario Task represents an individual task item and status within a task list.
              * For component guidance, see:
