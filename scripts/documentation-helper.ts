@@ -8,11 +8,15 @@
  * Features:
  * - Prepend front matter or arbitrary text to a single file (see --prepend option)
  * - Batch process files using a YAML mapping file, prepending front matter and copying to a destination directory
+ * - Sanitize generated markdown in a directory so that it is safe to render as MDX (see --sanitize option)
  *
  * Usage Examples:
  *
  *  Single file prepend:
  *    tsx documentation-helper.ts -f <file> -p "---\\ntitle: My Title\\n---" [--df <destinationFile>]
+ *
+ *  Sanitize mode (rewrites markdown files in place, so only point it at generated output):
+ *    tsx documentation-helper.ts --sanitize <directory>
  *
  *  Batch mode (recommended for repo-wide documentation management):
  *    tsx documentation-helper.ts -i <inputDir> -o <destinationDir> [-m <mappingFile>]
@@ -71,7 +75,8 @@ program
 	.option('-d, --debug', 'Enable Debug Mode')
 	.option('-i, --inputDir <string>', 'Input directory containing files to process')
 	.option('-m, --mappingFile <string>', 'YAML mapping file', DEFAULT_MAPPING_FILE)
-	.option('-o, --destinationDir <string>', 'Destination directory for output files');
+	.option('-o, --destinationDir <string>', 'Destination directory for output files')
+	.option('-s, --sanitize <string>', 'Directory of generated markdown files to make MDX-safe, rewritten in place');
 
 // Set later on after arguments parsed
 let debug: boolean = false;
@@ -243,6 +248,56 @@ class DocumentationUtils {
 	}
 
 	/**
+	 * Replacements that make generated markdown safe to render as MDX in Docusaurus.
+	 *
+	 * Stencil writes inline HTML with a string `style` attribute for deprecated items, which is valid on GitHub
+	 * but crashes the page when MDX converts it to JSX.
+	 */
+	private static readonly mdxSafeReplacements: ReadonlyArray<[search: string, replacement: string]> = [
+		['<span style="color:red">**[DEPRECATED]**</span>', '**[DEPRECATED]**'],
+	];
+
+	/**
+	 * Rewrite every markdown file under a directory in place so that it is safe to render as MDX.
+	 *
+	 * Safe to run repeatedly, files that are already clean are left untouched.
+	 *
+	 * @param directory directory containing generated markdown files
+	 * @returns `true` if successful, `false` if not successful
+	 */
+	static async sanitizeDirectory(directory: string): Promise<boolean> {
+		try {
+			const relativeFilePaths = (await DocumentationUtils.walkDirectory(directory, directory)).filter((filePath) =>
+				filePath.endsWith('.md'),
+			);
+			let changedFileCount = 0;
+
+			for (const relativeFilePath of relativeFilePaths) {
+				const filePath = path.resolve(directory, relativeFilePath);
+				const fileContents = await this.readFile(filePath);
+				const sanitizedContents = this.mdxSafeReplacements.reduce(
+					(contents, [search, replacement]) => contents.replaceAll(search, replacement),
+					fileContents,
+				);
+
+				if (sanitizedContents !== fileContents) {
+					await this.writeFile(sanitizedContents, filePath);
+					changedFileCount++;
+				}
+			}
+
+			Logging.infoMessage(
+				`Sanitized ${changedFileCount} of ${relativeFilePaths.length} markdown files in ${directory}`,
+			);
+			return true;
+		} catch (e) {
+			const error = e as Error;
+			Logging.errorMessage(error.stack);
+			return false;
+		}
+	}
+
+	/**
 	 * Batch process files using a mapping YAML file, prepending front matter and copying to destination.
 	 *
 	 * For files listed in the mapping file, prepend the specified front matter.
@@ -319,6 +374,7 @@ function printUsageModes() {
 	console.error('Use either:');
 	console.error('  Single file mode:   -f <file> -p <text> --df <destinationFile>');
 	console.error('  Batch mode:         -i <inputDir> -o <destinationDir> [-m <mappingFile>]');
+	console.error('  Sanitize mode:      --sanitize <directory>');
 }
 
 // Parse command line arguments
@@ -331,22 +387,29 @@ sourceFilePath = options.file;
 destinationFilePath = options.destinationFile;
 
 // Restriction: Only one mode (single file or batch) can be used at a time
-const isSingleFileMode = !!options.file && !!options.prepend;
+const isSingleFileMode = !!options.file && options.prepend !== undefined;
 const isBatchMode = !!options.inputDir && !!options.destinationDir;
+const isSanitizeMode = !!options.sanitize;
 
-if (isSingleFileMode && isBatchMode) {
-	console.error('Error: You cannot use both single-file and batch options at the same time.');
+if ([isSingleFileMode, isBatchMode, isSanitizeMode].filter(Boolean).length > 1) {
+	console.error('Error: You cannot use more than one of the single-file, batch and sanitize options at the same time.');
 	printUsageModes();
 	exitFailure();
 }
 
-if (!isSingleFileMode && !isBatchMode) {
-	console.error('Error: You must specify either single-file mode or batch mode.');
+if (!isSingleFileMode && !isBatchMode && !isSanitizeMode) {
+	console.error('Error: You must specify either single-file mode, batch mode or sanitize mode.');
 	printUsageModes();
 	exitFailure();
 }
 
-if (isSingleFileMode) {
+if (isSanitizeMode) {
+	(async () => {
+		const result = await DocumentationUtils.sanitizeDirectory(options.sanitize);
+		if (result) exitSuccess();
+		else exitFailure('Sanitizing documentation failed.');
+	})();
+} else if (isSingleFileMode) {
 	(async () => {
 		const result = await DocumentationUtils.prependTextToFile(options.prepend, sourceFilePath, destinationFilePath);
 		if (result) exitSuccess();
