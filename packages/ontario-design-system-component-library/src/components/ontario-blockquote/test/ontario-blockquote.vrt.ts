@@ -30,7 +30,6 @@ test.describe('ontario-blockquote', () => {
 	test('renders the quote text content', async () => {
 		const blockquote = host.locator('blockquote');
 		await expect(blockquote).toContainText(quoteText);
-		await expect(host).toHaveScreenshot();
 		await expectVrtScreenshot(host);
 	});
 
