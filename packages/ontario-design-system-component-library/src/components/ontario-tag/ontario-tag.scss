@@ -1,0 +1,128 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/fonts.variables' as fonts;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/letter-spacing.variables' as letterSpacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+
+// Tag-specific aliases of existing tokens, named for how the tag uses them.
+$tag-selected-fill: colours.$ontario-colour-button-secondary--hover;
+$tag-selected-fill-interactive: colours.$ontario-colour-button-secondary--active;
+$tag-selected-ink: colours.$ontario-colour-link--hover;
+$tag-selected-ink-interactive: colours.$ontario-colour-link--active;
+$tag-focus-shadow:
+	0 0 0 2px colours.$ontario-colour-white,
+	0 0 0 6px colours.$ontario-colour-focus;
+
+// The active fill of a selected tag has no matching global token.
+$tag-selected-fill-active: #99cbff;
+
+:host {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.ontario-tag {
+	--tag-fill: #{colours.$ontario-colour-white};
+	--tag-border: #{colours.$ontario-greyscale-40};
+	--tag-ink: #{colours.$ontario-colour-black};
+	--tag-icon-ink: var(--tag-ink);
+
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	max-width: 100%;
+	min-height: globalFunctions.px-to-rem(48);
+	padding: globalFunctions.px-to-rem(10) globalFunctions.px-to-rem(22);
+	border: 2px solid var(--tag-border);
+	border-radius: globalFunctions.px-to-rem(24);
+	background: var(--tag-fill);
+	color: var(--tag-ink);
+	font-family: fonts.$ontario-font-raleway-modified;
+	font-size: 1rem;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	line-height: globalFunctions.px-to-rem(24);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-small;
+	text-align: left;
+	cursor: pointer;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		max-width: min(100%, #{globalFunctions.px-to-rem(328)});
+	}
+
+	&:hover {
+		--tag-fill: #{colours.$ontario-greyscale-5};
+		--tag-border: #{colours.$ontario-greyscale-70};
+	}
+
+	&:focus-visible {
+		--tag-fill: #{colours.$ontario-greyscale-5};
+		--tag-border: #{colours.$ontario-greyscale-70};
+		box-shadow: $tag-focus-shadow;
+		outline: 4px solid transparent;
+	}
+
+	&:active {
+		--tag-fill: #{colours.$ontario-greyscale-20};
+		--tag-border: #{colours.$ontario-colour-black};
+	}
+}
+
+.ontario-tag--selected {
+	--tag-fill: #{$tag-selected-fill};
+	--tag-border: #{$tag-selected-ink};
+	--tag-ink: #{$tag-selected-ink};
+
+	&:hover,
+	&:focus-visible {
+		--tag-fill: #{$tag-selected-fill-interactive};
+		--tag-border: #{$tag-selected-ink-interactive};
+		--tag-ink: #{$tag-selected-ink-interactive};
+	}
+
+	&:active {
+		--tag-fill: #{$tag-selected-fill-active};
+		--tag-border: #{colours.$ontario-colour-black};
+		--tag-ink: #{colours.$ontario-colour-black};
+	}
+}
+
+.ontario-tag--dismissible {
+	gap: globalFunctions.px-to-rem(6);
+	padding-right: globalFunctions.px-to-rem(14);
+
+	// In the active state the label keeps the navy ink and only the close icon turns black.
+	&:active {
+		--tag-ink: #{$tag-selected-ink-interactive};
+		--tag-icon-ink: #{colours.$ontario-colour-black};
+	}
+}
+
+.ontario-tag__label {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ontario-tag__icon {
+	display: flex;
+	flex: none;
+	width: globalFunctions.px-to-rem(24);
+	height: globalFunctions.px-to-rem(24);
+	color: var(--tag-icon-ink);
+}
+
+@media (forced-colors: active) {
+	.ontario-tag {
+		border-color: ButtonText;
+	}
+
+	.ontario-tag--selected {
+		border-color: Highlight;
+		background-color: Highlight;
+		color: HighlightText;
+	}
+
+	.ontario-tag--selected .ontario-tag__icon {
+		color: HighlightText;
+	}
+}
