@@ -2,6 +2,16 @@ import { IconColour, IconSize } from './icon.types';
 
 export interface Icon {
 	/**
+	 * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+	 */
+	label?: string;
+
+	/**
+	 * @deprecated Use `label` to provide an accessible name. Icons without a label are decorative by default.
+	 */
+	isDecorative?: boolean;
+
+	/**
 	 * The icon width will autogenerate the height since the icons are in square format, thus preserving
 	 * the aspect ratio.
 	 * Implementation is mandatory in each icon component.

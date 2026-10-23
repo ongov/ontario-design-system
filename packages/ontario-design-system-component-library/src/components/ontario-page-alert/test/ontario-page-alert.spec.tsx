@@ -15,7 +15,7 @@ describe('ontario-page-alert', () => {
           <ontario-icon-alert-information icon-width="36" class="hydrated">
             <mock:shadow-root>
               <div class="ontario-icon ontario-icon--width-36">
-                <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-information">
+				<svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-information">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#1080a6"></path>
                   <path d="M11 17h2v-6h-2v6zm0-8h2V7h-2v2z" fill="#fff"></path>
                 </svg>
@@ -50,7 +50,7 @@ describe('ontario-page-alert', () => {
 								<ontario-icon-alert-warning icon-width="36" class="hydrated">
 									<mock:shadow-root>
 										<div class="ontario-icon ontario-icon--width-36">
-											<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-warning">
+											<svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-warning">
 												<path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffd440"></path>
 												<path d="M11 10h2v4h-2zm0 6h2v2h-2z" fill="#000"></path>
 											</svg>
@@ -85,7 +85,7 @@ describe('ontario-page-alert', () => {
 							<ontario-icon-alert-success icon-width="36" class="hydrated">
 								<mock:shadow-root>
 									<div class="ontario-icon ontario-icon--width-36">
-										<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-success">
+										<svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-success">
 											<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.58L17.17 7l1.4 1.42L10 17z" fill="#118847"></path>
 											<path d="M5 12l5 5 8.58-8.58L17.17 7 10 14.17 6.4 10.6 5 12z" fill="#fff"></path>
 										</svg>
@@ -120,7 +120,7 @@ describe('ontario-page-alert', () => {
 							<ontario-icon-alert-error icon-width="36" class="hydrated">
 								<mock:shadow-root>
 									<div class="ontario-icon ontario-icon--width-36">
-										<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
+										<svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
 											<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
 											<path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
 										</svg>
@@ -156,7 +156,7 @@ describe('ontario-page-alert', () => {
 							<ontario-icon-alert-information icon-width="36" class="hydrated">
 								<mock:shadow-root>
 									<div class="ontario-icon ontario-icon--width-36">
-										<svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-information">
+										<svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-information">
 											<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#1080a6"></path>
 											<path d="M11 17h2v-6h-2v6zm0-8h2V7h-2v2z" fill="#fff"></path>
 										</svg>

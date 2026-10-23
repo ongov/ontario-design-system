@@ -585,7 +585,7 @@ Disabled/read-only policy source:
 
 ### Depends on
 
-- [ontario-icon-alert-error](../ontario-icon)
+- [ontario-icon-alert-error](../ontario-icon/ontario-icon-alert-error)
 
 ### Graph
 
