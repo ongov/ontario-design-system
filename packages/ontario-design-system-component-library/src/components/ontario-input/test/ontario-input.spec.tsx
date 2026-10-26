@@ -26,19 +26,9 @@ describe('ontario-input', () => {
           (optional)
         </span>
       </label>
-      <div role="alert" class="ontario-error-messaging ontario-error__hidden">
-        <ontario-icon-alert-error class="hydrated">
-          <mock:shadow-root>
-            <div class="ontario-icon ontario-icon--width-24">
-              <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
-                <path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
-              </svg>
-            </div>
-          </mock:shadow-root>
-        </ontario-icon-alert-error>
-        <div class="ontario-error-messaging__content"></div>
-      </div>
+      <ontario-error-message hidden class="hydrated">
+        <mock:shadow-root></mock:shadow-root>
+      </ontario-error-message>
       <input class="ontario-input" id="ontario-input" name="ontario-input" type="text" value>
     </div>
   </mock:shadow-root>

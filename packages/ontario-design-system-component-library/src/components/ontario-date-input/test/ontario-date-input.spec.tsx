@@ -1,5 +1,6 @@
 import { render } from '@stencil/vitest';
 import { isInvalidYear } from '../utils';
+import { vi } from 'vitest';
 
 describe('ontario-date-input', () => {
 	const dispatchInputEvent = (input: HTMLInputElement) => {
@@ -22,19 +23,9 @@ describe('ontario-date-input', () => {
           (optional)
         </span>
       </legend>
-      <div role="alert" class="ontario-error-messaging ontario-error__hidden">
-        <ontario-icon-alert-error class="hydrated">
-          <mock:shadow-root>
-            <div class="ontario-icon ontario-icon--width-24">
-              <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
-                <path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
-              </svg>
-            </div>
-          </mock:shadow-root>
-        </ontario-icon-alert-error>
-        <div class="ontario-error-messaging__content"></div>
-      </div>
+      <ontario-error-message hidden class="hydrated">
+        <mock:shadow-root></mock:shadow-root>
+      </ontario-error-message>
       <div class="ontario-date__group">
         <div class="ontario-date__group-input">
           <label htmlfor="year-date-id-example">
@@ -43,7 +34,7 @@ describe('ontario-date-input', () => {
               (1 or 2 digits)
             </span>
           </label>
-          <input class="ontario-input ontario-input--4-char-width" id="year-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+          <input class="ontario-input ontario-input--4-char-width" id="year-date-id-example" type="text" value inputmode="numeric">
         </div>
         <div class="ontario-date__group-input">
           <label htmlfor="month-date-id-example">
@@ -52,7 +43,7 @@ describe('ontario-date-input', () => {
               (1 or 2 digits)
             </span>
           </label>
-          <input class="ontario-input ontario-input--4-char-width" id="month-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+          <input class="ontario-input ontario-input--4-char-width" id="month-date-id-example" type="text" value inputmode="numeric">
         </div>
         <div class="ontario-date__group-input">
           <label htmlfor="day-date-id-example">
@@ -61,7 +52,7 @@ describe('ontario-date-input', () => {
               (4 digits)
             </span>
           </label>
-          <input class="ontario-input ontario-input--4-char-width" id="day-date-id-example" type="text" value inputmode="numeric" aria-describedby="date-input-hint-date-id-example">
+          <input class="ontario-input ontario-input--4-char-width" id="day-date-id-example" type="text" value inputmode="numeric">
         </div>
       </div>
     </fieldset>
@@ -87,7 +78,7 @@ describe('ontario-date-input', () => {
 		expect(page.root).toEqualHtml(`
 <ontario-date-input element-id="date-id-example" placeholder="{ "day": "D", "month": "M", "year": "YY" }" min-year="500" max-year="1000" required="true" hint-text="Example 1990 12" date-options="["month", "year"]" caption="{ "captionText": "Enter Date", "captionType": "default" }" class="hydrated">
   <mock:shadow-root>
-    <fieldset role="group" class="ontario-fieldset">
+    <fieldset role="group" class="ontario-fieldset" aria-describedby="date-input-hint-date-id-example">
       <legend class="ontario-fieldset__legend">
         Enter Date
         <span class="ontario-label__flag">
@@ -97,19 +88,9 @@ describe('ontario-date-input', () => {
       <p id="date-input-hint-date-id-example" class="ontario-hint">
         Example 1990 12
       </p>
-      <div role="alert" class="ontario-error-messaging ontario-error__hidden">
-        <ontario-icon-alert-error class="hydrated">
-          <mock:shadow-root>
-            <div class="ontario-icon ontario-icon--width-24">
-              <svg class="svg-icon" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="alert-error">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#cd0000"></path>
-                <path d="M11 17h2v-2h-2v2zm0-4h2V7h-2v6z" fill="#fff"></path>
-              </svg>
-            </div>
-          </mock:shadow-root>
-        </ontario-icon-alert-error>
-        <div class="ontario-error-messaging__content"></div>
-      </div>
+      <ontario-error-message hidden class="hydrated">
+        <mock:shadow-root></mock:shadow-root>
+      </ontario-error-message>
       <div class="ontario-date__group">
         <div class="ontario-date__group-input">
           <label htmlfor="year-date-id-example">
@@ -134,6 +115,57 @@ describe('ontario-date-input', () => {
   </mock:shadow-root>
 </ontario-date-input>
 `);
+	});
+
+	it('prefers an external error while preserving internal validation and invalid-part focus', async () => {
+		const page = await render('<ontario-date-input element-id="date-precedence"></ontario-date-input>');
+		page.instance.externalErrorMessage = 'The date could not be verified.';
+		const day = page.root?.shadowRoot?.querySelector<HTMLInputElement>('#day-date-precedence');
+		const month = page.root?.shadowRoot?.querySelector<HTMLInputElement>('#month-date-precedence');
+		const year = page.root?.shadowRoot?.querySelector<HTMLInputElement>('#year-date-precedence');
+		if (day) day.value = '99';
+		if (month) month.value = '10';
+		if (year) year.value = '2000';
+		for (const field of [day, month, year]) {
+			field?.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+		}
+		await page.instance.handleComponentBlur();
+		await page.waitForChanges();
+
+		expect(
+			page.root?.shadowRoot
+				?.querySelector('ontario-error-message')
+				?.shadowRoot?.querySelector('.ontario-error-messaging__content')?.textContent,
+		).toBe('The date could not be verified.');
+		expect(
+			Array.from(page.root?.shadowRoot?.querySelectorAll<HTMLInputElement>('input') ?? []).map((input) =>
+				input.getAttribute('aria-invalid'),
+			),
+		).toEqual(['true', 'true', 'true']);
+
+		const yearFocus = vi.spyOn(year!, 'focus');
+		await (page.root as HTMLOntarioDateInputElement).focusError();
+		expect(yearFocus).toHaveBeenCalledOnce();
+
+		page.instance.externalErrorMessage = '';
+		await page.waitForChanges();
+		expect(
+			page.root?.shadowRoot
+				?.querySelector('ontario-error-message')
+				?.shadowRoot?.querySelector('.ontario-error-messaging__content')?.textContent,
+		).not.toBe('The date could not be verified.');
+		expect(
+			page.root?.shadowRoot
+				?.querySelector('ontario-error-message')
+				?.shadowRoot?.querySelector('.ontario-error-messaging__content')?.textContent,
+		).toBeTruthy();
+		expect(day?.getAttribute('aria-invalid')).toBe('true');
+		expect(page.root?.shadowRoot?.querySelector('#month-date-precedence')?.getAttribute('aria-invalid')).toBeNull();
+		const dayFocus = vi.spyOn(day!, 'focus');
+		await (page.root as HTMLOntarioDateInputElement).focusError();
+		expect(dayFocus).toHaveBeenCalledOnce();
+		yearFocus.mockRestore();
+		dayFocus.mockRestore();
 	});
 
 	it('hydrates the internal fields from a plain ISO value', async () => {
