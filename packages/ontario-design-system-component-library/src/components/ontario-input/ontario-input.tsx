@@ -1,4 +1,16 @@
-import { Component, Event, h, Prop, State, Listen, Element, Watch, EventEmitter, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	Event,
+	h,
+	Prop,
+	State,
+	Listen,
+	Element,
+	Watch,
+	EventEmitter,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { Input } from '../../utils/common/input/input';
@@ -21,8 +33,13 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/form-error';
 
 /**
  * Ontario Input captures single-line text input.
@@ -46,7 +63,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 	formAssociated: true,
 })
-export class OntarioInput implements TextInput {
+export class OntarioInput implements TextInput, FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -166,6 +183,12 @@ export class OntarioInput implements TextInput {
 	 * Used for the `aria-describedby` value of the input. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native field.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	/**
 	 * Enable live validation on the input.  Custom live validation can be performed using an `inputValidator`
@@ -390,6 +413,30 @@ export class OntarioInput implements TextInput {
 	}
 
 	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('inlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the current error for summary discovery without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.errorMessage, this.getId());
+	}
+
+	/**
+	 * Focuses the native input when navigating from an error-summary link.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		this.element.shadowRoot?.querySelector<HTMLInputElement>('input')?.focus();
+	}
+
+	/**
 	 * Function to handle input events and the information pertaining to the input to emit.
 	 */
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
@@ -448,6 +495,7 @@ export class OntarioInput implements TextInput {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintText();
@@ -457,20 +505,31 @@ export class OntarioInput implements TextInput {
 	}
 
 	render() {
-		const error = !!this.errorMessage;
+		const { error, errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			this.errorMessage,
+			this.hintTextId,
+			this.getId(),
+		);
 		return (
 			<div class={error ? 'ontario-input--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
+						id={this.hintTextId}
 						hint={this.internalHintText.hint}
 						hintContentType={this.internalHintText.hintContentType}
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
-				<ErrorMessage message={this.errorMessage} error={error} />
+				<ontario-error-message
+					id={errorMessageId}
+					message={this.errorMessage}
+					announce={!this.suppressErrorAnnouncement}
+				/>
 				<Input
-					aria-describedBy={this.hintTextId}
+					aria-describedBy={describedBy}
+					ariaInvalid={error}
 					className={this.getClass()}
 					id={this.getId()}
 					name={this.name}

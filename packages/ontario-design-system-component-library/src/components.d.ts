@@ -19,6 +19,7 @@ import { Caption } from "./utils/common/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+import { FormControlError } from "./utils/form-error";
 import { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -51,6 +52,7 @@ export { Caption } from "./utils/common/input-caption/caption.interface";
 export { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
 export { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+export { FormControlError } from "./utils/form-error";
 export { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 export { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 export { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -404,6 +406,14 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Focuses the first enabled checkbox so summary navigation enters the group.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the group's current error for summary discovery without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
+        /**
           * Used to include the ontario-hint-expander component for the checkbox group. This is passed in as an object with key-value pairs.  This is optional.
           * @example <ontario-checkboxes   caption='{     "captionText": "Checkbox legend",     "captionType": "heading",   }   name='ontario-checkboxes'   options='[ 	{ 		"value": "checkbox-option-1", 		"label": "Checkbox option 1 label", 		"elementId": "checkbox-1" 	}   }]'   hint-expander='{    "hint": "Hint expander for the checkbox group",    "content": "Example hint expander content for the checkbox group"   }'   required="true" > </ontario-checkboxes>
          */
@@ -481,6 +491,18 @@ export namespace Components {
          */
         "elementId"?: string;
         /**
+          * An optional application-provided error. When present, it is displayed ahead of internal date validation.
+         */
+        "externalErrorMessage"?: string;
+        /**
+          * Focuses the first rendered invalid date field, falling back to the first field.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the effective external or internal date error without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
+        /**
           * Used to include the ontario-hint-text component for the date input group.  This is optional.
          */
         "hintText"?: string;
@@ -548,6 +570,14 @@ export namespace Components {
           * Set this to display an error message
          */
         "errorMessage"?: string;
+        /**
+          * Focuses the native select when navigating from an error-summary link.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the current error for summary discovery without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
         /**
           * Used to include the ontario-hint-expander component for the dropdown list component. This is passed in as an object with key-value pairs.  This is optional.
           * @example <ontario-dropdown-list   caption='{     "caption": "What province do you live in?",     "captionType": "heading",   }   name="ontario-dropdown-list"   options='[     {       "value": "dropdown-option-1",       "label": "Option 1",       "selected": "true"     },     {       "value": "dropdown-option-2",       "label": "Option 2"     },     {       "value": "dropdown-option-3",       "label": "Option 3"     }   ]'   hint-expander='{    "hint": "Hint expander for the dropdown list",    "content": "Example hint expander content for the dropdown list."   }' > </ontario-dropdown-list>
@@ -617,6 +647,57 @@ export namespace Components {
           * The value for the dropdown option. When omitted, the parent `ontario-dropdown-list` uses the option's text content. Each value must be unique to the option within the parent `ontario-dropdown-list`.
          */
         "value"?: string;
+    }
+    /**
+     * Collects supported ODS control errors within a native form.
+     * Applications own validation and explicitly activate the summary after validation.
+     */
+    interface OntarioErrorAlert {
+        /**
+          * The ID of the native form whose ODS control errors this summary displays.
+         */
+        "formId"?: string;
+        /**
+          * The summary heading.
+         */
+        "heading"?: string;
+        /**
+          * Hides the summary without clearing control errors and releases inline announcement suppression. Focus inside the summary returns to its associated control before removal.
+         */
+        "hide": () => Promise<void>;
+        /**
+          * The language for the built-in heading.
+          * @default 'en'
+         */
+        "language": Language;
+        /**
+          * Rediscovers associated ODS controls and reconciles their current error snapshots. Newer refreshes and error events take precedence over pending snapshots.
+         */
+        "refresh": () => Promise<void>;
+        /**
+          * Activates aggregation and focuses a non-empty summary without validating controls. If no errors exist yet, the first arriving error completes activation.
+         */
+        "show": () => Promise<void>;
+    }
+    /**
+     * Displays a plain-text error message for a form control.
+     * Add this component's host ID to the associated native field's
+     * `aria-describedby` value and set `aria-invalid` while the field is invalid.
+     */
+    interface OntarioErrorMessage {
+        /**
+          * Whether the error should be announced when it is rendered.
+          * @default true
+         */
+        "announce": boolean;
+        /**
+          * An alias for the host ID used by the associated field's `aria-describedby`. Prefer the native `id` attribute.
+         */
+        "elementId"?: string;
+        /**
+          * The plain-text error message. An empty message is not rendered.
+         */
+        "message"?: string;
     }
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
@@ -2958,6 +3039,14 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Focuses the native input when navigating from an error-summary link.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the current error for summary discovery without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
+        /**
           * Used to include the ontario-hint-expander component for the input component. This is passed in as an object with key-value pairs.  This is optional.
           * @example <ontario-input   caption='{     "caption": "Address",     "captionType": "heading",   }   hint-expander='{    "hint": "Hint expander",    "content": "This is the content"   }'   required="true" > </ontario-input>
          */
@@ -3125,6 +3214,14 @@ export namespace Components {
           * Set this to display an error message
          */
         "errorMessage"?: string;
+        /**
+          * Focuses the first enabled radio button so summary navigation enters the group.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the group's current error for summary discovery without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
         /**
           * Used to include the ontario-hint-expander component for the radio button group. This is passed in as an object with key-value pairs.  This is optional.
           * @example <ontario-radio-buttons   caption='{     "captionText": "Radio legend",     "captionType": "heading",   }' 	 name="radios"   options='[ 	   {        "value": "radio-option-1", 		  "elementId": "radio-1",        "label": "Radio option 1 label",        "hintExpander": { 		  "hint": "Hint expander for radio option 1", 		      "content": "Example hint expander content for radio option 1." 	  }     }   ]'   hint-expander='{     "hint": "Hint expander for the radio button group",     "content": "Example hint expander content for the radio button group."   }'   required="true" > </ontario-radio-buttons>
@@ -3533,6 +3630,14 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Focuses the native textarea when navigating from an error-summary link.
+         */
+        "focusError": () => Promise<void>;
+        /**
+          * Returns the current error for summary discovery without running validation.
+         */
+        "getErrorState": () => Promise<FormControlError | null>;
+        /**
           * Used to include the ontario-hint-expander component for the textarea component. This is passed in as an object with key-value pairs.  This is optional.
           * @example <ontario-textarea   caption='{     "captionText": "What are your thoughts",     "captionType": "heading",   }' 	 name: "textarea"   hint-expander='{     "hint": "This is the hint expander",     "content": "This is the content for the hint expander"   }'   required="true" > </ontario-textarea>
          */
@@ -3912,6 +4017,27 @@ declare global {
     var HTMLOntarioDropdownOptionElement: {
         prototype: HTMLOntarioDropdownOptionElement;
         new (): HTMLOntarioDropdownOptionElement;
+    };
+    /**
+     * Collects supported ODS control errors within a native form.
+     * Applications own validation and explicitly activate the summary after validation.
+     */
+    interface HTMLOntarioErrorAlertElement extends Components.OntarioErrorAlert, HTMLStencilElement {
+    }
+    var HTMLOntarioErrorAlertElement: {
+        prototype: HTMLOntarioErrorAlertElement;
+        new (): HTMLOntarioErrorAlertElement;
+    };
+    /**
+     * Displays a plain-text error message for a form control.
+     * Add this component's host ID to the associated native field's
+     * `aria-describedby` value and set `aria-invalid` while the field is invalid.
+     */
+    interface HTMLOntarioErrorMessageElement extends Components.OntarioErrorMessage, HTMLStencilElement {
+    }
+    var HTMLOntarioErrorMessageElement: {
+        prototype: HTMLOntarioErrorMessageElement;
+        new (): HTMLOntarioErrorMessageElement;
     };
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
@@ -5114,6 +5240,8 @@ declare global {
         "ontario-date-input": HTMLOntarioDateInputElement;
         "ontario-dropdown-list": HTMLOntarioDropdownListElement;
         "ontario-dropdown-option": HTMLOntarioDropdownOptionElement;
+        "ontario-error-alert": HTMLOntarioErrorAlertElement;
+        "ontario-error-message": HTMLOntarioErrorMessageElement;
         "ontario-fieldset": HTMLOntarioFieldsetElement;
         "ontario-footer": HTMLOntarioFooterElement;
         "ontario-form-container": HTMLOntarioFormContainerElement;
@@ -5695,6 +5823,10 @@ declare namespace LocalJSX {
          */
         "elementId"?: string;
         /**
+          * An optional application-provided error. When present, it is displayed ahead of internal date validation.
+         */
+        "externalErrorMessage"?: string;
+        /**
           * Used to include the ontario-hint-text component for the date input group.  This is optional.
          */
         "hintText"?: string;
@@ -5873,6 +6005,45 @@ declare namespace LocalJSX {
           * The value for the dropdown option. When omitted, the parent `ontario-dropdown-list` uses the option's text content. Each value must be unique to the option within the parent `ontario-dropdown-list`.
          */
         "value"?: string;
+    }
+    /**
+     * Collects supported ODS control errors within a native form.
+     * Applications own validation and explicitly activate the summary after validation.
+     */
+    interface OntarioErrorAlert {
+        /**
+          * The ID of the native form whose ODS control errors this summary displays.
+         */
+        "formId"?: string;
+        /**
+          * The summary heading.
+         */
+        "heading"?: string;
+        /**
+          * The language for the built-in heading.
+          * @default 'en'
+         */
+        "language"?: Language;
+    }
+    /**
+     * Displays a plain-text error message for a form control.
+     * Add this component's host ID to the associated native field's
+     * `aria-describedby` value and set `aria-invalid` while the field is invalid.
+     */
+    interface OntarioErrorMessage {
+        /**
+          * Whether the error should be announced when it is rendered.
+          * @default true
+         */
+        "announce"?: boolean;
+        /**
+          * An alias for the host ID used by the associated field's `aria-describedby`. Prefer the native `id` attribute.
+         */
+        "elementId"?: string;
+        /**
+          * The plain-text error message. An empty message is not rendered.
+         */
+        "message"?: string;
     }
     /**
      * Ontario Fieldset groups related form controls under a shared legend.
@@ -8967,6 +9138,8 @@ declare namespace LocalJSX {
         "ontario-date-input": OntarioDateInput;
         "ontario-dropdown-list": OntarioDropdownList;
         "ontario-dropdown-option": OntarioDropdownOption;
+        "ontario-error-alert": OntarioErrorAlert;
+        "ontario-error-message": OntarioErrorMessage;
         "ontario-fieldset": OntarioFieldset;
         "ontario-footer": OntarioFooter;
         "ontario-form-container": OntarioFormContainer;
@@ -9262,6 +9435,17 @@ declare module "@stencil/core" {
              * </ontario-dropdown-list>
              */
             "ontario-dropdown-option": LocalJSX.OntarioDropdownOption & JSXBase.HTMLAttributes<HTMLOntarioDropdownOptionElement>;
+            /**
+             * Collects supported ODS control errors within a native form.
+             * Applications own validation and explicitly activate the summary after validation.
+             */
+            "ontario-error-alert": LocalJSX.OntarioErrorAlert & JSXBase.HTMLAttributes<HTMLOntarioErrorAlertElement>;
+            /**
+             * Displays a plain-text error message for a form control.
+             * Add this component's host ID to the associated native field's
+             * `aria-describedby` value and set `aria-invalid` while the field is invalid.
+             */
+            "ontario-error-message": LocalJSX.OntarioErrorMessage & JSXBase.HTMLAttributes<HTMLOntarioErrorMessageElement>;
             /**
              * Ontario Fieldset groups related form controls under a shared legend.
              * For component guidance, see:

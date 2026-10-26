@@ -1,4 +1,16 @@
-import { Component, State, Element, h, Prop, Event, Listen, Watch, EventEmitter, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	State,
+	Element,
+	h,
+	Prop,
+	Event,
+	Listen,
+	Watch,
+	EventEmitter,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { DropdownOption } from './dropdown-option.interface';
@@ -22,8 +34,13 @@ import { InputFocusBlurEvent, EventType, InputInteractionEvent } from '../../uti
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/form-error';
 
 /**
  * Ontario Dropdown List presents a selectable list of predefined options.
@@ -48,7 +65,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	formAssociated: true,
 	assetsDirs: ['./assets'],
 })
-export class OntarioDropdownList implements Dropdown {
+export class OntarioDropdownList implements Dropdown, FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -236,6 +253,12 @@ export class OntarioDropdownList implements Dropdown {
 	 * Used for the `aria-describedby` value of the dropdown list. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native field.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
@@ -489,6 +512,30 @@ export class OntarioDropdownList implements Dropdown {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('inlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the current error for summary discovery without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.errorMessage, this.getId());
+	}
+
+	/**
+	 * Focuses the native select when navigating from an error-summary link.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		this.element.shadowRoot?.querySelector<HTMLSelectElement>('select')?.focus();
+	}
+
 	@Watch('value')
 	syncValueFromValueProp() {
 		if (this.internalOptions) {
@@ -650,6 +697,7 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.validateName(this.name);
@@ -661,21 +709,32 @@ export class OntarioDropdownList implements Dropdown {
 	}
 
 	render() {
-		const error = !!this.errorMessage;
+		const { error, errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			this.errorMessage,
+			this.hintTextId,
+			this.getId(),
+		);
 		return (
 			<div class={error ? 'ontario-dropdown--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
+						id={this.hintTextId ?? undefined}
 						hint={this.internalHintText.hint}
 						hintContentType={this.internalHintText.hintContentType}
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
-				<ErrorMessage message={this.errorMessage} error={error} />
+				<ontario-error-message
+					id={errorMessageId}
+					message={this.errorMessage}
+					announce={!this.suppressErrorAnnouncement}
+				/>
 				<select
 					class={this.getClass()}
-					aria-describedby={this.hintTextId}
+					aria-describedby={describedBy}
+					aria-invalid={error ? 'true' : undefined}
 					id={this.getId()}
 					name={this.name}
 					style={this.getDropdownArrow()}

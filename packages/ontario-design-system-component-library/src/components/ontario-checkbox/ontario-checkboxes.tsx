@@ -1,4 +1,16 @@
-import { Component, h, Prop, Element, Event, EventEmitter, Listen, State, Watch, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	h,
+	Prop,
+	Element,
+	Event,
+	EventEmitter,
+	Listen,
+	State,
+	Watch,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 
 import { Input } from '../../utils/common/input/input';
 import { CheckboxOption } from './checkbox-option.interface';
@@ -25,8 +37,13 @@ import {
 import { handleInputEvent } from '../../utils/events/event-handler';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/form-error';
 
 /**
  * Ontario Checkboxes collects one or more selections from a defined option set.
@@ -50,7 +67,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 	formAssociated: true,
 })
-export class OntarioCheckboxes implements Checkboxes {
+export class OntarioCheckboxes implements Checkboxes, FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -204,6 +221,12 @@ export class OntarioCheckboxes implements Checkboxes {
 	 * Used for the `aria-describedby` value of the checkbox fieldset. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native fields.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	/**
 	 * Instantiate an InputCaption object for internal logic use
@@ -414,6 +437,30 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('ontarioInlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the group's current error for summary discovery without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.errorMessage);
+	}
+
+	/**
+	 * Focuses the first enabled checkbox so summary navigation enters the group.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		this.element.shadowRoot?.querySelector<HTMLInputElement>('input:not(:disabled)')?.focus();
+	}
+
+	/**
 	 * Function to handle checkbox events and the information pertaining to the checkbox to emit.
 	 */
 	private handleEvent(event: globalThis.Event, eventType: EventType) {
@@ -570,6 +617,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintExpander();
@@ -579,19 +627,28 @@ export class OntarioCheckboxes implements Checkboxes {
 	}
 
 	render() {
-		const error = !!this.errorMessage;
+		const { error, errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			this.errorMessage,
+			this.hintTextId,
+		);
 		return (
 			<div class={error ? 'ontario-input--error' : ''}>
-				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
+				<fieldset class="ontario-fieldset" aria-describedby={describedBy}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (
 						<ontario-hint-text
+							id={this.hintTextId ?? undefined}
 							hint={this.internalHintText.hint}
 							hintContentType={this.internalHintText.hintContentType}
 							ref={(el) => (this.hintTextRef = el)}
 						></ontario-hint-text>
 					)}
-					<ErrorMessage message={this.errorMessage} error={error} />
+					<ontario-error-message
+						id={errorMessageId}
+						message={this.errorMessage}
+						announce={!this.suppressErrorAnnouncement}
+					/>
 					<div class="ontario-checkboxes">
 						{this.internalOptions?.map((checkbox) => (
 							<div class="ontario-checkboxes__item">
@@ -603,6 +660,8 @@ export class OntarioCheckboxes implements Checkboxes {
 									value={checkbox.value}
 									required={!!this.required}
 									checked={!!checkbox.checked}
+									ariaInvalid={error}
+									ariaDescribedBy={errorMessageId}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

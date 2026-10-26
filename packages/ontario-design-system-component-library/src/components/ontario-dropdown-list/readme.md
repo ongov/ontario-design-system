@@ -811,21 +811,40 @@ Disabled/read-only policy source:
 | `dropdownOnFocus`    | Emitted when a keyboard input event occurs when a dropdown list has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`              |
 | `inputErrorOccurred` | Emitted when an error message is reported to the component.                                | `CustomEvent<{ errorMessage: string; }>`                                  |
 
+## Methods
+
+### `focusError() => Promise<void>`
+
+Focuses the native select when navigating from an error-summary link.
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `getErrorState() => Promise<FormControlError | null>`
+
+Returns the current error for summary discovery without running validation.
+
+#### Returns
+
+Type: `Promise<FormControlError | null>`
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-hint-text](../ontario-hint-text)
+- [ontario-error-message](../ontario-error-message)
 - [ontario-hint-expander](../ontario-hint-expander)
-- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-dropdown-list --> ontario-hint-text
+  ontario-dropdown-list --> ontario-error-message
   ontario-dropdown-list --> ontario-hint-expander
-  ontario-dropdown-list --> ontario-icon-alert-error
+  ontario-error-message --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-dropdown-list fill:#f9f,stroke:#333,stroke-width:4px

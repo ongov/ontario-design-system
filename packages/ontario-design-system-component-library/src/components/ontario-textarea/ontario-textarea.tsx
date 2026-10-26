@@ -1,4 +1,16 @@
-import { Component, Event, h, Prop, State, Listen, Watch, Element, EventEmitter, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	Event,
+	h,
+	Prop,
+	State,
+	Listen,
+	Watch,
+	Element,
+	EventEmitter,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 
 import { HintExpander } from '../ontario-hint-expander/hint-expander.interface';
@@ -20,7 +32,12 @@ import { handleInputEvent } from '../../utils/events/event-handler';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/form-error';
 
 /**
  * Ontario Textarea captures multi-line text input.
@@ -44,7 +61,7 @@ import { ErrorMessage } from '../../utils/components/error-message/error-message
 	shadow: true,
 	formAssociated: true,
 })
-export class OntarioTextarea implements Input {
+export class OntarioTextarea implements Input, FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -152,6 +169,12 @@ export class OntarioTextarea implements Input {
 	 * Used for the `aria-describedby` value of the textarea. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native field.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
@@ -292,6 +315,30 @@ export class OntarioTextarea implements Input {
 	}
 
 	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('inlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the current error for summary discovery without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.errorMessage, this.getId());
+	}
+
+	/**
+	 * Focuses the native textarea when navigating from an error-summary link.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		this.element.shadowRoot?.querySelector<HTMLTextAreaElement>('textarea')?.focus();
+	}
+
+	/**
 	 * Function to handle textarea events and the information pertaining to the textarea to emit.
 	 */
 	private handleEvent(event: Event, eventType: EventType) {
@@ -341,6 +388,7 @@ export class OntarioTextarea implements Input {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.updateCaptionState(this.caption);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintText();
@@ -350,20 +398,31 @@ export class OntarioTextarea implements Input {
 	}
 
 	render() {
-		const error = !!this.errorMessage;
+		const { error, errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			this.errorMessage,
+			this.hintTextId,
+			this.getId(),
+		);
 		return (
 			<div class={error ? 'ontario-textarea--error' : ''}>
 				{this.captionState.getCaption(this.getId(), !!this.internalHintExpander)}
 				{this.internalHintText && (
 					<ontario-hint-text
+						id={this.hintTextId ?? undefined}
 						hint={this.internalHintText.hint}
 						hintContentType={this.internalHintText.hintContentType}
 						ref={(el) => (this.hintTextRef = el)}
 					></ontario-hint-text>
 				)}
-				<ErrorMessage message={this.errorMessage} error={error} />
+				<ontario-error-message
+					id={errorMessageId}
+					message={this.errorMessage}
+					announce={!this.suppressErrorAnnouncement}
+				/>
 				<textarea
-					aria-describedby={this.hintTextId}
+					aria-describedby={describedBy}
+					aria-invalid={error ? 'true' : undefined}
 					class={this.getClass()}
 					id={this.getId()}
 					name={this.name}

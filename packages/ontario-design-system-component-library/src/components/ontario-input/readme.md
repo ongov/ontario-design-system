@@ -522,21 +522,40 @@ Disabled/read-only policy source:
 | `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>`                |
 | `inputOnInput`       | Emitted when a input occurs when an input has been changed.                         | `CustomEvent<InputInteractionEvent & { inputType?: string \| undefined; }>` |
 
+## Methods
+
+### `focusError() => Promise<void>`
+
+Focuses the native input when navigating from an error-summary link.
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `getErrorState() => Promise<FormControlError | null>`
+
+Returns the current error for summary discovery without running validation.
+
+#### Returns
+
+Type: `Promise<FormControlError | null>`
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-hint-text](../ontario-hint-text)
+- [ontario-error-message](../ontario-error-message)
 - [ontario-hint-expander](../ontario-hint-expander)
-- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-input --> ontario-hint-text
+  ontario-input --> ontario-error-message
   ontario-input --> ontario-hint-expander
-  ontario-input --> ontario-icon-alert-error
+  ontario-error-message --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-input fill:#f9f,stroke:#333,stroke-width:4px

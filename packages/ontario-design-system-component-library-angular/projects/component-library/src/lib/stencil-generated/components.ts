@@ -255,7 +255,8 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-checkboxes',
@@ -326,14 +327,15 @@ export declare interface OntarioCriticalAlert extends Components.OntarioCritical
 
 
 @ProxyCmp({
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value']
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'externalErrorMessage', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-date-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
+  inputs: ['caption', 'dateOptions', 'dateValidator', 'elementId', 'externalErrorMessage', 'hintText', 'language', 'maxYear', 'minYear', 'placeholder', 'required', 'value'],
   outputs: ['inputOnInput', 'inputOnChange', 'inputOnBlur', 'inputOnFocus', 'inputErrorOccurred'],
   standalone: false
 })
@@ -378,7 +380,8 @@ export declare interface OntarioDateInput extends Components.OntarioDateInput {
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'isEmptyStartOption', 'language', 'name', 'options', 'required', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-dropdown-list',
@@ -446,6 +449,53 @@ export class OntarioDropdownOption {
 
 
 export declare interface OntarioDropdownOption extends Components.OntarioDropdownOption {}
+
+
+@ProxyCmp({
+  inputs: ['formId', 'heading', 'language'],
+  methods: ['show', 'hide', 'refresh']
+})
+@Component({
+  selector: 'ontario-error-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['formId', 'heading', 'language'],
+  standalone: false
+})
+export class OntarioErrorAlert {
+  protected el: HTMLOntarioErrorAlertElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioErrorAlert extends Components.OntarioErrorAlert {}
+
+
+@ProxyCmp({
+  inputs: ['announce', 'elementId', 'message']
+})
+@Component({
+  selector: 'ontario-error-message',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['announce', 'elementId', 'message'],
+  standalone: false
+})
+export class OntarioErrorMessage {
+  protected el: HTMLOntarioErrorMessageElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioErrorMessage extends Components.OntarioErrorMessage {}
 
 
 @ProxyCmp({
@@ -3483,7 +3533,8 @@ export declare interface OntarioInPageNavigationItem extends Components.OntarioI
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'enableLiveValidation', 'errorMessage', 'hintExpander', 'hintText', 'inputValidator', 'inputWidth', 'language', 'name', 'required', 'requiredValidationMessage', 'type', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-input',
@@ -3625,7 +3676,8 @@ export declare interface OntarioPageAlert extends Components.OntarioPageAlert {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-radio-buttons',
@@ -3917,7 +3969,8 @@ export declare interface OntarioTaskList extends Components.OntarioTaskList {}
 
 
 @ProxyCmp({
-  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value']
+  inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'customOnInput', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'required', 'value'],
+  methods: ['getErrorState', 'focusError']
 })
 @Component({
   selector: 'ontario-textarea',

@@ -1,4 +1,16 @@
-import { Component, EventEmitter, Element, Watch, Event, Prop, h, State, Listen, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	EventEmitter,
+	Element,
+	Watch,
+	Event,
+	Prop,
+	h,
+	State,
+	Listen,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { v4 as uuid } from 'uuid';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
@@ -11,13 +23,18 @@ import {
 	DateInputValueParts,
 	DateValidatorReturnType,
 } from './ontario-date-input-interface';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { emitEvent } from '../../utils/events/event-handler';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/form-error';
 
 /**
  * Ontario Date Input captures day, month, and year values as a single date field.
@@ -41,7 +58,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 	formAssociated: true,
 })
-export class OntarioDateInput {
+export class OntarioDateInput implements FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -134,6 +151,11 @@ export class OntarioDateInput {
 	@Prop() dateValidator?: (day: string, month: string, year: string) => DateValidatorReturnType;
 
 	/**
+	 * An optional application-provided error. When present, it is displayed ahead of internal date validation.
+	 */
+	@Prop({ mutable: true }) externalErrorMessage?: string;
+
+	/**
 	 * Emitted when an `input` event occurs within the component.
 	 */
 	@Event() inputOnInput: EventEmitter<{
@@ -167,7 +189,39 @@ export class OntarioDateInput {
 	@Watch('errorMessage')
 	broadcastInputErrorOccurredEvent() {
 		// Emit event to notify anyone who wants to listen for errors occurring
-		this.inputErrorOccurred.emit({ inputId: this.getId(), errorMessage: this.errorMessage ?? '' });
+		this.inputErrorOccurred.emit({ inputId: this.getId(), errorMessage: this.getEffectiveErrorMessage() });
+	}
+
+	@Watch('externalErrorMessage')
+	broadcastExternalErrorOccurredEvent() {
+		this.inputErrorOccurred.emit({ inputId: this.getId(), errorMessage: this.getEffectiveErrorMessage() });
+	}
+
+	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('inlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the effective external or internal date error without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.getEffectiveErrorMessage(), this.getId());
+	}
+
+	/**
+	 * Focuses the first rendered invalid date field, falling back to the first field.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		const root = this.element.shadowRoot;
+		const invalidInput = root?.querySelector<HTMLInputElement>('input[aria-invalid="true"]');
+		const firstInput = root?.querySelector<HTMLInputElement>('input');
+		(invalidInput ?? firstInput)?.focus();
 	}
 
 	/**
@@ -227,6 +281,12 @@ export class OntarioDateInput {
 	@State() private monthInvalid: boolean = false;
 	@State() private yearInvalid: boolean = false;
 	@State() private errorMessage: string | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native date fields.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	@State() private day: string = '';
 	@State() private month: string = '';
@@ -345,6 +405,19 @@ export class OntarioDateInput {
 	private isInvalidDate = () => {
 		return this.dayInvalid || this.monthInvalid || this.yearInvalid;
 	};
+
+	private getEffectiveErrorMessage(): string {
+		// Keep internal validation intact so clearing an external error reveals any remaining date error.
+		return this.externalErrorMessage || this.errorMessage || '';
+	}
+
+	private isFieldInvalid(field: DateInputFieldType): boolean {
+		// External errors apply to the whole date; otherwise retain each field's validation state.
+		if (this.externalErrorMessage) return true;
+		if (field === 'day') return this.dayInvalid;
+		if (field === 'month') return this.monthInvalid;
+		return this.yearInvalid;
+	}
 
 	private getNormalizedDateValue(year = this.year, month = this.month, day = this.day): string | undefined {
 		if (!year || !month || !day) {
@@ -531,6 +604,7 @@ export class OntarioDateInput {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.processPlaceholder();
 		this.processDateOptions();
 
@@ -548,17 +622,24 @@ export class OntarioDateInput {
 		const placeholderText = placeholderState ?? {};
 		const { dayVisible, monthVisible, yearVisible } = getVisibleDateFields(dateOptionsState);
 		const { dayId, monthId, yearId } = this.getInputIds();
-		const hintTextId = this.getHintTextId();
+		const hintTextId = hintText ? this.getHintTextId() : undefined;
+		const errorMessage = this.getEffectiveErrorMessage();
+		const { errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			errorMessage,
+			hintTextId,
+			this.getId(),
+		);
 
 		return (
-			<fieldset role="group" class="ontario-fieldset">
+			<fieldset role="group" class="ontario-fieldset" aria-describedby={describedBy}>
 				{this.captionState.getCaption()}
 				{!!hintText && (
 					<p id={hintTextId} class="ontario-hint">
 						{hintText}
 					</p>
 				)}
-				<ErrorMessage message={this.errorMessage} error={this.isInvalidDate()} />
+				<ontario-error-message id={errorMessageId} message={errorMessage} announce={!this.suppressErrorAnnouncement} />
 				<div class="ontario-date__group">
 					{yearVisible && (
 						<Input
@@ -568,13 +649,13 @@ export class OntarioDateInput {
 							accessibilityLabel={dateStrings.year.accessibility[language]}
 							value={this.year}
 							required={!!required}
-							error={this.yearInvalid}
+							error={this.isFieldInvalid('year')}
 							placeholder={placeholderText.year}
 							onInput={this.handleDateInput}
 							onChange={this.handleDateChanged}
 							onBlur={this.handleDateBlur}
 							onFocus={this.handleDateFocus}
-							ariaDescribedBy={hintTextId}
+							ariaDescribedBy={describedBy}
 						/>
 					)}
 					{monthVisible && (
@@ -585,13 +666,13 @@ export class OntarioDateInput {
 							accessibilityLabel={dateStrings.month.accessibility[language]}
 							value={this.month}
 							required={!!required}
-							error={this.monthInvalid}
+							error={this.isFieldInvalid('month')}
 							placeholder={placeholderText.month}
 							onInput={this.handleDateInput}
 							onChange={this.handleDateChanged}
 							onBlur={this.handleDateBlur}
 							onFocus={this.handleDateFocus}
-							ariaDescribedBy={hintTextId}
+							ariaDescribedBy={describedBy}
 						/>
 					)}
 					{dayVisible && (
@@ -602,13 +683,13 @@ export class OntarioDateInput {
 							accessibilityLabel={dateStrings.day.accessibility[language]}
 							value={this.day}
 							required={!!required}
-							error={this.dayInvalid}
+							error={this.isFieldInvalid('day')}
 							placeholder={placeholderText.day}
 							onInput={this.handleDateInput}
 							onChange={this.handleDateChanged}
 							onBlur={this.handleDateBlur}
 							onFocus={this.handleDateFocus}
-							ariaDescribedBy={hintTextId}
+							ariaDescribedBy={describedBy}
 						/>
 					)}
 				</div>

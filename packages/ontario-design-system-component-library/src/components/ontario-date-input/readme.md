@@ -396,7 +396,7 @@ Use validation and error messaging to help users understand what needs to be cor
 
 ### Setting an error message
 
-Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) and surface message text through `errorMessage`.
+Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) for internal date validation. Set `externalErrorMessage` for an application-provided error after form submission; it takes precedence while set and clearing it restores any still-applicable internal validation error. The summary reports the displayed message and focuses the first invalid date part.
 
 ### Static vs live validation
 
@@ -557,19 +557,20 @@ Disabled/read-only policy source:
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                                                                                                                                                                                                                                             | Type                                                                                                             | Default                    |
-| --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `caption`       | `caption`        | The text to display as the input label                                                                                                                                                                                                                                                                                  | `Caption \| string`                                                                                              | `undefined`                |
-| `dateOptions`   | `date-options`   | An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc. This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.                                             | `DateInputFieldType[] \| string \| undefined`                                                                    | `['day', 'month', 'year']` |
-| `dateValidator` | `date-validator` | A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType` This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.       | `((day: string, month: string, year: string) => DateValidatorReturnType) \| undefined`                           | `undefined`                |
-| `elementId`     | `element-id`     | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                       | `string \| undefined`                                                                                            | `undefined`                |
-| `hintText`      | `hint-text`      | Used to include the ontario-hint-text component for the date input group. This is optional.                                                                                                                                                                                                                             | `string \| undefined`                                                                                            | `undefined`                |
-| `language`      | `language`       | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.                                                                                                           | `"en" \| "fr" \| undefined`                                                                                      | `undefined`                |
-| `maxYear`       | `max-year`       | A number value indicating maximum value allowed for year input field of the date component. This is optional. If no prop is passed, it will default to `9999`.                                                                                                                                                          | `number \| undefined`                                                                                            | `undefined`                |
-| `minYear`       | `min-year`       | A number value indicating minimum value allowed for year input field of the date component. This is optional. If no prop is passed, it will default to `999`.                                                                                                                                                           | `number \| undefined`                                                                                            | `undefined`                |
-| `placeholder`   | `placeholder`    | An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden. This is optional. If no prop is passed, it will not display any placeholder text.                                  | `string \| undefined \| { day?: string \| undefined; month?: string \| undefined; year?: string \| undefined; }` | `undefined`                |
-| `required`      | `required`       | A boolean value to determine whether or not the date input is required. This is optional. If no prop is passed, it will default to `false`.                                                                                                                                                                             | `boolean \| undefined`                                                                                           | `false`                    |
-| `value`         | `value`          | The aggregate date value for the component. Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`). | `string \| undefined`                                                                                            | `undefined`                |
+| Property               | Attribute                | Description                                                                                                                                                                                                                                                                                                             | Type                                                                                                             | Default                    |
+| ---------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `caption`              | `caption`                | The text to display as the input label                                                                                                                                                                                                                                                                                  | `Caption \| string`                                                                                              | `undefined`                |
+| `dateOptions`          | `date-options`           | An array value used to display date options. For example, only the day and month fields can be displayed by specifying the dateOptions as `["day", "month"]`, etc. This is optional. If no prop for `dateOptions` is passed, it will default to `["day", "month", "year"]`.                                             | `DateInputFieldType[] \| string \| undefined`                                                                    | `['day', 'month', 'year']` |
+| `dateValidator`        | `date-validator`         | A function used to override internal date validation logic, which takes three arguments (i.e day, month and year) and returns an object of type `DateValidatorReturnType` This is optional. If no prop for `dateValidator` is passed, it will default to internal validation function to validate the date input.       | `((day: string, month: string, year: string) => DateValidatorReturnType) \| undefined`                           | `undefined`                |
+| `elementId`            | `element-id`             | The unique identifier of the input. This is optional - if no ID is passed, one will be generated.                                                                                                                                                                                                                       | `string \| undefined`                                                                                            | `undefined`                |
+| `externalErrorMessage` | `external-error-message` | An optional application-provided error. When present, it is displayed ahead of internal date validation.                                                                                                                                                                                                                | `string \| undefined`                                                                                            | `undefined`                |
+| `hintText`             | `hint-text`              | Used to include the ontario-hint-text component for the date input group. This is optional.                                                                                                                                                                                                                             | `string \| undefined`                                                                                            | `undefined`                |
+| `language`             | `language`               | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.                                                                                                           | `"en" \| "fr" \| undefined`                                                                                      | `undefined`                |
+| `maxYear`              | `max-year`               | A number value indicating maximum value allowed for year input field of the date component. This is optional. If no prop is passed, it will default to `9999`.                                                                                                                                                          | `number \| undefined`                                                                                            | `undefined`                |
+| `minYear`              | `min-year`               | A number value indicating minimum value allowed for year input field of the date component. This is optional. If no prop is passed, it will default to `999`.                                                                                                                                                           | `number \| undefined`                                                                                            | `undefined`                |
+| `placeholder`          | `placeholder`            | An object value used to set the placeholder text for the day, month and year input fields. Any combination of the three input fields (i.e day, month, year) of the date component can be overridden. This is optional. If no prop is passed, it will not display any placeholder text.                                  | `string \| undefined \| { day?: string \| undefined; month?: string \| undefined; year?: string \| undefined; }` | `undefined`                |
+| `required`             | `required`               | A boolean value to determine whether or not the date input is required. This is optional. If no prop is passed, it will default to `false`.                                                                                                                                                                             | `boolean \| undefined`                                                                                           | `false`                    |
+| `value`                | `value`                  | The aggregate date value for the component. Accepts either a plain ISO date (`YYYY-MM-DD`) or a full ISO 8601 timestamp. When a valid value is provided, the component hydrates the internal day, month, and year fields and normalizes the stored form value to a full UTC ISO timestamp (`YYYY-MM-DDT00:00:00.000Z`). | `string \| undefined`                                                                                            | `undefined`                |
 
 ## Events
 
@@ -581,17 +582,36 @@ Disabled/read-only policy source:
 | `inputOnFocus`       | Emitted when a keyboard input event occurs when an input has gained focus. | `CustomEvent<"day" \| "month" \| "year">`                                |
 | `inputOnInput`       | Emitted when an `input` event occurs within the component.                 | `CustomEvent<{ value: string; fieldType: "day" \| "month" \| "year"; }>` |
 
+## Methods
+
+### `focusError() => Promise<void>`
+
+Focuses the first rendered invalid date field, falling back to the first field.
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `getErrorState() => Promise<FormControlError | null>`
+
+Returns the effective external or internal date error without running validation.
+
+#### Returns
+
+Type: `Promise<FormControlError | null>`
+
 ## Dependencies
 
 ### Depends on
 
-- [ontario-icon-alert-error](../ontario-icon)
+- [ontario-error-message](../ontario-error-message)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  ontario-date-input --> ontario-icon-alert-error
+  ontario-date-input --> ontario-error-message
+  ontario-error-message --> ontario-icon-alert-error
   style ontario-date-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

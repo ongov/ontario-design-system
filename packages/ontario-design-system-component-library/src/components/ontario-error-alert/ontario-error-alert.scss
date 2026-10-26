@@ -1,0 +1,27 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
+
+:host {
+	display: block;
+}
+
+// Slotted links belong to this shadow tree, so page-alert descendant styles cannot reach them.
+.ontario-error-alert__list {
+	margin-left: 1.25rem;
+	margin-bottom: spacing.$spacing-2;
+
+	a {
+		color: colours.$ontario-colour-alert;
+
+		&:hover,
+		&:focus {
+			color: #6b0000;
+		}
+
+		&:active {
+			color: #280000;
+		}
+	}
+}
