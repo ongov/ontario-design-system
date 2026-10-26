@@ -8,6 +8,10 @@
 		<script type="module" src="/build/ontario-design-system-components.esm.js"></script>
 		<script nomodule src="/build/ontario-design-system-components.js"></script>
 		<style>
+			#integrated-native-email[aria-invalid='true'] {
+				border-color: #cd0000;
+			}
+
 			.ontario-summary-list__row {
 				display: flex;
 				flex-direction: row;
@@ -250,6 +254,10 @@
 						></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Search Box" href="#search-box"></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Form example" href="#form"></ontario-in-page-navigation-item>
+						<ontario-in-page-navigation-item
+							label="Integrated error messaging"
+							href="#integrated-error-messaging"
+						></ontario-in-page-navigation-item>
 					</ontario-in-page-navigation>
 					<!-- In-page navigation -->
 					<div>
@@ -1975,6 +1983,208 @@
 							<ontario-button type="primary" html-type="submit">Submit</ontario-button>
 						</ontario-form-container>
 					</form>
+
+					<hr />
+
+					<ontario-error-alert form-id="application-form"></ontario-error-alert>
+					<h1>Apply for a licence</h1>
+					<form id="application-form" novalidate>
+						<ontario-form-container>
+							<ontario-input element-id="email" name="email" caption="Email" required></ontario-input>
+							<ontario-date-input element-id="birth-date" caption="Date of birth"></ontario-date-input>
+							<ontario-button html-type="submit">Submit</ontario-button>
+						</ontario-form-container>
+					</form>
+
+					<section aria-labelledby="integrated-error-messaging">
+						<h2 id="integrated-error-messaging">Integrated error messaging: ODS and native controls</h2>
+						<p>
+							Submit this empty form to see inline errors for all six supported ODS controls and a native email field.
+							Correct the fields to update their errors, or reset the example to start again. No information is sent or
+							stored.
+						</p>
+						<p id="integrated-error-scope">
+							The summary automatically collects ODS control errors only. The native email field demonstrates the
+							standalone error component with application-managed validation, description and announcements; its error
+							is not included in the summary.
+						</p>
+						<ontario-error-alert form-id="integrated-error-form"></ontario-error-alert>
+						<form id="integrated-error-form" novalidate aria-describedby="integrated-error-scope">
+							<ontario-form-container>
+								<ontario-fieldset legend-size="large" legend="Form example for integrated error messaging">
+									<ontario-input
+										id="integrated-name"
+										element-id="integrated-name-field"
+										name="fullName"
+										caption="Full name"
+										required
+										hint-text="Enter your first and last name."
+									></ontario-input>
+									<ontario-textarea
+										id="integrated-details"
+										element-id="integrated-details-field"
+										name="details"
+										caption="Request details"
+										required
+									></ontario-textarea>
+									<ontario-dropdown-list
+										id="integrated-region"
+										element-id="integrated-region-field"
+										name="region"
+										caption="Region"
+										required
+										is-empty-start-option
+										options='[{"value":"north","label":"Northern Ontario"},{"value":"south","label":"Southern Ontario"}]'
+									></ontario-dropdown-list>
+									<ontario-checkboxes
+										id="integrated-services"
+										name="services"
+										caption="Services"
+										required
+										hint-text="Select at least one service."
+										options='[{"value":"licensing","label":"Licensing","elementId":"integrated-service-licensing"},{"value":"registration","label":"Registration","elementId":"integrated-service-registration"}]'
+									></ontario-checkboxes>
+									<ontario-radio-buttons
+										id="integrated-contact"
+										name="contactMethod"
+										caption="Preferred contact method"
+										required
+										options='[{"value":"email","label":"Email","elementId":"integrated-contact-email"},{"value":"phone","label":"Phone","elementId":"integrated-contact-phone"}]'
+									></ontario-radio-buttons>
+									<ontario-date-input
+										id="integrated-date"
+										element-id="integrated-date-field"
+										caption="Requested date"
+										required
+										hint-text="Enter a complete, valid date."
+									></ontario-date-input>
+									<div class="ontario-form-group">
+										<label class="ontario-label" for="integrated-native-email">Email address (native HTML input)</label>
+										<p class="ontario-hint" id="integrated-native-hint">For example, name@example.ca.</p>
+										<ontario-error-message id="integrated-native-error"></ontario-error-message>
+										<input
+											class="ontario-input"
+											id="integrated-native-email"
+											name="email"
+											type="email"
+											autocomplete="email"
+											required
+											aria-describedby="integrated-native-hint"
+										/>
+									</div>
+								</ontario-fieldset>
+								<div>
+									<ontario-button type="secondary" html-type="reset">Reset</ontario-button>
+									<ontario-button type="primary" html-type="submit">Submit</ontario-button>
+								</div>
+							</ontario-form-container>
+						</form>
+						<p id="integrated-error-result" role="status"></p>
+						<script type="module">
+							const exampleForm = document.getElementById('integrated-error-form');
+							const exampleSummary = document.querySelector('ontario-error-alert[form-id="integrated-error-form"]');
+							const result = document.getElementById('integrated-error-result');
+							const nativeEmail = document.getElementById('integrated-native-email');
+							const nativeError = document.getElementById('integrated-native-error');
+							const date = document.getElementById('integrated-date');
+							const rules = [
+								['integrated-name', 'Enter your full name.'],
+								['integrated-details', 'Enter your request details.'],
+								['integrated-region', 'Select a region.'],
+								['integrated-services', 'Select at least one service.'],
+								['integrated-contact', 'Select a preferred contact method.'],
+							].map(([id, message]) => ({ control: document.getElementById(id), message }));
+							await Promise.all(
+								[exampleSummary, nativeError, date, ...rules.map(({ control }) => control)].map((control) =>
+									control.componentOnReady(),
+								),
+							);
+							let attempted = false;
+
+							function validateControl(control, message) {
+								const value = control.value;
+								control.errorMessage = (Array.isArray(value) ? value.length > 0 : !!value?.trim()) ? '' : message;
+							}
+
+							function validateDate() {
+								date.externalErrorMessage = date.value ? '' : 'Enter a complete, valid requested date.';
+							}
+
+							function validateNativeEmail() {
+								const invalid = !nativeEmail.validity.valid;
+								nativeError.message = invalid ? 'Enter a valid email address, such as name@example.ca.' : '';
+								if (invalid) nativeEmail.setAttribute('aria-invalid', 'true');
+								else nativeEmail.removeAttribute('aria-invalid');
+								nativeEmail.setAttribute(
+									'aria-describedby',
+									invalid ? 'integrated-native-hint integrated-native-error' : 'integrated-native-hint',
+								);
+								return invalid;
+							}
+
+							for (const { control, message } of rules) {
+								control.addEventListener('inputOnChange', () => {
+									if (attempted) {
+										result.textContent = '';
+										validateControl(control, message);
+									}
+								});
+							}
+							date.addEventListener('inputOnChange', () => {
+								if (attempted) {
+									result.textContent = '';
+									validateDate();
+								}
+							});
+							nativeEmail.addEventListener('input', () => {
+								if (attempted) {
+									result.textContent = '';
+									nativeError.announce = true;
+									validateNativeEmail();
+								}
+							});
+
+							exampleForm.addEventListener('submit', async (event) => {
+								event.preventDefault();
+								attempted = true;
+								result.textContent = '';
+								await exampleSummary.show();
+								for (const { control, message } of rules) validateControl(control, message);
+								validateDate();
+								await new Promise((resolve) => requestAnimationFrame(resolve));
+								const states = await Promise.all(
+									[...rules.map(({ control }) => control), date].map((control) => control.getErrorState()),
+								);
+								const hasOdsErrors = states.some(Boolean);
+								nativeError.announce = false;
+								const hasNativeError = validateNativeEmail();
+								if (!hasOdsErrors) {
+									await exampleSummary.hide();
+									await new Promise((resolve) => requestAnimationFrame(resolve));
+									if (hasNativeError) nativeEmail.focus();
+									else result.textContent = 'All fields are valid. This demonstration did not submit any information.';
+								}
+							});
+
+							exampleForm.addEventListener('reset', async (event) => {
+								event.preventDefault();
+								attempted = false;
+								await exampleSummary.hide();
+								for (const { control } of rules) {
+									control.value = control.tagName === 'ONTARIO-CHECKBOXES' ? [] : '';
+									control.errorMessage = '';
+								}
+								date.value = '';
+								date.externalErrorMessage = '';
+								nativeEmail.value = '';
+								nativeEmail.removeAttribute('aria-invalid');
+								nativeEmail.setAttribute('aria-describedby', 'integrated-native-hint');
+								nativeError.message = '';
+								nativeError.announce = true;
+								result.textContent = 'Example reset.';
+							});
+						</script>
+					</section>
 
 					<h2 style="display: none" id="form-results">Form Results</h2>
 					<div id="form-results-data"></div>
