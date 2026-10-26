@@ -1,0 +1,10 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as focus;
+
+.consumer-focus-token {
+	box-shadow: focus.$ontario-focus-box-shadow;
+	transition: focus.$ontario-focus-transition;
+}
+
+.consumer-focus-placeholder:focus {
+	@extend %ontario-focus;
+}

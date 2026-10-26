@@ -1,0 +1,11 @@
+{
+	"name": "ontario-styles-consumer-fixture",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"test": "sass --pkg-importer=node --no-source-map focus-regression.scss focus-regression.css && sass --pkg-importer=node --no-source-map theme.scss theme.css"
+	},
+	"devDependencies": {
+		"sass": "1.99.0"
+	}
+}
