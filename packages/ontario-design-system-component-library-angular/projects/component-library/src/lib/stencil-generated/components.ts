@@ -1344,14 +1344,14 @@ export declare interface OntarioIconDownload extends Components.OntarioIconDownl
 
 
 @ProxyCmp({
-  inputs: ['iconWidth', 'isDecorative', 'label']
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label']
 })
 @Component({
   selector: 'ontario-icon-dropdown-arrow',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['iconWidth', 'isDecorative', 'label'],
+  inputs: ['colour', 'iconWidth', 'isDecorative', 'label'],
   standalone: false
 })
 export class OntarioIconDropdownArrow {

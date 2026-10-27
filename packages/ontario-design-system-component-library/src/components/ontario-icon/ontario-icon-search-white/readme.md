@@ -2,6 +2,8 @@
 
 <!-- Auto Generated Below -->
 
+> **[DEPRECATED]** Use ontario-icon-search instead.
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                  | Type                                                  | Default     |
