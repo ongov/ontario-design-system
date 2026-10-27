@@ -205,6 +205,12 @@
 			"fr": "Ce champ est obligatoire."
 		}
 	},
+	"checkbox": {
+		"requiredFieldError": {
+			"en": "You must select this checkbox to continue.",
+			"fr": "Vous devez cocher cette case pour continuer."
+		}
+	},
 	"languageToggle": {
 		"ariaLabel": {
 			"en": "Click to switch the language to English",
