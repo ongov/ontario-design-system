@@ -30,6 +30,11 @@ $ontario-critical-alert-line-height: 1.8;
 		height: $ontario-critical-alert-icon-size;
 		margin: spacing.$spacing-0 $ontario-critical-alert-svg-margin--custom spacing.$spacing-0 spacing.$spacing-0;
 	}
+
+	// The exclamation mark has no paint of its own; the svg root is fill="none".
+	svg rect {
+		fill: black;
+	}
 }
 
 .ontario-critical-alert p {

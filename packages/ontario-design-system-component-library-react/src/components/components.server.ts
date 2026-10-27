@@ -1020,7 +1020,8 @@ export const OntarioIconDropdownArrow: StencilReactComponent<OntarioIconDropdown
     properties: {
         iconWidth: 'icon-width',
         label: 'label',
-        isDecorative: 'is-decorative'
+        isDecorative: 'is-decorative',
+        colour: 'colour'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioIconDropdownArrow as ReactWebComponent<OntarioIconDropdownArrowElement, OntarioIconDropdownArrowEvents>,

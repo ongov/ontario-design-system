@@ -1366,7 +1366,7 @@ export namespace Components {
     interface OntarioIconCloseHeader {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'white'
          */
         "colour": IconColour;
         /**
@@ -1524,6 +1524,11 @@ export namespace Components {
         "label"?: string;
     }
     interface OntarioIconDropdownArrow {
+        /**
+          * Set the icon's colour.
+          * @default 'black'
+         */
+        "colour": IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -2191,7 +2196,7 @@ export namespace Components {
     interface OntarioIconMenuHeader {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'white'
          */
         "colour": IconColour;
         /**
@@ -2628,6 +2633,9 @@ export namespace Components {
          */
         "label"?: string;
     }
+    /**
+     * @deprecated Use ontario-icon-search instead.
+     */
     interface OntarioIconSearchWhite {
         /**
           * Set the icon's colour.
@@ -5125,6 +5133,9 @@ declare global {
         prototype: HTMLOntarioIconSearchElement;
         new (): HTMLOntarioIconSearchElement;
     };
+    /**
+     * @deprecated Use ontario-icon-search instead.
+     */
     interface HTMLOntarioIconSearchWhiteElement extends Components.OntarioIconSearchWhite, HTMLStencilElement {
     }
     var HTMLOntarioIconSearchWhiteElement: {
@@ -7204,7 +7215,7 @@ declare namespace LocalJSX {
     interface OntarioIconCloseHeader {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'white'
          */
         "colour"?: IconColour;
         /**
@@ -7362,6 +7373,11 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface OntarioIconDropdownArrow {
+        /**
+          * Set the icon's colour.
+          * @default 'black'
+         */
+        "colour"?: IconColour;
         /**
           * The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.
           * @default 24
@@ -8029,7 +8045,7 @@ declare namespace LocalJSX {
     interface OntarioIconMenuHeader {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'white'
          */
         "colour"?: IconColour;
         /**
@@ -8466,6 +8482,9 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    /**
+     * @deprecated Use ontario-icon-search instead.
+     */
     interface OntarioIconSearchWhite {
         /**
           * Set the icon's colour.
@@ -10484,6 +10503,9 @@ declare module "@stencil/core" {
             "ontario-icon-rss-feed": LocalJSX.OntarioIconRssFeed & JSXBase.HTMLAttributes<HTMLOntarioIconRssFeedElement>;
             "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
             "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
+            /**
+             * @deprecated Use ontario-icon-search instead.
+             */
             "ontario-icon-search-white": LocalJSX.OntarioIconSearchWhite & JSXBase.HTMLAttributes<HTMLOntarioIconSearchWhiteElement>;
             "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;
             "ontario-icon-sentiment-2": LocalJSX.OntarioIconSentiment2 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment2Element>;

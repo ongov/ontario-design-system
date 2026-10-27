@@ -377,6 +377,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 	svg {
 		top: 0;
+		fill: colours.$ontario-colour-white;
 	}
 
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
