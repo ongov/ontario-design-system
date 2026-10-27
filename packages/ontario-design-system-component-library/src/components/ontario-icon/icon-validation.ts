@@ -25,7 +25,11 @@ export interface IconColourValidation {
 	customColour?: string;
 }
 
-export const validateIconColour = (colour: string, iconName: string): IconColourValidation => {
+export const validateIconColour = (
+	colour: string,
+	iconName: string,
+	fallbackColour = 'black',
+): IconColourValidation => {
 	if (validateValueAgainstArray(colour, IconColours)) {
 		return { colour };
 	}
@@ -41,10 +45,10 @@ export const validateIconColour = (colour: string, iconName: string): IconColour
 		.addRegularText('was set to an invalid colour; only')
 		.addMonospaceText(' black, blue, grey or white ')
 		.addRegularText('are supported. The default colour')
-		.addMonospaceText(' black ')
+		.addMonospaceText(` ${fallbackColour} `)
 		.addRegularText('is assumed.')
 		.printMessage();
-	return { colour: 'black' };
+	return { colour: fallbackColour };
 };
 
 export const validateFixedIconColour = (host: HTMLElement, iconName: string): void => {

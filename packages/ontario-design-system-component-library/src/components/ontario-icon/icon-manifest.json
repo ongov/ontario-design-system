@@ -157,6 +157,7 @@
 			"category": "other",
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
+			"defaultColour": "white",
 			"previewBackground": "dark",
 			"aliases": [],
 			"deprecated": false
@@ -229,7 +230,7 @@
 			"name": "ontario-icon-dropdown-arrow",
 			"category": "primary",
 			"viewBox": "0 0 24 24",
-			"colour": "fixed",
+			"colour": "configurable",
 			"aliases": [],
 			"deprecated": false
 		},
@@ -502,6 +503,7 @@
 			"category": "other",
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
+			"defaultColour": "white",
 			"previewBackground": "dark",
 			"aliases": [],
 			"deprecated": false
@@ -680,7 +682,8 @@
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
 			"aliases": [],
-			"deprecated": false
+			"deprecated": true,
+			"replacedBy": "search"
 		},
 		{
 			"name": "ontario-icon-search",

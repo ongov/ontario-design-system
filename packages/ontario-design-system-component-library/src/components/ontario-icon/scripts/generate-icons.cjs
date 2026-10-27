@@ -15,6 +15,7 @@ const componentDemoPath = path.resolve(componentDirectory, '../../index.html');
 const allowedCategories = new Set(['primary', 'secondary', 'social', 'payment', 'flag', 'alert', 'other']);
 const allowedColourCapabilities = new Set(['configurable', 'fixed', 'multicolour']);
 const allowedPreviewBackgrounds = new Set(['dark']);
+const allowedDefaultColours = new Set(['black', 'blue', 'grey', 'white', 'inherit']);
 const galleryStartMarker = '<!-- ICON_GALLERY_START -->';
 const galleryEndMarker = '<!-- ICON_GALLERY_END -->';
 
@@ -117,11 +118,20 @@ const validateManifest = (icons, assetFiles) => {
 			!Array.isArray(icon.aliases) ||
 			!icon.aliases.every((alias) => typeof alias === 'string') ||
 			typeof icon.deprecated !== 'boolean' ||
-			(icon.replacedBy !== undefined && typeof icon.replacedBy !== 'string')
+			(icon.replacedBy !== undefined && typeof icon.replacedBy !== 'string') ||
+			(icon.defaultColour !== undefined &&
+				(icon.colour !== 'configurable' || !allowedDefaultColours.has(icon.defaultColour)))
 		) {
 			throw new Error(`Incomplete manifest entry for ${icon.name}`);
 		}
 		manifestNames.add(icon.name);
+	}
+
+	for (const icon of icons) {
+		const replacement = getReplacementName(icon);
+		if (replacement && (!icon.deprecated || replacement === icon.name || !manifestNames.has(replacement))) {
+			throw new Error(`replacedBy on ${icon.name} must name another icon and requires deprecated: true.`);
+		}
 	}
 
 	const assetNames = new Set(assetFiles.map((file) => path.basename(file, '.svg')));
@@ -134,9 +144,17 @@ const validateManifest = (icons, assetFiles) => {
 	}
 };
 
+const getReplacementName = (icon) =>
+	icon.replacedBy &&
+	(icon.replacedBy.startsWith(iconNamePrefix) ? icon.replacedBy : `${iconNamePrefix}${icon.replacedBy}`);
+
 const getIconComponentTemplate = (svgObject, icon) => {
 	let svgElement = stringify(svgObject);
 	const hasColour = icon.colour === 'configurable';
+	const replacement = getReplacementName(icon);
+	const deprecationNotice = icon.deprecated
+		? `/**\n * @deprecated${replacement ? ` Use ${replacement} instead.` : ''}\n */\n`
+		: '';
 
 	if (hasColour) {
 		svgElement = svgElement.replace(
@@ -155,10 +173,10 @@ const getIconComponentTemplate = (svgObject, icon) => {
 import { Component, Prop, h, Watch, State${hasColour ? '' : ', Element'} } from '@stencil/core';
 import { ${hasColour ? 'IconWithColour' : 'Icon'} } from '../icon.interface';
 import { IconSize${hasColour ? ', IconColour' : ''} } from '../icon.types';
-import { RenderIcon, warnIsDecorativeDeprecated } from '../render-icon';
+import { RenderIcon, warnIsDecorativeDeprecated${icon.deprecated ? ', warnIconDeprecated' : ''} } from '../render-icon';
 import { validateIconWidth, ${hasColour ? 'validateIconColour' : 'validateFixedIconColour'} } from '../icon-validation';
 
-@Component({
+${deprecationNotice}@Component({
 	tag: '${icon.name}',
 	styleUrl: '../ontario-icon.scss',
 	shadow: true,
@@ -195,14 +213,14 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 		hasColour
 			? `
 	/** Set the icon's colour. */
-	@Prop() colour: IconColour = 'black';
+	@Prop() colour: IconColour = '${icon.defaultColour ?? 'black'}';
 
 	@State() iconColourState: string;
 	@State() iconCustomColourState: string;
 
 	@Watch('colour')
 	validateColour() {
-		const validatedColour = validateIconColour(this.colour, '${icon.name}');
+		const validatedColour = validateIconColour(this.colour, '${icon.name}'${icon.defaultColour ? `, '${icon.defaultColour}'` : ''});
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
 		}
@@ -220,7 +238,7 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 	`
 	}
 	componentWillLoad() {
-		this.warnDeprecatedIsDecorative();
+		${icon.deprecated ? `warnIconDeprecated('${icon.name}', ${replacement ? `'${replacement}'` : 'undefined'});\n\t\t` : ''}this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();
 	}

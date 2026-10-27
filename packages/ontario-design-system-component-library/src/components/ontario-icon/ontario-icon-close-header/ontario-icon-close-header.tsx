@@ -40,14 +40,14 @@ export class OntarioIconCloseHeader implements IconWithColour {
 	}
 
 	/** Set the icon's colour. */
-	@Prop() colour: IconColour = 'black';
+	@Prop() colour: IconColour = 'white';
 
 	@State() iconColourState: string;
 	@State() iconCustomColourState: string;
 
 	@Watch('colour')
 	validateColour() {
-		const validatedColour = validateIconColour(this.colour, 'ontario-icon-close-header');
+		const validatedColour = validateIconColour(this.colour, 'ontario-icon-close-header', 'white');
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
 		}
@@ -86,14 +86,10 @@ export class OntarioIconCloseHeader implements IconWithColour {
 						xmlns="http://www.w3.org/2000/svg"
 						width="32"
 						height="32"
-						fill="#000000"
 						viewBox="0 0 24 24"
 						id="close-header"
 					>
-						<path
-							d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4z"
-							fill="#ffffff"
-						/>
+						<path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4z" />
 					</svg>
 				)}
 			/>
