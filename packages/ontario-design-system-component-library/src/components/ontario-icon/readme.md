@@ -187,24 +187,66 @@ Apply the class to the icon element itself, for example `<ontario-icon-chevron-d
 
 Each icon has its own generated README with the properties supported by that icon.
 
+## Colour support
+
+The `colour` property accepts `black` (default), `blue`, `grey`, `white`, `inherit` or a valid CSS colour. `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white` for use on the dark Ontario.ca header. Icons are classified in `icon-manifest.json` as one of:
+
+- `configurable`: exposes `colour` and recolours the artwork.
+- `fixed`: keeps its own artwork colour and ignores `colour`. These are the alert icons (`alert-error`, `alert-information`, `alert-success` and `alert-warning`).
+- `multicolour`: keeps its brand artwork and ignores `colour`. These are the payment icons (`interac-*`, `mastercard`, `mastercard-alt` and `visa`).
+
+`ontario-icon-critical-alert-warning` is configurable: `colour` sets the exclamation mark, and the warning triangle stays white. `ontario-icon-close-header` and `ontario-icon-menu-header` use the same artwork as `ontario-icon-close` and `ontario-icon-menu` and differ only in their white default.
+
+## Colour changes on hover and focus
+
+An icon does not track hover or focus itself. The component that owns the interactive state sets `color` on that state and renders the icon with `colour="inherit"`, which makes the icon use the surrounding text colour. `color` is inherited through the shadow boundary, so no icon API is needed and icons that never change colour are unaffected.
+
+```css
+.search-button {
+	color: #1a1a1a;
+}
+
+.search-button:hover,
+.search-button:focus {
+	color: #fff;
+}
+```
+
+```html
+<button class="search-button" type="button">
+	<ontario-icon-search colour="inherit"></ontario-icon-search>
+</button>
+```
+
+Set `color` on the interactive element or one of its ancestors. Rules that target the SVG inside the icon, such as `.search-button svg { fill: ... }`, cannot reach it because the SVG is in the icon's shadow root.
+
+## Deprecated icons
+
+`ontario-icon-search-white` is deprecated. Use `<ontario-icon-search colour="white">` instead. The component keeps rendering and logs a development-only warning once per tag name.
+
 ## Upgrade note
 
 Icons without a non-blank `label` now render as decorative images with `aria-hidden="true"`, `focusable="false"` and no image role. Previously, icons defaulted to `role="img"` without an accessible name. Audit existing meaningful icon usage before upgrading and supply a descriptive `label` when equivalent text is not already available. A non-blank label takes precedence over `isDecorative`, which remains accepted but emits a development-only deprecation warning.
+
+`ontario-icon-dropdown-arrow` now accepts `colour` and defaults to `black`. Previously it took the surrounding text colour. Set `colour="inherit"` to keep following the text colour.
+
+The `colour` property now takes effect on `ontario-icon-attach`, `ontario-icon-close-header`, `ontario-icon-menu-header` and `ontario-icon-critical-alert-warning`, which previously ignored it. `ontario-icon-attach` and the exclamation mark of `ontario-icon-critical-alert-warning` now use the standard icon black (`#1a1a1a`) instead of pure black (`#000000`).
 
 ## Maintaining icons
 
 The `icons` array in `icon-manifest.json` is the source of truth for icon metadata. Each entry must correspond to an SVG with the same basename in `assets/`.
 
-| Field               | Required | Meaning                                                                                                                    |
-| ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `name`              | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                   |
-| `category`          | Yes      | Gallery grouping: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                 |
-| `viewBox`           | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                |
-| `colour`            | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
-| `aliases`           | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components. |
-| `deprecated`        | Yes      | Deprecation metadata. This flag alone does not emit a component warning.                                                   |
-| `replacedBy`        | No       | Replacement icon name recorded as metadata when an icon is deprecated.                                                     |
-| `previewBackground` | No       | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon.            |
+| Field               | Required | Meaning                                                                                                                                                            |
+| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `name`              | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                                                           |
+| `category`          | Yes      | Gallery grouping: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                                                         |
+| `viewBox`           | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                                                        |
+| `colour`            | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property.                                         |
+| `aliases`           | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components.                                         |
+| `deprecated`        | Yes      | Marks the icon as deprecated. The generated component logs a development-only warning once per tag name.                                                           |
+| `replacedBy`        | No       | Icon that replaces a deprecated icon, with or without the `ontario-icon-` prefix. It must name another icon and requires `deprecated`.                             |
+| `defaultColour`     | No       | Default `colour` for a `configurable` icon when it is not `black`: `black`, `blue`, `grey`, `white` or `inherit`. It is also the fallback for an invalid `colour`. |
+| `previewBackground` | No       | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon.                                                    |
 
 ### Add or update an icon
 

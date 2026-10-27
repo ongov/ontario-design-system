@@ -25,6 +25,12 @@ describe('shared icon validation', () => {
 		expect(warning).toHaveBeenCalledOnce();
 	});
 
+	it('falls back to the icon default colour when one is supplied', () => {
+		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+		expect(validateIconColour('not-a-colour', 'ontario-icon-menu-header', 'white')).toEqual({ colour: 'white' });
+		expect(warning).toHaveBeenCalledOnce();
+	});
+
 	it('warns for a colour attribute on a fixed-colour icon only when supplied', () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 		const host = document.createElement('div');

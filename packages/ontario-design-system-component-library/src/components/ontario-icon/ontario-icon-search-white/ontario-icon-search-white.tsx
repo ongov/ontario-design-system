@@ -2,9 +2,12 @@
 import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from '../icon.interface';
 import { IconSize, IconColour } from '../icon.types';
-import { RenderIcon, warnIsDecorativeDeprecated } from '../render-icon';
+import { RenderIcon, warnIsDecorativeDeprecated, warnIconDeprecated } from '../render-icon';
 import { validateIconWidth, validateIconColour } from '../icon-validation';
 
+/**
+ * @deprecated Use ontario-icon-search instead.
+ */
 @Component({
 	tag: 'ontario-icon-search-white',
 	styleUrl: '../ontario-icon.scss',
@@ -57,6 +60,7 @@ export class OntarioIconSearchWhite implements IconWithColour {
 	}
 
 	componentWillLoad() {
+		warnIconDeprecated('ontario-icon-search-white', 'ontario-icon-search');
 		this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();
