@@ -47,3 +47,13 @@ export const warnIsDecorativeDeprecated = () => {
 		.addRegularText(' to provide an accessible name.')
 		.printMessage();
 };
+
+const warnedDeprecatedIcons = new Set<string>();
+
+/** Warns once per tag name, in development builds only. */
+export const warnIconDeprecated = (iconName: string, replacedBy?: string) => {
+	if (Build.isDev && !warnedDeprecatedIcons.has(iconName)) {
+		warnedDeprecatedIcons.add(iconName);
+		console.warn(`<${iconName}> is deprecated.${replacedBy ? ` Use <${replacedBy}> instead.` : ''}`);
+	}
+};
