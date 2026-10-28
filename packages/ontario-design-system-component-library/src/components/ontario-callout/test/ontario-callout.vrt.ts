@@ -74,7 +74,6 @@ test.describe('ontario-callout', () => {
 
 			await component.evaluate((el: HTMLOntarioCalloutElement) => {
 				el.headingContentType = 'html';
-				el.headingContent = '#';
 				el.headingContent = '<a href="#">Get notified</a>';
 			});
 
