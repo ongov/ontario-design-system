@@ -40,20 +40,21 @@ test.describe('ontario-aside', () => {
 
 		// update prop to lime and wait for component to re-render
 
-		await host.evaluate((el) => el.setAttribute('highlight-colour', 'lime'));
+		await host.evaluate((el: HTMLOntarioAsideElement) => {
+			el.highlightColour = 'lime';
+		});
 		await page.waitForChanges();
 
 		const hasLime = await host.evaluate(
 			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--lime'),
 		);
-		console.log('hasLime:', hasLime);
 		expect(hasLime).toBe(true);
 		await expectVrtScreenshot(host);
 	});
 
 	test('renders content prop inside a paragraph when content is provided', async ({ page }) => {
-		await host.evaluate((el) => {
-			el.setAttribute('content', 'This is content passed via prop');
+		await host.evaluate((el: HTMLOntarioAsideElement) => {
+			el.content = 'This is content passed via prop';
 		});
 		await page.waitForChanges();
 
@@ -67,10 +68,10 @@ test.describe('ontario-aside', () => {
 		// Initial state (matches fixture heading-content)
 		await expect(heading).toHaveText('This is an aside heading');
 
-		// Switch to HTML content via attributes
-		await host.evaluate((el: HTMLElement) => {
-			el.setAttribute('heading-content-type', 'html');
-			el.setAttribute('heading-content', '<a href="#">Quick fact:</a>');
+		// Switch to HTML content via properties
+		await host.evaluate((el: HTMLOntarioAsideElement) => {
+			el.headingContentType = 'html';
+			el.headingContent = '<a href="#">Quick fact:</a>';
 		});
 		await page.waitForChanges();
 
@@ -83,11 +84,11 @@ test.describe('ontario-aside', () => {
 	// ============== CSS VALIDATION TESTS ==============
 
 	test('combines all highlight colour classes correctly', async ({ page }) => {
-		const colours = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'];
+		const colours = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'] as const;
 
 		for (const colour of colours) {
-			await host.evaluate((el: HTMLElement, col: string) => {
-				el.setAttribute('highlight-colour', col);
+			await host.evaluate((el: HTMLOntarioAsideElement, col: (typeof colours)[number]) => {
+				el.highlightColour = col;
 			}, colour);
 			await page.waitForChanges();
 
@@ -103,9 +104,9 @@ test.describe('ontario-aside', () => {
 	test('applies teal border colour by default', async ({ page }) => {
 		await host.evaluate((el: HTMLOntarioAsideElement) => {
 			const newAside = document.createElement('ontario-aside');
-			newAside.setAttribute('heading-type', 'h4');
-			newAside.setAttribute('heading-content-type', 'string');
-			newAside.setAttribute('heading-content', 'Default colour test');
+			newAside.headingType = 'h4';
+			newAside.headingContentType = 'string';
+			newAside.headingContent = 'Default colour test';
 			el.parentNode?.replaceChild(newAside, el);
 		});
 		await page.waitForChanges();
@@ -130,9 +131,8 @@ test.describe('ontario-aside', () => {
 		const initialColour = borderColour;
 		await expectVrtScreenshot(host);
 		// Change to gold
-		await host.evaluate((el) => {
-			el.setAttribute('highlight-colour', 'gold');
-			console.log('highlight-colour:', el.getAttribute('highlight-colour'));
+		await host.evaluate((el: HTMLOntarioAsideElement) => {
+			el.highlightColour = 'gold';
 		});
 		await page.waitForChanges();
 
