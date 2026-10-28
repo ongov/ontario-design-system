@@ -64,6 +64,9 @@ success.
   its re-exported `$ontario-focus-box-shadow`. Merely importing the module or
   extending its placeholder would not detect the missing public variable. It also
   exercises the focus transition and placeholder.
+- `grid-variables.scss` imports the grid variables module and uses its row width,
+  gutter, column counts, float direction, and `$medium-up` media query. A theme
+  compile alone would not notice if one of these stopped being exposed.
 - `theme.scss` compiles the full public theme entry point, checking that its
   packaged dependencies resolve without the monorepo's development dependencies.
 

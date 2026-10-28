@@ -73,7 +73,7 @@ try {
 		throw new Error('Expected an extracted package inside the consumer, not a workspace link.');
 	}
 
-	console.log('Compiling the focus regression and full theme using only installed package files.');
+	console.log('Compiling the consumer examples and full theme using only installed package files.');
 	run('npm', ['test'], consumer);
 	console.log('PASS: the packaged styles compile in an isolated consumer.');
 } finally {

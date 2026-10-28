@@ -1,0 +1,14 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/grid.variables' as grid;
+
+.consumer-grid {
+	max-width: grid.$row-width;
+	column-gap: grid.$column-gutter;
+	grid-template-columns: repeat(grid.$total-columns, 1fr);
+	float: grid.$default-float;
+}
+
+@media #{grid.$medium-up} {
+	.consumer-grid--medium {
+		grid-column: span grid.$column-count-2;
+	}
+}
