@@ -10,7 +10,7 @@ exports[`ontario-search-box > should render a default search box element 1`] = `
       <div class="ontario-search__input-suggestion-container">
         <div class="ontario-search__input-container">
           <input autocomplete="off" class="ontario-search__input ontario-input" id="ontario-search-input-field" name="search" type="search" value required aria-autocomplete="none">
-          <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value aria-label="Clear field">
+          <input class="ontario-search__reset ontario-search__reset--hidden" id="ontario-search-reset" type="reset" value aria-label="Clear field">
           <button class="ontario-search__submit" type="submit" id="ontario-search-box__submit">
             <span class="ontario-show-for-sr">
               Submit
