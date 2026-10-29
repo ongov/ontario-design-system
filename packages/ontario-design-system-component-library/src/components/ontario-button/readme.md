@@ -335,7 +335,9 @@ The same pattern applies to `trailing-icon`, or both slots together for an icon 
 </ontario-button>
 ```
 
-In React, wrap each icon in a `<span slot="...">` as shown above, rather than passing `slot` directly to the icon component.
+Slotted icons must be direct children of the button, because the browser only assigns direct children to a slot. When wrapping an icon (as in the React example), put the `slot` attribute on the wrapper.
+
+In React, wrap each icon in a `<span slot="...">` as shown above, rather than passing `slot` directly to the icon component. `@stencil/ssr` renders each Stencil component inside a `display:contents` wrapper element and does not forward `slot` onto it, so a `slot` passed to the icon is ignored during server rendering and the icon never appears (see [stenciljs/output-targets#858](https://github.com/stenciljs/output-targets/issues/858), with a fix in [#863](https://github.com/stenciljs/output-targets/pull/863)). The Ontario Design System's own Next.js app applies a patch for this, so it can pass `slot` directly. Your app needs the wrapper until a release of `@stencil/ssr` includes the fix.
 
 A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon not covered by `ontario-icon-*`); it is sized to 24x24px automatically:
 
@@ -358,6 +360,24 @@ An icon-only button (no visible label) is detected automatically when a default-
 ```
 
 Icon-only buttons scale their icon up to 32px on mobile (and to 28px for the `tertiary` type on desktop) to keep a consistent tap-target size. A raw slotted `<svg>`/`<img>` is resized automatically by the button's CSS to match; an `ontario-icon-*` component sizes itself internally via its own `iconWidth`/`icon-width` prop, so set that explicitly per breakpoint/type if you need an exact match (CSS can't reach inside its shadow DOM to resize it).
+
+#### Sizing
+
+Buttons with icons are sized as follows:
+
+- 24px of padding between the button edge and the label or icon. For a `secondary` button the 2px border counts towards this, so the 24px is measured to its outer edge.
+- 8px between an icon and the label.
+- A minimum width of 160px, with no maximum width on desktop, so a button grows with its content.
+
+On mobile, every button is at most 328px wide, and the label wraps within a maximum width so the icons keep their spacing:
+
+| Configuration                    | Maximum label width |
+| -------------------------------- | ------------------- |
+| No icon                          | 280px               |
+| One icon (leading or trailing)   | 248px               |
+| Two icons (leading and trailing) | 216px               |
+
+A `secondary` button with no icon keeps its existing padding, with the border added on top, so its label is 4px narrower than the table (276px) on mobile.
 
 ### Forms
 
@@ -444,6 +464,7 @@ The Ontario Button component supports server-side rendering, with a few consider
 - **Preferred content source:** Pass button text through the `label` prop.
 - **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
 - **Framework guidance:** For deterministic SSR output, prefer `label` over slotted children.
+- **Slotted icons in Next.js:** `@stencil/ssr` drops `slot` on Stencil components, so wrap icons in a `<span slot="...">` unless your app applies the slot patch. See [Icons](#icons) above.
 
 ### SSR-safe example:
 
