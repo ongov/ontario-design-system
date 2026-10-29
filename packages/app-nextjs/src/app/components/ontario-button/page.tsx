@@ -11,13 +11,14 @@ import {
 } from '@ongov/ontario-design-system-component-library-react';
 
 /**
- * NOTE: the leading/trailing icon examples below pass `slot` straight to the icon component, which only
- * works in this app with the `@stencil/ssr` slot patch (PR #428, `patches/@stencil__ssr@0.4.0.patch`), or
- * once a release includes the upstream fix: https://github.com/stenciljs/output-targets/pull/863
+ * NOTE: the leading/trailing icon examples below pass `slot` straight to the icon component. That only
+ * works in this app because of the `@stencil/ssr` slot patch (`patches/@stencil__ssr@0.4.0.patch`), which
+ * forwards `slot` onto the `display:contents` wrapper that `@stencil/ssr` renders around each Stencil
+ * component. See `documentation/internal-documentation/patched-dependencies.md`.
  *
- * Without either, `@stencil/ssr` wraps the icon in a `display:contents` div that doesn't carry `slot`, so
- * the browser never slots the icon and the button renders without it. Wrapping the icon in a plain
- * `<span slot="leading-icon">` works around that if this branch has to run without the patch.
+ * Without the patch the wrapper doesn't carry `slot`, so the browser never slots the icon and the button
+ * renders without it. Apps that don't have the patch should wrap the icon in a plain
+ * `<span slot="leading-icon">` instead, as shown in the `ontario-button` readme.
  */
 export default function OntarioButtonPage() {
 	const [submitted, setSubmitted] = useState(false);
