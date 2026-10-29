@@ -1,5 +1,6 @@
 <div class="ontario-container">
 	<ontario-header
+		language="{{ currentLang }}"
 		type="application"
 		[applicationHeaderInfo]="{
 			title: getTranslation().appName,
@@ -13,13 +14,13 @@
 			{
 				title: getTranslation().menuItemOne,
 				href: getRoute().home,
-				linkIsActive: getRoute().homeIsActive
+				linkIsActive: getRoute().homeIsActive,
 			},
 			{
 				title: getTranslation().menuItemTwo,
 				href: getRoute().register,
-				linkIsActive: getRoute().registerIsActive
-			}
+				linkIsActive: getRoute().registerIsActive,
+			},
 		]"
 		[customLanguageToggle]="useLanguage"
 	>
@@ -33,22 +34,6 @@
 		</div>
 	</main>
 	<div class="ontario-footer-wrapper">
-		<ontario-footer
-			type="default"
-			[footerLinks]="{
-				accessibilityLink: {
-					text: getTranslation().accessibility,
-					href: getTranslation().accessibilityLink
-				},
-				privacyLink: {
-					text: getTranslation().privacy,
-					href: getTranslation().privacyLink
-				},
-				contactLink: {
-					text: getTranslation().contactUs,
-					href: getTranslation().contactUsLink
-				}
-			}"
-		></ontario-footer>
+		<ontario-footer type="default" [language]="currentLang" [footerLinks]="footerLinks"></ontario-footer>
 	</div>
 </div>
