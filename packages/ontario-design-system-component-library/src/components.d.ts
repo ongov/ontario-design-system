@@ -899,10 +899,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAccount {
         /**
@@ -916,10 +919,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAdd {
         /**
@@ -933,10 +939,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAddAlt {
         /**
@@ -950,10 +959,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertError {
         /**
@@ -962,10 +974,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertInformation {
         /**
@@ -974,10 +989,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertSuccess {
         /**
@@ -986,10 +1004,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertWarning {
         /**
@@ -998,10 +1019,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconArrowUp {
         /**
@@ -1015,10 +1039,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAttach {
         /**
@@ -1032,10 +1059,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconBookmarkOff {
         /**
@@ -1049,10 +1079,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconBookmarkOn {
         /**
@@ -1066,10 +1099,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCalendar {
         /**
@@ -1083,10 +1119,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCamera {
         /**
@@ -1100,10 +1139,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronDown {
         /**
@@ -1117,10 +1159,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronLeft {
         /**
@@ -1134,10 +1179,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronRight {
         /**
@@ -1151,10 +1199,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronUp {
         /**
@@ -1168,10 +1219,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconClock {
         /**
@@ -1185,10 +1239,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconClose {
         /**
@@ -1202,10 +1259,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCloseHeader {
         /**
@@ -1219,10 +1279,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCloud {
         /**
@@ -1236,10 +1299,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCollapse {
         /**
@@ -1253,10 +1319,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCreditCard {
         /**
@@ -1270,10 +1339,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCriticalAlertWarning {
         /**
@@ -1287,10 +1359,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDelete {
         /**
@@ -1304,10 +1379,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDocument {
         /**
@@ -1321,10 +1399,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDownload {
         /**
@@ -1338,10 +1419,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDropdownArrow {
         /**
@@ -1350,10 +1434,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconEdit {
         /**
@@ -1367,10 +1454,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconEmail {
         /**
@@ -1384,10 +1474,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconExpand {
         /**
@@ -1401,10 +1494,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconExport {
         /**
@@ -1418,10 +1514,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFacebook {
         /**
@@ -1435,10 +1534,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFacebookAlt {
         /**
@@ -1452,10 +1554,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFavouriteOff {
         /**
@@ -1469,10 +1574,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFavouriteOn {
         /**
@@ -1486,10 +1594,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFilter {
         /**
@@ -1503,10 +1614,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFlickr {
         /**
@@ -1520,10 +1634,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconGrid {
         /**
@@ -1537,10 +1654,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconHelp {
         /**
@@ -1554,10 +1674,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInstagram {
         /**
@@ -1571,10 +1694,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracEn {
         /**
@@ -1583,10 +1709,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracEnAlt {
         /**
@@ -1595,10 +1724,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracFr {
         /**
@@ -1607,10 +1739,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracFrAlt {
         /**
@@ -1619,10 +1754,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLinkedin {
         /**
@@ -1636,10 +1774,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLinkedinAlt {
         /**
@@ -1653,10 +1794,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconList {
         /**
@@ -1670,10 +1814,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLiveChat {
         /**
@@ -1687,10 +1834,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLocationOff {
         /**
@@ -1704,10 +1854,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLocationOn {
         /**
@@ -1721,10 +1874,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLockOff {
         /**
@@ -1738,10 +1894,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLockOn {
         /**
@@ -1755,10 +1914,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMap {
         /**
@@ -1772,10 +1934,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMastercard {
         /**
@@ -1784,10 +1949,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMastercardAlt {
         /**
@@ -1796,10 +1964,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaFastForward {
         /**
@@ -1813,10 +1984,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaFastRewind {
         /**
@@ -1830,10 +2004,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaPause {
         /**
@@ -1847,10 +2024,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaPlay {
         /**
@@ -1864,10 +2044,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaStop {
         /**
@@ -1881,10 +2064,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMenu {
         /**
@@ -1898,10 +2084,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMenuHeader {
         /**
@@ -1915,10 +2104,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMicrophoneOff {
         /**
@@ -1932,10 +2124,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMicrophoneOn {
         /**
@@ -1949,10 +2144,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMoreAccounts {
         /**
@@ -1966,10 +2164,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMoreVertical {
         /**
@@ -1983,10 +2184,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNewWindow {
         /**
@@ -2000,10 +2204,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNext {
         /**
@@ -2017,10 +2224,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNotification {
         /**
@@ -2034,10 +2244,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPasswordHide {
         /**
@@ -2051,10 +2264,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPasswordShow {
         /**
@@ -2068,10 +2284,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPhone {
         /**
@@ -2085,10 +2304,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPhoto {
         /**
@@ -2102,10 +2324,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPinLocationOff {
         /**
@@ -2119,10 +2344,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPinLocationOn {
         /**
@@ -2136,10 +2364,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPrevious {
         /**
@@ -2153,10 +2384,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPrint {
         /**
@@ -2170,10 +2404,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRemove {
         /**
@@ -2187,10 +2424,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRemoveAlt {
         /**
@@ -2204,10 +2444,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconReplay {
         /**
@@ -2221,10 +2464,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRssFeed {
         /**
@@ -2238,10 +2484,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSave {
         /**
@@ -2255,10 +2504,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSearch {
         /**
@@ -2272,10 +2524,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSearchWhite {
         /**
@@ -2289,10 +2544,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment1 {
         /**
@@ -2306,10 +2564,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment2 {
         /**
@@ -2323,10 +2584,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment3 {
         /**
@@ -2340,10 +2604,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment4 {
         /**
@@ -2357,10 +2624,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment5 {
         /**
@@ -2374,10 +2644,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSettings {
         /**
@@ -2391,10 +2664,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconShare {
         /**
@@ -2408,10 +2684,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSort {
         /**
@@ -2425,10 +2704,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAlphabeticalAscending {
         /**
@@ -2442,10 +2724,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAlphabeticalDescending {
         /**
@@ -2459,10 +2744,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAscending {
         /**
@@ -2476,10 +2764,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortDescending {
         /**
@@ -2493,10 +2784,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortVariant {
         /**
@@ -2510,10 +2804,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTag {
         /**
@@ -2527,10 +2824,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTextMessage {
         /**
@@ -2544,10 +2844,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTimer {
         /**
@@ -2561,10 +2864,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportBicycle {
         /**
@@ -2578,10 +2884,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportBus {
         /**
@@ -2595,10 +2904,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportCar {
         /**
@@ -2612,10 +2924,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportWalk {
         /**
@@ -2629,10 +2944,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTty {
         /**
@@ -2646,10 +2964,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTune {
         /**
@@ -2663,10 +2984,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTwitter {
         /**
@@ -2680,10 +3004,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTwitterAlt {
         /**
@@ -2697,10 +3024,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconUpload {
         /**
@@ -2714,10 +3044,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVideo {
         /**
@@ -2731,10 +3064,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVisa {
         /**
@@ -2743,10 +3079,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVoteDislike {
         /**
@@ -2760,10 +3099,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVoteLike {
         /**
@@ -2777,10 +3119,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVpnKey {
         /**
@@ -2794,10 +3139,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconWheelchair {
         /**
@@ -2811,10 +3159,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconWifi {
         /**
@@ -2828,10 +3179,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconYoutube {
         /**
@@ -2845,10 +3199,13 @@ export namespace Components {
          */
         "iconWidth": IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
-        "isDecorative": boolean;
+        "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     /**
      * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.
@@ -6209,10 +6566,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAccount {
         /**
@@ -6226,10 +6586,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAdd {
         /**
@@ -6243,10 +6606,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAddAlt {
         /**
@@ -6260,10 +6626,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertError {
         /**
@@ -6272,10 +6641,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertInformation {
         /**
@@ -6284,10 +6656,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertSuccess {
         /**
@@ -6296,10 +6671,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAlertWarning {
         /**
@@ -6308,10 +6686,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconArrowUp {
         /**
@@ -6325,10 +6706,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconAttach {
         /**
@@ -6342,10 +6726,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconBookmarkOff {
         /**
@@ -6359,10 +6746,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconBookmarkOn {
         /**
@@ -6376,10 +6766,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCalendar {
         /**
@@ -6393,10 +6786,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCamera {
         /**
@@ -6410,10 +6806,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronDown {
         /**
@@ -6427,10 +6826,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronLeft {
         /**
@@ -6444,10 +6846,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronRight {
         /**
@@ -6461,10 +6866,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconChevronUp {
         /**
@@ -6478,10 +6886,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconClock {
         /**
@@ -6495,10 +6906,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconClose {
         /**
@@ -6512,10 +6926,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCloseHeader {
         /**
@@ -6529,10 +6946,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCloud {
         /**
@@ -6546,10 +6966,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCollapse {
         /**
@@ -6563,10 +6986,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCreditCard {
         /**
@@ -6580,10 +7006,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconCriticalAlertWarning {
         /**
@@ -6597,10 +7026,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDelete {
         /**
@@ -6614,10 +7046,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDocument {
         /**
@@ -6631,10 +7066,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDownload {
         /**
@@ -6648,10 +7086,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconDropdownArrow {
         /**
@@ -6660,10 +7101,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconEdit {
         /**
@@ -6677,10 +7121,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconEmail {
         /**
@@ -6694,10 +7141,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconExpand {
         /**
@@ -6711,10 +7161,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconExport {
         /**
@@ -6728,10 +7181,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFacebook {
         /**
@@ -6745,10 +7201,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFacebookAlt {
         /**
@@ -6762,10 +7221,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFavouriteOff {
         /**
@@ -6779,10 +7241,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFavouriteOn {
         /**
@@ -6796,10 +7261,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFilter {
         /**
@@ -6813,10 +7281,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconFlickr {
         /**
@@ -6830,10 +7301,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconGrid {
         /**
@@ -6847,10 +7321,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconHelp {
         /**
@@ -6864,10 +7341,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInstagram {
         /**
@@ -6881,10 +7361,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracEn {
         /**
@@ -6893,10 +7376,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracEnAlt {
         /**
@@ -6905,10 +7391,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracFr {
         /**
@@ -6917,10 +7406,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconInteracFrAlt {
         /**
@@ -6929,10 +7421,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLinkedin {
         /**
@@ -6946,10 +7441,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLinkedinAlt {
         /**
@@ -6963,10 +7461,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconList {
         /**
@@ -6980,10 +7481,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLiveChat {
         /**
@@ -6997,10 +7501,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLocationOff {
         /**
@@ -7014,10 +7521,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLocationOn {
         /**
@@ -7031,10 +7541,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLockOff {
         /**
@@ -7048,10 +7561,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconLockOn {
         /**
@@ -7065,10 +7581,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMap {
         /**
@@ -7082,10 +7601,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMastercard {
         /**
@@ -7094,10 +7616,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMastercardAlt {
         /**
@@ -7106,10 +7631,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaFastForward {
         /**
@@ -7123,10 +7651,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaFastRewind {
         /**
@@ -7140,10 +7671,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaPause {
         /**
@@ -7157,10 +7691,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaPlay {
         /**
@@ -7174,10 +7711,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMediaStop {
         /**
@@ -7191,10 +7731,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMenu {
         /**
@@ -7208,10 +7751,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMenuHeader {
         /**
@@ -7225,10 +7771,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMicrophoneOff {
         /**
@@ -7242,10 +7791,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMicrophoneOn {
         /**
@@ -7259,10 +7811,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMoreAccounts {
         /**
@@ -7276,10 +7831,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconMoreVertical {
         /**
@@ -7293,10 +7851,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNewWindow {
         /**
@@ -7310,10 +7871,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNext {
         /**
@@ -7327,10 +7891,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconNotification {
         /**
@@ -7344,10 +7911,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPasswordHide {
         /**
@@ -7361,10 +7931,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPasswordShow {
         /**
@@ -7378,10 +7951,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPhone {
         /**
@@ -7395,10 +7971,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPhoto {
         /**
@@ -7412,10 +7991,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPinLocationOff {
         /**
@@ -7429,10 +8011,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPinLocationOn {
         /**
@@ -7446,10 +8031,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPrevious {
         /**
@@ -7463,10 +8051,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconPrint {
         /**
@@ -7480,10 +8071,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRemove {
         /**
@@ -7497,10 +8091,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRemoveAlt {
         /**
@@ -7514,10 +8111,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconReplay {
         /**
@@ -7531,10 +8131,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconRssFeed {
         /**
@@ -7548,10 +8151,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSave {
         /**
@@ -7565,10 +8171,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSearch {
         /**
@@ -7582,10 +8191,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSearchWhite {
         /**
@@ -7599,10 +8211,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment1 {
         /**
@@ -7616,10 +8231,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment2 {
         /**
@@ -7633,10 +8251,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment3 {
         /**
@@ -7650,10 +8271,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment4 {
         /**
@@ -7667,10 +8291,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSentiment5 {
         /**
@@ -7684,10 +8311,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSettings {
         /**
@@ -7701,10 +8331,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconShare {
         /**
@@ -7718,10 +8351,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSort {
         /**
@@ -7735,10 +8371,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAlphabeticalAscending {
         /**
@@ -7752,10 +8391,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAlphabeticalDescending {
         /**
@@ -7769,10 +8411,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortAscending {
         /**
@@ -7786,10 +8431,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortDescending {
         /**
@@ -7803,10 +8451,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconSortVariant {
         /**
@@ -7820,10 +8471,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTag {
         /**
@@ -7837,10 +8491,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTextMessage {
         /**
@@ -7854,10 +8511,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTimer {
         /**
@@ -7871,10 +8531,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportBicycle {
         /**
@@ -7888,10 +8551,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportBus {
         /**
@@ -7905,10 +8571,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportCar {
         /**
@@ -7922,10 +8591,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTransportWalk {
         /**
@@ -7939,10 +8611,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTty {
         /**
@@ -7956,10 +8631,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTune {
         /**
@@ -7973,10 +8651,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTwitter {
         /**
@@ -7990,10 +8671,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconTwitterAlt {
         /**
@@ -8007,10 +8691,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconUpload {
         /**
@@ -8024,10 +8711,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVideo {
         /**
@@ -8041,10 +8731,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVisa {
         /**
@@ -8053,10 +8746,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVoteDislike {
         /**
@@ -8070,10 +8766,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVoteLike {
         /**
@@ -8087,10 +8786,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconVpnKey {
         /**
@@ -8104,10 +8806,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconWheelchair {
         /**
@@ -8121,10 +8826,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconWifi {
         /**
@@ -8138,10 +8846,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     interface OntarioIconYoutube {
         /**
@@ -8155,10 +8866,13 @@ declare namespace LocalJSX {
          */
         "iconWidth"?: IconSize;
         /**
-          * Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img".
-          * @default false
+          * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
          */
         "isDecorative"?: boolean;
+        /**
+          * Accessible name for a meaningful icon. Without a label, the icon is decorative.
+         */
+        "label"?: string;
     }
     /**
      * Ontario In-Page Navigation presents a heading and ordered list of links that help users navigate long single-page content.

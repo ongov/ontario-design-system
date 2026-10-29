@@ -1,43 +1,76 @@
-// import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+import { test } from '@stencil/playwright';
+import manifest from '../icon-manifest.json' with { type: 'json' };
 
-// describe('ontario-icon', () => {
-// 	describe('render', () => {
-// 		it('renders', async () => {
-// 			const page = await newE2EPage();
-// 			await page.setContent('<ontario-icon-accessibility></ontario-icon-accessibility>');
+const rotationFixture = `
+	<style>
+		.rotating-icon {
+			display: inline-block;
+			transform: rotate(0deg);
+			transition: transform 200ms ease-in-out;
+		}
 
-// 			const component = await page.find('ontario-icon-accessibility');
-// 			const element = await page.find('ontario-icon-accessibility >>> div');
+		.rotating-icon--open {
+			transform: rotate(180deg);
+		}
 
-// 			expect(component).toHaveClass('hydrated');
-// 			expect(element).toHaveClass('ontario-icon');
-// 		});
-// 	});
+		@media (prefers-reduced-motion: reduce) {
+			.rotating-icon {
+				transition: none;
+			}
+		}
+	</style>
+	<ontario-icon-chevron-down class="rotating-icon"></ontario-icon-chevron-down>
+`;
 
-// 	it('renders changes to the icon', async () => {
-// 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-icon-accessibility></ontario-icon-accessibility>');
-// 		const component = await page.find('ontario-icon-accessibility');
-// 		const element = await page.find('ontario-icon-accessibility >>> div');
-// 		// const style = getComputedStyle(element)
+test.describe('ontario-icon', () => {
+	test('every manifest icon renders a decorative, non-focusable SVG', async ({ page }) => {
+		await page.setContent(`<main>${manifest.icons.map((icon) => `<${icon.name}></${icon.name}>`).join('')}</main>`);
+		await page.waitForChanges();
+		for (const icon of manifest.icons) {
+			const svg = page.locator(icon.name).locator('svg');
+			await expect(svg).toHaveCount(1);
+			await expect(svg).toHaveAttribute('aria-hidden', 'true');
+			await expect(svg).toHaveAttribute('focusable', 'false');
+			await expect(svg).not.toHaveAttribute('role');
+		}
+	});
 
-// 		expect(element).toHaveClass('ontario-icon');
+	test('decorative and labelled icons pass axe accessibility checks', async ({ page }) => {
+		await page.setContent(`
+			<main>
+				<ontario-icon-accessibility></ontario-icon-accessibility>
+				<ontario-icon-accessibility label="Accessibility options"></ontario-icon-accessibility>
+			</main>
+		`);
+		await page.waitForChanges();
 
-// 		component.setProperty('colour', 'white');
-// 		await page.waitForChanges();
-// 		expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--white']);
+		const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
 
-// 		component.setProperty('colour', 'bluey');
-// 		await page.waitForChanges();
-// 		expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--black']);
+		expect(results.violations).toHaveLength(0);
+	});
 
-// 		component.setProperty('iconWidth', '24');
-// 		component.setProperty('colour', 'grey');
-// 		await page.waitForChanges();
-// 		expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--grey', 'ontario-icon--width-24']);
+	test('consumer rotation applies to the icon host and respects reduced motion', async ({ page }) => {
+		await page.emulateMedia({ reducedMotion: 'no-preference' });
+		await page.setContent(rotationFixture);
+		await page.waitForChanges();
 
-// 		component.setProperty('iconWidth', 'not a number');
-// 		await page.waitForChanges();
-// 		expect(element).toHaveClasses(['ontario-icon', 'ontario-icon--width-24']);
-// 	});
-// });
+		const host = page.locator('ontario-icon-chevron-down');
+		await expect(host).toHaveCSS('display', 'inline-block');
+		await expect(host).toHaveCSS('transition-duration', '0.2s');
+
+		const transitionFinished = host.evaluate(
+			(element) =>
+				new Promise<void>((resolve) => element.addEventListener('transitionend', () => resolve(), { once: true })),
+		);
+		await host.evaluate((element) => element.classList.add('rotating-icon--open'));
+		await transitionFinished;
+		await expect
+			.poll(() => host.evaluate((element) => getComputedStyle(element).transform))
+			.toBe('matrix(-1, 0, 0, -1, 0, 0)');
+
+		await page.emulateMedia({ reducedMotion: 'reduce' });
+		await expect(host).toHaveCSS('transition-duration', '0s');
+	});
+});

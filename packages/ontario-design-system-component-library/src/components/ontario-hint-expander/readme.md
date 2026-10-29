@@ -195,8 +195,8 @@ For component guidance, see:
 
 ### Depends on
 
-- [ontario-icon-chevron-up](../ontario-icon)
-- [ontario-icon-chevron-down](../ontario-icon)
+- [ontario-icon-chevron-up](../ontario-icon/ontario-icon-chevron-up)
+- [ontario-icon-chevron-down](../ontario-icon/ontario-icon-chevron-down)
 
 ### Graph
 

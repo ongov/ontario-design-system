@@ -16,11 +16,11 @@ Please refer to the [Ontario Design System primary icons](https://designsystem.o
 
 ## Configuration
 
-Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the icon component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component. Check [here](https://designsystem.ontario.ca/components/detail/icons-primary.html) to see the list of all available primary icons. Check [here](https://designsystem.ontario.ca/components/detail/icons-secondary.html) to see the list of all available secondary icons.
+Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the icon component can be added directly into the project's code. Each icon has its own generated README listing the properties it supports. Please see the [examples](#examples) below for how to configure the component. Check [here](https://designsystem.ontario.ca/components/detail/icons-primary.html) to see the list of all available primary icons. Check [here](https://designsystem.ontario.ca/components/detail/icons-secondary.html) to see the list of all available secondary icons.
 
 ## Examples
 
-Example of a bare-bones icon component, the user is referencing the Ontario Design System's accessibility icon. The default colour will display as black.
+Icons are decorative by default. Add a `label` when the icon communicates information that is not already available in nearby text. The `isDecorative` property is deprecated; use `label` to provide an accessible name.
 
 ```mdx-code-block
 <Tabs
@@ -66,7 +66,53 @@ Example of a bare-bones icon component, the user is referencing the Ontario Desi
 	<OntarioIconAccessibility></OntarioIconAccessibility>
 </div>
 
-Example of a bookmark icon, where the user is is passing a colour property of 'Grey'.
+Example of a meaningful icon with an accessible name.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-icon-accessibility label="Accessibility options"></ontario-icon-accessibility>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioIconAccessibility label="Accessibility options"></OntarioIconAccessibility>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-icon-accessibility label="Accessibility options"></ontario-icon-accessibility>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioIconAccessibility label="Accessibility options"></OntarioIconAccessibility>
+</div>
+
+Example of bookmark icons with a `grey` colour property.
 
 ```mdx-code-block
 <Tabs
@@ -116,16 +162,53 @@ Example of a bookmark icon, where the user is is passing a colour property of 'G
 	<OntarioIconBookmarkOn colour="grey" iconWidth={32}></OntarioIconBookmarkOn>
 </div>
 
-<!-- Auto Generated Below -->
+## Styling, transforms and responsive sizing
 
-## Properties
+Style the icon custom-element host, not the SVG inside its shadow root. The host must be `inline-block` or `inline-flex` for transforms to apply reliably. For configurable-colour icons, set `colour="inherit"` to use the surrounding text colour. Use the existing `iconWidth` property for responsive sizes; update it at the breakpoints used by your application.
 
-| Property       | Attribute       | Description                                                                                                                                                                                                                                                                               | Type                                                  | Default   |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------- |
-| `colour`       | `colour`        | Set the icon's colour.                                                                                                                                                                                                                                                                    | `"black" \| "blue" \| "grey" \| "inherit" \| "white"` | `'black'` |
-| `iconWidth`    | `icon-width`    | The icon width will autogenerate the height since the icons are in square format, thus preserving the aspect ratio.                                                                                                                                                                       | `16 \| 24 \| 32 \| 48`                                | `24`      |
-| `isDecorative` | `is-decorative` | Whether the icon is decorative and should be hidden from assistive technologies. When set to true, the icon will have aria-hidden="true" and role="img" will be removed from the SVG element. When set to false (default), the icon is exposed to assistive technologies with role="img". | `boolean`                                             | `false`   |
+```css
+.rotating-icon {
+	display: inline-block;
+	transition: transform 200ms ease-in-out;
+}
 
----
+.rotating-icon--open {
+	transform: rotate(180deg);
+}
 
-_Built with [StencilJS](https://stenciljs.com/)_
+@media (prefers-reduced-motion: reduce) {
+	.rotating-icon {
+		transition: none;
+	}
+}
+```
+
+Apply the class to the icon element itself, for example `<ontario-icon-chevron-down class="rotating-icon"></ontario-icon-chevron-down>`. Keep rotation state and timing in the consuming component; the icon does not provide a rotate or flip property.
+
+Each icon has its own generated README with the properties supported by that icon.
+
+## Upgrade note
+
+Icons without a non-blank `label` now render as decorative images with `aria-hidden="true"`, `focusable="false"` and no image role. Previously, icons defaulted to `role="img"` without an accessible name. Audit existing meaningful icon usage before upgrading and supply a descriptive `label` when equivalent text is not already available. A non-blank label takes precedence over `isDecorative`, which remains accepted but emits a development-only deprecation warning.
+
+## Maintaining icons
+
+The `icons` array in `icon-manifest.json` is the source of truth for icon metadata. Each entry must correspond to an SVG with the same basename in `assets/`.
+
+| Field        | Required | Meaning                                                                                                                    |
+| ------------ | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                   |
+| `category`   | Yes      | Icon category: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                    |
+| `viewBox`    | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                |
+| `colour`     | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
+| `aliases`    | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components. |
+| `deprecated` | Yes      | Deprecation metadata. This flag alone does not emit a component warning.                                                   |
+| `replacedBy` | No       | Replacement icon name recorded as metadata when an icon is deprecated.                                                     |
+
+### Add or update an icon
+
+1. Add or update the SVG artwork in `assets/` and its matching manifest entry. Preserve existing tag names and colour capabilities unless an approved change requires otherwise.
+2. From the component-library package directory, run `pnpm run generate:icons`. The generator validates the asset inventory and updates the per-icon TSX files.
+3. Run `pnpm run build` to regenerate public types, framework wrappers and per-icon documentation. Each icon's component and README live in `ontario-icon/<icon-name>/`.
+4. Run `pnpm run check:icons`. This read-only command fails if generated components are missing, unexpected or out of date. CI runs the same check.
+5. Review and commit the intended source and generated output together. Do not edit generated TSX files manually; update the generator, manifest or SVG assets instead.
