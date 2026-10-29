@@ -120,3 +120,42 @@ it('should render slotted SVG content inside the button', async () => {
 </ontario-button>
 `);
 });
+
+describe('accessible name validation', () => {
+	let warnSpy: ReturnType<typeof vi.spyOn>;
+
+	beforeEach(() => {
+		warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+	});
+
+	afterEach(() => {
+		warnSpy.mockRestore();
+	});
+
+	it('should warn about aria-label-text when there is no label and no aria-label-text', async () => {
+		await render(`<ontario-button></ontario-button>`);
+
+		expect(warnSpy).toHaveBeenCalledTimes(1);
+		expect(warnSpy.mock.calls[0][0]).toContain('aria-label-text');
+	});
+
+	it('should not warn when a label is provided', async () => {
+		await render(`<ontario-button label="Save"></ontario-button>`);
+
+		expect(warnSpy).not.toHaveBeenCalled();
+	});
+
+	it('should not warn when the element content gives the button its label', async () => {
+		await render(`<ontario-button>Save</ontario-button>`);
+
+		expect(warnSpy).not.toHaveBeenCalled();
+	});
+
+	it('should not warn when there is no label but aria-label-text is provided', async () => {
+		await render(
+			`<ontario-button aria-label-text="Open map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2z"/></svg></ontario-button>`,
+		);
+
+		expect(warnSpy).not.toHaveBeenCalled();
+	});
+});
