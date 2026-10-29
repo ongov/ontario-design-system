@@ -278,6 +278,60 @@ it('should render both leading and trailing icon slots alongside a label', async
 `);
 });
 
+describe('icon slot detection', () => {
+	const buttonOf = (root: HTMLElement) => root.shadowRoot?.querySelector('button') as HTMLButtonElement;
+	const slotContainerOf = (root: HTMLElement, slotName: string) =>
+		root.shadowRoot?.querySelector(`slot[name="${slotName}"]`)?.parentElement as HTMLElement;
+
+	it('should count an icon that is a direct child of the button', async () => {
+		const page = await render(
+			`<ontario-button label="Save"><svg slot="leading-icon" viewBox="0 0 24 24" aria-hidden="true"></svg></ontario-button>`,
+		);
+
+		expect(buttonOf(page.root as HTMLElement)).toHaveClass('ontario-button--icons-1');
+		expect(slotContainerOf(page.root as HTMLElement, 'leading-icon')).not.toHaveClass(
+			'ontario-button__icon-slot--empty',
+		);
+	});
+
+	it('should not count an icon nested inside another element, because the browser does not slot it', async () => {
+		const page = await render(
+			`<ontario-button label="Save"><span><svg slot="leading-icon" viewBox="0 0 24 24" aria-hidden="true"></svg></span></ontario-button>`,
+		);
+
+		expect(buttonOf(page.root as HTMLElement)).not.toHaveClass('ontario-button--icons-1');
+		expect(buttonOf(page.root as HTMLElement)).not.toHaveClass('ontario-button--icons-2');
+		expect(slotContainerOf(page.root as HTMLElement, 'leading-icon')).toHaveClass('ontario-button__icon-slot--empty');
+	});
+
+	it('should count a wrapper element that carries the slot attribute', async () => {
+		const page = await render(
+			`<ontario-button label="Save"><span slot="trailing-icon"><svg viewBox="0 0 24 24" aria-hidden="true"></svg></span></ontario-button>`,
+		);
+
+		expect(buttonOf(page.root as HTMLElement)).toHaveClass('ontario-button--icons-1');
+		expect(slotContainerOf(page.root as HTMLElement, 'trailing-icon')).not.toHaveClass(
+			'ontario-button__icon-slot--empty',
+		);
+	});
+
+	it('should count both icons as two when each slot has a direct child', async () => {
+		const page = await render(
+			`<ontario-button label="Save"><svg slot="leading-icon" viewBox="0 0 24 24" aria-hidden="true"></svg><svg slot="trailing-icon" viewBox="0 0 24 24" aria-hidden="true"></svg></ontario-button>`,
+		);
+
+		expect(buttonOf(page.root as HTMLElement)).toHaveClass('ontario-button--icons-2');
+	});
+
+	it('should not add icon classes to a plain button', async () => {
+		const page = await render(`<ontario-button label="Save"></ontario-button>`);
+
+		expect(buttonOf(page.root as HTMLElement)).not.toHaveClass('ontario-button--icons-1');
+		expect(buttonOf(page.root as HTMLElement)).not.toHaveClass('ontario-button--icons-2');
+		expect(buttonOf(page.root as HTMLElement)).not.toHaveClass('ontario-button--icon-only');
+	});
+});
+
 describe('accessible name validation', () => {
 	let warnSpy: ReturnType<typeof vi.spyOn>;
 
