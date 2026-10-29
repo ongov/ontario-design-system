@@ -945,6 +945,25 @@ export class OntarioSearchBox {
 		this.setFocus(this.inputFieldRef);
 	};
 
+	/**
+	 * Handles the reset button click.
+	 *
+	 * The native reset is prevented and the input is cleared explicitly. The native reset only runs after click handlers
+	 * and fires no `input` event, so the focus handler (which syncs `value` from the input) would otherwise write the old
+	 * text back to the component value, leaving it, and the reset button visibility, out of sync with the empty field.
+	 */
+	private handleReset = (event: globalThis.Event) => {
+		event.preventDefault();
+
+		if (this.inputFieldRef) {
+			this.inputFieldRef.value = '';
+		}
+
+		this.value = '';
+		this.syncFormValue('');
+		this.handleFocus();
+	};
+
 	render() {
 		const searchInputFieldId = this.inputRefId;
 		const shouldShowSuggestions = this.enableAutocomplete && this.suggestionsOpen && this.getSuggestionCount() > 0;
@@ -998,12 +1017,12 @@ export class OntarioSearchBox {
 							value={this.getValue()}
 						></Input>
 						<Input
-							className="ontario-search__reset"
+							className={`ontario-search__reset${this.getValue() === '' ? ' ontario-search__reset--hidden' : ''}`}
 							id="ontario-search-reset"
 							type="reset"
 							value=""
 							ariaLabel={this.translations.header.clearSearchField[`${this.language}`]}
-							onClick={() => this.handleFocus()}
+							onClick={this.handleReset}
 						></Input>
 						<button
 							class="ontario-search__submit"
