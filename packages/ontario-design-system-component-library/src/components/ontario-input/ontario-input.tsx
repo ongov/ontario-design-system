@@ -123,6 +123,30 @@ export class OntarioInput implements TextInput {
 	@Prop({ mutable: true }) type: 'text' | 'tel' | 'email' | 'password' = 'text';
 
 	/**
+	 * Hints to the browser which virtual keyboard layout to present, such as `numeric` for postal
+	 * codes or one-time codes. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`,
+	 * `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and
+	 * should be paired with `pattern` and/or `inputValidator` when constrained entry is required.
+	 *
+	 * @example
+	 * <ontario-input
+	 *   name="postal-code"
+	 *   caption="Postal code"
+	 *   input-mode="numeric"
+	 *   pattern="[0-9]*"
+	 * ></ontario-input>
+	 */
+	// Required `string` (not an optional literal union) to match native `HTMLElement.inputMode`.
+	@Prop() inputMode: string = '';
+
+	/**
+	 * A regular expression the browser can use as a hint when validating input and, on some
+	 * platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only -
+	 * it does not replace server-side or component-level (`inputValidator`) validation.
+	 */
+	@Prop() pattern?: string;
+
+	/**
 	 * The input content value.
 	 *
 	 * This is optional.
@@ -481,6 +505,8 @@ export class OntarioInput implements TextInput {
 					type={this.type}
 					value={this.getValue()}
 					required={!!this.required}
+					inputMode={this.inputMode || undefined}
+					pattern={this.pattern}
 				></Input>
 				{this.internalHintExpander && (
 					<ontario-hint-expander

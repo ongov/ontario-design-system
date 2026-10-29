@@ -2967,6 +2967,12 @@ export namespace Components {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for postal codes or one-time codes. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` and/or `inputValidator` when constrained entry is required.
+          * @example <ontario-input   name="postal-code"   caption="Postal code"   input-mode="numeric"   pattern="[0-9]*" ></ontario-input>
+          * @default ''
+         */
+        "inputMode": string;
+        /**
           * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
          */
         "inputValidator"?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
@@ -2991,6 +2997,10 @@ export namespace Components {
           * The name assigned to the input. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level (`inputValidator`) validation.
+         */
+        "pattern"?: string;
         /**
           * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
           * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
@@ -3214,6 +3224,11 @@ export namespace Components {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode": string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -3228,6 +3243,10 @@ export namespace Components {
           * @default OntarioSearchBox.DEFAULT_MIN_CHARS
          */
         "minChars"?: number;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -8258,6 +8277,12 @@ declare namespace LocalJSX {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for postal codes or one-time codes. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` and/or `inputValidator` when constrained entry is required.
+          * @example <ontario-input   name="postal-code"   caption="Postal code"   input-mode="numeric"   pattern="[0-9]*" ></ontario-input>
+          * @default ''
+         */
+        "inputMode"?: string;
+        /**
           * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
          */
         "inputValidator"?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
@@ -8302,6 +8327,10 @@ declare namespace LocalJSX {
           * Emitted when a input  occurs when an input has been changed.
          */
         "onInputOnInput"?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level (`inputValidator`) validation.
+         */
+        "pattern"?: string;
         /**
           * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
           * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
@@ -8549,6 +8578,11 @@ declare namespace LocalJSX {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode"?: string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -8596,6 +8630,10 @@ declare namespace LocalJSX {
           * @example <script> 	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {  		const searchValue = event.detail; 		console.log('Search submitted with value:', searchValue);   }; 	</script>
          */
         "onSearchOnSubmit"?: (event: OntarioSearchBoxCustomEvent<string>) => void;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
