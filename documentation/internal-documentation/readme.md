@@ -67,6 +67,7 @@ Provides information for developers working on the monorepo, including:
 
 - Follow the [Setup Guide](./setup-guide.md) to configure your development environment.
 - Refer to [Contributing Guidelines](./contributing-guidelines.md) for information on submitting changes.
+- See [Patched Dependencies](./patched-dependencies.md) for the dependencies that are patched in this repo and why (including the `@stencil/ssr` slot patch).
 
 If you run into any issues, please contact the development team. You can reach us on Slack by tagging `@designsystem-dev` in the **#shared-co-design-system** channel or by emailing the Design System team at design.system@ontario.ca.
 
