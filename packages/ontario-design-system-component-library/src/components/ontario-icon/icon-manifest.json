@@ -157,6 +157,7 @@
 			"category": "other",
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
+			"previewBackground": "dark",
 			"aliases": [],
 			"deprecated": false
 		},
@@ -501,6 +502,7 @@
 			"category": "other",
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
+			"previewBackground": "dark",
 			"aliases": [],
 			"deprecated": false
 		},

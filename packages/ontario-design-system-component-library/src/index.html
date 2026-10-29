@@ -67,6 +67,35 @@
 				width: 5rem;
 			}
 
+			.ontario-icon-gallery__grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+				gap: 1rem;
+			}
+
+			.ontario-icon-gallery__item {
+				display: flex;
+				min-height: 6rem;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+				margin: 0;
+				padding: 1rem;
+				border: 1px solid #cccccc;
+				text-align: center;
+			}
+
+			.ontario-icon-gallery__item--dark {
+				background-color: #1a1a1a;
+				color: #ffffff;
+			}
+
+			.ontario-icon-gallery__item figcaption {
+				font-size: 0.875rem;
+				overflow-wrap: anywhere;
+			}
+
 			@media screen and (min-width: 40em) {
 				.ontario-summary-list__key {
 					font-size: 1.1875rem;
@@ -993,21 +1022,520 @@
 					<!-- Icons -->
 					<div>
 						<h2 id="icons">Icons</h2>
-						<div>
-							<h3 class="ontario-h4">Primary Icons</h3>
-							<ontario-icon-accessibility icon-width="32" colour="blue"></ontario-icon-accessibility>
-							<ontario-icon-help icon-width="32"></ontario-icon-help>
-							<ontario-icon-email icon-width="32" colour="grey"></ontario-icon-email>
-						</div>
-						<div class="ontario-margin-top-24-!">
-							<h3 class="ontario-h4">Secondary Icons</h3>
-							<ontario-icon-notification icon-width="32" colour="blue"></ontario-icon-notification>
-							<ontario-icon-print icon-width="32"></ontario-icon-print>
-							<ontario-icon-camera icon-width="32" colour="grey"></ontario-icon-camera>
-							<ontario-icon-text-message icon-width="32" colour="blue"></ontario-icon-text-message>
-							<ontario-icon-mastercard icon-width="32"></ontario-icon-mastercard>
-							<ontario-icon-transport-bus icon-width="32" colour="grey"></ontario-icon-transport-bus>
-							<ontario-icon-sentiment-5 icon-width="32"></ontario-icon-sentiment-5>
+						<p>All generated icons, grouped by their manifest category.</p>
+						<div id="ontario-icon-gallery">
+							<!-- ICON_GALLERY_START -->
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-primary">
+								<h3 id="icon-category-primary">Primary</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-accessibility icon-width="32"></ontario-icon-accessibility>
+										<figcaption><code>ontario-icon-accessibility</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-add-alt icon-width="32"></ontario-icon-add-alt>
+										<figcaption><code>ontario-icon-add-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-add icon-width="32"></ontario-icon-add>
+										<figcaption><code>ontario-icon-add</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-arrow-up icon-width="32"></ontario-icon-arrow-up>
+										<figcaption><code>ontario-icon-arrow-up</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-chevron-down icon-width="32"></ontario-icon-chevron-down>
+										<figcaption><code>ontario-icon-chevron-down</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-chevron-left icon-width="32"></ontario-icon-chevron-left>
+										<figcaption><code>ontario-icon-chevron-left</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-chevron-right icon-width="32"></ontario-icon-chevron-right>
+										<figcaption><code>ontario-icon-chevron-right</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-chevron-up icon-width="32"></ontario-icon-chevron-up>
+										<figcaption><code>ontario-icon-chevron-up</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-close icon-width="32"></ontario-icon-close>
+										<figcaption><code>ontario-icon-close</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-collapse icon-width="32"></ontario-icon-collapse>
+										<figcaption><code>ontario-icon-collapse</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-credit-card icon-width="32"></ontario-icon-credit-card>
+										<figcaption><code>ontario-icon-credit-card</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-dropdown-arrow icon-width="32"></ontario-icon-dropdown-arrow>
+										<figcaption><code>ontario-icon-dropdown-arrow</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-email icon-width="32"></ontario-icon-email>
+										<figcaption><code>ontario-icon-email</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-expand icon-width="32"></ontario-icon-expand>
+										<figcaption><code>ontario-icon-expand</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-help icon-width="32"></ontario-icon-help>
+										<figcaption><code>ontario-icon-help</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-menu icon-width="32"></ontario-icon-menu>
+										<figcaption><code>ontario-icon-menu</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-more-accounts icon-width="32"></ontario-icon-more-accounts>
+										<figcaption><code>ontario-icon-more-accounts</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-new-window icon-width="32"></ontario-icon-new-window>
+										<figcaption><code>ontario-icon-new-window</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-phone icon-width="32"></ontario-icon-phone>
+										<figcaption><code>ontario-icon-phone</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-remove-alt icon-width="32"></ontario-icon-remove-alt>
+										<figcaption><code>ontario-icon-remove-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-remove icon-width="32"></ontario-icon-remove>
+										<figcaption><code>ontario-icon-remove</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-search-white icon-width="32"></ontario-icon-search-white>
+										<figcaption><code>ontario-icon-search-white</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-search icon-width="32"></ontario-icon-search>
+										<figcaption><code>ontario-icon-search</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-tty icon-width="32"></ontario-icon-tty>
+										<figcaption><code>ontario-icon-tty</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-secondary">
+								<h3 id="icon-category-secondary">Secondary</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-account icon-width="32"></ontario-icon-account>
+										<figcaption><code>ontario-icon-account</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-attach icon-width="32"></ontario-icon-attach>
+										<figcaption><code>ontario-icon-attach</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-bookmark-off icon-width="32"></ontario-icon-bookmark-off>
+										<figcaption><code>ontario-icon-bookmark-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-bookmark-on icon-width="32"></ontario-icon-bookmark-on>
+										<figcaption><code>ontario-icon-bookmark-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-calendar icon-width="32"></ontario-icon-calendar>
+										<figcaption><code>ontario-icon-calendar</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-camera icon-width="32"></ontario-icon-camera>
+										<figcaption><code>ontario-icon-camera</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-clock icon-width="32"></ontario-icon-clock>
+										<figcaption><code>ontario-icon-clock</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-cloud icon-width="32"></ontario-icon-cloud>
+										<figcaption><code>ontario-icon-cloud</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-delete icon-width="32"></ontario-icon-delete>
+										<figcaption><code>ontario-icon-delete</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-document icon-width="32"></ontario-icon-document>
+										<figcaption><code>ontario-icon-document</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-download icon-width="32"></ontario-icon-download>
+										<figcaption><code>ontario-icon-download</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-edit icon-width="32"></ontario-icon-edit>
+										<figcaption><code>ontario-icon-edit</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-export icon-width="32"></ontario-icon-export>
+										<figcaption><code>ontario-icon-export</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-favourite-off icon-width="32"></ontario-icon-favourite-off>
+										<figcaption><code>ontario-icon-favourite-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-favourite-on icon-width="32"></ontario-icon-favourite-on>
+										<figcaption><code>ontario-icon-favourite-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-filter icon-width="32"></ontario-icon-filter>
+										<figcaption><code>ontario-icon-filter</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-grid icon-width="32"></ontario-icon-grid>
+										<figcaption><code>ontario-icon-grid</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-list icon-width="32"></ontario-icon-list>
+										<figcaption><code>ontario-icon-list</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-location-off icon-width="32"></ontario-icon-location-off>
+										<figcaption><code>ontario-icon-location-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-location-on icon-width="32"></ontario-icon-location-on>
+										<figcaption><code>ontario-icon-location-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-lock-off icon-width="32"></ontario-icon-lock-off>
+										<figcaption><code>ontario-icon-lock-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-lock-on icon-width="32"></ontario-icon-lock-on>
+										<figcaption><code>ontario-icon-lock-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-map icon-width="32"></ontario-icon-map>
+										<figcaption><code>ontario-icon-map</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-media-fast-forward icon-width="32"></ontario-icon-media-fast-forward>
+										<figcaption><code>ontario-icon-media-fast-forward</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-media-fast-rewind icon-width="32"></ontario-icon-media-fast-rewind>
+										<figcaption><code>ontario-icon-media-fast-rewind</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-media-pause icon-width="32"></ontario-icon-media-pause>
+										<figcaption><code>ontario-icon-media-pause</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-media-play icon-width="32"></ontario-icon-media-play>
+										<figcaption><code>ontario-icon-media-play</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-media-stop icon-width="32"></ontario-icon-media-stop>
+										<figcaption><code>ontario-icon-media-stop</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-microphone-off icon-width="32"></ontario-icon-microphone-off>
+										<figcaption><code>ontario-icon-microphone-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-microphone-on icon-width="32"></ontario-icon-microphone-on>
+										<figcaption><code>ontario-icon-microphone-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-more-vertical icon-width="32"></ontario-icon-more-vertical>
+										<figcaption><code>ontario-icon-more-vertical</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-next icon-width="32"></ontario-icon-next>
+										<figcaption><code>ontario-icon-next</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-notification icon-width="32"></ontario-icon-notification>
+										<figcaption><code>ontario-icon-notification</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-password-hide icon-width="32"></ontario-icon-password-hide>
+										<figcaption><code>ontario-icon-password-hide</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-password-show icon-width="32"></ontario-icon-password-show>
+										<figcaption><code>ontario-icon-password-show</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-photo icon-width="32"></ontario-icon-photo>
+										<figcaption><code>ontario-icon-photo</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-pin-location-off icon-width="32"></ontario-icon-pin-location-off>
+										<figcaption><code>ontario-icon-pin-location-off</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-pin-location-on icon-width="32"></ontario-icon-pin-location-on>
+										<figcaption><code>ontario-icon-pin-location-on</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-previous icon-width="32"></ontario-icon-previous>
+										<figcaption><code>ontario-icon-previous</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-print icon-width="32"></ontario-icon-print>
+										<figcaption><code>ontario-icon-print</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-replay icon-width="32"></ontario-icon-replay>
+										<figcaption><code>ontario-icon-replay</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-save icon-width="32"></ontario-icon-save>
+										<figcaption><code>ontario-icon-save</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sentiment-1 icon-width="32"></ontario-icon-sentiment-1>
+										<figcaption><code>ontario-icon-sentiment-1</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sentiment-2 icon-width="32"></ontario-icon-sentiment-2>
+										<figcaption><code>ontario-icon-sentiment-2</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sentiment-3 icon-width="32"></ontario-icon-sentiment-3>
+										<figcaption><code>ontario-icon-sentiment-3</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sentiment-4 icon-width="32"></ontario-icon-sentiment-4>
+										<figcaption><code>ontario-icon-sentiment-4</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sentiment-5 icon-width="32"></ontario-icon-sentiment-5>
+										<figcaption><code>ontario-icon-sentiment-5</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-settings icon-width="32"></ontario-icon-settings>
+										<figcaption><code>ontario-icon-settings</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort-alphabetical-ascending
+											icon-width="32"
+										></ontario-icon-sort-alphabetical-ascending>
+										<figcaption><code>ontario-icon-sort-alphabetical-ascending</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort-alphabetical-descending
+											icon-width="32"
+										></ontario-icon-sort-alphabetical-descending>
+										<figcaption><code>ontario-icon-sort-alphabetical-descending</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort-ascending icon-width="32"></ontario-icon-sort-ascending>
+										<figcaption><code>ontario-icon-sort-ascending</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort-descending icon-width="32"></ontario-icon-sort-descending>
+										<figcaption><code>ontario-icon-sort-descending</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort-variant icon-width="32"></ontario-icon-sort-variant>
+										<figcaption><code>ontario-icon-sort-variant</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-sort icon-width="32"></ontario-icon-sort>
+										<figcaption><code>ontario-icon-sort</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-tag icon-width="32"></ontario-icon-tag>
+										<figcaption><code>ontario-icon-tag</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-timer icon-width="32"></ontario-icon-timer>
+										<figcaption><code>ontario-icon-timer</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-transport-bicycle icon-width="32"></ontario-icon-transport-bicycle>
+										<figcaption><code>ontario-icon-transport-bicycle</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-transport-bus icon-width="32"></ontario-icon-transport-bus>
+										<figcaption><code>ontario-icon-transport-bus</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-transport-car icon-width="32"></ontario-icon-transport-car>
+										<figcaption><code>ontario-icon-transport-car</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-transport-walk icon-width="32"></ontario-icon-transport-walk>
+										<figcaption><code>ontario-icon-transport-walk</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-tune icon-width="32"></ontario-icon-tune>
+										<figcaption><code>ontario-icon-tune</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-upload icon-width="32"></ontario-icon-upload>
+										<figcaption><code>ontario-icon-upload</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-video icon-width="32"></ontario-icon-video>
+										<figcaption><code>ontario-icon-video</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-vote-dislike icon-width="32"></ontario-icon-vote-dislike>
+										<figcaption><code>ontario-icon-vote-dislike</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-vote-like icon-width="32"></ontario-icon-vote-like>
+										<figcaption><code>ontario-icon-vote-like</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-vpn-key icon-width="32"></ontario-icon-vpn-key>
+										<figcaption><code>ontario-icon-vpn-key</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-wheelchair icon-width="32"></ontario-icon-wheelchair>
+										<figcaption><code>ontario-icon-wheelchair</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-wifi icon-width="32"></ontario-icon-wifi>
+										<figcaption><code>ontario-icon-wifi</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-social">
+								<h3 id="icon-category-social">Social</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-facebook-alt icon-width="32"></ontario-icon-facebook-alt>
+										<figcaption><code>ontario-icon-facebook-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-facebook icon-width="32"></ontario-icon-facebook>
+										<figcaption><code>ontario-icon-facebook</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-flickr icon-width="32"></ontario-icon-flickr>
+										<figcaption><code>ontario-icon-flickr</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-instagram icon-width="32"></ontario-icon-instagram>
+										<figcaption><code>ontario-icon-instagram</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-linkedin-alt icon-width="32"></ontario-icon-linkedin-alt>
+										<figcaption><code>ontario-icon-linkedin-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-linkedin icon-width="32"></ontario-icon-linkedin>
+										<figcaption><code>ontario-icon-linkedin</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-live-chat icon-width="32"></ontario-icon-live-chat>
+										<figcaption><code>ontario-icon-live-chat</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-rss-feed icon-width="32"></ontario-icon-rss-feed>
+										<figcaption><code>ontario-icon-rss-feed</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-share icon-width="32"></ontario-icon-share>
+										<figcaption><code>ontario-icon-share</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-text-message icon-width="32"></ontario-icon-text-message>
+										<figcaption><code>ontario-icon-text-message</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-twitter-alt icon-width="32"></ontario-icon-twitter-alt>
+										<figcaption><code>ontario-icon-twitter-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-twitter icon-width="32"></ontario-icon-twitter>
+										<figcaption><code>ontario-icon-twitter</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-youtube icon-width="32"></ontario-icon-youtube>
+										<figcaption><code>ontario-icon-youtube</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-payment">
+								<h3 id="icon-category-payment">Payment</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-interac-en-alt icon-width="32"></ontario-icon-interac-en-alt>
+										<figcaption><code>ontario-icon-interac-en-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-interac-en icon-width="32"></ontario-icon-interac-en>
+										<figcaption><code>ontario-icon-interac-en</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-interac-fr-alt icon-width="32"></ontario-icon-interac-fr-alt>
+										<figcaption><code>ontario-icon-interac-fr-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-interac-fr icon-width="32"></ontario-icon-interac-fr>
+										<figcaption><code>ontario-icon-interac-fr</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-mastercard-alt icon-width="32"></ontario-icon-mastercard-alt>
+										<figcaption><code>ontario-icon-mastercard-alt</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-mastercard icon-width="32"></ontario-icon-mastercard>
+										<figcaption><code>ontario-icon-mastercard</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-visa icon-width="32"></ontario-icon-visa>
+										<figcaption><code>ontario-icon-visa</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-alert">
+								<h3 id="icon-category-alert">Alerts</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-alert-error icon-width="32"></ontario-icon-alert-error>
+										<figcaption><code>ontario-icon-alert-error</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-alert-information icon-width="32"></ontario-icon-alert-information>
+										<figcaption><code>ontario-icon-alert-information</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-alert-success icon-width="32"></ontario-icon-alert-success>
+										<figcaption><code>ontario-icon-alert-success</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-alert-warning icon-width="32"></ontario-icon-alert-warning>
+										<figcaption><code>ontario-icon-alert-warning</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item">
+										<ontario-icon-critical-alert-warning icon-width="32"></ontario-icon-critical-alert-warning>
+										<figcaption><code>ontario-icon-critical-alert-warning</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-other">
+								<h3 id="icon-category-other">Other</h3>
+								<div class="ontario-icon-gallery__grid">
+									<figure class="ontario-icon-gallery__item ontario-icon-gallery__item--dark">
+										<ontario-icon-close-header icon-width="32"></ontario-icon-close-header>
+										<figcaption><code>ontario-icon-close-header</code></figcaption>
+									</figure>
+									<figure class="ontario-icon-gallery__item ontario-icon-gallery__item--dark">
+										<ontario-icon-menu-header icon-width="32"></ontario-icon-menu-header>
+										<figcaption><code>ontario-icon-menu-header</code></figcaption>
+									</figure>
+								</div>
+							</section>
+							<!-- ICON_GALLERY_END -->
 						</div>
 						<hr />
 					</div>
