@@ -123,6 +123,10 @@ Prefer `locator.click()` and `locator.hover()` because they include actionabilit
 
 Use `AxeBuilder` on a representative complete state. Disable an axe rule only when the component is intentionally tested outside required parent semantics, and state that reason in the test helper or review report.
 
+### Language-Dependent Styles
+
+Inspect the component SCSS for French-specific or language-dependent rules, such as `html[lang='fr']`, `:lang()`, `quotes`, and generated `content`. When these rules change the rendered output, set `lang` on `<html>` before rendering and assert the observable result in English and French. In shadow-DOM components, a selector that targets an ancestor outside the shadow root may never apply, so verify the effect in the browser instead of assuming it works. If it does not apply, treat it as a defect.
+
 ### Colour Contrast
 
 Treat colour contrast as accessibility coverage with visual-regression support, not as a screenshot assertion.
@@ -182,6 +186,14 @@ import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-
 ```
 
 Wrap markup with `withGlobalStyles()` when inherited typography or global assets affect rendering. Wait for hydration, capture a stable host, and call `expectVrtScreenshot()`. Cover meaningful variants and applicable default, focus, hover, active, disabled, error, open/closed, or responsive states. Use `locator.hover()` for hover snapshots. For active snapshots, hover the actionable element, press with `page.mouse.down()`, wait for the style to paint, capture the host, and release with `page.mouse.up()`. Avoid snapshots that differ only in test data.
+
+Never call bare `toHaveScreenshot()`. Always use `expectVrtScreenshot()` so animations are disabled and carets are hidden.
+
+Organize VRT tests by distinct visual state, not by mirroring E2E test names. Capture each distinct state once. Keep class, text, and element-count assertions in E2E unless they are needed to confirm the state before the screenshot. Take at most one screenshot per test unless the test deliberately captures a state transition.
+
+Cover a narrow-viewport layout and a French layout when the component SCSS contains media queries or language-dependent rules that change the rendered result.
+
+When removing, renaming, or merging a screenshot test, delete its orphaned baselines for every browser. Before reporting, list the baselines in `test/vrt-snapshots/` and confirm each one maps to an active screenshot call.
 
 Run a single VRT file:
 

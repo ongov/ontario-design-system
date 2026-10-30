@@ -19,7 +19,7 @@ Use [the testing playbook](./references/testing-playbook.md) for suite-specific 
 Do not edit files, update snapshots, install dependencies, or run commands that change the workspace during this phase.
 
 1. Resolve the requested component name. If it is missing or ambiguous, ask the user which component to review.
-2. Read the component implementation, public properties, slots, events, methods, validation, localization, responsive behaviour, and README or generated documentation.
+2. Read the component implementation, public properties, slots, events, methods, validation, localization, responsive behaviour, and README or generated documentation. Include the component SCSS, noting media queries and language-dependent rules such as `html[lang='fr']`, `:lang()`, `quotes`, or generated `content`.
 3. Inspect related components only when composition affects the component's behaviour.
 4. Locate and review all existing coverage:
    - Stencil unit tests.
@@ -40,6 +40,7 @@ Do not edit files, update snapshots, install dependencies, or run commands that 
    - Coverage strengths.
    - Missing or weak patterns by suite.
    - Puppeteer-to-Playwright migration work, if any.
+   - Suspected component defects, with the evidence and the expected behaviour.
    - Proposed files to create or modify.
    - Focused validation commands.
    - Assumptions, exclusions, or risks.
@@ -73,6 +74,7 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 - Legacy tests migrated.
 - Commands run and results.
 - Snapshot changes.
+- Defects exposed by the tests, and how each test handles them.
 - Remaining gaps or checks that could not run.
 
 ## Testing Principles
@@ -88,6 +90,7 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 - Never add arbitrary sleeps. Use locator assertions, `page.waitForChanges()`, or the shared interaction-paint helper.
 - Do not loosen global screenshot tolerances to make a component test pass. Use a narrowly justified per-snapshot allowance only when necessary.
 - Use Canadian spelling in test names, fixture text, and comments unless an API or expected string requires otherwise.
+- If a test exposes a defect, report it instead of recording the faulty output as the expected result. Do not write assertions or VRT baselines that lock in the defect. Ask the user whether to fix the component, skip the test with a reference to the defect, or leave the case out of scope.
 
 ## Repository Conventions
 
@@ -99,3 +102,5 @@ Follow the repository's `AGENTS.md`; the points below apply specifically to test
 - Markdown: do not hard-wrap markdown. Write each paragraph or list item as a single line.
 - Commits: use Conventional Commits with a lowercase imperative subject, for example `test(button): add keyboard coverage`. Use the `test` type for test-only changes, and keep subject and body lines under 100 characters. Keep snapshot updates in their own commit when practical so reviewers can inspect them separately.
 - Scope: keep changes limited to the approved component. Do not refactor unrelated tests or components.
+- Use Canadian spelling in test names, fixture text, and comments unless an API or expected string requires otherwise.
+  +- If a test exposes a defect, report it instead of recording the faulty output as the expected result. Do not write assertions or VRT baselines that lock in the defect. Ask the user whether to fix the component, skip the test with a reference to the defect, or leave the case out of scope.
