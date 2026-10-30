@@ -1,3 +1,12 @@
+# How to invoke the skill
+
+-- Open Copilot Chat and switch to Agent mode, type /component-testing followed by the component name:
+e.g., /component-testing ontario-blockquote
+
+-- A plain request such as "Review and create tests for ontario-blockquote" also usually triggers the skill.
+
+-- After it finishes, run the tests yourself
+
 # Ontario Design System Web Component Inventory
 
 ## Components
