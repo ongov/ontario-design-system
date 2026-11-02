@@ -131,12 +131,25 @@ describe('ontario-icon', () => {
 			);
 		});
 
-		it('defaults to black', async () => {
+		it('defaults to inherit', async () => {
 			const page = await render('<ontario-icon-dropdown-arrow></ontario-icon-dropdown-arrow>');
 
-			expect(page.root.shadowRoot?.querySelector('.ontario-icon')?.classList.contains('ontario-icon--black')).toBe(
+			expect(page.root.shadowRoot?.querySelector('.ontario-icon')?.classList.contains('ontario-icon--inherit')).toBe(
 				true,
 			);
+		});
+
+		it('falls back to inherit for an invalid colour', async () => {
+			const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+			try {
+				const page = await render('<ontario-icon-dropdown-arrow colour="not-a-colour"></ontario-icon-dropdown-arrow>');
+				expect(page.root.shadowRoot?.querySelector('.ontario-icon')?.classList.contains('ontario-icon--inherit')).toBe(
+					true,
+				);
+				expect(warning).toHaveBeenCalled();
+			} finally {
+				warning.mockRestore();
+			}
 		});
 
 		it('applies a custom CSS colour to the svg', async () => {
