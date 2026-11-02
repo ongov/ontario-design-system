@@ -189,7 +189,7 @@ Each icon has its own generated README with the properties supported by that ico
 
 ## Colour support
 
-The `colour` property accepts `black` (default), `blue`, `grey`, `white`, `inherit` or a valid CSS colour. `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white` for use on the dark Ontario.ca header. Icons are classified in `icon-manifest.json` as one of:
+The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Configurable icons default to `black`, except that `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`. Icons are classified in `icon-manifest.json` as one of:
 
 - `configurable`: exposes `colour` and recolours the artwork.
 - `fixed`: keeps its own artwork colour and ignores `colour`. These are the alert icons (`alert-error`, `alert-information`, `alert-success` and `alert-warning`).
@@ -199,7 +199,7 @@ The `colour` property accepts `black` (default), `blue`, `grey`, `white`, `inher
 
 ## Colour changes on hover and focus
 
-An icon does not track hover or focus itself. The component that owns the interactive state sets `color` on that state and renders the icon with `colour="inherit"`, which makes the icon use the surrounding text colour. `color` is inherited through the shadow boundary, so no icon API is needed and icons that never change colour are unaffected.
+An icon does not track hover or focus itself. The component that owns the interactive state sets `color` on that state and renders the icon with `colour="inherit"`, which makes the icon use the surrounding text colour. `color` is inherited through the shadow boundary, so no icon API is needed and icons that never change colour are unaffected. This is the preferred pattern when the icon and text share a colour. If the icon needs a different colour from the text, the consumer can update the icon's `colour` property from its own hover and focus state and no extra icon property is required.
 
 ```css
 .search-button {
@@ -222,13 +222,13 @@ Set `color` on the interactive element or one of its ancestors. Rules that targe
 
 ## Deprecated icons
 
-`ontario-icon-search-white` is deprecated. Use `<ontario-icon-search colour="white">` instead. The component keeps rendering and logs a development-only warning once per tag name.
+`ontario-icon-search-white` is deprecated. Use `<ontario-icon-search colour="white"></ontario-icon-search>` instead. The component keeps rendering and logs a development-only warning once per tag name.
 
 ## Upgrade note
 
 Icons without a non-blank `label` now render as decorative images with `aria-hidden="true"`, `focusable="false"` and no image role. Previously, icons defaulted to `role="img"` without an accessible name. Audit existing meaningful icon usage before upgrading and supply a descriptive `label` when equivalent text is not already available. A non-blank label takes precedence over `isDecorative`, which remains accepted but emits a deprecation warning once per shared module instance, including in production builds.
 
-`ontario-icon-dropdown-arrow` now accepts `colour` and defaults to `black`. Previously it took the surrounding text colour. Set `colour="inherit"` to keep following the text colour.
+`ontario-icon-dropdown-arrow` now accepts `colour` and continues to inherit the surrounding text colour by default. Previously it had no colour API. Set `colour` to a token or valid CSS colour to override the inherited colour.
 
 The `colour` property now takes effect on `ontario-icon-attach`, `ontario-icon-close-header`, `ontario-icon-menu-header` and `ontario-icon-critical-alert-warning`, which previously ignored it. `ontario-icon-attach` and the exclamation mark of `ontario-icon-critical-alert-warning` now use the standard icon black (`#1a1a1a`) instead of pure black (`#000000`).
 

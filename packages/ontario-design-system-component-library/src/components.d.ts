@@ -1430,7 +1430,7 @@ export namespace Components {
     interface OntarioIconDropdownArrow {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'inherit'
          */
         "colour": IconColour;
         /**
@@ -7108,7 +7108,7 @@ declare namespace LocalJSX {
     interface OntarioIconDropdownArrow {
         /**
           * Set the icon's colour.
-          * @default 'black'
+          * @default 'inherit'
          */
         "colour"?: IconColour;
         /**

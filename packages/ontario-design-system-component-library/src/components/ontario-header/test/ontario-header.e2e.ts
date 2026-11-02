@@ -37,6 +37,22 @@ test.describe('ontario-header - ontario type', () => {
 		await expect(host.locator('#ontario-search-submit')).toBeAttached();
 	});
 
+	test('search submit icon changes fill on hover and focus', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 900 });
+
+		const searchButton = host.locator('#ontario-search-submit');
+		const iconPath = searchButton.locator('svg path');
+
+		await expect(iconPath).toHaveCSS('fill', 'rgb(26, 26, 26)');
+		await searchButton.hover();
+		await expect(iconPath).toHaveCSS('fill', 'rgb(255, 255, 255)');
+
+		await page.mouse.move(0, 0);
+		await expect(iconPath).toHaveCSS('fill', 'rgb(26, 26, 26)');
+		await searchButton.focus();
+		await expect(iconPath).toHaveCSS('fill', 'rgb(255, 255, 255)');
+	});
+
 	test('toggles the search bar open and closed on mobile search button click', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 800 });
 

@@ -102,6 +102,18 @@ test.describe('ontario-icon', () => {
 			await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', 'rgb(0, 102, 204)');
 		});
 
+		test('dropdown-arrow defaults to inherit and falls back to inherit after an invalid colour', async ({ page }) => {
+			await page.setContent(`
+				<div style="color: rgb(0, 102, 204)">
+					<ontario-icon-dropdown-arrow id="default"></ontario-icon-dropdown-arrow>
+					<ontario-icon-dropdown-arrow id="invalid" colour="not-a-colour"></ontario-icon-dropdown-arrow>
+				</div>
+			`);
+			await page.waitForChanges();
+			await expect(page.locator('#default').locator('path')).toHaveCSS('fill', 'rgb(0, 102, 204)');
+			await expect(page.locator('#invalid').locator('path')).toHaveCSS('fill', 'rgb(0, 102, 204)');
+		});
+
 		test('dropdown-arrow renders a custom CSS colour as its fill', async ({ page }) => {
 			await page.setContent('<ontario-icon-dropdown-arrow colour="#123456"></ontario-icon-dropdown-arrow>');
 			await page.waitForChanges();
@@ -109,25 +121,28 @@ test.describe('ontario-icon', () => {
 			await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', 'rgb(18, 52, 86)');
 		});
 
-		test('search-white warns once in development and still renders', async ({ page }) => {
-			const warnings: string[] = [];
-			page.on('console', (message) => {
-				if (message.type() === 'warning') {
-					warnings.push(message.text());
-				}
-			});
-			await page.setContent(`
-				<ontario-icon-search-white></ontario-icon-search-white>
-				<ontario-icon-search-white></ontario-icon-search-white>
+		for (const [tag, replacement, colour] of [['ontario-icon-search-white', 'ontario-icon-search', 'white']]) {
+			test(`${tag} warns once in development and still renders`, async ({ page }) => {
+				const warnings: string[] = [];
+				page.on('console', (message) => {
+					if (message.type() === 'warning') {
+						warnings.push(message.text());
+					}
+				});
+				await page.setContent(`
+				<${tag} colour="${colour}"></${tag}>
+				<${tag} colour="${colour}"></${tag}>
+				<${replacement} colour="${colour}"></${replacement}>
 			`);
-			await page.waitForChanges();
+				await page.waitForChanges();
 
-			await expect(page.locator('ontario-icon-search-white').locator('svg')).toHaveCount(2);
-			expect(warnings.filter((warning) => warning.includes('ontario-icon-search-white'))).toHaveLength(1);
-			expect(warnings.find((warning) => warning.includes('ontario-icon-search-white'))).toContain(
-				'ontario-icon-search',
-			);
-		});
+				await expect(page.locator(tag).locator('svg')).toHaveCount(2);
+				await expect(page.locator(tag).first().locator('path')).toHaveCSS('fill', 'rgb(255, 255, 255)');
+				await expect(page.locator(replacement).locator('path')).toHaveCSS('fill', 'rgb(255, 255, 255)');
+				expect(warnings.filter((warning) => warning.includes(`<${tag}>`))).toHaveLength(1);
+				expect(warnings.find((warning) => warning.includes(`<${tag}>`))).toContain(`<${replacement}>`);
+			});
+		}
 	});
 
 	test.describe('interactive colour state', () => {

@@ -48,8 +48,10 @@ describe('icon-manifest', () => {
 		expect(findIcon('ontario-icon-critical-alert-warning')?.colour).toBe('configurable');
 	});
 
-	it('classifies dropdown-arrow as a configurable-colour icon', () => {
-		expect(findIcon('ontario-icon-dropdown-arrow')?.colour).toBe('configurable');
+	it('sets dropdown-arrow to inherit by default', () => {
+		const dropdownArrow = findIcon('ontario-icon-dropdown-arrow');
+
+		expect(dropdownArrow).toMatchObject({ colour: 'configurable', defaultColour: 'inherit' });
 	});
 
 	it('deprecates search-white in favour of search', () => {

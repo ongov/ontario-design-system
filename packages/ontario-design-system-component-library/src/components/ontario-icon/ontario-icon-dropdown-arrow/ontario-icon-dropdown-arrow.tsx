@@ -39,14 +39,14 @@ export class OntarioIconDropdownArrow implements IconWithColour {
 	}
 
 	/** Set the icon's colour. */
-	@Prop() colour: IconColour = 'black';
+	@Prop() colour: IconColour = 'inherit';
 
 	@State() iconColourState: string;
 	@State() iconCustomColourState: string;
 
 	@Watch('colour')
 	validateColour() {
-		const validatedColour = validateIconColour(this.colour, 'ontario-icon-dropdown-arrow');
+		const validatedColour = validateIconColour(this.colour, 'ontario-icon-dropdown-arrow', 'inherit');
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
 		}

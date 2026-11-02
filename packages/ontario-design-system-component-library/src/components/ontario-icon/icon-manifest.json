@@ -231,6 +231,7 @@
 			"category": "primary",
 			"viewBox": "0 0 24 24",
 			"colour": "configurable",
+			"defaultColour": "inherit",
 			"aliases": [],
 			"deprecated": false
 		},
