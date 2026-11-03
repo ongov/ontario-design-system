@@ -31,20 +31,8 @@ import { isServerSideRendering } from '../../utils/common/environment';
  *
  * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
  * tracks the button's current text colour (including hover/focus/active state changes)
- * instead of needing a colour set per button `type`.
- *
- * @example
- * <ontario-button label="Save">
- *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
- * </ontario-button>
- *
- * A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon); it is
- * sized to 24x24px automatically.
- *
- * @example
- * <ontario-button label="Save">
- *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
- * </ontario-button>
+ * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+ * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
  *
  * Icon-only buttons (no visible label) are detected automatically when a default-slotted
  * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
@@ -52,11 +40,23 @@ import { isServerSideRendering } from '../../utils/common/environment';
  * remains accessible.
  *
  * @example
+ * <ontario-button label="Save">
+ *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+ * </ontario-button>
+ *
+ * @example
+ * <ontario-button label="Save">
+ *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+ * </ontario-button>
+ *
+ * @example
  * <ontario-button aria-label-text="Open map">
  *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
  * </ontario-button>
  *
  * @slot - Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text.
+ * @slot leading-icon - An icon displayed before the label.
+ * @slot trailing-icon - An icon displayed after the label.
  */
 @Component({
 	tag: 'ontario-button',

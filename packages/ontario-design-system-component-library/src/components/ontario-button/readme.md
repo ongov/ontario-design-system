@@ -391,7 +391,7 @@ The same pattern applies to `trailing-icon`, or both slots together for an icon 
 
 Slotted icons must be direct children of the button, because the browser only assigns direct children to a slot. When wrapping an icon (as in the React example), put the `slot` attribute on the wrapper.
 
-In React, wrap each icon in a `<span slot="...">` as shown above, rather than passing `slot` directly to the icon component. `@stencil/ssr` renders each Stencil component inside a `display:contents` wrapper element and does not forward `slot` onto it, so a `slot` passed to the icon is ignored during server rendering and the icon never appears (see [stenciljs/output-targets#858](https://github.com/stenciljs/output-targets/issues/858), with a fix in [#863](https://github.com/stenciljs/output-targets/pull/863)). The Ontario Design System's own Next.js app applies a patch for this, so it can pass `slot` directly. Your app needs the wrapper until a release of `@stencil/ssr` includes the fix.
+In React, wrap each icon in a `<span slot="...">` (a plain element that carries the `slot` attribute) rather than passing `slot` directly to the icon component. The browser only slots direct children of `<ontario-button>`, and a Stencil component rendered through the React wrapper isn't a direct child that carries `slot`.
 
 A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon not covered by `ontario-icon-*`); it is sized to 24x24px automatically:
 
@@ -518,7 +518,7 @@ The Ontario Button component supports server-side rendering, with a few consider
 - **Preferred content source:** Pass button text through the `label` prop.
 - **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
 - **Framework guidance:** For deterministic SSR output, prefer `label` over slotted children.
-- **Slotted icons in Next.js:** `@stencil/ssr` drops `slot` on Stencil components, so wrap icons in a `<span slot="...">` unless your app applies the slot patch. See [Icons](#icons) above.
+- **Slotted icons in Next.js:** wrap each icon in a `<span slot="...">` rather than passing `slot` to the icon component. See [Icons](#icons) above.
 
 ### SSR-safe example:
 
@@ -556,7 +556,13 @@ slotted sides needs an icon for the other to still collapse its spacing automati
 
 Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
 tracks the button's current text colour (including hover/focus/active state changes)
-instead of needing a colour set per button `type`.
+instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+
+Icon-only buttons (no visible label) are detected automatically when a default-slotted
+element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+`label`/text content. In this mode, always provide `ariaLabelText` so the button
+remains accessible.
 
 ## Properties
 
@@ -570,6 +576,14 @@ instead of needing a colour set per button `type`.
 | `rel`           | `rel`             | Specifies the relationship of the linked document to the current document when `href` is provided. This prop has no effect unless the component is in link mode.                                                                                                                     | `string \| undefined`                                           | `undefined`   |
 | `target`        | `target`          | Specifies where to open the linked document when `href` is provided. This prop has no effect unless the component is in link mode.                                                                                                                                                   | `string \| undefined`                                           | `undefined`   |
 | `type`          | `type`            | The type of button to render. If no type is passed, it will default to 'secondary'.                                                                                                                                                                                                  | `"internalThemeDark" \| "primary" \| "secondary" \| "tertiary"` | `'secondary'` |
+
+## Slots
+
+| Slot              | Description                                                                                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                   | Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text. |
+| `"leading-icon"`  | An icon displayed before the label.                                                                                                                            |
+| `"trailing-icon"` | An icon displayed after the label.                                                                                                                             |
 
 ---
 
