@@ -197,6 +197,7 @@ export class OntarioButton implements Button {
 			allowedValues: HtmlTypes,
 			defaultValue: 'button',
 			invalidDescriptor: 'htmlType',
+			defaultDescriptor: 'type',
 			conjunction: 'or',
 		});
 		return 'button';

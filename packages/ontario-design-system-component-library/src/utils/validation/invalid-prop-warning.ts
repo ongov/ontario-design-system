@@ -44,7 +44,7 @@ export function printInvalidPropWarning(options: InvalidPropWarningOptions): voi
 			.addRegularText('is assumed.');
 	} else {
 		const descriptor = invalidDescriptor ?? 'type';
-		const defaultLabel = defaultDescriptor ?? (descriptor === 'htmlType' ? 'type' : descriptor);
+		const defaultLabel = defaultDescriptor ?? descriptor;
 
 		message
 			.addRegularText(`was set to an invalid ${descriptor}; only `)
