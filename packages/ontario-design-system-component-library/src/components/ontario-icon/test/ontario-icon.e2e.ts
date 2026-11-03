@@ -151,6 +151,22 @@ test.describe('ontario-icon', () => {
 			await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', fill);
 		});
 
+		test('dropdown-arrow clears a custom colour when changed to a token', async ({ page }) => {
+			const customColour = OntarioColourSystemAlert;
+			await page.setContent(`<ontario-icon-dropdown-arrow colour="${customColour}"></ontario-icon-dropdown-arrow>`);
+			await page.waitForChanges();
+
+			const icon = page.locator('ontario-icon-dropdown-arrow');
+			const iconPath = icon.locator('path');
+			const customFill = await getComputedColour(page, customColour);
+			await expect(iconPath).toHaveCSS('fill', customFill);
+
+			await icon.evaluate((element) => element.setAttribute('colour', 'blue'));
+			await page.waitForChanges();
+			const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+			await expect(iconPath).toHaveCSS('fill', blueFill);
+		});
+
 		for (const [tag, replacement, colour] of [['ontario-icon-search-white', 'ontario-icon-search', 'white']]) {
 			test(`${tag} warns once in development and still renders`, async ({ page }) => {
 				const warnings: string[] = [];
