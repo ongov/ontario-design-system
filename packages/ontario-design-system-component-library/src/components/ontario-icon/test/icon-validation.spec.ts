@@ -30,6 +30,7 @@ describe('shared icon validation', () => {
 			expect(warning.mock.calls[0][0]).toContain(colour);
 		}
 		expect(warning.mock.calls[0][0]).toContain('white or inherit');
+		expect(warning.mock.calls[0][0]).toContain('valid CSS colour');
 	});
 
 	it('falls back to the icon default colour when one is supplied', () => {
