@@ -177,6 +177,32 @@ it('should render an icon-only button when default-slotted with element content 
 `);
 });
 
+it('should render an icon-only link when href is set', async () => {
+	const page = await render(
+		`<ontario-button href="/map" aria-label-text="Open map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></ontario-button>`,
+	);
+	const link = page.root?.shadowRoot?.querySelector('a');
+	expect(link?.className).toBe('ontario-button ontario-button--secondary ontario-button--icon-only');
+	expect(link?.getAttribute('href')).toBe('/map');
+	expect(link?.getAttribute('aria-label')).toBe('Open map');
+	expect(page.root?.shadowRoot?.querySelector('button')).toBeNull();
+	expect(link?.querySelector('.ontario-button__label')).toBeNull();
+});
+
+it('should leave icon-only mode when label is set as a property after load', async () => {
+	const page = await render(
+		`<ontario-button aria-label-text="Save"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></ontario-button>`,
+	);
+	expect(page.root?.shadowRoot?.querySelector('button')?.className).toContain('ontario-button--icon-only');
+
+	page.root!.label = 'Save';
+	await page.waitForChanges();
+
+	const button = page.root?.shadowRoot?.querySelector('button');
+	expect(button?.className).not.toContain('ontario-button--icon-only');
+	expect(button?.querySelector('.ontario-button__label')?.textContent).toBe('Save');
+});
+
 it('should still render as icon-only when the slotted SVG has its own accessible title', async () => {
 	const page = await render(
 		`<ontario-button aria-label-text="Open map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Open map</title><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></ontario-button>`,

@@ -12,6 +12,15 @@ import { test, E2EPage } from '@stencil/playwright';
  *
  * Measurements are taken from the rendered geometry, so they catch layout regressions that a DOM snapshot can't.
  */
+const EDGE_PADDING = 24;
+const ICON_GAP = 8;
+const ICON_SIZE = 24;
+const BUTTON_HEIGHT = 48;
+const MOBILE_MAX_WIDTH = 328;
+const MOBILE_LABEL_MAX_NO_ICON = 280;
+const MOBILE_LABEL_MAX_ONE_ICON = 248;
+const MOBILE_LABEL_MAX_TWO_ICONS = 216;
+
 const BUTTON_TYPES = ['primary', 'secondary', 'tertiary'] as const;
 
 const LONG_LABEL =
@@ -69,11 +78,11 @@ test.describe('ontario-button - icon layout on desktop', () => {
 			);
 			const m = await measure(page, 'b');
 
-			expect(m.leadingIcon!.left - m.button.left).toBeCloseTo(24, 0);
-			expect(m.label.left - m.leadingIcon!.right).toBeCloseTo(8, 0);
-			expect(m.button.right - m.label.right).toBeCloseTo(24, 0);
-			expect(m.leadingIcon!.width).toBeCloseTo(24, 0);
-			expect(m.leadingIcon!.height).toBeCloseTo(24, 0);
+			expect(m.leadingIcon!.left - m.button.left).toBeCloseTo(EDGE_PADDING, 0);
+			expect(m.label.left - m.leadingIcon!.right).toBeCloseTo(ICON_GAP, 0);
+			expect(m.button.right - m.label.right).toBeCloseTo(EDGE_PADDING, 0);
+			expect(m.leadingIcon!.width).toBeCloseTo(ICON_SIZE, 0);
+			expect(m.leadingIcon!.height).toBeCloseTo(ICON_SIZE, 0);
 		});
 
 		test(`${type}: trailing icon has 8px after the label and 24px of padding`, async ({ page }) => {
@@ -83,9 +92,9 @@ test.describe('ontario-button - icon layout on desktop', () => {
 			);
 			const m = await measure(page, 'b');
 
-			expect(m.trailingIcon!.left - m.label.right).toBeCloseTo(8, 0);
-			expect(m.button.right - m.trailingIcon!.right).toBeCloseTo(24, 0);
-			expect(m.label.left - m.button.left).toBeCloseTo(24, 0);
+			expect(m.trailingIcon!.left - m.label.right).toBeCloseTo(ICON_GAP, 0);
+			expect(m.button.right - m.trailingIcon!.right).toBeCloseTo(EDGE_PADDING, 0);
+			expect(m.label.left - m.button.left).toBeCloseTo(EDGE_PADDING, 0);
 		});
 
 		test(`${type}: leading and trailing icons are spaced the same as one icon`, async ({ page }) => {
@@ -95,10 +104,10 @@ test.describe('ontario-button - icon layout on desktop', () => {
 			);
 			const m = await measure(page, 'b');
 
-			expect(m.leadingIcon!.left - m.button.left).toBeCloseTo(24, 0);
-			expect(m.label.left - m.leadingIcon!.right).toBeCloseTo(8, 0);
-			expect(m.trailingIcon!.left - m.label.right).toBeCloseTo(8, 0);
-			expect(m.button.right - m.trailingIcon!.right).toBeCloseTo(24, 0);
+			expect(m.leadingIcon!.left - m.button.left).toBeCloseTo(EDGE_PADDING, 0);
+			expect(m.label.left - m.leadingIcon!.right).toBeCloseTo(ICON_GAP, 0);
+			expect(m.trailingIcon!.left - m.label.right).toBeCloseTo(ICON_GAP, 0);
+			expect(m.button.right - m.trailingIcon!.right).toBeCloseTo(EDGE_PADDING, 0);
 		});
 
 		test(`${type}: is 48px tall with an icon, the same as without`, async ({ page }) => {
@@ -108,8 +117,8 @@ test.describe('ontario-button - icon layout on desktop', () => {
 				<ontario-button id="without" type="${type}" label="Save"></ontario-button>`,
 			);
 
-			expect((await measure(page, 'with')).button.height).toBeCloseTo(48, 0);
-			expect((await measure(page, 'without')).button.height).toBeCloseTo(48, 0);
+			expect((await measure(page, 'with')).button.height).toBeCloseTo(BUTTON_HEIGHT, 0);
+			expect((await measure(page, 'without')).button.height).toBeCloseTo(BUTTON_HEIGHT, 0);
 		});
 
 		test(`${type}: is at least 160px wide, with or without an icon`, async ({ page }) => {
@@ -162,7 +171,7 @@ test.describe('ontario-button - icon layout on mobile', () => {
 			);
 
 			for (const id of ['none', 'one', 'two']) {
-				expect((await measure(page, id)).button.width).toBeLessThanOrEqual(328.5);
+				expect((await measure(page, id)).button.width).toBeLessThanOrEqual(MOBILE_MAX_WIDTH + 0.5);
 			}
 		});
 
@@ -173,8 +182,8 @@ test.describe('ontario-button - icon layout on mobile', () => {
 				<ontario-button id="trail" type="${type}" label="${LONG_LABEL}">${icon('chevron-right', 'trailing-icon')}</ontario-button>`,
 			);
 
-			expect((await measure(page, 'lead')).label.width).toBeCloseTo(248, 0);
-			expect((await measure(page, 'trail')).label.width).toBeCloseTo(248, 0);
+			expect((await measure(page, 'lead')).label.width).toBeCloseTo(MOBILE_LABEL_MAX_ONE_ICON, 0);
+			expect((await measure(page, 'trail')).label.width).toBeCloseTo(MOBILE_LABEL_MAX_ONE_ICON, 0);
 		});
 
 		test(`${type}: limits the label to 216px with two icons`, async ({ page }) => {
@@ -183,13 +192,13 @@ test.describe('ontario-button - icon layout on mobile', () => {
 				`<ontario-button id="b" type="${type}" label="${LONG_LABEL}">${icon('add', 'leading-icon')}${icon('chevron-right', 'trailing-icon')}</ontario-button>`,
 			);
 
-			expect((await measure(page, 'b')).label.width).toBeCloseTo(216, 0);
+			expect((await measure(page, 'b')).label.width).toBeCloseTo(MOBILE_LABEL_MAX_TWO_ICONS, 0);
 		});
 
 		test(`${type}: limits the label to at most 280px with no icon`, async ({ page }) => {
 			await render(page, `<ontario-button id="b" type="${type}" label="${LONG_LABEL}"></ontario-button>`);
 
-			expect((await measure(page, 'b')).label.width).toBeLessThanOrEqual(280.5);
+			expect((await measure(page, 'b')).label.width).toBeLessThanOrEqual(MOBILE_LABEL_MAX_NO_ICON + 0.5);
 		});
 	}
 });
@@ -249,7 +258,7 @@ test.describe('ontario-button - icon slots', () => {
 	test('slots a wrapper element that carries the slot attribute', async ({ page }) => {
 		await render(
 			page,
-			`<ontario-button id="b" type="primary" label="Save"><span slot="leading-icon">${'<ontario-icon-add colour="inherit" is-decorative="true"></ontario-icon-add>'}</span></ontario-button>`,
+			`<ontario-button id="b" type="primary" label="Save"><span slot="leading-icon"><ontario-icon-add colour="inherit" is-decorative="true"></ontario-icon-add></span></ontario-button>`,
 		);
 
 		await expect(page.locator('#b button')).toHaveClass(/ontario-button--icons-1/);
@@ -286,10 +295,10 @@ test.describe('ontario-button - icon slots', () => {
 		expect(before.icon).toBe(before.button);
 
 		await page.locator('#b').hover();
-		await page.waitForTimeout(400);
+		// The colour change is a CSS transition, so poll until it settles instead of using a fixed wait.
+		await expect.poll(async () => (await colours()).button).not.toBe(before.button);
 		const after = await colours();
 		expect(after.icon).toBe(after.button);
-		expect(after.button).not.toBe(before.button);
 	});
 });
 
