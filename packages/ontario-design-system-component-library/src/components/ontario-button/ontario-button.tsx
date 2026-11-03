@@ -181,9 +181,11 @@ export class OntarioButton implements Button {
 			// Ensure host and its textContent are defined and accessible (safe for SSR environments)
 			this.labelState = this.label ?? '';
 		} else {
-			this.labelState = this.label ?? this.host.textContent ?? '';
+			this.labelState = this.label ?? this.getSlottedLabelText();
 		}
 		this.validateLabelContent(this.labelState);
+		// `isIconOnly` depends on `label`, so keep it in sync when `label` is set as a property (no DOM mutation).
+		this.syncSlotState();
 	}
 
 	/**
@@ -211,6 +213,23 @@ export class OntarioButton implements Button {
 	}
 
 	/**
+	 * @returns the visible label text from the host's direct child text nodes and unslotted elements.
+	 *
+	 * This deliberately ignores SVG content (so an SVG's own `<title>`/`<desc>` isn't mistaken for a visible
+	 * label), comment nodes (inserted by some frameworks), and elements assigned to a named slot (icons).
+	 */
+	private getSlottedLabelText(): string {
+		return Array.from(this.host.childNodes)
+			.filter((node) => {
+				if (['svg', '#comment'].includes(node.nodeName.toLowerCase())) return false;
+				return !(node.nodeType === 1 && (node as HTMLElement).hasAttribute('slot'));
+			})
+			.map((node) => node.textContent ?? '')
+			.join('')
+			.trim();
+	}
+
+	/**
 	 * Re-check the host's light DOM for `leading-icon`/`trailing-icon` slotted elements and
 	 * default-slotted (icon-only) content, so internal layout state stays in sync with
 	 * whatever the consumer has slotted in.
@@ -230,14 +249,7 @@ export class OntarioButton implements Button {
 		this.hasTrailingIcon = children.some((child) => child.getAttribute('slot') === 'trailing-icon');
 
 		const hasNamedIconSlots = this.hasLeadingIcon || this.hasTrailingIcon;
-		// Checks direct child nodes rather than `labelState`/`textContent`, so that an SVG's own
-		// accessible name (e.g. a `<title>`/`<desc>`) isn't mistaken for a visible button label.
-		// Comment nodes (inserted by some frameworks) are also ignored.
-		const hasVisibleLabel =
-			!!this.label?.trim() ||
-			Array.from(this.host.childNodes).some(
-				(node) => !['svg', '#comment'].includes(node.nodeName.toLowerCase()) && !!node.textContent?.trim(),
-			);
+		const hasVisibleLabel = !!this.label?.trim() || !!this.getSlottedLabelText();
 		const hasDefaultSlotElementContent = children.some((child) => !child.hasAttribute('slot'));
 
 		this.isIconOnly = !hasNamedIconSlots && !hasVisibleLabel && hasDefaultSlotElementContent;
@@ -364,7 +376,6 @@ export class OntarioButton implements Button {
 		this.validateHtmlType();
 		this.validateType();
 		this.ariaLabelText = this.ariaLabelText ?? this.labelState;
-		this.syncSlotState();
 	}
 
 	componentWillRender() {
