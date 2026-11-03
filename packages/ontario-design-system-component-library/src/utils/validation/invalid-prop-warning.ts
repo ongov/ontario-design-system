@@ -5,13 +5,30 @@ import { Conjunction } from '../helper/utils-types';
 export type InvalidPropDescriptor = 'type' | 'value' | 'colour' | 'htmlType';
 
 export interface InvalidPropWarningOptions {
+	/** Name of the invalid prop as written in the warning, e.g. `type`. */
 	propName: string;
+	/** Tag of the component that owns the prop, including angle brackets, e.g. `<ontario-button>`. */
 	componentTag: string;
+	/** Supported values, typically the `as const` array that the prop type is derived from. */
 	allowedValues: readonly (string | number)[];
+	/** Value that is assumed when the provided one is invalid. */
 	defaultValue: string | number;
+	/**
+	 * Word interpolated into "was set to an invalid ___" when `propValue` is not provided.
+	 * Defaults to `type`.
+	 */
 	invalidDescriptor?: InvalidPropDescriptor;
+	/**
+	 * The invalid value to include in the message. When this key is present (even if `undefined`) the "invalid value
+	 * of" format is used; when omitted, the "invalid type" format is used.
+	 */
 	propValue?: unknown;
+	/** Joins the last allowed value. Defaults to `and` when `propValue` is provided, otherwise `or`. */
 	conjunction?: Conjunction;
+	/**
+	 * Word interpolated into "The default ___ is assumed" when `propValue` is not provided.
+	 * Defaults to the resolved `invalidDescriptor`.
+	 */
 	defaultDescriptor?: string;
 }
 
