@@ -1,4 +1,19 @@
-import { format, isNumber, retrieveEnumKeys } from './utils';
+import { format, isNumber, retrieveEnumKeys, printArray } from './utils';
+
+describe('printArray', () => {
+	it('joins string values with and by default', () => {
+		expect(printArray(['vertical', 'horizontal'])).toEqual('vertical and horizontal');
+	});
+
+	it('joins string values with or when requested', () => {
+		expect(printArray(['string', 'html'], 'or')).toEqual('string or html');
+	});
+
+	it('accepts readonly arrays of numbers', () => {
+		const sizes = [16, 24, 32, 48] as const;
+		expect(printArray(sizes, 'or')).toEqual('16, 24, 32 or 48');
+	});
+});
 
 describe('format', () => {
 	it('returns empty string for no names defined', () => {
