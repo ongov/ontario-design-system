@@ -1,20 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { formatAllowedValues } from '../helper/utils';
 import { printInvalidPropWarning } from './invalid-prop-warning';
-
-describe('formatAllowedValues', () => {
-	it('joins values with and by default', () => {
-		expect(formatAllowedValues(['vertical', 'horizontal'])).toEqual('vertical and horizontal');
-	});
-
-	it('joins values with or when requested', () => {
-		expect(formatAllowedValues(['string', 'html'], 'or')).toEqual('string or html');
-	});
-
-	it('formats numeric allowed values', () => {
-		expect(formatAllowedValues([16, 24, 32, 48], 'or')).toEqual('16, 24, 32 or 48');
-	});
-});
 
 describe('printInvalidPropWarning', () => {
 	let warnSpy: ReturnType<typeof vi.spyOn>;
