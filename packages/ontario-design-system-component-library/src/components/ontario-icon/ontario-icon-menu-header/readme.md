@@ -2,8 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]** Use ontario-icon-menu instead.
-
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                  | Type                                                  | Default     |

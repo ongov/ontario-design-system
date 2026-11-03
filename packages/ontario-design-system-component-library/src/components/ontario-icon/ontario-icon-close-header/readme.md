@@ -2,8 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]** Use ontario-icon-close instead.
-
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                  | Type                                                  | Default     |
