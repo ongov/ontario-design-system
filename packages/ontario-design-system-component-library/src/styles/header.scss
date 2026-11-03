@@ -10,7 +10,7 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/line-heights.variables' as lineHeights;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 $box-shadow-blur-radius-12: 12px;
 $font-size-18: globalFunctions.px-to-rem(18);
@@ -78,6 +78,12 @@ $header-height: globalFunctions.px-to-rem(50);
 	width: globalVariables.$full-width;
 	height: globalVariables.$full-width;
 	z-index: zIndex.$ontario-z-index-above-medium;
+}
+
+// Defined once here (rather than in each consumer) since `@extend` can't reliably
+// target this placeholder from multiple stylesheets that share this module.
+.ontario-overlay {
+	@extend %ontario-overlay;
 }
 
 %ontario-header-button {
