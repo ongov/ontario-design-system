@@ -22,6 +22,8 @@ import { isServerSideRendering } from '../../utils/common/environment';
  *
  * Disabled/read-only policy source:
  * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+ *
+ * @slot - Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text.
  */
 @Component({
 	tag: 'ontario-button',
@@ -155,10 +157,8 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the missing `label` prop warning message.
-	 *
-	 * A button without a visible `label` can still have an accessible name from `ariaLabelText`
-	 * (e.g. when using slotted SVG content), which is checked by `validateAriaLabelText`.
+	 * Validate the `label` content and, when there is no visible `label`, check that `ariaLabelText` provides an
+	 * accessible name (e.g. when using slotted SVG content).
 	 */
 	validateLabelContent(newValue: string) {
 		if (validatePropExists(newValue)) {
