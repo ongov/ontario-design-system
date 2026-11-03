@@ -268,6 +268,60 @@ An example of how to pass in an `onclick` function to the button component.
 </Tabs>
 ```
 
+An example of a button with slotted SVG content. When no `label` is provided, the default slot is used to display the content. Because there is no visible text, pair it with `ariaLabelText` so the button has an accessible name.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-button aria-label-text="Open map">
+	<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z" fill="currentColor" />
+	</svg>
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton ariaLabelText="Open map">
+	<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z" fill="currentColor" />
+	</svg>
+</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button [ariaLabelText]="'Open map'">
+	<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z" fill="currentColor" />
+	</svg>
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Forms
 
 The `ontario-button` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as adding an `<input type="submit">`.
@@ -394,6 +448,12 @@ Disabled/read-only policy source:
 | `rel`           | `rel`             | Specifies the relationship of the linked document to the current document when `href` is provided. This prop has no effect unless the component is in link mode.                                                                                                                     | `string \| undefined`                                           | `undefined`   |
 | `target`        | `target`          | Specifies where to open the linked document when `href` is provided. This prop has no effect unless the component is in link mode.                                                                                                                                                   | `string \| undefined`                                           | `undefined`   |
 | `type`          | `type`            | The type of button to render. If no type is passed, it will default to 'secondary'.                                                                                                                                                                                                  | `"internalThemeDark" \| "primary" \| "secondary" \| "tertiary"` | `'secondary'` |
+
+## Slots
+
+| Slot | Description                                                                                                                                                    |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      | Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text. |
 
 ---
 

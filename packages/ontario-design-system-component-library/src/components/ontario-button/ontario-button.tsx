@@ -22,6 +22,8 @@ import { isServerSideRendering } from '../../utils/common/environment';
  *
  * Disabled/read-only policy source:
  * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+ *
+ * @slot - Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text.
  */
 @Component({
 	tag: 'ontario-button',
@@ -155,17 +157,31 @@ export class OntarioButton implements Button {
 	}
 
 	/**
-	 * Print the missing `label` prop warning message
+	 * Validate the `label` content and, when there is no visible `label`, check that `ariaLabelText` provides an
+	 * accessible name (e.g. when using slotted SVG content).
 	 */
 	validateLabelContent(newValue: string) {
 		if (validatePropExists(newValue)) {
+			this.validateAriaLabelText();
+		}
+	}
+
+	/**
+	 * Print the missing `ariaLabelText` prop warning message.
+	 *
+	 * Used when there is no visible `label`, in which case `ariaLabelText` is what gives the button an accessible name.
+	 */
+	validateAriaLabelText() {
+		if (validatePropExists(this.ariaLabelText ?? '')) {
 			const message = new ConsoleMessageClass();
 			message
 				.addDesignSystemTag()
-				.addMonospaceText(' label ')
+				.addMonospaceText(' aria-label-text ')
 				.addRegularText('for')
 				.addMonospaceText(' <ontario-button> ')
-				.addRegularText('was not provided')
+				.addRegularText('was not provided. It is needed to give the button an accessible name when there is no')
+				.addMonospaceText(' label ')
+				.addRegularText('.')
 				.printMessage();
 		}
 	}
@@ -287,6 +303,8 @@ export class OntarioButton implements Button {
 	}
 
 	render() {
+		const content = this.label ? this.labelState : <slot />;
+
 		if (this.isLinkMode()) {
 			return (
 				<a
@@ -297,7 +315,7 @@ export class OntarioButton implements Button {
 					aria-label={this.ariaLabelText}
 					id={this.getId()}
 				>
-					{this.labelState}
+					{content}
 				</a>
 			);
 		}
@@ -310,7 +328,7 @@ export class OntarioButton implements Button {
 				aria-label={this.ariaLabelText}
 				id={this.getId()}
 			>
-				{this.labelState}
+				{content}
 			</button>
 		);
 	}
