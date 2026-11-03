@@ -13,6 +13,15 @@ $ontario-button-bg-primary--hover: colours.$ontario-colour-link--hover;
 $ontario-button-bg-primary--active: colours.$ontario-colour-link--active;
 $ontario-button-bg-secondary: colours.$ontario-colour-white;
 
+// Icon button sizing, defined once so the icon, icon-only and label rules can't drift apart.
+$ontario-button-icon-size: 1.5rem; // 24px
+$ontario-button-icon-gap: spacing.$spacing-2; // 8px
+$ontario-button-mobile-max-width: 20.5rem; // 328px
+$ontario-button-icon-only-size: 3rem; // 48px
+$ontario-button-icon-only-icon-size-mobile: 2rem; // 32px
+$ontario-button-icon-only-tertiary-size: 3.25rem; // 52px
+$ontario-button-icon-only-tertiary-icon-size: 1.75rem; // 28px
+
 // Make the host box-level so its width/height/margins apply (was inline by default).
 // This also stabilizes VRT by giving the component predictable intrinsic sizing.
 :host {
@@ -31,7 +40,7 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	font-size: 1.125rem;
 	font-family: fonts.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	line-height: 1.5rem;
+	line-height: $ontario-button-icon-size;
 	margin: spacing.$spacing-0;
 	min-width: 10rem; // 160px
 	padding: spacing.$spacing-3 spacing.$spacing-5;
@@ -48,7 +57,7 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 		margin-right: 0;
 		display: flex;
 		width: 100%;
-		max-width: 20.5rem; // 328px
+		max-width: $ontario-button-mobile-max-width;
 	}
 
 	.ontario-icon {
@@ -70,27 +79,33 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	// instead of a `gap` on `.ontario-button` itself, since that class is also
 	// reused by ontario-back-button, which doesn't use this icon-slot markup.
 	.ontario-button__icon-slot:not(.ontario-button__icon-slot--empty) + & {
-		margin-left: spacing.$spacing-2;
+		margin-left: $ontario-button-icon-gap;
 	}
 
 	& + .ontario-button__icon-slot:not(.ontario-button__icon-slot--empty) {
-		margin-left: spacing.$spacing-2;
+		margin-left: $ontario-button-icon-gap;
 	}
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		max-width: 17.5rem; // 280px
+		max-width: calc(#{$ontario-button-mobile-max-width} - #{spacing.$spacing-5 * 2});
 	}
 }
 
 .ontario-button--icons-1 .ontario-button__label {
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		max-width: 15.5rem; // 248px
+		max-width: calc(
+			#{$ontario-button-mobile-max-width} - #{spacing.$spacing-5 * 2} - #{$ontario-button-icon-size} -
+				#{$ontario-button-icon-gap}
+		);
 	}
 }
 
 .ontario-button--icons-2 .ontario-button__label {
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		max-width: 13.5rem; // 216px
+		max-width: calc(
+			#{$ontario-button-mobile-max-width} - #{spacing.$spacing-5 * 2} - #{$ontario-button-icon-size * 2} -
+				#{$ontario-button-icon-gap * 2}
+		);
 	}
 }
 
@@ -113,14 +128,14 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 ::slotted(svg[slot='trailing-icon']),
 ::slotted(img[slot='trailing-icon']) {
 	display: block;
-	width: 1.5rem; // 24px
-	height: 1.5rem;
+	width: $ontario-button-icon-size;
+	height: $ontario-button-icon-size;
 }
 
 .ontario-button--icon-only {
-	min-width: 3rem; // 48px
-	width: 3rem;
-	height: 3rem;
+	min-width: $ontario-button-icon-only-size;
+	width: $ontario-button-icon-only-size;
+	height: $ontario-button-icon-only-size;
 	padding: spacing.$spacing-3; // 12px
 	font-size: 0;
 	line-height: 0;
@@ -128,19 +143,19 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 	::slotted(svg),
 	::slotted(img) {
 		display: block;
-		width: 1.5rem; // 24px
-		height: 1.5rem;
+		width: $ontario-button-icon-size;
+		height: $ontario-button-icon-size;
 	}
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		width: 3rem; // 48px
-		max-width: 3rem;
+		width: $ontario-button-icon-only-size;
+		max-width: $ontario-button-icon-only-size;
 		padding: spacing.$spacing-2;
 
 		::slotted(svg),
 		::slotted(img) {
-			width: 2rem; // 32px
-			height: 2rem;
+			width: $ontario-button-icon-only-icon-size-mobile;
+			height: $ontario-button-icon-only-icon-size-mobile;
 		}
 	}
 }
@@ -166,25 +181,25 @@ $ontario-button-bg-secondary: colours.$ontario-colour-white;
 }
 
 .ontario-button--icon-only.ontario-button--tertiary {
-	width: 3.25rem; // 52px
-	height: 3.25rem;
-	min-width: 3.25rem;
+	width: $ontario-button-icon-only-tertiary-size;
+	height: $ontario-button-icon-only-tertiary-size;
+	min-width: $ontario-button-icon-only-tertiary-size;
 
 	::slotted(svg),
 	::slotted(img) {
-		width: 1.75rem; // 28px
-		height: 1.75rem;
+		width: $ontario-button-icon-only-tertiary-icon-size;
+		height: $ontario-button-icon-only-tertiary-icon-size;
 	}
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
-		width: 3rem; // 48px, same as primary/secondary on mobile
-		height: 3rem;
-		min-width: 3rem;
+		width: $ontario-button-icon-only-size; // same as primary/secondary on mobile
+		height: $ontario-button-icon-only-size;
+		min-width: $ontario-button-icon-only-size;
 
 		::slotted(svg),
 		::slotted(img) {
-			width: 2rem; // 32px
-			height: 2rem;
+			width: $ontario-button-icon-only-icon-size-mobile;
+			height: $ontario-button-icon-only-icon-size-mobile;
 		}
 	}
 }
