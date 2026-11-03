@@ -1,6 +1,10 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
+import {
+	OntarioColourAccentIconColoursBlack,
+	OntarioColourAccentIconColoursWhite,
+} from '@ongov/ontario-design-system-design-tokens/tokens';
 
 const menuItemsJson = JSON.stringify([
 	{ title: 'Item 1', href: '/item-1' },
@@ -42,15 +46,26 @@ test.describe('ontario-header - ontario type', () => {
 
 		const searchButton = host.locator('#ontario-search-submit');
 		const iconPath = searchButton.locator('svg path');
+		const getComputedColour = (colour: string) =>
+			page.evaluate((value) => {
+				const probe = document.createElement('span');
+				probe.style.color = value;
+				document.body.append(probe);
+				const computedColour = getComputedStyle(probe).color;
+				probe.remove();
+				return computedColour;
+			}, colour);
+		const blackFill = await getComputedColour(OntarioColourAccentIconColoursBlack);
+		const whiteFill = await getComputedColour(OntarioColourAccentIconColoursWhite);
 
-		await expect(iconPath).toHaveCSS('fill', 'rgb(26, 26, 26)');
+		await expect(iconPath).toHaveCSS('fill', blackFill);
 		await searchButton.hover();
-		await expect(iconPath).toHaveCSS('fill', 'rgb(255, 255, 255)');
+		await expect(iconPath).toHaveCSS('fill', whiteFill);
 
 		await page.mouse.move(0, 0);
-		await expect(iconPath).toHaveCSS('fill', 'rgb(26, 26, 26)');
+		await expect(iconPath).toHaveCSS('fill', blackFill);
 		await searchButton.focus();
-		await expect(iconPath).toHaveCSS('fill', 'rgb(255, 255, 255)');
+		await expect(iconPath).toHaveCSS('fill', whiteFill);
 	});
 
 	test('toggles the search bar open and closed on mobile search button click', async ({ page }) => {
