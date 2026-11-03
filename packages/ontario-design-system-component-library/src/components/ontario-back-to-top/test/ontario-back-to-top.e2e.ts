@@ -1,42 +1,63 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-test.describe('ontario-back-to-top - bottomOffset', () => {
-	test('defaults to a bottom offset of 5% of the viewport height when no bottomOffset is provided', async ({
+test.describe('ontario-back-to-top positioning', () => {
+	test('defaults to a bottom offset of 5% of the viewport height when no CSS override is provided', async ({
 		page,
 	}) => {
 		await page.setViewportSize({ width: 1024, height: 800 });
 		await page.setContent('<ontario-back-to-top></ontario-back-to-top>');
 		await page.waitForChanges();
 
-		const button = page.locator('ontario-back-to-top').locator('button');
-		const bottom = await button.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
+		const host = page.locator('ontario-back-to-top');
+		const bottom = await host.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
 
 		// 800px viewport height * 5% = 40px.
 		expect(bottom).toBeCloseTo(40, 0);
 	});
 
-	test('adds the bottomOffset on top of the default 5% offset', async ({ page }) => {
+	test('adds the CSS custom property value on top of the default 5% offset', async ({ page }) => {
 		await page.setViewportSize({ width: 1024, height: 800 });
-		await page.setContent('<ontario-back-to-top bottom-offset="63px"></ontario-back-to-top>');
+		await page.setContent(`
+			<style>
+				ontario-back-to-top {
+					--ontario-back-to-top-bottom-offset: 63px;
+				}
+			</style>
+			<ontario-back-to-top></ontario-back-to-top>
+		`);
 		await page.waitForChanges();
 
-		const button = page.locator('ontario-back-to-top').locator('button');
-		const bottom = await button.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
+		const host = page.locator('ontario-back-to-top');
+		const bottom = await host.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
 
-		// 800px viewport height * 5% = 40px, plus the 63px bottomOffset = 103px.
+		// 800px viewport height * 5% = 40px, plus the 63px CSS override = 103px.
 		expect(bottom).toBeCloseTo(103, 0);
 	});
 
-	test('ignores invalid bottomOffset values and keeps the default offset', async ({ page }) => {
-		await page.setViewportSize({ width: 1024, height: 800 });
-		await page.setContent('<ontario-back-to-top bottom-offset="10px; background: red"></ontario-back-to-top>');
+	test('supports responsive CSS custom property values', async ({ page }) => {
+		await page.setViewportSize({ width: 500, height: 800 });
+		await page.setContent(`
+			<style>
+				ontario-back-to-top {
+					--ontario-back-to-top-bottom-offset: 63px;
+				}
+
+				@media (max-width: 768px) {
+					ontario-back-to-top {
+						--ontario-back-to-top-bottom-offset: 6rem;
+					}
+				}
+			</style>
+			<ontario-back-to-top></ontario-back-to-top>
+		`);
 		await page.waitForChanges();
 
-		const button = page.locator('ontario-back-to-top').locator('button');
-		const bottom = await button.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
+		const host = page.locator('ontario-back-to-top');
+		const bottom = await host.evaluate((element) => parseFloat(getComputedStyle(element).bottom));
 
-		expect(bottom).toBeCloseTo(40, 0);
+		// 800px viewport height * 5% = 40px, plus 6rem (96px) = 136px.
+		expect(bottom).toBeCloseTo(136, 0);
 	});
 });
 

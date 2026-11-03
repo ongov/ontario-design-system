@@ -94,14 +94,14 @@ Emitted before navigation when applicable.
 
 
 @ProxyCmp({
-  inputs: ['bottomOffset', 'language']
+  inputs: ['language']
 })
 @Component({
   selector: 'ontario-back-to-top',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['bottomOffset', 'language'],
+  inputs: ['language'],
   standalone: false
 })
 export class OntarioBackToTop {
