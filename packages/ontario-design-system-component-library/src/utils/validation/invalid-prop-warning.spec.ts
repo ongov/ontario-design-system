@@ -75,4 +75,17 @@ describe('printInvalidPropWarning', () => {
 				'%cis assumed.',
 		);
 	});
+
+	it('reports an explicitly undefined propValue as an invalid value', () => {
+		printInvalidPropWarning({
+			propName: 'layout-direction',
+			componentTag: '<ontario-card>',
+			propValue: undefined,
+			allowedValues: ['vertical', 'horizontal'],
+			defaultValue: 'vertical',
+		});
+
+		expect(warnSpy.mock.calls[0][0]).toContain('%cwas set to an invalid value of ');
+		expect(warnSpy.mock.calls[0][0]).not.toContain('invalid type');
+	});
 });

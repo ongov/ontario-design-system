@@ -18,17 +18,13 @@ export interface InvalidPropWarningOptions {
 /**
  * Prints a standardized invalid prop warning using runtime allowed values.
  */
-export function printInvalidPropWarning({
-	propName,
-	componentTag,
-	allowedValues,
-	defaultValue,
-	invalidDescriptor,
-	propValue,
-	conjunction,
-	defaultDescriptor,
-}: InvalidPropWarningOptions): void {
-	const formattedValues = formatAllowedValues(allowedValues, conjunction ?? (propValue !== undefined ? 'and' : 'or'));
+export function printInvalidPropWarning(options: InvalidPropWarningOptions): void {
+	const { propName, componentTag, allowedValues, defaultValue, invalidDescriptor, propValue, defaultDescriptor } =
+		options;
+	// Presence of the key, not its value, selects the message so an `undefined` value is still reported as a value
+	const includesValue = 'propValue' in options;
+	const conjunction = options.conjunction ?? (includesValue ? 'and' : 'or');
+	const formattedValues = formatAllowedValues(allowedValues, conjunction);
 	const message = new ConsoleMessageClass();
 
 	message
@@ -37,7 +33,7 @@ export function printInvalidPropWarning({
 		.addRegularText('on')
 		.addMonospaceText(` ${componentTag} `);
 
-	if (propValue !== undefined) {
+	if (includesValue) {
 		message
 			.addRegularText('was set to an invalid value of ')
 			.addMonospaceText(` ${propValue} `)
