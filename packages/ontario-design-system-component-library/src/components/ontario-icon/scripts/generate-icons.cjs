@@ -159,7 +159,7 @@ const getIconComponentTemplate = (svgObject, icon) => {
 	if (hasColour) {
 		svgElement = svgElement.replace(
 			/class="svg-icon"/,
-			'class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}',
+			'class="svg-icon" style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}',
 		);
 	}
 
@@ -216,16 +216,14 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 	@Prop() colour: IconColour = '${icon.defaultColour ?? 'black'}';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, '${icon.name}'${icon.defaultColour ? `, '${icon.defaultColour}'` : ''});
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 	`

@@ -23,6 +23,9 @@ describe('shared icon validation', () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 		expect(validateIconColour('not-a-colour', 'ontario-icon-search')).toEqual({ colour: 'black' });
 		expect(warning).toHaveBeenCalledOnce();
+		const warningText = warning.mock.calls.flat().map(String).join(' ');
+		expect(warningText).toContain('white or inherit');
+		expect(warningText).toContain('valid CSS colour');
 	});
 
 	it('falls back to the icon default colour when one is supplied', () => {

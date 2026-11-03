@@ -42,9 +42,9 @@ export const validateIconColour = (
 		.addMonospaceText(' colour ')
 		.addRegularText('on')
 		.addMonospaceText(` <${iconName}> `)
-		.addRegularText('was set to an invalid colour; only')
-		.addMonospaceText(' black, blue, grey or white ')
-		.addRegularText('are supported. The default colour')
+		.addRegularText('was set to an invalid colour; supported colour tokens are')
+		.addMonospaceText(' black, blue, grey, white or inherit ')
+		.addRegularText('or a valid CSS colour. The default colour')
 		.addMonospaceText(` ${fallbackColour} `)
 		.addRegularText('is assumed.')
 		.printMessage();
