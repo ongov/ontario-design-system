@@ -9,7 +9,7 @@ export interface InvalidPropWarningOptions {
 	componentTag: string;
 	allowedValues: readonly (string | number)[];
 	defaultValue: string | number;
-	invalidDescriptor?: InvalidPropDescriptor | string;
+	invalidDescriptor?: InvalidPropDescriptor;
 	propValue?: unknown;
 	conjunction?: Conjunction;
 	defaultDescriptor?: string;
@@ -31,7 +31,11 @@ export function printInvalidPropWarning({
 	const formattedValues = formatAllowedValues(allowedValues, conjunction ?? (propValue !== undefined ? 'and' : 'or'));
 	const message = new ConsoleMessageClass();
 
-	message.addDesignSystemTag().addMonospaceText(` ${propName} `).addRegularText('on').addMonospaceText(` ${componentTag} `);
+	message
+		.addDesignSystemTag()
+		.addMonospaceText(` ${propName} `)
+		.addRegularText('on')
+		.addMonospaceText(` ${componentTag} `);
 
 	if (propValue !== undefined) {
 		message
