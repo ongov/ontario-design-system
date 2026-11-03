@@ -14,13 +14,17 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Back to Top component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
-The component is fixed to the bottom-right corner of the viewport by default. To position it within another container, apply positioning styles to the `ontario-back-to-top` element:
+The component is fixed to the bottom-right corner of the viewport by default. To adjust its vertical position while keeping the default fixed placement, set the `--ontario-back-to-top-bottom-offset` CSS custom property on the `ontario-back-to-top` element. The value is added to the default `5%` bottom offset:
 
 ```css
 ontario-back-to-top {
-	position: absolute;
-	bottom: 1rem;
-	right: 1rem;
+	--ontario-back-to-top-bottom-offset: 63px;
+}
+
+@media (max-width: 768px) {
+	ontario-back-to-top {
+		--ontario-back-to-top-bottom-offset: 6rem;
+	}
 }
 ```
 
@@ -117,6 +121,52 @@ Otherwise, a default Back to Top button can be used as follows:
 <div style={{ position: 'relative', minHeight: '6rem' }}>
 	<OntarioBackToTop style={{ position: 'absolute', bottom: '1rem', right: '1rem' }}> </OntarioBackToTop>
 </div>
+
+### Adjusting the position for other fixed/sticky elements
+
+If another fixed or sticky element (for example, a feedback button or live chat launcher) is stacked below the Back to Top button, set `--ontario-back-to-top-bottom-offset` in your CSS so the two elements don't overlap. Use a valid CSS length (for example `63px`, `4rem`, or `var(--my-offset)`). This value is added to the default `5%` bottom offset, and can be changed at different breakpoints.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-back-to-top> </ontario-back-to-top>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioBackToTop> </OntarioBackToTop>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-back-to-top> </ontario-back-to-top>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+The same CSS custom property works with HTML, React, and Angular wrappers. To change the component's horizontal position or use a different positioning model, override the host's positioning styles in your application CSS.
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations
 

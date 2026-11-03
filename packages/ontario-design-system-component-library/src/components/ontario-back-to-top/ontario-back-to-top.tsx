@@ -21,7 +21,7 @@ import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-even
 	shadow: true,
 })
 export class OntarioBackToTop {
-	@Element() element: HTMLElement;
+	@Element() element!: HTMLElement;
 
 	/**
 	 * The language of the component.
