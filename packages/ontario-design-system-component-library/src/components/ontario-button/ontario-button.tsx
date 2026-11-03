@@ -421,56 +421,29 @@ export class OntarioButton implements Button {
 	}
 
 	render() {
-		if (this.isIconOnly) {
-			if (this.isLinkMode()) {
-				return (
-					<a
-						href={this.href}
-						target={this.target}
-						rel={this.rel}
-						class={this.getClass()}
-						aria-label={this.ariaLabelText}
-						id={this.getId()}
-					>
-						<slot />
-					</a>
-				);
-			}
-
-			return (
-				<button
-					ref={(el) => (this.buttonRef = el as HTMLButtonElement)}
-					type={this.htmlTypeState}
-					class={this.getClass()}
-					aria-label={this.ariaLabelText}
-					id={this.getId()}
+		const content = this.isIconOnly ? (
+			<slot />
+		) : (
+			[
+				<span
+					class={{
+						'ontario-button__icon-slot': true,
+						'ontario-button__icon-slot--empty': !this.hasLeadingIcon,
+					}}
 				>
-					<slot />
-				</button>
-			);
-		}
-
-		const labelContent = this.label ? this.labelState : <slot />;
-
-		const content = [
-			<span
-				class={{
-					'ontario-button__icon-slot': true,
-					'ontario-button__icon-slot--empty': !this.hasLeadingIcon,
-				}}
-			>
-				<slot name="leading-icon" />
-			</span>,
-			<span class="ontario-button__label">{labelContent}</span>,
-			<span
-				class={{
-					'ontario-button__icon-slot': true,
-					'ontario-button__icon-slot--empty': !this.hasTrailingIcon,
-				}}
-			>
-				<slot name="trailing-icon" />
-			</span>,
-		];
+					<slot name="leading-icon" />
+				</span>,
+				<span class="ontario-button__label">{this.label ? this.labelState : <slot />}</span>,
+				<span
+					class={{
+						'ontario-button__icon-slot': true,
+						'ontario-button__icon-slot--empty': !this.hasTrailingIcon,
+					}}
+				>
+					<slot name="trailing-icon" />
+				</span>,
+			]
+		);
 
 		if (this.isLinkMode()) {
 			return (
