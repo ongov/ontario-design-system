@@ -1,5 +1,5 @@
 import { ConsoleMessageClass } from '../console-message/console-message';
-import { formatAllowedValues } from '../helper/utils';
+import { printArray } from '../helper/utils';
 import { Conjunction } from '../helper/utils-types';
 
 export type InvalidPropDescriptor = 'type' | 'value' | 'colour' | 'htmlType';
@@ -24,7 +24,7 @@ export function printInvalidPropWarning(options: InvalidPropWarningOptions): voi
 	// Presence of the key, not its value, selects the message so an `undefined` value is still reported as a value
 	const includesValue = 'propValue' in options;
 	const conjunction = options.conjunction ?? (includesValue ? 'and' : 'or');
-	const formattedValues = formatAllowedValues(allowedValues, conjunction);
+	const formattedValues = printArray(allowedValues, conjunction);
 	const message = new ConsoleMessageClass();
 
 	message
