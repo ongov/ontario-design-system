@@ -170,6 +170,8 @@ export class OntarioButton implements Button {
 
 	private hasWarnedLinkHtmlTypeConflict = false;
 
+	private slotObserver?: MutationObserver;
+
 	/*
 	 * Watch for changes to the `label` property for validation purposes.
 	 *
@@ -364,6 +366,10 @@ export class OntarioButton implements Button {
 		this.hasWarnedLinkHtmlTypeConflict = true;
 	}
 
+	private observeSlotChanges() {
+		this.slotObserver?.observe(this.host, { attributes: true, childList: true, subtree: true });
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -382,16 +388,18 @@ export class OntarioButton implements Button {
 		this.warnIgnoredHtmlTypeInLinkMode();
 	}
 
-	componentDidLoad() {
-		// Used to help load translations for any slots + text content passed in by the user,
-		// and to keep leading/trailing icon slot + icon-only state in sync with light DOM changes.
-		const observer = new MutationObserver(() => {
-			this.updateLabelContent();
+	connectedCallback() {
+		// Re-attach after the element has been moved/re-inserted, since `disconnectedCallback` stops observing.
+		if (this.slotObserver) {
 			this.syncSlotState();
-		});
+			this.observeSlotChanges();
+		}
+	}
 
-		const options = { attributes: true, childList: true, subtree: true };
-		observer.observe(this.host, options);
+	componentDidLoad() {
+		// Keep leading/trailing icon slot + icon-only state in sync with light DOM changes.
+		this.slotObserver = new MutationObserver(() => this.syncSlotState());
+		this.observeSlotChanges();
 
 		// Shadow DOM prevents the internal button's type from interacting with the outer form natively.
 		// Use ElementInternals to trigger submit/reset programmatically on click instead.
@@ -406,6 +414,10 @@ export class OntarioButton implements Button {
 				}
 			});
 		}
+	}
+
+	disconnectedCallback() {
+		this.slotObserver?.disconnect();
 	}
 
 	render() {
