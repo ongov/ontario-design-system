@@ -73,4 +73,54 @@ describe('printInvalidPropWarning', () => {
 		expect(warnSpy.mock.calls[0][0]).toContain('%cwas set to an invalid value of ');
 		expect(warnSpy.mock.calls[0][0]).not.toContain('invalid type');
 	});
+
+	it('prints the htmlType wording with a type default label', () => {
+		printInvalidPropWarning({
+			propName: 'htmlType',
+			componentTag: '<ontario-button>',
+			allowedValues: ['button', 'reset', 'submit'],
+			defaultValue: 'button',
+			invalidDescriptor: 'htmlType',
+			defaultDescriptor: 'type',
+			conjunction: 'or',
+		});
+
+		expect(warnSpy.mock.calls[0][0]).toEqual(
+			'%cOntario Design System' +
+				'%c htmlType ' +
+				'%con' +
+				'%c <ontario-button> ' +
+				'%cwas set to an invalid htmlType; only ' +
+				'%c button, reset or submit ' +
+				'%care supported. The default ' +
+				'%ctype' +
+				'%c button ' +
+				'%cis assumed.',
+		);
+	});
+
+	it('prints the colour wording', () => {
+		printInvalidPropWarning({
+			propName: 'colour',
+			componentTag: '<ontario-icon>',
+			allowedValues: ['black', 'blue', 'grey', 'white'],
+			defaultValue: 'black',
+			invalidDescriptor: 'colour',
+			defaultDescriptor: 'colour',
+			conjunction: 'or',
+		});
+
+		expect(warnSpy.mock.calls[0][0]).toEqual(
+			'%cOntario Design System' +
+				'%c colour ' +
+				'%con' +
+				'%c <ontario-icon> ' +
+				'%cwas set to an invalid colour; only ' +
+				'%c black, blue, grey or white ' +
+				'%care supported. The default ' +
+				'%ccolour' +
+				'%c black ' +
+				'%cis assumed.',
+		);
+	});
 });
