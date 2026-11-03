@@ -179,7 +179,7 @@ export class OntarioButton implements Button {
 		printInvalidPropWarning({
 			propName: 'type',
 			componentTag: '<ontario-button>',
-			allowedValues: ButtonTypes,
+			allowedValues: ButtonTypes.filter((type) => type !== 'internalThemeDark'),
 			defaultValue: 'secondary',
 			conjunction: 'or',
 		});
