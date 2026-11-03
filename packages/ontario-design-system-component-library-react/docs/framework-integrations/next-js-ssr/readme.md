@@ -345,6 +345,24 @@ Recommended strategy:
 - Ensure `serializeShadowRoot` is configured correctly for the components you are rendering.
 - Confirm `setAssetPath('/assets/ods/')` runs on the client in App Router projects.
 
+### Slotted Components Are Missing
+
+**Symptom:** A Stencil component placed in another component's named slot is missing from the page, for example an icon in the `leading-icon` slot of `OntarioButton`, or a button in the `action` slot of `OntarioSummaryListItem`.
+
+**Cause:** `@stencil/ssr` renders every Stencil component inside a `display:contents` wrapper element and does not copy the `slot` attribute onto it. The browser only assigns direct children to a slot, so a component with `slot` set is never slotted. Plain elements such as `<span>` are not wrapped and are not affected. This is tracked in [stenciljs/output-targets#858](https://github.com/stenciljs/output-targets/issues/858), with a fix in [stenciljs/output-targets#863](https://github.com/stenciljs/output-targets/pull/863).
+
+**Fix:** Put the `slot` attribute on a plain element that wraps the component:
+
+```tsx
+<OntarioButton label="Add item" type="primary">
+	<span slot="leading-icon">
+		<OntarioIconAdd colour="inherit" isDecorative={true} />
+	</span>
+</OntarioButton>
+```
+
+You can remove the wrappers once you are on a release of `@stencil/ssr` that includes the fix.
+
 ---
 
 ## 10. Additional App Router Notes

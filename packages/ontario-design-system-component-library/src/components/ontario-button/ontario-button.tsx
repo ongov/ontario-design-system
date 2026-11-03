@@ -23,7 +23,40 @@ import { isServerSideRendering } from '../../utils/common/environment';
  * Disabled/read-only policy source:
  * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
  *
+ * ## Icons
+ *
+ * Icons can be added alongside a `label`/text content using the `leading-icon` and
+ * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+ * slotted sides needs an icon for the other to still collapse its spacing automatically.
+ *
+ * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+ * tracks the button's current text colour (including hover/focus/active state changes)
+ * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+ * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+ *
+ * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+ * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+ * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+ * remains accessible.
+ *
+ * @example
+ * <ontario-button label="Save">
+ *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+ * </ontario-button>
+ *
+ * @example
+ * <ontario-button label="Save">
+ *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+ * </ontario-button>
+ *
+ * @example
+ * <ontario-button aria-label-text="Open map">
+ *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+ * </ontario-button>
+ *
  * @slot - Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text.
+ * @slot leading-icon - An icon displayed before the label.
+ * @slot trailing-icon - An icon displayed after the label.
  */
 @Component({
 	tag: 'ontario-button',
@@ -109,12 +142,35 @@ export class OntarioButton implements Button {
 	@State() private labelState: string;
 
 	/**
+	 * Mutable variable, for internal use only.
+	 * Tracks whether a `leading-icon` slotted element is present, so the slot's spacing
+	 * can be hidden when empty.
+	 */
+	@State() private hasLeadingIcon = false;
+
+	/**
+	 * Mutable variable, for internal use only.
+	 * Tracks whether a `trailing-icon` slotted element is present, so the slot's spacing
+	 * can be hidden when empty.
+	 */
+	@State() private hasTrailingIcon = false;
+
+	/**
+	 * Mutable variable, for internal use only.
+	 * Tracks whether the button is in icon-only mode: no `label`/text content, no leading/trailing
+	 * icon slots, but default-slotted element content (e.g. an SVG) is present.
+	 */
+	@State() private isIconOnly = false;
+
+	/**
 	 * A reference to the internal button element.
 	 */
 
 	private buttonRef: HTMLButtonElement;
 
 	private hasWarnedLinkHtmlTypeConflict = false;
+
+	private slotObserver?: MutationObserver;
 
 	/*
 	 * Watch for changes to the `label` property for validation purposes.
@@ -127,9 +183,11 @@ export class OntarioButton implements Button {
 			// Ensure host and its textContent are defined and accessible (safe for SSR environments)
 			this.labelState = this.label ?? '';
 		} else {
-			this.labelState = this.label ?? this.host.textContent ?? '';
+			this.labelState = this.label ?? this.getSlottedLabelText();
 		}
 		this.validateLabelContent(this.labelState);
+		// `isIconOnly` depends on `label`, so keep it in sync when `label` is set as a property (no DOM mutation).
+		this.syncSlotState();
 	}
 
 	/**
@@ -154,6 +212,49 @@ export class OntarioButton implements Button {
 	validateHtmlType() {
 		const isValid = validateValueAgainstArray(this.htmlType, HtmlTypes);
 		this.htmlTypeState = isValid ? this.htmlType : this.warnDefaultHtmlType();
+	}
+
+	/**
+	 * @returns the visible label text from the host's direct child text nodes and unslotted elements.
+	 *
+	 * This deliberately ignores SVG content (so an SVG's own `<title>`/`<desc>` isn't mistaken for a visible
+	 * label), comment nodes (inserted by some frameworks), and elements assigned to a named slot (icons).
+	 */
+	private getSlottedLabelText(): string {
+		return Array.from(this.host.childNodes)
+			.filter((node) => {
+				if (['svg', '#comment'].includes(node.nodeName.toLowerCase())) return false;
+				return !(node.nodeType === 1 && (node as HTMLElement).hasAttribute('slot'));
+			})
+			.map((node) => node.textContent ?? '')
+			.join('')
+			.trim();
+	}
+
+	/**
+	 * Re-check the host's light DOM for `leading-icon`/`trailing-icon` slotted elements and
+	 * default-slotted (icon-only) content, so internal layout state stays in sync with
+	 * whatever the consumer has slotted in.
+	 *
+	 * Detection is done directly against the host's light DOM (rather than via `slotchange`)
+	 * so it works correctly on the very first render, before any shadow DOM `<slot>` exists.
+	 * This also needs to run during SSR (not just client-side): Stencil's hydrate app provides
+	 * a fully DOM-compatible `this.host`, and skipping this on the server would bake an
+	 * incorrect "empty" state into the server-rendered HTML (hiding real slotted icons until
+	 * client-side hydration corrects it).
+	 */
+	private syncSlotState() {
+		// Only direct children can be assigned to a slot by the browser, so a nested element that
+		// merely carries a `slot` attribute (e.g. inside a wrapper element) must not count.
+		const children = Array.from(this.host.children);
+		this.hasLeadingIcon = children.some((child) => child.getAttribute('slot') === 'leading-icon');
+		this.hasTrailingIcon = children.some((child) => child.getAttribute('slot') === 'trailing-icon');
+
+		const hasNamedIconSlots = this.hasLeadingIcon || this.hasTrailingIcon;
+		const hasVisibleLabel = !!this.label?.trim() || !!this.getSlottedLabelText();
+		const hasDefaultSlotElementContent = children.some((child) => !child.hasAttribute('slot'));
+
+		this.isIconOnly = !hasNamedIconSlots && !hasVisibleLabel && hasDefaultSlotElementContent;
 	}
 
 	/**
@@ -230,7 +331,16 @@ export class OntarioButton implements Button {
 	 * @returns the classes of the button based of the button's `type`.
 	 */
 	private getClass() {
-		return `ontario-button ontario-button--${this.typeState}`;
+		const classes = ['ontario-button', `ontario-button--${this.typeState}`];
+		if (this.isIconOnly) {
+			classes.push('ontario-button--icon-only');
+		} else {
+			const iconCount = (this.hasLeadingIcon ? 1 : 0) + (this.hasTrailingIcon ? 1 : 0);
+			if (iconCount > 0) {
+				classes.push(`ontario-button--icons-${iconCount}`);
+			}
+		}
+		return classes.join(' ');
 	}
 
 	private isLinkMode() {
@@ -256,6 +366,10 @@ export class OntarioButton implements Button {
 		this.hasWarnedLinkHtmlTypeConflict = true;
 	}
 
+	private observeSlotChanges() {
+		this.slotObserver?.observe(this.host, { attributes: true, childList: true, subtree: true });
+	}
+
 	public getId(): string {
 		return this.elementId ?? '';
 	}
@@ -274,18 +388,18 @@ export class OntarioButton implements Button {
 		this.warnIgnoredHtmlTypeInLinkMode();
 	}
 
-	componentDidLoad() {
-		// Used to help load translations for any slots + text content passed in by the user.
-		const observer = new MutationObserver((mutations) => {
-			mutations.forEach((mutation) => {
-				if (mutation.type === 'attributes') {
-					this.updateLabelContent();
-				}
-			});
-		});
+	connectedCallback() {
+		// Re-attach after the element has been moved/re-inserted, since `disconnectedCallback` stops observing.
+		if (this.slotObserver) {
+			this.syncSlotState();
+			this.observeSlotChanges();
+		}
+	}
 
-		const options = { attributes: true };
-		observer.observe(this.host, options);
+	componentDidLoad() {
+		// Keep leading/trailing icon slot + icon-only state in sync with light DOM changes.
+		this.slotObserver = new MutationObserver(() => this.syncSlotState());
+		this.observeSlotChanges();
 
 		// Shadow DOM prevents the internal button's type from interacting with the outer form natively.
 		// Use ElementInternals to trigger submit/reset programmatically on click instead.
@@ -302,8 +416,34 @@ export class OntarioButton implements Button {
 		}
 	}
 
+	disconnectedCallback() {
+		this.slotObserver?.disconnect();
+	}
+
 	render() {
-		const content = this.label ? this.labelState : <slot />;
+		const content = this.isIconOnly ? (
+			<slot />
+		) : (
+			[
+				<span
+					class={{
+						'ontario-button__icon-slot': true,
+						'ontario-button__icon-slot--empty': !this.hasLeadingIcon,
+					}}
+				>
+					<slot name="leading-icon" />
+				</span>,
+				<span class="ontario-button__label">{this.label ? this.labelState : <slot />}</span>,
+				<span
+					class={{
+						'ontario-button__icon-slot': true,
+						'ontario-button__icon-slot--empty': !this.hasTrailingIcon,
+					}}
+				>
+					<slot name="trailing-icon" />
+				</span>,
+			]
+		);
 
 		if (this.isLinkMode()) {
 			return (

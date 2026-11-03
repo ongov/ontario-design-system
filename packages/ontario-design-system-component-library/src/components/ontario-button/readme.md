@@ -322,6 +322,117 @@ An example of a button with slotted SVG content. When no `label` is provided, th
 </Tabs>
 ```
 
+### Icons
+
+Icons can be added alongside a `label` (or text content) using the `leading-icon` and `trailing-icon` named slots. Either slot can be used on its own, or both together; whichever side isn't used simply collapses its spacing automatically.
+
+Prefer an `ontario-icon-*` component (see [ontario-icon](../ontario-icon/readme.md)) with `colour="inherit"`, so the icon automatically tracks the button's current text colour — including hover/focus/active state changes — instead of needing a colour set per button `type`. Always mark icons as decorative with `isDecorative`/`is-decorative="true"` so they aren't announced twice by assistive technology (the button's accessible name already comes from `label`/text content or `ariaLabelText`).
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-button label="Add item" type="primary">
+	<ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioButton label="Add item" type="primary">
+	{/* The generated React wrapper puts the real custom element inside an extra
+	`display:contents` div without forwarding `slot` onto it, so native slot assignment
+	(which only looks at direct children) doesn't find it. Wrap in a plain
+	`<span slot="...">` instead of passing `slot` as a prop. */}
+	<span slot="leading-icon">
+		<OntarioIconAdd colour="inherit" isDecorative={true} />
+	</span>
+</OntarioButton>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-button [label]="'Add item'" [type]="'primary'">
+	<ontario-icon-add slot="leading-icon" colour="inherit" [isDecorative]="true"></ontario-icon-add>
+</ontario-button>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+The same pattern applies to `trailing-icon`, or both slots together for an icon on each side of the label:
+
+```html
+<ontario-button label="Download report" type="primary">
+	<ontario-icon-download slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-download>
+	<ontario-icon-chevron-right slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-chevron-right>
+</ontario-button>
+```
+
+Slotted icons must be direct children of the button, because the browser only assigns direct children to a slot. When wrapping an icon (as in the React example), put the `slot` attribute on the wrapper.
+
+In React, wrap each icon in a `<span slot="...">` (a plain element that carries the `slot` attribute) rather than passing `slot` directly to the icon component. The browser only slots direct children of `<ontario-button>`, and a Stencil component rendered through the React wrapper isn't a direct child that carries `slot`.
+
+A raw `<svg>`/`<img>` can also be slotted in directly (e.g. for a custom icon not covered by `ontario-icon-*`); it is sized to 24x24px automatically:
+
+```html
+<ontario-button label="Add item" type="primary">
+	<svg slot="leading-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+		<path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z" />
+	</svg>
+</ontario-button>
+```
+
+#### Icon-only buttons
+
+An icon-only button (no visible label) is detected automatically when a default-slotted element (e.g. an `ontario-icon-*` component or an SVG) is provided without `label`/text content. Icon-only buttons render as a compact square, rather than the full-width rectangle used for labelled buttons. Always provide `ariaLabelText` in this mode, since there's no visible text to derive an accessible name from.
+
+```html
+<ontario-button aria-label-text="Open map" type="primary">
+	<ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+</ontario-button>
+```
+
+Icon-only buttons scale their icon up to 32px on mobile (and to 28px for the `tertiary` type on desktop) to keep a consistent tap-target size. A raw slotted `<svg>`/`<img>` is resized automatically by the button's CSS to match; an `ontario-icon-*` component sizes itself internally via its own `iconWidth`/`icon-width` prop, so set that explicitly per breakpoint/type if you need an exact match (CSS can't reach inside its shadow DOM to resize it).
+
+#### Sizing
+
+Buttons with icons are sized as follows:
+
+- 24px of padding between the button edge and the label or icon. For a `secondary` button the 2px border counts towards this, so the 24px is measured to its outer edge.
+- 8px between an icon and the label.
+- A minimum width of 160px, with no maximum width on desktop, so a button grows with its content.
+
+On mobile, every button is at most 328px wide, and the label wraps within a maximum width so the icons keep their spacing:
+
+| Configuration                    | Maximum label width |
+| -------------------------------- | ------------------- |
+| No icon                          | 280px               |
+| One icon (leading or trailing)   | 248px               |
+| Two icons (leading and trailing) | 216px               |
+
+A `secondary` button with no icon keeps its existing padding, with the border added on top, so its label is 4px narrower than the table (276px) on mobile.
+
 ### Forms
 
 The `ontario-button` supports integration with native HTML `<form>` elements. This element integrates with the underlying browser form API and should work the same as adding an `<input type="submit">`.
@@ -407,6 +518,7 @@ The Ontario Button component supports server-side rendering, with a few consider
 - **Preferred content source:** Pass button text through the `label` prop.
 - **Slotted content caveat:** Slotted children rely on fallback `host.textContent`, which is not reliably available during SSR.
 - **Framework guidance:** For deterministic SSR output, prefer `label` over slotted children.
+- **Slotted icons in Next.js:** wrap each icon in a `<span slot="...">` rather than passing `slot` to the icon component. See [Icons](#icons) above.
 
 ### SSR-safe example:
 
@@ -436,6 +548,22 @@ Disabled/read-only policy source:
 
 - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
+## Icons
+
+Icons can be added alongside a `label`/text content using the `leading-icon` and
+`trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+slotted sides needs an icon for the other to still collapse its spacing automatically.
+
+Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+tracks the button's current text colour (including hover/focus/active state changes)
+instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+
+Icon-only buttons (no visible label) are detected automatically when a default-slotted
+element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+`label`/text content. In this mode, always provide `ariaLabelText` so the button
+remains accessible.
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                                                                                                                                                                                          | Type                                                            | Default       |
@@ -451,9 +579,11 @@ Disabled/read-only policy source:
 
 ## Slots
 
-| Slot | Description                                                                                                                                                    |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      | Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text. |
+| Slot              | Description                                                                                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                   | Content to display inside the button when no `label` is provided (for example, an inline `<svg>`). Pair it with `ariaLabelText` when there is no visible text. |
+| `"leading-icon"`  | An icon displayed before the label.                                                                                                                            |
+| `"trailing-icon"` | An icon displayed after the label.                                                                                                                             |
 
 ---
 
