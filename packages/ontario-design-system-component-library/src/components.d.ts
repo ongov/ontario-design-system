@@ -3456,14 +3456,6 @@ export namespace Components {
          */
         "ariaLabelText"?: string;
         /**
-          * A function called when a dismissible tag is activated, in addition to the `tagDismissed` event.  This property is optional.
-         */
-        "customOnDismiss"?: (detail: TagDismissedDetail) => void;
-        /**
-          * A function called when a non-dismissible tag is selected or deselected, in addition to the `tagToggled` event.  This property is optional.
-         */
-        "customOnToggle"?: (detail: TagToggledDetail) => void;
-        /**
           * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
          */
         "dismissLabel"?: string;
@@ -8925,14 +8917,6 @@ declare namespace LocalJSX {
           * Provides more context for the non-dismissible tag button, only if the label alone is not enough.  This property is optional.
          */
         "ariaLabelText"?: string;
-        /**
-          * A function called when a dismissible tag is activated, in addition to the `tagDismissed` event.  This property is optional.
-         */
-        "customOnDismiss"?: (detail: TagDismissedDetail) => void;
-        /**
-          * A function called when a non-dismissible tag is selected or deselected, in addition to the `tagToggled` event.  This property is optional.
-         */
-        "customOnToggle"?: (detail: TagToggledDetail) => void;
         /**
           * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
          */

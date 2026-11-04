@@ -3871,7 +3871,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
 
 
 @ProxyCmp({
-  inputs: ['ariaLabelText', 'customOnDismiss', 'customOnToggle', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
+  inputs: ['ariaLabelText', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
   methods: ['setFocus']
 })
 @Component({
@@ -3879,7 +3879,7 @@ export declare interface OntarioTable extends Components.OntarioTable {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabelText', 'customOnDismiss', 'customOnToggle', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
+  inputs: ['ariaLabelText', 'dismissLabel', 'dismissible', 'elementId', 'label', 'language', 'selected', 'value'],
   outputs: ['tagToggled', 'tagDismissed'],
   standalone: false
 })

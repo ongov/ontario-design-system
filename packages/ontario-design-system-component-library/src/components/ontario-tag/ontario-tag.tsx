@@ -96,20 +96,6 @@ export class OntarioTag {
 	@Prop({ mutable: true }) language?: Language;
 
 	/**
-	 * A function called when a non-dismissible tag is selected or deselected, in addition to the `tagToggled` event.
-	 *
-	 * This property is optional.
-	 */
-	@Prop() customOnToggle?: (detail: TagToggledDetail) => void;
-
-	/**
-	 * A function called when a dismissible tag is activated, in addition to the `tagDismissed` event.
-	 *
-	 * This property is optional.
-	 */
-	@Prop() customOnDismiss?: (detail: TagDismissedDetail) => void;
-
-	/**
 	 * Emitted when a non-dismissible tag is selected or deselected by mouse, touch, or keyboard.
 	 */
 	@Event() tagToggled: EventEmitter<TagToggledDetail>;
@@ -242,17 +228,13 @@ export class OntarioTag {
 		const value = this.value ?? label;
 
 		if (this.dismissible) {
-			const detail: TagDismissedDetail = { label, value };
-			this.tagDismissed.emit(detail);
-			this.customOnDismiss?.(detail);
+			this.tagDismissed.emit({ label, value });
 			return;
 		}
 
 		this.selected = !this.selected;
 
-		const detail: TagToggledDetail = { label, value, selected: !!this.selected };
-		this.tagToggled.emit(detail);
-		this.customOnToggle?.(detail);
+		this.tagToggled.emit({ label, value, selected: !!this.selected });
 	};
 
 	componentWillLoad() {

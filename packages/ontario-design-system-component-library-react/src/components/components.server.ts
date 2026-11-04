@@ -2507,9 +2507,7 @@ export const OntarioTag: StencilReactComponent<OntarioTagElement, OntarioTagEven
         dismissLabel: 'dismiss-label',
         ariaLabelText: 'aria-label-text',
         elementId: 'element-id',
-        language: 'language',
-        customOnToggle: 'custom-on-toggle',
-        customOnDismiss: 'custom-on-dismiss'
+        language: 'language'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioTag as ReactWebComponent<OntarioTagElement, OntarioTagEvents>,
