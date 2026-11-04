@@ -3464,7 +3464,7 @@ export namespace Components {
          */
         "customOnToggle"?: (detail: TagToggledDetail) => void;
         /**
-          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  This property is optional.
+          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
          */
         "dismissLabel"?: string;
         /**
@@ -8934,7 +8934,7 @@ declare namespace LocalJSX {
          */
         "customOnToggle"?: (detail: TagToggledDetail) => void;
         /**
-          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  This property is optional.
+          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
          */
         "dismissLabel"?: string;
         /**
