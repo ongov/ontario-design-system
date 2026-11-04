@@ -67,6 +67,8 @@ export class OntarioTag {
 	 *
 	 * If no `dismissLabel` is passed, the translated "Remove {label}" is used.
 	 *
+	 * Include the visible label in the override, so the accessible name still matches what users see.
+	 *
 	 * This property is optional.
 	 */
 	@Prop() dismissLabel?: string;
