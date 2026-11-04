@@ -1,5 +1,6 @@
 import { render } from '@stencil/vitest';
 import { vi } from 'vitest';
+import type { IconColour } from '../icon.types';
 
 describe('ontario-icon', () => {
 	describe('snapshot', () => {
@@ -153,10 +154,11 @@ describe('ontario-icon', () => {
 		});
 
 		it('applies a custom CSS colour to the svg', async () => {
-			const page = await render('<ontario-icon-dropdown-arrow colour="#123456"></ontario-icon-dropdown-arrow>');
+			const colour: IconColour = '#123456';
+			const page = await render(`<ontario-icon-dropdown-arrow colour="${colour}"></ontario-icon-dropdown-arrow>`);
 			const svg = page.root.shadowRoot?.querySelector('svg') as SVGElement;
 
-			expect(svg.style.fill).toBe('#123456');
+			expect(svg.style.fill).toBe(colour);
 		});
 
 		it('does not warn about the colour attribute', async () => {

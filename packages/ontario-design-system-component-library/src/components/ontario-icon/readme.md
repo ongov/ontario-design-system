@@ -189,7 +189,7 @@ Each icon has its own generated README with the properties supported by that ico
 
 ## Colour support
 
-The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Configurable icons default to `black`, except that `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`. Icons are classified in `icon-manifest.json` as one of:
+The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Most configurable icons default to `black`; `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`, and `ontario-icon-dropdown-arrow` defaults to `inherit`. Icons are classified in `icon-manifest.json` as one of:
 
 - `configurable`: exposes `colour` and recolours the artwork.
 - `fixed`: keeps its own artwork colour and ignores `colour`. These are the alert icons (`alert-error`, `alert-information`, `alert-success` and `alert-warning`).
@@ -236,17 +236,17 @@ The `colour` property now takes effect on `ontario-icon-attach`, `ontario-icon-c
 
 The `icons` array in `icon-manifest.json` is the source of truth for icon metadata. Each entry must correspond to an SVG with the same basename in `assets/`.
 
-| Field               | Required | Meaning                                                                                                                                                            |
-| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`              | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                                                           |
-| `category`          | Yes      | Gallery grouping: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                                                         |
-| `viewBox`           | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                                                        |
-| `colour`            | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property.                                         |
-| `aliases`           | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components.                                         |
-| `deprecated`        | Yes      | Marks the icon as deprecated. The generated component logs a development-only warning once per tag name.                                                           |
-| `replacedBy`        | No       | Icon that replaces a deprecated icon, with or without the `ontario-icon-` prefix. It must name another icon and requires `deprecated`.                             |
-| `defaultColour`     | No       | Default `colour` for a `configurable` icon when it is not `black`: `black`, `blue`, `grey`, `white` or `inherit`. It is also the fallback for an invalid `colour`. |
-| `previewBackground` | No       | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon.                                                    |
+| Field               | Required | Meaning                                                                                                                                                                                                             |
+| ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`              | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                                                                                                            |
+| `category`          | Yes      | Gallery grouping: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                                                                                                          |
+| `viewBox`           | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                                                                                                         |
+| `colour`            | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property.                                                                                          |
+| `aliases`           | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components.                                                                                          |
+| `deprecated`        | Yes      | Marks the icon as deprecated. The generated component logs a development-only warning once per tag name.                                                                                                            |
+| `replacedBy`        | No       | Icon that replaces a deprecated icon, with or without the `ontario-icon-` prefix. It must name another icon and requires `deprecated`.                                                                              |
+| `defaultColour`     | No       | Default `colour` for a `configurable` icon when none is supplied, and the fallback for an invalid `colour`. If omitted, it defaults to `black`; accepted values are `black`, `blue`, `grey`, `white` and `inherit`. |
+| `previewBackground` | No       | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon.                                                                                                     |
 
 ### Add or update an icon
 
