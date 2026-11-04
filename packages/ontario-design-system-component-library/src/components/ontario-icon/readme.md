@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # ontario-icon
 
-se simple, easy-to-understand icons from Material Design to help guide users.
+Use simple, easy-to-understand icons from Material Design to help guide users.
 
 Icons are a visual representation of a single and simple object, action or idea. If you need to communicate more complicated concepts, consider an illustration or infographic.
 
