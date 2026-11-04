@@ -189,7 +189,7 @@ Each icon has its own generated README with the properties supported by that ico
 
 ## Colour support
 
-The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Configurable icons default to `black`, except that `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`. Icons are classified in `icon-manifest.json` as one of:
+The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Most configurable icons default to `black`; `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`, and `ontario-icon-dropdown-arrow` defaults to `inherit`. Icons are classified in `icon-manifest.json` as one of:
 
 - `configurable`: exposes `colour` and recolours the artwork.
 - `fixed`: keeps its own artwork colour and ignores `colour`. These are the alert icons (`alert-error`, `alert-information`, `alert-success` and `alert-warning`).
@@ -247,7 +247,7 @@ Configurable-colour assets must begin the root SVG's `class` attribute with `svg
 | `aliases` | Yes | Reserved metadata for alternative names; no runtime consumer or additional components today. Use an empty array when none exist. |
 | `deprecated` | Yes | Reserved deprecation metadata; does not currently generate runtime warnings or change rendering. |
 | `replacedBy` | No | Reserved replacement metadata; no runtime behaviour today. Must name an existing manifest icon, with or without the `ontario-icon-` prefix, and requires `deprecated`. |
-| `defaultColour` | No | Default `colour` for a `configurable` icon when it is not `black`: `black`, `blue`, `grey`, `white` or `inherit`. It is also the fallback for an invalid `colour`. |
+| `defaultColour`     | No       | Default `colour` for a `configurable` icon when none is supplied, and the fallback for an invalid `colour`. If omitted, it defaults to `black`; accepted values are `black`, `blue`, `grey`, `white` and `inherit`. |
 | `previewBackground` | No | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon. |
 
 ### Add or update an icon
