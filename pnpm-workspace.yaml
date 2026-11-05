@@ -14,6 +14,10 @@ allowBuilds:
 # Ensure semantic-release runs the same patched GitHub plugin declared at the workspace root.
 overrides:
   'semantic-release>@semantic-release/github': 12.0.10
+  # sync-child-process <1.1.1 can corrupt sass-embedded's sync compiler output on Node 24.22+
+  # ("Invalid protobuf"). Drop once sass-embedded requires ^1.1.1:
+  # https://github.com/sass/embedded-host-node/issues/451
+  sync-child-process: ^1.1.1
 patchedDependencies:
   '@semantic-release/github@12.0.10': patches/@semantic-release__github@12.0.10.patch
   # Forwards `slot` to the wrapper element. Drop this patch once a release includes the upstream fix:
