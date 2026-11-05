@@ -1,0 +1,18 @@
+{
+	"zIndex": {
+		"auto": { "value": "auto", "type": "other" },
+		"inherit": { "value": "inherit", "type": "other" },
+		"initial": { "value": "initial", "type": "other" },
+		"neutral": { "value": "0", "type": "other" },
+		"behind": {
+			"low": { "value": "-4", "type": "other" },
+			"medium": { "value": "-2", "type": "other" },
+			"high": { "value": "-1", "type": "other" }
+		},
+		"above": {
+			"low": { "value": "1", "type": "other" },
+			"medium": { "value": "2", "type": "other" },
+			"high": { "value": "4", "type": "other" }
+		}
+	}
+}
