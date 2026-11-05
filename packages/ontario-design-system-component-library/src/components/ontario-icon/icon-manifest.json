@@ -1,0 +1,956 @@
+{
+	"icons": [
+		{
+			"name": "ontario-icon-accessibility",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-account",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-add-alt",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-add",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-alert-error",
+			"category": "alert",
+			"viewBox": "0 0 24 24",
+			"colour": "fixed",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-alert-information",
+			"category": "alert",
+			"viewBox": "0 0 24 24",
+			"colour": "fixed",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-alert-success",
+			"category": "alert",
+			"viewBox": "0 0 24 24",
+			"colour": "fixed",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-alert-warning",
+			"category": "alert",
+			"viewBox": "0 0 24 24",
+			"colour": "fixed",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-arrow-up",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-attach",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-bookmark-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-bookmark-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-calendar",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-camera",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-chevron-down",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-chevron-left",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-chevron-right",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-chevron-up",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-clock",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-close-header",
+			"category": "other",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-close",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-cloud",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-collapse",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-credit-card",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-critical-alert-warning",
+			"category": "alert",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-delete",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-document",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-download",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-dropdown-arrow",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "fixed",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-edit",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-email",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-expand",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-export",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-facebook-alt",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-facebook",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-favourite-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-favourite-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-filter",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-flickr",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-grid",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-help",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-instagram",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-interac-en-alt",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-interac-en",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-interac-fr-alt",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-interac-fr",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-linkedin-alt",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-linkedin",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-list",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-live-chat",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-location-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-location-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-lock-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-lock-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-map",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-mastercard-alt",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-mastercard",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-media-fast-forward",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-media-fast-rewind",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-media-pause",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-media-play",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-media-stop",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-menu-header",
+			"category": "other",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-menu",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-microphone-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-microphone-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-more-accounts",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-more-vertical",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-new-window",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-next",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-notification",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-password-hide",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-password-show",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-phone",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-photo",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-pin-location-off",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-pin-location-on",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-previous",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-print",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-remove-alt",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-remove",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-replay",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-rss-feed",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-save",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-search-white",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-search",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sentiment-1",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sentiment-2",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sentiment-3",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sentiment-4",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sentiment-5",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-settings",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-share",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort-alphabetical-ascending",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort-alphabetical-descending",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort-ascending",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort-descending",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort-variant",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-sort",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-tag",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-text-message",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-timer",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-transport-bicycle",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-transport-bus",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-transport-car",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-transport-walk",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-tty",
+			"category": "primary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-tune",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-twitter-alt",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-twitter",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-upload",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-video",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-visa",
+			"category": "payment",
+			"viewBox": "0 0 24 24",
+			"colour": "multicolour",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-vote-dislike",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-vote-like",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-vpn-key",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-wheelchair",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-wifi",
+			"category": "secondary",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		},
+		{
+			"name": "ontario-icon-youtube",
+			"category": "social",
+			"viewBox": "0 0 24 24",
+			"colour": "configurable",
+			"aliases": [],
+			"deprecated": false
+		}
+	]
+}
