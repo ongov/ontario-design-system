@@ -1,3 +1,4 @@
+import { OntarioTag } from '@ongov/ontario-design-system-component-library-react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -62,8 +63,8 @@ Example of non-dismissible tags used as category filters, unselected and selecte
 ```
 
 ```tsx
-<OntarioTag label="Health" />
-<OntarioTag label="Education" selected />
+<OntarioTag label="Health"></OntarioTag>
+<OntarioTag label="Education" selected></OntarioTag>
 ```
 
 ```mdx-code-block
@@ -79,6 +80,11 @@ Example of non-dismissible tags used as category filters, unselected and selecte
 </TabItem>
 </Tabs>
 ```
+
+<div>
+	<OntarioTag label="Health"></OntarioTag>
+	<OntarioTag label="Education" selected></OntarioTag>
+</div>
 
 Example of a dismissible tag with removal handling.
 
@@ -110,7 +116,7 @@ Example of a dismissible tag with removal handling.
 	value="category-filter"
 	dismissible
 	onTagDismissed={(e) => removeFilter(e.detail.value)}
-/>
+></OntarioTag>
 ```
 
 ```mdx-code-block
@@ -131,6 +137,31 @@ Example of a dismissible tag with removal handling.
 </TabItem>
 </Tabs>
 ```
+
+<div>
+	<OntarioTag label="Category: Filter" value="category-filter" dismissible></OntarioTag>
+</div>
+
+## Custom property types
+
+### TagToggledDetail
+
+This event detail type is emitted by the `tagToggled` event when a non-dismissible tag is selected or deselected.
+
+| Property   | Description                                      | Type      |
+| ---------- | ------------------------------------------------ | --------- |
+| `label`    | The text of the tag.                             | `string`  |
+| `value`    | The tag's `value`, or its label if none was set. | `string`  |
+| `selected` | Whether the tag is now selected.                 | `boolean` |
+
+### TagDismissedDetail
+
+This event detail type is emitted by the `tagDismissed` event when a dismissible tag is activated.
+
+| Property | Description                                      | Type     |
+| -------- | ------------------------------------------------ | -------- |
+| `label`  | The text of the tag.                             | `string` |
+| `value`  | The tag's `value`, or its label if none was set. | `string` |
 
 <!-- Auto Generated Below -->
 
