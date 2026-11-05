@@ -115,7 +115,7 @@
 		"mock-fs": "^5.5.0",
 		"prettier": "^3.4.2",
 		"rollup-plugin-dotenv": "^0.5.1",
-		"sass-embedded": "^1.89.2",
+		"sass-embedded": "^1.104.1",
 		"shx": "^0.4.0",
 		"stencil-inline-svg": "^1.1.0",
 		"svgson": "^5.3.1",

@@ -83,7 +83,7 @@
 		"prettier": "^3.4.2",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
-		"sass-embedded": "^1.93.2",
+		"sass-embedded": "^1.104.1",
 		"typescript": "^6.0.0"
 	},
 	"peerDependencies": {
