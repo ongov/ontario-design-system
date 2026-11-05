@@ -1,7 +1,28 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { test } from '@stencil/playwright';
+import {
+	OntarioColourAccentIconColoursBlack,
+	OntarioColourAccentIconColoursBlue,
+	OntarioColourAccentIconColoursGrey,
+	OntarioColourAccentIconColoursWhite,
+	OntarioColourGreyscaleGreyscale5,
+	OntarioColourGreyscaleWhite,
+	OntarioColourSystemAlert,
+	OntarioColourSystemLink,
+	OntarioColourSystemLinkHover,
+} from '@ongov/ontario-design-system-design-tokens/tokens';
 import manifest from '../icon-manifest.json' with { type: 'json' };
+
+const getComputedColour = (page: Page, colour: string) =>
+	page.evaluate((value) => {
+		const probe = document.createElement('span');
+		probe.style.color = value;
+		document.body.append(probe);
+		const computedColour = getComputedStyle(probe).color;
+		probe.remove();
+		return computedColour;
+	}, colour);
 
 const rotationFixture = `
 	<style>
@@ -72,5 +93,319 @@ test.describe('ontario-icon', () => {
 
 		await page.emulateMedia({ reducedMotion: 'reduce' });
 		await expect(host).toHaveCSS('transition-duration', '0s');
+	});
+
+	test.describe('colour API', () => {
+		const iconFillColours = {
+			black: OntarioColourAccentIconColoursBlack,
+			blue: OntarioColourAccentIconColoursBlue,
+			grey: OntarioColourAccentIconColoursGrey,
+			white: OntarioColourAccentIconColoursWhite,
+		};
+
+		for (const [colour, tokenColour] of Object.entries(iconFillColours)) {
+			test(`dropdown-arrow renders the ${colour} token fill`, async ({ page }) => {
+				await page.setContent(`<ontario-icon-dropdown-arrow colour="${colour}"></ontario-icon-dropdown-arrow>`);
+				await page.waitForChanges();
+				const fill = await getComputedColour(page, tokenColour);
+
+				await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', fill);
+			});
+		}
+
+		test('dropdown-arrow follows the surrounding text colour with colour="inherit"', async ({ page }) => {
+			await page.setContent(`
+				<div id="inheritance-container" style="color: ${OntarioColourSystemLink}">
+					<ontario-icon-dropdown-arrow colour="inherit"></ontario-icon-dropdown-arrow>
+				</div>
+			`);
+			await page.waitForChanges();
+			const inheritedColour = await page
+				.locator('#inheritance-container')
+				.evaluate((element) => getComputedStyle(element).color);
+
+			await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', inheritedColour);
+		});
+
+		test('dropdown-arrow defaults to inherit and falls back to inherit after an invalid colour', async ({ page }) => {
+			await page.setContent(`
+				<div id="inheritance-container" style="color: ${OntarioColourSystemLink}">
+					<ontario-icon-dropdown-arrow id="default"></ontario-icon-dropdown-arrow>
+					<ontario-icon-dropdown-arrow id="invalid" colour="not-a-colour"></ontario-icon-dropdown-arrow>
+				</div>
+			`);
+			await page.waitForChanges();
+			const inheritedColour = await page
+				.locator('#inheritance-container')
+				.evaluate((element) => getComputedStyle(element).color);
+			await expect(page.locator('#default').locator('path')).toHaveCSS('fill', inheritedColour);
+			await expect(page.locator('#invalid').locator('path')).toHaveCSS('fill', inheritedColour);
+		});
+
+		test('dropdown-arrow renders a custom CSS colour as its fill', async ({ page }) => {
+			const customColour = OntarioColourSystemAlert;
+			await page.setContent(`<ontario-icon-dropdown-arrow colour="${customColour}"></ontario-icon-dropdown-arrow>`);
+			await page.waitForChanges();
+			const fill = await getComputedColour(page, customColour);
+
+			await expect(page.locator('ontario-icon-dropdown-arrow').locator('path')).toHaveCSS('fill', fill);
+		});
+
+		test('dropdown-arrow clears a custom colour when changed to a token', async ({ page }) => {
+			const customColour = OntarioColourSystemAlert;
+			await page.setContent(`<ontario-icon-dropdown-arrow colour="${customColour}"></ontario-icon-dropdown-arrow>`);
+			await page.waitForChanges();
+
+			const icon = page.locator('ontario-icon-dropdown-arrow');
+			const iconPath = icon.locator('path');
+			const customFill = await getComputedColour(page, customColour);
+			await expect(iconPath).toHaveCSS('fill', customFill);
+
+			await icon.evaluate((element) => element.setAttribute('colour', 'blue'));
+			await page.waitForChanges();
+			const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+			await expect(iconPath).toHaveCSS('fill', blueFill);
+		});
+
+		for (const [tag, replacement, colour] of [['ontario-icon-search-white', 'ontario-icon-search', 'white']]) {
+			test(`${tag} warns once in development and still renders`, async ({ page }) => {
+				const warnings: string[] = [];
+				page.on('console', (message) => {
+					if (message.type() === 'warning') {
+						warnings.push(message.text());
+					}
+				});
+				await page.setContent(`
+				<${tag} colour="${colour}"></${tag}>
+				<${tag} colour="${colour}"></${tag}>
+				<${replacement} colour="${colour}"></${replacement}>
+			`);
+				await page.waitForChanges();
+
+				await expect(page.locator(tag).locator('svg')).toHaveCount(2);
+				const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+				await expect(page.locator(tag).first().locator('path')).toHaveCSS('fill', whiteFill);
+				await expect(page.locator(replacement).locator('path')).toHaveCSS('fill', whiteFill);
+				expect(warnings.filter((warning) => warning.includes(`<${tag}>`))).toHaveLength(1);
+				expect(warnings.find((warning) => warning.includes(`<${tag}>`))).toContain(`<${replacement}>`);
+			});
+		}
+	});
+
+	test.describe('interactive colour state', () => {
+		// Mirrors the header search button: dark icon at rest, white icon on a blue background on hover and focus.
+		const searchButtonFixture = `
+			<style>
+				.search-button { background: ${OntarioColourGreyscaleGreyscale5}; color: ${OntarioColourAccentIconColoursBlack}; border: 0; padding: 12px; margin: 40px; }
+				.search-button:hover, .search-button:focus { background: ${OntarioColourSystemLinkHover}; color: ${OntarioColourAccentIconColoursWhite}; }
+				.look-alike { width: 24px; height: 24px; }
+			</style>
+			<button class="search-button" type="button">
+				<ontario-icon-search colour="inherit"></ontario-icon-search>
+			</button>
+			<div class="ontario-icon ontario-icon--blue">
+				<svg class="look-alike" viewBox="0 0 24 24"><path d="M0 0h24v24z"></path></svg>
+			</div>
+		`;
+
+		test('icon recolours on hover and returns to its idle colour', async ({ page }) => {
+			await page.setContent(searchButtonFixture);
+			await page.waitForChanges();
+			const iconPath = page.locator('ontario-icon-search').locator('path');
+			const button = page.locator('.search-button');
+			const blackFill = await getComputedColour(page, OntarioColourAccentIconColoursBlack);
+			const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+
+			await expect(iconPath).toHaveCSS('fill', blackFill);
+			await button.hover();
+			await expect(iconPath).toHaveCSS('fill', whiteFill);
+			await page.mouse.move(0, 0);
+			await expect(iconPath).toHaveCSS('fill', blackFill);
+		});
+
+		test('icon recolours on keyboard focus and returns to its idle colour on blur', async ({ page }) => {
+			await page.setContent(searchButtonFixture);
+			await page.waitForChanges();
+			const iconPath = page.locator('ontario-icon-search').locator('path');
+			const blackFill = await getComputedColour(page, OntarioColourAccentIconColoursBlack);
+			const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+
+			await page.keyboard.press('Tab');
+			await expect(page.locator('.search-button')).toBeFocused();
+			await expect(iconPath).toHaveCSS('fill', whiteFill);
+			await page.keyboard.press('Tab');
+			await expect(iconPath).toHaveCSS('fill', blackFill);
+		});
+
+		test('icon styles do not leak into light-DOM markup', async ({ page }) => {
+			await page.setContent(searchButtonFixture);
+			await page.waitForChanges();
+			const lightDomPath = page.locator('.look-alike path');
+			const originalFill = await lightDomPath.evaluate((path) => getComputedStyle(path).fill);
+			await page.locator('.search-button').hover();
+
+			await expect(lightDomPath).toHaveCSS('fill', originalFill);
+		});
+
+		test('page-level svg rules cannot restyle the icon through the shadow boundary', async ({ page }) => {
+			await page.setContent(`
+				<style>
+					svg, path, .ontario-icon svg, .ontario-icon--blue svg {
+						fill: ${OntarioColourSystemAlert} !important;
+						stroke: ${OntarioColourSystemAlert} !important;
+					}
+				</style>
+				<ontario-icon-search colour="blue"></ontario-icon-search>
+				<svg class="control" viewBox="0 0 24 24"><path d="M0 0h24v24z"></path></svg>
+			`);
+			await page.waitForChanges();
+			const alertFill = await getComputedColour(page, OntarioColourSystemAlert);
+			const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+
+			// The control proves the page rule is live, so the icon staying blue is due to encapsulation.
+			await expect(page.locator('.control path')).toHaveCSS('fill', alertFill);
+			await expect(page.locator('ontario-icon-search').locator('path')).toHaveCSS('fill', blueFill);
+		});
+
+		test('rendering icons does not change the styles of surrounding page elements', async ({ page }) => {
+			await page.setContent(`
+				<style>.look-alike { width: 24px; height: 24px; }</style>
+				<main id="page">
+					<button id="button" type="button">Search</button>
+					<svg class="look-alike" viewBox="0 0 24 24"><path d="M0 0h24v24z"></path></svg>
+				</main>
+				<div id="icons"></div>
+			`);
+			await page.waitForChanges();
+			const readStyles = () =>
+				page.evaluate(() =>
+					['body', '#page', '#button', '.look-alike', '.look-alike path'].map((selector) => {
+						const style = getComputedStyle(document.querySelector(selector)!);
+						return [selector, style.color, style.fill, style.stroke, style.display, style.verticalAlign, style.width];
+					}),
+				);
+
+			const before = await readStyles();
+			await page.evaluate(() => {
+				document.querySelector('#icons')!.innerHTML =
+					'<ontario-icon-search colour="blue"></ontario-icon-search><ontario-icon-dropdown-arrow colour="white"></ontario-icon-dropdown-arrow>';
+			});
+			await page.waitForChanges();
+
+			expect(await readStyles()).toEqual(before);
+		});
+
+		test('icons using a token colour are unaffected by their parent colour', async ({ page }) => {
+			await page.setContent(`
+				<div style="color: ${OntarioColourSystemAlert}">
+					<ontario-icon-search colour="blue"></ontario-icon-search>
+				</div>
+			`);
+			await page.waitForChanges();
+			const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+
+			await expect(page.locator('ontario-icon-search').locator('path')).toHaveCSS('fill', blueFill);
+		});
+	});
+
+	test.describe('icons whose artwork previously ignored colour', () => {
+		test('attach follows every colour token', async ({ page }) => {
+			const tokenColours = [
+				OntarioColourAccentIconColoursBlack,
+				OntarioColourAccentIconColoursBlue,
+				OntarioColourAccentIconColoursGrey,
+				OntarioColourAccentIconColoursWhite,
+			];
+			await page.setContent(
+				['black', 'blue', 'grey', 'white']
+					.map((colour) => `<ontario-icon-attach colour="${colour}"></ontario-icon-attach>`)
+					.join(''),
+			);
+			await page.waitForChanges();
+			const fills = await page
+				.locator('ontario-icon-attach')
+				.evaluateAll((icons) => icons.map((icon) => getComputedStyle(icon.shadowRoot!.querySelector('path')!).fill));
+			const expectedFills = await Promise.all(tokenColours.map((colour) => getComputedColour(page, colour)));
+
+			expect(fills).toEqual(expectedFills);
+		});
+
+		for (const tag of ['ontario-icon-close-header', 'ontario-icon-menu-header']) {
+			test(`${tag} is white by default and can be recoloured`, async ({ page }) => {
+				await page.setContent(`
+					<${tag} id="default"></${tag}>
+					<${tag} id="blue" colour="blue"></${tag}>
+					<${tag} id="invalid" colour="not-a-colour"></${tag}>
+				`);
+				await page.waitForChanges();
+				const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+				const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+
+				await expect(page.locator('#default').locator('path')).toHaveCSS('fill', whiteFill);
+				await expect(page.locator('#blue').locator('path')).toHaveCSS('fill', blueFill);
+				await expect(page.locator('#invalid').locator('path')).toHaveCSS('fill', whiteFill);
+			});
+		}
+
+		test('critical-alert-warning recolours the exclamation mark and keeps the white triangle', async ({ page }) => {
+			const customColour = OntarioColourSystemAlert;
+			await page.setContent(`
+				<ontario-icon-critical-alert-warning id="default"></ontario-icon-critical-alert-warning>
+				<ontario-icon-critical-alert-warning id="blue" colour="blue"></ontario-icon-critical-alert-warning>
+				<ontario-icon-critical-alert-warning id="custom" colour="${customColour}"></ontario-icon-critical-alert-warning>
+			`);
+			await page.waitForChanges();
+			const readFills = (id: string) =>
+				page
+					.locator(`#${id}`)
+					.evaluate((icon) =>
+						Array.from(icon.shadowRoot!.querySelectorAll('path, rect')).map((shape) => getComputedStyle(shape).fill),
+					);
+
+			const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+			const blackFill = await getComputedColour(page, OntarioColourAccentIconColoursBlack);
+			const blueFill = await getComputedColour(page, OntarioColourAccentIconColoursBlue);
+			const customFill = await getComputedColour(page, customColour);
+
+			expect(await readFills('default')).toEqual([whiteFill, blackFill, blackFill]);
+			expect(await readFills('blue')).toEqual([whiteFill, blueFill, blueFill]);
+			expect(await readFills('custom')).toEqual([whiteFill, customFill, customFill]);
+		});
+
+		test('the critical alert component still draws a black exclamation mark on a white triangle', async ({ page }) => {
+			await page.setContent('<ontario-critical-alert><p>Critical alert text</p></ontario-critical-alert>');
+			await page.waitForChanges();
+			const fills = await page
+				.locator('ontario-critical-alert')
+				.evaluate((alert) =>
+					Array.from(
+						alert.shadowRoot!.querySelectorAll(
+							'.ontario-critical-alert__icon svg path, .ontario-critical-alert__icon svg rect',
+						),
+					).map((shape) => getComputedStyle(shape).fill),
+				);
+
+			const whiteFill = await getComputedColour(page, OntarioColourGreyscaleWhite);
+			const pureBlackFill = await getComputedColour(page, 'black');
+			expect(fills).toEqual([whiteFill, pureBlackFill, pureBlackFill]);
+		});
+
+		test('the header menu and close icons stay white', async ({ page }) => {
+			await page.setContent('<ontario-header type="ontario"></ontario-header>');
+			await page.waitForChanges();
+			const whiteFill = await getComputedColour(page, OntarioColourAccentIconColoursWhite);
+			const fills = await page
+				.locator('ontario-header')
+				.evaluate((header) =>
+					Array.from(
+						header.shadowRoot!.querySelectorAll(
+							'.ontario-header__icon-container--white svg, .ontario-header__search-close svg',
+						),
+					).map((svg) => getComputedStyle(svg.querySelector('path')!).fill),
+				);
+
+			expect(fills.length).toBeGreaterThan(0);
+			expect(new Set(fills)).toEqual(new Set([whiteFill]));
+		});
 	});
 });
