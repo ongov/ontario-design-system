@@ -11,13 +11,92 @@ const iconNamePrefix = 'ontario-icon-';
 const componentDirectory = path.resolve(__dirname, '..');
 const assetDirectory = path.join(componentDirectory, 'assets');
 const manifestPath = path.join(componentDirectory, 'icon-manifest.json');
+const componentDemoPath = path.resolve(componentDirectory, '../../index.html');
 const allowedCategories = new Set(['primary', 'secondary', 'social', 'payment', 'flag', 'alert', 'other']);
 const allowedColourCapabilities = new Set(['configurable', 'fixed', 'multicolour']);
+const allowedPreviewBackgrounds = new Set(['dark']);
+const galleryStartMarker = '<!-- ICON_GALLERY_START -->';
+const galleryEndMarker = '<!-- ICON_GALLERY_END -->';
 
 const getId = (iconName) => (iconName.startsWith(iconNamePrefix) ? iconName.slice(iconNamePrefix.length) : iconName);
 
 const toPascalCase = (string) =>
 	(' ' + string).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (match, character) => character.toUpperCase());
+
+const getIconGalleryMarkup = (icons) => {
+	const categoryLabels = {
+		primary: 'Primary',
+		secondary: 'Secondary',
+		social: 'Social',
+		payment: 'Payment',
+		flag: 'Flags',
+		alert: 'Alerts',
+		other: 'Other',
+	};
+	const categoryOrder = Object.keys(categoryLabels);
+
+	return categoryOrder
+		.map((category) => {
+			const categoryIcons = icons.filter((icon) => icon.category === category);
+			if (!categoryIcons.length) {
+				return '';
+			}
+
+			const iconItems = categoryIcons
+				.map((icon) => {
+					const previewClass =
+						icon.previewBackground === 'dark'
+							? 'ontario-icon-gallery__item ontario-icon-gallery__item--dark'
+							: 'ontario-icon-gallery__item';
+					const iconTag =
+						icon.name.length > 36
+							? [
+									`\t\t\t\t\t\t\t\t\t\t<${icon.name}`,
+									'\t\t\t\t\t\t\t\t\t\t\ticon-width="32"',
+									`\t\t\t\t\t\t\t\t\t\t></${icon.name}>`,
+								].join('\n')
+							: `\t\t\t\t\t\t\t\t\t\t<${icon.name} icon-width="32"></${icon.name}>`;
+
+					return [
+						`\t\t\t\t\t\t\t\t\t<figure class="${previewClass}">`,
+						iconTag,
+						`\t\t\t\t\t\t\t\t\t\t<figcaption><code>${icon.name}</code></figcaption>`,
+						'\t\t\t\t\t\t\t\t\t</figure>',
+					].join('\n');
+				})
+				.join('\n');
+
+			return [
+				`\t\t\t\t\t\t\t<section class="ontario-icon-gallery__group" aria-labelledby="icon-category-${category}">`,
+				`\t\t\t\t\t\t\t\t<h3 id="icon-category-${category}">${categoryLabels[category]}</h3>`,
+				'\t\t\t\t\t\t\t\t<div class="ontario-icon-gallery__grid">',
+				iconItems,
+				'\t\t\t\t\t\t\t\t</div>',
+				'\t\t\t\t\t\t\t</section>',
+			].join('\n');
+		})
+		.filter(Boolean)
+		.join('\n');
+};
+
+const updateIconGallery = async (icons, { check = false } = {}) => {
+	const demoHtml = await readFile(componentDemoPath, 'utf-8');
+	const start = demoHtml.indexOf(galleryStartMarker);
+	const end = demoHtml.indexOf(galleryEndMarker);
+	if (start === -1 || end === -1 || end < start) {
+		throw new Error('Icon gallery markers are missing or out of order in src/index.html.');
+	}
+
+	const contentStart = start + galleryStartMarker.length;
+	const generatedMarkup = `\n${getIconGalleryMarkup(icons)}\n\t\t\t\t\t\t\t`;
+	const updatedHtml = `${demoHtml.slice(0, contentStart)}${generatedMarkup}${demoHtml.slice(end)}`;
+	if (check && updatedHtml !== demoHtml) {
+		throw new Error('Icon gallery in src/index.html is out of date. Run `pnpm run generate:icons`.');
+	}
+	if (!check && updatedHtml !== demoHtml) {
+		await writeFile(componentDemoPath, updatedHtml);
+	}
+};
 
 const validateManifest = (icons, assetFiles) => {
 	if (!Array.isArray(icons)) {
@@ -34,6 +113,7 @@ const validateManifest = (icons, assetFiles) => {
 		}
 		if (
 			!icon.viewBox ||
+			(icon.previewBackground !== undefined && !allowedPreviewBackgrounds.has(icon.previewBackground)) ||
 			!Array.isArray(icon.aliases) ||
 			!icon.aliases.every((alias) => typeof alias === 'string') ||
 			typeof icon.deprecated !== 'boolean' ||
@@ -216,6 +296,9 @@ const createIconComponents = async ({ check = false, clean = false } = {}) => {
 		(file) => file.startsWith(iconNamePrefix) && file.endsWith('.svg'),
 	);
 	validateManifest(icons, assetFiles);
+	if (!clean) {
+		await updateIconGallery(icons, { check });
+	}
 
 	const expectedFiles = [];
 	for (const icon of icons) {
