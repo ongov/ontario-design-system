@@ -157,6 +157,7 @@ export const DIRECTIVES = [
   d.OntarioSummaryList,
   d.OntarioSummaryListItem,
   d.OntarioTable,
+  d.OntarioTag,
   d.OntarioTask,
   d.OntarioTaskList,
   d.OntarioTextarea

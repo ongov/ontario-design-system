@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent } from "@ongov/ontario-design-system-component-library";
+import { type AccordionChangeDetail, type AutocompleteSuggestionSelectedEvent, type DateInputFieldType, type HeaderLanguageToggleEventDetails, type HeaderMenuToggleDetail, type InputFocusBlurEvent, type InputInputEvent, type InputInteractionEvent, type Language, type OntarioAccordionCustomEvent, type OntarioBackButtonCustomEvent, type OntarioCheckboxesCustomEvent, type OntarioDateInputCustomEvent, type OntarioDropdownListCustomEvent, type OntarioHeaderCustomEvent, type OntarioHeaderMenuTabsCustomEvent, type OntarioHeaderOverflowMenuCustomEvent, type OntarioHintExpanderCustomEvent, type OntarioInputCustomEvent, type OntarioLanguageToggleCustomEvent, type OntarioRadioButtonsCustomEvent, type OntarioSearchBoxCustomEvent, type OntarioSearchResultItemCustomEvent, type OntarioTagCustomEvent, type OntarioTextareaCustomEvent, type RadioAndCheckboxChangeEvent, type TagDismissedDetail, type TagToggledDetail } from "@ongov/ontario-design-system-component-library";
 import { OntarioAccordion as OntarioAccordionElement, defineCustomElement as defineOntarioAccordion } from "@ongov/ontario-design-system-component-library/components/ontario-accordion.js";
 import { OntarioAside as OntarioAsideElement, defineCustomElement as defineOntarioAside } from "@ongov/ontario-design-system-component-library/components/ontario-aside.js";
 import { OntarioBackButton as OntarioBackButtonElement, defineCustomElement as defineOntarioBackButton } from "@ongov/ontario-design-system-component-library/components/ontario-back-button.js";
@@ -163,6 +163,7 @@ import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElemen
 import { OntarioSummaryListItem as OntarioSummaryListItemElement, defineCustomElement as defineOntarioSummaryListItem } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement, defineCustomElement as defineOntarioSummaryList } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTag as OntarioTagElement, defineCustomElement as defineOntarioTag } from "@ongov/ontario-design-system-component-library/components/ontario-tag.js";
 import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
 import { OntarioTextarea as OntarioTextareaElement, defineCustomElement as defineOntarioTextarea } from "@ongov/ontario-design-system-component-library/components/ontario-textarea.js";
@@ -1971,6 +1972,23 @@ export const OntarioTable: StencilReactComponent<OntarioTableElement, OntarioTab
     react: React,
     events: {} as OntarioTableEvents,
     defineCustomElement: defineOntarioTable
+});
+
+export type OntarioTagEvents = {
+    onTagToggled: EventName<OntarioTagCustomEvent<TagToggledDetail>>,
+    onTagDismissed: EventName<OntarioTagCustomEvent<TagDismissedDetail>>
+};
+
+export const OntarioTag: StencilReactComponent<OntarioTagElement, OntarioTagEvents> = /*@__PURE__*/ createComponent<OntarioTagElement, OntarioTagEvents>({
+    tagName: 'ontario-tag',
+    elementClass: OntarioTagElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onTagToggled: 'tagToggled',
+        onTagDismissed: 'tagDismissed'
+    } as OntarioTagEvents,
+    defineCustomElement: defineOntarioTag
 });
 
 export type OntarioTaskEvents = NonNullable<unknown>;
