@@ -9,6 +9,7 @@
 	"private": false,
 	"description": "Design Tokens defining the base values within the Ontario Design System",
 	"license": "Apache-2.0",
+	"type": "module",
 	"main": "index.js",
 	"style": "dist/css/_variables.css",
 	"sass": "dist/scss/_variables.scss",
@@ -20,14 +21,22 @@
 	],
 	"scripts": {
 		"build": "node build.mjs && pnpm run docs:copy:readme",
+		"typecheck": "tsc -p tsconfig.json",
 		"clean": "rm -rf dist",
 		"clean:full": "rm -rf node_modules && pnpm run clean",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"generate:colours": "node scripts/generate-colour-tokens.ts",
+		"lint:tokens": "node scripts/lint-tokens.ts",
+		"export:figma": "node scripts/export-figma-tokens.ts",
+		"test": "vitest run",
+		"test:unit": "vitest run",
+		"test:watch": "vitest",
 		"docs:copy:readme": "tsx ../../scripts/documentation-helper.ts -f README.md -p \"---\\ntitle: Design Tokens\\n---\\n\" --df ../docusaurus/docs/04-readme-design-tokens.md"
 	},
 	"devDependencies": {
 		"@types/node": "^24.0.0",
-		"style-dictionary": "^5.0.0"
+		"style-dictionary": "^5.5.0",
+		"typescript": "^6.0.0",
+		"vitest": "^4.1.8"
 	},
 	"publishConfig": {
 		"access": "public"
