@@ -91,17 +91,17 @@
 		"@ongov/ontario-design-system-design-tokens": "workspace:*",
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@stencil/core": "^4.33.1",
-		"dotenv": "^17.0.0",
+		"dotenv": "^18.0.0",
 		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.11.3",
-		"@playwright/test": "1.62.1",
+		"@playwright/test": "1.64.1",
 		"@stencil/angular-output-target": "^1.1.1",
-		"@stencil/playwright": "^0.5.0",
+		"@stencil/playwright": "^0.6.0",
 		"@stencil/react-output-target": "^1.4.0",
 		"@stencil/sass": "^3.2.2",
-		"@stencil/vitest": "1.15.0",
+		"@stencil/vitest": "1.16.1",
 		"@types/mock-fs": "^4.13.4",
 		"@types/node": "^24.0.0",
 		"@types/react": "^19.0.8",
@@ -109,7 +109,7 @@
 		"@types/uuid": "^11.0.0",
 		"copyfiles": "^2.4.1",
 		"fs-extra": "^11.2.0",
-		"glob": "^13.0.0",
+		"glob": "^14.0.0",
 		"json-loader": "^0.5.7",
 		"jszip": "^3.10.1",
 		"mock-fs": "^5.5.0",
@@ -122,7 +122,7 @@
 		"tsx": "^4.19.4",
 		"typescript": "^6.0.0",
 		"validate-color": "^2.2.4",
-		"vitest": "^4.1.8"
+		"vitest": "^5.0.0"
 	},
 	"publishConfig": {
 		"access": "public"

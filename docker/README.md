@@ -8,7 +8,7 @@ The compose setup bind-mounts the repo. It uses an entrypoint that aligns contai
 
 ## CI Usage
 
-GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.60.0-noble` job container. In CI we do not use Docker Compose or bind mounts; the workflow installs dependencies with pnpm and executes the existing test scripts inside the container.
+GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.64.1-noble` job container. In CI we do not use Docker Compose or bind mounts; the workflow installs dependencies with pnpm and executes the existing test scripts inside the container.
 
 ## Structure
 
