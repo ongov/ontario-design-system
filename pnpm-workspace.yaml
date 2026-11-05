@@ -13,7 +13,7 @@ allowBuilds:
   unrs-resolver: false
 # Ensure semantic-release runs the same patched GitHub plugin declared at the workspace root.
 overrides:
-  'semantic-release>@semantic-release/github': 12.0.9
+  'semantic-release>@semantic-release/github': 12.0.10
 patchedDependencies:
   '@semantic-release/github@12.0.9': patches/@semantic-release__github@12.0.9.patch
   # Forwards `slot` to the wrapper element. Drop this patch once a release includes the upstream fix:
