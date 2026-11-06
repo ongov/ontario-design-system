@@ -1,6 +1,6 @@
 {
 	"name": "app-angular",
-	"version": "9.2.2-alpha.1",
+	"version": "9.2.2",
 	"type": "module",
 	"scripts": {
 		"ng": "ng",
