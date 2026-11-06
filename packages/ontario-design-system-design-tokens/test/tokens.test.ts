@@ -115,4 +115,65 @@ describe('token linter', () => {
 		expect(results.filesChecked).toBeGreaterThan(0);
 		expect(results.errors).toEqual([]);
 	});
+
+	describe('type enforcement (checkTokenType)', () => {
+		it('flags a token with a value but no declared type', async () => {
+			const { checkTokenType } = await import('../scripts/lib/token-tooling.ts');
+			const issue = checkTokenType({ value: '10px' }, 'space.400', 'space.json');
+
+			expect(issue).toEqual({
+				code: 'missing_type',
+				message: 'Token has a value but no declared type.',
+				file: 'space.json',
+				tokenPath: 'space.400',
+			});
+		});
+
+		it('flags a token whose declared type is outside the closed vocabulary', async () => {
+			const { checkTokenType } = await import('../scripts/lib/token-tooling.ts');
+			const issue = checkTokenType({ value: '10px', type: 'bogus' }, 'space.400', 'space.json');
+
+			expect(issue?.code).toBe('invalid_type');
+			expect(issue?.message).toContain('bogus');
+		});
+
+		it('passes a token with a valid declared type', async () => {
+			const { checkTokenType } = await import('../scripts/lib/token-tooling.ts');
+			const issue = checkTokenType({ value: '10px', type: 'spacing' }, 'space.400', 'space.json');
+
+			expect(issue).toBeNull();
+		});
+	});
+});
+
+describe('token type vocabulary (scripts/lib/token-types.ts)', () => {
+	it('accepts every type currently declared across the primitive tier', async () => {
+		const { isTokenType } = await import('../scripts/lib/token-types.ts');
+		const colourDir = path.join(packageRoot, 'tokens', 'primitives', 'colour');
+		const primitivesDir = path.join(packageRoot, 'tokens', 'primitives');
+
+		const files = [
+			...readdirSync(colourDir)
+				.filter((file) => file.endsWith('.json'))
+				.map((file) => path.join(colourDir, file)),
+			...Object.keys(NON_COLOUR_TYPES).map((file) => path.join(primitivesDir, file)),
+		];
+
+		const declaredTypes = new Set<unknown>();
+		for (const file of files) {
+			const tree = JSON.parse(readFileSync(file, 'utf8'));
+			collectLeafTokens(tree).forEach(({ token }) => declaredTypes.add(token.type));
+		}
+
+		expect(declaredTypes.size).toBeGreaterThan(0);
+		for (const type of declaredTypes) {
+			expect(isTokenType(type), `"${type}" should be a valid TokenType`).toBe(true);
+		}
+	});
+
+	it('rejects an unknown type string', async () => {
+		const { isTokenType } = await import('../scripts/lib/token-types.ts');
+		expect(isTokenType('not-a-real-type')).toBe(false);
+		expect(isTokenType(undefined)).toBe(false);
+	});
 });
