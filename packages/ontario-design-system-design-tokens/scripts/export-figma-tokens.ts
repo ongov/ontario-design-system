@@ -1,6 +1,6 @@
 /**
  * @file Exports the primitive tokens as a Figma Variables-compatible JSON
- * bundle (exports/figma/figma-tokens.json). Runs the linter as a pre-flight
+ * bundle (dist/figma/figma-tokens.json). Runs the linter as a pre-flight
  * check and infers Figma token types from token paths and values via the
  * shared scripts/lib/token-export.ts heuristic. Scoped to the Core
  * (primitive) layer for the DS-2685 work; Semantic and Component layers are
@@ -11,7 +11,7 @@ import path from 'node:path';
 import { lintTokens, loadLayerTrees, rootDir } from './lib/token-tooling.ts';
 import { convertTokenTree } from './lib/token-export.ts';
 
-const outputFile = path.join(rootDir, 'exports', 'figma', 'figma-tokens.json');
+const outputFile = path.join(rootDir, 'dist', 'figma', 'figma-tokens.json');
 
 /**
  * Build the Figma export bundle from the loaded layer trees.

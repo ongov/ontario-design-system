@@ -51,10 +51,10 @@ describe('shared type-inference (scripts/lib/token-export.ts)', () => {
 
 describe('Figma export (scripts/export-figma-tokens.ts)', () => {
 	it('exports Core-only, correctly-typed border tokens', () => {
-		rmSync(path.join(packageRoot, 'exports'), { recursive: true, force: true });
+		rmSync(path.join(packageRoot, 'dist', 'figma'), { recursive: true, force: true });
 		execFileSync('node', ['scripts/export-figma-tokens.ts'], { cwd: packageRoot });
 
-		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'exports', 'figma', 'figma-tokens.json'), 'utf8'));
+		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'figma', 'figma-tokens.json'), 'utf8'));
 		expect(Object.keys(bundle.values)).toEqual(['Core']);
 		expect(bundle.values.Core.border.width['100']).toEqual({ value: '1px', type: 'borderWidth' });
 		expect(bundle.values.Core.border.width['100'].type).not.toBe('color');
@@ -69,16 +69,15 @@ describe('downstream/Tailwind JSON platforms (scripts/lib/export-platforms.ts)',
 	});
 
 	it('emits a Core-only typed downstream bundle', () => {
-		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'exports', 'downstream', 'tokens.ods.json'), 'utf8'));
+		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'downstream', 'tokens.ods.json'), 'utf8'));
 		expect(Object.keys(bundle.tokens)).toEqual(['Core']);
 		expect(bundle.tokens.Core.space['400']).toEqual({ value: '16px', type: 'spacing' });
 		expect(bundle.tokens.Core.border.width['100']).toEqual({ value: '1px', type: 'borderWidth' });
 	});
 
 	it('emits a Tailwind theme.extend mapping built from the same primitives', () => {
-		const theme = JSON.parse(
-			readFileSync(path.join(packageRoot, 'exports', 'tailwind', 'tailwind.tokens.json'), 'utf8'),
-		).theme.extend;
+		const theme = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'tailwind', 'tailwind.tokens.json'), 'utf8'))
+			.theme.extend;
 
 		expect(theme.spacing['400']).toBe('16px');
 		expect(theme.borderWidth['100']).toBe('1px');
@@ -90,9 +89,17 @@ describe('downstream/Tailwind JSON platforms (scripts/lib/export-platforms.ts)',
 
 	it('matches the Core layer loaded directly from tokens/primitives', () => {
 		const { Core } = loadLayerTrees();
-		const theme = JSON.parse(
-			readFileSync(path.join(packageRoot, 'exports', 'tailwind', 'tailwind.tokens.json'), 'utf8'),
-		).theme.extend;
+		const theme = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'tailwind', 'tailwind.tokens.json'), 'utf8'))
+			.theme.extend;
 		expect(theme.spacing['400']).toBe(Core.space['400'].value);
+	});
+});
+
+describe('published export entry points (package.json)', () => {
+	it('maps each export file to its built path under dist/', () => {
+		const pkg = JSON.parse(readFileSync(path.join(packageRoot, 'package.json'), 'utf8'));
+		expect(pkg.exports['./figma-tokens.json']).toBe('./dist/figma/figma-tokens.json');
+		expect(pkg.exports['./tokens.ods.json']).toBe('./dist/downstream/tokens.ods.json');
+		expect(pkg.exports['./tailwind.tokens.json']).toBe('./dist/tailwind/tailwind.tokens.json');
 	});
 });

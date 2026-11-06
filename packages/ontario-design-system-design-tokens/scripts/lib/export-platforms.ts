@@ -9,10 +9,10 @@
  * Tailwind JSON exports from Style Dictionary custom formats.
  *
  * Two custom formats are registered:
- *  - `json/downstream-typed` -> exports/downstream/tokens.ods.json, a typed
+ *  - `json/downstream-typed` -> dist/downstream/tokens.ods.json, a typed
  *    `{ value, type }` tree using the same category vocabulary as the Figma
  *    export (scripts/export-figma-tokens.ts / scripts/lib/token-export.ts).
- *  - `json/tailwind-theme` -> exports/tailwind/tailwind.tokens.json, a
+ *  - `json/tailwind-theme` -> dist/tailwind/tailwind.tokens.json, a
  *    Tailwind `theme.extend`-shaped mapping built from the same primitives.
  */
 import StyleDictionary from 'style-dictionary';
@@ -123,12 +123,12 @@ export const exportPlatformsConfig: Config = {
 		// for e.g. `colour.accent.blue.0` vs `colour.greyscale.0`.
 		'json/downstream': {
 			transforms: ['attribute/cti', 'name/kebab'],
-			buildPath: 'exports/downstream/',
+			buildPath: 'dist/downstream/',
 			files: [{ destination: 'tokens.ods.json', format: 'json/downstream-typed' }],
 		},
 		'json/tailwind': {
 			transforms: ['attribute/cti', 'name/kebab'],
-			buildPath: 'exports/tailwind/',
+			buildPath: 'dist/tailwind/',
 			files: [{ destination: 'tailwind.tokens.json', format: 'json/tailwind-theme' }],
 		},
 	},
