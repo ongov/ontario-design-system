@@ -103,7 +103,7 @@
 			"default": "./dist/js/primitives.js"
 		},
 		"./figma-tokens.json": "./dist/figma/figma-tokens.json",
-		"./tokens.ods.json": "./dist/downstream/tokens.ods.json",
+		"./tokens.ods.json": "./dist/json/tokens.ods.json",
 		"./tailwind.tokens.json": "./dist/tailwind/tailwind.tokens.json"
 	}
 }

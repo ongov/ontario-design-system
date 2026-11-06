@@ -1,6 +1,6 @@
 /**
  * @file Tests for the DS-2692 export tooling: the Figma JSON export
- * (`scripts/export-figma-tokens.ts`) and the downstream/Tailwind Style
+ * (`scripts/export-figma-tokens.ts`) and the typed JSON/Tailwind Style
  * Dictionary platforms (`scripts/lib/export-platforms.ts`), both built on
  * the shared type-inference helpers in `scripts/lib/token-export.ts`.
  */
@@ -61,15 +61,15 @@ describe('Figma export (scripts/export-figma-tokens.ts)', () => {
 	});
 });
 
-describe('downstream/Tailwind JSON platforms (scripts/lib/export-platforms.ts)', () => {
+describe('typed JSON/Tailwind platforms (scripts/lib/export-platforms.ts)', () => {
 	beforeAll(async () => {
 		const sd = new StyleDictionary(exportPlatformsConfig);
 		await sd.hasInitialized;
 		await sd.buildAllPlatforms();
 	});
 
-	it('emits a Core-only typed downstream bundle', () => {
-		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'downstream', 'tokens.ods.json'), 'utf8'));
+	it('emits a Core-only typed JSON bundle', () => {
+		const bundle = JSON.parse(readFileSync(path.join(packageRoot, 'dist', 'json', 'tokens.ods.json'), 'utf8'));
 		expect(Object.keys(bundle.tokens)).toEqual(['Core']);
 		expect(bundle.tokens.Core.space['400']).toEqual({ value: '16px', type: 'spacing' });
 		expect(bundle.tokens.Core.border.width['100']).toEqual({ value: '1px', type: 'borderWidth' });
@@ -99,7 +99,7 @@ describe('published export entry points (package.json)', () => {
 	it('maps each export file to its built path under dist/', () => {
 		const pkg = JSON.parse(readFileSync(path.join(packageRoot, 'package.json'), 'utf8'));
 		expect(pkg.exports['./figma-tokens.json']).toBe('./dist/figma/figma-tokens.json');
-		expect(pkg.exports['./tokens.ods.json']).toBe('./dist/downstream/tokens.ods.json');
+		expect(pkg.exports['./tokens.ods.json']).toBe('./dist/json/tokens.ods.json');
 		expect(pkg.exports['./tailwind.tokens.json']).toBe('./dist/tailwind/tailwind.tokens.json');
 	});
 });

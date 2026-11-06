@@ -26,7 +26,7 @@ export function normalisePart(part: string): string {
 
 /**
  * Infer a portable export type from a token's path and value using heuristics.
- * Shared by every export format (Figma, downstream JSON, Tailwind) so a given
+ * Shared by every export format (Figma, typed JSON, Tailwind) so a given
  * token is categorised identically everywhere.
  * @param pathParts - The token's key path.
  * @param value - The token's value.

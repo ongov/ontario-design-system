@@ -49,7 +49,7 @@ Alongside the semantic tokens above, the package exposes the Core (primitive) ti
 
 The CSS output (`./css/primitives`) is wrapped in `@layer ods-tokens`, so it participates in [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) and can be predictably overridden by consumer styles declared outside that layer, regardless of selector specificity. The SCSS and JS/TS outputs are plain variables/constants and are not layer-wrapped.
 
-#### Figma, Tailwind, and downstream JSON exports
+#### Figma, Tailwind, and typed JSON exports
 
 The build also emits JSON exports of the primitive tokens, published in the package alongside the CSS and SCSS output:
 
@@ -57,7 +57,7 @@ The build also emits JSON exports of the primitive tokens, published in the pack
 | ------------------------ | ------------------------------------ | ----------------------------------------------------------------------------- |
 | `./figma-tokens.json`    | `dist/figma/figma-tokens.json`       | You want to import the primitives as Figma variables.                         |
 | `./tailwind.tokens.json` | `dist/tailwind/tailwind.tokens.json` | You want a Tailwind `theme.extend` mapping, for example in a Tailwind config. |
-| `./tokens.ods.json`      | `dist/downstream/tokens.ods.json`    | You want the typed `{ value, type }` token tree for your own tooling.         |
+| `./tokens.ods.json`      | `dist/json/tokens.ods.json`          | You want the typed `{ value, type }` token tree for your own tooling.         |
 
 For example, in a Tailwind config:
 

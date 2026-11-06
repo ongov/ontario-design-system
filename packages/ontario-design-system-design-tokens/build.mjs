@@ -70,13 +70,13 @@ await primitivesDictionary.hasInitialized;
 await primitivesDictionary.buildAllPlatforms();
 console.log('Built primitive layer output (primitives.*).');
 
-// Build the Figma, downstream and Tailwind JSON exports (DS-2692) into dist/,
+// Build the Figma, typed JSON and Tailwind exports (DS-2692) into dist/,
 // alongside the primitive layer outputs above, so they are published with the
 // package and exposed through the package.json exports map.
 const exportsDictionary = new StyleDictionary(exportPlatformsConfig);
 await exportsDictionary.hasInitialized;
 await exportsDictionary.buildAllPlatforms();
-console.log('Built downstream/Tailwind JSON exports (dist/downstream, dist/tailwind).');
+console.log('Built typed JSON/Tailwind exports (dist/json, dist/tailwind).');
 
 // The Figma bundle is written by a standalone script that runs on import.
 await import('./scripts/export-figma-tokens.ts');

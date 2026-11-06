@@ -1,6 +1,6 @@
 /**
- * @file Style Dictionary platform configuration for the downstream/Tailwind
- * JSON exports (DS-2692). A prototype bespoke script for this existed
+ * @file Style Dictionary platform configuration for the typed JSON and
+ * Tailwind exports (DS-2692). A prototype bespoke script for this existed
  * briefly but was intentionally removed (see commit 66165e8b, "remove
  * downstream exporter scaffold") in favour of Style Dictionary
  * platforms/custom formats, matching the DS-2691 primitive platforms and the
@@ -9,7 +9,7 @@
  * Tailwind JSON exports from Style Dictionary custom formats.
  *
  * Two custom formats are registered:
- *  - `json/downstream-typed` -> dist/downstream/tokens.ods.json, a typed
+ *  - `json/typed-tree` -> dist/json/tokens.ods.json, a typed
  *    `{ value, type }` tree using the same category vocabulary as the Figma
  *    export (scripts/export-figma-tokens.ts / scripts/lib/token-export.ts).
  *  - `json/tailwind-theme` -> dist/tailwind/tailwind.tokens.json, a
@@ -75,11 +75,11 @@ function buildTailwindColours(colourTree: Record<string, any>): Record<string, a
 // are process-global, so this file must only be imported once per process
 // (build.mjs does so alongside the primitive transforms/platforms).
 StyleDictionary.registerFormat({
-	name: 'json/downstream-typed',
+	name: 'json/typed-tree',
 	format({ dictionary }) {
 		const { tree, warnings } = buildTypedTreeFromTokens(dictionary.allTokens);
 		if (warnings.length > 0) {
-			console.log(`[export:downstream] Type inference warnings: ${warnings.length}`);
+			console.log(`[export:json] Type inference warnings: ${warnings.length}`);
 			warnings.slice(0, 25).forEach((warning) => console.log(` - ${warning}`));
 		}
 
@@ -112,7 +112,7 @@ StyleDictionary.registerFormat({
 	},
 });
 
-/** Style Dictionary config for the downstream/Tailwind JSON exports (DS-2692). */
+/** Style Dictionary config for the typed JSON/Tailwind JSON exports (DS-2692). */
 export const exportPlatformsConfig: Config = {
 	source: ['tokens/primitives/**/*.json'],
 	platforms: {
@@ -121,10 +121,10 @@ export const exportPlatformsConfig: Config = {
 		// `name` too, so Style Dictionary's own output-name collision check
 		// (based on `name`, not `path`) doesn't produce noisy false positives
 		// for e.g. `colour.accent.blue.0` vs `colour.greyscale.0`.
-		'json/downstream': {
+		'json/typed': {
 			transforms: ['attribute/cti', 'name/kebab'],
-			buildPath: 'dist/downstream/',
-			files: [{ destination: 'tokens.ods.json', format: 'json/downstream-typed' }],
+			buildPath: 'dist/json/',
+			files: [{ destination: 'tokens.ods.json', format: 'json/typed-tree' }],
 		},
 		'json/tailwind': {
 			transforms: ['attribute/cti', 'name/kebab'],
