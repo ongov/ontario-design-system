@@ -122,7 +122,7 @@
 		"tsx": "^4.19.4",
 		"typescript": "^6.0.0",
 		"validate-color": "^2.2.4",
-		"vitest": "^4.1.8"
+		"vitest": "^5.0.0"
 	},
 	"publishConfig": {
 		"access": "public"
