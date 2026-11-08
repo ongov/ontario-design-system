@@ -34,7 +34,7 @@
 		"@ongov/ontario-design-system-global-styles": "workspace:*",
 		"@uirouter/angular": "^22.0.0",
 		"copyfiles": "^2.4.1",
-		"ngx-translate-routes": "^2.0.0",
+		"ngx-translate-routes": "^3.0.0",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",
 		"zone.js": "~0.16.0"
