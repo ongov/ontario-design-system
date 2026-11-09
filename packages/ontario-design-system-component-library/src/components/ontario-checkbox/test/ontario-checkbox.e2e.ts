@@ -287,6 +287,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		await page.waitForChanges();
 
 		// svg-img-alt is disabled: the required, unchecked state shows the same shared error icon.
+		// Re-enable once DS-2845 gives the shared icons an accessible name or makes them decorative.
 		await expectNoAxeViolations(page, 'ontario-checkbox', ['svg-img-alt']);
 	});
 
@@ -303,6 +304,7 @@ test.describe('ontario-checkbox - accessibility', () => {
 		await page.waitForChanges();
 
 		// svg-img-alt is disabled: the shared ontario-icon-alert-error used by error messages has no accessible text.
+		// Re-enable once DS-2845 gives the shared icons an accessible name or makes them decorative.
 		await expectNoAxeViolations(page, 'ontario-checkbox', ['svg-img-alt']);
 	});
 });
