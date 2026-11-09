@@ -211,9 +211,9 @@ Configurable-colour assets must begin the root SVG's `class` attribute with `svg
 ### Add or update an icon
 
 1. Add or update the SVG artwork in `assets/` and its matching manifest entry. Preserve existing tag names and colour capabilities unless an approved change requires otherwise.
-2. From the component-library package directory, run `pnpm run generate:icons`. The generator validates the asset inventory and updates the per-icon TSX files and the marked gallery section in `src/index.html`.
+2. From the component-library package directory, run `pnpm run generate:icons`. The generator validates the asset inventory, updates the per-icon TSX files and the marked gallery section in `src/index.html`, and formats the entire demo HTML with Prettier.
 3. Run `pnpm run build` to regenerate public types, framework wrappers and per-icon documentation. Each icon's component and README live in `ontario-icon/<icon-name>/`.
-4. Run `pnpm run check:icons`. This read-only command fails if generated components or gallery markup are missing, unexpected or out of date. CI runs the same check.
+4. Run `pnpm run check:icons`. This read-only command fails if generated components or gallery markup are missing, unexpected or out of date, or if the demo HTML is not formatted with Prettier. CI runs the same check.
 5. Review and commit the intended source and generated output together. Do not edit generated TSX files or the marked gallery section manually; update the generator, manifest or SVG assets instead.
 
 To inspect all icons locally, run `pnpm run start` and open the server URL followed by `/#icons`. The Next.js demo intentionally shows only representative integration examples.
