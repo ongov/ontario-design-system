@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
+import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 
 test.describe('ontario-callout', () => {
 	test('renders', async ({ page }) => {
@@ -78,6 +78,37 @@ test.describe('ontario-callout', () => {
 			});
 
 			await expect(heading.locator('a')).toHaveText('Get notified');
+			await expectVrtScreenshot(component);
+		});
+	});
+
+	test.describe('content', () => {
+		test('renders content passed through the content property', async ({ page }) => {
+			await page.setContent(
+				withGlobalStyles(
+					'<ontario-callout heading-content="Get notified" content="Sign up to get an email when this service changes, so you always have the latest information."></ontario-callout>',
+				),
+			);
+
+			const component = page.locator('ontario-callout');
+
+			await expect(component.locator('p')).toHaveText(/Sign up to get an email/);
+			await expectVrtScreenshot(component);
+		});
+
+		test('renders slotted paragraphs and links as the content', async ({ page }) => {
+			await page.setContent(
+				withGlobalStyles(`
+					<ontario-callout heading-content="Get notified">
+						<p>Sign up to get an email when this service changes.</p>
+						<p>You can <a href="#">change your preferences</a> at any time.</p>
+					</ontario-callout>
+				`),
+			);
+
+			const component = page.locator('ontario-callout');
+
+			await expect(component.locator('p')).toHaveCount(2);
 			await expectVrtScreenshot(component);
 		});
 	});
