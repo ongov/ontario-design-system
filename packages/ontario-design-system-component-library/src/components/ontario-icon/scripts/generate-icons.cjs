@@ -12,7 +12,15 @@ const componentDirectory = path.resolve(__dirname, '..');
 const assetDirectory = path.join(componentDirectory, 'assets');
 const manifestPath = path.join(componentDirectory, 'icon-manifest.json');
 const componentDemoPath = path.resolve(componentDirectory, '../../index.html');
-const allowedCategories = new Set(['primary', 'secondary', 'social', 'payment', 'flag', 'alert', 'other']);
+const categoryLabels = {
+	primary: 'Primary',
+	secondary: 'Secondary',
+	social: 'Social',
+	payment: 'Payment',
+	flag: 'Flags',
+	alert: 'Alerts',
+	other: 'Other',
+};
 const allowedColourCapabilities = new Set(['configurable', 'fixed', 'multicolour']);
 const allowedPreviewBackgrounds = new Set(['dark']);
 const galleryStartMarker = '<!-- ICON_GALLERY_START -->';
@@ -24,18 +32,7 @@ const toPascalCase = (string) =>
 	(' ' + string).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (match, character) => character.toUpperCase());
 
 const getIconGalleryMarkup = (icons) => {
-	const categoryLabels = {
-		primary: 'Primary',
-		secondary: 'Secondary',
-		social: 'Social',
-		payment: 'Payment',
-		flag: 'Flags',
-		alert: 'Alerts',
-		other: 'Other',
-	};
-	const categoryOrder = Object.keys(categoryLabels);
-
-	return categoryOrder
+	return Object.keys(categoryLabels)
 		.map((category) => {
 			const categoryIcons = icons.filter((icon) => icon.category === category);
 			if (!categoryIcons.length) {
@@ -48,14 +45,7 @@ const getIconGalleryMarkup = (icons) => {
 						icon.previewBackground === 'dark'
 							? 'ontario-icon-gallery__item ontario-icon-gallery__item--dark'
 							: 'ontario-icon-gallery__item';
-					const iconTag =
-						icon.name.length > 36
-							? [
-									`\t\t\t\t\t\t\t\t\t\t<${icon.name}`,
-									'\t\t\t\t\t\t\t\t\t\t\ticon-width="32"',
-									`\t\t\t\t\t\t\t\t\t\t></${icon.name}>`,
-								].join('\n')
-							: `\t\t\t\t\t\t\t\t\t\t<${icon.name} icon-width="32"></${icon.name}>`;
+					const iconTag = `<${icon.name} icon-width="32"></${icon.name}>`;
 
 					return [
 						`\t\t\t\t\t\t\t\t\t<figure class="${previewClass}">`,
@@ -88,10 +78,18 @@ const updateIconGallery = async (icons, { check = false } = {}) => {
 	}
 
 	const contentStart = start + galleryStartMarker.length;
-	const generatedMarkup = `\n${getIconGalleryMarkup(icons)}\n\t\t\t\t\t\t\t`;
-	const updatedHtml = `${demoHtml.slice(0, contentStart)}${generatedMarkup}${demoHtml.slice(end)}`;
+	const generatedMarkup = `\n${getIconGalleryMarkup(icons)}\n`;
+	const prettierOptions = (await prettier.resolveConfig(componentDemoPath)) ?? {};
+	const updatedHtml = await prettier.format(
+		`${demoHtml.slice(0, contentStart)}${generatedMarkup}${demoHtml.slice(end)}`,
+		{
+			...prettierOptions,
+			filepath: componentDemoPath,
+		},
+	);
 	if (check && updatedHtml !== demoHtml) {
-		throw new Error('Icon gallery in src/index.html is out of date. Run `pnpm run generate:icons`.');
+		console.error('Icon gallery in src/index.html is out of date. Run `pnpm run generate:icons`.');
+		process.exitCode = 1;
 	}
 	if (!check && updatedHtml !== demoHtml) {
 		await writeFile(componentDemoPath, updatedHtml);
@@ -108,7 +106,7 @@ const validateManifest = (icons, assetFiles) => {
 		if (!icon.name?.startsWith(iconNamePrefix) || manifestNames.has(icon.name)) {
 			throw new Error(`Invalid or duplicate icon name in manifest: ${icon.name}`);
 		}
-		if (!allowedCategories.has(icon.category) || !allowedColourCapabilities.has(icon.colour)) {
+		if (!Object.hasOwn(categoryLabels, icon.category) || !allowedColourCapabilities.has(icon.colour)) {
 			throw new Error(`Invalid category or colour capability for ${icon.name}`);
 		}
 		if (
