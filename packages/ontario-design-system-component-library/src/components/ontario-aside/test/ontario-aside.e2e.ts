@@ -269,7 +269,7 @@ test.describe('ontario-aside', () => {
 		expect(marginStyles?.marginRight).toBe('0px');
 	});
 
-	// Known defect: the small-breakpoint rule in `ontario-aside.scss` is nested inside `.ontario-aside`, so it compiles to
+	// Known defect (DS-2971): the small-breakpoint rule in `ontario-aside.scss` is nested inside `.ontario-aside`, so it compiles to
 	// `.ontario-aside .ontario-aside` and never matches.
 	// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
 	test.fail('reduces the left margin below the small breakpoint', async ({ page }) => {
