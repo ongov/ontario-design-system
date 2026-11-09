@@ -323,11 +323,13 @@ export class OntarioCheckbox implements Checkbox {
 	}
 
 	/**
-	 * Watch for changes to the `language` prop to render either the English or French translations
+	 * Watch for changes to the `language` prop to render either the English or French translations,
+	 * including the automatic required-validation error.
 	 */
 	@Watch('language')
 	updateLanguage() {
 		this.updateCaptionState(this.label);
+		this.applyRequiredValidation();
 	}
 
 	/**
@@ -345,6 +347,14 @@ export class OntarioCheckbox implements Checkbox {
 	@Watch('required')
 	handleRequiredChange() {
 		this.updateCaptionState(this.label);
+		this.applyRequiredValidation();
+	}
+
+	/**
+	 * Watch for changes to the `requiredValidationMessage` prop so a new message replaces the automatic error being displayed.
+	 */
+	@Watch('requiredValidationMessage')
+	handleRequiredValidationMessageChange() {
 		this.applyRequiredValidation();
 	}
 

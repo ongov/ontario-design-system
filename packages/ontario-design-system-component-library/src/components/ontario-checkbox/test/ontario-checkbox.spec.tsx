@@ -231,6 +231,37 @@ describe('ontario-checkbox', () => {
 		);
 	});
 
+	it('should translate the automatic required-validation error when the header language is toggled', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		expect(checkbox.errorMessage).toBe('You must select this checkbox to continue.');
+
+		window.dispatchEvent(
+			new CustomEvent('headerLanguageToggled', { detail: { oldLanguage: 'en', newLanguage: 'fr' } }),
+		);
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('Vous devez cocher cette case pour continuer.');
+		expect(page.root?.shadowRoot?.querySelector('.ontario-error-messaging__content')?.textContent).toBe(
+			'Vous devez cocher cette case pour continuer.',
+		);
+	});
+
+	it('should update the automatic required-validation error when requiredValidationMessage changes after load', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		checkbox.requiredValidationMessage = 'Please accept the Terms and Conditions to proceed.';
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
+	});
+
 	it('should warn when name is not provided', async () => {
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
