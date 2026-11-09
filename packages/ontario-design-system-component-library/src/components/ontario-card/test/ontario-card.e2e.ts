@@ -15,16 +15,16 @@ test.describe('ontario-card', () => {
 	};
 
 	const expectNoAxeViolations = async (page: E2EPage) => {
+		// `listitem` is disabled: the card renders its own `li` and the `ul` comes from `ontario-card-collection`.
 		const results = await new AxeBuilder({ page }).include('ontario-card').disableRules(['listitem']).analyze();
 		expect(results.violations).toHaveLength(0);
 	};
 
 	test.describe('rendering', () => {
-		test('renders and is hydrated', async ({ page }) => {
+		test('renders the card list item in the shadow root', async ({ page }) => {
 			const host = await renderCard(page, `label="${label}"`);
 
-			await expect(host).toBeAttached();
-			await expect(host).toHaveClass('hydrated');
+			await expect(host.locator('li.ontario-card')).toBeVisible();
 		});
 
 		test('renders the label as an h2 link by default', async ({ page }) => {
@@ -144,7 +144,8 @@ test.describe('ontario-card', () => {
 		});
 
 		// Known defect: the component never adds the ontario-card--no-image class that the SCSS relies on.
-		test.fixme('uses the full width for the text in a horizontal card without an image', async ({ page }) => {
+		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+		test.fail('uses the full width for the text in a horizontal card without an image', async ({ page }) => {
 			const host = await renderCard(
 				page,
 				`label="${label}" description="${description}" layout-direction="horizontal"`,
@@ -180,13 +181,26 @@ test.describe('ontario-card', () => {
 		});
 
 		// Known defect: blue and lightBlue are accepted values but have no styles in ontario-card.scss.
+		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
 		for (const colour of ['blue', 'lightBlue']) {
-			test.fixme(`renders a coloured heading background for ${colour}`, async ({ page }) => {
+			test.fail(`renders a coloured heading background for ${colour}`, async ({ page }) => {
 				const host = await renderCard(page, `label="${label}" description="${description}" header-colour="${colour}"`);
 
 				await expect(host.locator('.ontario-card__heading')).not.toHaveCSS('background-color', 'rgb(255, 255, 255)');
 			});
 		}
+
+		// Known defect: darkAccent sets a near-black heading background but the heading link keeps its black text colour,
+		// so the label is invisible. axe doesn't report it, so this checks the computed colours directly.
+		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+		test.fail('renders legible heading text on the dark accent header colour', async ({ page }) => {
+			const host = await renderCard(page, `label="${label}" description="${description}" header-colour="darkAccent"`);
+
+			const heading = host.locator('.ontario-card__heading');
+			const background = await heading.evaluate((el) => getComputedStyle(el).backgroundColor);
+			const textColour = await heading.getByRole('link').evaluate((el) => getComputedStyle(el).color);
+			expect(textColour).not.toBe(background);
+		});
 	});
 
 	test.describe('property updates', () => {
@@ -295,7 +309,8 @@ test.describe('ontario-card', () => {
 		});
 
 		// Known defect: with the default empty alt text, the image link has no accessible name.
-		test.fixme('has no axe violations for a decorative image with the default empty alt text', async ({ page }) => {
+		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+		test.fail('has no axe violations for a decorative image with the default empty alt text', async ({ page }) => {
 			await renderCard(page, `label="${label}" description="${description}" image="${image}" card-link="${cardLink}"`);
 
 			await expectNoAxeViolations(page);
