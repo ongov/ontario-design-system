@@ -81,29 +81,47 @@ test.describe('ontario-checkbox', () => {
 });
 
 test.describe('ontario-checkbox - required validation', () => {
-	test('fails native required validation when unchecked, and passes once checked', async ({ page }) => {
+	test('blocks native form validation when required and unchecked, and passes once checked', async ({ page }) => {
 		await page.setContent(`
-			<ontario-checkbox
-				element-id="terms"
-				label="I have read and agree to the Terms and Conditions"
-				name="terms"
-				value="agreed"
-				required
-			></ontario-checkbox>
+			<form id="test-form">
+				<ontario-checkbox
+					element-id="terms"
+					label="I have read and agree to the Terms and Conditions"
+					name="terms"
+					value="agreed"
+					required
+				></ontario-checkbox>
+			</form>
 		`);
 		await page.waitForChanges();
 
-		const checkboxInput = page.locator('ontario-checkbox').first().locator('input[type="checkbox"]');
+		const form = page.locator('#test-form');
 		const checkboxLabel = page.locator('ontario-checkbox').first().locator('.ontario-checkbox__label');
 
-		expect(await checkboxInput.evaluate((el: HTMLInputElement) => el.checkValidity())).toBe(false);
-		expect(await checkboxInput.evaluate((el: HTMLInputElement) => el.validity.valueMissing)).toBe(true);
+		expect(await form.evaluate((el: HTMLFormElement) => el.checkValidity())).toBe(false);
 
 		// Click the label, not the input directly - the input is visually positioned
 		// underneath the label's box/checkmark pseudo-elements, which intercept clicks.
 		await checkboxLabel.click();
+		await page.waitForChanges();
 
-		expect(await checkboxInput.evaluate((el: HTMLInputElement) => el.checkValidity())).toBe(true);
+		expect(await form.evaluate((el: HTMLFormElement) => el.checkValidity())).toBe(true);
+	});
+
+	test('passes native form validation when unchecked but not required', async ({ page }) => {
+		await page.setContent(`
+			<form id="test-form">
+				<ontario-checkbox
+					element-id="terms"
+					label="I have read and agree to the Terms and Conditions"
+					name="terms"
+					value="agreed"
+				></ontario-checkbox>
+			</form>
+		`);
+		await page.waitForChanges();
+
+		expect(await page.locator('#test-form').evaluate((el: HTMLFormElement) => el.checkValidity())).toBe(true);
 	});
 });
 
@@ -203,6 +221,35 @@ test.describe('ontario-checkbox - form association', () => {
 		await page.locator('ontario-checkbox').first().locator('.ontario-checkbox__label').click();
 		await page.waitForChanges();
 
+		expect(await getFormValue()).toBeNull();
+	});
+
+	test('restores its initial checked state when the parent form is reset', async ({ page }) => {
+		await page.setContent(`
+			<form id="test-form">
+				<ontario-checkbox
+					element-id="terms"
+					label="I have read and agree to the Terms and Conditions"
+					name="terms"
+					value="agreed"
+				></ontario-checkbox>
+			</form>
+		`);
+		await page.waitForChanges();
+
+		const host = page.locator('ontario-checkbox').first();
+		const getFormValue = () =>
+			page.evaluate(() => new FormData(document.getElementById('test-form') as HTMLFormElement).get('terms'));
+
+		await host.locator('.ontario-checkbox__label').click();
+		await page.waitForChanges();
+		expect(await getFormValue()).toBe('agreed');
+
+		await page.locator('#test-form').evaluate((el: HTMLFormElement) => el.reset());
+		await page.waitForChanges();
+
+		expect(await host.evaluate((element: HTMLOntarioCheckboxElement) => element.checked)).toBe(false);
+		await expect(host.locator('input[type="checkbox"]')).not.toBeChecked();
 		expect(await getFormValue()).toBeNull();
 	});
 });

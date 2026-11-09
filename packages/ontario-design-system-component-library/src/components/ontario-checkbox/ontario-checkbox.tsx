@@ -54,9 +54,19 @@ export class OntarioCheckbox implements Checkbox {
 	hintTextRef: HTMLOntarioHintTextElement | undefined;
 
 	/**
+	 * Reference to the native checkbox input, used to anchor native form validation messages.
+	 */
+	private inputRef: HTMLInputElement | undefined;
+
+	/**
 	 * The last required-validation error set by this component, used to tell it apart from a consumer-provided `errorMessage`.
 	 */
 	private automaticErrorMessage: string | undefined;
+
+	/**
+	 * The `checked` state the component loaded with, restored when the parent form is reset.
+	 */
+	private initialChecked = false;
 
 	/**
 	 * The text to display as the checkbox label.
@@ -125,7 +135,8 @@ export class OntarioCheckbox implements Checkbox {
 	 * If no prop is set, it will default to false (optional).
 	 *
 	 * When required and the checkbox is unchecked, an error state is displayed automatically.
-	 * It clears once the checkbox is checked.
+	 * It clears once the checkbox is checked. The component is also marked as invalid in its parent form
+	 * (`valueMissing`), so native form validation blocks submission until it is checked.
 	 */
 	@Prop() required?: boolean = false;
 
@@ -365,12 +376,22 @@ export class OntarioCheckbox implements Checkbox {
 	}
 
 	/**
+	 * Called by the browser when the parent form is reset, e.g. through `form.reset()` or a reset button.
+	 * Restores the `checked` state the component loaded with.
+	 */
+	formResetCallback() {
+		this.checked = this.initialChecked;
+	}
+
+	/**
 	 * A required, unchecked checkbox always displays the error state - checking it clears the error.
 	 *
 	 * Only an error set by this component is ever replaced or cleared, so an `errorMessage` provided by
 	 * the consumer (e.g. a server-side error) is left untouched.
 	 */
 	private applyRequiredValidation() {
+		this.updateValidity();
+
 		const hasConsumerError = !!this.errorMessage && this.errorMessage !== this.automaticErrorMessage;
 		if (hasConsumerError) {
 			this.automaticErrorMessage = undefined;
@@ -382,8 +403,7 @@ export class OntarioCheckbox implements Checkbox {
 			return;
 		}
 
-		this.automaticErrorMessage =
-			this.requiredValidationMessage ?? translations.checkbox.requiredFieldError[this.getComponentLanguage()];
+		this.automaticErrorMessage = this.getRequiredValidationMessage();
 		this.errorMessage = this.automaticErrorMessage;
 	}
 
@@ -393,6 +413,25 @@ export class OntarioCheckbox implements Checkbox {
 		}
 
 		this.automaticErrorMessage = undefined;
+	}
+
+	/**
+	 * Marks the component as invalid in its parent form when it is required and unchecked,
+	 * so native form validation (e.g. `form.checkValidity()` and form submission) respects it.
+	 */
+	private updateValidity() {
+		if (this.required && !this.checked) {
+			this.internals?.setValidity?.({ valueMissing: true }, this.getRequiredValidationMessage(), this.inputRef);
+		} else {
+			this.internals?.setValidity?.({});
+		}
+	}
+
+	/**
+	 * Returns the consumer's `requiredValidationMessage` if provided, otherwise the translated default message.
+	 */
+	private getRequiredValidationMessage(): string {
+		return this.requiredValidationMessage || translations.checkbox.requiredFieldError[this.getComponentLanguage()];
 	}
 
 	private getComponentLanguage() {
@@ -443,10 +482,13 @@ export class OntarioCheckbox implements Checkbox {
 	 * If a `hintText` prop is passed, the id generated from it will be set to the internal `hintTextId` state to match with the checkbox `aria-describedBy` attribute.
 	 */
 	async componentDidLoad() {
+		// Re-apply validity now that the input exists to anchor the native validation message.
+		this.updateValidity();
 		this.hintTextId = await this.hintTextRef?.getHintTextId();
 	}
 
 	componentWillLoad() {
+		this.initialChecked = !!this.checked;
 		this.updateCaptionState(this.label);
 		this.elementId = this.elementId ?? uuid();
 		this.parseHintText();
@@ -483,6 +525,7 @@ export class OntarioCheckbox implements Checkbox {
 							required={!!this.required}
 							checked={!!this.checked}
 							ariaDescribedBy={this.hintTextId ?? undefined}
+							ref={(el) => (this.inputRef = el)}
 							onChange={(e) => this.handleEvent(e, EventType.Change)}
 							onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 							onFocus={(e) => this.handleEvent(e, EventType.Focus)}

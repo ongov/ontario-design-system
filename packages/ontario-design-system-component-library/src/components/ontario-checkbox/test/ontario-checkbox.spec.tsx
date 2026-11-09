@@ -285,6 +285,49 @@ describe('ontario-checkbox', () => {
 		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
 	});
 
+	it('should mark the form value as missing when required and unchecked, and valid once checked', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+		);
+
+		const setValiditySpy = vi.fn();
+		page.instance.internals = { setFormValue: vi.fn(), setValidity: setValiditySpy };
+		const input = page.root?.shadowRoot?.querySelector('#terms') as HTMLInputElement;
+
+		page.instance.checked = true;
+		await page.waitForChanges();
+		expect(setValiditySpy).toHaveBeenLastCalledWith({});
+
+		page.instance.checked = false;
+		await page.waitForChanges();
+		expect(setValiditySpy).toHaveBeenLastCalledWith(
+			{ valueMissing: true },
+			'You must select this checkbox to continue.',
+			input,
+		);
+
+		(page.root as HTMLOntarioCheckboxElement).required = false;
+		await page.waitForChanges();
+		expect(setValiditySpy).toHaveBeenLastCalledWith({});
+	});
+
+	it('should restore the initial checked state when the parent form is reset', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		checkbox.checked = true;
+		await page.waitForChanges();
+		expect(checkbox.errorMessage).toBeFalsy();
+
+		page.instance.formResetCallback();
+		await page.waitForChanges();
+
+		expect(checkbox.checked).toBe(false);
+		expect(checkbox.errorMessage).toBe('You must select this checkbox to continue.');
+	});
+
 	it('should warn when name is not provided', async () => {
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 

@@ -431,7 +431,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked.
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked. The component is also marked as invalid in its parent form (`valueMissing`), so native form validation blocks submission until it is checked.
           * @default false
          */
         "required"?: boolean;
@@ -5758,7 +5758,7 @@ declare namespace LocalJSX {
          */
         "onInputErrorOccurred"?: (event: OntarioCheckboxCustomEvent<{ errorMessage: string }>) => void;
         /**
-          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked.
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked. The component is also marked as invalid in its parent form (`valueMissing`), so native form validation blocks submission until it is checked.
           * @default false
          */
         "required"?: boolean;
