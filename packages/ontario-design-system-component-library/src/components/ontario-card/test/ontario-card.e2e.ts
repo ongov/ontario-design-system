@@ -143,9 +143,7 @@ test.describe('ontario-card', () => {
 			await expect(host.getByRole('heading', { level: 2, name: label })).toBeVisible();
 		});
 
-		// Known defect: the component never adds the ontario-card--no-image class that the SCSS relies on.
-		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
-		test.fail('uses the full width for the text in a horizontal card without an image', async ({ page }) => {
+		test('uses the full width for the text in a horizontal card without an image', async ({ page }) => {
 			const host = await renderCard(
 				page,
 				`label="${label}" description="${description}" layout-direction="horizontal"`,
@@ -180,10 +178,8 @@ test.describe('ontario-card', () => {
 			await expect(host.locator('li.ontario-card')).not.toHaveClass(/ontario-card__background--/);
 		});
 
-		// Known defect: blue and lightBlue are accepted values but have no styles in ontario-card.scss.
-		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
 		for (const colour of ['blue', 'lightBlue']) {
-			test.fail(`renders a coloured heading background for ${colour}`, async ({ page }) => {
+			test(`renders a coloured heading background for ${colour}`, async ({ page }) => {
 				const host = await renderCard(page, `label="${label}" description="${description}" header-colour="${colour}"`);
 
 				await expect(host.locator('.ontario-card__heading')).not.toHaveCSS('background-color', 'rgb(255, 255, 255)');
@@ -324,6 +320,17 @@ test.describe('ontario-card', () => {
 
 			await expectNoAxeViolations(page);
 		});
+
+		for (const colour of ['blue', 'lightBlue']) {
+			test(`has no axe violations for the ${colour} header colour`, async ({ page }) => {
+				await renderCard(
+					page,
+					`label="${label}" description="${description}" header-colour="${colour}" card-link="${cardLink}"`,
+				);
+
+				await expectNoAxeViolations(page);
+			});
+		}
 
 		test('has no axe violations for a light header colour without a description', async ({ page }) => {
 			await renderCard(page, `label="${label}" header-colour="lightTeal" card-link="${cardLink}"`);

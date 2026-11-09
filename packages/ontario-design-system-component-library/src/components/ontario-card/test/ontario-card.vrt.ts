@@ -38,6 +38,16 @@ test.describe('ontario-card', () => {
 			await expectVrtScreenshot(wrapper);
 		});
 
+		for (const colour of ['blue', 'lightBlue']) {
+			test(`vertical with ${colour} header colour and description`, async ({ page }) => {
+				const wrapper = await renderCard(
+					page,
+					`label="${label}" description="${description}" header-colour="${colour}" card-link="${cardLink}"`,
+				);
+				await expectVrtScreenshot(wrapper);
+			});
+		}
+
 		test('vertical with header colour filling the card when there is no description', async ({ page }) => {
 			const wrapper = await renderCard(page, `label="${label}" header-colour="lightTeal" card-link="${cardLink}"`);
 			await expectVrtScreenshot(wrapper);
