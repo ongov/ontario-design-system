@@ -369,6 +369,9 @@ export class OntarioCheckbox implements Checkbox {
 		this.applyRequiredValidation();
 	}
 
+	/**
+	 * Watch for changes to the `errorMessage` prop and emit the `inputErrorOccurred` event with the new message.
+	 */
 	@Watch('errorMessage')
 	broadcastInputErrorOccurredEvent() {
 		// Emit event to notify anyone who wants to listen for errors occurring
@@ -407,6 +410,9 @@ export class OntarioCheckbox implements Checkbox {
 		this.errorMessage = this.automaticErrorMessage;
 	}
 
+	/**
+	 * Clears the `errorMessage` only if it was set automatically by this component, then forgets the automatic error.
+	 */
 	private clearAutomaticError() {
 		if (this.automaticErrorMessage !== undefined && this.errorMessage === this.automaticErrorMessage) {
 			this.errorMessage = undefined;
@@ -434,7 +440,10 @@ export class OntarioCheckbox implements Checkbox {
 		return this.requiredValidationMessage || translations.checkbox.requiredFieldError[this.getComponentLanguage()];
 	}
 
-	private getComponentLanguage() {
+	/**
+	 * Returns the current component language, falling back to English if none is set.
+	 */
+	private getComponentLanguage(): Language {
 		return this.language ?? 'en';
 	}
 
