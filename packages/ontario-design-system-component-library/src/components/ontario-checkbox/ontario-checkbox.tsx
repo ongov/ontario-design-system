@@ -366,18 +366,19 @@ export class OntarioCheckbox implements Checkbox {
 
 	/**
 	 * A required, unchecked checkbox always displays the error state - checking it clears the error.
-	 * Only an error set by this component is cleared when the checkbox is no longer required,
-	 * so an `errorMessage` provided by the consumer is left untouched.
+	 *
+	 * Only an error set by this component is ever replaced or cleared, so an `errorMessage` provided by
+	 * the consumer (e.g. a server-side error) is left untouched.
 	 */
 	private applyRequiredValidation() {
-		if (!this.required) {
-			this.clearAutomaticError();
+		const hasConsumerError = !!this.errorMessage && this.errorMessage !== this.automaticErrorMessage;
+		if (hasConsumerError) {
+			this.automaticErrorMessage = undefined;
 			return;
 		}
 
-		if (this.checked) {
-			this.errorMessage = undefined;
-			this.automaticErrorMessage = undefined;
+		if (!this.required || this.checked) {
+			this.clearAutomaticError();
 			return;
 		}
 

@@ -262,6 +262,29 @@ describe('ontario-checkbox', () => {
 		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
 	});
 
+	it('should keep a consumer-provided errorMessage on a required checkbox on load and once checked', async () => {
+		const page = await render(
+			`<ontario-checkbox element-id="terms" label="I have read and agree to the Terms and Conditions" name="terms" value="agreed" required error-message="Please accept the Terms and Conditions to proceed."></ontario-checkbox>`,
+		);
+		const checkbox = page.root as HTMLOntarioCheckboxElement;
+
+		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
+
+		const input = page.root?.shadowRoot?.querySelector('#terms') as HTMLInputElement;
+		input.checked = true;
+		input.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
+
+		window.dispatchEvent(
+			new CustomEvent('headerLanguageToggled', { detail: { oldLanguage: 'en', newLanguage: 'fr' } }),
+		);
+		await page.waitForChanges();
+
+		expect(checkbox.errorMessage).toBe('Please accept the Terms and Conditions to proceed.');
+	});
+
 	it('should warn when name is not provided', async () => {
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
