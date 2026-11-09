@@ -1,172 +1,90 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
-import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
+import { test, E2EPage } from '@stencil/playwright';
+import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
+
+const headingContent = 'This is an aside heading';
+
+const slottedContent = `
+	<p>
+		As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
+		global emissions.
+	</p>
+	<p><a href="#">Learn more about Canada's global emissions.</a></p>
+`;
+
+/**
+ * Highlight colours other than the default (`teal`), which is covered by the default render test.
+ */
+const highlightColours = ['gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'] as const;
+
+/**
+ * The coloured left border is well under 1% of the pixels in a screenshot, and Playwright's default pixel `threshold`
+ * (`0.2`) can't tell one dark border colour from another, so by default a colour change still passes. A low `threshold`
+ * with only a handful of pixels allowed to differ makes a change to the border colour fail the test.
+ */
+const colourSensitiveOptions = { maxDiffPixels: 100, threshold: 0.02 };
 
 test.describe('ontario-aside', () => {
-	let host: Locator;
-
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`
-      <ontario-aside
-              heading-type="h4"
-              heading-content-type="string"
-              heading-content="This is an aside heading"
-              highlight-colour="purple"
-      >
-              <p>
-                  As of 2013, Canada is responsible for 1.6% of global emissions, with Ontario responsible for less than 0.4% of
-                  global emissions.
-              </p>
-              <p><a href="#">Learn more about Canada's global missions.</a></p>
-              </ontario-aside>
-                  `);
-
-		await page.waitForChanges();
-
-		host = page.locator('ontario-aside');
-
-		await expectVrtScreenshot(host);
-	});
-
-	test('applies and updates border-highlight class when highlight-colour changes', async ({ page }) => {
-		// initial class on inner <aside>
-		const hasPurple = await host.evaluate(
-			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--purple'),
+	const renderAside = async (page: E2EPage, attributes: string, content = slottedContent): Promise<Locator> => {
+		await page.setContent(
+			withGlobalStyles(`
+				<div id="vrt-aside" style="width: 640px; padding: 16px;">
+					<ontario-aside ${attributes}>${content}</ontario-aside>
+				</div>
+			`),
 		);
-		/* wait for the purple highlight to be applied */
 		await page.waitForChanges();
-
-		expect(hasPurple).toBe(true);
-
-		// update prop to lime and wait for component to re-render
-
-		await host.evaluate((el: HTMLOntarioAsideElement) => {
-			el.highlightColour = 'lime';
+		await expect(page.locator('ontario-aside')).toHaveClass(/hydrated/);
+		await page.evaluate(async () => {
+			await document.fonts.ready;
 		});
-		await page.waitForChanges();
+		return page.locator('#vrt-aside');
+	};
 
-		const hasLime = await host.evaluate(
-			(el: Element) => !!el.shadowRoot?.querySelector('aside')?.classList.contains('ontario-border-highlight--lime'),
+	test('renders the default aside', async ({ page }) => {
+		const wrapper = await renderAside(
+			page,
+			`heading-type="h4" heading-content-type="string" heading-content="${headingContent}"`,
 		);
-		expect(hasLime).toBe(true);
-		await expectVrtScreenshot(host);
+
+		await expect(page.locator('ontario-aside').locator('aside')).toHaveClass(/ontario-border-highlight--teal/);
+		await expectVrtScreenshot(wrapper, colourSensitiveOptions);
 	});
 
-	test('renders content prop inside a paragraph when content is provided', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioAsideElement) => {
-			el.content = 'This is content passed via prop';
+	for (const colour of highlightColours) {
+		test(`renders the ${colour} highlight colour`, async ({ page }) => {
+			const wrapper = await renderAside(
+				page,
+				`heading-type="h4" heading-content-type="string" heading-content="${headingContent}" highlight-colour="${colour}"`,
+			);
+
+			await expect(page.locator('ontario-aside').locator('aside')).toHaveClass(
+				new RegExp(`ontario-border-highlight--${colour}`),
+			);
+			await expectVrtScreenshot(wrapper, colourSensitiveOptions);
 		});
-		await page.waitForChanges();
+	}
 
-		await expect(host.locator('p').filter({ hasText: 'This is content passed via prop' })).toBeVisible();
-		await expectVrtScreenshot(host);
-	});
-
-	test('updates heading content when heading-content-type changes', async ({ page }) => {
-		const heading = host.locator('h4');
-
-		// Initial state (matches fixture heading-content)
-		await expect(heading).toHaveText('This is an aside heading');
-
-		// Switch to HTML content via properties
-		await host.evaluate((el: HTMLOntarioAsideElement) => {
-			el.headingContentType = 'html';
-			el.headingContent = '<a href="#">Quick fact:</a>';
-		});
-		await page.waitForChanges();
-
-		const link = host.locator('h4 a');
-		await expect(link).toHaveAttribute('href', '#');
-		await expect(link).toHaveText('Quick fact:');
-		await expectVrtScreenshot(host);
-	});
-
-	// ============== CSS VALIDATION TESTS ==============
-
-	test('combines all highlight colour classes correctly', async ({ page }) => {
-		const colours = ['teal', 'gold', 'yellow', 'taupe', 'green', 'lime', 'sky', 'blue', 'purple'] as const;
-
-		for (const colour of colours) {
-			await host.evaluate((el: HTMLOntarioAsideElement, col: (typeof colours)[number]) => {
-				el.highlightColour = col;
-			}, colour);
-			await page.waitForChanges();
-
-			const hasColourClass = await host.evaluate((el: Element, col: string) => {
-				return !!el.shadowRoot?.querySelector(`aside.ontario-border-highlight--${col}`);
-			}, colour);
-			expect(hasColourClass).toBe(true);
-			console.log(`Verified highlight colour class for: ${colour} - ${hasColourClass}`);
-			await expectVrtScreenshot(host);
-		}
-	});
-
-	test('applies teal border colour by default', async ({ page }) => {
-		await host.evaluate((el: HTMLOntarioAsideElement) => {
-			const newAside = document.createElement('ontario-aside');
-			newAside.headingType = 'h4';
-			newAside.headingContentType = 'string';
-			newAside.headingContent = 'Default colour test';
-			el.parentNode?.replaceChild(newAside, el);
-		});
-		await page.waitForChanges();
-
-		const hasTealClass = await host.evaluate(
-			(el: Element) => !!el.shadowRoot?.querySelector('aside.ontario-border-highlight--teal'),
+	test('renders the heading as HTML', async ({ page }) => {
+		const wrapper = await renderAside(
+			page,
+			`heading-type="h4" heading-content-type="html" heading-content='<a href="#">Quick fact:</a>'`,
 		);
-		expect(hasTealClass).toBe(true);
 
-		// take screenshot after replacing the element to verify default teal border colour
-		await expectVrtScreenshot(host);
+		await expect(page.locator('ontario-aside').locator('h4 a')).toHaveText('Quick fact:');
+		await expectVrtScreenshot(wrapper, colourSensitiveOptions);
 	});
 
-	test('border colour changes immediately when highlight-colour prop updates', async ({ page }) => {
-		// Get initial border colour (should be purple from fixture)
-		let borderColour = await host.evaluate((el: Element) => {
-			const aside = el.shadowRoot?.querySelector('aside');
-			if (!aside) return null;
-			return window.getComputedStyle(aside).borderLeftColor;
-		});
-		expect(borderColour).toBeTruthy();
-		const initialColour = borderColour;
-		await expectVrtScreenshot(host);
-		// Change to gold
-		await host.evaluate((el: HTMLOntarioAsideElement) => {
-			el.highlightColour = 'gold';
-		});
-		await page.waitForChanges();
+	test('renders content passed through the content property', async ({ page }) => {
+		const wrapper = await renderAside(
+			page,
+			`heading-type="h4" heading-content-type="string" heading-content="${headingContent}" content="This is content passed via the content property."`,
+			'',
+		);
 
-		borderColour = await host.evaluate((el: Element) => {
-			const aside = el.shadowRoot?.querySelector('aside');
-			if (!aside) return null;
-			return window.getComputedStyle(aside).borderLeftColor;
-		});
-
-		// Verify the colour has changed
-		expect(borderColour).not.toBe(initialColour);
-		await expectVrtScreenshot(host);
-	});
-
-	test('border is solid left border only', async () => {
-		const borderStyles = await host.evaluate((el: Element) => {
-			const aside = el.shadowRoot?.querySelector('aside');
-			if (!aside) return null;
-			const computedStyle = window.getComputedStyle(aside);
-			return {
-				borderTopWidth: computedStyle.borderTopWidth,
-				borderRightWidth: computedStyle.borderRightWidth,
-				borderBottomWidth: computedStyle.borderBottomWidth,
-				borderLeftWidth: computedStyle.borderLeftWidth,
-				borderLeftStyle: computedStyle.borderLeftStyle,
-			};
-		});
-
-		// Only left border should be visible
-		expect(borderStyles?.borderTopWidth).toBe('0px');
-		expect(borderStyles?.borderRightWidth).toBe('0px');
-		expect(borderStyles?.borderBottomWidth).toBe('0px');
-		expect(borderStyles?.borderLeftWidth).not.toBe('0px');
-		expect(borderStyles?.borderLeftStyle).toBe('solid');
-		await expectVrtScreenshot(host);
+		await expect(page.locator('ontario-aside').locator('p')).toHaveText(
+			'This is content passed via the content property.',
+		);
+		await expectVrtScreenshot(wrapper, colourSensitiveOptions);
 	});
 });
