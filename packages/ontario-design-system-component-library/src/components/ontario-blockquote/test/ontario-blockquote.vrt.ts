@@ -1,6 +1,6 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
-import { expectVrtScreenshot } from '../../../utils/tests/vrt-helpers';
+import { test, E2EPage } from '@stencil/playwright';
+import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 
 const quoteText = 'This is the quote';
 const longQuoteText =
@@ -9,109 +9,107 @@ const attributionText = 'Homer Simpson';
 const bylineText = 'Ontario Digital Service';
 const slottedQuoteText = 'Quote from slotted content';
 
+/**
+ * The blockquote has small-breakpoint rules for its font size, line height and margin, so the narrow viewport shots
+ * need a viewport below the small breakpoint (`40em`, 640px).
+ */
+const narrowViewport = { width: 375, height: 800 };
+
 test.describe('ontario-blockquote', () => {
-	let host: Locator;
-
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`
-			<ontario-blockquote quote="${quoteText}"></ontario-blockquote>
-		`);
-
-		await page.waitForChanges();
-
-		host = page.locator('ontario-blockquote');
-	});
-
-	test('renders and is hydrated', async () => {
-		await expect(host).toBeAttached();
-		await expect(host).toHaveClass('hydrated');
-	});
-
-	test('renders the quote text content', async () => {
-		const blockquote = host.locator('blockquote');
-		await expect(blockquote).toContainText(quoteText);
-		await expectVrtScreenshot(host);
-	});
-
-	test('applies the short quote class when the quote is 140 characters or less', async () => {
-		const blockquote = host.locator('blockquote');
-		await expect(blockquote).toHaveClass('ontario-blockquote ontario-blockquote--short');
-		await expectVrtScreenshot(host);
-	});
-
-	test('does not apply the short quote class when the quote exceeds 140 characters', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('quote', value),
-			longQuoteText,
+	/**
+	 * Renders the markup with the global styles (for the Raleway font the blockquote uses) in a wrapper of a fixed
+	 * width, then waits for the component to hydrate and the fonts to load.
+	 */
+	const renderBlockquote = async (page: E2EPage, markup: string, width = 640): Promise<Locator> => {
+		await page.setContent(
+			withGlobalStyles(`
+				<div id="vrt-blockquote" style="width: ${width}px; padding: 16px;">
+					${markup}
+				</div>
+			`),
 		);
 		await page.waitForChanges();
+		await expect(page.locator('ontario-blockquote')).toHaveClass(/hydrated/);
+		await page.evaluate(async () => {
+			await document.fonts.ready;
+		});
+		return page.locator('#vrt-blockquote');
+	};
 
-		const blockquote = host.locator('blockquote');
-		await expect(blockquote).toHaveClass('ontario-blockquote');
-		await expectVrtScreenshot(host);
+	test('renders a short quote', async ({ page }) => {
+		const wrapper = await renderBlockquote(page, `<ontario-blockquote quote="${quoteText}"></ontario-blockquote>`);
+
+		await expect(page.locator('ontario-blockquote').locator('blockquote')).toHaveClass(/ontario-blockquote--short/);
+		await expectVrtScreenshot(wrapper);
 	});
 
-	test('renders no attribution or byline when not provided', async () => {
-		const attribution = host.locator('cite.ontario-blockquote__attribution');
-		const byline = host.locator('cite.ontario-blockquote__byline');
+	test('renders a quote longer than 140 characters', async ({ page }) => {
+		const wrapper = await renderBlockquote(page, `<ontario-blockquote quote="${longQuoteText}"></ontario-blockquote>`);
 
-		await expect(attribution).toHaveCount(0);
-		await expect(byline).toHaveCount(0);
-		await expectVrtScreenshot(host);
+		await expect(page.locator('ontario-blockquote').locator('blockquote')).not.toHaveClass(/ontario-blockquote--short/);
+		await expectVrtScreenshot(wrapper);
 	});
 
-	test('renders the attribution when provided', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('attribution', value),
+	test('renders the attribution', async ({ page }) => {
+		const wrapper = await renderBlockquote(
+			page,
+			`<ontario-blockquote quote="${quoteText}" attribution="${attributionText}"></ontario-blockquote>`,
+		);
+
+		await expect(page.locator('ontario-blockquote').locator('cite.ontario-blockquote__attribution')).toHaveText(
 			attributionText,
 		);
-		await page.waitForChanges();
-
-		const attribution = host.locator('cite.ontario-blockquote__attribution');
-		await expect(attribution).toContainText(attributionText);
-		await expectVrtScreenshot(host);
+		await expectVrtScreenshot(wrapper);
 	});
 
-	test('renders the byline when provided', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, value: string) => el.setAttribute('byline', value),
-			bylineText,
+	test('renders the byline', async ({ page }) => {
+		const wrapper = await renderBlockquote(
+			page,
+			`<ontario-blockquote quote="${quoteText}" byline="${bylineText}"></ontario-blockquote>`,
 		);
-		await page.waitForChanges();
 
-		const byline = host.locator('cite.ontario-blockquote__byline');
-		await expect(byline).toContainText(bylineText);
-		await expectVrtScreenshot(host);
+		await expect(page.locator('ontario-blockquote').locator('cite.ontario-blockquote__byline')).toHaveText(bylineText);
+		await expectVrtScreenshot(wrapper);
 	});
 
-	test('renders both attribution and byline when both are provided', async ({ page }) => {
-		await host.evaluate(
-			(el: HTMLOntarioBlockquoteElement, values: { attribution: string; byline: string }) => {
-				el.setAttribute('attribution', values.attribution);
-				el.setAttribute('byline', values.byline);
-			},
-			{ attribution: attributionText, byline: bylineText },
+	test('renders both the attribution and the byline', async ({ page }) => {
+		const wrapper = await renderBlockquote(
+			page,
+			`<ontario-blockquote quote="${quoteText}" attribution="${attributionText}" byline="${bylineText}"></ontario-blockquote>`,
 		);
-		await page.waitForChanges();
 
-		const attribution = host.locator('cite.ontario-blockquote__attribution');
-		const byline = host.locator('cite.ontario-blockquote__byline');
-
-		await expect(attribution).toContainText(attributionText);
-		await expect(byline).toContainText(bylineText);
-		await expectVrtScreenshot(host);
+		await expect(page.locator('ontario-blockquote').locator('cite')).toHaveCount(2);
+		await expectVrtScreenshot(wrapper);
 	});
-});
 
-test.describe('ontario-blockquote - slotted content fallback', () => {
-	test('falls back to host textContent when quote prop is not provided', async ({ page }) => {
-		await page.setContent(`<ontario-blockquote>${slottedQuoteText}</ontario-blockquote>`);
-		await page.waitForChanges();
+	test('renders slotted content when no quote is provided', async ({ page }) => {
+		const wrapper = await renderBlockquote(page, `<ontario-blockquote>${slottedQuoteText}</ontario-blockquote>`);
 
-		const blockquoteHost = page.locator('ontario-blockquote');
-		const blockquote = blockquoteHost.locator('blockquote');
+		await expect(page.locator('ontario-blockquote').locator('blockquote')).toContainText(slottedQuoteText);
+		await expectVrtScreenshot(wrapper);
+	});
 
-		await expect(blockquote).toContainText(slottedQuoteText);
-		await expectVrtScreenshot(blockquoteHost);
+	test.describe('below the small breakpoint', () => {
+		test.use({ viewport: narrowViewport });
+
+		test('renders a short quote with an attribution and a byline', async ({ page }) => {
+			const wrapper = await renderBlockquote(
+				page,
+				`<ontario-blockquote quote="${quoteText}" attribution="${attributionText}" byline="${bylineText}"></ontario-blockquote>`,
+				narrowViewport.width - 48,
+			);
+
+			await expectVrtScreenshot(wrapper);
+		});
+
+		test('renders a quote longer than 140 characters with an attribution', async ({ page }) => {
+			const wrapper = await renderBlockquote(
+				page,
+				`<ontario-blockquote quote="${longQuoteText}" attribution="${attributionText}"></ontario-blockquote>`,
+				narrowViewport.width - 48,
+			);
+
+			await expectVrtScreenshot(wrapper);
+		});
 	});
 });
