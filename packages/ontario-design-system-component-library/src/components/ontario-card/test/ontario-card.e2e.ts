@@ -186,8 +186,8 @@ test.describe('ontario-card', () => {
 			});
 		}
 
-		// Known defect: darkAccent sets a near-black heading background but the heading link keeps its black text colour,
-		// so the label is invisible. axe doesn't report it, so this checks the computed colours directly.
+		// Known defect (DS-2969): darkAccent sets a near-black heading background but the heading link keeps its black
+		// text colour, so the label is invisible. axe doesn't report it, so this checks the computed colours directly.
 		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
 		test.fail('renders legible heading text on the dark accent header colour', async ({ page }) => {
 			const host = await renderCard(page, `label="${label}" description="${description}" header-colour="darkAccent"`);
@@ -304,7 +304,7 @@ test.describe('ontario-card', () => {
 			await expectNoAxeViolations(page);
 		});
 
-		// Known defect: with the default empty alt text, the image link has no accessible name.
+		// Known defect (DS-2968): with the default empty alt text, the image link has no accessible name.
 		// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
 		test.fail('has no axe violations for a decorative image with the default empty alt text', async ({ page }) => {
 			await renderCard(page, `label="${label}" description="${description}" image="${image}" card-link="${cardLink}"`);
