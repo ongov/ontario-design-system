@@ -3,7 +3,7 @@
 exports[`ontario-card > renders 1`] = `
 <ontario-card class="hydrated">
   <mock:shadow-root>
-    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false">
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false ontario-card--no-image">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#"></a>
@@ -17,7 +17,7 @@ exports[`ontario-card > renders 1`] = `
 exports[`ontario-card > should render a description 1`] = `
 <ontario-card description="Lorem ipsum" class="hydrated">
   <mock:shadow-root>
-    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical">
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card--no-image">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#"></a>
@@ -36,7 +36,7 @@ exports[`ontario-card > should render a description 1`] = `
 exports[`ontario-card > should render a header colour on the label 1`] = `
 <ontario-card label="Card Title 1" header-colour="sky" class="hydrated">
   <mock:shadow-root>
-    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false ontario-card__background--sky">
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false ontario-card--no-image ontario-card__background--sky">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading ontario-card__heading--sky">
           <a href="#">
@@ -52,7 +52,7 @@ exports[`ontario-card > should render a header colour on the label 1`] = `
 exports[`ontario-card > should render a label 1`] = `
 <ontario-card label="Card Title 1" class="hydrated">
   <mock:shadow-root>
-    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false">
+    <li class="ontario-card ontario-card__card-type--basic ontario-card--position-vertical ontario-card__description-false ontario-card--no-image">
       <div class="ontario-card__text-container">
         <h2 class="ontario-card__heading">
           <a href="#">
