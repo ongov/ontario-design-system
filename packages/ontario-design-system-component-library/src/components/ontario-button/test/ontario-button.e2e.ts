@@ -3,6 +3,18 @@ import { test, E2EPage } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
 import { ButtonTypes, HtmlTypes } from '../ontario-button.types';
 
+/**
+ * The computed value of a fully transparent colour (`transparent`). It is used for the tertiary button background, which
+ * is not a token, and for the focus outline, which is transparent so it stays visible in forced colours mode.
+ */
+const transparent = 'rgba(0, 0, 0, 0)';
+
+/** Label and accessible name used by the tests that need a button with text. */
+const buttonLabel = 'Element Content';
+
+/** Attribute on the test form that counts how many times it was submitted. */
+const submitCountAttribute = 'data-submits';
+
 test.describe('ontario-button', () => {
 	let host: Locator;
 
@@ -23,17 +35,17 @@ test.describe('ontario-button', () => {
 	});
 
 	test('renders changes to the button', async ({ page }) => {
-		await host.evaluate((element: HTMLOntarioButtonElement) => {
-			element.label = 'Element Content';
-			element.ariaLabelText = 'Element Content';
-		});
+		await host.evaluate((element: HTMLOntarioButtonElement, label) => {
+			element.label = label;
+			element.ariaLabelText = label;
+		}, buttonLabel);
 		await page.waitForChanges();
 
 		const element = host.locator('button');
 
 		await expect(element).toHaveClass(/ontario-button--secondary/);
-		await expect(element).toHaveText('Element Content');
-		await expect(element).toHaveAttribute('aria-label', 'Element Content');
+		await expect(element).toHaveText(buttonLabel);
+		await expect(element).toHaveAttribute('aria-label', buttonLabel);
 		await expect(element).toHaveAttribute('type', 'button');
 
 		await host.evaluate((button: HTMLOntarioButtonElement) => {
@@ -166,7 +178,7 @@ test.describe('ontario-button', () => {
 		expect(internalThemeDark.borderTopStyle).toBe('solid');
 		expect(internalThemeDark.backgroundColor).not.toBe(secondary.backgroundColor);
 
-		expect(tertiary.backgroundColor).toBe('rgba(0, 0, 0, 0)');
+		expect(tertiary.backgroundColor).toBe(transparent);
 		expect(tertiary.textDecorationLine).toBe('underline');
 
 		// every button type shares the same corner radius (`$global-radius`)
@@ -181,10 +193,10 @@ test.describe('ontario-button', () => {
 	// Focus also adds the `%ontario-focus` box shadow and a 4px outline that is transparent, so the focus indicator is
 	// still visible in forced colours (high contrast) mode.
 	test('applies hover, focus, and active styles', async ({ page }) => {
-		await host.evaluate((button: HTMLOntarioButtonElement) => {
-			button.label = 'Element Content';
+		await host.evaluate((button: HTMLOntarioButtonElement, label) => {
+			button.label = label;
 			button.type = 'primary';
-		});
+		}, buttonLabel);
 		await page.waitForChanges();
 		const element = host.locator('button');
 		const backgroundColour = () => element.evaluate((button) => window.getComputedStyle(button).backgroundColor);
@@ -196,7 +208,7 @@ test.describe('ontario-button', () => {
 
 		await element.focus();
 		await expect(element).toHaveCSS('outline-style', 'solid');
-		await expect(element).toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
+		await expect(element).toHaveCSS('outline-color', transparent);
 		await expect(element).not.toHaveCSS('box-shadow', 'none');
 
 		await page.mouse.down();
@@ -244,7 +256,7 @@ test.describe('ontario-button', () => {
 	});
 
 	test('fires the click event', async ({ page }) => {
-		await host.evaluate((button: HTMLOntarioButtonElement) => (button.label = 'Element Content'));
+		await host.evaluate((button: HTMLOntarioButtonElement, label) => (button.label = label), buttonLabel);
 		await page.waitForChanges();
 
 		const clickPromise = host.evaluate(
@@ -284,23 +296,23 @@ test.describe('ontario-button', () => {
 
 test.describe('ontario-button - forms and keyboard', () => {
 	/**
-	 * Renders a form with an input followed by the button, and counts submissions in `data-submits` on the form
+	 * Renders a form with an input followed by the button, and counts submissions in the `submitCountAttribute` attribute on the form
 	 * (the submit is cancelled so the page does not navigate).
 	 */
 	const renderForm = async (page: E2EPage, htmlType: string) => {
 		await page.setContent(`
-			<form id="form" data-submits="0">
+			<form id="form" ${submitCountAttribute}="0">
 				<input id="name" name="name" value="Original" />
 				<ontario-button html-type="${htmlType}" label="Action"></ontario-button>
 			</form>
 		`);
 		await page.waitForChanges();
-		await page.locator('#form').evaluate((form) => {
+		await page.locator('#form').evaluate((form, attribute) => {
 			form.addEventListener('submit', (event) => {
 				event.preventDefault();
-				form.setAttribute('data-submits', String(Number(form.getAttribute('data-submits')) + 1));
+				form.setAttribute(attribute, String(Number(form.getAttribute(attribute)) + 1));
 			});
-		});
+		}, submitCountAttribute);
 
 		return {
 			form: page.locator('#form'),
@@ -314,7 +326,7 @@ test.describe('ontario-button - forms and keyboard', () => {
 
 		await button.click();
 
-		await expect(form).toHaveAttribute('data-submits', '1');
+		await expect(form).toHaveAttribute(submitCountAttribute, '1');
 	});
 
 	test('does not submit the form when a button is clicked', async ({ page }) => {
@@ -322,7 +334,7 @@ test.describe('ontario-button - forms and keyboard', () => {
 
 		await button.click();
 
-		await expect(form).toHaveAttribute('data-submits', '0');
+		await expect(form).toHaveAttribute(submitCountAttribute, '0');
 	});
 
 	test('resets the form when a reset button is clicked', async ({ page }) => {
@@ -342,7 +354,7 @@ test.describe('ontario-button - forms and keyboard', () => {
 		await expect(button).toBeFocused();
 		await page.keyboard.press('Enter');
 
-		await expect(form).toHaveAttribute('data-submits', '1');
+		await expect(form).toHaveAttribute(submitCountAttribute, '1');
 	});
 
 	test('submits the form with Space', async ({ page }) => {
@@ -353,6 +365,6 @@ test.describe('ontario-button - forms and keyboard', () => {
 		await expect(button).toBeFocused();
 		await page.keyboard.press('Space');
 
-		await expect(form).toHaveAttribute('data-submits', '1');
+		await expect(form).toHaveAttribute(submitCountAttribute, '1');
 	});
 });
