@@ -189,21 +189,23 @@ Each icon has its own generated README with the properties supported by that ico
 
 ## Upgrade note
 
-Icons without a non-blank `label` now render as decorative images with `aria-hidden="true"`, `focusable="false"` and no image role. Previously, icons defaulted to `role="img"` without an accessible name. Audit existing meaningful icon usage before upgrading and supply a descriptive `label` when equivalent text is not already available. A non-blank label takes precedence over `isDecorative`, which remains accepted but emits a development-only deprecation warning.
+Icons without a non-blank `label` now render as decorative images with `aria-hidden="true"`, `focusable="false"` and no image role. Previously, icons defaulted to `role="img"` without an accessible name. Audit existing meaningful icon usage before upgrading and supply a descriptive `label` when equivalent text is not already available. A non-blank label takes precedence over `isDecorative`, which remains accepted but emits a deprecation warning once per shared module instance, including in production builds.
 
 ## Maintaining icons
 
 The `icons` array in `icon-manifest.json` is the source of truth for icon metadata. Each entry must correspond to an SVG with the same basename in `assets/`.
 
-| Field        | Required | Meaning                                                                                                                    |
-| ------------ | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                   |
-| `category`   | Yes      | Icon category: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                    |
-| `viewBox`    | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                |
-| `colour`     | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
-| `aliases`    | Yes      | Alternative names recorded as metadata. Use an empty array when none exist; aliases do not generate additional components. |
-| `deprecated` | Yes      | Deprecation metadata. This flag alone does not emit a component warning.                                                   |
-| `replacedBy` | No       | Replacement icon name recorded as metadata when an icon is deprecated.                                                     |
+Configurable-colour assets must begin the root SVG's `class` attribute with `svg-icon` (for example, `class="svg-icon"` or `class="svg-icon ontario-icon"`). The generator uses this marker to inject custom colour styles and fails if it is missing. Fixed-colour and multicolour assets do not require it.
+
+| Field        | Required | Meaning                                                                                                                                     |
+| ------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | Yes      | Full existing custom-element name, including the `ontario-icon-` prefix.                                                                    |
+| `category`   | Yes      | Icon category: `primary`, `secondary`, `social`, `payment`, `flag`, `alert` or `other`.                                                     |
+| `viewBox`    | Yes      | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG.                                                 |
+| `colour`     | Yes      | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property.                  |
+| `aliases`    | Yes      | Reserved metadata for alternative names; no runtime consumer or additional components today. Use an empty array when none exist.            |
+| `deprecated` | Yes      | Reserved deprecation metadata; does not currently generate runtime warnings or change rendering.                                            |
+| `replacedBy` | No       | Reserved replacement metadata; no runtime behaviour today. Must name an existing manifest icon, with or without the `ontario-icon-` prefix. |
 
 ### Add or update an icon
 

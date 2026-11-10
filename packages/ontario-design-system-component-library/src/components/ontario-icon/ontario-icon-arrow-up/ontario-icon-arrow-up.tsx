@@ -32,7 +32,6 @@ export class OntarioIconArrowUp implements IconWithColour {
 	 * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
 	 */
 	@Prop() isDecorative?: boolean;
-	private hasWarnedIsDecorativeDeprecation = false;
 
 	@Watch('iconWidth')
 	validateWidth() {
@@ -64,8 +63,7 @@ export class OntarioIconArrowUp implements IconWithColour {
 
 	@Watch('isDecorative')
 	warnDeprecatedIsDecorative() {
-		if (this.isDecorative !== undefined && !this.hasWarnedIsDecorativeDeprecation) {
-			this.hasWarnedIsDecorativeDeprecation = true;
+		if (this.isDecorative !== undefined) {
 			warnIsDecorativeDeprecated();
 		}
 	}
@@ -83,7 +81,8 @@ export class OntarioIconArrowUp implements IconWithColour {
 						aria-label={svgAccessibility.ariaLabel}
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
-						class="ontario-icon"
+						class="svg-icon ontario-icon"
+						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
 						fill="#000000"

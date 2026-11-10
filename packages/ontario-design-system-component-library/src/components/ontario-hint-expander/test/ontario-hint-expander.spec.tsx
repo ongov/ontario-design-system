@@ -4,6 +4,14 @@ import { mutationObserverMock } from '../../../utils/tests/mutation-observer.moc
 global.MutationObserver = mutationObserverMock;
 
 describe('ontario-hint-expander', () => {
+	it('does not pass the deprecated isDecorative prop to its icons', async () => {
+		const page = await render('<ontario-hint-expander hint="Hint" content="Content"></ontario-hint-expander>');
+		const icons = page.root.shadowRoot?.querySelectorAll('ontario-icon-chevron-up, ontario-icon-chevron-down');
+
+		expect(icons?.length).toBe(2);
+		icons?.forEach((icon) => expect(icon.hasAttribute('is-decorative')).toBe(false));
+	});
+
 	it('should render a default hint expander', async () => {
 		const page = await render(
 			`<ontario-hint-expander hint="This is the hint" content="This is the content" element-id="elementId" aria-controls="hint-expander-controls">`,
@@ -14,7 +22,7 @@ describe('ontario-hint-expander', () => {
     <div class="ontario-hint-expander__container">
       <button class="ontario-hint-expander__button" id="hint-expander-button-elementId" aria-controls="hint-expander-content-elementId" aria-expanded="false" data-toggle="ontario-collapse">
         <span class="ontario-hint-expander__button-icon--close ontario-icon">
-          <ontario-icon-chevron-up is-decorative="true" class="hydrated">
+          <ontario-icon-chevron-up class="hydrated">
             <mock:shadow-root>
               <div class="ontario-icon ontario-icon--inherit ontario-icon--width-24">
                 <svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-up">
@@ -25,7 +33,7 @@ describe('ontario-hint-expander', () => {
           </ontario-icon-chevron-up>
         </span>
         <span class="ontario-hint-expander__button-icon--open">
-          <ontario-icon-chevron-down is-decorative="true" class="hydrated">
+          <ontario-icon-chevron-down class="hydrated">
             <mock:shadow-root>
               <div class="ontario-icon ontario-icon--inherit ontario-icon--width-24">
                 <svg aria-hidden="true" focusable="false" class="svg-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="chevron-down">

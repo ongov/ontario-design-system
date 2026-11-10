@@ -2,6 +2,8 @@ import { render } from '@stencil/vitest';
 import { vi } from 'vitest';
 
 describe('ontario-icon', () => {
+	afterEach(() => vi.restoreAllMocks());
+
 	describe('snapshot', () => {
 		it('should render the expected html', async () => {
 			const page = await render(
@@ -41,33 +43,32 @@ describe('ontario-icon', () => {
 		expect(svg?.hasAttribute('aria-label')).toBe(false);
 	});
 
-	it('does not expose an unnamed image when the legacy prop is false', async () => {
+	it('keeps legacy icons decorative and warns once across instances and icon types', async () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-		try {
-			const page = await render('<ontario-icon-accessibility is-decorative="false"></ontario-icon-accessibility>');
-			const svg = page.root.shadowRoot?.querySelector('svg');
-			expect(svg?.getAttribute('aria-hidden')).toBe('true');
-			expect(svg?.hasAttribute('role')).toBe(false);
-			expect(warning).toHaveBeenCalledWith(expect.stringContaining('isDecorative'));
-		} finally {
-			warning.mockRestore();
-		}
+		const page = await render('<ontario-icon-accessibility is-decorative="false"></ontario-icon-accessibility>');
+		const svg = page.root.shadowRoot?.querySelector('svg');
+		expect(svg?.getAttribute('aria-hidden')).toBe('true');
+		expect(svg?.hasAttribute('role')).toBe(false);
+		await render('<ontario-icon-accessibility is-decorative="true"></ontario-icon-accessibility>');
+		await render('<ontario-icon-chevron-up is-decorative="true"></ontario-icon-chevron-up>');
+		page.root.isDecorative = true;
+		await page.waitForChanges();
+		expect(warning).toHaveBeenCalledOnce();
+		expect(warning.mock.calls[0][0]).toContain('isDecorative');
 	});
 
-	it('warns when the deprecated isDecorative prop is supplied', async () => {
-		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+	it('keeps icons decorative when the deprecated isDecorative prop is true', async () => {
+		vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
 		const page = await render('<ontario-icon-accessibility is-decorative="true"></ontario-icon-accessibility>');
 		const svg = page.root.shadowRoot?.querySelector('svg');
 
 		expect(svg?.getAttribute('aria-hidden')).toBe('true');
 		expect(svg?.hasAttribute('role')).toBe(false);
-		expect(warning).toHaveBeenCalledWith(expect.stringContaining('isDecorative'));
-		warning.mockRestore();
 	});
 
 	it('lets a supplied label take precedence over isDecorative', async () => {
-		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+		vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 		const page = await render(
 			'<ontario-icon-accessibility label="Accessibility options" is-decorative="true"></ontario-icon-accessibility>',
 		);
@@ -76,6 +77,5 @@ describe('ontario-icon', () => {
 		expect(svg?.getAttribute('role')).toBe('img');
 		expect(svg?.getAttribute('aria-label')).toBe('Accessibility options');
 		expect(svg?.hasAttribute('aria-hidden')).toBe(false);
-		warning.mockRestore();
 	});
 });
