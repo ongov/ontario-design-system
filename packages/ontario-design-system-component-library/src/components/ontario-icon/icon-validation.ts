@@ -1,7 +1,10 @@
 import validateColor from 'validate-color';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { IconColours } from './icon.types';
+
+const DEFAULT_ICON_WIDTH = 24;
 
 export const validateIconWidth = (width: number, iconName: string): number => {
 	if (!isNaN(width) && width > 0) {
@@ -14,10 +17,10 @@ export const validateIconWidth = (width: number, iconName: string): number => {
 		.addRegularText('on')
 		.addMonospaceText(` <${iconName}> `)
 		.addRegularText('was set to an invalid value; a positive number is allowed. The default size of')
-		.addMonospaceText(' 24px ')
+		.addMonospaceText(` ${DEFAULT_ICON_WIDTH}px `)
 		.addRegularText('was assumed.')
 		.printMessage();
-	return 24;
+	return DEFAULT_ICON_WIDTH;
 };
 
 export interface IconColourValidation {
@@ -39,7 +42,7 @@ export const validateIconColour = (colour: string, iconName: string): IconColour
 		.addRegularText('on')
 		.addMonospaceText(` <${iconName}> `)
 		.addRegularText('was set to an invalid colour; only')
-		.addMonospaceText(' black, blue, grey or white ')
+		.addMonospaceText(` ${printArray([...IconColours], 'or')} `)
 		.addRegularText('are supported. The default colour')
 		.addMonospaceText(' black ')
 		.addRegularText('is assumed.')

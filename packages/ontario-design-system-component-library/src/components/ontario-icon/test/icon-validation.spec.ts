@@ -1,5 +1,6 @@
 import { vi } from 'vitest';
 import { validateFixedIconColour, validateIconColour, validateIconWidth } from '../icon-validation';
+import { IconColours } from '../icon.types';
 
 describe('shared icon validation', () => {
 	afterEach(() => vi.restoreAllMocks());
@@ -10,8 +11,10 @@ describe('shared icon validation', () => {
 
 	it.each([0, -1, Number.NaN])('falls back to 24 for invalid width %s', (width) => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-		expect(validateIconWidth(width, 'ontario-icon-search')).toBe(24);
+		const fallbackWidth = validateIconWidth(width, 'ontario-icon-search');
+		expect(fallbackWidth).toBe(24);
 		expect(warning).toHaveBeenCalledOnce();
+		expect(warning.mock.calls[0][0]).toContain(` ${fallbackWidth}px `);
 	});
 
 	it('accepts theme tokens and custom CSS colours', () => {
@@ -23,6 +26,10 @@ describe('shared icon validation', () => {
 		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 		expect(validateIconColour('not-a-colour', 'ontario-icon-search')).toEqual({ colour: 'black' });
 		expect(warning).toHaveBeenCalledOnce();
+		for (const colour of IconColours) {
+			expect(warning.mock.calls[0][0]).toContain(colour);
+		}
+		expect(warning.mock.calls[0][0]).toContain('white or inherit');
 	});
 
 	it('warns for a colour attribute on a fixed-colour icon only when supplied', () => {

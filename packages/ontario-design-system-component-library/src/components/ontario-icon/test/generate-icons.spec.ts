@@ -1,5 +1,7 @@
 import { createRequire } from 'node:module';
 import { parseSync, type INode } from 'svgson';
+import { vi } from 'vitest';
+import { validateIconWidth } from '../icon-validation';
 
 const require = createRequire(import.meta.url);
 const { getIconComponentTemplate, validateManifest } = require('../scripts/generate-icons.cjs') as {
@@ -26,6 +28,25 @@ describe('icon generator colour styles', () => {
 	it.each(['fixed', 'multicolour'])('allows %s artwork without the SVG class marker', (colour) => {
 		expect(() => getIconComponentTemplate(parseSync('<svg><path /></svg>'), { ...icon, colour })).not.toThrow();
 	});
+});
+
+describe('icon generator width defaults', () => {
+	afterEach(() => vi.restoreAllMocks());
+
+	it.each(['configurable', 'fixed', 'multicolour'])(
+		'keeps the %s literal default aligned with the fallback',
+		(colour) => {
+			vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+			const iconName = 'ontario-icon-test';
+			const fallbackWidth = validateIconWidth(Number.NaN, iconName);
+			const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), {
+				name: iconName,
+				colour,
+			});
+
+			expect(template).toContain(`@Prop() iconWidth: IconSize = ${fallbackWidth};`);
+		},
+	);
 });
 
 describe('icon manifest replacement names', () => {
