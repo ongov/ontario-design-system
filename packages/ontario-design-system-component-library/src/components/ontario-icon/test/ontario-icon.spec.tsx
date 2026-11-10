@@ -171,7 +171,7 @@ describe('ontario-icon', () => {
 	});
 
 	describe('search-white deprecation', () => {
-		it('warns once per tag in development and still renders', async () => {
+		it('warns once per tag and still renders', async () => {
 			const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 			try {
 				const first = await render('<ontario-icon-search-white></ontario-icon-search-white>');
@@ -182,6 +182,7 @@ describe('ontario-icon', () => {
 				);
 				expect(deprecationWarnings).toHaveLength(1);
 				expect(String(deprecationWarnings[0][0])).toContain('ontario-icon-search');
+				expect(String(deprecationWarnings[0][0])).toContain('colour="white"');
 				expect(first.root.shadowRoot?.querySelector('svg')).not.toBeNull();
 			} finally {
 				warning.mockRestore();

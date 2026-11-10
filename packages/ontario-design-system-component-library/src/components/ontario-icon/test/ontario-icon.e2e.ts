@@ -168,7 +168,7 @@ test.describe('ontario-icon', () => {
 		});
 
 		for (const [tag, replacement, colour] of [['ontario-icon-search-white', 'ontario-icon-search', 'white']]) {
-			test(`${tag} warns once in development and still renders`, async ({ page }) => {
+			test(`${tag} warns once and still renders`, async ({ page }) => {
 				const warnings: string[] = [];
 				page.on('console', (message) => {
 					if (message.type() === 'warning') {
@@ -188,6 +188,7 @@ test.describe('ontario-icon', () => {
 				await expect(page.locator(replacement).locator('path')).toHaveCSS('fill', whiteFill);
 				expect(warnings.filter((warning) => warning.includes(`<${tag}>`))).toHaveLength(1);
 				expect(warnings.find((warning) => warning.includes(`<${tag}>`))).toContain(`<${replacement}>`);
+				expect(warnings.find((warning) => warning.includes(`<${tag}>`))).toContain('colour="white"');
 			});
 		}
 	});
