@@ -44,6 +44,17 @@ const validateManifest = (icons, assetFiles) => {
 		manifestNames.add(icon.name);
 	}
 
+	for (const icon of icons) {
+		if (icon.replacedBy !== undefined) {
+			const replacementName = icon.replacedBy.startsWith(iconNamePrefix)
+				? icon.replacedBy
+				: `${iconNamePrefix}${icon.replacedBy}`;
+			if (!manifestNames.has(replacementName)) {
+				throw new Error(`Unknown replacement icon ${icon.replacedBy} on ${icon.name}.`);
+			}
+		}
+	}
+
 	const assetNames = new Set(assetFiles.map((file) => path.basename(file, '.svg')));
 	const missingAssets = [...manifestNames].filter((name) => !assetNames.has(name));
 	const missingEntries = [...assetNames].filter((name) => !manifestNames.has(name));
@@ -59,10 +70,14 @@ const getIconComponentTemplate = (svgObject, icon) => {
 	const hasColour = icon.colour === 'configurable';
 
 	if (hasColour) {
-		svgElement = svgElement.replace(
-			/class="svg-icon"/,
-			'class="svg-icon" style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}',
+		const withColour = svgElement.replace(
+			/class="svg-icon(?:\s+[^"]*)?"/,
+			'$& style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}',
 		);
+		if (withColour === svgElement) {
+			throw new Error(`Configurable icon ${icon.name} has no class="svg-icon" to apply colour to.`);
+		}
+		svgElement = withColour;
 	}
 
 	svgElement = svgElement.replace(/\srole="img"/, '');
@@ -105,7 +120,6 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 	 * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
 	 */
 	@Prop() isDecorative?: boolean;
-	private hasWarnedIsDecorativeDeprecation = false;
 
 	@Watch('iconWidth')
 	validateWidth() {
@@ -147,8 +161,7 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 
 	@Watch('isDecorative')
 	warnDeprecatedIsDecorative() {
-		if (this.isDecorative !== undefined && !this.hasWarnedIsDecorativeDeprecation) {
-			this.hasWarnedIsDecorativeDeprecation = true;
+		if (this.isDecorative !== undefined) {
 			warnIsDecorativeDeprecated();
 		}
 	}
@@ -268,6 +281,8 @@ const createIconComponents = async ({ check = false, clean = false } = {}) => {
 		console.log(`Generated ${icons.length} icon components from icon-manifest.json.`);
 	}
 };
+
+module.exports = { getIconComponentTemplate, validateManifest };
 
 if (require.main === module) {
 	const args = new Set(process.argv.slice(2));

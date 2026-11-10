@@ -32,7 +32,6 @@ export class OntarioIconMastercard implements Icon {
 	 * @deprecated Use the label prop to provide an accessible name. Icons without a label are decorative by default.
 	 */
 	@Prop() isDecorative?: boolean;
-	private hasWarnedIsDecorativeDeprecation = false;
 
 	@Watch('iconWidth')
 	validateWidth() {
@@ -53,8 +52,7 @@ export class OntarioIconMastercard implements Icon {
 
 	@Watch('isDecorative')
 	warnDeprecatedIsDecorative() {
-		if (this.isDecorative !== undefined && !this.hasWarnedIsDecorativeDeprecation) {
-			this.hasWarnedIsDecorativeDeprecation = true;
+		if (this.isDecorative !== undefined) {
 			warnIsDecorativeDeprecated();
 		}
 	}

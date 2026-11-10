@@ -1,4 +1,5 @@
-import { Build, FunctionalComponent, h, JSX } from '@stencil/core';
+import { FunctionalComponent, h, JSX } from '@stencil/core';
+import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 export interface IconSvgAccessibility {
 	role?: 'img';
@@ -31,10 +32,18 @@ export const RenderIcon: FunctionalComponent<RenderIconProps> = ({ iconWidth, co
 	);
 };
 
+let hasWarnedIsDecorativeDeprecation = false;
+
 export const warnIsDecorativeDeprecated = () => {
-	if (Build.isDev) {
-		console.warn(
-			'The isDecorative prop on ontario-icon components is deprecated. Use label to provide an accessible name.',
-		);
-	}
+	if (hasWarnedIsDecorativeDeprecation) return;
+	hasWarnedIsDecorativeDeprecation = true;
+
+	new ConsoleMessageClass()
+		.addDesignSystemTag()
+		.addRegularText(' The ')
+		.addMonospaceText('isDecorative')
+		.addRegularText(' prop on ontario-icon components is deprecated. Use ')
+		.addMonospaceText('label')
+		.addRegularText(' to provide an accessible name.')
+		.printMessage();
 };
