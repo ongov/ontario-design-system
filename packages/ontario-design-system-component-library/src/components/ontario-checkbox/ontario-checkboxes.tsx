@@ -13,8 +13,11 @@ import {
 	validatePropExists,
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import {
+	printInvalidFormatWarning,
+	printMissingPropWarning,
+	printParseErrorMessage,
+} from '../../utils/validation/component-message';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
@@ -292,15 +295,8 @@ export class OntarioCheckboxes implements Checkboxes {
 			if (typeof hintExpander === 'string') {
 				try {
 					this.internalHintExpander = JSON.parse(hintExpander);
-				} catch {
-					const message = new ConsoleMessageClass();
-					message
-						.addDesignSystemTag()
-						.addMonospaceText(' hintExpander ')
-						.addRegularText('for')
-						.addMonospaceText(' <ontario-checkboxes> ')
-						.addRegularText('could not be parsed from a string. Please ensure it is valid JSON.')
-						.printMessage();
+				} catch (error) {
+					printParseErrorMessage({ propName: 'hintExpander', componentTag: '<ontario-checkboxes>', error });
 				}
 			} else {
 				this.internalHintExpander = hintExpander;
@@ -320,15 +316,8 @@ export class OntarioCheckboxes implements Checkboxes {
 			try {
 				this.internalOptions = Array.isArray(this.options) ? this.options : JSON.parse(this.options);
 				this.validateOptions(this.internalOptions);
-			} catch {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' options ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-checkboxes> ')
-					.addRegularText('could not be parsed. Please ensure it is valid JSON.')
-					.printMessage();
+			} catch (error) {
+				printParseErrorMessage({ propName: 'options', componentTag: '<ontario-checkboxes>', error });
 			}
 		}
 
@@ -350,14 +339,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	 */
 	validateOptions(newValue: object) {
 		if (validateObjectExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' options ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-checkboxes> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'options', componentTag: '<ontario-checkboxes>' });
 		}
 	}
 
@@ -370,14 +352,7 @@ export class OntarioCheckboxes implements Checkboxes {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' name ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-checkboxes> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-checkboxes>' });
 		}
 	}
 
@@ -509,26 +484,20 @@ export class OntarioCheckboxes implements Checkboxes {
 				return parsedValue;
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' value ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-checkboxes> ')
-				.addRegularText('was not provided in a valid format. Expected a string array or JSON string array.')
-				.addMonospaceText(error instanceof Error ? (error.stack ?? error.message) : '')
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({
+				propName: 'value',
+				componentTag: '<ontario-checkboxes>',
+				error,
+				expectedFormat: 'a string array or JSON string array',
+			});
 			return [];
 		}
 
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' value ')
-			.addRegularText('for')
-			.addMonospaceText(' <ontario-checkboxes> ')
-			.addRegularText('was not provided in a valid format. Expected a string array or JSON string array.')
-			.printMessage();
+		printInvalidFormatWarning({
+			propName: 'value',
+			componentTag: '<ontario-checkboxes>',
+			expected: 'a string array or JSON string array',
+		});
 
 		return [];
 	}
@@ -540,14 +509,13 @@ export class OntarioCheckboxes implements Checkboxes {
 		if (typeof requestedValues !== 'undefined') {
 			const selectedValues = requestedValues.filter((requestedValue) => optionValues.has(requestedValue));
 			if (selectedValues.length !== requestedValues.length) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' value ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-checkboxes> ')
-					.addRegularText('included values that did not match any option values. Those values were ignored.')
-					.printMessage();
+				printInvalidFormatWarning({
+					propName: 'value',
+					componentTag: '<ontario-checkboxes>',
+					expected: 'values that match the option values',
+					received: requestedValues.filter((requestedValue) => !optionValues.has(requestedValue)),
+					consequence: 'Those values were ignored.',
+				});
 			}
 
 			this.internalOptions = this.internalOptions?.map((option) => ({

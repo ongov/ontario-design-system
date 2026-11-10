@@ -13,7 +13,13 @@ import {
 	validatePropExists,
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import {
+	printConflictingConfigWarning,
+	printInvalidFormatWarning,
+	printMissingPropWarning,
+	printParseErrorMessage,
+	printSlotWarning,
+} from '../../utils/validation/component-message';
 import { hasMultipleTrueValues } from '../../utils/helper/utils';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { Language } from '../../utils/common/language-types';
@@ -307,14 +313,7 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' name ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-dropdown-list>' });
 		}
 	}
 
@@ -327,14 +326,7 @@ export class OntarioDropdownList implements Dropdown {
 	@Watch('options')
 	validateOptions(newValue: object) {
 		if (validateObjectExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' options ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'options', componentTag: '<ontario-dropdown-list>' });
 		}
 	}
 
@@ -352,15 +344,8 @@ export class OntarioDropdownList implements Dropdown {
 				} else {
 					this.internalOptions = this.options;
 				}
-			} catch {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' options ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-dropdown-list> ')
-					.addRegularText('was not provided in the correct format')
-					.printMessage();
+			} catch (error) {
+				printParseErrorMessage({ propName: 'options', componentTag: '<ontario-dropdown-list>', error });
 				this.internalOptions = [];
 			}
 		} else {
@@ -390,17 +375,11 @@ export class OntarioDropdownList implements Dropdown {
 
 		const hasEmptyValueOption = optionElements.some((optionElement) => this.getOptionValue(optionElement) === '');
 		if (hasEmptyValueOption) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText('An')
-				.addMonospaceText(' <ontario-dropdown-option> ')
-				.addRegularText('child of')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText(
-					'was passed with an empty value. This will be ignored; use the `isEmptyStartOption` prop instead to render an empty start option.',
-				)
-				.printMessage();
+			printSlotWarning({
+				componentTag: '<ontario-dropdown-list>',
+				description:
+					'received an <ontario-dropdown-option> child with an empty value. It will be ignored; use the `isEmptyStartOption` prop instead to render an empty start option.',
+			});
 		}
 
 		return optionElements
@@ -471,15 +450,8 @@ export class OntarioDropdownList implements Dropdown {
 				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
 				else this.internalHintExpander = hintExpander;
 			}
-		} catch {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' hintExpander ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText('was not provided in the correct format')
-				.printMessage();
+		} catch (error) {
+			printParseErrorMessage({ propName: 'hintExpander', componentTag: '<ontario-dropdown-list>', error });
 		}
 	}
 
@@ -574,14 +546,12 @@ export class OntarioDropdownList implements Dropdown {
 		});
 
 		if (hasMultipleTrueValues(options, selected)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' There are duplicate truthy `selected` values ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText('options. Please update options so only one truthy `selected` value exists.')
-				.printMessage();
+			printConflictingConfigWarning({
+				componentTag: '<ontario-dropdown-list>',
+				propName: 'options',
+				description:
+					'contains duplicate truthy `selected` values. Please update options so only one truthy `selected` value exists.',
+			});
 		}
 
 		return options;
@@ -600,16 +570,13 @@ export class OntarioDropdownList implements Dropdown {
 		}
 
 		if (this.value) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' value ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-dropdown-list> ')
-				.addRegularText(
-					'did not match any option values. Falling back to the selected option, empty start option, or first available option.',
-				)
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'value',
+				componentTag: '<ontario-dropdown-list>',
+				expected: 'a value that matches one of the option values',
+				received: this.value,
+				consequence: 'Falling back to the selected option, empty start option, or first available option.',
+			});
 		}
 
 		const selectedOption = this.internalOptions?.find((option) => option.selected);

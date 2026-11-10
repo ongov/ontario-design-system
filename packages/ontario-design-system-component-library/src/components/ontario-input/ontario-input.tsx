@@ -19,7 +19,7 @@ import {
 	InputInputEvent,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
 
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
@@ -319,14 +319,7 @@ export class OntarioInput implements TextInput {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' name ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-input> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-input>' });
 		}
 	}
 

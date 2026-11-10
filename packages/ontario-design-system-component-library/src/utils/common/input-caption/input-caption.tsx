@@ -2,7 +2,8 @@ import { h } from '@stencil/core';
 import { CaptionType, CaptionTypes } from './input-caption.types';
 import { MessageContentType } from './input-caption.enum';
 import { CaptionInfo, Caption } from './caption.interface';
-import { ConsoleMessageClass } from '../../console-message/console-message';
+import { printInvalidFormatWarning, printMissingPropWarning } from '../../validation/component-message';
+import { printInvalidPropWarning } from '../../validation/invalid-prop-warning';
 
 export class InputCaption implements CaptionInfo {
 	/**
@@ -194,75 +195,54 @@ export class InputCaption implements CaptionInfo {
 		}
 
 		if (messageType) {
-			const message = new ConsoleMessageClass().addDesignSystemTag();
-
-			if (messageType !== MessageContentType.UndefinedCaptionObject) {
-				message
-					.addMonospaceText(
-						` ${
-							messageType === MessageContentType.EmptyCaptionText ||
-							messageType === MessageContentType.UndefinedCaptionText
-								? 'caption or captionText'
-								: 'captionType'
-						} `,
-					)
-					.addRegularText('object or property of');
-			}
-
-			message.addMonospaceText(' caption ').addRegularText('object on').addMonospaceText(` ${this.componentTagName} `);
-			this.printConsoleMessage(messageType, message, this.getRequiredFlagText());
+			this.printCaptionWarning(messageType, caption?.captionType);
 		}
 	}
 
 	/**
-	 * Generate the content of warning message to be printed to the console
+	 * Print the warning message to the console that matches the type of caption validation failure
 	 * @param messageType determine the content of warning message to output
-	 * @param componentTagName the tag name of the component that's emitting the warning message
-	 * @param requiredFlagText accepts a string value to be used as the required flag text and defaults to `(optional)` if not set
-	 * @returns an array of `ConsoleMessage` objects containing the message and associated styles to be printed to the console
+	 * @param captionType the `captionType` value that was provided, shown when it is incorrect
 	 */
-	private printConsoleMessage(
-		messageType: MessageContentType,
-		message: ConsoleMessageClass,
-		requiredFlagText: string = '(optional)',
-	) {
+	private printCaptionWarning(messageType: MessageContentType, captionType?: string) {
+		const componentTag = `<${this.componentTagName.toLowerCase()}>`;
+		const blankCaptionConsequence = `A blank followed by a ${this.getRequiredFlagText() || '(optional)'} flag is assumed.`;
+
 		switch (messageType) {
-			// undefinedCaptionObject example: caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
-			// undefinedCaptionText example: captionText property of caption object on <ontario-input> is required but not defined. A blank followed by a (optional) flag is assumed.
-			// EmptyCaptionText example: captionText property of caption object on <ontario-input> is empty or contains only spaces. A blank followed by a (optional) flag is assumed.
 			case MessageContentType.UndefinedCaptionObject:
+				printMissingPropWarning({ propName: 'caption', componentTag, consequence: blankCaptionConsequence });
+				break;
+
 			case MessageContentType.UndefinedCaptionText:
+				printMissingPropWarning({ propName: 'captionText', componentTag, consequence: blankCaptionConsequence });
+				break;
+
 			case MessageContentType.EmptyCaptionText:
-				message
-					.addRegularText(
-						`${
-							messageType === MessageContentType.EmptyCaptionText
-								? 'is empty or contains only spaces'
-								: 'is required but not defined'
-						}. A blank followed by a`,
-					)
-					.addMonospaceText(` ${requiredFlagText} `)
-					.addRegularText('flag is assumed.');
+				printInvalidFormatWarning({
+					propName: 'captionText',
+					componentTag,
+					expected: 'text that is not empty or only spaces',
+					consequence: blankCaptionConsequence,
+				});
 				break;
 
-			// UndefinedCaptionType example: captionType property of caption object on <ontario-input> is not defined. The default type is assumed.
 			case MessageContentType.UndefinedCaptionType:
-				message.addRegularText('is not defined. The').addMonospaceText(' default ').addRegularText('type is assumed.');
+				printMissingPropWarning({
+					propName: 'captionType',
+					componentTag,
+					consequence: 'The default type is assumed.',
+				});
 				break;
 
-			// IncorrectCaptionType example: captionType property of caption object on <ontario-input> was set to an incorrect type; only default, heading or large type is allowed. The default type is assumed.
 			case MessageContentType.IncorrectCaptionType:
-				message
-					.addRegularText('was set to an incorrect type; only')
-					.addMonospaceText(' default, heading, ')
-					.addRegularText('or')
-					.addMonospaceText(' large ')
-					.addRegularText('type is allowed. The')
-					.addMonospaceText(' default ')
-					.addRegularText('type is assumed.');
+				printInvalidPropWarning({
+					propName: 'captionType',
+					componentTag,
+					propValue: captionType,
+					allowedValues: CaptionTypes,
+					defaultValue: 'default',
+				});
 				break;
 		}
-
-		message.printMessage();
 	}
 }

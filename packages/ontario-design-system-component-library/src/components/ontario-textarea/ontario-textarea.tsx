@@ -7,7 +7,7 @@ import { Hint, Input } from '../../utils/common/common.interface';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
 import { validatePropExists, validateLanguage } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
@@ -248,14 +248,7 @@ export class OntarioTextarea implements Input {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' name ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-textarea> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-textarea>' });
 		}
 	}
 

@@ -132,6 +132,16 @@ describe('ontario-checkbox', () => {
 		warnSpy.mockRestore();
 	});
 
+	it('should print an error when options cannot be parsed', async () => {
+		const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+
+		await render(`<ontario-checkboxes name="checkboxes" options='not valid json'></ontario-checkboxes>`);
+
+		expect(errorSpy).toHaveBeenCalled();
+
+		errorSpy.mockRestore();
+	});
+
 	it('should reflect external value updates in the rendered checkboxes', async () => {
 		const page = await render(
 			`<ontario-checkboxes value='["checkbox-option-1"]' options='[{ "value": "checkbox-option-1", "elementId": "checkbox-1", "label": "Checkbox option 1 label" }, { "value": "checkbox-option-2", "elementId": "checkbox-2", "label": "Checkbox option 2 label" }]'></ontario-checkboxes>`,
