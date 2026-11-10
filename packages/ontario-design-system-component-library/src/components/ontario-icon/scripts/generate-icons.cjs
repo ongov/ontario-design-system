@@ -117,6 +117,12 @@ const validateManifest = (icons, assetFiles) => {
 			!icon.aliases.every((alias) => typeof alias === 'string') ||
 			typeof icon.deprecated !== 'boolean' ||
 			(icon.replacedBy !== undefined && typeof icon.replacedBy !== 'string') ||
+			(icon.deprecationNote !== undefined &&
+				(!icon.deprecated ||
+					typeof icon.deprecationNote !== 'string' ||
+					!icon.deprecationNote.trim() ||
+					/[\r\n]/.test(icon.deprecationNote) ||
+					icon.deprecationNote.includes('*/'))) ||
 			(icon.defaultColour !== undefined &&
 				(icon.colour !== 'configurable' || !allowedDefaultColours.has(icon.defaultColour)))
 		) {
@@ -126,8 +132,10 @@ const validateManifest = (icons, assetFiles) => {
 	}
 
 	for (const icon of icons) {
-		const replacement = getReplacementName(icon);
-		if (replacement && (!icon.deprecated || replacement === icon.name || !manifestNames.has(replacement))) {
+		if (
+			icon.replacedBy !== undefined &&
+			(!icon.deprecated || icon.replacedBy === icon.name || !manifestNames.has(icon.replacedBy))
+		) {
 			throw new Error(`replacedBy on ${icon.name} must name another icon and requires deprecated: true.`);
 		}
 	}
@@ -142,16 +150,12 @@ const validateManifest = (icons, assetFiles) => {
 	}
 };
 
-const getReplacementName = (icon) =>
-	icon.replacedBy &&
-	(icon.replacedBy.startsWith(iconNamePrefix) ? icon.replacedBy : `${iconNamePrefix}${icon.replacedBy}`);
-
 const getIconComponentTemplate = (svgObject, icon) => {
 	let svgElement = stringify(svgObject);
 	const hasColour = icon.colour === 'configurable';
-	const replacement = getReplacementName(icon);
+	const replacement = icon.replacedBy;
 	const deprecationNotice = icon.deprecated
-		? `/**\n * @deprecated${replacement ? ` Use ${replacement} instead.` : ''}\n */\n`
+		? `/**\n * @deprecated${replacement ? ` Use ${replacement} instead.` : ''}${icon.deprecationNote ? ` ${icon.deprecationNote}` : ''}\n */\n`
 		: '';
 
 	if (hasColour) {
@@ -237,7 +241,7 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 	`
 	}
 	componentWillLoad() {
-		${icon.deprecated ? `warnIconDeprecated('${icon.name}', ${replacement ? `'${replacement}'` : 'undefined'});\n\t\t` : ''}this.warnDeprecatedIsDecorative();
+		${icon.deprecated ? `warnIconDeprecated('${icon.name}', ${replacement ? `'${replacement}'` : 'undefined'}${icon.deprecationNote ? `, ${JSON.stringify(icon.deprecationNote)}` : ''});\n\t\t` : ''}this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();
 	}

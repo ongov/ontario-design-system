@@ -2,7 +2,7 @@
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]** Use ontario-icon-search instead.
+> **[DEPRECATED]** Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
 
 ## Properties
 

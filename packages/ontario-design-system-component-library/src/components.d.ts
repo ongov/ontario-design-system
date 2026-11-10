@@ -2538,7 +2538,7 @@ export namespace Components {
         "label"?: string;
     }
     /**
-     * @deprecated Use ontario-icon-search instead.
+     * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
      */
     interface OntarioIconSearchWhite {
         /**
@@ -4980,7 +4980,7 @@ declare global {
         new (): HTMLOntarioIconSearchElement;
     };
     /**
-     * @deprecated Use ontario-icon-search instead.
+     * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
      */
     interface HTMLOntarioIconSearchWhiteElement extends Components.OntarioIconSearchWhite, HTMLStencilElement {
     }
@@ -8216,7 +8216,7 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     /**
-     * @deprecated Use ontario-icon-search instead.
+     * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
      */
     interface OntarioIconSearchWhite {
         /**
@@ -10201,7 +10201,7 @@ declare module "@stencil/core" {
             "ontario-icon-save": LocalJSX.OntarioIconSave & JSXBase.HTMLAttributes<HTMLOntarioIconSaveElement>;
             "ontario-icon-search": LocalJSX.OntarioIconSearch & JSXBase.HTMLAttributes<HTMLOntarioIconSearchElement>;
             /**
-             * @deprecated Use ontario-icon-search instead.
+             * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
              */
             "ontario-icon-search-white": LocalJSX.OntarioIconSearchWhite & JSXBase.HTMLAttributes<HTMLOntarioIconSearchWhiteElement>;
             "ontario-icon-sentiment-1": LocalJSX.OntarioIconSentiment1 & JSXBase.HTMLAttributes<HTMLOntarioIconSentiment1Element>;

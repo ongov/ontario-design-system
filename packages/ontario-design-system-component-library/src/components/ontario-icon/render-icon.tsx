@@ -50,10 +50,12 @@ export const warnIsDecorativeDeprecated = () => {
 
 const warnedDeprecatedIcons = new Set<string>();
 
-/** Warns once per tag name, in development builds only. */
-export const warnIconDeprecated = (iconName: string, replacedBy?: string) => {
-	if (Build.isDev && !warnedDeprecatedIcons.has(iconName)) {
+/** Warns once per tag name in each shared module instance, including production builds. */
+export const warnIconDeprecated = (iconName: string, replacedBy?: string, deprecationNote?: string) => {
+	if (!warnedDeprecatedIcons.has(iconName)) {
 		warnedDeprecatedIcons.add(iconName);
-		console.warn(`<${iconName}> is deprecated.${replacedBy ? ` Use <${replacedBy}> instead.` : ''}`);
+		console.warn(
+			`<${iconName}> is deprecated.${replacedBy ? ` Use <${replacedBy}> instead.` : ''}${deprecationNote ? ` ${deprecationNote}` : ''}`,
+		);
 	}
 };

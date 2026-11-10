@@ -58,7 +58,8 @@ describe('icon-manifest', () => {
 		const searchWhite = findIcon('ontario-icon-search-white');
 
 		expect(searchWhite?.deprecated).toBe(true);
-		expect(searchWhite?.replacedBy).toBe('search');
+		expect(searchWhite?.replacedBy).toBe('ontario-icon-search');
+		expect(searchWhite?.deprecationNote).toBe('Set colour="white" to preserve the white icon.');
 		expect(findIcon('ontario-icon-search')?.deprecated).toBe(false);
 	});
 
@@ -69,7 +70,7 @@ describe('icon-manifest', () => {
 		expect(replaced.length).toBeGreaterThan(0);
 		for (const icon of replaced) {
 			expect(icon.deprecated).toBe(true);
-			expect(names.has(`ontario-icon-${(icon as { replacedBy: string }).replacedBy}`)).toBe(true);
+			expect(names.has((icon as { replacedBy: string }).replacedBy)).toBe(true);
 		}
 	});
 });

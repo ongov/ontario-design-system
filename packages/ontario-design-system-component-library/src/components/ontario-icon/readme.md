@@ -222,7 +222,7 @@ Set `color` on the interactive element or one of its ancestors. Rules that targe
 
 ## Deprecated icons
 
-`ontario-icon-search-white` is deprecated. Use `<ontario-icon-search colour="white"></ontario-icon-search>` instead. The component keeps rendering and logs a development-only warning once per tag name.
+`ontario-icon-search-white` is deprecated. Use `<ontario-icon-search colour="white"></ontario-icon-search>` instead. The component keeps rendering and logs a warning once per tag name in each shared module instance, including in production builds.
 
 ## Upgrade note
 
@@ -245,8 +245,9 @@ Configurable-colour assets must begin the root SVG's `class` attribute with `svg
 | `viewBox` | Yes | SVG coordinate system, for example `0 0 24 24`. This value is applied to the generated SVG. |
 | `colour` | Yes | `configurable` exposes the colour property; `fixed` and `multicolour` preserve the artwork without exposing that property. |
 | `aliases` | Yes | Reserved metadata for alternative names; no runtime consumer or additional components today. Use an empty array when none exist. |
-| `deprecated` | Yes | Reserved deprecation metadata; does not currently generate runtime warnings or change rendering. |
-| `replacedBy` | No | Reserved replacement metadata; no runtime behaviour today. Must name an existing manifest icon, with or without the `ontario-icon-` prefix, and requires `deprecated`. |
+| `deprecated` | Yes | Reserved deprecation metadata; The generated component logs a warning once per tag name in each shared module instance, including in production builds.  |
+| `replacedBy` | No | Reserved replacement metadata; Full custom-element tag of the replacement icon, including `ontario-icon-`. It must name another manifest icon (with or without the `ontario-icon-` prefix) and requires `deprecated`. |
+| `deprecationNote`   | No       | Optional non-blank, single-line migration guidance for a deprecated icon, included in generated documentation and runtime warnings. For example, `Set colour="white" to preserve the white icon.`                   |
 | `defaultColour`     | No       | Default `colour` for a `configurable` icon when none is supplied, and the fallback for an invalid `colour`. If omitted, it defaults to `black`; accepted values are `black`, `blue`, `grey`, `white` and `inherit`. |
 | `previewBackground` | No | Set to `dark` when white artwork needs a contrasting gallery preview. This does not change the production icon. |
 
