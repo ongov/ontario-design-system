@@ -4,7 +4,7 @@ import { CriticalAlert } from './ontario-critical-alert.interface';
 import OntarioIconCriticalAlertWarning from '../ontario-icon/assets/ontario-icon-critical-alert-warning.svg';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
 
 /**
  * Ontario Critical Alert communicates urgent, high-priority emergency information.
@@ -50,14 +50,7 @@ export class OntarioCriticalAlert implements CriticalAlert {
 				/**
 				 * Print the quote warning message
 				 */
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' content ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-critical-alert> ')
-					.addRegularText('was not provided.')
-					.printMessage();
+				printMissingPropWarning({ propName: 'content', componentTag: '<ontario-critical-alert>' });
 			}
 		}
 	}

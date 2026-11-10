@@ -4,7 +4,7 @@ import { Button } from './button.interface';
 import { ButtonType, ButtonTypes, HtmlType, HtmlTypes } from './ontario-button.types';
 
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printConflictingConfigWarning, printMissingPropWarning } from '../../utils/validation/component-message';
 import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { isServerSideRendering } from '../../utils/common/environment';
 
@@ -160,14 +160,7 @@ export class OntarioButton implements Button {
 	 */
 	validateLabelContent(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' label ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-button> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'label', componentTag: '<ontario-button>' });
 		}
 	}
 
@@ -219,16 +212,11 @@ export class OntarioButton implements Button {
 			return;
 		}
 
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' htmlType ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-button> ')
-			.addRegularText('is ignored when')
-			.addMonospaceText(' href ')
-			.addRegularText('is provided. The component renders as a native link instead.')
-			.printMessage();
+		printConflictingConfigWarning({
+			componentTag: '<ontario-button>',
+			propName: 'htmlType',
+			description: 'is ignored when `href` is provided. The component renders as a native link instead.',
+		});
 
 		this.hasWarnedLinkHtmlTypeConflict = true;
 	}

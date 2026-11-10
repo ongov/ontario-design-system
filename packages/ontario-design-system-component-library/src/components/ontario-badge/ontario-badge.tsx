@@ -2,8 +2,9 @@ import { Component, Prop, Element, h, Watch, AttachInternals } from '@stencil/co
 
 import { badgeColourDefinitions, BadgeColour } from './ontario-badge.types';
 
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { isClientSideRendering } from '../../utils/common/environment';
+import { printDeprecatedWarning, printMissingPropWarning } from '../../utils/validation/component-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 /**
@@ -54,14 +55,7 @@ export class OntarioBadge {
 	@Watch('label')
 	validateLabel() {
 		if (!this.getBadgeLabel()) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' a label ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-badge> ')
-				.addRegularText('was not provided.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'label', componentTag: '<ontario-badge>' });
 		}
 	}
 
@@ -92,14 +86,12 @@ export class OntarioBadge {
 		if (this.colour in legacyBadgeColourAliases) {
 			const mapped = legacyBadgeColourAliases[this.colour as keyof typeof legacyBadgeColourAliases];
 
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(` colour ${this.colour} `)
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-badge> ')
-				.addRegularText('has been deprecated. Please use kebab-case values instead (e.g., "light-teal", "dark-grey").')
-				.printMessage();
+			printDeprecatedWarning({
+				propName: 'colour',
+				componentTag: '<ontario-badge>',
+				value: this.colour,
+				guidance: 'kebab-case values (e.g., "light-teal", "dark-grey")',
+			});
 
 			return this.setBadgeColour(mapped);
 		}
@@ -108,14 +100,13 @@ export class OntarioBadge {
 			if (validateValueAgainstArray(this.colour, badgeColourDefinitions)) {
 				return this.colour;
 			} else {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(` colour ${this.colour} `)
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-badge> ')
-					.addRegularText('does not match one of the valid colour types. A default colour of `teal` will be applied.')
-					.printMessage();
+				printInvalidPropWarning({
+					propName: 'colour',
+					componentTag: '<ontario-badge>',
+					propValue: this.colour,
+					allowedValues: badgeColourDefinitions,
+					defaultValue: 'teal',
+				});
 			}
 		}
 

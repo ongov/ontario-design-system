@@ -5,7 +5,8 @@ import { HintExpander } from './hint-expander.interface';
 import { HintContentType } from '../../utils/common/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 
 /**
  * Ontario Hint Expander reveals optional supporting guidance on demand.
@@ -66,14 +67,13 @@ export class OntarioHintExpander implements HintExpander {
 	@Watch('hintContentType')
 	private checkHintContentType() {
 		if (this.hintContentType !== 'string' && this.hintContentType !== 'html') {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' hintContentType ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-hint-text> ')
-				.addRegularText('was not one of the permitted types. A default type of `string` will be applied.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'hintContentType',
+				componentTag: '<ontario-hint-expander>',
+				allowedValues: ['string', 'html'],
+				defaultValue: 'string',
+				invalidDescriptor: 'type',
+			});
 
 			return (this.hintContentType = 'string');
 		}
@@ -100,14 +100,7 @@ export class OntarioHintExpander implements HintExpander {
 	@Watch('content')
 	validateContent(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' content ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-hint-expander> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'content', componentTag: '<ontario-hint-expander>' });
 		}
 	}
 
@@ -136,14 +129,7 @@ export class OntarioHintExpander implements HintExpander {
 	 */
 	validateHint(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' hint ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-hint-expander> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'hint', componentTag: '<ontario-hint-expander>' });
 		}
 	}
 

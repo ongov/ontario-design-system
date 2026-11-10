@@ -45,4 +45,16 @@ describe('ontario-hint-expander', () => {
 </ontario-hint-expander>
 `);
 	});
+
+	it('should name <ontario-hint-expander> when the hintContentType is invalid', async () => {
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+		await render(
+			`<ontario-hint-expander hint="Hint" content="Content" hint-content-type="bad"></ontario-hint-expander>`,
+		);
+
+		const messages = warnSpy.mock.calls.map((call) => call.join(' '));
+		expect(messages.some((m) => m.includes('hintContentType') && m.includes('<ontario-hint-expander>'))).toBe(true);
+		warnSpy.mockRestore();
+	});
 });

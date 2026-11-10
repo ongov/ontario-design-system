@@ -2,7 +2,7 @@ import { Component, h, Prop, Watch, State } from '@stencil/core';
 import { PageAlert } from './ontario-page-alert.interface';
 import { PageAlertType, PageAlertTypes } from './ontario-page-alert.types';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 
 /**
  * Ontario Page Alert is used for high-importance status messages that apply to the whole page
@@ -59,14 +59,13 @@ export class OntarioPageAlert implements PageAlert {
 		const sanitized = this.sanitizeType(this.type);
 
 		if (sanitized !== this.type) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(` type "${this.type}" `)
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-page-alert> ')
-				.addRegularText('is not a valid type. Defaulting to "informational".')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'type',
+				componentTag: '<ontario-page-alert>',
+				propValue: this.type,
+				allowedValues: PageAlertTypes,
+				defaultValue: 'informational',
+			});
 		}
 
 		// Always render from sanitized value
