@@ -4,8 +4,7 @@ import { MenuItem } from '../../utils/common/common.interface';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { HeaderKeyboardNavigation } from '../../utils/components/header/header-keyboard-navigation';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { printParseErrorMessage } from '../../utils/validation/component-message';
 import translations from '../../translations/global.i18n.json';
 
 /**
@@ -158,16 +157,7 @@ export class OntarioHeaderMenuTabs {
 				return [];
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-header-menu-tabs>')
-				.addRegularText(` ${propName} in `)
-				.addMonospaceText('parseMenuItemsData()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName, componentTag: '<ontario-header-menu-tabs>', error });
 
 			return []; // fallback on error
 		}

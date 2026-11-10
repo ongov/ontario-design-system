@@ -12,8 +12,7 @@ import { ExpandedFooterWrapper, FooterColumn, FooterSocialLinksProps, SimpleFoot
 import { isInvalidTwoColumnOptions, isInvalidThreeColumnOptions } from './utils';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { printConflictingConfigWarning, printParseErrorMessage } from '../../utils/validation/component-message';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
 import translations from '../../translations/global.i18n.json';
@@ -136,27 +135,21 @@ export class OntarioFooter {
 
 	private verifyTwoColumnOptions() {
 		if (this.isTwoColumnLayout() && isInvalidTwoColumnOptions(this.twoColumnState)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' twoColumnOptions ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-footer> ')
-				.addRegularText('were not fully set. Please review your values and ensure all options are set.')
-				.printMessage();
+			printConflictingConfigWarning({
+				componentTag: '<ontario-footer>',
+				propName: 'twoColumnOptions',
+				description: 'was not fully set. Please review your values and ensure all options are set.',
+			});
 		}
 	}
 
 	private verifyThreeColumnOptions() {
 		if (this.isThreeColumnLayout() && isInvalidThreeColumnOptions(this.threeColumnState)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' threeColumnOptions ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-footer> ')
-				.addRegularText('were not fully set. Please review your values and ensure all options are set.')
-				.printMessage();
+			printConflictingConfigWarning({
+				componentTag: '<ontario-footer>',
+				propName: 'threeColumnOptions',
+				description: 'was not fully set. Please review your values and ensure all options are set.',
+			});
 		}
 	}
 
@@ -173,16 +166,15 @@ export class OntarioFooter {
 			else if (optionType === this.twoColumnOptions) this.twoColumnState = parsed;
 			else this.threeColumnState = parsed;
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-footer>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseOptions()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			const propName =
+				optionType === this.footerLinks
+					? 'footerLinks'
+					: optionType === this.socialLinks
+						? 'socialLinks'
+						: optionType === this.twoColumnOptions
+							? 'twoColumnOptions'
+							: 'threeColumnOptions';
+			printParseErrorMessage({ propName, componentTag: '<ontario-footer>', error });
 		}
 	}
 

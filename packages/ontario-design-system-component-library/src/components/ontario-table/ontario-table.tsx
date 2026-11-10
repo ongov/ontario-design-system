@@ -4,8 +4,7 @@ import { Table, TableColumnOptions, TableRowOptions } from './table.interface';
 
 import { validateTableColumns, validateTableRowOptions } from './utils/ontario-table-validation';
 
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
+import { printParseErrorMessage } from '../../utils/validation/component-message';
 import { extractValuesByKey, organizeObjectKeys, removeObjectsBySpecificKey } from '../../utils/helper/utils';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 
@@ -127,16 +126,7 @@ export class OntarioTable implements Table {
 			this.tableColumnsState = typeof columns === 'string' ? JSON.parse(columns) : columns;
 			validateTableColumns(this.tableColumnsState);
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse ')
-				.addMonospaceText('tableColumns')
-				.addRegularText(' for ')
-				.addMonospaceText('<ontario-table>')
-				.addRegularText(' — check for valid JSON format or structure.\n')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName: 'tableColumns', componentTag: '<ontario-table>', error });
 			this.tableColumnsState = []; // Fallback to prevent render failure
 		}
 	}
@@ -154,16 +144,7 @@ export class OntarioTable implements Table {
 			this.transformTableData(parsed);
 			validateTableRowOptions(parsed);
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse ')
-				.addMonospaceText('tableData')
-				.addRegularText(' for ')
-				.addMonospaceText('<ontario-table>')
-				.addRegularText(' — check for valid JSON format or structure.\n')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName: 'tableData', componentTag: '<ontario-table>', error });
 			this.tableDataState = [];
 			this.tableFooterState = []; // Prevents render issues when data is invalid
 		}

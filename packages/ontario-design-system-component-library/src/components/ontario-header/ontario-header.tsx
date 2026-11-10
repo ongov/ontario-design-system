@@ -22,10 +22,9 @@ import { ScreenBreakpoints, standardFontSizePx } from '../../utils/common/common
 import { isClientSideRendering } from '../../utils/common/environment';
 import { Input } from '../../utils/common/input/input';
 import { generateMenuItem } from '../../utils/components/header/header-menu-items';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { getImageAssetSrcPath } from '../../utils/helper/assets';
 import { DeviceType } from '../../utils/helper/utils-types';
+import { printParseErrorMessage } from '../../utils/validation/component-message';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
@@ -360,16 +359,7 @@ export class OntarioHeader {
 					this.applicationHeaderInfoState = JSON.parse(applicationHeaderInfo);
 				else this.applicationHeaderInfoState = applicationHeaderInfo;
 			} catch (error) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addRegularText(' failed to parse props for ')
-					.addMonospaceText('<ontario-header>')
-					.addRegularText(' in ')
-					.addMonospaceText('parseApplicationHeaderInfo()')
-					.addRegularText(' method \n ')
-					.addMonospaceText(error.stack)
-					.printMessage(ConsoleType.Error);
+				printParseErrorMessage({ propName: 'applicationHeaderInfo', componentTag: '<ontario-header>', error });
 
 				this.applicationHeaderInfoState = {
 					title: '',
@@ -394,16 +384,7 @@ export class OntarioHeader {
 				this.isDynamicMenu = false;
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-header>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseMenuItems()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName: 'menuItems', componentTag: '<ontario-header>', error });
 
 			this.menuItemState = [];
 		}
@@ -420,16 +401,7 @@ export class OntarioHeader {
 				this.signInMenuItemsState = [];
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-header>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseSignInMenuItems()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName: 'signInMenuItems', componentTag: '<ontario-header>', error });
 
 			this.signInMenuItemsState = [];
 		}
@@ -448,16 +420,7 @@ export class OntarioHeader {
 				}
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-header>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseLanguage()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({ propName: 'languageToggleOptions', componentTag: '<ontario-header>', error });
 
 			this.languageState = {
 				englishLink: '/en',

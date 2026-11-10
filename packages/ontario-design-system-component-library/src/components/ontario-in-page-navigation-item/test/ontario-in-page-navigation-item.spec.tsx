@@ -78,7 +78,7 @@ describe('ontario-in-page-navigation-item', () => {
 		instance.validateHref();
 
 		const hasInvalidHrefWarning = warnSpy.mock.calls.some((args) =>
-			args.map(String).join(' ').includes('must be an in-page anchor'),
+			args.map(String).join(' ').includes('not in a valid format'),
 		);
 		expect(hasInvalidHrefWarning).toBe(true);
 	});

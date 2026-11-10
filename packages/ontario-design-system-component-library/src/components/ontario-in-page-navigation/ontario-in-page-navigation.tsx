@@ -3,7 +3,8 @@ import { Component, Prop, State, Watch, Listen, Element, h } from '@stencil/core
 import { Language } from '../../utils/common/language-types';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
+import { printMissingPropWarning, printSlotWarning } from '../../utils/validation/component-message';
 import translations from '../../translations/global.i18n.json';
 
 import {
@@ -88,14 +89,11 @@ export class OntarioInPageNavigation {
 	@Watch('heading')
 	validateHeading() {
 		if (!this.heading?.trim()) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' heading ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-in-page-navigation> ')
-				.addRegularText('was not provided. A localized default heading will be used.')
-				.printMessage();
+			printMissingPropWarning({
+				propName: 'heading',
+				componentTag: '<ontario-in-page-navigation>',
+				consequence: 'A localized default heading will be used.',
+			});
 		}
 	}
 
@@ -108,18 +106,13 @@ export class OntarioInPageNavigation {
 		const isValid = validateValueAgainstArray(newValue, allowedValues);
 
 		if (!isValid) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' headingLevel ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-in-page-navigation> ')
-				.addRegularText('was set to an invalid value; only')
-				.addMonospaceText(` ${allowedValues.join(', ')} `)
-				.addRegularText('are supported. The default value')
-				.addMonospaceText(' h2 ')
-				.addRegularText('is assumed.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'headingLevel',
+				componentTag: '<ontario-in-page-navigation>',
+				propValue: newValue,
+				allowedValues,
+				defaultValue: 'h2',
+			});
 
 			this.headingLevel = 'h2';
 		}
@@ -153,14 +146,11 @@ export class OntarioInPageNavigation {
 	 */
 	private warnIfMissingItems() {
 		if (!this.hasDefaultSlotContent) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' <ontario-in-page-navigation> ')
-				.addRegularText('requires list item links in the default slot (for example')
-				.addMonospaceText(' <li><a href="#section-id">Section</a></li> ')
-				.addRegularText(') to render navigation links.')
-				.printMessage();
+			printSlotWarning({
+				componentTag: '<ontario-in-page-navigation>',
+				description:
+					'requires list item links in the default slot (for example <li><a href="#section-id">Section</a></li>) to render navigation links.',
+			});
 		}
 	}
 

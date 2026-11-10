@@ -112,4 +112,17 @@ describe('ontario-summary-list', () => {
 		expect(warnSpy).toHaveBeenCalled();
 		warnSpy.mockRestore();
 	});
+
+	it('should warn and ignore an invalid columnRatio', async () => {
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+		const invalidPage = await render(
+			`<ontario-summary-list caption="${defaultCaption}" column-ratio="5-5"></ontario-summary-list>`,
+		);
+
+		expect(warnSpy).toHaveBeenCalledTimes(1);
+		expect(warnSpy.mock.calls.flat().join(' ')).toContain('columnRatio');
+		expect((invalidPage.root as HTMLOntarioSummaryListElement).columnRatio).toBeUndefined();
+		warnSpy.mockRestore();
+	});
 });

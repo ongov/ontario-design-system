@@ -1,5 +1,5 @@
 import { h, Component, Prop, Watch, State, Listen, Element } from '@stencil/core';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { TaskStatus, TaskBadgeColour, TaskToBadgeColour } from '../../utils/common/task-statuses.enum';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { Hint } from '../../utils/common/common.interface';
@@ -107,18 +107,13 @@ export class OntarioTask {
 		const isValid = validateValueAgainstArray(newValue, allowedValues);
 
 		if (!isValid) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' headingLevel ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-task> ')
-				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText(allowedValues.join(', '))
-				.addRegularText(' are supported. The default value ')
-				.addMonospaceText('h3')
-				.addRegularText(' is assumed.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'headingLevel',
+				componentTag: '<ontario-task>',
+				propValue: newValue,
+				allowedValues,
+				defaultValue: 'h3',
+			});
 
 			this.headingLevel = 'h3';
 		}
@@ -226,19 +221,14 @@ export class OntarioTask {
 	 * @returns The default task status `'notStarted'`.
 	 */
 	private warnAndGetDefaultTaskStatus(): TaskStatus {
-		const validStatuses = Object.values(TaskStatus).join(', ');
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' taskStatus ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-task> ')
-			.addRegularText('was set to an invalid taskStatus; only ')
-			.addMonospaceText(validStatuses)
-			.addRegularText(' are supported. The default taskStatus ')
-			.addMonospaceText(TaskStatus.NotStarted)
-			.addRegularText(' is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'taskStatus',
+			componentTag: '<ontario-task>',
+			allowedValues: Object.values(TaskStatus),
+			defaultValue: TaskStatus.NotStarted,
+			invalidDescriptor: 'value',
+			defaultDescriptor: 'taskStatus',
+		});
 		return TaskStatus.NotStarted;
 	}
 
