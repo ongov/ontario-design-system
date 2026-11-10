@@ -6,6 +6,7 @@ import {
 	OntarioColourAccentIconColoursBlue,
 	OntarioColourAccentIconColoursGrey,
 	OntarioColourAccentIconColoursWhite,
+	OntarioColourGreyscaleBlack,
 	OntarioColourGreyscaleGreyscale5,
 	OntarioColourGreyscaleWhite,
 	OntarioColourSystemAlert,
@@ -387,8 +388,8 @@ test.describe('ontario-icon', () => {
 				);
 
 			const whiteFill = await getComputedColour(page, OntarioColourGreyscaleWhite);
-			const pureBlackFill = await getComputedColour(page, 'black');
-			expect(fills).toEqual([whiteFill, pureBlackFill, pureBlackFill]);
+			const blackFill = await getComputedColour(page, OntarioColourGreyscaleBlack);
+			expect(fills).toEqual([whiteFill, blackFill, blackFill]);
 		});
 
 		test('the header menu and close icons stay white', async ({ page }) => {

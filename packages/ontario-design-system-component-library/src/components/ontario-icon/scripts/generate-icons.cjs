@@ -122,11 +122,17 @@ const validateManifest = (icons, assetFiles) => {
 					typeof icon.deprecationNote !== 'string' ||
 					!icon.deprecationNote.trim() ||
 					/[\r\n]/.test(icon.deprecationNote) ||
-					icon.deprecationNote.includes('*/'))) ||
-			(icon.defaultColour !== undefined &&
-				(icon.colour !== 'configurable' || !allowedDefaultColours.has(icon.defaultColour)))
+					icon.deprecationNote.includes('*/')))
 		) {
 			throw new Error(`Incomplete manifest entry for ${icon.name}`);
+		}
+		if (
+			icon.defaultColour !== undefined &&
+			(icon.colour !== 'configurable' || !allowedDefaultColours.has(icon.defaultColour))
+		) {
+			throw new Error(
+				`Invalid defaultColour for ${icon.name}: only configurable icons accept ${[...allowedDefaultColours].join(', ')}.`,
+			);
 		}
 		manifestNames.add(icon.name);
 	}
