@@ -12,29 +12,44 @@ Act as a Senior Testing Engineer. Keep component tests consistent with the repos
 
 Use [the testing playbook](./references/testing-playbook.md) for suite-specific patterns, paths, commands, and migration guidance.
 
+This skill is written to work in any AI coding harness that supports agent skills, such as GitHub Copilot and OpenCode. When it says to ask the user, use the harness's question tool if it has one, and otherwise ask in plain text and stop until the user answers.
+
+## Scope
+
+The user can narrow the work in the invocation. Read the request for the layers and areas it names, and limit both phases to them.
+
+- Layers: Stencil unit tests, Stencil Playwright E2E, Stencil Playwright VRT, the Next.js fixture, Next.js Playwright E2E, and Next.js Playwright VRT.
+- Areas: for example accessibility, keyboard behaviour, form integration, responsive behaviour, localization, or migrating legacy Puppeteer tests.
+
+For example, "Review the unit and E2E tests for ontario-button" or "Add VRT coverage for the French layout of ontario-blockquote" are narrowed requests, while "Review and create tests for ontario-button" covers every layer. If the request is ambiguous about scope, ask before starting. Gaps outside the requested scope get a single line in the report and are not reviewed in detail or implemented.
+
 ## Required Workflow
 
 ### Phase 1: Review and Report
 
 Do not edit files, update snapshots, install dependencies, or run commands that change the workspace during this phase.
 
-1. Resolve the requested component name. If it is missing or ambiguous, ask the user which component to review.
-2. Read the component implementation, public properties, slots, events, methods, validation, localization, responsive behaviour, and README or generated documentation. Include the component SCSS, noting media queries and language-dependent rules such as `html[lang='fr']`, `:lang()`, `quotes`, or generated `content`.
-3. Inspect related components only when composition affects the component's behaviour.
-4. Locate and review all existing coverage:
+1. Resolve the requested component name and the scope (see Scope). If either is missing or ambiguous, ask the user.
+2. Ask the user whether the existing tests may be run locally. Running a suite needs the Playwright browsers installed and builds the Stencil components, and writes only ignored output folders such as `test-results/`, so it is allowed in this phase only with the user's agreement. Never pass an update flag such as `--update-snapshots` in this phase.
+   - If the user agrees, run the existing in-scope suites with the narrowest commands from the playbook and use the results in the report.
+   - If the user declines, or the environment cannot run them, review the existing tests and baselines by reading them, and say in the report which conclusions could not be confirmed by a run. Present options for the user to choose from, such as running the suites themselves and sharing the output.
+3. Read the component implementation, public properties, slots, events, methods, validation, localization, responsive behaviour, and README or generated documentation. Include the component SCSS, noting media queries and language-dependent rules such as `html[lang='fr']`, `:lang()`, `quotes`, or generated `content`.
+4. Inspect related components only when composition affects the component's behaviour.
+5. Locate and review all existing coverage:
    - Stencil unit tests.
    - Stencil Playwright E2E tests.
    - Stencil Playwright VRT tests and baselines.
    - The relevant Next.js fixture page. A child component may belong on an existing parent component route.
    - Next.js Playwright E2E tests.
    - Next.js Playwright VRT tests and baselines.
-5. Search the component's tests for deprecated Puppeteer-era Stencil APIs, including `newE2EPage`, `page.find`, `E2EElement`, `@stencil/core/testing`, and `>>>`. Treat commented legacy suites as missing coverage, not as completed tests.
-6. Compare the implementation and current tests against the playbook. Classify each applicable pattern as:
+6. Search the component's tests for deprecated Puppeteer-era Stencil APIs, including `newE2EPage`, `page.find`, `E2EElement`, `@stencil/core/testing`, and `>>>`. These suites are often left fully or partly commented out, so search commented lines too. Treat commented legacy suites as missing coverage, not as completed tests, and see the playbook for how to tell legacy calls from the same-named current Playwright APIs.
+7. Compare the implementation and current tests against the playbook. Classify each applicable pattern as:
    - Covered.
    - Missing.
    - Legacy and requiring migration.
    - Not applicable, with a short reason.
-7. Report to the user before making any changes. Include:
+8. Report to the user before making any changes. Include:
+
    - Component behaviour and public API summary.
    - Existing test and Next.js fixture inventory.
    - Coverage strengths.
@@ -43,10 +58,13 @@ Do not edit files, update snapshots, install dependencies, or run commands that 
    - Suspected component defects, with the evidence and the expected behaviour.
    - Proposed files to create or modify.
    - Focused validation commands.
-   - Assumptions, exclusions, or risks.
-8. Ask the user whether to continue with the proposal or change anything. Stop and wait for their response.
+   - Assumptions, exclusions, or risks. If the tests could not be run, say which findings come from reading the tests only.
 
-The approval request must be explicit. When the question tool is available, offer these choices:
+   Keep the report short enough to read in one sitting. Summarize the covered patterns in a single line, and spend the detail on gaps, legacy tests, and defects. Offer the findings as options the user can accept, drop, or change.
+
+9. Ask the user whether to continue with the proposal or change anything. Stop and wait for their response.
+
+The approval request must be explicit. Use the harness's question tool if it has one, and otherwise ask in plain text. Offer these choices:
 
 - Continue with the proposed tests.
 - Change the proposed coverage.
@@ -74,7 +92,7 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 - Legacy tests migrated.
 - Commands run and results.
 - Snapshot changes.
-- Defects exposed by the tests, and how each test handles them.
+- Defects exposed by the tests, how each test handles them, and any Jira issue the user wants drafted.
 - Remaining gaps or checks that could not run.
 
 ## Testing Principles
@@ -88,9 +106,15 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 - Include keyboard behaviour, focus order, pointer and mouse behaviour, events, methods, form integration, validation, disabled/read-only states, and responsive behaviour only when applicable.
 - Derive responsive viewports from the component's media queries and the repository breakpoint tokens. Use E2E for meaningful boundary behaviour and VRT for one stable viewport per distinct layout rather than generic device coverage.
 - Never add arbitrary sleeps. Use locator assertions, `page.waitForChanges()`, or the shared interaction-paint helper.
-- Do not loosen global screenshot tolerances to make a component test pass. Use a narrowly justified per-snapshot allowance only when necessary.
+- Do not loosen global screenshot tolerances to make a component test pass. Use a narrowly justified per-snapshot allowance only when necessary. When a screenshot has to tell close colours apart, such as colour variants or hover and focus states, tighten the per-snapshot `threshold` instead, as described in the playbook.
 - Use Canadian spelling in test names, fixture text, and comments unless an API or expected string requires otherwise.
-- If a test exposes a defect, report it instead of recording the faulty output as the expected result. Do not write assertions or VRT baselines that lock in the defect. Ask the user whether to fix the component, skip the test with a reference to the defect, or leave the case out of scope.
+- If a test exposes a defect, report it instead of recording the faulty output as the expected result. Do not write assertions or VRT baselines that lock in the defect, and do not add a baseline of a broken rendering until the defect is fixed. Offer the user these options and let them choose:
+
+  - Fix the component, in a separate commit from the tests.
+  - Keep the test as `test.fail` with a comment that names the Jira issue. The assertion still runs, so the test proves the defect exists, and the run fails when the defect is fixed, which is the prompt to remove the annotation. Run the assertion as a plain `test` first and confirm that it fails for the stated reason.
+  - Leave the case out of scope.
+
+  Avoid `test.skip` and `test.fixme` for defects, because they never run the assertion. If the user wants a Jira issue, offer to draft one and include its key in the comment.
 
 ## Repository Conventions
 
@@ -102,5 +126,3 @@ Follow the repository's `AGENTS.md`; the points below apply specifically to test
 - Markdown: do not hard-wrap markdown. Write each paragraph or list item as a single line.
 - Commits: use Conventional Commits with a lowercase imperative subject, for example `test(button): add keyboard coverage`. Use the `test` type for test-only changes, and keep subject and body lines under 100 characters. Keep snapshot updates in their own commit when practical so reviewers can inspect them separately.
 - Scope: keep changes limited to the approved component. Do not refactor unrelated tests or components.
-- Use Canadian spelling in test names, fixture text, and comments unless an API or expected string requires otherwise.
-  +- If a test exposes a defect, report it instead of recording the faulty output as the expected result. Do not write assertions or VRT baselines that lock in the defect. Ask the user whether to fix the component, skip the test with a reference to the defect, or leave the case out of scope.
