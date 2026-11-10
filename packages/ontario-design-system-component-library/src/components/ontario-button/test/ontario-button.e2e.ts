@@ -1,5 +1,5 @@
 import { expect, Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { test, E2EPage } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
 import { ButtonTypes, HtmlTypes } from '../ontario-button.types';
 
@@ -127,44 +127,59 @@ test.describe('ontario-button', () => {
 		});
 	}
 
+	// The button colours come from SCSS tokens, so these checks compare the button types with each other instead of
+	// hard-coding colour values that would fail whenever a token changes. The exact colours are covered by the VRT tests.
+	// - `primary`: `$ontario-colour-link` background and white text, with no border
+	// - `secondary`: `$ontario-colour-white` background with a solid `$ontario-colour-link` border and text
+	// - `tertiary`: transparent background (not a token) with underlined `$ontario-colour-link` text
+	// - `internalThemeDark`: `$ontario-colour-black` background with a solid white border and text
 	test('applies the expected styles for each button type', async ({ page }) => {
 		const element = host.locator('button');
 
-		await expect(element).toHaveCSS('border-top-style', 'solid');
-		await expect(element).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+		const stylesFor = async (type: (typeof ButtonTypes)[number]) => {
+			await host.evaluate((button: HTMLOntarioButtonElement, buttonType) => {
+				button.type = buttonType;
+			}, type);
+			await page.waitForChanges();
 
-		await host.evaluate((button: HTMLOntarioButtonElement) => {
-			button.type = 'primary';
-		});
-		await page.waitForChanges();
-		await expect(element).toHaveCSS('border-top-width', '0px');
-		await expect(element).toHaveCSS('background-color', 'rgb(0, 102, 204)');
-		await expect(element).toHaveCSS('border-bottom-left-radius', '4px');
-		await expect(element).toHaveCSS('border-bottom-right-radius', '4px');
+			return element.evaluate((button) => {
+				const styles = window.getComputedStyle(button);
+				return {
+					backgroundColor: styles.backgroundColor,
+					borderTopStyle: styles.borderTopStyle,
+					borderTopWidth: styles.borderTopWidth,
+					borderRadius: styles.borderBottomLeftRadius,
+					textDecorationLine: styles.textDecorationLine,
+				};
+			});
+		};
 
-		await host.evaluate((button: HTMLOntarioButtonElement) => {
-			button.type = 'secondary';
-		});
-		await page.waitForChanges();
-		await expect(element).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-		await expect(element).toHaveCSS('border-bottom-left-radius', '4px');
-		await expect(element).toHaveCSS('border-bottom-right-radius', '4px');
+		const secondary = await stylesFor('secondary');
+		const primary = await stylesFor('primary');
+		const tertiary = await stylesFor('tertiary');
+		const internalThemeDark = await stylesFor('internalThemeDark');
 
-		await host.evaluate((button: HTMLOntarioButtonElement) => {
-			button.type = 'tertiary';
-		});
-		await page.waitForChanges();
-		await expect(element).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-		await expect(element).toHaveCSS('text-decoration-line', 'underline');
+		expect(primary.borderTopWidth).toBe('0px');
+		expect(primary.backgroundColor).not.toBe(secondary.backgroundColor);
 
-		await host.evaluate((button: HTMLOntarioButtonElement) => {
-			button.type = 'internalThemeDark';
-		});
-		await page.waitForChanges();
-		await expect(element).toHaveCSS('border-top-style', 'solid');
-		await expect(element).not.toHaveCSS('background-color', 'rgb(255, 255, 255)');
+		expect(secondary.borderTopStyle).toBe('solid');
+		expect(internalThemeDark.borderTopStyle).toBe('solid');
+		expect(internalThemeDark.backgroundColor).not.toBe(secondary.backgroundColor);
+
+		expect(tertiary.backgroundColor).toBe('rgba(0, 0, 0, 0)');
+		expect(tertiary.textDecorationLine).toBe('underline');
+
+		// every button type shares the same corner radius (`$global-radius`)
+		expect(primary.borderRadius).not.toBe('0px');
+		expect(secondary.borderRadius).toBe(primary.borderRadius);
+		expect(tertiary.borderRadius).toBe(primary.borderRadius);
+		expect(internalThemeDark.borderRadius).toBe(primary.borderRadius);
 	});
 
+	// For `primary`, the background is `$ontario-colour-link` by default, `$ontario-colour-link--hover` on hover and focus,
+	// and `$ontario-colour-link--active` while pressed, so each state is checked against the one before it.
+	// Focus also adds the `%ontario-focus` box shadow and a 4px outline that is transparent, so the focus indicator is
+	// still visible in forced colours (high contrast) mode.
 	test('applies hover, focus, and active styles', async ({ page }) => {
 		await host.evaluate((button: HTMLOntarioButtonElement) => {
 			button.label = 'Element Content';
@@ -172,10 +187,12 @@ test.describe('ontario-button', () => {
 		});
 		await page.waitForChanges();
 		const element = host.locator('button');
-		const defaultBackground = await element.evaluate((button) => getComputedStyle(button).backgroundColor);
+		const backgroundColour = () => element.evaluate((button) => window.getComputedStyle(button).backgroundColor);
+		const defaultBackground = await backgroundColour();
 
 		await element.hover();
 		await expect(element).not.toHaveCSS('background-color', defaultBackground);
+		const hoverBackground = await backgroundColour();
 
 		await element.focus();
 		await expect(element).toHaveCSS('outline-style', 'solid');
@@ -183,8 +200,12 @@ test.describe('ontario-button', () => {
 		await expect(element).not.toHaveCSS('box-shadow', 'none');
 
 		await page.mouse.down();
-		await expect(element).not.toHaveCSS('background-color', defaultBackground);
-		await page.mouse.up();
+		try {
+			await expect(element).not.toHaveCSS('background-color', defaultBackground);
+			await expect(element).not.toHaveCSS('background-color', hoverBackground);
+		} finally {
+			await page.mouse.up();
+		}
 	});
 
 	test('meets the documented minimum button width on larger screens', async ({ page }) => {
@@ -194,18 +215,32 @@ test.describe('ontario-button', () => {
 		await expect(host.locator('button')).toHaveCSS('min-width', '160px');
 	});
 
-	test('renders full width below the small breakpoint', async ({ page }) => {
+	test('renders as a block below the small breakpoint', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.waitForChanges();
 
-		const element = host.locator('button');
+		await expect(host.locator('button')).toHaveCSS('display', 'block');
+	});
 
-		await expect(element).toHaveCSS('display', 'block');
+	// Known defect (DS-2973): `:host { display: inline-block }` makes the host shrink to the button's minimum width, so the
+	// button's `width: 100%` never fills its container.
+	// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+	test.fail('fills its container below the small breakpoint', async ({ page }) => {
+		await page.setViewportSize({ width: 375, height: 812 });
+		// `page.setContent` does not replace the content a second time in the same test, so replace the body directly
+		await page.evaluate(() => {
+			document.body.innerHTML = `
+				<div id="container" style="width: 300px">
+					<ontario-button label="Continue"></ontario-button>
+				</div>
+			`;
+		});
+		await page.waitForChanges();
 
-		const buttonBox = await element.boundingBox();
-		const hostBox = await host.boundingBox();
+		const container = await page.locator('#container').boundingBox();
+		const button = await page.locator('ontario-button').locator('button').boundingBox();
 
-		expect(buttonBox?.width).toBe(hostBox?.width);
+		expect(button?.width).toBe(container?.width);
 	});
 
 	test('fires the click event', async ({ page }) => {
@@ -245,4 +280,79 @@ test.describe('ontario-button', () => {
 			expect(accessibilityScanResults.violations).toHaveLength(0);
 		});
 	}
+});
+
+test.describe('ontario-button - forms and keyboard', () => {
+	/**
+	 * Renders a form with an input followed by the button, and counts submissions in `data-submits` on the form
+	 * (the submit is cancelled so the page does not navigate).
+	 */
+	const renderForm = async (page: E2EPage, htmlType: string) => {
+		await page.setContent(`
+			<form id="form" data-submits="0">
+				<input id="name" name="name" value="Original" />
+				<ontario-button html-type="${htmlType}" label="Action"></ontario-button>
+			</form>
+		`);
+		await page.waitForChanges();
+		await page.locator('#form').evaluate((form) => {
+			form.addEventListener('submit', (event) => {
+				event.preventDefault();
+				form.setAttribute('data-submits', String(Number(form.getAttribute('data-submits')) + 1));
+			});
+		});
+
+		return {
+			form: page.locator('#form'),
+			input: page.locator('#name'),
+			button: page.locator('ontario-button').locator('button'),
+		};
+	};
+
+	test('submits the form when a submit button is clicked', async ({ page }) => {
+		const { form, button } = await renderForm(page, 'submit');
+
+		await button.click();
+
+		await expect(form).toHaveAttribute('data-submits', '1');
+	});
+
+	test('does not submit the form when a button is clicked', async ({ page }) => {
+		const { form, button } = await renderForm(page, 'button');
+
+		await button.click();
+
+		await expect(form).toHaveAttribute('data-submits', '0');
+	});
+
+	test('resets the form when a reset button is clicked', async ({ page }) => {
+		const { input, button } = await renderForm(page, 'reset');
+		await input.fill('Changed');
+
+		await button.click();
+
+		await expect(input).toHaveValue('Original');
+	});
+
+	test('is reached with Tab and submits the form with Enter', async ({ page }) => {
+		const { form, input, button } = await renderForm(page, 'submit');
+		await input.focus();
+
+		await page.keyboard.press('Tab');
+		await expect(button).toBeFocused();
+		await page.keyboard.press('Enter');
+
+		await expect(form).toHaveAttribute('data-submits', '1');
+	});
+
+	test('submits the form with Space', async ({ page }) => {
+		const { form, input, button } = await renderForm(page, 'submit');
+		await input.focus();
+
+		await page.keyboard.press('Tab');
+		await expect(button).toBeFocused();
+		await page.keyboard.press('Space');
+
+		await expect(form).toHaveAttribute('data-submits', '1');
+	});
 });
