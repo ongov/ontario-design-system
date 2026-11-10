@@ -85,12 +85,12 @@ const getIconComponentTemplate = (svgObject, iconName) => {
 import { Component, Prop, h, Watch, State${hasColour ? '' : `, Element`} } from '@stencil/core';
 import { ${hasColour ? 'IconWithColour' : 'Icon'} } from './icon.interface';
 import { IconSize${hasColour ? `, IconColour, IconColours ` : ``} } from './icon.types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';${
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';${
 		hasColour
 			? `
-import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';`
-			: ''
+import { validateValueAgainstArray } from '../../utils/validation/validation-functions';`
+			: `
+import { printConflictingConfigWarning } from '../../utils/validation/component-message';`
 	} ${
 		hasColour
 			? `
@@ -134,18 +134,13 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 		   // Validate against preset IconSize values
 		   const allowedSizes = Object.values(IconSize);
 		   if (!allowedSizes.includes(this.iconWidth)) {
-			   const message = new ConsoleMessageClass();
-			   message
-				   .addDesignSystemTag()
-				   .addMonospaceText(' icon-width ')
-				   .addRegularText('on')
-				   .addMonospaceText(' <${iconName}> ')
-				   .addRegularText('was set to an invalid value; only the following sizes are allowed:')
-				   .addMonospaceText(\` \${allowedSizes.join(', ')} \`)
-				   .addRegularText('The default size of')
-				   .addMonospaceText(' 24px ')
-				   .addRegularText('was assumed.')
-				   .printMessage();
+			   printInvalidPropWarning({
+				   propName: 'icon-width',
+				   componentTag: '<${iconName}>',
+				   propValue: this.iconWidth,
+				   allowedValues: allowedSizes,
+				   defaultValue: 24,
+			   });
 			   this.iconWidthState = 24;
 		   } else {
 			   this.iconWidthState = this.iconWidth;
@@ -220,14 +215,11 @@ export class ${toPascalCase(iconName)} implements ${hasColour ? 'IconWithColour'
 	 */
 	validateColour() {
 		if (this.host.hasAttribute('colour')) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' colour ')
-				.addRegularText('on')
-				.addMonospaceText(' <${iconName}> ')
-				.addRegularText('cannot be set. The provided colour is ignored.')
-				.printMessage();
+			printConflictingConfigWarning({
+				propName: 'colour',
+				componentTag: '<${iconName}>',
+				description: 'cannot be set. The provided colour is ignored.',
+			});
 		}
 	}
 	`

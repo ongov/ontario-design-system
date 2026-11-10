@@ -2,7 +2,7 @@
 import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from './icon.interface';
 import { IconSize, IconColour, IconColours } from './icon.types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidFormatWarning } from '../../utils/validation/component-message';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import validateColor from 'validate-color';
@@ -41,18 +41,13 @@ export class OntarioIconSentiment3 implements IconWithColour {
 	@Watch('iconWidth')
 	validateWidth() {
 		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' icon-width ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-sentiment-3> ')
-				.addRegularText(
-					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
-				)
-				.addMonospaceText(' 24px ')
-				.addRegularText('was assumed.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'icon-width',
+				componentTag: '<ontario-icon-sentiment-3>',
+				received: this.iconWidth,
+				expected: 'a positive number',
+				consequence: 'The default size of 24px was assumed.',
+			});
 			this.iconWidthState = 24;
 		} else {
 			this.iconWidthState = this.iconWidth;
