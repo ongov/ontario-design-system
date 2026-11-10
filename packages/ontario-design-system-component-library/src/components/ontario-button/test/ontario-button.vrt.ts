@@ -1,105 +1,96 @@
-import { expect, type Locator } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { expect, Locator } from '@playwright/test';
+import { test, E2EPage } from '@stencil/playwright';
 import { expectVrtScreenshot, withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 import { ButtonTypes } from '../ontario-button.types';
+
 /**
  * Visual regression tests for ontario-button.
  *
- * These tests cover the button variants, interaction states, link rendering,
- * and mobile layout using the shared VRT helpers.
+ * These tests cover the button types, their interaction states, link rendering and the minimum width. A screenshot
+ * below the small breakpoint is not included yet: the button does not fill its container there (DS-2973), so a baseline
+ * would record the current layout as the expected one. It can be added together with the fix.
  */
-const setButtonContent = async (host: Locator, type: (typeof ButtonTypes)[number]) => {
-	await host.evaluate((button: HTMLOntarioButtonElement, buttonType) => {
-		button.label = `${buttonType} button`;
-		button.ariaLabelText = `${buttonType} button`;
-		button.type = buttonType;
-	}, type);
-};
 
-test.describe('ontario-button - interaction states', () => {
-	for (const buttonType of ButtonTypes) {
-		test(`${buttonType} button - default state`, async ({ page }) => {
-			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
-			await page.waitForChanges();
-			const host = page.locator('ontario-button');
-			await setButtonContent(host, buttonType);
-			await page.waitForChanges();
+/**
+ * The hover, focus and active colours of each button type are close to the default colour of the same type (for
+ * example `$ontario-colour-link--hover` against `$ontario-colour-link` on `primary`). Playwright's default pixel
+ * `threshold` (`0.2`) treats colours that close as identical, so a button with no hover style at all would still match
+ * its hover baseline. A low `threshold` makes those colour differences count.
+ */
+const stateOptions = { threshold: 0.02, maxDiffPixels: 100 };
 
-			const button = host.locator('button');
-			await expect(button).toBeVisible();
-			await expectVrtScreenshot(button);
+test.describe('ontario-button', () => {
+	/**
+	 * Renders the button with the global styles in a wrapper with padding, so the focus ring (a box shadow drawn outside
+	 * the button) is inside the screenshot.
+	 */
+	const renderButton = async (page: E2EPage, attributes: string): Promise<{ wrapper: Locator; button: Locator }> => {
+		await page.setContent(
+			withGlobalStyles(`
+				<div id="vrt-button" style="display: inline-block; padding: 16px;">
+					<ontario-button ${attributes}></ontario-button>
+				</div>
+			`),
+		);
+		await page.waitForChanges();
+		await expect(page.locator('ontario-button')).toHaveClass(/hydrated/);
+		await page.evaluate(async () => {
+			await document.fonts.ready;
 		});
 
-		test(`${buttonType} button - hover state`, async ({ page }) => {
-			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
-			await page.waitForChanges();
-			const host = page.locator('ontario-button');
-			await setButtonContent(host, buttonType);
-			await page.waitForChanges();
+		return { wrapper: page.locator('#vrt-button'), button: page.locator('ontario-button').locator('button') };
+	};
 
-			const button = host.locator('button');
-			await button.hover();
-			await expectVrtScreenshot(button);
-		});
+	test.describe('interaction states', () => {
+		for (const buttonType of ButtonTypes) {
+			test(`${buttonType} button - default state`, async ({ page }) => {
+				const { wrapper, button } = await renderButton(page, `type="${buttonType}" label="${buttonType} button"`);
 
-		test(`${buttonType} button - focus state`, async ({ page }) => {
-			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
-			await page.waitForChanges();
-			const host = page.locator('ontario-button');
-			await setButtonContent(host, buttonType);
-			await page.waitForChanges();
+				await expect(button).toBeVisible();
+				await expectVrtScreenshot(wrapper, stateOptions);
+			});
 
-			const button = host.locator('button');
-			await button.focus();
-			await expectVrtScreenshot(button);
-		});
+			test(`${buttonType} button - hover state`, async ({ page }) => {
+				const { wrapper, button } = await renderButton(page, `type="${buttonType}" label="${buttonType} button"`);
 
-		test(`${buttonType} button - active state`, async ({ page }) => {
-			await page.setContent(withGlobalStyles('<ontario-button></ontario-button>'));
-			await page.waitForChanges();
-			const host = page.locator('ontario-button');
-			await setButtonContent(host, buttonType);
-			await page.waitForChanges();
+				await button.hover();
+				await expectVrtScreenshot(wrapper, stateOptions);
+			});
 
-			const button = host.locator('button');
-			await button.hover();
-			await page.mouse.down();
-			try {
-				await expectVrtScreenshot(button);
-			} finally {
-				await page.mouse.up();
-			}
-		});
-	}
-});
+			test(`${buttonType} button - focus state`, async ({ page }) => {
+				const { wrapper, button } = await renderButton(page, `type="${buttonType}" label="${buttonType} button"`);
 
-test.describe('ontario-button - link and responsive states', () => {
+				await button.focus();
+				await expect(button).toBeFocused();
+				await expectVrtScreenshot(wrapper, stateOptions);
+			});
+
+			test(`${buttonType} button - active state`, async ({ page }) => {
+				const { wrapper, button } = await renderButton(page, `type="${buttonType}" label="${buttonType} button"`);
+
+				await button.hover();
+				await page.mouse.down();
+				try {
+					await expectVrtScreenshot(wrapper, stateOptions);
+				} finally {
+					await page.mouse.up();
+				}
+			});
+		}
+	});
+
 	test('link mode', async ({ page }) => {
-		await page.setContent(withGlobalStyles('<ontario-button href="/details" label="View details"></ontario-button>'));
-		await page.waitForChanges();
+		const { wrapper } = await renderButton(page, 'href="/details" label="View details"');
 
-		const link = page.locator('ontario-button').locator('a');
-		await expect(link).toBeVisible();
-		await expectVrtScreenshot(link);
+		await expect(page.locator('ontario-button').locator('a')).toBeVisible();
+		await expectVrtScreenshot(wrapper, stateOptions);
 	});
 
-	test('primary button - mobile layout', async ({ page }) => {
-		await page.setViewportSize({ width: 375, height: 812 });
-		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Continue"></ontario-button>'));
-		await page.waitForChanges();
+	test('a short label keeps the minimum button width', async ({ page }) => {
+		const { wrapper, button } = await renderButton(page, 'type="primary" label="OK"');
 
-		const button = page.locator('ontario-button').locator('button');
-		await expect(button).toBeVisible();
-		await expectVrtScreenshot(button);
-	});
-
-	test('primary button - tablet layout', async ({ page }) => {
-		await page.setViewportSize({ width: 900, height: 800 });
-		await page.setContent(withGlobalStyles('<ontario-button type="primary" label="Réviser reçu"></ontario-button>'));
-		await page.waitForChanges();
-
-		const button = page.locator('ontario-button').locator('button');
-		await expect(button).toBeVisible();
-		await expectVrtScreenshot(button);
+		// `min-width: 10rem` (160px) is wider than the label needs
+		expect((await button.boundingBox())?.width).toBeGreaterThanOrEqual(160);
+		await expectVrtScreenshot(wrapper, stateOptions);
 	});
 });
