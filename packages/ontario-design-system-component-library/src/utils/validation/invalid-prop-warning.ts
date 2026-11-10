@@ -1,6 +1,7 @@
 import { ConsoleMessageClass } from '../console-message/console-message';
 import { printArray } from '../helper/utils';
 import { Conjunction } from '../helper/utils-types';
+import { ComponentMessageSeverity } from './component-message';
 
 export type InvalidPropDescriptor = 'type' | 'value' | 'colour' | 'htmlType';
 
@@ -72,5 +73,5 @@ export function printInvalidPropWarning(options: InvalidPropWarningOptions): voi
 			.addRegularText('is assumed.');
 	}
 
-	message.printMessage();
+	message.printMessage(ComponentMessageSeverity['invalid-value']);
 }
