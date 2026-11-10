@@ -145,7 +145,7 @@ describe('component message classes', () => {
 					'%creceived' +
 					'%c -5 ' +
 					'%cwhich is not in a valid format. Expected a positive number.' +
-					'%cThe default size of 24px was assumed.',
+					'%c The default size of 24px was assumed.',
 			);
 		});
 

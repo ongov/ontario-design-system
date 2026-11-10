@@ -178,7 +178,7 @@ export function printInvalidFormatWarning(options: InvalidFormatWarningOptions):
 	}
 
 	if (consequence) {
-		message.addRegularText(consequence);
+		message.addRegularText(` ${consequence}`);
 	}
 
 	printComponentMessage('invalid-format', message, severity);
