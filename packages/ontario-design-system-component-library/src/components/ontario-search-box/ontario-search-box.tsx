@@ -130,6 +130,25 @@ export class OntarioSearchBox {
 	@Prop() required?: boolean = false;
 
 	/**
+	 * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a
+	 * numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`,
+	 * `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input,
+	 * and should be paired with `pattern` when constrained entry is required.
+	 */
+	// Required `string` (not an optional literal union) to match native `HTMLElement.inputMode`.
+	@Prop() inputMode: string = '';
+
+	/**
+	 * A regular expression the browser can use as a hint when validating input and, on some
+	 * platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only -
+	 * it does not replace server-side or component-level validation. The search form is rendered
+	 * with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not
+	 * block or be reported on submission; validate `value` in your own search-handling logic if
+	 * constrained entry must be enforced.
+	 */
+	@Prop() pattern?: string;
+
+	/**
 	 * This Function to perform a search operation.
 	 * This function will be called when the search submit button is triggered.
 	 * The value argument is used for as search term to use for the search operation. This parameter is optional.
@@ -926,6 +945,25 @@ export class OntarioSearchBox {
 		this.setFocus(this.inputFieldRef);
 	};
 
+	/**
+	 * Handles the reset button click.
+	 *
+	 * The native reset is prevented and the input is cleared explicitly. The native reset only runs after click handlers
+	 * and fires no `input` event, so the focus handler (which syncs `value` from the input) would otherwise write the old
+	 * text back to the component value, leaving it, and the reset button visibility, out of sync with the empty field.
+	 */
+	private handleReset = (event: globalThis.Event) => {
+		event.preventDefault();
+
+		if (this.inputFieldRef) {
+			this.inputFieldRef.value = '';
+		}
+
+		this.value = '';
+		this.syncFormValue('');
+		this.handleFocus();
+	};
+
 	render() {
 		const searchInputFieldId = this.inputRefId;
 		const shouldShowSuggestions = this.enableAutocomplete && this.suggestionsOpen && this.getSuggestionCount() > 0;
@@ -968,6 +1006,8 @@ export class OntarioSearchBox {
 							role={this.enableAutocomplete ? 'combobox' : undefined}
 							className="ontario-search__input ontario-input"
 							required={true}
+							inputMode={this.inputMode || undefined}
+							pattern={this.pattern}
 							ref={(el) => (this.inputFieldRef = el)}
 							onInput={(e) => this.handleEvent(e, EventType.Input)}
 							onChange={(e) => this.handleEvent(e, EventType.Change)}
@@ -977,12 +1017,12 @@ export class OntarioSearchBox {
 							value={this.getValue()}
 						></Input>
 						<Input
-							className="ontario-search__reset"
+							className={`ontario-search__reset${this.getValue() === '' ? ' ontario-search__reset--hidden' : ''}`}
 							id="ontario-search-reset"
 							type="reset"
 							value=""
 							ariaLabel={this.translations.header.clearSearchField[`${this.language}`]}
-							onClick={() => this.handleFocus()}
+							onClick={this.handleReset}
 						></Input>
 						<button
 							class="ontario-search__submit"

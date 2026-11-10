@@ -86,7 +86,7 @@ The `@use` rule loads mixins, functions, and variables from other Sass styleshee
 
 ### Exports map maintenance
 
-This package relies on `package.json` `exports` to expose compiled CSS and SCSS entry points. If the `dist/styles` folder structure changes, update the `exports` map in `package.json` to keep `pkg:` imports and direct style imports working as expected.
+This package relies on `package.json` `exports` to expose compiled CSS and SCSS entry points. `pnpm run exports:generate` (part of `build`) regenerates a canonical, extensionless key for every SCSS partial. Don't add wildcard entries like `./styles/scss/1-variables/*` back in — Dart Sass's `NodePackageImporter` can't tell those apart from the canonical keys and throws an ambiguous resolution error.
 
 Example `exports` entries for common style paths:
 
@@ -101,7 +101,7 @@ Example `exports` entries for common style paths:
 		},
 		"./styles/css/compiled/ontario-theme.min.css": "./dist/styles/css/compiled/ontario-theme.min.css",
 		"./styles/scss/theme.scss": "./dist/styles/scss/theme.scss",
-		"./styles/scss/1-variables/*": "./dist/styles/scss/1-variables/*"
+		"./styles/scss/1-variables/global.variables": "./dist/styles/scss/1-variables/_global.variables.scss"
 	}
 }
 ```

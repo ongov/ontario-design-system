@@ -8,7 +8,7 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
 
-@forward 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 .ontario-language-toggler {
 	background-color: colours.$ontario-colour-black;

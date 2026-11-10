@@ -141,7 +141,7 @@ When using this package with Next.js App Router, three additional steps are reco
    /** @type {import('next').NextConfig} */
    const nextConfig = {
    	sassOptions: {
-   		importer: [pkgImporter],
+   		importers: [pkgImporter],
    	},
    };
 
