@@ -6,7 +6,7 @@ import { RenderIcon, warnIsDecorativeDeprecated, warnIconDeprecated } from '../r
 import { validateIconWidth, validateIconColour } from '../icon-validation';
 
 /**
- * @deprecated Use ontario-icon-search instead.
+ * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
  */
 @Component({
 	tag: 'ontario-icon-search-white',
@@ -57,7 +57,11 @@ export class OntarioIconSearchWhite implements IconWithColour {
 	}
 
 	componentWillLoad() {
-		warnIconDeprecated('ontario-icon-search-white', 'ontario-icon-search');
+		warnIconDeprecated(
+			'ontario-icon-search-white',
+			'ontario-icon-search',
+			'Set colour="white" to preserve the white icon.',
+		);
 		this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();

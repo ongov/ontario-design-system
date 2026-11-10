@@ -684,7 +684,8 @@
 			"colour": "configurable",
 			"aliases": [],
 			"deprecated": true,
-			"replacedBy": "search"
+			"replacedBy": "ontario-icon-search",
+			"deprecationNote": "Set colour=\"white\" to preserve the white icon."
 		},
 		{
 			"name": "ontario-icon-search",
