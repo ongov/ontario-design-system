@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { parseSync, type INode } from 'svgson';
 import manifest from '../icon-manifest.json' with { type: 'json' };
+import { IconColours } from '../icon.types';
 
 const findIcon = (name: string) => manifest.icons.find((icon) => icon.name === name);
 
@@ -33,9 +34,10 @@ describe('icon-manifest', () => {
 		expect(offenders).toEqual([]);
 	});
 
-	it('only sets a default colour on configurable-colour icons', () => {
+	it('only sets supported default colours on configurable-colour icons', () => {
 		for (const icon of manifest.icons.filter((candidate) => 'defaultColour' in candidate)) {
 			expect(icon.colour).toBe('configurable');
+			expect(IconColours).toContain(icon.defaultColour);
 		}
 	});
 

@@ -10,11 +10,8 @@ import { IconColours } from '../icon.types';
 
 const requireGenerator = createRequire(import.meta.url);
 const { getIconComponentTemplate, validateManifest } = requireGenerator('../scripts/generate-icons.cjs') as {
-    getIconComponentTemplate: (
-        svg: INode,
-        icon: { name: string; colour: string; [key: string]: unknown },
-    ) => string;
     validateManifest: (icons: unknown, assetFiles: string[]) => void;
+    getIconComponentTemplate: (svg: INode, icon: Record<string, unknown>) => string;
 };
 
 describe('icon generator colour styles', () => {
@@ -96,15 +93,34 @@ describe('icon manifest replacement names', () => {
         aliases: [],
         deprecated: true,
     };
-    const replacement = { ...icon, name: 'ontario-icon-search', deprecated: false };
+    const replacement = { ...icon, name: 'ontario-icon-search', deprecated: false, replacedBy: undefined };
     const assetFiles = ['ontario-icon-old.svg', 'ontario-icon-search.svg'];
 
-    it.each(['search', 'ontario-icon-search'])('accepts a later manifest entry named %s', (replacedBy) => {
-        expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assetFiles)).not.toThrow();
+    it('accepts a full replacement tag that appears later in the manifest', () => {
+        expect(() =>
+            validateManifest([{ ...icon, replacedBy: 'ontario-icon-search' }, replacement], assetFiles),
+        ).not.toThrow();
     });
 
-    it.each(['searhc', ''])('rejects an unknown replacement name "%s"', (replacedBy) => {
-        expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assetFiles)).toThrow();
+    it.each(['search', 'ontario-icon-typo', 'ontario-icon-old'])(
+        'rejects invalid replacement "%s"',
+        (replacedBy) => {
+            expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assetFiles)).toThrow(
+                'replacedBy on ontario-icon-old must name another icon and requires deprecated: true.',
+            );
+        },
+    );
+
+    it('rejects an empty replacement name', () => {
+        expect(() => validateManifest([{ ...icon, replacedBy: '' }, replacement], assetFiles)).toThrow(
+            'replacedBy on ontario-icon-old must name another icon and requires deprecated: true.',
+        );
+    });
+
+    it('rejects replacement metadata on a non-deprecated icon', () => {
+        expect(() =>
+            validateManifest([{ ...icon, deprecated: false, replacedBy: 'ontario-icon-search' }, replacement], assetFiles),
+        ).toThrow('replacedBy on ontario-icon-old must name another icon and requires deprecated: true.');
     });
 
     it('allows replacement metadata to be omitted', () => {
@@ -128,14 +144,6 @@ describe('icon generator deprecation metadata', () => {
 
     it('accepts a full replacement tag that appears later in the manifest', () => {
         expect(() => validateManifest([{ ...icon, deprecationNote }, replacement], assets)).not.toThrow();
-    });
-
-    it.each(['search', 'ontario-icon-typo', 'ontario-icon-old', ''])('rejects invalid replacement "%s"', (replacedBy) => {
-        expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assets)).toThrow();
-    });
-
-    it('rejects replacement metadata on a non-deprecated icon', () => {
-        expect(() => validateManifest([{ ...icon, deprecated: false }, replacement], assets)).toThrow();
     });
 
     it.each([42, '', '   ', 'first line\nsecond line', 'closes */ comment'])(
