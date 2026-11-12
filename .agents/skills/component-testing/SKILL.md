@@ -1,6 +1,6 @@
 ---
 name: component-testing
-description: 'Review, create, backfill, or migrate tests for an Ontario Design System web component. Use when testing a component with Stencil Vitest unit tests, Stencil Playwright E2E and VRT, Next.js Playwright E2E and VRT, Next.js fixture pages, accessibility coverage, or deprecated Stencil Puppeteer tests.'
+description: 'Review, create, backfill, or migrate tests for an Ontario Design System web component. Use when testing a component with Stencil Vitest unit tests, Stencil Playwright E2E and VRT, consumer application tests and fixture pages, accessibility coverage, or deprecated Stencil Puppeteer tests.'
 argument-hint: 'Component name, for example ontario-button'
 user-invocable: true
 disable-model-invocation: false
@@ -14,14 +14,21 @@ Use [the testing playbook](./references/testing-playbook.md) for suite-specific 
 
 This skill is written to work in any AI coding harness that supports agent skills, such as GitHub Copilot and OpenCode. When it says to ask the user, use the harness's question tool if it has one, and otherwise ask in plain text and stop until the user answers.
 
+## Libraries and Applications
+
+The published npm packages are libraries, not applications. The library layers (Stencil unit, E2E, and VRT tests) validate one component at a time with self-contained markup. They do not test navigation, flows across pages, server behaviour, or deployment, and they must not depend on application code.
+
+The consumer applications (`app-nextjs`, `app-react`, and `app-angular`) are real applications. They are test vehicles that show the published packages working inside an application, so application-level behaviour such as routing, server rendering, page structure, and inherited application styles is in scope there. The playbook lists which applications have tests today. Whether a component is also exercised in the applications is useful context for a review, but it is not a gap to fill unless the user asks for it.
+
 ## Scope
 
 The user can narrow the work in the invocation. Read the request for the layers and areas it names, and limit both phases to them.
 
-- Layers: Stencil unit tests, Stencil Playwright E2E, Stencil Playwright VRT, the Next.js fixture, Next.js Playwright E2E, and Next.js Playwright VRT.
+- Library layers: Stencil unit tests, Stencil Playwright E2E, and Stencil Playwright VRT.
+- Application layers: the fixture page, E2E tests, and VRT tests of each consumer application that the playbook lists as having tests.
 - Areas: for example accessibility, keyboard behaviour, form integration, responsive behaviour, localization, or migrating legacy Puppeteer tests.
 
-For example, "Review the unit and E2E tests for ontario-button" or "Add VRT coverage for the French layout of ontario-blockquote" are narrowed requests, while "Review and create tests for ontario-button" covers every layer. If the request is ambiguous about scope, ask before starting. Gaps outside the requested scope get a single line in the report and are not reviewed in detail or implemented.
+For example, "Review the unit and E2E tests for ontario-button", "Review only the library layers for ontario-button", "Check whether ontario-header is also covered in the consumer applications", or "Add VRT coverage for the French layout of ontario-blockquote" are narrowed requests, while "Review and create tests for ontario-button" covers every layer. If the request is ambiguous about scope, ask before starting. Gaps outside the requested scope get a single line in the report and are not reviewed in detail or implemented.
 
 ## Required Workflow
 
@@ -39,9 +46,7 @@ Do not edit files, update snapshots, install dependencies, or run commands that 
    - Stencil unit tests.
    - Stencil Playwright E2E tests.
    - Stencil Playwright VRT tests and baselines.
-   - The relevant Next.js fixture page. A child component may belong on an existing parent component route.
-   - Next.js Playwright E2E tests.
-   - Next.js Playwright VRT tests and baselines.
+   - The consumer application layers, for the applications that the playbook lists as having tests: the fixture page for the component (a child component may belong on an existing parent component route) and its E2E and VRT tests and baselines. Report this as context. Missing application coverage is a gap only when the application layers are in the requested scope.
 6. Search the component's tests for deprecated Puppeteer-era Stencil APIs, including `newE2EPage`, `page.find`, `E2EElement`, `@stencil/core/testing`, and `>>>`. These suites are often left fully or partly commented out, so search commented lines too. Treat commented legacy suites as missing coverage, not as completed tests, and see the playbook for how to tell legacy calls from the same-named current Playwright APIs.
 7. Compare the implementation and current tests against the playbook. Classify each applicable pattern as:
    - Covered.
@@ -51,9 +56,9 @@ Do not edit files, update snapshots, install dependencies, or run commands that 
 8. Report to the user before making any changes. Include:
 
    - Component behaviour and public API summary.
-   - Existing test and Next.js fixture inventory.
+   - Existing library test inventory and, as context, any coverage in the consumer applications.
    - Coverage strengths.
-   - Missing or weak patterns by suite.
+   - Missing or weak patterns by suite, labelled as library-level or application-level.
    - Puppeteer-to-Playwright migration work, if any.
    - Suspected component defects, with the evidence and the expected behaviour.
    - Proposed files to create or modify.
@@ -80,7 +85,7 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 2. Augment valid existing tests rather than replacing them wholesale.
 3. Convert relevant Puppeteer-era tests to active Playwright tests and remove the converted commented blocks.
 4. Add only test patterns that apply to the component's actual contract.
-5. Create or extend the most appropriate Next.js fixture route with deterministic content and stable IDs.
+5. When the application layers are in the approved scope, create or extend the most appropriate fixture route in the consumer application with deterministic content and stable IDs.
 6. Use the repository's shared VRT helpers and established snapshot layout.
 7. Run the narrowest relevant validation after the first substantive edit, then repair and rerun that same check if it exposes a local defect.
 8. Run all approved component-level suites that the environment supports.
@@ -97,7 +102,7 @@ Enter this phase only after the user explicitly approves the proposal or supplie
 
 ## Testing Principles
 
-- Test the smallest appropriate layer: rendering logic in unit tests, browser behaviour in Stencil E2E, React integration in Next.js E2E, and meaningful visual states in VRT.
+- Test the smallest appropriate layer: rendering logic in unit tests, browser behaviour in Stencil E2E, framework binding and application behaviour in the consumer applications' tests, and meaningful visual states in VRT. Keep library tests self-contained, and do not add routing, multi-page flows, or application code to them.
 - Avoid duplicating identical assertions across layers unless they validate a framework boundary or critical contract.
 - Prefer role, label, text, and scoped locators. Use CSS selectors when validating a documented class or targeting shadow-DOM implementation that has no semantic locator.
 - Include English and French cases when the component owns localized output.

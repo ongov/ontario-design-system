@@ -2,19 +2,25 @@
 
 Use this reference after identifying the component under review. Existing nearby tests remain the primary style guide; this playbook identifies the repository-wide baseline.
 
+## Libraries and Applications
+
+The published npm packages are libraries, not applications. Library tests (the Stencil unit, E2E, and VRT layers) are atomic: one component at a time, rendered from self-contained markup, with no navigation, no flows across pages, no server behaviour, and no deployment. They must not depend on application code.
+
+The consumer applications (`app-nextjs`, `app-react`, and `app-angular`) are real applications that show the published packages working inside an app. Application-level behaviour is in scope in their tests. See [Consumer Applications](#consumer-applications) for which of them have tests.
+
 ## Paths and Ownership
 
-| Concern                  | Expected location                                                                                 |
-| ------------------------ | ------------------------------------------------------------------------------------------------- |
-| Component implementation | `packages/ontario-design-system-component-library/src/components/<component>/`                    |
-| Stencil tests            | `packages/ontario-design-system-component-library/src/components/<component>/test/`               |
-| Stencil unit             | `<component>.spec.tsx`                                                                            |
-| Stencil E2E              | `<component>.e2e.ts`                                                                              |
-| Stencil VRT              | `<component>.vrt.ts`                                                                              |
-| Stencil VRT baselines    | `packages/ontario-design-system-component-library/src/components/<component>/test/vrt-snapshots/` |
-| Next.js fixture          | `packages/app-nextjs/src/app/components/<route>/page.tsx`                                         |
-| Next.js tests            | `packages/app-nextjs/tests/<component>/`                                                          |
-| Next.js VRT baselines    | `packages/app-nextjs/tests/<component>/vrt-snapshots/`                                            |
+| Concern                     | Expected location                                                                                 |
+| --------------------------- | ------------------------------------------------------------------------------------------------- |
+| Component implementation    | `packages/ontario-design-system-component-library/src/components/<component>/`                    |
+| Stencil tests               | `packages/ontario-design-system-component-library/src/components/<component>/test/`               |
+| Stencil unit                | `<component>.spec.tsx`                                                                            |
+| Stencil E2E                 | `<component>.e2e.ts`                                                                              |
+| Stencil VRT                 | `<component>.vrt.ts`                                                                              |
+| Stencil VRT baselines       | `packages/ontario-design-system-component-library/src/components/<component>/test/vrt-snapshots/` |
+| App fixture (Next.js)       | `packages/app-nextjs/src/app/components/<route>/page.tsx`                                         |
+| App tests (Next.js)         | `packages/app-nextjs/tests/<component>/`                                                          |
+| App VRT baselines (Next.js) | `packages/app-nextjs/tests/<component>/vrt-snapshots/`                                            |
 
 Both Playwright configs store baselines beside the test file with the template `{testDir}/{testFileDir}/vrt-snapshots/{arg}-{projectName}{ext}`. The screenshot name comes from the describe and test titles plus a counter, and the browser (`chromium`, `firefox`, or `webkit`) is the suffix. A component that has all three browsers has three files for every screenshot.
 
@@ -24,21 +30,23 @@ A child or tightly composed component may use a parent fixture route. Prefer ext
 
 Build a component-specific matrix. Do not mechanically add every row.
 
-| Pattern                   | Unit                          | Stencil E2E                  | Stencil VRT                | Next.js E2E                   | Next.js VRT                |
-| ------------------------- | ----------------------------- | ---------------------------- | -------------------------- | ----------------------------- | -------------------------- |
-| Empty/default render      | Yes                           | Hydration smoke check        | Default appearance         | Wrapper smoke check           | Default appearance         |
-| Properties and defaults   | Yes                           | Browser-observable effects   | Visual variants            | React prop binding            | Visual variants            |
-| Slots/children            | Conditional DOM               | Projection and interaction   | Meaningful layouts         | React child/slot integration  | Meaningful layouts         |
-| Events                    | Emission logic when practical | Event name, count, detail    | No                         | React callback integration    | No                         |
-| Public methods            | Logic when practical          | Browser result               | Resulting state if visual  | Wrapper exposure if relevant  | Resulting state if visual  |
-| Validation/warnings       | Yes                           | User-visible result          | Invalid state if visual    | Wrapper behaviour             | Invalid state if visual    |
-| Keyboard/focus            | No                            | Yes                          | Focus/active states        | Framework integration         | Focus/active states        |
-| Pointer/mouse             | No                            | Click and pointer behaviour  | Hover/active states        | Framework integration         | Hover/active states        |
-| Accessibility             | Structural assertions         | Roles, names, ARIA, axe      | No                         | Integration semantics         | No                         |
-| Colour contrast           | Token logic only              | Axe and state checks         | Regression signal only     | Check when context affects it | Regression signal only     |
-| Localization              | Owned string logic            | English/French output        | Distinct layouts if needed | Prop forwarding               | Distinct layouts if needed |
-| Breakpoint responsiveness | No                            | Boundaries used by component | One viewport per layout    | Context and wrapper changes   | One viewport per layout    |
-| Form integration          | Logic only                    | Native browser behaviour     | Relevant states            | React form behaviour          | Relevant states            |
+| Pattern                   | Unit                          | Stencil E2E                  | Stencil VRT                | App E2E                          | App VRT                    |
+| ------------------------- | ----------------------------- | ---------------------------- | -------------------------- | -------------------------------- | -------------------------- |
+| Empty/default render      | Yes                           | Hydration smoke check        | Default appearance         | Wrapper smoke check              | Default appearance         |
+| Properties and defaults   | Yes                           | Browser-observable effects   | Visual variants            | Framework prop binding           | Visual variants            |
+| Slots/children            | Conditional DOM               | Projection and interaction   | Meaningful layouts         | Framework child/slot integration | Meaningful layouts         |
+| Events                    | Emission logic when practical | Event name, count, detail    | No                         | Framework callback integration   | No                         |
+| Public methods            | Logic when practical          | Browser result               | Resulting state if visual  | Wrapper exposure if relevant     | Resulting state if visual  |
+| Validation/warnings       | Yes                           | User-visible result          | Invalid state if visual    | Wrapper behaviour                | Invalid state if visual    |
+| Keyboard/focus            | No                            | Yes                          | Focus/active states        | Framework integration            | Focus/active states        |
+| Pointer/mouse             | No                            | Click and pointer behaviour  | Hover/active states        | Framework integration            | Hover/active states        |
+| Accessibility             | Structural assertions         | Roles, names, ARIA, axe      | No                         | Integration semantics            | No                         |
+| Colour contrast           | Token logic only              | Axe and state checks         | Regression signal only     | Check when context affects it    | Regression signal only     |
+| Localization              | Owned string logic            | English/French output        | Distinct layouts if needed | Prop forwarding                  | Distinct layouts if needed |
+| Breakpoint responsiveness | No                            | Boundaries used by component | One viewport per layout    | Context and wrapper changes      | One viewport per layout    |
+| Form integration          | Logic only                    | Native browser behaviour     | Relevant states            | Framework form behaviour         | Relevant states            |
+
+The two App columns apply to the consumer applications that have tests (see Consumer Applications). Treat them as context unless the application layers are in scope.
 
 Avoid repeating implementation-class assertions in every layer. Duplication is justified when it proves that a public contract survives Stencil rendering and React wrapping.
 
@@ -298,6 +306,26 @@ The `test:update-snapshots` package script updates every VRT file in the package
 
 The CI VRT job runs in the pinned Playwright Linux container (`mcr.microsoft.com/playwright`). On Linux, baselines generated locally with the matching Playwright browsers have matched CI when the screenshots load the global styles, and the CI job is the confirmation. On macOS, text rendering differs, so generate baselines with the Docker script (`pnpm run test:update-snapshots:docker`), which runs the VRT suite in the CI image.
 
+## Consumer Applications
+
+The consumer applications are real applications. They exist to show the published packages working inside an app, so application-level behaviour (routing, server rendering, page structure, and inherited application styles) belongs in their tests, unlike in the library layers. Checking whether a component is also exercised in an application is useful context for a review. Do not treat missing application coverage as a gap unless the application layers are in scope.
+
+| Application   | Uses                                                     | Status  | Test layers today                                                    | Location                                 |
+| ------------- | -------------------------------------------------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------- |
+| `app-nextjs`  | `@ongov/ontario-design-system-component-library-react`   | Active  | Playwright E2E and VRT                                               | `packages/app-nextjs/tests/<component>/` |
+| `app-react`   | `@ongov/ontario-design-system-component-library-react`   | Planned | None. The `test` script is a placeholder.                            | Not set up yet                           |
+| `app-angular` | `@ongov/ontario-design-system-component-library-angular` | Planned | None. The `test` script runs `ng test`, but there are no spec files. | Not set up yet                           |
+
+Keep this table current. When an application gets tests, change its status, list its test layers and location, and add a section for it below in the style of the Next.js sections. The rest of this playbook and the skill refer to this table and do not need to change.
+
+### React app (planned)
+
+No tests yet. Replace this paragraph with the paths, commands, and patterns for the React application when its tests exist.
+
+### Angular app (planned)
+
+No tests yet. Replace this paragraph with the paths, commands, and patterns for the Angular application when its tests exist.
+
 ## Next.js Fixture Pages
 
 Use the React wrappers from `@ongov/ontario-design-system-component-library-react`. Add deterministic examples for each tested contract and assign stable, descriptive IDs to screenshot hosts and integration targets.
@@ -308,7 +336,7 @@ The fixture must expose enough states for both E2E and VRT without embedding tes
 
 ## Next.js Playwright E2E
 
-Navigate in `beforeEach` to `/components/<route>`. Test the React boundary rather than duplicating all Stencil internals:
+Navigate in `beforeEach` to `/components/<route>`. This is an application, so application-level behaviour is in scope. Test the React boundary and the component as the application consumes it, rather than duplicating all Stencil internals:
 
 - Primitive, object, boolean, and optional prop forwarding.
 - React children and named-slot composition.
@@ -317,6 +345,9 @@ Navigate in `beforeEach` to `/components/<route>`. Test the React boundary rathe
 - Mouse and pointer integration, including click outcomes, hover behaviour, and disabled controls when applicable.
 - Form, navigation, and client-state integration.
 - Semantic output that could be affected by the wrapper.
+- Server rendering of the wrapped component, for example slot forwarding when the page is rendered on the server.
+- Page structure that the component takes part in, such as landmarks and skip links.
+- Styles inherited from the application.
 
 Prefer web-first assertions. Set up dialog, navigation, or event waits before triggering the action.
 

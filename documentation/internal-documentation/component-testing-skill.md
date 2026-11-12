@@ -28,9 +28,15 @@ Name the component. The agent can also pick the skill itself from a request that
 | OpenCode                                 | Mention the skill with `@component-testing`, for example `@component-testing review the tests for ontario-blockquote`, or ask in a sentence. |
 | Another tool that reads `.agents/skills` | Ask for the `component-testing` skill by name.                                                                                               |
 
+## Libraries and applications
+
+The published npm packages are libraries, so the library tests are atomic: one component at a time, with no navigation, no flows across pages, and no deployment. The Next.js, React, and Angular apps are real applications that show the published packages working inside an app, so application-level behaviour is in scope in their tests. Not every application has tests yet. The playbook keeps a table of the applications and their status, and the skill reads it, so the table is the one place to update when the React and Angular apps get tests.
+
+By default the agent notes whether a component is also exercised in the consumer applications, as context. It only treats missing application coverage as a gap when you include the application layers in the request.
+
 ## Narrow the scope
 
-You can limit the work to specific test layers or areas by saying so in the request. The agent reads the request, limits both phases to what you name, and gives gaps outside that scope a single line in its report. The layers are Stencil unit tests, Stencil Playwright E2E, Stencil Playwright VRT, the Next.js fixture, Next.js Playwright E2E, and Next.js Playwright VRT. Areas include accessibility, keyboard behaviour, form integration, responsive behaviour, localization, and migrating legacy Puppeteer tests.
+You can limit the work to specific test layers or areas by saying so in the request. The agent reads the request, limits both phases to what you name, and gives gaps outside that scope a single line in its report. The library layers are Stencil unit tests, Stencil Playwright E2E, and Stencil Playwright VRT. The application layers are the fixture page and the E2E and VRT tests of the consumer applications that the playbook lists as having tests. Areas include accessibility, keyboard behaviour, form integration, responsive behaviour, localization, and migrating legacy Puppeteer tests.
 
 Examples of full requests:
 
@@ -38,6 +44,8 @@ Examples of full requests:
 - "Use the component-testing skill to review the unit and E2E tests for ontario-button. Skip VRT and the Next.js app."
 - "Use the component-testing skill to add Stencil E2E coverage for keyboard behaviour and form integration in ontario-button."
 - "Use the component-testing skill to review only the VRT coverage for ontario-blockquote, including a narrow viewport and the French layout."
+- "Use the component-testing skill to review only the library layers for ontario-button."
+- "Use the component-testing skill to check whether ontario-header is also covered in the consumer applications."
 - "Use the component-testing skill to migrate the commented-out Puppeteer tests for ontario-textarea to Playwright."
 
 If the request leaves the scope unclear, the agent asks before it starts.
