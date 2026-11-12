@@ -13,7 +13,7 @@ Repo-level docs live in `documentation/`, automation scripts in `scripts/`, Dock
 
 ## Build, Test, and Development Commands
 
-Use Node `22.22.x` and `pnpm 10.2.x` as defined by `.nvmrc` and `package.json`.
+Use Node `24.18.x` (see `.nvmrc`) and `pnpm 11.25.x` (see the `packageManager` field in `package.json`).
 
 - `pnpm install`: install workspace dependencies.
 - `pnpm run build-libs`: build all Ontario Design System libraries.
