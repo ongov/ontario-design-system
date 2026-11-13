@@ -3,7 +3,8 @@ import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { Fieldset } from './ontario-fieldset.interface';
 
 import { CaptionType, CaptionTypes } from '../../utils/common/input-caption/input-caption.types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { validatePropExists, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { OntarioFormContainer, FormGap } from '../../utils/components/form-container/form-container.interface';
 
@@ -55,15 +56,13 @@ export class OntarioFieldset implements Fieldset {
 		if (isValid) {
 			return this.legendSize;
 		} else {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(` legendSize ${this.legendSize} `)
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-fieldset> ')
-				.addRegularText('is not a valid type. A default size will be applied.')
-				.printMessage();
-
+			printInvalidPropWarning({
+				propName: 'legendSize',
+				componentTag: '<ontario-fieldset>',
+				propValue: this.legendSize,
+				allowedValues: CaptionTypes,
+				defaultValue: 'default',
+			});
 			return (this.legendSize = 'default'); // Ensure hydration matches server render for SSR compatibility
 		}
 	}
@@ -81,14 +80,7 @@ export class OntarioFieldset implements Fieldset {
 	 */
 	validateLegendText(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' legend ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-fieldset> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'legend', componentTag: '<ontario-fieldset>' });
 		}
 	}
 

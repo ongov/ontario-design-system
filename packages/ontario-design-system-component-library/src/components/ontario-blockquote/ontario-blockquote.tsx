@@ -3,7 +3,7 @@ import { Component, h, Element, Prop, State, Watch } from '@stencil/core';
 import { Blockquote } from './blockquote.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
 import { isServerSideRendering } from '../../utils/common/environment';
 
 /**
@@ -68,14 +68,7 @@ export class OntarioBlockquote implements Blockquote {
 	 */
 	validateQuoteContent(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' quote ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-blockquote> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'quote', componentTag: '<ontario-blockquote>' });
 		}
 	}
 

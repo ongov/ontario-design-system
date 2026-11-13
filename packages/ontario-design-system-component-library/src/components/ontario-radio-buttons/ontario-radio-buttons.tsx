@@ -12,7 +12,11 @@ import {
 	validatePropExists,
 	validateLanguage,
 } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import {
+	printInvalidFormatWarning,
+	printMissingPropWarning,
+	printParseErrorMessage,
+} from '../../utils/validation/component-message';
 import { Language } from '../../utils/common/language-types';
 import { constructHintTextObject } from '../../utils/components/hints/hints';
 import {
@@ -22,7 +26,6 @@ import {
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
-import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import { default as translations } from '../../translations/global.i18n.json';
@@ -284,15 +287,7 @@ export class OntarioRadioButtons implements RadioButtons {
 				if (typeof hintExpander === 'string') this.internalHintExpander = JSON.parse(hintExpander);
 				else this.internalHintExpander = hintExpander;
 			} catch (error) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' hintExpander ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-radio-buttons> ')
-					.addRegularText('was not provided in a valid format')
-					.addMonospaceText(error.stack)
-					.printMessage(ConsoleType.Error);
+				printParseErrorMessage({ propName: 'hintExpander', componentTag: '<ontario-radio-buttons>', error });
 			}
 		}
 	}
@@ -312,15 +307,7 @@ export class OntarioRadioButtons implements RadioButtons {
 					this.internalOptions = this.options;
 				}
 			} catch (error) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' options ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-radio-buttons> ')
-					.addRegularText('was not provided in a valid format')
-					.addMonospaceText(error.stack)
-					.printMessage(ConsoleType.Error);
+				printParseErrorMessage({ propName: 'options', componentTag: '<ontario-radio-buttons>', error });
 			}
 		}
 
@@ -336,14 +323,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' name ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-radio-buttons> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-radio-buttons>' });
 		}
 	}
 
@@ -356,14 +336,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	@Watch('options')
 	validateOptions(newValue: object) {
 		if (validateObjectExists(newValue)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' options ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-radio-buttons> ')
-				.addRegularText('was not provided')
-				.printMessage();
+			printMissingPropWarning({ propName: 'options', componentTag: '<ontario-radio-buttons>' });
 		}
 	}
 
@@ -486,14 +459,13 @@ export class OntarioRadioButtons implements RadioButtons {
 
 		// Case 3: a non-empty value was provided but did not match any option; warn and fall back.
 		if (this.value) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' value ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-radio-buttons> ')
-				.addRegularText('did not match any option values. Falling back to the checked option.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'value',
+				componentTag: '<ontario-radio-buttons>',
+				expected: 'a value that matches one of the option values',
+				received: this.value,
+				consequence: 'Falling back to the checked option.',
+			});
 		}
 
 		// Case 4: value is undefined (prop was never set); derive the value from whichever option

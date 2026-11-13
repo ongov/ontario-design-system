@@ -7,7 +7,9 @@ import {
 	summaryListRatioMap,
 	SummaryListActionLink,
 } from './ontario-summary-list-types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
+import { printInvalidFormatWarning, printMissingPropWarning } from '../../utils/validation/component-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { Language } from '../../utils/common/language-types';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import {
@@ -80,31 +82,20 @@ export class OntarioSummaryList {
 	@Watch('caption')
 	validateCaption(newValue: string) {
 		if (validatePropExists(newValue)) {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addRegularText(' The ')
-				.addMonospaceText('caption')
-				.addRegularText(' prop is required for ')
-				.addMonospaceText('<ontario-summary-list>')
-				.addRegularText('. Please provide a caption value.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'caption', componentTag: '<ontario-summary-list>' });
 		}
 	}
 
 	@Watch('headingLevel')
 	validateHeadingLevel(newValue: string) {
 		if (!validateValueAgainstArray(newValue, summaryListHeadingLevelDefinitions)) {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addMonospaceText(' headingLevel ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-summary-list> ')
-				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText([...summaryListHeadingLevelDefinitions].join(', '))
-				.addRegularText(' are supported. The default value ')
-				.addMonospaceText('h3')
-				.addRegularText(' is assumed.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'headingLevel',
+				componentTag: '<ontario-summary-list>',
+				propValue: newValue,
+				allowedValues: summaryListHeadingLevelDefinitions,
+				defaultValue: 'h3',
+			});
 
 			this.headingLevel = 'h3';
 		}
@@ -113,14 +104,13 @@ export class OntarioSummaryList {
 	@Watch('columnRatio')
 	validateColumnRatio(newValue?: SummaryListColumnRatio) {
 		if (newValue && !validateValueAgainstArray(newValue, summaryListColumnRatioDefinitions)) {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addMonospaceText(' columnRatio ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-summary-list> ')
-				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText([...summaryListColumnRatioDefinitions].join(', '))
-				.addRegularText(' are supported. The prop was ignored and equal column widths are assumed.');
+			printInvalidFormatWarning({
+				propName: 'columnRatio',
+				componentTag: '<ontario-summary-list>',
+				expected: `one of ${printArray(summaryListColumnRatioDefinitions, 'or')}`,
+				received: newValue,
+				consequence: 'The prop was ignored and equal column widths are assumed.',
+			});
 			this.columnRatio = undefined;
 		}
 	}
@@ -173,15 +163,12 @@ export class OntarioSummaryList {
 				label: typeof parsed.label === 'string' && parsed.label.trim().length > 0 ? parsed.label : undefined,
 			};
 		} catch {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addMonospaceText(' captionActionLink ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-summary-list> ')
-				.addRegularText('must be an object or JSON string with a required ')
-				.addMonospaceText('href')
-				.addRegularText(' value. The prop was ignored.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'captionActionLink',
+				componentTag: '<ontario-summary-list>',
+				expected: 'an object or JSON string with a required href value',
+				consequence: 'The prop was ignored.',
+			});
 
 			return undefined;
 		}

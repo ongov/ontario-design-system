@@ -10,7 +10,7 @@ import {
 	CardState,
 } from './ontario-card-types';
 import { headingLevelDefinitions, HeadingLevel } from '../../utils/common/common.interface';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
 import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
@@ -229,14 +229,11 @@ export class OntarioCard {
 	@Watch('label')
 	private validateLabel() {
 		if (!this.label || this.label.trim() === '') {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' label ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-card> ')
-				.addRegularText('was not provided. This may result in inaccessible or empty content.')
-				.printMessage();
+			printMissingPropWarning({
+				propName: 'label',
+				componentTag: '<ontario-card>',
+				consequence: 'This may result in inaccessible or empty content.',
+			});
 		}
 	}
 

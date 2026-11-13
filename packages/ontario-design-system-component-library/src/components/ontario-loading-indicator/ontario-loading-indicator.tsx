@@ -2,7 +2,7 @@ import { Component, h, Prop, Listen, State, Watch } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import translations from '../../translations/global.i18n.json';
 
@@ -107,18 +107,12 @@ export class OntarioLoadingIndicator {
 	 * @returns default type ('large')
 	 */
 	private warnDefaultType() {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' type ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-loading-indicator> ')
-			.addRegularText('was set to an invalid type; only')
-			.addMonospaceText(' large or small ')
-			.addRegularText('are supported. The default type')
-			.addMonospaceText(' large ')
-			.addRegularText('is assumed.')
-			.printMessage();
+		printInvalidPropWarning({
+			propName: 'type',
+			componentTag: '<ontario-loading-indicator>',
+			allowedValues: ['large', 'small'],
+			defaultValue: 'large',
+		});
 	}
 
 	componentWillLoad() {

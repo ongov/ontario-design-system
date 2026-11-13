@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Listen, Prop, State, Watch 
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printConflictingConfigWarning } from '../../utils/validation/component-message';
 import { isClientSideRendering } from '../../utils/common/environment';
 import translations from '../../translations/global.i18n.json';
 
@@ -87,18 +87,12 @@ export class OntarioBackButton {
 	@Watch('href')
 	validateConfiguration() {
 		if (this.backMode === 'href' && !this.href) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' backMode="href" ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-back-button> ')
-				.addRegularText('requires')
-				.addMonospaceText(' href ')
-				.addRegularText('to be provided. The component will render as a button and emit only')
-				.addMonospaceText(' backClick ')
-				.addRegularText('until href is set.')
-				.printMessage();
+			printConflictingConfigWarning({
+				componentTag: '<ontario-back-button>',
+				propName: 'backMode="href"',
+				description:
+					'requires `href` to be provided. The component will render as a button and emit only `backClick` until href is set.',
+			});
 		}
 	}
 

@@ -2,7 +2,9 @@ import { Component, Prop, Watch } from '@stencil/core';
 
 import {
 	CalloutAside,
+	HeadingLevel,
 	HeadingLevelOptions,
+	HighlightColours,
 	HeadingContentType,
 	HeadingContentTypes,
 	HighlightColourOptions,
@@ -13,8 +15,9 @@ import {
 	isValidHeadingLevel,
 } from '../../utils/components/callout-aside/callout-aside-helpers';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
 import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
+import { printInvalidFormatWarning } from '../../utils/validation/component-message';
 
 /**
  * Ontario Callout is used for supplementary, in-flow guidance that supports nearby content without elevating to a page-level alert.
@@ -69,14 +72,12 @@ export class OntarioCallout implements CalloutAside {
 		if (!!this.headingType) {
 			if (isValidHeadingLevel(this.headingType)) return this.headingType;
 
-			const message = new ConsoleMessageClass();
-			return message
-				.addDesignSystemTag()
-				.addMonospaceText(` headingType ${this.headingType} `)
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-callout> ')
-				.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
-				.printMessage();
+			return printInvalidFormatWarning({
+				propName: 'headingType',
+				componentTag: '<ontario-callout>',
+				expected: `one of ${printArray(HeadingLevel, 'or')}`,
+				received: this.headingType,
+			});
 		}
 	}
 
@@ -106,16 +107,13 @@ export class OntarioCallout implements CalloutAside {
 		if (this.highlightColour) {
 			if (isValidHighlightColour(this.highlightColour)) return this.highlightColour;
 			else {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(` highlightColour ${this.highlightColour} `)
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-callout> ')
-					.addRegularText(
-						'does not match one of the valid highlightColour types. A default colour of `teal` will be applied.',
-					)
-					.printMessage();
+				printInvalidPropWarning({
+					propName: 'highlightColour',
+					componentTag: '<ontario-callout>',
+					propValue: this.highlightColour,
+					allowedValues: HighlightColours,
+					defaultValue: 'teal',
+				});
 			}
 		}
 

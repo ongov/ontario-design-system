@@ -180,5 +180,17 @@ describe('ontario-dropdown-list', () => {
 				value: 'dropdown-option-2',
 			});
 		});
+
+		it('should print an error when options cannot be parsed', async () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+
+			await render(
+				`<ontario-dropdown-list element-id="dropdown-list" options='not valid json'></ontario-dropdown-list>`,
+			);
+
+			expect(errorSpy).toHaveBeenCalled();
+
+			errorSpy.mockRestore();
+		});
 	});
 });

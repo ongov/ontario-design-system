@@ -12,7 +12,7 @@ import {
 	DateValidatorReturnType,
 } from './ontario-date-input-interface';
 import { ErrorMessage } from '../../utils/components/error-message/error-message';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidFormatWarning, printParseErrorMessage } from '../../utils/validation/component-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { InputCaption } from '../../utils/common/input-caption/input-caption';
 import { Caption } from '../../utils/common/input-caption/caption.interface';
@@ -329,16 +329,11 @@ export class OntarioDateInput {
 				this.dateOptionsState = isString ? JSON.parse(options) : options;
 			}
 		} catch (error) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addRegularText(' failed to parse props for ')
-				.addMonospaceText('<ontario-date-input>')
-				.addRegularText(' in ')
-				.addMonospaceText('parseOptions()')
-				.addRegularText(' method \n ')
-				.addMonospaceText(error.stack)
-				.printMessage(ConsoleType.Error);
+			printParseErrorMessage({
+				propName: options === this.placeholder ? 'placeholder' : 'dateOptions',
+				componentTag: '<ontario-date-input>',
+				error,
+			});
 		}
 	}
 
@@ -386,27 +381,13 @@ export class OntarioDateInput {
 	}
 
 	private logInvalidValueProp(value: unknown) {
-		const message = new ConsoleMessageClass();
-		const formattedValue =
-			typeof value === 'string'
-				? value
-				: (() => {
-						try {
-							return JSON.stringify(value);
-						} catch {
-							return String(value);
-						}
-					})();
-		message
-			.addDesignSystemTag()
-			.addRegularText(' invalid ')
-			.addMonospaceText(' value ')
-			.addRegularText('on')
-			.addMonospaceText(' <ontario-date-input> ')
-			.addRegularText('received')
-			.addMonospaceText(` ${formattedValue} `)
-			.addRegularText('Expected a plain ISO date (`YYYY-MM-DD`) or full ISO 8601 timestamp.')
-			.printMessage(ConsoleType.Error);
+		printInvalidFormatWarning({
+			propName: 'value',
+			componentTag: '<ontario-date-input>',
+			expected: 'a plain ISO date (`YYYY-MM-DD`) or full ISO 8601 timestamp',
+			received: value,
+			severity: ConsoleType.Error,
+		});
 	}
 
 	private resetErrorState = () => {

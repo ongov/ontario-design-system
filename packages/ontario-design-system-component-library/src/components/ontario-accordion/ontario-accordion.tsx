@@ -6,7 +6,7 @@ import { ExpandCollapseButtonDetails } from './expandCollapseButtonDetails.inter
 
 import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printParseErrorMessage } from '../../utils/validation/component-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 
 import translations from '../../translations/global.i18n.json';
@@ -170,15 +170,8 @@ export class OntarioAccordion {
 				openIndexes: this.openAccordionIndexes,
 				reason: AccordionChangeDetailReasons.Init,
 			});
-		} catch {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' accordionData ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-accordion> ')
-				.addRegularText('could not be parsed. Please ensure it is valid JSON.')
-				.printMessage();
+		} catch (error) {
+			printParseErrorMessage({ propName: 'accordionData', componentTag: '<ontario-accordion>', error });
 
 			this.internalAccordionData = [];
 			this.openAccordionIndexes = [];
@@ -201,15 +194,8 @@ export class OntarioAccordion {
 			if (typeof this.expandCollapseButton === 'string') {
 				try {
 					this.internalExpandCollapseLabelDetails = JSON.parse(this.expandCollapseButton);
-				} catch {
-					const message = new ConsoleMessageClass();
-					message
-						.addDesignSystemTag()
-						.addMonospaceText(' expandCollapseButton ')
-						.addRegularText('for')
-						.addMonospaceText(' <ontario-accordion> ')
-						.addRegularText('could not be parsed from a string. Please ensure it is valid JSON.')
-						.printMessage();
+				} catch (error) {
+					printParseErrorMessage({ propName: 'expandCollapseButton', componentTag: '<ontario-accordion>', error });
 				}
 			} else {
 				this.internalExpandCollapseLabelDetails = this.expandCollapseButton;

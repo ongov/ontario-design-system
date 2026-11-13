@@ -3,7 +3,7 @@ import { Language } from '../../utils/common/language-types';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printConflictingConfigWarning } from '../../utils/validation/component-message';
 
 /**
  * Ontario Step Indicator communicates progress through multi-step flows.
@@ -116,12 +116,7 @@ export class OntarioStepIndicator {
 	}
 
 	private warnConfiguration(messageText: string) {
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addMonospaceText(' <ontario-step-indicator> ')
-			.addRegularText(messageText)
-			.printMessage();
+		printConflictingConfigWarning({ componentTag: '<ontario-step-indicator>', description: messageText });
 	}
 
 	private validateConfiguration() {

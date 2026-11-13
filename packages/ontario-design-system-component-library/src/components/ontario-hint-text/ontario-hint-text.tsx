@@ -4,7 +4,8 @@ import { v4 as uuid } from 'uuid';
 import { Hint, HintContentType } from '../../utils/common/common.interface';
 
 import { validatePropExists } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printMissingPropWarning } from '../../utils/validation/component-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 
 /**
  * Ontario Hint Text provides concise supporting instructions for form controls.
@@ -62,14 +63,13 @@ export class OntarioHintText implements Hint {
 	@Watch('hintContentType')
 	private checkHintContentType() {
 		if (this.hintContentType !== 'string' && this.hintContentType !== 'html') {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' hintContentType ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-hint-text> ')
-				.addRegularText('was not one of the permitted types. A default type of `string` will be applied.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'hintContentType',
+				componentTag: '<ontario-hint-text>',
+				allowedValues: ['string', 'html'],
+				defaultValue: 'string',
+				invalidDescriptor: 'type',
+			});
 
 			return (this.hintContentType = 'string');
 		}
@@ -95,14 +95,7 @@ export class OntarioHintText implements Hint {
 		// If element content is not provided, check whether prop exists
 		if (!this.host.textContent) {
 			if (validatePropExists(newValue)) {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(' hint ')
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-hint-text> ')
-					.addRegularText('was not provided')
-					.printMessage();
+				printMissingPropWarning({ propName: 'hint', componentTag: '<ontario-hint-text>' });
 			}
 		}
 	}

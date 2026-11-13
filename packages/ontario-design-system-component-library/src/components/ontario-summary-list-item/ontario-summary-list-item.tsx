@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, Watch, Listen, h } from '@stencil/core';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidFormatWarning, printMissingPropWarning } from '../../utils/validation/component-message';
 import { Language } from '../../utils/common/language-types';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
 import { validateLanguage, validatePropExists } from '../../utils/validation/validation-functions';
@@ -58,28 +58,14 @@ export class OntarioSummaryListItem {
 	@Watch('name')
 	validateName(newValue: string) {
 		if (validatePropExists(newValue)) {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addRegularText(' The ')
-				.addMonospaceText('name')
-				.addRegularText(' prop is required for ')
-				.addMonospaceText('<ontario-summary-list-item>')
-				.addRegularText('. Please provide a name value.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'name', componentTag: '<ontario-summary-list-item>' });
 		}
 	}
 
 	@Watch('description')
 	validateDescription(newValue: string) {
 		if (validatePropExists(newValue)) {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addRegularText(' The ')
-				.addMonospaceText('description')
-				.addRegularText(' prop is required for ')
-				.addMonospaceText('<ontario-summary-list-item>')
-				.addRegularText('. Please provide a description value.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'description', componentTag: '<ontario-summary-list-item>' });
 		}
 	}
 
@@ -130,15 +116,12 @@ export class OntarioSummaryListItem {
 				label: typeof parsed.label === 'string' && parsed.label.trim().length > 0 ? parsed.label : undefined,
 			};
 		} catch {
-			new ConsoleMessageClass()
-				.addDesignSystemTag()
-				.addMonospaceText(' actionLink ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-summary-list-item> ')
-				.addRegularText('must be an object or JSON string with a required ')
-				.addMonospaceText('href')
-				.addRegularText(' value. The prop was ignored.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'actionLink',
+				componentTag: '<ontario-summary-list-item>',
+				expected: 'an object or JSON string with a required href value',
+				consequence: 'The prop was ignored.',
+			});
 
 			return undefined;
 		}

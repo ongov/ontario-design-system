@@ -1,6 +1,6 @@
 import { h, Component, Element, Prop, State, Watch } from '@stencil/core';
 import { Language } from '../../utils/common/language-types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 import translations from '../../translations/global.i18n.json';
 import { HeadingLevel } from '../../utils/common/common.interface';
@@ -72,18 +72,13 @@ export class OntarioTaskList {
 		const isValid = validateValueAgainstArray(newValue, allowedValues);
 
 		if (!isValid) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' headingLevel ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-task-list> ')
-				.addRegularText('was set to an invalid value; only ')
-				.addMonospaceText(allowedValues.join(', '))
-				.addRegularText(' are supported. The default value ')
-				.addMonospaceText('h2')
-				.addRegularText(' is assumed.')
-				.printMessage();
+			printInvalidPropWarning({
+				propName: 'headingLevel',
+				componentTag: '<ontario-task-list>',
+				propValue: newValue,
+				allowedValues,
+				defaultValue: 'h2',
+			});
 
 			this.headingLevel = 'h2';
 		}

@@ -2,7 +2,9 @@ import { Component, Prop, Watch } from '@stencil/core';
 
 import {
 	CalloutAside,
+	HeadingLevel,
 	HeadingLevelOptions,
+	HighlightColours,
 	HeadingContentType,
 	HeadingContentTypes,
 	HighlightColourOptions,
@@ -13,8 +15,9 @@ import {
 	isValidHeadingLevel,
 } from '../../utils/components/callout-aside/callout-aside-helpers';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printArray } from '../../utils/helper/utils';
 import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
+import { printInvalidFormatWarning } from '../../utils/validation/component-message';
 
 /**
  * Ontario Aside is used for related, non-essential information that supports content beside the main task flow.
@@ -70,14 +73,12 @@ export class OntarioAside implements CalloutAside {
 		if (!!this.headingType) {
 			if (isValidHeadingLevel(this.headingType)) return this.headingType;
 
-			const message = new ConsoleMessageClass();
-			return message
-				.addDesignSystemTag()
-				.addMonospaceText(` headingType ${this.headingType} `)
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-aside> ')
-				.addRegularText('is not a valid type. Please ensure your heading type matches one of the headingType types.')
-				.printMessage();
+			return printInvalidFormatWarning({
+				propName: 'headingType',
+				componentTag: '<ontario-aside>',
+				expected: `one of ${printArray(HeadingLevel, 'or')}`,
+				received: this.headingType,
+			});
 		}
 	}
 
@@ -107,16 +108,13 @@ export class OntarioAside implements CalloutAside {
 		if (this.highlightColour) {
 			if (isValidHighlightColour(this.highlightColour)) return this.highlightColour;
 			else {
-				const message = new ConsoleMessageClass();
-				message
-					.addDesignSystemTag()
-					.addMonospaceText(` highlightColour ${this.highlightColour} `)
-					.addRegularText('for')
-					.addMonospaceText(' <ontario-aside> ')
-					.addRegularText(
-						'does not match one of the valid highlightColour types. A default colour of `teal` will be applied.',
-					)
-					.printMessage();
+				printInvalidPropWarning({
+					propName: 'highlightColour',
+					componentTag: '<ontario-aside>',
+					propValue: this.highlightColour,
+					allowedValues: HighlightColours,
+					defaultValue: 'teal',
+				});
 			}
 		}
 

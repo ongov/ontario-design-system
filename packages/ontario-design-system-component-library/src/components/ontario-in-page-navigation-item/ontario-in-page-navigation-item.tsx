@@ -1,7 +1,7 @@
 import { Component, Prop, h, Host, Watch, State, Element } from '@stencil/core';
 
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/common/language-types';
+import { printInvalidFormatWarning, printMissingPropWarning } from '../../utils/validation/component-message';
 import { validateLanguage } from '../../utils/validation/validation-functions';
 
 /**
@@ -76,14 +76,7 @@ export class OntarioInPageNavigationItem {
 		}
 
 		if (!this.label?.trim()) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' label ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-in-page-navigation-item> ')
-				.addRegularText('was not provided.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'label', componentTag: '<ontario-in-page-navigation-item>' });
 		}
 	}
 
@@ -97,27 +90,17 @@ export class OntarioInPageNavigationItem {
 		}
 
 		if (!this.href?.trim()) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' href ')
-				.addRegularText('for')
-				.addMonospaceText(' <ontario-in-page-navigation-item> ')
-				.addRegularText('was not provided.')
-				.printMessage();
+			printMissingPropWarning({ propName: 'href', componentTag: '<ontario-in-page-navigation-item>' });
 			return;
 		}
 
 		if (!this.href.trim().startsWith('#')) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' href ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-in-page-navigation-item> ')
-				.addRegularText('must be an in-page anchor that starts with')
-				.addMonospaceText(' # ')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'href',
+				componentTag: '<ontario-in-page-navigation-item>',
+				expected: 'an in-page anchor that starts with #',
+				received: this.href,
+			});
 		}
 	}
 

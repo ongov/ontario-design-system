@@ -2,7 +2,7 @@
 import { Component, Prop, h, Watch, State, Element } from '@stencil/core';
 import { Icon } from './icon.interface';
 import { IconSize } from './icon.types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printConflictingConfigWarning, printInvalidFormatWarning } from '../../utils/validation/component-message';
 
 @Component({
 	tag: 'ontario-icon-alert-error',
@@ -38,18 +38,13 @@ export class OntarioIconAlertError implements Icon {
 	@Watch('iconWidth')
 	validateWidth() {
 		if (isNaN(this.iconWidth) || (!isNaN(this.iconWidth) && this.iconWidth <= 0)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' icon-width ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-alert-error> ')
-				.addRegularText(
-					`${isNaN(this.iconWidth) ? 'was set to a non-numeric value' : 'was set to a negative number'}; only a positive number is allowed. The default size of`,
-				)
-				.addMonospaceText(' 24px ')
-				.addRegularText('was assumed.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'icon-width',
+				componentTag: '<ontario-icon-alert-error>',
+				received: this.iconWidth,
+				expected: 'a positive number',
+				consequence: 'The default size of 24px was assumed.',
+			});
 			this.iconWidthState = 24;
 		} else {
 			this.iconWidthState = this.iconWidth;
@@ -68,14 +63,11 @@ export class OntarioIconAlertError implements Icon {
 	 */
 	validateColour() {
 		if (this.host.hasAttribute('colour')) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' colour ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-icon-alert-error> ')
-				.addRegularText('cannot be set. The provided colour is ignored.')
-				.printMessage();
+			printConflictingConfigWarning({
+				propName: 'colour',
+				componentTag: '<ontario-icon-alert-error>',
+				description: 'cannot be set. The provided colour is ignored.',
+			});
 		}
 	}
 

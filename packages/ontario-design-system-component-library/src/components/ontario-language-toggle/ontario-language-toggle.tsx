@@ -2,9 +2,9 @@ import { Component, Prop, State, Event, EventEmitter, Watch, h, Fragment } from 
 
 import { supportedLanguages, Language } from '../../utils/common/language-types';
 import { isClientSideRendering } from '../../utils/common/environment';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidPropWarning } from '../../utils/validation/invalid-prop-warning';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
-import { printArray, getRootHTMLElement } from '../../utils/helper/utils';
+import { getRootHTMLElement } from '../../utils/helper/utils';
 import { validateValueAgainstArray } from '../../utils/validation/validation-functions';
 
 import { default as translations } from '../../translations/global.i18n.json';
@@ -166,17 +166,13 @@ export class OntarioLanguageToggle {
 	 * @param {string} type - prop/document | Where the incorrect language is coming from.
 	 */
 	private showLanguageWarning(lang: string, type: 'prop' | 'document' = 'prop') {
-		const propOrDocumentMessage =
-			type === 'prop' ? `The language prop value of ${lang} ` : `The HTML document lang attribute value of ${lang} `;
-		const message = new ConsoleMessageClass();
-		message
-			.addDesignSystemTag()
-			.addRegularText(propOrDocumentMessage)
-			.addRegularText('is not a valid language value for the ')
-			.addMonospaceText(' <ontario-language-toggle> ')
-			.addRegularText(`component. Valid language values are ${printArray([...supportedLanguages])}. `)
-			.addRegularText(`A default language value of ${this.translations.siteLanguage.abbreviation.en} will be applied.`)
-			.printMessage();
+		printInvalidPropWarning({
+			propName: type === 'prop' ? 'language' : 'document lang attribute',
+			componentTag: '<ontario-language-toggle>',
+			propValue: lang,
+			allowedValues: supportedLanguages,
+			defaultValue: this.translations.siteLanguage.abbreviation.en,
+		});
 	}
 
 	/**

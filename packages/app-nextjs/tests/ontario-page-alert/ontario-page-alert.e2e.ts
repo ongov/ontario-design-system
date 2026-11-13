@@ -106,7 +106,7 @@ test.describe('Ontario Page Alert - edge cases', () => {
 		const pageAlert = page.locator('#ontario-page-alert-invalid-type');
 
 		await expect(pageAlert.locator('.ontario-alert')).toHaveClass(/ontario-alert--informational/);
-		expect(messages.join('\n')).toMatch(/not a valid type/i);
+		expect(messages.join('\n')).toMatch(/<ontario-page-alert>.*was set to an invalid value of/i);
 	});
 
 	test('should have `content` prop override slot content when both are provided', async ({ page }) => {

@@ -1,6 +1,6 @@
 import { Component, Prop, Element, h, Watch, State } from '@stencil/core';
 import { CardsPerRow } from './ontario-collection-card-types';
-import { ConsoleMessageClass } from '../../utils/console-message/console-message';
+import { printInvalidFormatWarning } from '../../utils/validation/component-message';
 
 /**
  * Ontario Card Collection lays out multiple cards in a responsive grid.
@@ -38,20 +38,13 @@ export class OntarioCardCollection {
 	@Watch('cardsPerRow')
 	validateCardsPerRow() {
 		if (isNaN(this.cardsPerRow) || (!isNaN(this.cardsPerRow) && this.cardsPerRow <= 0)) {
-			const message = new ConsoleMessageClass();
-			message
-				.addDesignSystemTag()
-				.addMonospaceText(' cards-per-row ')
-				.addRegularText('on')
-				.addMonospaceText(' <ontario-card-collection> ')
-				.addRegularText(
-					`${
-						isNaN(this.cardsPerRow) ? 'was set to a non-numeric value' : 'was set to a negative number'
-					}; only a positive number is allowed. The default number of cards per row: `,
-				)
-				.addMonospaceText(' 3 ')
-				.addRegularText('was assumed.')
-				.printMessage();
+			printInvalidFormatWarning({
+				propName: 'cards-per-row',
+				componentTag: '<ontario-card-collection>',
+				expected: 'a positive number',
+				received: this.cardsPerRow,
+				consequence: 'The default number of cards per row of `3` was assumed.',
+			});
 			this.cardsPerRowState = 3;
 		} else {
 			this.cardsPerRowState = this.cardsPerRow;
