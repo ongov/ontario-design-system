@@ -11,6 +11,7 @@ export const CHECKBOX_SELECTORS = {
 	error: '#ontario-checkbox-error',
 	languageEnglish: '#ontario-checkbox-language-english',
 	languageFrench: '#ontario-checkbox-language-french',
+	languageFrenchRequired: '#ontario-checkbox-language-french-required',
 	customEvents: '#ontario-checkbox-custom-events',
 	customOnChangeOutput: '#ontario-checkbox-custom-on-change',
 	customOnFocusOutput: '#ontario-checkbox-custom-on-focus',
