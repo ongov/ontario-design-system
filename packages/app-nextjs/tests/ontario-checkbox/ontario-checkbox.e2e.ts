@@ -8,6 +8,10 @@ const getLabel = (component: Locator) => component.locator('.ontario-checkbox__l
 const getHintText = (component: Locator) => component.locator('ontario-hint-text');
 const getHintExpander = (component: Locator) => component.locator('ontario-hint-expander');
 
+// WebKit on macOS skips checkboxes when tabbing unless Option is held.
+const getTabKey = (browserName: string) =>
+	browserName === 'webkit' && process.platform === 'darwin' ? 'Alt+Tab' : 'Tab';
+
 test.describe('Ontario Checkbox', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/components/ontario-checkbox/server-side');
@@ -172,11 +176,11 @@ test.describe('Ontario Checkbox', () => {
 		await expect(input).not.toBeChecked();
 	});
 
-	test('should receive focus when focused', async ({ page }) => {
+	test('should receive focus when tabbed to', async ({ page, browserName }) => {
 		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
-		await input.focus();
+		await page.keyboard.press(getTabKey(browserName));
 		await expect(input).toBeFocused();
 	});
 
