@@ -225,33 +225,42 @@ test.describe('Ontario Checkbox - client side', () => {
 		await page.goto('/components/ontario-checkbox/client-side');
 	});
 
+	// The server-rendered checkbox is replaced by a client-rendered one shortly after load, and the
+	// `hydrated` class is already in the server HTML, so each interaction is retried with `toPass` until
+	// it reaches the client-rendered checkbox.
+
 	// -----------------------------
 	// Test for custom event props
 	// -----------------------------
 	test('should call `customOnChange` when the checkbox is toggled', async ({ page }) => {
 		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
+		const output = page.locator(CHECKBOX_SELECTORS.customOnChangeOutput);
 
-		await Promise.all([
-			page.waitForEvent('console', (msg) => msg.text() === 'customOnChange → true'),
-			getLabel(component).click(),
-		]);
+		await expect(async () => {
+			await getLabel(component).click();
+			await expect(output).toHaveAttribute('data-value', 'true', { timeout: 1000 });
+		}).toPass();
 	});
 
 	test('should call `customOnFocus` when the checkbox gains focus', async ({ page }) => {
 		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
+		const output = page.locator(CHECKBOX_SELECTORS.customOnFocusOutput);
 
-		await Promise.all([
-			page.waitForEvent('console', (msg) => msg.text() === 'customOnFocus → agreed'),
-			getNativeInput(component).focus(),
-		]);
+		await expect(async () => {
+			await getNativeInput(component).focus();
+			await expect(output).toHaveAttribute('data-value', 'agreed', { timeout: 1000 });
+		}).toPass();
 	});
 
 	test('should call `customOnBlur` when the checkbox loses focus', async ({ page }) => {
 		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
 		const input = getNativeInput(component);
+		const output = page.locator(CHECKBOX_SELECTORS.customOnBlurOutput);
 
-		await input.focus();
-
-		await Promise.all([page.waitForEvent('console', (msg) => msg.text() === 'customOnBlur'), input.blur()]);
+		await expect(async () => {
+			await input.focus();
+			await input.blur();
+			await expect(output).not.toHaveAttribute('data-count', '0', { timeout: 1000 });
+		}).toPass();
 	});
 });

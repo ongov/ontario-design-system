@@ -12,4 +12,7 @@ export const CHECKBOX_SELECTORS = {
 	languageEnglish: '#ontario-checkbox-language-english',
 	languageFrench: '#ontario-checkbox-language-french',
 	customEvents: '#ontario-checkbox-custom-events',
+	customOnChangeOutput: '#ontario-checkbox-custom-on-change',
+	customOnFocusOutput: '#ontario-checkbox-custom-on-focus',
+	customOnBlurOutput: '#ontario-checkbox-custom-on-blur',
 } as const;
