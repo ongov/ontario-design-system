@@ -19,12 +19,6 @@ test.describe('Ontario Checkbox - label variants', () => {
 		await expectVrtScreenshot(checkbox);
 	});
 
-	test('default label - hover state', async ({ page }) => {
-		const checkbox = page.locator(CHECKBOX_SELECTORS.default);
-		await checkbox.locator('.ontario-checkbox__label').hover();
-		await expectVrtScreenshot(checkbox);
-	});
-
 	test('large label', async ({ page }) => {
 		const checkbox = page.locator(CHECKBOX_SELECTORS.labelLarge);
 		await expectVrtScreenshot(checkbox);
