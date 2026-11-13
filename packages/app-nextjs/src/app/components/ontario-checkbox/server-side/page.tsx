@@ -142,6 +142,16 @@ export default function OntarioCheckboxPage() {
 						value="agreed"
 						language="fr"
 					></OntarioCheckbox>
+
+					<h3>French - Required</h3>
+					<OntarioCheckbox
+						id="ontario-checkbox-language-french-required"
+						label="J’ai lu et j’accepte les conditions générales"
+						name="checkbox-language-french-required"
+						value="agreed"
+						language="fr"
+						required
+					></OntarioCheckbox>
 				</div>
 			</Grid>
 		</main>
