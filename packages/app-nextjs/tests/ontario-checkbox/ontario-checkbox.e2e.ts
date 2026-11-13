@@ -100,6 +100,12 @@ test.describe('Ontario Checkbox', () => {
 		await expect(component).not.toContainText('You must select this checkbox to continue.');
 	});
 
+	test('should show the automatic required error in French when `language` is "fr"', async ({ page }) => {
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.languageFrenchRequired);
+
+		await expect(component).toContainText('Vous devez cocher cette case pour continuer.');
+	});
+
 	// -----------------------------
 	// Test for hint text handling
 	// -----------------------------
