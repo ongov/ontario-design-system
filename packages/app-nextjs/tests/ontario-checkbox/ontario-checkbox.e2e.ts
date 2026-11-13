@@ -1,7 +1,8 @@
 import { test, expect, Page, Locator } from '@playwright/test';
+import { CHECKBOX_SELECTORS } from './ontario-checkbox.selectors';
 
 // ----- Small locator helpers -----
-const getCheckboxComponent = (page: Page, id: string) => page.locator(id);
+const getCheckboxComponent = (page: Page, selector: string) => page.locator(selector);
 const getNativeInput = (component: Locator) => component.locator('input');
 const getLabel = (component: Locator) => component.locator('.ontario-checkbox__label');
 const getHintText = (component: Locator) => component.locator('ontario-hint-text');
@@ -16,7 +17,7 @@ test.describe('Ontario Checkbox', () => {
 	// Test for default rendering
 	// -----------------------------
 	test('should render the default checkbox unchecked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
 		await expect(component).toBeVisible();
@@ -26,15 +27,15 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should render large and heading label variants', async ({ page }) => {
-		const largeLabel = getCheckboxComponent(page, '#ontario-checkbox-label-large');
-		const headingLabel = getCheckboxComponent(page, '#ontario-checkbox-label-heading');
+		const largeLabel = getCheckboxComponent(page, CHECKBOX_SELECTORS.labelLarge);
+		const headingLabel = getCheckboxComponent(page, CHECKBOX_SELECTORS.labelHeading);
 
 		await expect(largeLabel).toContainText('I have read and agree to the Terms and Conditions (large)');
 		await expect(headingLabel).toContainText('I have read and agree to the Terms and Conditions (heading)');
 	});
 
 	test('should render pre-checked when `checked` is provided', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-checked');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.checked);
 		const input = getNativeInput(component);
 
 		await expect(input).toBeChecked();
@@ -44,22 +45,22 @@ test.describe('Ontario Checkbox', () => {
 	// Test for required / optional state
 	// -----------------------------
 	test('should set the native `required` attribute when `required` is true', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-required');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.required);
 		const input = getNativeInput(component);
 
 		await expect(input).toHaveAttribute('required', '');
 	});
 
 	test('should not set the native `required` attribute when `required` is false', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-not-required');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.notRequired);
 		const input = getNativeInput(component);
 
 		await expect(input).not.toHaveAttribute('required', '');
 	});
 
 	test('should render the required and optional flags', async ({ page }) => {
-		const required = getCheckboxComponent(page, '#ontario-checkbox-required');
-		const notRequired = getCheckboxComponent(page, '#ontario-checkbox-not-required');
+		const required = getCheckboxComponent(page, CHECKBOX_SELECTORS.required);
+		const notRequired = getCheckboxComponent(page, CHECKBOX_SELECTORS.notRequired);
 
 		await expect(required).toContainText('required');
 		await expect(notRequired).toContainText('optional');
@@ -69,19 +70,19 @@ test.describe('Ontario Checkbox', () => {
 	// Test for error message handling
 	// -----------------------------
 	test('should render an error message when `errorMessage` is provided', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-error');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.error);
 
 		await expect(component).toContainText('Please accept the Terms and Conditions to proceed.');
 	});
 
 	test('should show the automatic required error when a required checkbox is unchecked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-required');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.required);
 
 		await expect(component).toContainText('You must select this checkbox to continue.');
 	});
 
 	test('should clear the automatic required error once the checkbox is checked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-required');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.required);
 
 		await expect(component).toHaveClass(/hydrated/);
 		await getLabel(component).click();
@@ -90,7 +91,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should not show an automatic error when the checkbox is not required', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-not-required');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.notRequired);
 
 		await expect(component).not.toContainText('You must select this checkbox to continue.');
 	});
@@ -99,7 +100,7 @@ test.describe('Ontario Checkbox', () => {
 	// Test for hint text handling
 	// -----------------------------
 	test('should render hint text when `hintText` is provided', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-hint-text');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.hintText);
 
 		await expect(getHintText(component)).toBeVisible();
 		await expect(component).toContainText('This is hint text.');
@@ -109,7 +110,7 @@ test.describe('Ontario Checkbox', () => {
 	// Test for hint expander handling
 	// -----------------------------
 	test('should render a hint expander when `hintExpander` is provided', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-hint-expander');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.hintExpander);
 		const expanderButton = getHintExpander(component).getByRole('button');
 
 		await expect(getHintExpander(component)).toBeVisible();
@@ -117,7 +118,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should expand the hint expander content when clicked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-hint-expander');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.hintExpander);
 		const expanderButton = getHintExpander(component).getByRole('button');
 
 		await expanderButton.click();
@@ -129,8 +130,8 @@ test.describe('Ontario Checkbox', () => {
 	// Test for language prop
 	// -----------------------------
 	test('should render the correct language translations', async ({ page }) => {
-		const english = getCheckboxComponent(page, '#ontario-checkbox-language-english');
-		const french = getCheckboxComponent(page, '#ontario-checkbox-language-french');
+		const english = getCheckboxComponent(page, CHECKBOX_SELECTORS.languageEnglish);
+		const french = getCheckboxComponent(page, CHECKBOX_SELECTORS.languageFrench);
 
 		await expect(english).toContainText('optional');
 		await expect(french).toContainText('facultative');
@@ -140,7 +141,7 @@ test.describe('Ontario Checkbox', () => {
 	// Test for interactions
 	// -----------------------------
 	test('should toggle when the label is clicked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
 		await expect(component).toHaveClass(/hydrated/);
@@ -150,7 +151,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should uncheck when the label is clicked twice', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 		const label = getLabel(component);
 
@@ -163,7 +164,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should uncheck a pre-checked checkbox when the label is clicked', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-checked');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.checked);
 		const input = getNativeInput(component);
 
 		await expect(component).toHaveClass(/hydrated/);
@@ -172,7 +173,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should receive focus when focused', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
 		await input.focus();
@@ -180,7 +181,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should toggle when the Space key is pressed while focused', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
 		await expect(component).toHaveClass(/hydrated/);
@@ -196,13 +197,13 @@ test.describe('Ontario Checkbox', () => {
 	// Test for edge cases
 	// -----------------------------
 	test('should be hydrated after page load', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 
 		await expect(component).toHaveClass(/hydrated/);
 	});
 
 	test('should associate the label with the native input', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-default');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.default);
 		const input = getNativeInput(component);
 
 		const inputId = await input.getAttribute('id');
@@ -212,7 +213,7 @@ test.describe('Ontario Checkbox', () => {
 	});
 
 	test('should link the hint text to the native input with `aria-describedby`', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-hint-text');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.hintText);
 		const input = getNativeInput(component);
 
 		await expect(input).toHaveAttribute('aria-describedby', /.+/);
@@ -228,7 +229,7 @@ test.describe('Ontario Checkbox - client side', () => {
 	// Test for custom event props
 	// -----------------------------
 	test('should call `customOnChange` when the checkbox is toggled', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-custom-events');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
 
 		await Promise.all([
 			page.waitForEvent('console', (msg) => msg.text() === 'customOnChange → true'),
@@ -237,7 +238,7 @@ test.describe('Ontario Checkbox - client side', () => {
 	});
 
 	test('should call `customOnFocus` when the checkbox gains focus', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-custom-events');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
 
 		await Promise.all([
 			page.waitForEvent('console', (msg) => msg.text() === 'customOnFocus → agreed'),
@@ -246,7 +247,7 @@ test.describe('Ontario Checkbox - client side', () => {
 	});
 
 	test('should call `customOnBlur` when the checkbox loses focus', async ({ page }) => {
-		const component = getCheckboxComponent(page, '#ontario-checkbox-custom-events');
+		const component = getCheckboxComponent(page, CHECKBOX_SELECTORS.customEvents);
 		const input = getNativeInput(component);
 
 		await input.focus();
