@@ -20,6 +20,7 @@ export const OntarioButton = /*@__PURE__*/createReactComponent<JSX.OntarioButton
 export const OntarioCallout = /*@__PURE__*/createReactComponent<JSX.OntarioCallout, HTMLOntarioCalloutElement>('ontario-callout');
 export const OntarioCard = /*@__PURE__*/createReactComponent<JSX.OntarioCard, HTMLOntarioCardElement>('ontario-card');
 export const OntarioCardCollection = /*@__PURE__*/createReactComponent<JSX.OntarioCardCollection, HTMLOntarioCardCollectionElement>('ontario-card-collection');
+export const OntarioCheckbox = /*@__PURE__*/createReactComponent<JSX.OntarioCheckbox, HTMLOntarioCheckboxElement>('ontario-checkbox');
 export const OntarioCheckboxes = /*@__PURE__*/createReactComponent<JSX.OntarioCheckboxes, HTMLOntarioCheckboxesElement>('ontario-checkboxes');
 export const OntarioCriticalAlert = /*@__PURE__*/createReactComponent<JSX.OntarioCriticalAlert, HTMLOntarioCriticalAlertElement>('ontario-critical-alert');
 export const OntarioDateInput = /*@__PURE__*/createReactComponent<JSX.OntarioDateInput, HTMLOntarioDateInputElement>('ontario-date-input');

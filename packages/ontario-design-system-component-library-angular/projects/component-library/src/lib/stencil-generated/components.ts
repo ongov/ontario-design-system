@@ -255,6 +255,54 @@ export declare interface OntarioCardCollection extends Components.OntarioCardCol
 
 
 @ProxyCmp({
+  inputs: ['checked', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'label', 'language', 'name', 'required', 'requiredValidationMessage', 'value']
+})
+@Component({
+  selector: 'ontario-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checked', 'customOnBlur', 'customOnChange', 'customOnFocus', 'elementId', 'errorMessage', 'hintExpander', 'hintText', 'label', 'language', 'name', 'required', 'requiredValidationMessage', 'value'],
+  outputs: ['checkboxOnChange', 'checkboxOnBlur', 'checkboxOnFocus', 'inputErrorOccurred'],
+  standalone: false
+})
+export class OntarioCheckbox {
+  protected el: HTMLOntarioCheckboxElement;
+  @Output() checkboxOnChange = new EventEmitter<CustomEvent<IOntarioCheckboxRadioAndCheckboxChangeEvent>>();
+  @Output() checkboxOnBlur = new EventEmitter<CustomEvent<IOntarioCheckboxInputFocusBlurEvent>>();
+  @Output() checkboxOnFocus = new EventEmitter<CustomEvent<IOntarioCheckboxInputFocusBlurEvent>>();
+  @Output() inputErrorOccurred = new EventEmitter<CustomEvent<{ errorMessage: string }>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+import type { RadioAndCheckboxChangeEvent as IOntarioCheckboxRadioAndCheckboxChangeEvent } from '@ongov/ontario-design-system-component-library';
+import type { InputFocusBlurEvent as IOntarioCheckboxInputFocusBlurEvent } from '@ongov/ontario-design-system-component-library';
+
+export declare interface OntarioCheckbox extends Components.OntarioCheckbox {
+  /**
+   * Emitted when a keyboard input or mouse event occurs when the checkbox has been changed.
+   */
+  checkboxOnChange: EventEmitter<CustomEvent<IOntarioCheckboxRadioAndCheckboxChangeEvent>>;
+  /**
+   * Emitted when a keyboard input event occurs when the checkbox has lost focus.
+   */
+  checkboxOnBlur: EventEmitter<CustomEvent<IOntarioCheckboxInputFocusBlurEvent>>;
+  /**
+   * Emitted when a keyboard input event occurs when the checkbox has gained focus.
+   */
+  checkboxOnFocus: EventEmitter<CustomEvent<IOntarioCheckboxInputFocusBlurEvent>>;
+  /**
+   * Emitted when an error message is reported to the component.
+   */
+  inputErrorOccurred: EventEmitter<CustomEvent<{ errorMessage: string }>>;
+}
+
+
+@ProxyCmp({
   inputs: ['caption', 'customOnBlur', 'customOnChange', 'customOnFocus', 'errorMessage', 'hintExpander', 'hintText', 'language', 'name', 'options', 'required', 'value']
 })
 @Component({
