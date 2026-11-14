@@ -80,7 +80,7 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
+						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
 						viewBox="0 0 24 24"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
