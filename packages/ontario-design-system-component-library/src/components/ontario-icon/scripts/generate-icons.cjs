@@ -167,7 +167,7 @@ const getIconComponentTemplate = (svgObject, icon) => {
 	if (hasColour) {
 		const withColour = svgElement.replace(
 			/class="svg-icon(?:\s+[^"]*)?"/,
-			'$& style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}',
+			'$& style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}',
 		);
 		if (withColour === svgElement) {
 			throw new Error(`Configurable icon ${icon.name} has no class="svg-icon" to apply colour to.`);
