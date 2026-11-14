@@ -80,7 +80,7 @@ export class OntarioIconArrowUp implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon ontario-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
 						fill="#000000"

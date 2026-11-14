@@ -80,7 +80,7 @@ export class OntarioIconMoreAccounts implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						id="more-accounts"
 						xmlns="http://www.w3.org/2000/svg"
 						version="1.1"
