@@ -27,7 +27,7 @@ describe('icon generator colour styles', () => {
 		const template = getIconComponentTemplate(parseSync(`<svg class="${className}"><path /></svg>`), icon);
 
 		expect(template).toContain(`class="${className}" style={{ fill:`);
-		expect(template).toContain('stroke: `${this.iconCustomColourState}`');
+		expect(template).toContain('stroke: this.iconCustomColourState');
 	});
 
 	it.each(['fixed', 'multicolour'])('allows %s artwork without the SVG class marker', (colour) => {
