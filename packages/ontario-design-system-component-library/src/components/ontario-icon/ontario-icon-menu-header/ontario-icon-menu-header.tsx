@@ -39,19 +39,17 @@ export class OntarioIconMenuHeader implements IconWithColour {
 	}
 
 	/** Set the icon's colour. */
-	@Prop() colour: IconColour = 'black';
+	@Prop() colour: IconColour = 'white';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
-		const validatedColour = validateIconColour(this.colour, 'ontario-icon-menu-header');
+		const validatedColour = validateIconColour(this.colour, 'ontario-icon-menu-header', 'white');
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 
@@ -82,15 +80,14 @@ export class OntarioIconMenuHeader implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						xmlns="http://www.w3.org/2000/svg"
 						width="32"
 						height="32"
-						fill="#ffffff"
 						viewBox="0 0 24 24"
 						id="menu-header"
 					>
-						<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#ffffff" />
+						<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
 					</svg>
 				)}
 			/>

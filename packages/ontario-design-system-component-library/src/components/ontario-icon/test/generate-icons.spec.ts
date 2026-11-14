@@ -1,16 +1,17 @@
 import { createRequire } from 'node:module';
-import { parseSync, type INode } from 'svgson';
-import { vi } from 'vitest';
-import { validateIconWidth } from '../icon-validation';
 import { spawnSync } from 'node:child_process';
 import { copyFileSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { parseSync, type INode } from 'svgson';
+import { vi } from 'vitest';
+import { validateIconWidth } from '../icon-validation';
+import { IconColours } from '../icon.types';
 
-const require = createRequire(import.meta.url);
-const { getIconComponentTemplate, validateManifest } = require('../scripts/generate-icons.cjs') as {
-	getIconComponentTemplate: (svg: INode, icon: { name: string; colour: string }) => string;
+const requireGenerator = createRequire(import.meta.url);
+const { getIconComponentTemplate, validateManifest } = requireGenerator('../scripts/generate-icons.cjs') as {
 	validateManifest: (icons: unknown, assetFiles: string[]) => void;
+	getIconComponentTemplate: (svg: INode, icon: Record<string, unknown>) => string;
 };
 
 describe('icon generator colour styles', () => {
@@ -26,7 +27,7 @@ describe('icon generator colour styles', () => {
 		const template = getIconComponentTemplate(parseSync(`<svg class="${className}"><path /></svg>`), icon);
 
 		expect(template).toContain(`class="${className}" style={{ fill:`);
-		expect(template).toContain('stroke: `${this.iconCustomColourState}`');
+		expect(template).toContain('stroke: this.iconCustomColourState');
 	});
 
 	it.each(['fixed', 'multicolour'])('allows %s artwork without the SVG class marker', (colour) => {
@@ -53,6 +54,36 @@ describe('icon generator width defaults', () => {
 	);
 });
 
+describe('icon generator default colours', () => {
+	const icon = {
+		name: 'ontario-icon-test',
+		category: 'primary',
+		viewBox: '0 0 24 24',
+		colour: 'configurable',
+		aliases: [],
+		deprecated: false,
+	};
+	const assets = ['ontario-icon-test.svg'];
+
+	it.each(IconColours)('accepts the runtime colour token %s as a configurable default', (defaultColour) => {
+		expect(() => validateManifest([{ ...icon, defaultColour }], assets)).not.toThrow();
+	});
+
+	it.each([
+		{ colour: 'configurable', defaultColour: 'purple' },
+		{ colour: 'fixed', defaultColour: 'white' },
+		{ colour: 'multicolour', defaultColour: 'white' },
+	])('reports an invalid defaultColour for $colour icons using $defaultColour', (overrides) => {
+		expect(() => validateManifest([{ ...icon, ...overrides }], assets)).toThrow(
+			`Invalid defaultColour for ontario-icon-test: only configurable icons accept ${IconColours.join(', ')}.`,
+		);
+	});
+
+	it.each(['configurable', 'fixed', 'multicolour'])('allows %s icons without an explicit default', (colour) => {
+		expect(() => validateManifest([{ ...icon, colour }], assets)).not.toThrow();
+	});
+});
+
 describe('icon manifest replacement names', () => {
 	const icon = {
 		name: 'ontario-icon-old',
@@ -62,17 +93,31 @@ describe('icon manifest replacement names', () => {
 		aliases: [],
 		deprecated: true,
 	};
-	const replacement = { ...icon, name: 'ontario-icon-search', deprecated: false };
+	const replacement = { ...icon, name: 'ontario-icon-search', deprecated: false, replacedBy: undefined };
 	const assetFiles = ['ontario-icon-old.svg', 'ontario-icon-search.svg'];
 
-	it.each(['search', 'ontario-icon-search'])('accepts a later manifest entry named %s', (replacedBy) => {
-		expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assetFiles)).not.toThrow();
+	it('accepts a full replacement tag that appears later in the manifest', () => {
+		expect(() =>
+			validateManifest([{ ...icon, replacedBy: 'ontario-icon-search' }, replacement], assetFiles),
+		).not.toThrow();
 	});
 
-	it.each(['searhc', ''])('rejects an unknown replacement name "%s"', (replacedBy) => {
+	it.each(['search', 'ontario-icon-typo', 'ontario-icon-old'])('rejects invalid replacement "%s"', (replacedBy) => {
 		expect(() => validateManifest([{ ...icon, replacedBy }, replacement], assetFiles)).toThrow(
-			`Unknown replacement icon ${replacedBy} on ontario-icon-old.`,
+			'replacedBy on ontario-icon-old must name another icon and requires deprecated: true.',
 		);
+	});
+
+	it('rejects an empty replacement name', () => {
+		expect(() => validateManifest([{ ...icon, replacedBy: '' }, replacement], assetFiles)).toThrow(
+			'replacedBy on ontario-icon-old must name another icon and requires deprecated: true.',
+		);
+	});
+
+	it('rejects replacement metadata on a non-deprecated icon', () => {
+		expect(() =>
+			validateManifest([{ ...icon, deprecated: false, replacedBy: 'ontario-icon-search' }, replacement], assetFiles),
+		).toThrow('replacedBy on ontario-icon-old must name another icon and requires deprecated: true.');
 	});
 
 	it('allows replacement metadata to be omitted', () => {
@@ -80,11 +125,63 @@ describe('icon manifest replacement names', () => {
 	});
 });
 
+describe('icon generator deprecation metadata', () => {
+	const icon = {
+		name: 'ontario-icon-old',
+		category: 'primary',
+		viewBox: '0 0 24 24',
+		colour: 'configurable',
+		aliases: [],
+		deprecated: true,
+		replacedBy: 'ontario-icon-search',
+	};
+	const replacement = { ...icon, name: 'ontario-icon-search', deprecated: false, replacedBy: undefined };
+	const assets = ['ontario-icon-old.svg', 'ontario-icon-search.svg'];
+	const deprecationNote = 'Set colour="white" to preserve the white icon.';
+
+	it('accepts a full replacement tag that appears later in the manifest', () => {
+		expect(() => validateManifest([{ ...icon, deprecationNote }, replacement], assets)).not.toThrow();
+	});
+
+	it.each([42, '', '   ', 'first line\nsecond line', 'closes */ comment'])(
+		'rejects invalid deprecation guidance %j',
+		(deprecationNote) => {
+			expect(() => validateManifest([{ ...icon, deprecationNote }, replacement], assets)).toThrow(
+				'Incomplete manifest entry for ontario-icon-old',
+			);
+		},
+	);
+
+	it('rejects migration guidance on a non-deprecated icon', () => {
+		expect(() => validateManifest([{ ...replacement, deprecationNote }], ['ontario-icon-search.svg'])).toThrow();
+	});
+
+	it('includes migration guidance in the generated notice and warning call', () => {
+		const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), {
+			...icon,
+			deprecationNote,
+		});
+
+		expect(template).toContain(`@deprecated Use ontario-icon-search instead. ${deprecationNote}`);
+		expect(template).toContain(
+			`warnIconDeprecated('ontario-icon-old', 'ontario-icon-search', ${JSON.stringify(deprecationNote)})`,
+		);
+	});
+
+	it('keeps migration guidance optional', () => {
+		expect(() => validateManifest([icon, replacement], assets)).not.toThrow();
+		const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), icon);
+
+		expect(template).toContain('@deprecated Use ontario-icon-search instead.');
+		expect(template).toContain("warnIconDeprecated('ontario-icon-old', 'ontario-icon-search')");
+	});
+});
+
 const packageRoot = process.cwd();
 const sourceDirectory = path.join(packageRoot, 'src/components/ontario-icon');
 const iconNames = [37, 38, 39].map((length) => `ontario-icon-${'a'.repeat(length - 'ontario-icon-'.length)}`);
 
-describe('icon generator', () => {
+describe('icon generator CLI', () => {
 	let fixture: string;
 	let iconDirectory: string;
 	let demoPath: string;
