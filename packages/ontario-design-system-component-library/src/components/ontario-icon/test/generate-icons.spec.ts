@@ -77,9 +77,8 @@ describe('icon manifest replacement names', () => {
 
 	it('allows replacement metadata to be omitted', () => {
 		expect(() => validateManifest([icon, replacement], assetFiles)).not.toThrow();
-    });
+	});
 });
-
 
 const packageRoot = process.cwd();
 const sourceDirectory = path.join(packageRoot, 'src/components/ontario-icon');
