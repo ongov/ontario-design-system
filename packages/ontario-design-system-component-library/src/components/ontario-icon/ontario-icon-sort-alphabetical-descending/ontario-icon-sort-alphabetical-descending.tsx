@@ -80,7 +80,7 @@ export class OntarioIconSortAlphabeticalDescending implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						width="24"
 						height="24"
 						viewBox="0 0 24 24"
