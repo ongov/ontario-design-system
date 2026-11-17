@@ -1,0 +1,16 @@
+<h1>ontario-date-input</h1>
+
+<h2>'error' Prop Variant</h2>
+<h3>Error State</h3>
+<ontario-date-input caption="Date with error" (error)="log('Please enter a valid date.')"></ontario-date-input>
+
+<h2>Event Handlers</h2>
+<h3>All Events</h3>
+<ontario-date-input
+	caption="Date with event handlers"
+	(inputOnInput)="log('Input event')"
+	(inputOnFocus)="log('Focus event')"
+	(inputOnChange)="log('Change event')"
+	(inputOnBlur)="log('Blur event')"
+	(inputErrorOccurred)="log('Error occurred')"
+></ontario-date-input>

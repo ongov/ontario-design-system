@@ -1,0 +1,51 @@
+<h1>ontario-footer</h1>
+
+<h2>"type" Prop Variants</h2>
+
+<h3>Default (simple) footer</h3>
+<ontario-footer
+	id="ontario-footer-default"
+	type="default"
+	[footerLinks]="footerLinks"
+	assetBasePath="/assets"
+></ontario-footer>
+
+<h3>Two column expanded footer</h3>
+<ontario-footer
+	id="ontario-footer-two-column"
+	type="twoColumn"
+	[footerLinks]="footerLinks"
+	[twoColumnOptions]="twoColumnOptions"
+	assetBasePath="/assets"
+></ontario-footer>
+
+<h3>Two column expanded footer with social links</h3>
+<ontario-footer
+	id="ontario-footer-two-column-social"
+	type="twoColumn"
+	[footerLinks]="footerLinks"
+	[socialLinks]="socialLinks"
+	[twoColumnOptions]="twoColumnOptions"
+	assetBasePath="/assets"
+></ontario-footer>
+
+<h3>Three column expanded footer with social links</h3>
+<ontario-footer
+	id="ontario-footer-three-column"
+	type="threeColumn"
+	[footerLinks]="footerLinks"
+	[socialLinks]="socialLinks"
+	[threeColumnOptions]="threeColumnOptions"
+	assetBasePath="/assets"
+></ontario-footer>
+
+<h2>"topMargin" Prop Variant</h2>
+
+<h3>No top margin</h3>
+<ontario-footer
+	id="ontario-footer-no-top-margin"
+	type="default"
+	[topMargin]="false"
+	[footerLinks]="footerLinks"
+	assetBasePath="/assets"
+></ontario-footer>

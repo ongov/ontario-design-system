@@ -1,0 +1,60 @@
+<h1>ontario-fieldset</h1>
+
+<h2>'legendSize' Prop Variants</h2>
+
+<h3>heading</h3>
+<ontario-fieldset legend="What is your delivery address?" legendSize="heading">
+	<ontario-input
+		id="address-line-1"
+		caption="Address line 1"
+		[required]="true"
+		name="address-line-1"
+		hintText="Street and number or P.O. box."
+	></ontario-input>
+	<ontario-input
+		caption="Address line 2"
+		name="address-line-2"
+		hintText="Apartment, suite, unit, building, etc."
+	></ontario-input>
+	<ontario-input
+		id="post-code"
+		caption="Postal code"
+		[required]="true"
+		name="postal-code"
+		inputWidth="7-char-width"
+	></ontario-input>
+</ontario-fieldset>
+
+<h3>large</h3>
+<ontario-fieldset legend="What is your delivery address?" legendSize="large">
+	<ontario-input
+		id="address-line-3"
+		caption="Address line 1"
+		[required]="true"
+		name="address-line-3"
+		hintText="Street and number or P.O. box."
+	></ontario-input>
+	<ontario-dropdown-list
+		caption="Province/territory"
+		name="province-selection"
+		elementId="province-territory"
+		[required]="true"
+		[isEmptyStartOption]="true"
+		[options]="provinceOptions"
+	></ontario-dropdown-list>
+	<ontario-input
+		id="post-code-2"
+		caption="Postal code"
+		[required]="true"
+		name="postal-code-2"
+		inputWidth="7-char-width"
+	></ontario-input>
+</ontario-fieldset>
+
+<h3>default</h3>
+<ontario-fieldset legend="What is your contact information?">
+	<ontario-input id="name" caption="Name" name="name"></ontario-input>
+	<ontario-input id="email" caption="Email" name="email" type="email"></ontario-input>
+	<ontario-input id="subject" caption="Subject" name="subject"></ontario-input>
+	<ontario-textarea id="message" caption="Message" name="message"></ontario-textarea>
+</ontario-fieldset>

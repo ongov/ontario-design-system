@@ -1,0 +1,39 @@
+<h1>ontario-header</h1>
+
+<h2>"type" Prop Variants</h2>
+
+<h3>Ontario header</h3>
+<ontario-header
+	id="ontario-header-ontario"
+	type="ontario"
+	[disableDynamicMenu]="true"
+	[menuItems]="menuItems"
+	assetBasePath="/assets"
+></ontario-header>
+
+<h3>Ontario header with sign-in menu items</h3>
+<ontario-header
+	id="ontario-header-ontario-signin"
+	type="ontario"
+	[disableDynamicMenu]="true"
+	[menuItems]="menuItems"
+	[signInMenuItems]="signInMenuItems"
+	assetBasePath="/assets"
+></ontario-header>
+
+<h3>Application header</h3>
+<ontario-header
+	id="ontario-header-application"
+	type="application"
+	[applicationHeaderInfo]="applicationHeaderInfo"
+	[menuItems]="menuItems"
+	assetBasePath="/assets"
+></ontario-header>
+
+<h3>ServiceOntario header</h3>
+<ontario-header
+	id="ontario-header-service-ontario"
+	type="serviceOntario"
+	[applicationHeaderInfo]="serviceOntarioHeaderInfo"
+	assetBasePath="/assets"
+></ontario-header>
