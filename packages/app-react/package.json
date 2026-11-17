@@ -37,6 +37,7 @@
 		"@vitejs/plugin-react": "^6.0.0",
 		"copyfiles": "^2.4.1",
 		"eslint": "^10.0.0",
+		"sass-embedded": "^1.93.2",
 		"vite": "^8.0.0"
 	},
 	"authors": [
