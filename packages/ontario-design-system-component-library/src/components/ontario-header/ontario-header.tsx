@@ -8,8 +8,6 @@ import {
 	OntarioHeaderType,
 } from './ontario-header.interface';
 
-import OntarioIconClose from '../ontario-icon/assets/ontario-icon-close-header.svg';
-import OntarioIconMenu from '../ontario-icon/assets/ontario-icon-menu-header.svg';
 import OntarioHeaderDefaultData from './ontario-header-default-data.json';
 
 import { Language } from '../../utils/common/language-types';
@@ -27,6 +25,9 @@ import { validateLanguage } from '../../utils/validation/validation-functions';
 
 import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
+
+const ICON_WIDTH = 32;
+const DROPDOWN_ICON_WIDTH = 24;
 
 /**
  * Ontario Header renders Ontario.ca, application, and ServiceOntario header variants.
@@ -784,10 +785,13 @@ export class OntarioHeader {
 			if (useMenuCloseToggle) {
 				return (
 					<div class="ontario-header__menu-toggle-content">
-						<span
-							class="ontario-header__icon-container ontario-header__icon-container--white"
-							innerHTML={this.menuToggled ? OntarioIconClose : OntarioIconMenu}
-						/>
+						<span class="ontario-header__icon-container">
+							{this.menuToggled ? (
+								<ontario-icon-close colour="white" iconWidth={ICON_WIDTH}></ontario-icon-close>
+							) : (
+								<ontario-icon-menu colour="white" iconWidth={ICON_WIDTH}></ontario-icon-menu>
+							)}
+						</span>
 						<span>Menu</span>
 					</div>
 				);
@@ -804,7 +808,7 @@ export class OntarioHeader {
 						<ontario-icon-dropdown-arrow
 							class={`ontario-header__dropdown-icon ${this.menuToggled ? 'ontario-header__dropdown-icon--rotated' : ''}`}
 							colour="white"
-							iconWidth={24}
+							iconWidth={DROPDOWN_ICON_WIDTH}
 						></ontario-icon-dropdown-arrow>
 					</span>
 				</div>
@@ -879,7 +883,7 @@ export class OntarioHeader {
 					<ontario-icon-dropdown-arrow
 						class={`ontario-header__dropdown-icon ${this.signInToggled ? 'ontario-header__dropdown-icon--rotated' : ''}`}
 						colour="white"
-						iconWidth={24}
+						iconWidth={DROPDOWN_ICON_WIDTH}
 					></ontario-icon-dropdown-arrow>
 				</span>
 			</button>
@@ -1028,7 +1032,7 @@ export class OntarioHeader {
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
 										<span class="ontario-header__icon-container">
-											<ontario-icon-search colour="inherit" iconWidth={32}></ontario-icon-search>
+											<ontario-icon-search colour="inherit" iconWidth={ICON_WIDTH}></ontario-icon-search>
 										</span>
 									</button>
 								</form>
@@ -1048,7 +1052,7 @@ export class OntarioHeader {
 										ref={(el) => (this.searchButton = el as HTMLInputElement)}
 									>
 										<span class="ontario-header__icon-container">
-											<ontario-icon-search colour="white" iconWidth={32}></ontario-icon-search>
+											<ontario-icon-search colour="white" iconWidth={ICON_WIDTH}></ontario-icon-search>
 										</span>
 										<span class="ontario-show-for-medium ontario-show">
 											{this.translations.header.search[`${this.language}`]}
@@ -1068,7 +1072,13 @@ export class OntarioHeader {
 										<span aria-hidden={`${!this.searchToggle}`}>
 											{this.translations.header.close[`${this.language}`]}
 										</span>
-										<span class="ontario-header__icon-container" innerHTML={OntarioIconClose} />
+										<span class="ontario-header__icon-container">
+											<ontario-icon-close
+												class="ontario-header__search-close-icon"
+												colour="white"
+												iconWidth={ICON_WIDTH}
+											></ontario-icon-close>
+										</span>
 									</button>
 								</div>
 							</div>

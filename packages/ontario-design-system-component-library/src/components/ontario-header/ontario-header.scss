@@ -202,17 +202,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		width: spacing.$spacing-5;
 		height: spacing.$spacing-5;
 
-		&--white {
-			svg {
-				fill: white;
-				color: white;
-			}
-
-			svg path {
-				stroke: white;
-			}
-		}
-
 		@media screen and (max-width: breakpoints.$medium-breakpoint) {
 			width: spacing.$spacing-6;
 			height: spacing.$spacing-6;
@@ -294,10 +283,8 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	svg {
+	.ontario-header__icon-container {
 		margin-right: globalFunctions.px-to-rem(6);
-		width: spacing.$spacing-6;
-		height: spacing.$spacing-6;
 	}
 
 	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
@@ -368,11 +355,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	svg {
-		top: 0;
-		fill: colours.$ontario-colour-white;
-	}
-
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		flex-direction: row;
 		padding: spacing.$spacing-1 spacing.$spacing-2 spacing.$spacing-1 spacing.$spacing-4;
@@ -382,10 +364,10 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			top: 0;
 		}
 
-		svg {
-			position: relative;
-			width: spacing.$spacing-7;
-			height: spacing.$spacing-7;
+		// iconWidth has no 40px size and iconWidth only accepts 16, 24, 32 or 48, so scale the 32px icon (40 / 32).
+		.ontario-header__search-close-icon {
+			display: inline-block;
+			transform: scale(1.25);
 		}
 	}
 }
