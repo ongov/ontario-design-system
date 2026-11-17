@@ -208,12 +208,34 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	// Rotation targets the icon host; shadow-DOM SVG is unreachable.
+	// Icon hosts are scaled because iconWidth has no 20, 26 or 28px sizes. line-height: 0 removes the inline gap inside the icon.
+	&__dropdown-icon,
+	&__toggle-icon,
+	&__search-icon,
+	&__search-submit-icon {
+		display: block;
+		line-height: 0;
+	}
+
 	&__dropdown-icon {
-		display: inline-block;
+		transform: translateX(2px) scale(math.div(20, 24));
 
 		&--rotated {
-			transform: rotate(180deg);
+			transform: translateX(2px) scale(math.div(20, 24)) rotate(180deg);
+		}
+	}
+
+	&__toggle-icon {
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			transform: scale(math.div(26, 32));
+			transform-origin: left center;
+		}
+	}
+
+	&__search-icon {
+		@media screen and (min-width: breakpoints.$small-breakpoint) {
+			transform: scale(math.div(28, 32));
+			transform-origin: left center;
 		}
 	}
 
@@ -254,10 +276,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			padding: spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-3 !important;
 			border: none !important;
 
-			svg,
 			.ontario-header__icon-container {
-				margin-left: spacing.$spacing-1;
-				margin-right: spacing.$spacing-0 !important;
 				width: spacing.$spacing-5 !important;
 				height: spacing.$spacing-5 !important;
 			}
@@ -283,10 +302,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	.ontario-header__icon-container {
-		margin-right: globalFunctions.px-to-rem(6);
-	}
-
 	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
 		padding-left: spacing.$spacing-2;
 		padding-right: spacing.$spacing-2;
@@ -310,13 +325,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	padding: spacing.$spacing-2 spacing.$spacing-3;
 	margin-left: spacing.$spacing-4;
 	border: none !important;
-
-	svg,
-	.ontario-header__icon-container {
-		@media screen and (min-width: breakpoints.$small-breakpoint) {
-			margin-right: spacing.$spacing-1;
-		}
-	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		margin-left: spacing.$spacing-0;
@@ -362,12 +370,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 		span {
 			top: 0;
-		}
-
-		// iconWidth has no 40px size and iconWidth only accepts 16, 24, 32 or 48, so scale the 32px icon (40 / 32).
-		.ontario-header__search-close-icon {
-			display: inline-block;
-			transform: scale(1.25);
 		}
 	}
 }

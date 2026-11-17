@@ -27,6 +27,7 @@ import translations from '../../translations/global.i18n.json';
 import config from '../../config.json';
 
 const ICON_WIDTH = 32;
+const SEARCH_SUBMIT_ICON_WIDTH = 24;
 const DROPDOWN_ICON_WIDTH = 24;
 
 /**
@@ -787,9 +788,17 @@ export class OntarioHeader {
 					<div class="ontario-header__menu-toggle-content">
 						<span class="ontario-header__icon-container">
 							{this.menuToggled ? (
-								<ontario-icon-close colour="white" iconWidth={ICON_WIDTH}></ontario-icon-close>
+								<ontario-icon-close
+									class="ontario-header__toggle-icon"
+									colour="white"
+									iconWidth={ICON_WIDTH}
+								></ontario-icon-close>
 							) : (
-								<ontario-icon-menu colour="white" iconWidth={ICON_WIDTH}></ontario-icon-menu>
+								<ontario-icon-menu
+									class="ontario-header__toggle-icon"
+									colour="white"
+									iconWidth={ICON_WIDTH}
+								></ontario-icon-menu>
 							)}
 						</span>
 						<span>Menu</span>
@@ -1032,7 +1041,11 @@ export class OntarioHeader {
 									<button class="ontario-header__search-submit" id="ontario-search-submit" type="submit">
 										<span class="ontario-show-for-sr">{this.translations.header.submit[`${this.language}`]}</span>
 										<span class="ontario-header__icon-container">
-											<ontario-icon-search colour="inherit" iconWidth={ICON_WIDTH}></ontario-icon-search>
+											<ontario-icon-search
+												class="ontario-header__search-submit-icon"
+												colour="inherit"
+												iconWidth={SEARCH_SUBMIT_ICON_WIDTH}
+											></ontario-icon-search>
 										</span>
 									</button>
 								</form>
@@ -1052,7 +1065,11 @@ export class OntarioHeader {
 										ref={(el) => (this.searchButton = el as HTMLInputElement)}
 									>
 										<span class="ontario-header__icon-container">
-											<ontario-icon-search colour="white" iconWidth={ICON_WIDTH}></ontario-icon-search>
+											<ontario-icon-search
+												class="ontario-header__search-icon"
+												colour="white"
+												iconWidth={ICON_WIDTH}
+											></ontario-icon-search>
 										</span>
 										<span class="ontario-show-for-medium ontario-show">
 											{this.translations.header.search[`${this.language}`]}
@@ -1073,11 +1090,7 @@ export class OntarioHeader {
 											{this.translations.header.close[`${this.language}`]}
 										</span>
 										<span class="ontario-header__icon-container">
-											<ontario-icon-close
-												class="ontario-header__search-close-icon"
-												colour="white"
-												iconWidth={ICON_WIDTH}
-											></ontario-icon-close>
+											<ontario-icon-close colour="white" iconWidth={ICON_WIDTH}></ontario-icon-close>
 										</span>
 									</button>
 								</div>
