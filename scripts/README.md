@@ -92,6 +92,20 @@ Why:
 - Provides a simple, repeatable local start flow for the app.
 - Reduces directory/context mistakes when launching production-mode server runs.
 
+## `start-angular-server.sh`
+
+Helper script to build and serve the Angular app from a known working directory. It is used as the Playwright web server for `packages/app-angular`.
+
+- Changes directory to `packages/app-angular`.
+- Runs `pnpm run build`, unless `SKIP_APP_BUILD=true` is set (for example, when the app was already built by the `build-apps` CI job).
+- Runs `pnpm run serve:dist`, which serves the built app with `serve-dist.mjs` on port 4200.
+- Uses `set -e` and `set -x` for fail-fast behaviour and command tracing.
+
+Why:
+
+- Provides a simple, repeatable local start flow for the Angular app.
+- Reuses the same build as CI instead of rebuilding when the build output is already available.
+
 ## `documentation-helper.ts`
 
 A utility script for processing documentation files in Ontario Design System repositories.
