@@ -13,6 +13,20 @@
 @use '../../styles/text-inputs.scss';
 @forward '../../utils/components/error-message/error-message';
 
+// Custom elements default to display:inline; set block here so layout and global
+// spacing/visibility override classes applied externally (e.g. .ontario-margin-bottom-24-!) take effect.
+:host {
+	display: block;
+}
+
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 $ontario-input-padding: 0.625rem;
 $ontario-input-border-width: 0.125rem;
 

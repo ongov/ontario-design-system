@@ -14,6 +14,20 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 @use '../../styles/header.scss';
 
+// Custom elements default to display:inline; set block here so layout and global
+// spacing/visibility override classes applied externally (e.g. .ontario-margin-bottom-24-!) take effect.
+:host {
+	display: block;
+}
+
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 // Variables
 $ontario-header-overflow-menu-link-font-size: globalFunctions.px-to-rem(18);
 $_border-width-1: 1px;

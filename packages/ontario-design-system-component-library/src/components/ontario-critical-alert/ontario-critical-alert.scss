@@ -3,6 +3,20 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-weights.variables' as fontWeights;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/5-layout/grid.layout';
 
+// Custom elements default to display:inline; set block here so layout and global
+// spacing/visibility override classes applied externally (e.g. .ontario-margin-bottom-24-!) take effect.
+:host {
+	display: block;
+}
+
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 $ontario-critical-alert-icon-size: 28px;
 $ontario-critical-alert-z-index: 10;
 $ontario-critical-alert-svg-margin--custom: 0.85rem;
