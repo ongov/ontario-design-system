@@ -15,6 +15,14 @@
 	--ontario-summary-list-value-flex: 1;
 }
 
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 .ontario-summary-list {
 	max-width: globalVariables.$standard-width;
 	margin-bottom: spacing.$spacing-9;

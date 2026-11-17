@@ -140,8 +140,19 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 }
 
 // Host styles
+// Custom elements default to display:inline; set block here so layout and global
+// spacing/visibility override classes applied externally (e.g. .ontario-margin-bottom-24-!) take effect.
 :host {
+	display: block;
 	--header-search-reset: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE5IDYuNEwxNy42IDUgMTIgMTAuNiA2LjQgNSA1IDYuNGw1LjYgNS42TDUgMTcuNiA2LjQgMTlsNS42LTUuNiA1LjYgNS42IDEuNC0xLjQtNS42LTUuNkwxOSA2LjR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+);
+}
+
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
 }
 
 // Main header component

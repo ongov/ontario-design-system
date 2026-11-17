@@ -8,6 +8,20 @@
 
 @use '../../utils/common/common.form-elements.scss' as common-form-elements;
 
+// Custom elements default to display:inline; set block here so layout and global
+// spacing/visibility override classes applied externally (e.g. .ontario-margin-bottom-24-!) take effect.
+:host {
+	display: block;
+}
+
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 // Note: If additional form elements need to be targeted for gaps, update the $form-elements list in the common.form-elements.scss file.
 
 /**

@@ -11,6 +11,14 @@ $search-result-item-focus-ring-width: globalFunctions.px-to-rem(4);
 	list-style: none;
 }
 
+// Respect the standard `hidden` attribute: without this, our own `:host` display rule above
+// would always win over the browser's default `[hidden] { display: none }` UA rule, since both
+// have equal specificity but ours is an author-origin rule. The extra attribute selector here
+// gives `[hidden]` higher specificity so it continues to behave as consumers expect.
+:host([hidden]) {
+	display: none;
+}
+
 .ontario-search-result-item {
 	padding: spacing.$spacing-2 spacing.$spacing-4;
 	background-color: colours.$ontario-colour-white;
