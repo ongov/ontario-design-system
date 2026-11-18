@@ -48,6 +48,9 @@ export default function Home() {
 							<Link href="/components/ontario-checkbox">ontario-checkbox</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-checkboxes">ontario-checkboxes</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-critical-alert">ontario-critical-alert</Link>
 						</li>
 						<li>
