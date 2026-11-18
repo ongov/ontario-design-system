@@ -670,7 +670,3 @@ test.describe('ontario-button - icon slots', () => {
 		expect(after.icon).toBe(after.button);
 	});
 });
-
-// import { newE2EPage } from '@stencil/core/testing';
-
-// describe('ontario-button', () => {
