@@ -14,7 +14,8 @@
 
 ### Used by
 
-- [ontario-checkboxes](../../ontario-checkbox)
+- [ontario-checkbox](../../ontario-checkbox)
+- [ontario-checkboxes](../../ontario-checkboxes)
 - [ontario-date-input](../../ontario-date-input)
 - [ontario-dropdown-list](../../ontario-dropdown-list)
 - [ontario-input](../../ontario-input)
@@ -26,6 +27,7 @@
 
 ```mermaid
 graph TD;
+  ontario-checkbox --> ontario-icon-alert-error
   ontario-checkboxes --> ontario-icon-alert-error
   ontario-date-input --> ontario-icon-alert-error
   ontario-dropdown-list --> ontario-icon-alert-error
