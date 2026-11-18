@@ -6,6 +6,7 @@ import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
 import { isAngularPOCEnvironment } from './translation.config';
+import { isEnglish } from '../utils/get-language.utils';
 
 type AppLanguage = 'en' | 'fr';
 
@@ -78,12 +79,6 @@ export class AppComponent implements OnInit {
 		};
 	}
 
-	getLanguageFromURL(): AppLanguage {
-		// The base href can generate hashes with or without a slash after '#' (e.g.
-		// '#/fr/demarrer' or '#fr/demarrer'), so match both forms.
-		return /^#\/?fr\//.test(window.location.hash) ? 'fr' : 'en';
-	}
-
 	getRoute() {
 		const getStarted = this.currentLang === 'en' ? 'get-started' : 'fr/demarrer';
 		const register = this.currentLang === 'en' ? 'create-account' : 'fr/creer-compte';
@@ -106,14 +101,14 @@ export class AppComponent implements OnInit {
 
 	private setLanguage(language: AppLanguage, navigateToTranslatedRoute = false) {
 		const languageRequestId = ++this.languageRequestId;
-		this.currentLang = language;
-		// Keeps <html lang> aligned on toggle; the initial value is set in index.html before hydration.
-		document.documentElement.lang = language;
 		this.translate.setFallbackLang(language);
 
 		this.translate.use(language).subscribe(() => {
 			if (languageRequestId !== this.languageRequestId) return;
 
+			// Updated together once translations load so the Ontario components and app text flip at the same time.
+			this.currentLang = language;
+			document.documentElement.lang = language;
 			this.cdr.detectChanges();
 
 			if (navigateToTranslatedRoute) {
@@ -147,7 +142,9 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.setLanguage(this.getLanguageFromURL());
+		// index.html resolves <html lang> from the URL before hydration, so it is the single source of truth.
+		this.currentLang = isEnglish() ? 'en' : 'fr';
+		this.setLanguage(this.currentLang);
 
 		// Listen for route changes
 		this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
