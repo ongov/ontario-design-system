@@ -231,7 +231,8 @@ test.describe('ontario-button', () => {
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.waitForChanges();
 
-		await expect(host.locator('button')).toHaveCSS('display', 'block');
+		// A block-level flex container, so the icon slots and label lay out in a row while the button fills the line.
+		await expect(host.locator('button')).toHaveCSS('display', 'flex');
 	});
 
 	// Known defect (DS-2973): `:host { display: inline-block }` makes the host shrink to the button's minimum width, so the
