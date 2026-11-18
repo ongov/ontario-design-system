@@ -168,11 +168,7 @@ test.describe('ontario-header - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		const results = await new AxeBuilder({ page })
-			.include('ontario-header')
-			// svg-img-alt is a pre-existing icon accessibility issue tracked separately; not in scope for this suite.
-			.disableRules(['svg-img-alt'])
-			.analyze();
+		const results = await new AxeBuilder({ page }).include('ontario-header').analyze();
 		expect(results.violations).toEqual([]);
 	});
 });
