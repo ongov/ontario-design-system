@@ -204,3 +204,26 @@ test.describe('ontario-button - icon variants (default state)', () => {
 		await expect(host).toHaveScreenshot('ontarioButtonBothIconsTertiary.png');
 	});
 });
+
+test.describe('ontario-button - button group spacing', () => {
+	const group = `
+		<div id="vrt-button-group" style="padding: 16px; width: 100%; box-sizing: border-box;"><ontario-button type="primary" label="Save"></ontario-button><ontario-button type="secondary" label="Cancel"></ontario-button><ontario-button type="tertiary" label="Reset"></ontario-button></div>
+	`;
+
+	for (const [name, viewport] of [
+		['desktop', { width: 1280, height: 400 }],
+		['mobile', { width: 375, height: 600 }],
+	] as const) {
+		test(`adjacent buttons on ${name}`, async ({ page }) => {
+			await page.setViewportSize(viewport);
+			await page.setContent(withGlobalStyles(group));
+			await page.waitForChanges();
+			await expect(page.locator('ontario-button').first()).toHaveClass(/hydrated/);
+			await page.evaluate(async () => {
+				await document.fonts.ready;
+			});
+
+			await expectVrtScreenshot(page.locator('#vrt-button-group'), stateOptions);
+		});
+	}
+});

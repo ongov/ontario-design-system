@@ -2,6 +2,7 @@ import { expect, Locator } from '@playwright/test';
 import { test, E2EPage } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
 import { ButtonTypes, HtmlTypes } from '../ontario-button.types';
+import { withGlobalStyles } from '../../../utils/tests/vrt-helpers';
 
 /**
  * The computed value of a fully transparent colour (`transparent`). It is used for the tertiary button background, which
@@ -668,5 +669,51 @@ test.describe('ontario-button - icon slots', () => {
 		await expect.poll(async () => (await colours()).button).not.toBe(before.button);
 		const after = await colours();
 		expect(after.icon).toBe(after.button);
+	});
+});
+
+test.describe('ontario-button - spacing between adjacent buttons', () => {
+	const BUTTON_GROUP_GAP_DESKTOP = 32;
+	const BUTTON_STACK_GAP_MOBILE = 24;
+
+	// Markup without whitespace between the buttons, so no inline gap is added on top of the margin
+	const group = `<div style="width: 100%"><ontario-button id="a" type="primary" label="Save"></ontario-button><ontario-button id="b" type="secondary" label="Cancel"></ontario-button><ontario-button id="c" type="tertiary" label="Reset"></ontario-button></div>`;
+
+	const boxes = (page: E2EPage) =>
+		page.evaluate(() =>
+			['a', 'b', 'c'].map((id) => {
+				const r = document.getElementById(id)!.shadowRoot!.querySelector('button')!.getBoundingClientRect();
+				return { left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+			}),
+		);
+
+	test('places 32px between buttons in a group on desktop', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 800 });
+		await render(page, withGlobalStyles(group));
+		const [a, b, c] = await boxes(page);
+
+		expect(b.left - a.right).toBeCloseTo(BUTTON_GROUP_GAP_DESKTOP, 0);
+		expect(c.left - b.right).toBeCloseTo(BUTTON_GROUP_GAP_DESKTOP, 0);
+		expect(b.top).toBeCloseTo(a.top, 0);
+		expect(c.top).toBeCloseTo(a.top, 0);
+	});
+
+	test('stacks the buttons with 24px between them on mobile', async ({ page }) => {
+		await page.setViewportSize({ width: 375, height: 812 });
+		await render(page, withGlobalStyles(group));
+		const [a, b, c] = await boxes(page);
+
+		expect(b.top - a.bottom).toBeCloseTo(BUTTON_STACK_GAP_MOBILE, 0);
+		expect(c.top - b.bottom).toBeCloseTo(BUTTON_STACK_GAP_MOBILE, 0);
+		expect(b.left).toBeCloseTo(a.left, 0);
+		expect(c.left).toBeCloseTo(a.left, 0);
+	});
+
+	test('does not add spacing around a single button', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 800 });
+		await render(page, withGlobalStyles(`<ontario-button id="a" type="primary" label="Save"></ontario-button>`));
+
+		await expect(page.locator('#a')).toHaveCSS('margin-left', '0px');
+		await expect(page.locator('#a')).toHaveCSS('margin-top', '0px');
 	});
 });
