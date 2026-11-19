@@ -112,12 +112,12 @@ export function retrieveEnumKeys(enumObject: object): string[] {
  * Prints an array as a comma delimited list, with the last element being preceded by a conjunction.
  * As per ontario.ca content guidelines, there is no Oxford comma.
  *
- * @param {Array<any>} arr - The array that you wish to print.
+ * @param {readonly any[]} arr - The array that you wish to print.
  * @param {Conjunction} conjunctionType - Whether you want the sentence to end with 'and value.' or 'or value.'
  *
  * @returns {string}
  */
-export function printArray(arr: Array<any>, conjunctionType: Conjunction = 'and'): string {
+export function printArray(arr: readonly any[], conjunctionType: Conjunction = 'and'): string {
 	return [...arr].reduce(
 		(text, value, i, array) => text + (i < array.length - 1 ? ', ' : ` ${conjunctionType} `) + value,
 	);
