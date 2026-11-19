@@ -94,3 +94,136 @@ test.describe('ontario-button', () => {
 		await expectVrtScreenshot(wrapper, stateOptions);
 	});
 });
+
+test.describe('ontario-button - icon variants (default state)', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.setContent(`
+			<ontario-button type="primary" element-id="ontario-button-icon-only-primary" aria-label-text="Open map">
+				<ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+			</ontario-button>
+			<ontario-button type="secondary" element-id="ontario-button-icon-only-secondary" aria-label-text="Open map">
+				<ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+			</ontario-button>
+			<ontario-button type="tertiary" element-id="ontario-button-icon-only-tertiary" aria-label-text="Open map">
+				<ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+			</ontario-button>
+
+			<ontario-button type="primary" element-id="ontario-button-leading-icon-primary" label="Add item">
+				<ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+			<ontario-button type="secondary" element-id="ontario-button-leading-icon-secondary" label="Add item">
+				<ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+			<ontario-button type="tertiary" element-id="ontario-button-leading-icon-tertiary" label="Add item">
+				<ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+
+			<ontario-button type="primary" element-id="ontario-button-trailing-icon-primary" label="Add item">
+				<ontario-icon-add slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+			<ontario-button type="secondary" element-id="ontario-button-trailing-icon-secondary" label="Add item">
+				<ontario-icon-add slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+			<ontario-button type="tertiary" element-id="ontario-button-trailing-icon-tertiary" label="Add item">
+				<ontario-icon-add slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+			</ontario-button>
+
+			<ontario-button type="primary" element-id="ontario-button-both-icons-primary" label="Download report">
+				<ontario-icon-download slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-download>
+				<ontario-icon-chevron-right slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-chevron-right>
+			</ontario-button>
+			<ontario-button type="secondary" element-id="ontario-button-both-icons-secondary" label="Download report">
+				<ontario-icon-download slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-download>
+				<ontario-icon-chevron-right slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-chevron-right>
+			</ontario-button>
+			<ontario-button type="tertiary" element-id="ontario-button-both-icons-tertiary" label="Download report">
+				<ontario-icon-download slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-download>
+				<ontario-icon-chevron-right slot="trailing-icon" colour="inherit" is-decorative="true"></ontario-icon-chevron-right>
+			</ontario-button>
+		`);
+		await page.waitForChanges();
+	});
+
+	test('primary icon-only button', async ({ page }) => {
+		const host = page.locator('#ontario-button-icon-only-primary');
+		await expect(host).toHaveScreenshot('ontarioButtonIconOnlyPrimary.png');
+	});
+
+	test('secondary icon-only button', async ({ page }) => {
+		const host = page.locator('#ontario-button-icon-only-secondary');
+		await expect(host).toHaveScreenshot('ontarioButtonIconOnlySecondary.png');
+	});
+
+	test('tertiary icon-only button', async ({ page }) => {
+		const host = page.locator('#ontario-button-icon-only-tertiary');
+		await expect(host).toHaveScreenshot('ontarioButtonIconOnlyTertiary.png');
+	});
+
+	test('primary button with a leading icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-leading-icon-primary');
+		await expect(host).toHaveScreenshot('ontarioButtonLeadingIconPrimary.png');
+	});
+
+	test('secondary button with a leading icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-leading-icon-secondary');
+		await expect(host).toHaveScreenshot('ontarioButtonLeadingIconSecondary.png');
+	});
+
+	test('tertiary button with a leading icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-leading-icon-tertiary');
+		await expect(host).toHaveScreenshot('ontarioButtonLeadingIconTertiary.png');
+	});
+
+	test('primary button with a trailing icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-trailing-icon-primary');
+		await expect(host).toHaveScreenshot('ontarioButtonTrailingIconPrimary.png');
+	});
+
+	test('secondary button with a trailing icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-trailing-icon-secondary');
+		await expect(host).toHaveScreenshot('ontarioButtonTrailingIconSecondary.png');
+	});
+
+	test('tertiary button with a trailing icon', async ({ page }) => {
+		const host = page.locator('#ontario-button-trailing-icon-tertiary');
+		await expect(host).toHaveScreenshot('ontarioButtonTrailingIconTertiary.png');
+	});
+
+	test('primary button with leading and trailing icons', async ({ page }) => {
+		const host = page.locator('#ontario-button-both-icons-primary');
+		await expect(host).toHaveScreenshot('ontarioButtonBothIconsPrimary.png');
+	});
+
+	test('secondary button with leading and trailing icons', async ({ page }) => {
+		const host = page.locator('#ontario-button-both-icons-secondary');
+		await expect(host).toHaveScreenshot('ontarioButtonBothIconsSecondary.png');
+	});
+
+	test('tertiary button with leading and trailing icons', async ({ page }) => {
+		const host = page.locator('#ontario-button-both-icons-tertiary');
+		await expect(host).toHaveScreenshot('ontarioButtonBothIconsTertiary.png');
+	});
+});
+
+test.describe('ontario-button - button group spacing', () => {
+	const group = `
+		<div id="vrt-button-group" style="padding: 16px; width: 100%; box-sizing: border-box;"><ontario-button type="primary" label="Save"></ontario-button><ontario-button type="secondary" label="Cancel"></ontario-button><ontario-button type="tertiary" label="Reset"></ontario-button></div>
+	`;
+
+	for (const [name, viewport] of [
+		['desktop', { width: 1280, height: 400 }],
+		['mobile', { width: 375, height: 600 }],
+	] as const) {
+		test(`adjacent buttons on ${name}`, async ({ page }) => {
+			await page.setViewportSize(viewport);
+			await page.setContent(withGlobalStyles(group));
+			await page.waitForChanges();
+			await expect(page.locator('ontario-button').first()).toHaveClass(/hydrated/);
+			await page.evaluate(async () => {
+				await document.fonts.ready;
+			});
+
+			await expectVrtScreenshot(page.locator('#vrt-button-group'), stateOptions);
+		});
+	}
+});
