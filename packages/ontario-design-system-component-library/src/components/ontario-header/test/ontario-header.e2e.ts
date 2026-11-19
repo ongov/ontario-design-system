@@ -1,6 +1,10 @@
 import { expect, Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import AxeBuilder from '@axe-core/playwright';
+import {
+	OntarioColourAccentIconColoursBlack,
+	OntarioColourAccentIconColoursWhite,
+} from '@ongov/ontario-design-system-design-tokens/tokens';
 
 const menuItemsJson = JSON.stringify([
 	{ title: 'Item 1', href: '/item-1' },
@@ -35,6 +39,33 @@ test.describe('ontario-header - ontario type', () => {
 	test('renders the search input and submit button', async () => {
 		await expect(host.locator('#ontario-search-input-field')).toBeAttached();
 		await expect(host.locator('#ontario-search-submit')).toBeAttached();
+	});
+
+	test('search submit icon changes fill on hover and focus', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 900 });
+
+		const searchButton = host.locator('#ontario-search-submit');
+		const iconPath = searchButton.locator('svg path');
+		const getComputedColour = (colour: string) =>
+			page.evaluate((value) => {
+				const probe = document.createElement('span');
+				probe.style.color = value;
+				document.body.append(probe);
+				const computedColour = getComputedStyle(probe).color;
+				probe.remove();
+				return computedColour;
+			}, colour);
+		const blackFill = await getComputedColour(OntarioColourAccentIconColoursBlack);
+		const whiteFill = await getComputedColour(OntarioColourAccentIconColoursWhite);
+
+		await expect(iconPath).toHaveCSS('fill', blackFill);
+		await searchButton.hover();
+		await expect(iconPath).toHaveCSS('fill', whiteFill);
+
+		await page.mouse.move(0, 0);
+		await expect(iconPath).toHaveCSS('fill', blackFill);
+		await searchButton.focus();
+		await expect(iconPath).toHaveCSS('fill', whiteFill);
 	});
 
 	test('toggles the search bar open and closed on mobile search button click', async ({ page }) => {

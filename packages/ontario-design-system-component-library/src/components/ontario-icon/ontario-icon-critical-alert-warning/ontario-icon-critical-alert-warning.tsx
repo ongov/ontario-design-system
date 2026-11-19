@@ -42,16 +42,14 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 	@Prop() colour: IconColour = 'black';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-critical-alert-warning');
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 
@@ -82,15 +80,15 @@ export class OntarioIconCriticalAlertWarning implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						viewBox="0 0 24 24"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
 						id="critical-alert-warning"
 					>
 						<path d="M1 21H23L12 2L1 21ZM13 18H11V16H13V18ZM13 14H11V10H13V14Z" fill="white" />
-						<rect x="11" y="10" width="2" height="4" fill="black" />
-						<rect x="11" y="16" width="2" height="2" fill="black" />
+						<rect x="11" y="10" width="2" height="4" />
+						<rect x="11" y="16" width="2" height="2" />
 					</svg>
 				)}
 			/>

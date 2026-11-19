@@ -30,6 +30,13 @@ describe('shared icon validation', () => {
 			expect(warning.mock.calls[0][0]).toContain(colour);
 		}
 		expect(warning.mock.calls[0][0]).toContain('white or inherit');
+		expect(warning.mock.calls[0][0]).toContain('valid CSS colour');
+	});
+
+	it('falls back to the icon default colour when one is supplied', () => {
+		const warning = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+		expect(validateIconColour('not-a-colour', 'ontario-icon-menu-header', 'white')).toEqual({ colour: 'white' });
+		expect(warning).toHaveBeenCalledOnce();
 	});
 
 	it('warns for a colour attribute on a fixed-colour icon only when supplied', () => {

@@ -42,16 +42,14 @@ export class OntarioIconAttach implements IconWithColour {
 	@Prop() colour: IconColour = 'black';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-attach');
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 
@@ -82,16 +80,13 @@ export class OntarioIconAttach implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						id="attach"
 					>
-						<path
-							d="M16.5 6v11.5a4 4 0 1 1-8 0V5a2.5 2.5 0 1 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 1 0 5 0V5a4 4 0 1 0-8 0v12.5a5.5 5.5 0 1 0 11 0V6h-1.5z"
-							fill="#000"
-						/>
+						<path d="M16.5 6v11.5a4 4 0 1 1-8 0V5a2.5 2.5 0 1 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 1 0 5 0V5a4 4 0 1 0-8 0v12.5a5.5 5.5 0 1 0 11 0V6h-1.5z" />
 					</svg>
 				)}
 			/>

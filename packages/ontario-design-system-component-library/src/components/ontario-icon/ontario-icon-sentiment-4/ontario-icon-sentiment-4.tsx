@@ -42,16 +42,14 @@ export class OntarioIconSentiment4 implements IconWithColour {
 	@Prop() colour: IconColour = 'black';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-sentiment-4');
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 
@@ -82,7 +80,7 @@ export class OntarioIconSentiment4 implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
 						id="sentiment-4"
