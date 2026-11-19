@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"@stencil/core": "^4.38.3",
-		"@types/node": "^24.10.1",
+		"@types/node": "^26.0.0",
 		"puppeteer": "^25.0.0",
 		"tsx": "^4.20.5",
 		"typescript": "^7.0.0",
