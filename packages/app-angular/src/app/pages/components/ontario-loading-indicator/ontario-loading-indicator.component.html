@@ -1,0 +1,55 @@
+<h1>ontario-loading-indicator</h1>
+
+<div>
+	<ul>
+		<li>
+			<a routerLink="/components/ontario-loading-indicator/full-screen">"full-screen-overlay" Loading Indicator</a>
+		</li>
+	</ul>
+</div>
+
+<div>
+	<h2>"type" Prop Variants</h2>
+
+	<h3>Small</h3>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator [isLoading]="true" [fullScreenOverlay]="false" type="small"></ontario-loading-indicator>
+	</div>
+
+	<h3>Large</h3>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator [isLoading]="true" [fullScreenOverlay]="false" type="large"></ontario-loading-indicator>
+	</div>
+
+	<hr />
+
+	<h2>"isLoading" Prop Variant</h2>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator [isLoading]="false" [fullScreenOverlay]="false"></ontario-loading-indicator>
+	</div>
+
+	<hr />
+
+	<h2>"message" Prop Variant</h2>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator
+			[isLoading]="true"
+			[fullScreenOverlay]="false"
+			message="Please wait while we process your request"
+		></ontario-loading-indicator>
+	</div>
+
+	<hr />
+
+	<h2>"language" Prop Variants</h2>
+
+	<h3>English</h3>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator [isLoading]="true" [fullScreenOverlay]="false"></ontario-loading-indicator>
+	</div>
+
+	<h3>French</h3>
+	<div style="position: relative; height: 25vh">
+		<ontario-loading-indicator [isLoading]="true" [fullScreenOverlay]="false" language="fr"></ontario-loading-indicator>
+	</div>
+</div>
