@@ -8,11 +8,15 @@ export default function OntarioTagPage() {
 				<h1>ontario-tag</h1>
 
 				<h2>Non-dismissible</h2>
-				<OntarioTag label="Health" />
-				<OntarioTag label="Education" selected />
+				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+					<OntarioTag label="Health" />
+					<OntarioTag label="Education" selected />
+				</div>
 
-				<h2>Dismissible</h2>
-				<OntarioTag label="Category: Filter" value="category-filter" dismissible />
+				<h2 className="ontario-margin-top-48-!">Dismissible</h2>
+				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+					<OntarioTag label="Category: Filter" value="category-filter" dismissible />
+				</div>
 			</Grid>
 		</main>
 	);
