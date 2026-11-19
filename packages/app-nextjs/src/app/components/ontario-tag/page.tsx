@@ -1,0 +1,23 @@
+import { Grid } from '../../grid';
+import { OntarioTag } from '@ongov/ontario-design-system-component-library-react';
+
+export default function OntarioTagPage() {
+	return (
+		<main>
+			<Grid>
+				<h1>ontario-tag</h1>
+
+				<h2>Non-dismissible</h2>
+				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+					<OntarioTag label="Health" />
+					<OntarioTag label="Education" selected />
+				</div>
+
+				<h2 className="ontario-margin-top-48-!">Dismissible</h2>
+				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+					<OntarioTag label="Category: Filter" value="category-filter" dismissible />
+				</div>
+			</Grid>
+		</main>
+	);
+}
