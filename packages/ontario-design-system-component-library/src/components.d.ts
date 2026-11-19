@@ -3552,10 +3552,6 @@ export namespace Components {
          */
         "ariaLabelText"?: string;
         /**
-          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
-         */
-        "dismissLabel"?: string;
-        /**
           * Renders a close icon after the label, and makes activating the tag dismiss it.  A dismissible tag always uses the selected style.  This property is optional.
           * @default false
          */
@@ -9184,10 +9180,6 @@ declare namespace LocalJSX {
           * Provides more context for the non-dismissible tag button, only if the label alone is not enough.  This property is optional.
          */
         "ariaLabelText"?: string;
-        /**
-          * Overrides the accessible name of a dismissible tag.  If no `dismissLabel` is passed, the translated "Remove {label}" is used.  Include the visible label in the override, so the accessible name still matches what users see.  This property is optional.
-         */
-        "dismissLabel"?: string;
         /**
           * Renders a close icon after the label, and makes activating the tag dismiss it.  A dismissible tag always uses the selected style.  This property is optional.
           * @default false

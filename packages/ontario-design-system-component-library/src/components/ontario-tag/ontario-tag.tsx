@@ -63,17 +63,6 @@ export class OntarioTag {
 	@Prop() dismissible?: boolean = false;
 
 	/**
-	 * Overrides the accessible name of a dismissible tag.
-	 *
-	 * If no `dismissLabel` is passed, the translated "Remove {label}" is used.
-	 *
-	 * Include the visible label in the override, so the accessible name still matches what users see.
-	 *
-	 * This property is optional.
-	 */
-	@Prop() dismissLabel?: string;
-
-	/**
 	 * Provides more context for the non-dismissible tag button, only if the label alone is not enough.
 	 *
 	 * This property is optional.
@@ -218,8 +207,6 @@ export class OntarioTag {
 	 * @returns {string}
 	 */
 	private getDismissLabel(label: string): string {
-		if (this.dismissLabel) return this.dismissLabel;
-
 		return this.translations.tag.dismiss[`${this.language}`].replace('{label}', () => label);
 	}
 
