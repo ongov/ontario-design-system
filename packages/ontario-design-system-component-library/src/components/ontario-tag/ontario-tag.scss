@@ -8,14 +8,14 @@
 // Tag-specific aliases of existing tokens, named for how the tag uses them.
 $tag-selected-fill: colours.$ontario-colour-button-secondary--hover;
 $tag-selected-fill-interactive: colours.$ontario-colour-button-secondary--active;
-$tag-selected-ink: colours.$ontario-colour-link--hover;
-$tag-selected-ink-interactive: colours.$ontario-colour-link--active;
+$tag-selected-border: colours.$ontario-colour-link--hover;
+$tag-selected-ink: colours.$ontario-colour-link--active;
 $tag-focus-shadow:
 	0 0 0 2px colours.$ontario-colour-white,
 	0 0 0 6px colours.$ontario-colour-focus;
 
-// The active fill of a selected tag has no matching global token.
-$tag-selected-fill-active: #99cbff;
+// The active fill of a selected tag has no matching global token yet.
+$tag-selected-fill-active: #70b8ff;
 
 :host {
 	display: inline-block;
@@ -24,9 +24,8 @@ $tag-selected-fill-active: #99cbff;
 
 .ontario-tag {
 	--tag-fill: #{colours.$ontario-colour-white};
-	--tag-border: #{colours.$ontario-greyscale-40};
+	--tag-border: #{colours.$ontario-greyscale-60};
 	--tag-ink: #{colours.$ontario-colour-black};
-	--tag-icon-ink: var(--tag-ink);
 
 	box-sizing: border-box;
 	display: inline-flex;
@@ -70,32 +69,24 @@ $tag-selected-fill-active: #99cbff;
 
 .ontario-tag--selected {
 	--tag-fill: #{$tag-selected-fill};
-	--tag-border: #{$tag-selected-ink};
+	--tag-border: #{$tag-selected-border};
 	--tag-ink: #{$tag-selected-ink};
 
 	&:hover,
 	&:focus-visible {
 		--tag-fill: #{$tag-selected-fill-interactive};
-		--tag-border: #{$tag-selected-ink-interactive};
-		--tag-ink: #{$tag-selected-ink-interactive};
+		--tag-border: #{$tag-selected-ink};
 	}
 
 	&:active {
 		--tag-fill: #{$tag-selected-fill-active};
 		--tag-border: #{colours.$ontario-colour-black};
-		--tag-ink: #{colours.$ontario-colour-black};
 	}
 }
 
 .ontario-tag--dismissible {
 	gap: globalFunctions.px-to-rem(6);
 	padding-right: globalFunctions.px-to-rem(14);
-
-	// In the active state the label keeps the navy ink and only the close icon turns black.
-	&:active {
-		--tag-ink: #{$tag-selected-ink-interactive};
-		--tag-icon-ink: #{colours.$ontario-colour-black};
-	}
 }
 
 .ontario-tag__label {
@@ -108,7 +99,6 @@ $tag-selected-fill-active: #99cbff;
 	flex: none;
 	width: globalFunctions.px-to-rem(24);
 	height: globalFunctions.px-to-rem(24);
-	color: var(--tag-icon-ink);
 }
 
 @media (forced-colors: active) {
