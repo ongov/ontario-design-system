@@ -30,7 +30,7 @@ $tag-selected-fill-active: #70b8ff;
 	box-sizing: border-box;
 	display: inline-flex;
 	align-items: center;
-	max-width: 100%;
+	max-width: min(100%, #{globalFunctions.px-to-rem(736)});
 	min-height: globalFunctions.px-to-rem(48);
 	padding: globalFunctions.px-to-rem(10) globalFunctions.px-to-rem(22);
 	border: 2px solid var(--tag-border);
