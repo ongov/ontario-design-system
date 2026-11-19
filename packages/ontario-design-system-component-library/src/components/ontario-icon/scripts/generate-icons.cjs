@@ -22,7 +22,6 @@ const categoryLabels = {
 	other: 'Other',
 };
 const allowedColourCapabilities = new Set(['configurable', 'fixed', 'multicolour']);
-const allowedPreviewBackgrounds = new Set(['dark']);
 const galleryStartMarker = '<!-- ICON_GALLERY_START -->';
 const galleryEndMarker = '<!-- ICON_GALLERY_END -->';
 
@@ -41,10 +40,9 @@ const getIconGalleryMarkup = (icons) => {
 
 			const iconItems = categoryIcons
 				.map((icon) => {
-					const previewClass =
-						icon.previewBackground === 'dark'
-							? 'ontario-icon-gallery__item ontario-icon-gallery__item--dark'
-							: 'ontario-icon-gallery__item';
+					const previewClass = icon.darkPreview
+						? 'ontario-icon-gallery__item ontario-icon-gallery__item--dark'
+						: 'ontario-icon-gallery__item';
 					const iconTag = `<${icon.name} icon-width="32"></${icon.name}>`;
 
 					return [
@@ -111,7 +109,7 @@ const validateManifest = (icons, assetFiles) => {
 		}
 		if (
 			!icon.viewBox ||
-			(icon.previewBackground !== undefined && !allowedPreviewBackgrounds.has(icon.previewBackground)) ||
+			(icon.darkPreview !== undefined && typeof icon.darkPreview !== 'boolean') ||
 			!Array.isArray(icon.aliases) ||
 			!icon.aliases.every((alias) => typeof alias === 'string') ||
 			typeof icon.deprecated !== 'boolean' ||

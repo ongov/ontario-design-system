@@ -6,6 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { copyFileSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { resolveConfigFile } from 'prettier';
 
 const require = createRequire(import.meta.url);
 const { getIconComponentTemplate, validateManifest } = require('../scripts/generate-icons.cjs') as {
@@ -98,7 +99,7 @@ describe('icon generator', () => {
 			},
 		});
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		fixture = mkdtempSync(path.join(tmpdir(), 'ontario-icon-generator-'));
 		iconDirectory = path.join(fixture, 'src/components/ontario-icon');
 		demoPath = path.join(fixture, 'src/index.html');
@@ -108,7 +109,12 @@ describe('icon generator', () => {
 			path.join(sourceDirectory, 'scripts/generate-icons.cjs'),
 			path.join(iconDirectory, 'scripts/generate-icons.cjs'),
 		);
-		copyFileSync(path.join(packageRoot, '../../.prettierrc.json'), path.join(fixture, '.prettierrc.json'));
+		const sourceDemoPath = path.join(packageRoot, 'src/index.html');
+		const prettierConfigPath = await resolveConfigFile(sourceDemoPath);
+		if (!prettierConfigPath) {
+			throw new Error(`Could not find a Prettier config for the icon generator fixture using ${sourceDemoPath}.`);
+		}
+		copyFileSync(prettierConfigPath, path.join(fixture, path.basename(prettierConfigPath)));
 		writeFileSync(
 			path.join(iconDirectory, 'icon-manifest.json'),
 			JSON.stringify({
