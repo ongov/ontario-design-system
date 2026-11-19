@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { copyFileSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { resolveConfigFile } from 'prettier';
 import { parseSync, type INode } from 'svgson';
 import { vi } from 'vitest';
 import { validateIconWidth } from '../icon-validation';
