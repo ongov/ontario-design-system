@@ -112,10 +112,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	&:hover {
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 
 	&:focus {
@@ -123,19 +119,11 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-link--active;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 }
 
@@ -214,26 +202,40 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		width: spacing.$spacing-5;
 		height: spacing.$spacing-5;
 
-		&--white {
-			svg {
-				fill: white;
-				color: white;
-			}
-
-			svg path {
-				stroke: white;
-			}
-		}
-
-		&--rotated {
-			svg {
-				transform: rotate(180deg);
-			}
-		}
-
 		@media screen and (max-width: breakpoints.$medium-breakpoint) {
 			width: spacing.$spacing-6;
 			height: spacing.$spacing-6;
+		}
+	}
+
+	// Icon hosts are scaled because iconWidth has no 20, 26 or 28px sizes. line-height: 0 removes the inline gap inside the icon.
+	&__dropdown-icon,
+	&__toggle-icon,
+	&__search-icon,
+	&__search-submit-icon {
+		display: block;
+		line-height: 0;
+	}
+
+	&__dropdown-icon {
+		transform: translateX(2px) scale(math.div(20, 24));
+
+		&--rotated {
+			transform: translateX(2px) scale(math.div(20, 24)) rotate(180deg);
+		}
+	}
+
+	&__toggle-icon {
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			transform: scale(math.div(26, 32));
+			transform-origin: left center;
+		}
+	}
+
+	&__search-icon {
+		@media screen and (min-width: breakpoints.$small-breakpoint) {
+			transform: scale(math.div(28, 32));
+			transform-origin: left center;
 		}
 	}
 
@@ -274,9 +276,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			padding: spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-3 !important;
 			border: none !important;
 
-			svg {
-				margin-left: spacing.$spacing-1;
-				margin-right: spacing.$spacing-0 !important;
+			.ontario-header__icon-container {
 				width: spacing.$spacing-5 !important;
 				height: spacing.$spacing-5 !important;
 			}
@@ -302,12 +302,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	svg {
-		margin-right: globalFunctions.px-to-rem(6);
-		width: spacing.$spacing-6;
-		height: spacing.$spacing-6;
-	}
-
 	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
 		padding-left: spacing.$spacing-2;
 		padding-right: spacing.$spacing-2;
@@ -331,12 +325,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	padding: spacing.$spacing-2 spacing.$spacing-3;
 	margin-left: spacing.$spacing-4;
 	border: none !important;
-
-	svg {
-		@media screen and (min-width: breakpoints.$small-breakpoint) {
-			margin-right: spacing.$spacing-1;
-		}
-	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		margin-left: spacing.$spacing-0;
@@ -375,11 +363,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	svg {
-		top: 0;
-		fill: colours.$ontario-colour-white;
-	}
-
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		flex-direction: row;
 		padding: spacing.$spacing-1 spacing.$spacing-2 spacing.$spacing-1 spacing.$spacing-4;
@@ -387,12 +370,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 		span {
 			top: 0;
-		}
-
-		svg {
-			position: relative;
-			width: spacing.$spacing-7;
-			height: spacing.$spacing-7;
 		}
 	}
 }
@@ -499,10 +476,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			background-color: colours.$ontario-colour-link;
 			color: colours.$ontario-colour-white;
 
-			svg {
-				fill: colours.$ontario-colour-white;
-			}
-
 			@include search-button-interactive-states;
 		}
 	}
@@ -548,11 +521,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	cursor: pointer;
 	padding-left: spacing.$spacing-3;
 	padding-right: spacing.$spacing-3;
-
-	svg {
-		fill: colours.$ontario-colour-black;
-		margin-right: spacing.$spacing-0;
-	}
 
 	@include search-button-interactive-states;
 }
