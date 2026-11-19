@@ -11,6 +11,7 @@ It is a proof of concept (PoC) that renders every component on its own page, mir
 - **Angular**: Framework for the app, using standalone components, lazy-loaded routes, and the built-in control flow (`@for`, `@if`).
 - **Stencil (Angular Output)**: Web components consumed as Angular components via `@stencil/angular-output-target`.
 - **Karma + Jasmine**: Angular's default unit test setup.
+- **Playwright**: End-to-end (E2E) and visual regression (VRT) tests that run against the component pages. These tests are currently set up for `ontario-button` only.
 
 ---
 
@@ -94,13 +95,31 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Testing
+
+### Unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### E2E and VRT tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Playwright tests live in `tests/<component-name>/`, next to the page they exercise, and reuse the same file names, routes, and element ids as `app-nextjs`. At the moment only `ontario-button` has tests (`ontario-button.e2e.ts` and `ontario-button.vrt.ts`), and more components can be added by copying the matching folder from `app-nextjs/tests`. Playwright builds the app and serves it with `serve-dist.mjs` on port 4200 (see `playwright.config.ts` and `scripts/start-angular-server.sh`). Set `SKIP_APP_BUILD=true` to reuse an existing build in `dist/`.
+
+Visual tests rely on pixel-perfect rendering, which varies with the operating system, browser, and fonts, so run them inside the provided Docker container, which matches the CI environment. Snapshots are saved to the `vrt-snapshots/` folder inside each component's test folder, one per browser (Chromium, Firefox, and WebKit).
+
+You need [Rancher Desktop](https://rancherdesktop.io/) (or another Docker runtime) running. See the [Next.js app README](../app-nextjs/README.md#updating-vrt-snapshots-with-docker) for the installation steps. Dependencies are installed inside the container, so you do not need to run `pnpm install` first.
+
+| Purpose                                        | Script                                  |
+| ---------------------------------------------- | --------------------------------------- |
+| Build the Docker container                     | `pnpm run docker:build-playwright`      |
+| Update snapshots in CI-matching Docker env     | `pnpm run test:update-snapshots:docker` |
+| Run VRT in CI-matching Docker env              | `pnpm run test:vrt:docker`              |
+| Run E2E in CI-matching Docker env              | `pnpm run test:e2e:docker`              |
+| Run VRT tests locally (might not match CI env) | `pnpm run test:vrt`                     |
+| Run E2E tests locally                          | `pnpm run test:e2e`                     |
+| Update snapshots using local engine            | `pnpm run test:update-snapshots`        |
+
+In most cases, after changing a component page you need to update the snapshots and commit them for the CI pipelines to pass.
 
 ## Further help
 
