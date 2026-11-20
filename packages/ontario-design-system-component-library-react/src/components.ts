@@ -167,6 +167,7 @@ export const OntarioSummaryList = /*@__PURE__*/createReactComponent<JSX.OntarioS
 export const OntarioSummaryListItem = /*@__PURE__*/createReactComponent<JSX.OntarioSummaryListItem, HTMLOntarioSummaryListItemElement>('ontario-summary-list-item');
 export const OntarioTable = /*@__PURE__*/createReactComponent<JSX.OntarioTable, HTMLOntarioTableElement>('ontario-table');
 export const OntarioTag = /*@__PURE__*/createReactComponent<JSX.OntarioTag, HTMLOntarioTagElement>('ontario-tag');
+export const OntarioTagGroup = /*@__PURE__*/createReactComponent<JSX.OntarioTagGroup, HTMLOntarioTagGroupElement>('ontario-tag-group');
 export const OntarioTask = /*@__PURE__*/createReactComponent<JSX.OntarioTask, HTMLOntarioTaskElement>('ontario-task');
 export const OntarioTaskList = /*@__PURE__*/createReactComponent<JSX.OntarioTaskList, HTMLOntarioTaskListElement>('ontario-task-list');
 export const OntarioTextarea = /*@__PURE__*/createReactComponent<JSX.OntarioTextarea, HTMLOntarioTextareaElement>('ontario-textarea');
