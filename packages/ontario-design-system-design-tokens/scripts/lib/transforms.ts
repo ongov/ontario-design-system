@@ -10,6 +10,13 @@
  * Currently home to the primitive tier's px unit transforms (DS-2691):
  * source token values are authored in px, and the unit policy (which
  * categories emit rem vs em vs unitless) is applied per-platform.
+ *
+ * Exception: `breakpoint.json` is authored directly in `em` rather than `px`,
+ * since its values were carried forward unchanged from the legacy,
+ * already-em-native `ontarioBreakpoints` source (see DS-2690). `pxToEm`'s
+ * `endsWithPx` filter is therefore a no-op passthrough for breakpoint tokens
+ * today; it exists so a future px-authored breakpoint value would still
+ * convert correctly, rather than to imply breakpoint.json needs px input.
  */
 import type { TransformedToken, ValueTransform } from 'style-dictionary/types';
 
@@ -35,6 +42,10 @@ export const pxToRem: ValueTransform = {
 /**
  * Style Dictionary value transform: convert px breakpoint values to em (base 16).
  * Media queries use em to avoid a known Safari zoom bug with rem in `@media`.
+ *
+ * `breakpoint.json`'s values are already authored in `em` (see file header),
+ * so `endsWithPx` makes this a no-op for the current source data; it only
+ * fires if a breakpoint is ever authored in `px` in the future.
  */
 export const pxToEm: ValueTransform = {
 	name: 'size/pxToEm',

@@ -1,0 +1,9 @@
+{
+	"breakpoint": {
+		"xsmall": { "value": "20em", "type": "sizing" },
+		"small": { "value": "40em", "type": "sizing" },
+		"medium": { "value": "73em", "type": "sizing" },
+		"large": { "value": "96em", "type": "sizing" },
+		"xlarge": { "value": "120em", "type": "sizing" }
+	}
+}
