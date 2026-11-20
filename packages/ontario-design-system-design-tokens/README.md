@@ -37,6 +37,18 @@ Formats define the output of your created files. For example, to use your styles
 
 For the Ontario Design System design tokens package, the tokens are configured to output both SCSS and CSS variables.
 
+#### Primitive tokens
+
+Alongside the semantic tokens above, the package exposes the Core (primitive) tier — the low-level, non-branded scale (`space`, `radius`, `border`, `elevation`, `motion`, `typography`, `z-index`, `breakpoint`, and colour primitives) that semantic tokens are built from. These are published as separate entry points so consumers can opt in without pulling in the full semantic layer:
+
+| Entry point         | Use when...                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| `./css/primitives`  | You want raw CSS custom properties (`--ods-*`) for the primitive scale. |
+| `./scss/primitives` | You want Sass variables (`$ods-*`) for the primitive scale.             |
+| `./primitives`      | You want the primitive values as typed JS/TS constants.                 |
+
+The CSS output (`./css/primitives`) is wrapped in `@layer ods-tokens`, so it participates in [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) and can be predictably overridden by consumer styles declared outside that layer, regardless of selector specificity. The SCSS and JS/TS outputs are plain variables/constants and are not layer-wrapped.
+
 ### Configuring design tokens in your project
 
 #### Adding a new design token
