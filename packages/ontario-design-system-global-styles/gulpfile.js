@@ -73,7 +73,9 @@ task('sass:copy-dist', () => {
 	return src(paths.styles.scss).pipe(dest(paths.styles.output));
 });
 
-// Replace node_module reference of tokens file with actual token declaration
+// Inline the frozen token declarations as the shipped tokens partial so SCSS
+// consumers get concrete `$ontario-*` values without resolving the design-tokens
+// package (frozen snapshot lives in src; see paths.dsTokens and DS-2686).
 task('sass:copy-tokens', () => {
 	return fs.copyFile(paths.dsTokens.src, paths.dsTokens.dest);
 });

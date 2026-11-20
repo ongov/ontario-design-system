@@ -1,1 +1,9 @@
-@forward 'pkg:@ongov/ontario-design-system-design-tokens';
+// Frozen design token contract.
+//
+// Previously this re-exported the live @ongov/ontario-design-system-design-tokens
+// package output. While the design-tokens package is rearchitected for the new
+// layered token model (DS-2685), global-styles consumes a vendored, frozen copy
+// of that output (./tokens.frozen) so the shipped styles are unaffected by the
+// renovation. This indirection will be re-pointed at the new tokens during the
+// future Sass mapping-layer rewrite.
+@forward 'tokens.frozen';
