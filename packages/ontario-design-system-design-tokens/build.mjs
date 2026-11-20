@@ -10,6 +10,21 @@ import StyleDictionary from 'style-dictionary';
 
 import { primitiveTransforms } from './scripts/lib/transforms.ts';
 import { primitivePlatformsConfig } from './scripts/config/primitive.config.ts';
+import { exportPlatformsConfig } from './scripts/lib/export-platforms.ts';
+import { lintTokens } from './scripts/lib/token-tooling.ts';
+
+// Lint every primitive token file up front, before any platform builds. A
+// missing or invalid `type` (or a broken alias) hard-fails the build rather
+// than silently shipping an untyped or mistyped export (DS-2692).
+const lintResults = lintTokens({ fix: false });
+if (lintResults.errors.length > 0) {
+	console.error(`Token lint failed: ${lintResults.errors.length} error(s) across ${lintResults.filesChecked} files.`);
+	lintResults.errors.forEach((error) => {
+		console.error(` - [${error.code}] ${error.file} :: ${error.tokenPath} ${error.message}`);
+	});
+	process.exit(1);
+}
+console.log(`Token lint passed: ${lintResults.filesChecked} files checked, 0 errors.`);
 
 // Register the primitive value transforms so they are available to the
 // primitive output platforms configured below (DS-2691 / PR 5).
@@ -54,3 +69,14 @@ const primitivesDictionary = new StyleDictionary(primitivePlatformsConfig);
 await primitivesDictionary.hasInitialized;
 await primitivesDictionary.buildAllPlatforms();
 console.log('Built primitive layer output (primitives.*).');
+
+// Build the Figma, typed JSON and Tailwind exports (DS-2692) into dist/,
+// alongside the primitive layer outputs above, so they are published with the
+// package and exposed through the package.json exports map.
+const exportsDictionary = new StyleDictionary(exportPlatformsConfig);
+await exportsDictionary.hasInitialized;
+await exportsDictionary.buildAllPlatforms();
+console.log('Built typed JSON/Tailwind exports (dist/json, dist/tailwind).');
+
+// The Figma bundle is written by a standalone script that runs on import.
+await import('./scripts/export-figma-tokens.ts');
