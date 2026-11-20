@@ -19,7 +19,7 @@ export default function OntarioTagGroupPage() {
 				<h1>ontario-tag-group</h1>
 
 				<h2>Applied filters</h2>
-				<OntarioTagGroup heading="Applied filters" headingLevel="h3">
+				<OntarioTagGroup heading="Applied filters" headingLevel="h3" hintText="Hint text example.">
 					{filters.map((f) => (
 						<OntarioTag
 							key={f.value}
