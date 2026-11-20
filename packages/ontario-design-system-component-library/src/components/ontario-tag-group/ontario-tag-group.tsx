@@ -4,7 +4,8 @@ import { v4 as uuid } from 'uuid';
 import { TagDismissedDetail } from '../ontario-tag/tag.interface';
 
 import { Language } from '../../utils/common/language-types';
-import { HeadingLevel } from '../../utils/common/common.interface';
+import { HeadingLevel, Hint } from '../../utils/common/common.interface';
+import { constructHintTextObject } from '../../utils/components/hints/hints';
 import { validateLanguage, validateValueAgainstArray } from '../../utils/validation/validation-functions';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
@@ -60,6 +61,15 @@ export class OntarioTagGroup {
 	@Prop() showCount?: boolean = true;
 
 	/**
+	 * Hint text shown below the heading to explain the group, for example "Select a tag to remove it".
+	 *
+	 * This is passed in as a string, or as a `Hint` object to render HTML content.
+	 *
+	 * This property is optional.
+	 */
+	@Prop() hintText?: string | Hint;
+
+	/**
 	 * The accessible name of the group, used when there is no visible heading.
 	 *
 	 * If neither `heading` nor `groupLabel` is provided, a warning is printed.
@@ -97,6 +107,11 @@ export class OntarioTagGroup {
 	 * The message in the live region that announces a removal.
 	 */
 	@State() private statusMessage = '';
+
+	/**
+	 * The parsed `hintText` used to render the `ontario-hint-text` component.
+	 */
+	@State() private internalHintText?: Hint;
 
 	/**
 	 * This listens for the `setAppLanguage` event sent from the test language toggler when it is is connected to the DOM. It is used for the initial language when the tag group component loads.
@@ -140,6 +155,14 @@ export class OntarioTagGroup {
 	@Watch('language')
 	validateLanguageProp() {
 		this.language = validateLanguage(this.language);
+	}
+
+	/**
+	 * Watch for changes in the `hintText` prop and parse it into a `Hint` object.
+	 */
+	@Watch('hintText')
+	parseHintText() {
+		this.internalHintText = this.hintText ? constructHintTextObject(this.hintText) : undefined;
 	}
 
 	/**
@@ -240,6 +263,7 @@ export class OntarioTagGroup {
 		this.elementId = this.elementId ?? uuid();
 		this.validateHeadingLevel();
 		this.validateAccessibleName();
+		this.parseHintText();
 	}
 
 	componentDidLoad() {
@@ -252,6 +276,7 @@ export class OntarioTagGroup {
 
 	render() {
 		const headingId = `${this.elementId}-heading`;
+		const hintId = `${this.elementId}-hint`;
 		const headingText = this.showCount ? `${this.heading} (${this.tagCount})` : `${this.heading}`;
 		const headingProps = {
 			id: headingId,
@@ -267,10 +292,19 @@ export class OntarioTagGroup {
 				role="group"
 				aria-labelledby={this.heading ? headingId : undefined}
 				aria-label={this.heading ? undefined : this.groupLabel}
+				aria-describedby={this.internalHintText ? hintId : undefined}
 				tabindex={this.heading ? undefined : -1}
 				ref={(el) => (this.containerRef = el)}
 			>
 				{this.heading && h(this.headingLevel, headingProps, headingText)}
+				{this.internalHintText && (
+					<ontario-hint-text
+						id={hintId}
+						class="ontario-tag-group__hint"
+						hint={this.internalHintText.hint}
+						hintContentType={this.internalHintText.hintContentType}
+					></ontario-hint-text>
+				)}
 				<div class="ontario-tag-group__tags">
 					<slot ref={(el) => (this.slotRef = el as HTMLSlotElement)} onSlotchange={this.handleSlotChange}></slot>
 				</div>
