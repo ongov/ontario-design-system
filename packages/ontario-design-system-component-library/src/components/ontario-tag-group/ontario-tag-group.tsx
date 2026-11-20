@@ -225,10 +225,13 @@ export class OntarioTagGroup {
 		}
 
 		const lang = `${this.language}`;
+		const { removed, removedOne, empty } = this.translations.tagGroup;
 		const message =
-			tags.length > 0
-				? this.translations.tagGroup.removed[lang].replace('{count}', () => `${tags.length}`)
-				: this.translations.tagGroup.empty[lang];
+			tags.length > 1
+				? removed[lang].replace('{count}', () => `${tags.length}`)
+				: tags.length === 1
+					? removedOne[lang]
+					: empty[lang];
 		this.statusMessage = message.replace('{label}', () => removal.label);
 	};
 
