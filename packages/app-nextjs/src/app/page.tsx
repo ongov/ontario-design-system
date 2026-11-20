@@ -114,6 +114,9 @@ export default function Home() {
 							<Link href="/components/ontario-tag">ontario-tag</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-tag-group">ontario-tag-group</Link>
+						</li>
+						<li>
 							<Link href="/components/ontario-task">ontario-task</Link>
 						</li>
 						<li>
