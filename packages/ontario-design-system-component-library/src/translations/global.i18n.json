@@ -289,6 +289,16 @@
 			"fr": "Supprimer {label}"
 		}
 	},
+	"tagGroup": {
+		"removed": {
+			"en": "Removed: {label}. {count} remaining.",
+			"fr": "Supprimé\u00a0: {label}. {count} restants."
+		},
+		"empty": {
+			"en": "Removed: {label}. No tags remaining.",
+			"fr": "Supprimé\u00a0: {label}. Aucune étiquette restante."
+		}
+	},
 	"taskGroup": {
 		"completed": {
 			"en": "You have completed",
