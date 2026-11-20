@@ -50,6 +50,14 @@ jobs:
       - name: Make directories for documentation files
         run: mkdir -p packages/docusaurus/docs/components
 
+      # Validate primitive token alias/integrity references before the build even
+      # runs, so a broken alias (e.g. pointing at a renamed/removed token) fails
+      # fast here instead of surfacing as an empty value in a downstream Style
+      # Dictionary/Figma/Tailwind export (DS-2693).
+      - name: Lint design tokens
+        id: lint_tokens
+        run: pnpm --filter @ongov/ontario-design-system-design-tokens run lint:tokens
+
       # Build the project
       - name: Build the project
         id: build_project
@@ -83,6 +91,34 @@ jobs:
 
           echo 'No Stencil-generated file drift detected.'
 
+      # Track the shipped primitive CSS stylesheet's size across builds and fail
+      # if it grows past an agreed threshold, so bloat (e.g. an unintentionally
+      # duplicated token or an overly verbose format) is caught in review rather
+      # than discovered later in a consumer's bundle-size report (DS-2693).
+      - name: Check primitive CSS size budget
+        id: css_budget_check
+        run: |
+          css_file='packages/ontario-design-system-design-tokens/dist/css/primitives.css'
+          budget_bytes=25600 # 25 KiB — see DS-2693; raise deliberately alongside a token audit.
+
+          if [ ! -f "$css_file" ]; then
+            echo "::error::${css_file} was not found after the build; cannot check its size budget."
+            exit 1
+          fi
+
+          actual_bytes=$(wc -c < "$css_file" | tr -d ' ')
+          echo "actual_bytes=${actual_bytes}" >> "$GITHUB_OUTPUT"
+          echo "budget_bytes=${budget_bytes}" >> "$GITHUB_OUTPUT"
+          echo "Primitive CSS size: ${actual_bytes} bytes (budget: ${budget_bytes} bytes)"
+
+          if [ "$actual_bytes" -gt "$budget_bytes" ]; then
+            echo "::error::primitives.css is ${actual_bytes} bytes, exceeding the ${budget_bytes}-byte budget."
+            echo 'If this growth is intentional, raise the budget in .github/workflows/build.yml alongside a note explaining why.'
+            exit 1
+          fi
+
+          echo "Primitive CSS size is within budget."
+
       # Upload build artifacts
       - name: Upload build artifacts
         id: upload_build_artifacts
@@ -115,9 +151,9 @@ jobs:
           {
             echo '## Build'
             echo ''
-            echo "| Repository | Event | Ref | SHA | Run | Build Step | Drift Check |"
-            echo "| --- | --- | --- | --- | --- | --- | --- |"
-            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.build_project.outcome }}\` | \`${{ steps.drift_check.outcome }}\` |"
+            echo "| Repository | Event | Ref | SHA | Run | Lint Tokens | Build Step | Drift Check | CSS Budget |"
+            echo "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+            echo "| \`${{ github.repository }}\` | \`${{ github.event_name }}\` | \`${{ github.ref_name }}\` | \`${{ github.sha }}\` | [#${{ github.run_number }} attempt ${{ github.run_attempt }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) | \`${{ steps.lint_tokens.outcome }}\` | \`${{ steps.build_project.outcome }}\` | \`${{ steps.drift_check.outcome }}\` | \`${{ steps.css_budget_check.outcome }}\` (${{ steps.css_budget_check.outputs.actual_bytes }}/${{ steps.css_budget_check.outputs.budget_bytes }} bytes) |"
             echo ''
             echo '### Artifacts'
             echo ''
