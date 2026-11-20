@@ -29,7 +29,7 @@ Both are the same component. The difference is which kind of `ontario-tag` is sl
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the tag group component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
-Place `ontario-tag` elements in the default slot. Only `ontario-tag` elements are counted and managed; other slotted elements are laid out but not counted.
+Place `ontario-tag` elements in the default slot. Only `ontario-tag` elements are counted and managed, including tags inside a wrapper element (such as the one `@stencil/ssr` adds in Next.js); other slotted elements are laid out but not counted.
 
 The group gives the set an accessible name from the visible `heading`, or from `groupLabel` when there is no heading. If neither is provided, a warning is printed.
 
