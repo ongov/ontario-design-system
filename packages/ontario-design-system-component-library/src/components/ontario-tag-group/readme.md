@@ -33,6 +33,8 @@ Place `ontario-tag` elements in the default slot. Only `ontario-tag` elements ar
 
 The group gives the set an accessible name from the visible `heading`, or from `groupLabel` when there is no heading. If neither is provided, a warning is printed.
 
+Use `hintText` to show hint text below the heading. The hint is rendered with the `ontario-hint-text` component and is used as the accessible description of the group. It accepts a string, or a `Hint` object to render HTML content.
+
 The group does not create, remove, or reorder tags. The consuming application owns the list and the filter state. When a tag emits `tagDismissed`, remove it from the list; the group then updates the count, announces the removal, and moves focus to the next tag, then the previous tag, then the group heading. With no heading, focus moves to the group itself.
 
 A group with no tags renders its heading with a count of 0. Remove the group from the page when there is nothing to show.
@@ -177,14 +179,29 @@ The group never removes a tag itself: the consumer removes the tag in response t
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                                                                                                   | Type                        | Default     |
-| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
-| `elementId`    | `element-id`    | The unique identifier of the group. If no `elementId` is passed, one will be generated. This property is optional.                                                                                            | `string \| undefined`       | `undefined` |
-| `groupLabel`   | `group-label`   | The accessible name of the group, used when there is no visible heading. If neither `heading` nor `groupLabel` is provided, a warning is printed. This property is optional.                                  | `string \| undefined`       | `undefined` |
-| `heading`      | `heading`       | The visible heading of the group, for example "Applied filters". This property is optional.                                                                                                                   | `string \| undefined`       | `undefined` |
-| `headingLevel` | `heading-level` | The heading element, set by the consumer to keep the page outline correct. Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.                                                                                       | `"h2" \| "h3" \| "h4"`      | `'h3'`      |
-| `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"en" \| "fr" \| undefined` | `undefined` |
-| `showCount`    | `show-count`    | Appends the number of tags to the heading, for example "(6)". This only applies when a `heading` is set. This property is optional.                                                                           | `boolean \| undefined`      | `true`      |
+| Property       | Attribute       | Description                                                                                                                                                                                                   | Type                          | Default     |
+| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `elementId`    | `element-id`    | The unique identifier of the group. If no `elementId` is passed, one will be generated. This property is optional.                                                                                            | `string \| undefined`         | `undefined` |
+| `groupLabel`   | `group-label`   | The accessible name of the group, used when there is no visible heading. If neither `heading` nor `groupLabel` is provided, a warning is printed. This property is optional.                                  | `string \| undefined`         | `undefined` |
+| `heading`      | `heading`       | The visible heading of the group, for example "Applied filters". This property is optional.                                                                                                                   | `string \| undefined`         | `undefined` |
+| `headingLevel` | `heading-level` | The heading element, set by the consumer to keep the page outline correct. Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.                                                                                       | `"h2" \| "h3" \| "h4"`        | `'h3'`      |
+| `hintText`     | `hint-text`     | Hint text shown below the heading to explain the group, for example "Select a tag to remove it". This is passed in as a string, or as a `Hint` object to render HTML content. This property is optional.      | `Hint \| string \| undefined` | `undefined` |
+| `language`     | `language`      | The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English. | `"en" \| "fr" \| undefined`   | `undefined` |
+| `showCount`    | `show-count`    | Appends the number of tags to the heading, for example "(6)". This only applies when a `heading` is set. This property is optional.                                                                           | `boolean \| undefined`        | `true`      |
+
+## Dependencies
+
+### Depends on
+
+- [ontario-hint-text](../ontario-hint-text)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-tag-group --> ontario-hint-text
+  style ontario-tag-group fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 

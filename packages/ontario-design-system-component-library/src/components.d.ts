@@ -3608,6 +3608,10 @@ export namespace Components {
          */
         "headingLevel": TagGroupHeadingLevel;
         /**
+          * Hint text shown below the heading to explain the group, for example "Select a tag to remove it".  This is passed in as a string, or as a `Hint` object to render HTML content.  This property is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */
         "language"?: Language;
@@ -9284,6 +9288,10 @@ declare namespace LocalJSX {
           * @default 'h3'
          */
         "headingLevel"?: TagGroupHeadingLevel;
+        /**
+          * Hint text shown below the heading to explain the group, for example "Select a tag to remove it".  This is passed in as a string, or as a `Hint` object to render HTML content.  This property is optional.
+         */
+        "hintText"?: string | Hint;
         /**
           * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
          */

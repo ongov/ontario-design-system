@@ -2553,6 +2553,7 @@ export const OntarioTagGroup: StencilReactComponent<OntarioTagGroupElement, Onta
         heading: 'heading',
         headingLevel: 'heading-level',
         showCount: 'show-count',
+        hintText: 'hint-text',
         groupLabel: 'group-label',
         elementId: 'element-id',
         language: 'language'
