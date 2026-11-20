@@ -169,6 +169,78 @@ Example of a filter set of non-dismissible tags with no visible heading, using `
 	</OntarioTagGroup>
 </div>
 
+Example of a French tag group. Set `language` to `fr` so the removal announcements and the tags' "Supprimer" labels are in French.
+
+```mdx-code-block
+<Tabs
+	defaultValue="html"
+	values={[
+		{label: 'HTML', value: 'html'},
+		{label: 'React', value: 'react'},
+		{label: 'Angular', value: 'angular'},
+	]}
+	groupId="framework"
+	queryString="framework">
+<TabItem value="html">
+```
+
+```html
+<ontario-tag-group group-label="Sujets" language="fr">
+	<ontario-tag label="Santé et bien-être" value="health" language="fr" dismissible></ontario-tag>
+	<ontario-tag label="Éducation et formation" value="education" language="fr" dismissible></ontario-tag>
+</ontario-tag-group>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="react">
+```
+
+```tsx
+<OntarioTagGroup groupLabel="Sujets" language="fr">
+	{topics.map((t) => (
+		<OntarioTag
+			key={t.value}
+			label={t.label}
+			value={t.value}
+			language="fr"
+			dismissible
+			onTagDismissed={() => removeTopic(t.value)}
+		></OntarioTag>
+	))}
+</OntarioTagGroup>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="angular">
+```
+
+```html
+<ontario-tag-group group-label="Sujets" language="fr">
+	<ontario-tag
+		*ngFor="let t of topics"
+		[label]="t.label"
+		[value]="t.value"
+		language="fr"
+		[dismissible]="true"
+		(tagDismissed)="removeTopic(t.value)"
+	></ontario-tag>
+</ontario-tag-group>
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<div>
+	<OntarioTagGroup groupLabel="Sujets" language="fr">
+		<OntarioTag label="Santé et bien-être" value="health" language="fr" dismissible></OntarioTag>
+		<OntarioTag label="Éducation et formation" value="education" language="fr" dismissible></OntarioTag>
+	</OntarioTagGroup>
+</div>
+
 <!-- Auto Generated Below -->
 
 ## Overview
