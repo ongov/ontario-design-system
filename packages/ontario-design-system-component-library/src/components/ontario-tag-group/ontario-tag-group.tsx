@@ -32,7 +32,6 @@ export class OntarioTagGroup {
 
 	private containerRef?: HTMLDivElement;
 	private headingRef?: HTMLElement;
-	private slotRef?: HTMLSlotElement;
 
 	private pendingRemoval?: { label: string; index: number; tag: HTMLOntarioTagElement };
 	private pendingTimer?: ReturnType<typeof setTimeout>;
@@ -134,8 +133,10 @@ export class OntarioTagGroup {
 
 	/**
 	 * Records which tag was dismissed and its position, so focus and the announcement can follow its removal.
+	 *
+	 * Uses the capture phase so the record is made before a consumer's listener can remove the tag.
 	 */
-	@Listen('tagDismissed')
+	@Listen('tagDismissed', { capture: true })
 	handleTagDismissed(event: CustomEvent<TagDismissedDetail>) {
 		const tag = event.target as HTMLOntarioTagElement;
 		const index = this.getTags().indexOf(tag);
@@ -213,13 +214,13 @@ export class OntarioTagGroup {
 	}
 
 	/**
-	 * Returns the `ontario-tag` elements in the default slot, in order.
+	 * Returns the `ontario-tag` elements in the group, in order.
 	 *
 	 * @returns {HTMLOntarioTagElement[]}
 	 */
 	private getTags(): HTMLOntarioTagElement[] {
-		const assigned = this.slotRef?.assignedElements({ flatten: true }) ?? [];
-		return assigned.filter((el) => el.tagName.toLowerCase() === 'ontario-tag') as HTMLOntarioTagElement[];
+		// Query the light DOM, not the slot: @stencil/ssr (Next.js) wraps each tag in a `display: contents` div.
+		return Array.from(this.host.querySelectorAll<HTMLOntarioTagElement>('ontario-tag'));
 	}
 
 	private clearPendingRemoval() {
@@ -306,7 +307,7 @@ export class OntarioTagGroup {
 					></ontario-hint-text>
 				)}
 				<div class="ontario-tag-group__tags">
-					<slot ref={(el) => (this.slotRef = el as HTMLSlotElement)} onSlotchange={this.handleSlotChange}></slot>
+					<slot onSlotchange={this.handleSlotChange}></slot>
 				</div>
 				<div class="ontario-tag-group__status" role="status" aria-live="polite" aria-atomic="true">
 					{this.statusMessage}
