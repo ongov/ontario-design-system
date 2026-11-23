@@ -47,3 +47,23 @@ export const warnIsDecorativeDeprecated = () => {
 		.addRegularText(' to provide an accessible name.')
 		.printMessage();
 };
+
+const warnedDeprecatedIcons = new Set<string>();
+
+/** Warns once per tag name in each shared module instance, including production builds. */
+export const warnIconDeprecated = (iconName: string, replacedBy?: string, deprecationNote?: string) => {
+	if (warnedDeprecatedIcons.has(iconName)) return;
+	warnedDeprecatedIcons.add(iconName);
+
+	const message = new ConsoleMessageClass()
+		.addDesignSystemTag()
+		.addMonospaceText(` <${iconName}> `)
+		.addRegularText('is deprecated.');
+	if (replacedBy) {
+		message.addRegularText(' Use').addMonospaceText(` <${replacedBy}> `).addRegularText('instead.');
+	}
+	if (deprecationNote) {
+		message.addRegularText(` ${deprecationNote}`);
+	}
+	message.printMessage();
+};

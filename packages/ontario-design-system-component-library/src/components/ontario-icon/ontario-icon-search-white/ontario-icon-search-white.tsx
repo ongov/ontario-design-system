@@ -2,9 +2,12 @@
 import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { IconWithColour } from '../icon.interface';
 import { IconSize, IconColour } from '../icon.types';
-import { RenderIcon, warnIsDecorativeDeprecated } from '../render-icon';
+import { RenderIcon, warnIsDecorativeDeprecated, warnIconDeprecated } from '../render-icon';
 import { validateIconWidth, validateIconColour } from '../icon-validation';
 
+/**
+ * @deprecated Use ontario-icon-search instead. Set colour="white" to preserve the white icon.
+ */
 @Component({
 	tag: 'ontario-icon-search-white',
 	styleUrl: '../ontario-icon.scss',
@@ -42,20 +45,23 @@ export class OntarioIconSearchWhite implements IconWithColour {
 	@Prop() colour: IconColour = 'black';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
 		const validatedColour = validateIconColour(this.colour, 'ontario-icon-search-white');
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 
 	componentWillLoad() {
+		warnIconDeprecated(
+			'ontario-icon-search-white',
+			'ontario-icon-search',
+			'Set colour="white" to preserve the white icon.',
+		);
 		this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();
@@ -82,7 +88,7 @@ export class OntarioIconSearchWhite implements IconWithColour {
 						aria-hidden={svgAccessibility.ariaHidden}
 						focusable={svgAccessibility.focusable}
 						class="svg-icon"
-						style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}
+						style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}
 						xmlns="http://www.w3.org/2000/svg"
 						width="32"
 						height="32"

@@ -22,6 +22,7 @@ const categoryLabels = {
 	other: 'Other',
 };
 const allowedColourCapabilities = new Set(['configurable', 'fixed', 'multicolour']);
+const allowedDefaultColours = new Set(['black', 'blue', 'grey', 'white', 'inherit']);
 const galleryStartMarker = '<!-- ICON_GALLERY_START -->';
 const galleryEndMarker = '<!-- ICON_GALLERY_END -->';
 
@@ -113,21 +114,33 @@ const validateManifest = (icons, assetFiles) => {
 			!Array.isArray(icon.aliases) ||
 			!icon.aliases.every((alias) => typeof alias === 'string') ||
 			typeof icon.deprecated !== 'boolean' ||
-			(icon.replacedBy !== undefined && typeof icon.replacedBy !== 'string')
+			(icon.replacedBy !== undefined && typeof icon.replacedBy !== 'string') ||
+			(icon.deprecationNote !== undefined &&
+				(!icon.deprecated ||
+					typeof icon.deprecationNote !== 'string' ||
+					!icon.deprecationNote.trim() ||
+					/[\r\n]/.test(icon.deprecationNote) ||
+					icon.deprecationNote.includes('*/')))
 		) {
 			throw new Error(`Incomplete manifest entry for ${icon.name}`);
+		}
+		if (
+			icon.defaultColour !== undefined &&
+			(icon.colour !== 'configurable' || !allowedDefaultColours.has(icon.defaultColour))
+		) {
+			throw new Error(
+				`Invalid defaultColour for ${icon.name}: only configurable icons accept ${[...allowedDefaultColours].join(', ')}.`,
+			);
 		}
 		manifestNames.add(icon.name);
 	}
 
 	for (const icon of icons) {
-		if (icon.replacedBy !== undefined) {
-			const replacementName = icon.replacedBy.startsWith(iconNamePrefix)
-				? icon.replacedBy
-				: `${iconNamePrefix}${icon.replacedBy}`;
-			if (!manifestNames.has(replacementName)) {
-				throw new Error(`Unknown replacement icon ${icon.replacedBy} on ${icon.name}.`);
-			}
+		if (
+			icon.replacedBy !== undefined &&
+			(!icon.deprecated || icon.replacedBy === icon.name || !manifestNames.has(icon.replacedBy))
+		) {
+			throw new Error(`replacedBy on ${icon.name} must name another icon and requires deprecated: true.`);
 		}
 	}
 
@@ -144,11 +157,15 @@ const validateManifest = (icons, assetFiles) => {
 const getIconComponentTemplate = (svgObject, icon) => {
 	let svgElement = stringify(svgObject);
 	const hasColour = icon.colour === 'configurable';
+	const replacement = icon.replacedBy;
+	const deprecationNotice = icon.deprecated
+		? `/**\n * @deprecated${replacement ? ` Use ${replacement} instead.` : ''}${icon.deprecationNote ? ` ${icon.deprecationNote}` : ''}\n */\n`
+		: '';
 
 	if (hasColour) {
 		const withColour = svgElement.replace(
 			/class="svg-icon(?:\s+[^"]*)?"/,
-			'$& style={{ fill: `${this.iconCustomColourState}`, stroke: `${this.iconCustomColourState}` }}',
+			'$& style={{ fill: this.iconCustomColourState, stroke: this.iconCustomColourState }}',
 		);
 		if (withColour === svgElement) {
 			throw new Error(`Configurable icon ${icon.name} has no class="svg-icon" to apply colour to.`);
@@ -166,10 +183,10 @@ const getIconComponentTemplate = (svgObject, icon) => {
 import { Component, Prop, h, Watch, State${hasColour ? '' : ', Element'} } from '@stencil/core';
 import { ${hasColour ? 'IconWithColour' : 'Icon'} } from '../icon.interface';
 import { IconSize${hasColour ? ', IconColour' : ''} } from '../icon.types';
-import { RenderIcon, warnIsDecorativeDeprecated } from '../render-icon';
+import { RenderIcon, warnIsDecorativeDeprecated${icon.deprecated ? ', warnIconDeprecated' : ''} } from '../render-icon';
 import { validateIconWidth, ${hasColour ? 'validateIconColour' : 'validateFixedIconColour'} } from '../icon-validation';
 
-@Component({
+${deprecationNotice}@Component({
 	tag: '${icon.name}',
 	styleUrl: '../ontario-icon.scss',
 	shadow: true,
@@ -205,19 +222,17 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 		hasColour
 			? `
 	/** Set the icon's colour. */
-	@Prop() colour: IconColour = 'black';
+	@Prop() colour: IconColour = '${icon.defaultColour ?? 'black'}';
 
 	@State() iconColourState: string;
-	@State() iconCustomColourState: string;
+	@State() iconCustomColourState: string | undefined;
 
 	@Watch('colour')
 	validateColour() {
-		const validatedColour = validateIconColour(this.colour, '${icon.name}');
+		const validatedColour = validateIconColour(this.colour, '${icon.name}'${icon.defaultColour ? `, '${icon.defaultColour}'` : ''});
+		this.iconCustomColourState = validatedColour.customColour;
 		if (validatedColour.colour !== undefined) {
 			this.iconColourState = validatedColour.colour;
-		}
-		if (validatedColour.customColour !== undefined) {
-			this.iconCustomColourState = validatedColour.customColour;
 		}
 	}
 	`
@@ -230,7 +245,7 @@ export class ${toPascalCase(icon.name)} implements ${hasColour ? 'IconWithColour
 	`
 	}
 	componentWillLoad() {
-		this.warnDeprecatedIsDecorative();
+		${icon.deprecated ? `warnIconDeprecated('${icon.name}', ${replacement ? `'${replacement}'` : 'undefined'}${icon.deprecationNote ? `, ${JSON.stringify(icon.deprecationNote)}` : ''});\n\t\t` : ''}this.warnDeprecatedIsDecorative();
 		this.validateColour();
 		this.validateWidth();
 	}
