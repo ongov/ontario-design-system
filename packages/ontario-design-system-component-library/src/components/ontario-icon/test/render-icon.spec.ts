@@ -3,6 +3,8 @@ import { warnIconDeprecated, warnIsDecorativeDeprecated } from '../render-icon';
 
 vi.mock('@stencil/core', () => ({ Build: { isDev: false }, h: vi.fn() }));
 
+const messageText = (call: unknown[]) => String(call[0]).replaceAll('%c', '');
+
 describe('icon deprecation warnings', () => {
 	afterEach(() => vi.restoreAllMocks());
 
@@ -35,13 +37,11 @@ describe('icon deprecation warnings', () => {
 		warnIconDeprecated('ontario-icon-test-old', 'ontario-icon-test-new');
 
 		expect(warning).toHaveBeenCalledTimes(2);
-		expect(warning).toHaveBeenNthCalledWith(
-			1,
-			'<ontario-icon-search-white> is deprecated. Use <ontario-icon-search> instead. Set colour="white" to preserve the white icon.',
+		expect(messageText(warning.mock.calls[0])).toBe(
+			'Ontario Design System <ontario-icon-search-white> is deprecated. Use <ontario-icon-search> instead. Set colour="white" to preserve the white icon.',
 		);
-		expect(warning).toHaveBeenNthCalledWith(
-			2,
-			'<ontario-icon-test-old> is deprecated. Use <ontario-icon-test-new> instead.',
+		expect(messageText(warning.mock.calls[1])).toBe(
+			'Ontario Design System <ontario-icon-test-old> is deprecated. Use <ontario-icon-test-new> instead.',
 		);
 	});
 
@@ -50,6 +50,9 @@ describe('icon deprecation warnings', () => {
 
 		warnIconDeprecated('ontario-icon-test-unreplaced');
 
-		expect(warning).toHaveBeenCalledExactlyOnceWith('<ontario-icon-test-unreplaced> is deprecated.');
+		expect(warning).toHaveBeenCalledOnce();
+		expect(messageText(warning.mock.calls[0])).toBe(
+			'Ontario Design System <ontario-icon-test-unreplaced> is deprecated.',
+		);
 	});
 });
