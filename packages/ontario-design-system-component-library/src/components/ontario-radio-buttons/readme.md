@@ -728,7 +728,7 @@ Disabled/read-only policy source:
 
 - [ontario-hint-text](../ontario-hint-text)
 - [ontario-hint-expander](../ontario-hint-expander)
-- [ontario-icon-alert-error](../ontario-icon)
+- [ontario-icon-alert-error](../ontario-icon/ontario-icon-alert-error)
 
 ### Graph
 

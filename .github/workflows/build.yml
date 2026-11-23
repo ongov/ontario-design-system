@@ -55,6 +55,9 @@ jobs:
         id: build_project
         run: pnpm run build-libs
 
+      - name: Check generated icon drift
+        run: pnpm --filter @ongov/ontario-design-system-component-library run check:icons
+
       # Stencil regenerates these tracked files on every build (components.d.ts,
       # Angular stencil-generated wrappers, and component readme.md files). If a PR
       # changes component types/props/JSDoc without running `pnpm build-libs` locally,
