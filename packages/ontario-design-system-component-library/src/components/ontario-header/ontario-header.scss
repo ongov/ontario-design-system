@@ -208,7 +208,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	// Icon hosts are scaled because iconWidth has no 20, 26 or 28px sizes. line-height: 0 removes the inline gap inside the icon.
 	&__dropdown-icon,
 	&__toggle-icon,
 	&__search-icon,
@@ -218,24 +217,8 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	&__dropdown-icon {
-		transform: translateX(2px) scale(math.div(20, 24));
-
 		&--rotated {
-			transform: translateX(2px) scale(math.div(20, 24)) rotate(180deg);
-		}
-	}
-
-	&__toggle-icon {
-		@media screen and (max-width: breakpoints.$medium-breakpoint) {
-			transform: scale(math.div(26, 32));
-			transform-origin: left center;
-		}
-	}
-
-	&__search-icon {
-		@media screen and (min-width: breakpoints.$small-breakpoint) {
-			transform: scale(math.div(28, 32));
-			transform-origin: left center;
+			transform: rotate(180deg);
 		}
 	}
 
