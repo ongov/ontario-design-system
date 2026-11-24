@@ -217,8 +217,13 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	&__dropdown-icon {
+		--ontario-icon-width: #{spacing.$spacing-5 - spacing.$spacing-1};
+		--ontario-icon-height: #{spacing.$spacing-5};
+		--ontario-icon-stroke-width: 1px;
+		margin-left: spacing.$spacing-1;
+
 		&--rotated {
-			transform: rotate(180deg);
+			--ontario-icon-transform: rotate(180deg);
 		}
 	}
 

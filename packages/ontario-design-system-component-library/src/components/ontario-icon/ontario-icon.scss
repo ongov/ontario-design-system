@@ -4,13 +4,19 @@
 // Fractal component style coverage ↓
 .ontario-icon {
 	display: inline-block;
-	stroke-width: 0;
+	stroke-width: var(--ontario-icon-stroke-width, 0);
 	stroke: currentColor;
 	fill: currentColor;
 	/* The default vertical-align is `baseline`, which leaves a few pixels of space below the icon. Using `center` prevents this. For icons shown alongside text, you may want to use a more precise value, e.g. `vertical-align: -4px` or `vertical-align: -0.15em`. */
 	vertical-align: middle;
 	/* Paths and strokes that overflow the viewBox can show in IE11. */
 	overflow: hidden;
+}
+
+.ontario-icon svg {
+	width: var(--ontario-icon-width, 100%);
+	height: var(--ontario-icon-height, auto);
+	transform: var(--ontario-icon-transform, none);
 }
 
 .ontario-icon--blue svg {

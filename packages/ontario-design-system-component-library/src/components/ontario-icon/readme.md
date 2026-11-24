@@ -187,6 +187,17 @@ Apply the class to the icon element itself, for example `<ontario-icon-chevron-d
 
 Each icon has its own generated README with the properties supported by that icon.
 
+For precise integration with an existing layout, configurable SVG styling is available through CSS custom properties set on the icon host:
+
+| Property                      | Default                                         | Purpose                                                                                     |
+| ----------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `--ontario-icon-width`        | `iconWidth` for the wrapper; `100%` for the SVG | Override the wrapper and SVG viewport width.                                                |
+| `--ontario-icon-height`       | `auto`                                          | Override the SVG viewport height without changing the artwork's aspect ratio.               |
+| `--ontario-icon-stroke-width` | `0`                                             | Set the SVG stroke width; fixed artwork can override inherited stroke styles.               |
+| `--ontario-icon-transform`    | `none`                                          | Transform the SVG inside its viewport rather than transforming the host and its layout box. |
+
+These properties are opt-in. Prefer `iconWidth` for standard sizes and host transforms for normal rotation. Use an SVG transform when an existing integration specifically requires that rendering target. Viewport dimensions include the artwork's internal whitespace; they are not the visible path dimensions.
+
 ## Colour support
 
 The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Most configurable icons default to `black`; `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`, and `ontario-icon-dropdown-arrow` defaults to `inherit`. Icons are classified in `icon-manifest.json` as one of:

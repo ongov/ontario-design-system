@@ -103,6 +103,43 @@ test.describe('ontario-header - ontario type', () => {
 });
 
 test.describe('ontario-header - ontario type with sign-in menu items', () => {
+	test('desktop arrows preserve the original viewport, margin, stroke and SVG rotation', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 900 });
+		await page.setContent(`
+			<ontario-header
+				type="ontario"
+				disable-dynamic-menu="true"
+				menu-items='${menuItemsJson}'
+				sign-in-menu-items='${menuItemsJson}'
+			></ontario-header>
+		`);
+		await page.waitForChanges();
+
+		for (const buttonId of ['ontario-header-menu-toggler', 'ontario-header-sign-in-toggler']) {
+			const button = page.locator(`ontario-header #${buttonId}`);
+			const icon = button.locator('ontario-icon-dropdown-arrow');
+			const svg = icon.locator('svg');
+			await expect(svg).toHaveCSS('width', '20px');
+			await expect(svg).toHaveCSS('height', '24px');
+			await expect(icon).toHaveCSS('margin-left', '4px');
+			await expect(svg.locator('path')).toHaveCSS('stroke-width', '1px');
+			await expect(svg.locator('path')).toHaveCSS('stroke', 'rgb(255, 255, 255)');
+			await expect(svg).toHaveCSS('transform', 'none');
+
+			const containerBounds = await button.locator('.ontario-header__icon-container').boundingBox();
+			const svgBounds = await svg.boundingBox();
+			expect(svgBounds!.x - containerBounds!.x).toBeCloseTo(4);
+
+			await button.click();
+			await page.waitForChanges();
+			await expect(svg).toHaveCSS('transform', 'matrix(-1, 0, 0, -1, 0, 0)');
+			await expect(icon).toHaveCSS('transform', 'none');
+			await button.click();
+			await page.waitForChanges();
+			await expect(svg).toHaveCSS('transform', 'none');
+		}
+	});
+
 	test('renders the sign-in button when signInMenuItems is provided', async ({ page }) => {
 		await page.setContent(`
 			<ontario-header

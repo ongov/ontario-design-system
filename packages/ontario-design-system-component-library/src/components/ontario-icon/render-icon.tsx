@@ -21,7 +21,7 @@ export const RenderIcon: FunctionalComponent<RenderIconProps> = ({ iconWidth, co
 	const iconClasses = ['ontario-icon', colourClass, `ontario-icon--width-${iconWidth}`].filter(Boolean).join(' ');
 
 	return (
-		<div class={iconClasses} style={{ width: `${iconWidth}px` }}>
+		<div class={iconClasses} style={{ width: `var(--ontario-icon-width, ${iconWidth}px)` }}>
 			{renderSvg({
 				role: isMeaningful ? 'img' : undefined,
 				ariaLabel: isMeaningful ? accessibleName : undefined,
