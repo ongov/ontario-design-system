@@ -36,6 +36,20 @@ describe('icon generator colour styles', () => {
 	});
 });
 
+describe('icon generator SVG parts', () => {
+	it.each(['ontario-icon-dropdown-arrow', 'ontario-icon-search', 'ontario-icon-menu'])(
+		'exposes the SVG part only for dropdown-arrow: %s',
+		(name) => {
+			const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), {
+				name,
+				colour: 'configurable',
+			});
+
+			expect(template.includes('part="svg"')).toBe(name === 'ontario-icon-dropdown-arrow');
+		},
+	);
+});
+
 describe('icon generator width defaults', () => {
 	afterEach(() => vi.restoreAllMocks());
 

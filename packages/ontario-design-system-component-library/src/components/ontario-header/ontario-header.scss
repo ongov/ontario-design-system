@@ -217,13 +217,18 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	}
 
 	&__dropdown-icon {
-		--ontario-icon-width: #{spacing.$spacing-5 - spacing.$spacing-1};
-		--ontario-icon-height: #{spacing.$spacing-5};
-		--ontario-icon-stroke-width: 1px;
+		width: spacing.$spacing-5 - spacing.$spacing-1;
 		margin-left: spacing.$spacing-1;
+		text-align: left;
 
-		&--rotated {
-			--ontario-icon-transform: rotate(180deg);
+		&::part(svg) {
+			width: spacing.$spacing-5 - spacing.$spacing-1;
+			height: spacing.$spacing-5;
+			stroke-width: 1px;
+		}
+
+		&--rotated::part(svg) {
+			transform: rotate(180deg);
 		}
 	}
 

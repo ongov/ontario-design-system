@@ -103,7 +103,7 @@ test.describe('ontario-header - ontario type', () => {
 });
 
 test.describe('ontario-header - ontario type with sign-in menu items', () => {
-	test('desktop arrows preserve the original viewport, margin, stroke and SVG rotation', async ({ page }) => {
+	test('desktop arrows use header-scoped SVG part styles without changing standalone icons', async ({ page }) => {
 		await page.setViewportSize({ width: 1280, height: 900 });
 		await page.setContent(`
 			<ontario-header
@@ -119,6 +119,7 @@ test.describe('ontario-header - ontario type with sign-in menu items', () => {
 			const button = page.locator(`ontario-header #${buttonId}`);
 			const icon = button.locator('ontario-icon-dropdown-arrow');
 			const svg = icon.locator('svg');
+			await expect(svg).toHaveAttribute('part', 'svg');
 			await expect(svg).toHaveCSS('width', '20px');
 			await expect(svg).toHaveCSS('height', '24px');
 			await expect(icon).toHaveCSS('margin-left', '4px');
@@ -129,15 +130,27 @@ test.describe('ontario-header - ontario type with sign-in menu items', () => {
 			const containerBounds = await button.locator('.ontario-header__icon-container').boundingBox();
 			const svgBounds = await svg.boundingBox();
 			expect(svgBounds!.x - containerBounds!.x).toBeCloseTo(4);
+			expect(svgBounds!.width).toBeCloseTo(20);
+			expect(svgBounds!.height).toBeCloseTo(24);
 
 			await button.click();
 			await page.waitForChanges();
+			await expect(icon).toHaveClass(/ontario-header__dropdown-icon--rotated/);
 			await expect(svg).toHaveCSS('transform', 'matrix(-1, 0, 0, -1, 0, 0)');
 			await expect(icon).toHaveCSS('transform', 'none');
 			await button.click();
 			await page.waitForChanges();
+			await expect(icon).not.toHaveClass(/ontario-header__dropdown-icon--rotated/);
 			await expect(svg).toHaveCSS('transform', 'none');
 		}
+
+		await page.evaluate(() => document.body.append(document.createElement('ontario-icon-dropdown-arrow')));
+		await page.waitForChanges();
+		const standaloneSvg = page.locator('body > ontario-icon-dropdown-arrow').locator('svg');
+		await expect(standaloneSvg).toHaveCSS('width', '24px');
+		await expect(standaloneSvg).toHaveCSS('height', '24px');
+		await expect(standaloneSvg.locator('path')).toHaveCSS('stroke-width', '0px');
+		await expect(standaloneSvg).toHaveCSS('transform', 'none');
 	});
 
 	test('renders the sign-in button when signInMenuItems is provided', async ({ page }) => {
