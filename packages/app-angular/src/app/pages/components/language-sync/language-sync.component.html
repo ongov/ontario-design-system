@@ -1,13 +1,31 @@
 <h1>language-sync</h1>
 
-<h2>Header and footer without a "language" prop</h2>
-
 <ontario-header
 	id="language-sync-header"
 	type="application"
 	[applicationHeaderInfo]="applicationHeaderInfo"
+	[menuItems]="menuItems"
+	[disableDynamicMenu]="true"
 	[customLanguageToggle]="preventToggleNavigation"
 	assetBasePath="/assets"
 ></ontario-header>
 
-<ontario-footer id="language-sync-footer" type="default" assetBasePath="/assets"></ontario-footer>
+<div id="language-sync-content">
+	<h2>{{ t.homepage.heading }}</h2>
+	<p class="ontario-lead-statement">{{ t.homepage.leadStatement }}</p>
+
+	<ontario-callout
+		headingType="h3"
+		[headingContent]="t.homepage.callout.heading"
+		[content]="t.homepage.callout.content"
+	></ontario-callout>
+
+	<ontario-button type="primary" [label]="t.homepage.button"></ontario-button>
+</div>
+
+<ontario-footer
+	id="language-sync-footer"
+	type="default"
+	[footerLinks]="footerLinks"
+	assetBasePath="/assets"
+></ontario-footer>

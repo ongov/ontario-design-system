@@ -13,6 +13,10 @@ for (const lang of ['en', 'fr'] as const) {
 			await expect(page.locator('#language-sync-header')).toHaveScreenshot({ animations: 'disabled' });
 		});
 
+		test(`content - ${lang}`, async ({ page }) => {
+			await expect(page.locator('#language-sync-content')).toHaveScreenshot({ animations: 'disabled' });
+		});
+
 		test(`footer - ${lang}`, async ({ page }) => {
 			await expect(page.locator('#language-sync-footer')).toHaveScreenshot({ animations: 'disabled' });
 		});
