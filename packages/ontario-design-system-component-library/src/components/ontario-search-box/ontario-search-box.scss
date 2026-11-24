@@ -10,8 +10,8 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as
 	focusPlaceholders;
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/global.elements';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 @use '../../styles/fieldsets.scss';
 @use '../../styles/labels.scss';
@@ -50,10 +50,6 @@ $ontario-search-autocomplete-disabled-opacity: 0.65;
 	padding-right: $ontario-search-input-padding;
 	width: 100%;
 
-	&:invalid + input[type='reset'] {
-		display: none;
-	}
-
 	&:focus {
 		@extend %ontario-focus;
 	}
@@ -85,6 +81,12 @@ input[type='reset'].ontario-search__reset {
 
 	@media screen and (max-width: breakpoints.$small-breakpoint) {
 		right: $ontario-search-button-width--mobile + spacing.$spacing-7;
+	}
+
+	// Hidden while the field is empty; driven by the component value rather than `:invalid`,
+	// since a non-matching `pattern` also makes the input invalid and the user must still be able to clear it.
+	&--hidden {
+		display: none;
 	}
 }
 

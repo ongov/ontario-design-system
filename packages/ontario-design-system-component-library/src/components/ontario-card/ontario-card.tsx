@@ -299,11 +299,12 @@ export class OntarioCard {
 				: `ontario-card ontario-card__card-type--basic ontario-card--position-${this.cardState.layoutDirection}`;
 
 		const descriptionClass = this.description ? '' : ' ontario-card__description-false';
+		const imageClass = this.image ? '' : ' ontario-card--no-image';
 
 		const colourClass = this.cardState.headerColour ? headerColourToClass[this.cardState.headerColour] : undefined;
 		const backgroundClass = colourClass && !this.description ? `ontario-card__background--${colourClass}` : '';
 
-		return `${baseClass} ${descriptionClass} ${backgroundClass}`.trim();
+		return `${baseClass} ${descriptionClass} ${imageClass} ${backgroundClass}`.trim();
 	}
 
 	/**

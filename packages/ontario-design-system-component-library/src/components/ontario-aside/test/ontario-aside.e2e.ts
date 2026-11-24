@@ -269,6 +269,25 @@ test.describe('ontario-aside', () => {
 		expect(marginStyles?.marginRight).toBe('0px');
 	});
 
+	// Known defect (DS-2971): the small-breakpoint rule in `ontario-aside.scss` is nested inside `.ontario-aside`, so it compiles to
+	// `.ontario-aside .ontario-aside` and never matches.
+	// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+	test.fail('reduces the left margin below the small breakpoint', async ({ page }) => {
+		const marginLeftAt = async (width: number) => {
+			await page.setViewportSize({ width, height: 800 });
+			return host.evaluate((el: Element) => {
+				const aside = el.shadowRoot?.querySelector('aside');
+				return aside ? parseFloat(window.getComputedStyle(aside).marginLeft) : null;
+			});
+		};
+
+		const wide = await marginLeftAt(1200);
+		const narrow = await marginLeftAt(375);
+
+		expect(wide).toBeGreaterThan(0);
+		expect(narrow).toBeLessThan(wide as number);
+	});
+
 	test('border is solid left border only', async () => {
 		const borderStyles = await host.evaluate((el: Element) => {
 			const aside = el.shadowRoot?.querySelector('aside');

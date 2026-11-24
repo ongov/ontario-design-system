@@ -25,6 +25,12 @@ For implementation examples, see [Error messaging](#error-messaging).
 
 Source: https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
 
+### Numeric keyboard treatment
+
+Each _year_, _month_, and _day_ field always requests `inputmode="numeric"` internally, since date fields only accept
+numerical values. This is not currently exposed as a public prop. This mirrors the keyboard-hinting approach documented
+for [ontario-input](../ontario-input/#numeric-entry-and-keyboard-hints) and does not replace validation.
+
 ## Configuration
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the date input component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Additional information on custom types for the date input properties are outlined [here](#custom-property-types). Please see the [examples](#examples) below for how to configure the component.

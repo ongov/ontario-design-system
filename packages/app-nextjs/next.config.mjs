@@ -15,7 +15,6 @@ export default stencilSSR({
 	from: '@ongov/ontario-design-system-component-library-react',
 	hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate'),
 	serializeShadowRoot: {
-		scoped: ['ontario-button'],
 		default: 'declarative-shadow-dom',
 	},
 })(nextConfig);
