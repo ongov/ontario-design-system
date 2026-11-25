@@ -221,6 +221,11 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		margin-left: spacing.$spacing-1;
 		text-align: left;
 
+		/* 
+		In order to match the header to its original implementation and have no visual changes, a white outline must be placed on the SVG inside the shadow DOM. 
+		The icon generator exposes part="svg" only on ontario-icon-dropdown-arrow and no other icon, in order to properly style the SVG and specifically place the white border outline on it.
+		If this part="svg" was not exposed, it would not be possible to target the SVG directly inside the shadow DOM with CSS and place the white outline on it according to the original implementation.
+		*/
 		&::part(svg) {
 			width: spacing.$spacing-5 - spacing.$spacing-1;
 			height: spacing.$spacing-5;
