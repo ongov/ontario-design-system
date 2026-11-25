@@ -1044,7 +1044,7 @@ export class OntarioHeader {
 											<ontario-icon-search
 												class="ontario-header__search-submit-icon"
 												colour="inherit"
-												iconWidth={SEARCH_SUBMIT_ICON_WIDTH}
+												iconWidth={this.isMobileOrTablet ? ICON_WIDTH : SEARCH_SUBMIT_ICON_WIDTH}
 											></ontario-icon-search>
 										</span>
 									</button>

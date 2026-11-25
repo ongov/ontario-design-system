@@ -37,17 +37,19 @@ describe('icon generator colour styles', () => {
 });
 
 describe('icon generator SVG parts', () => {
-	it.each(['ontario-icon-dropdown-arrow', 'ontario-icon-search', 'ontario-icon-menu'])(
-		'exposes the SVG part only for dropdown-arrow: %s',
-		(name) => {
-			const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), {
-				name,
-				colour: 'configurable',
-			});
+	it.each([
+		['ontario-icon-dropdown-arrow', true],
+		['ontario-icon-menu', true],
+		['ontario-icon-close', true],
+		['ontario-icon-search', false],
+	])('sets the SVG part for %s: %s', (name, exposesPart) => {
+		const template = getIconComponentTemplate(parseSync('<svg class="svg-icon"><path /></svg>'), {
+			name,
+			colour: 'configurable',
+		});
 
-			expect(template.includes('part="svg"')).toBe(name === 'ontario-icon-dropdown-arrow');
-		},
-	);
+		expect(template.includes('part="svg"')).toBe(exposesPart);
+	});
 });
 
 describe('icon generator width defaults', () => {

@@ -223,7 +223,7 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 		/* 
 		In order to match the header to its original implementation and have no visual changes, a white outline must be placed on the SVG inside the shadow DOM. 
-		The icon generator exposes part="svg" only on ontario-icon-dropdown-arrow and no other icon, in order to properly style the SVG and specifically place the white border outline on it.
+		The icon generator exposes part="svg" on ontario-icon-dropdown-arrow, ontario-icon-menu, and ontario-icon-close to support header styling.
 		If this part="svg" was not exposed, it would not be possible to target the SVG directly inside the shadow DOM with CSS and place the white outline on it according to the original implementation.
 		*/
 		&::part(svg) {
@@ -232,8 +232,33 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			stroke-width: 1px;
 		}
 
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			width: spacing.$spacing-5;
+
+			&::part(svg) {
+				width: spacing.$spacing-5;
+			}
+		}
+
 		&--rotated::part(svg) {
 			transform: rotate(180deg);
+		}
+	}
+
+	&__toggle-icon::part(svg) {
+		stroke-width: 1px;
+	}
+
+	&__search-icon {
+		@media screen and (min-width: breakpoints.$small-breakpoint) {
+			zoom: math.div(28, 32);
+			margin-right: math.div(spacing.$spacing-1, math.div(28, 32));
+		}
+	}
+
+	&__search-submit-icon {
+		@media screen and (min-width: breakpoints.$medium-breakpoint) and (max-width: breakpoints.$medium-breakpoint) {
+			zoom: math.div(32, 24);
 		}
 	}
 
@@ -274,11 +299,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			padding: spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-3 !important;
 			border: none !important;
 
-			.ontario-header__icon-container {
-				width: spacing.$spacing-5 !important;
-				height: spacing.$spacing-5 !important;
-			}
-
 			@include header-button-hover-focus;
 
 			&.ontario-header-button--with-outline {
@@ -291,6 +311,23 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 // Specific header buttons
 .ontario-header__menu-toggle {
 	padding: math.div(spacing.$spacing-3, 2) spacing.$spacing-4;
+
+	&:not(.ontario-header-button--desktop) .ontario-header__toggle-icon {
+		margin-right: globalFunctions.px-to-rem(6);
+	}
+
+	&.ontario-header-button--desktop .ontario-header__toggle-icon {
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			width: spacing.$spacing-6 - globalFunctions.px-to-rem(6);
+			margin-right: globalFunctions.px-to-rem(6);
+			text-align: left;
+
+			&::part(svg) {
+				width: spacing.$spacing-6 - globalFunctions.px-to-rem(6);
+				height: spacing.$spacing-6;
+			}
+		}
+	}
 
 	span {
 		display: flex;
