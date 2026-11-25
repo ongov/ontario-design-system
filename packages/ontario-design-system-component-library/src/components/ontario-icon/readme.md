@@ -187,6 +187,8 @@ Apply the class to the icon element itself, for example `<ontario-icon-chevron-d
 
 Each icon has its own generated README with the properties supported by that icon.
 
+Only `ontario-icon-dropdown-arrow`, `ontario-icon-menu`, and `ontario-icon-close` expose an `svg` CSS part for integrations that require direct SVG viewport, stroke, or rotation styling. Scope `::part(svg)` rules to a class on the intended icon instance; other instances retain their standard styling. The header uses this part to preserve its existing icon appearance. Other icon components do not expose this part.
+
 ## Colour support
 
 The `colour` property accepts `black`, `blue`, `grey`, `white`, `inherit` or a valid CSS colour. Most configurable icons default to `black`; `ontario-icon-close-header` and `ontario-icon-menu-header` default to `white`, and `ontario-icon-dropdown-arrow` defaults to `inherit`. Icons are classified in `icon-manifest.json` as one of:

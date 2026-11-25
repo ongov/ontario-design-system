@@ -561,6 +561,10 @@ For component guidance, see:
 
 ### Depends on
 
+- [ontario-icon-close](../ontario-icon/ontario-icon-close)
+- [ontario-icon-menu](../ontario-icon/ontario-icon-menu)
+- [ontario-icon-dropdown-arrow](../ontario-icon/ontario-icon-dropdown-arrow)
+- [ontario-icon-search](../ontario-icon/ontario-icon-search)
 - [ontario-language-toggle](../ontario-language-toggle)
 - [ontario-header-menu-tabs](../ontario-header-menu-tabs)
 - [ontario-header-overflow-menu](../ontario-header-overflow-menu)
@@ -569,6 +573,10 @@ For component guidance, see:
 
 ```mermaid
 graph TD;
+  ontario-header --> ontario-icon-close
+  ontario-header --> ontario-icon-menu
+  ontario-header --> ontario-icon-dropdown-arrow
+  ontario-header --> ontario-icon-search
   ontario-header --> ontario-language-toggle
   ontario-header --> ontario-header-menu-tabs
   ontario-header --> ontario-header-overflow-menu

@@ -155,7 +155,11 @@ const validateManifest = (icons, assetFiles) => {
 };
 
 const getIconComponentTemplate = (svgObject, icon) => {
-	let svgElement = stringify(svgObject);
+	let svgElement = stringify(
+		['ontario-icon-dropdown-arrow', 'ontario-icon-menu', 'ontario-icon-close'].includes(icon.name)
+			? { ...svgObject, attributes: { ...svgObject.attributes, part: 'svg' } }
+			: svgObject,
+	);
 	const hasColour = icon.colour === 'configurable';
 	const replacement = icon.replacedBy;
 	const deprecationNotice = icon.deprecated

@@ -112,10 +112,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	&:hover {
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 
 	&:focus {
@@ -123,19 +119,11 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		box-shadow: 0 0 0 globalVariables.$global-radius colours.$ontario-colour-focus;
 		background-color: colours.$ontario-colour-link--hover;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 
 	&:active {
 		background-color: colours.$ontario-colour-link--active;
 		color: colours.$ontario-colour-white;
-
-		svg {
-			fill: colours.$ontario-colour-white;
-		}
 	}
 }
 
@@ -214,26 +202,63 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		width: spacing.$spacing-5;
 		height: spacing.$spacing-5;
 
-		&--white {
-			svg {
-				fill: white;
-				color: white;
-			}
-
-			svg path {
-				stroke: white;
-			}
-		}
-
-		&--rotated {
-			svg {
-				transform: rotate(180deg);
-			}
-		}
-
 		@media screen and (max-width: breakpoints.$medium-breakpoint) {
 			width: spacing.$spacing-6;
 			height: spacing.$spacing-6;
+		}
+	}
+
+	&__dropdown-icon,
+	&__toggle-icon,
+	&__search-icon,
+	&__search-submit-icon {
+		display: block;
+		line-height: 0;
+	}
+
+	&__dropdown-icon {
+		width: spacing.$spacing-5 - spacing.$spacing-1;
+		margin-left: spacing.$spacing-1;
+		text-align: left;
+
+		/* 
+		In order to match the header to its original implementation and have no visual changes, a white outline must be placed on the SVG inside the shadow DOM. 
+		The icon generator exposes part="svg" on ontario-icon-dropdown-arrow, ontario-icon-menu, and ontario-icon-close to support header styling.
+		If this part="svg" was not exposed, it would not be possible to target the SVG directly inside the shadow DOM with CSS and place the white outline on it according to the original implementation.
+		*/
+		&::part(svg) {
+			width: spacing.$spacing-5 - spacing.$spacing-1;
+			height: spacing.$spacing-5;
+			stroke-width: 1px;
+		}
+
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			width: spacing.$spacing-5;
+
+			&::part(svg) {
+				width: spacing.$spacing-5;
+			}
+		}
+
+		&--rotated::part(svg) {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__toggle-icon::part(svg) {
+		stroke-width: 1px;
+	}
+
+	&__search-icon {
+		@media screen and (min-width: breakpoints.$small-breakpoint) {
+			zoom: math.div(28, 32);
+			margin-right: math.div(spacing.$spacing-1, math.div(28, 32));
+		}
+	}
+
+	&__search-submit-icon {
+		@media screen and (min-width: breakpoints.$medium-breakpoint) and (max-width: breakpoints.$medium-breakpoint) {
+			zoom: math.div(32, 24);
 		}
 	}
 
@@ -274,13 +299,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			padding: spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-1 spacing.$spacing-3 !important;
 			border: none !important;
 
-			svg {
-				margin-left: spacing.$spacing-1;
-				margin-right: spacing.$spacing-0 !important;
-				width: spacing.$spacing-5 !important;
-				height: spacing.$spacing-5 !important;
-			}
-
 			@include header-button-hover-focus;
 
 			&.ontario-header-button--with-outline {
@@ -294,18 +312,29 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 .ontario-header__menu-toggle {
 	padding: math.div(spacing.$spacing-3, 2) spacing.$spacing-4;
 
+	&:not(.ontario-header-button--desktop) .ontario-header__toggle-icon {
+		margin-right: globalFunctions.px-to-rem(6);
+	}
+
+	&.ontario-header-button--desktop .ontario-header__toggle-icon {
+		@media screen and (max-width: breakpoints.$medium-breakpoint) {
+			width: spacing.$spacing-6 - globalFunctions.px-to-rem(6);
+			margin-right: globalFunctions.px-to-rem(6);
+			text-align: left;
+
+			&::part(svg) {
+				width: spacing.$spacing-6 - globalFunctions.px-to-rem(6);
+				height: spacing.$spacing-6;
+			}
+		}
+	}
+
 	span {
 		display: flex;
 
 		@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
 			display: none;
 		}
-	}
-
-	svg {
-		margin-right: globalFunctions.px-to-rem(6);
-		width: spacing.$spacing-6;
-		height: spacing.$spacing-6;
 	}
 
 	@media screen and (max-width: breakpoints.$xsmall-breakpoint) {
@@ -331,12 +360,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	padding: spacing.$spacing-2 spacing.$spacing-3;
 	margin-left: spacing.$spacing-4;
 	border: none !important;
-
-	svg {
-		@media screen and (min-width: breakpoints.$small-breakpoint) {
-			margin-right: spacing.$spacing-1;
-		}
-	}
 
 	@media screen and (max-width: breakpoints.$medium-breakpoint) {
 		margin-left: spacing.$spacing-0;
@@ -375,11 +398,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 		}
 	}
 
-	svg {
-		top: 0;
-		fill: colours.$ontario-colour-white;
-	}
-
 	@media screen and (min-width: breakpoints.$small-breakpoint) {
 		flex-direction: row;
 		padding: spacing.$spacing-1 spacing.$spacing-2 spacing.$spacing-1 spacing.$spacing-4;
@@ -387,12 +405,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 
 		span {
 			top: 0;
-		}
-
-		svg {
-			position: relative;
-			width: spacing.$spacing-7;
-			height: spacing.$spacing-7;
 		}
 	}
 }
@@ -499,10 +511,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 			background-color: colours.$ontario-colour-link;
 			color: colours.$ontario-colour-white;
 
-			svg {
-				fill: colours.$ontario-colour-white;
-			}
-
 			@include search-button-interactive-states;
 		}
 	}
@@ -548,11 +556,6 @@ $ontario-header-z-index: zIndex.$ontario-z-index-above-high;
 	cursor: pointer;
 	padding-left: spacing.$spacing-3;
 	padding-right: spacing.$spacing-3;
-
-	svg {
-		fill: colours.$ontario-colour-black;
-		margin-right: spacing.$spacing-0;
-	}
 
 	@include search-button-interactive-states;
 }

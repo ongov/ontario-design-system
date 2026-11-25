@@ -11,6 +11,26 @@
 | `isDecorative` | `is-decorative` | <span style="color:red">**[DEPRECATED]**</span> Use the label prop to provide an accessible name. Icons without a label are decorative by default.<br/><br/> | `boolean \| undefined`                                               | `undefined` |
 | `label`        | `label`         | Accessible name for a meaningful icon. Without a label, the icon is decorative.                                                                              | `string \| undefined`                                                | `undefined` |
 
+## Shadow Parts
+
+| Part    | Description |
+| ------- | ----------- |
+| `"svg"` |             |
+
+## Dependencies
+
+### Used by
+
+- [ontario-header](../../ontario-header)
+
+### Graph
+
+```mermaid
+graph TD;
+  ontario-header --> ontario-icon-menu
+  style ontario-icon-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

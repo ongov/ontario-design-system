@@ -83,6 +83,35 @@ test.describe('ontario-header - ontario type', () => {
 		await expect(header).not.toHaveClass(/ontario-header--search-open/);
 	});
 
+	test('keeps search icon sizes consistent across responsive boundaries', async ({ page }) => {
+		for (const width of [400, 639, 640, 800, 1167, 1168, 1169, 1280]) {
+			await page.setViewportSize({ width, height: 900 });
+			await page.waitForChanges();
+			const searchToggle = host.locator('#ontario-header-search-toggler');
+			const submitIcon = host.locator('#ontario-search-submit ontario-icon-search svg');
+
+			if (await searchToggle.isVisible()) {
+				const toggleIcon = searchToggle.locator('ontario-icon-search svg');
+				await expect(toggleIcon).toBeVisible();
+				const toggleBounds = await toggleIcon.boundingBox();
+				expect(toggleBounds!.width).toBeCloseTo(width < 640 ? 32 : 28);
+				await searchToggle.click();
+				await page.waitForChanges();
+			}
+
+			await expect(submitIcon).toBeVisible();
+			const submitBounds = await submitIcon.boundingBox();
+			expect(submitBounds!.width).toBeCloseTo(width <= 1168 ? 32 : 24);
+			if (await searchToggle.isHidden()) {
+				const closeButton = host.locator('#ontario-header-search-close');
+				if (await closeButton.isVisible()) {
+					await closeButton.click();
+					await page.waitForChanges();
+				}
+			}
+		}
+	});
+
 	test('toggles the menu open and closed when the menu button is clicked', async ({ page }) => {
 		const menuButton = host.locator('#ontario-header-menu-toggler');
 		await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
@@ -102,7 +131,107 @@ test.describe('ontario-header - ontario type', () => {
 	});
 });
 
+test.describe('ontario-header - responsive menu icons', () => {
+	test('uses header-scoped strokes without changing standalone icons', async ({ page }) => {
+		await page.setContent(`
+			<ontario-header
+				type="ontario"
+				disable-dynamic-menu="true"
+				application-header-info='{"title": "Application name", "href": "/"}'
+				menu-items='${menuItemsJson}'
+			></ontario-header>
+			<ontario-icon-menu></ontario-icon-menu>
+			<ontario-icon-close></ontario-icon-close>
+		`);
+		await page.waitForChanges();
+		const host = page.locator('ontario-header');
+
+		for (const type of ['ontario', 'application', 'serviceOntario'] as const) {
+			await host.evaluate((element: HTMLOntarioHeaderElement, headerType) => {
+				element.type = headerType;
+			}, type);
+			await page.waitForChanges();
+			for (const width of [400, 800, 1167, 1168, 1169, 1280]) {
+				await page.setViewportSize({ width, height: 900 });
+				await page.waitForChanges();
+				if (type === 'ontario' && width >= 1168) continue;
+				const id = type === 'ontario' ? 'ontario-header-menu-toggler' : 'ontario-application-header-menu-toggler';
+				const button = host.locator(`#${id}`);
+				const menuSvg = button.locator('ontario-icon-menu svg');
+				await expect(menuSvg).toBeVisible();
+				await expect(menuSvg).toHaveAttribute('part', 'svg');
+				await expect(menuSvg.locator('path')).toHaveCSS('stroke-width', '1px');
+				await expect(menuSvg).toHaveCSS('width', type === 'ontario' ? '26px' : '32px');
+
+				await button.click();
+				await page.waitForChanges();
+				const closeSvg = button.locator('ontario-icon-close svg');
+				await expect(closeSvg).toBeVisible();
+				await expect(closeSvg).toHaveAttribute('part', 'svg');
+				await expect(closeSvg.locator('path')).toHaveCSS('stroke-width', '1px');
+				await button.click();
+				await page.waitForChanges();
+			}
+		}
+
+		for (const tag of ['ontario-icon-menu', 'ontario-icon-close']) {
+			const path = page.locator(`body > ${tag} svg path`);
+			await expect(path).toHaveCSS('stroke-width', '0px');
+		}
+	});
+});
+
 test.describe('ontario-header - ontario type with sign-in menu items', () => {
+	test('desktop arrows use header-scoped SVG part styles without changing standalone icons', async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 900 });
+		await page.setContent(`
+			<ontario-header
+				type="ontario"
+				disable-dynamic-menu="true"
+				menu-items='${menuItemsJson}'
+				sign-in-menu-items='${menuItemsJson}'
+			></ontario-header>
+		`);
+		await page.waitForChanges();
+
+		for (const buttonId of ['ontario-header-menu-toggler', 'ontario-header-sign-in-toggler']) {
+			const button = page.locator(`ontario-header #${buttonId}`);
+			const icon = button.locator('ontario-icon-dropdown-arrow');
+			const svg = icon.locator('svg');
+			await expect(svg).toHaveAttribute('part', 'svg');
+			await expect(svg).toHaveCSS('width', '20px');
+			await expect(svg).toHaveCSS('height', '24px');
+			await expect(icon).toHaveCSS('margin-left', '4px');
+			await expect(svg.locator('path')).toHaveCSS('stroke-width', '1px');
+			await expect(svg.locator('path')).toHaveCSS('stroke', 'rgb(255, 255, 255)');
+			await expect(svg).toHaveCSS('transform', 'none');
+
+			const containerBounds = await button.locator('.ontario-header__icon-container').boundingBox();
+			const svgBounds = await svg.boundingBox();
+			expect(svgBounds!.x - containerBounds!.x).toBeCloseTo(4);
+			expect(svgBounds!.width).toBeCloseTo(20);
+			expect(svgBounds!.height).toBeCloseTo(24);
+
+			await button.click();
+			await page.waitForChanges();
+			await expect(icon).toHaveClass(/ontario-header__dropdown-icon--rotated/);
+			await expect(svg).toHaveCSS('transform', 'matrix(-1, 0, 0, -1, 0, 0)');
+			await expect(icon).toHaveCSS('transform', 'none');
+			await button.click();
+			await page.waitForChanges();
+			await expect(icon).not.toHaveClass(/ontario-header__dropdown-icon--rotated/);
+			await expect(svg).toHaveCSS('transform', 'none');
+		}
+
+		await page.evaluate(() => document.body.append(document.createElement('ontario-icon-dropdown-arrow')));
+		await page.waitForChanges();
+		const standaloneSvg = page.locator('body > ontario-icon-dropdown-arrow').locator('svg');
+		await expect(standaloneSvg).toHaveCSS('width', '24px');
+		await expect(standaloneSvg).toHaveCSS('height', '24px');
+		await expect(standaloneSvg.locator('path')).toHaveCSS('stroke-width', '0px');
+		await expect(standaloneSvg).toHaveCSS('transform', 'none');
+	});
+
 	test('renders the sign-in button when signInMenuItems is provided', async ({ page }) => {
 		await page.setContent(`
 			<ontario-header
@@ -168,11 +297,7 @@ test.describe('ontario-header - accessibility', () => {
 		`);
 		await page.waitForChanges();
 
-		const results = await new AxeBuilder({ page })
-			.include('ontario-header')
-			// svg-img-alt is a pre-existing icon accessibility issue tracked separately; not in scope for this suite.
-			.disableRules(['svg-img-alt'])
-			.analyze();
+		const results = await new AxeBuilder({ page }).include('ontario-header').analyze();
 		expect(results.violations).toEqual([]);
 	});
 });

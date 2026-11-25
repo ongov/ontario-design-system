@@ -401,9 +401,9 @@ test.describe('ontario-icon', () => {
 				.evaluate((header) =>
 					Array.from(
 						header.shadowRoot!.querySelectorAll(
-							'.ontario-header__icon-container--white svg, .ontario-header__search-close svg',
+							'ontario-icon-dropdown-arrow, ontario-icon-menu, ontario-icon-close, ontario-icon-search[colour="white"]',
 						),
-					).map((svg) => getComputedStyle(svg.querySelector('path')!).fill),
+					).map((icon) => getComputedStyle(icon.shadowRoot!.querySelector('path')!).fill),
 				);
 
 			expect(fills.length).toBeGreaterThan(0);
