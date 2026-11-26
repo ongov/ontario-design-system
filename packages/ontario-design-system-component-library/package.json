@@ -45,6 +45,11 @@
 			"require": "./hydrate/index.cjs.js",
 			"default": "./hydrate/index.js"
 		},
+		"./date-validation": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/ontario-design-system-components/index.esm.js",
+			"default": "./dist/ontario-design-system-components/index.esm.js"
+		},
 		"./components/*": {
 			"types": "./dist/types/components/*.d.ts",
 			"import": "./components/*",
