@@ -16,6 +16,7 @@ import StandaloneCheckbox from './stories/standalone-checkbox-page/StandaloneChe
 import RadioButton from './stories/radio-button-page/RadioButton';
 import DropdownList from './stories/dropdown-list-page/DropdownList';
 import Blockquote from './stories/blockquote-page/Blockquote';
+import ErrorAlert from './stories/error-alert-page/ErrorAlert';
 
 const App = () => {
 	return (
@@ -146,6 +147,14 @@ const App = () => {
 				element={
 					<Layout>
 						<Blockquote />
+					</Layout>
+				}
+			/>
+			<Route
+				path="/ontario-error-alert"
+				element={
+					<Layout>
+						<ErrorAlert />
 					</Layout>
 				}
 			/>

@@ -6,6 +6,10 @@ The purpose of this project is to test the React web components library function
 
 Local assets are copied over via scripts using the [copyfiles](https://www.npmjs.com/package/copyfiles) NPM package as outlined in the Ontario Design System React component library README instructions.
 
+## Error alert example
+
+Open `/#/ontario-error-alert` or select **Error alert** in the application menu to try the error summary and inline messages. The example uses application-managed validation for six ODS controls and a native email field; the summary collects ODS control errors only. Live validation can be enabled or disabled, and submitting always validates the form.
+
 ## Asset paths (fonts and images)
 
 This app uses a local theme entrypoint to keep asset URLs pointing at `/assets/...` when running in Vite.
