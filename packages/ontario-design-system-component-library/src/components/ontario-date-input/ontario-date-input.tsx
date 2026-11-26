@@ -34,7 +34,7 @@ import {
 	FormErrorControl,
 	getFormControlError,
 	getFormErrorPresentation,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 
 /**
  * Ontario Date Input captures day, month, and year values as a single date field.

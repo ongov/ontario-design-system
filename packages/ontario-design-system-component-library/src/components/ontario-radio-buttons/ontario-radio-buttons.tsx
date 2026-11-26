@@ -40,7 +40,7 @@ import {
 	FormErrorControl,
 	getFormControlError,
 	getFormErrorPresentation,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -463,19 +463,14 @@ export class OntarioRadioButtons implements RadioButtons, FormErrorControl {
 
 		const input = event.target as HTMLInputElement | null;
 
-		// Reset all internalOptions checked states
-		const changedOption = this.internalOptions
-			.map((x) => {
-				x.checked = false;
-				return x;
-			})
-			.find((x) => x.value === input?.value);
-		// Set the new checked state for the selected value
-		if (changedOption) changedOption.checked = !changedOption?.checked;
-		this.value = this.internalOptions.find((x) => !!x.checked)?.value ?? '';
-
-		// Set the value within the form
-		this.internals?.setFormValue?.(this.value ?? '');
+		if (eventType === EventType.Change) {
+			this.internalOptions = this.internalOptions.map((option) => ({
+				...option,
+				checked: option.value === input?.value && !!input?.checked,
+			}));
+			this.value = this.internalOptions.find((option) => option.checked)?.value ?? '';
+			this.internals?.setFormValue?.(this.value);
+		}
 
 		handleInputEvent(
 			event,

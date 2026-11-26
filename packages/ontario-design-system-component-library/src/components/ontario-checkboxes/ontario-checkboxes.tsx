@@ -43,7 +43,7 @@ import {
 	FormErrorControl,
 	getFormControlError,
 	getFormErrorPresentation,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 
 /**
  * Ontario Checkboxes collects one or more selections from a defined option set.

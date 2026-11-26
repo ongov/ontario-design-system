@@ -40,7 +40,7 @@ import {
 	FormErrorControl,
 	getFormControlError,
 	getFormErrorPresentation,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 
 /**
  * Ontario Dropdown List presents a selectable list of predefined options.

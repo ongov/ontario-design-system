@@ -37,7 +37,7 @@ import {
 	FormErrorControl,
 	getFormControlError,
 	getFormErrorPresentation,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 
 /**
  * Ontario Textarea captures multi-line text input.

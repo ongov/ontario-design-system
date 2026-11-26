@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { ConsoleMessageClass } from './console-message/console-message';
+import { ConsoleMessageClass } from '../../console-message/console-message';
 
 /**
  * The effective error and identities used for summary updates and host navigation.

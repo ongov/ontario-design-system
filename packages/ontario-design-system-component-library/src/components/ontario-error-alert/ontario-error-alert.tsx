@@ -5,7 +5,7 @@ import {
 	ensureErrorControlAnchor,
 	FormControlError,
 	setErrorAlertActive,
-} from '../../utils/form-error';
+} from '../../utils/common/form-error/form-error';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 import { Language } from '../../utils/common/language-types';
 import translations from '../../translations/global.i18n.json';

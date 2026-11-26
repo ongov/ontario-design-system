@@ -1,7 +1,7 @@
 import { render } from '@stencil/vitest';
 import { vi } from 'vitest';
 import { mutationObserverMock } from '../../../utils/tests/mutation-observer.mock';
-import type { ErrorAwareControl } from '../../../utils/form-error';
+import type { ErrorAwareControl } from '../../../utils/common/form-error/form-error';
 
 describe('ontario-error-alert', () => {
 	it('ignores error events from descendants rather than attributing them to their parent control', async () => {

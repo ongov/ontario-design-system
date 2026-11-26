@@ -81,6 +81,161 @@ test.describe('ontario-error-alert', () => {
 		await expect(page.locator('#lifecycle-b').locator('.ontario-error-messaging')).toHaveAttribute('role', 'alert');
 	});
 
+	test('can disable and re-enable live validation without disabling submit validation', async ({ page }) => {
+		await page.goto('/');
+		const form = page.locator('#integrated-error-form');
+		const summary = page.locator('ontario-error-alert[form-id="integrated-error-form"]');
+		const toggle = page.getByRole('checkbox', { name: 'Enable live validation' });
+		const name = form.locator('#integrated-name input');
+		const details = form.locator('#integrated-details textarea');
+		const region = form.locator('#integrated-region select');
+		const services = form.locator('#integrated-service-licensing');
+		const contact = form.locator('#integrated-contact-email');
+		const year = form.locator('#year-integrated-date-field');
+		const month = form.locator('#month-integrated-date-field');
+		const day = form.locator('#day-integrated-date-field');
+		const email = form.locator('#integrated-native-email');
+
+		const checkboxBox = await toggle.boundingBox();
+		const labelBox = await page.locator('label[for="integrated-live-validation"]').boundingBox();
+		expect(checkboxBox).not.toBeNull();
+		expect(labelBox).not.toBeNull();
+		expect(checkboxBox!.x + checkboxBox!.width).toBeLessThan(labelBox!.x);
+		expect(checkboxBox!.y).toBeLessThan(labelBox!.y + labelBox!.height);
+		expect(labelBox!.y).toBeLessThan(checkboxBox!.y + checkboxBox!.height);
+		await expect(toggle).toBeChecked();
+		await page.locator('label[for="integrated-live-validation"]').click();
+		await expect(toggle).not.toBeChecked();
+		for (const field of [name, details, region, services, contact, email]) {
+			await field.focus();
+			await field.blur();
+		}
+		await year.fill('2000');
+		await month.fill('02');
+		await day.fill('30');
+		await day.blur();
+		for (const control of ['name', 'details', 'region', 'services', 'contact', 'date']) {
+			await expect(form.locator(`#integrated-${control} ontario-error-message`)).toBeHidden();
+		}
+		await expect(form.locator('#integrated-native-error')).toBeHidden();
+		await expect(summary.locator('a')).toHaveCount(0);
+
+		await year.fill('0998');
+		await day.fill('28');
+		await day.blur();
+		await form.getByRole('button', { name: 'Submit', exact: true }).click();
+		await expect(summary.locator('a')).toHaveCount(6);
+		await expect(summary.locator('a', { hasText: 'Enter a complete, valid requested date.' })).toHaveCount(1);
+		await expect(email).toHaveAttribute('aria-invalid', 'true');
+
+		await name.fill('Test Person');
+		await name.blur();
+		await details.fill('A sample request.');
+		await details.blur();
+		await region.selectOption('north');
+		await region.blur();
+		await form.locator('label[for="integrated-service-licensing"]').click();
+		await services.blur();
+		await form.locator('label[for="integrated-contact-email"]').click();
+		await contact.blur();
+		await year.fill('2000');
+		await day.fill('29');
+		await day.blur();
+		await email.fill('person@example.ca');
+		await email.blur();
+		await expect(summary.locator('a')).toHaveCount(6);
+		await expect(email).toHaveAttribute('aria-invalid', 'true');
+
+		await form.getByRole('button', { name: 'Submit', exact: true }).click();
+		await expect(summary.locator('a')).toHaveCount(0);
+		await expect(email).not.toHaveAttribute('aria-invalid');
+		await expect(page.locator('#integrated-error-result')).toHaveText(
+			'All fields are valid. This demonstration did not submit any information.',
+		);
+
+		await form.getByRole('button', { name: 'Reset', exact: true }).click();
+		await expect(page.locator('#integrated-error-result')).toHaveText('Example reset.');
+		await expect(toggle).not.toBeChecked();
+		await toggle.check();
+		await name.focus();
+		await name.blur();
+		await expect(form.locator('#integrated-name ontario-error-message')).toContainText('Enter your full name.');
+		await name.fill('Test Person');
+		await name.blur();
+		await expect(form.locator('#integrated-name ontario-error-message')).toBeHidden();
+	});
+
+	test('validates the mixed example on blur and updates the summary when errors are corrected', async ({ page }) => {
+		await page.goto('/');
+		const form = page.locator('#integrated-error-form');
+		const summary = page.locator('ontario-error-alert[form-id="integrated-error-form"]');
+		const name = form.locator('#integrated-name input');
+		const details = form.locator('#integrated-details textarea');
+		const region = form.locator('#integrated-region select');
+		const services = form.locator('#integrated-service-licensing');
+		const contact = form.locator('#integrated-contact-email');
+		const year = form.locator('#year-integrated-date-field');
+		const month = form.locator('#month-integrated-date-field');
+		const day = form.locator('#day-integrated-date-field');
+		const email = form.locator('#integrated-native-email');
+
+		await name.focus();
+		await name.blur();
+		await expect(form.locator('#integrated-name ontario-error-message')).toContainText('Enter your full name.');
+		await expect(summary.locator('a')).toHaveCount(0);
+
+		await form.getByRole('button', { name: 'Submit', exact: true }).click();
+		await expect(summary.locator('a')).toHaveCount(6);
+
+		const checks = [
+			{ field: name, message: 'Enter your full name.', correct: () => name.fill('Test Person') },
+			{ field: details, message: 'Enter your request details.', correct: () => details.fill('A sample request.') },
+			{ field: region, message: 'Select a region.', correct: () => region.selectOption('north') },
+			{
+				field: services,
+				message: 'Select at least one service.',
+				correct: () => form.locator('label[for="integrated-service-licensing"]').click(),
+			},
+			{
+				field: contact,
+				message: 'Select a preferred contact method.',
+				correct: () => form.locator('label[for="integrated-contact-email"]').click(),
+			},
+		];
+
+		for (const { field, message, correct } of checks) {
+			await field.focus();
+			await field.blur();
+			await expect(summary.locator('a', { hasText: message })).toHaveCount(1);
+			await field.focus();
+			await correct();
+			await expect(summary.locator('a', { hasText: message })).toHaveCount(1);
+			await field.blur();
+			await expect(summary.locator('a', { hasText: message })).toHaveCount(0);
+		}
+
+		await year.fill('2000');
+		await month.fill('02');
+		await day.fill('30');
+		await day.blur();
+		await expect(summary.locator('a')).toHaveCount(1);
+		await expect(form.locator('#integrated-date ontario-error-message')).not.toBeHidden();
+		await day.fill('29');
+		await expect(summary.locator('a')).toHaveCount(1);
+		await day.blur();
+		await expect(summary.locator('a')).toHaveCount(0);
+		await expect(form.locator('#integrated-date ontario-error-message')).toBeHidden();
+
+		await email.fill('not-an-email');
+		await email.blur();
+		await expect(email).toHaveAttribute('aria-invalid', 'true');
+		await email.fill('person@example.ca');
+		await expect(email).toHaveAttribute('aria-invalid', 'true');
+		await email.blur();
+		await expect(email).not.toHaveAttribute('aria-invalid');
+		await expect(email).toHaveAccessibleDescription('For example, name@example.ca.');
+	});
+
 	test('runs the mixed ODS/native example on the component samples page', async ({ page }) => {
 		await page.goto('/');
 		const form = page.locator('#integrated-error-form');
@@ -107,7 +262,7 @@ test.describe('ontario-error-alert', () => {
 		await form.locator('#month-integrated-date-field').fill('10');
 		await form.locator('#day-integrated-date-field').fill('23');
 		await form.getByRole('button', { name: 'Submit', exact: true }).click();
-		await expect(summary.locator('a')).toHaveCount(0);
+		await expect(summary.locator('a')).toHaveText([]);
 		await expect(form.locator('#integrated-native-email')).toBeFocused();
 
 		await form.locator('#integrated-native-email').fill('person@example.ca');

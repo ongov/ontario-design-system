@@ -10,7 +10,7 @@ Use `ontario-error-alert` to summarize form errors after validation fails. It di
 ## Usage guidance
 
 - Place the alert at the top of the page, above the page's `<h1>`, when possible. Use `form-id` to associate it with a form elsewhere on the page; otherwise, place it inside the native `<form>`.
-- Show the alert after client-side or server-side validation finds errors, including when there is only one error.
+- Show the alert after client-side or server-side validation finds errors in supported ODS controls, including when there is only one such error. Native-field errors are not collected; see [Native fields and mixed forms](#native-fields-and-mixed-forms).
 - Provide an inline error beside each invalid control. Use the same clear, actionable error text in the alert and inline message.
 - The application owns validation, submission, setting and clearing errors, and the page title. The alert does not validate controls or maintain a separate application error list.
 - Set the page title to indicate that errors need attention, and restore its normal title when errors are resolved.
@@ -33,11 +33,52 @@ The component exposes three asynchronous methods:
 
 When errors are corrected, clear the relevant control errors and call `hide()` when the alert should no longer be active. A native form reset does not clear application-managed errors, so clear them in the application's reset handler. Do not use a timeout to dismiss the alert.
 
-The alert currently discovers errors from `ontario-input`, `ontario-textarea`, `ontario-dropdown-list`, `ontario-checkboxes`, `ontario-radio-buttons` and `ontario-date-input`. Native controls are not included in the alert.
+### Supported controls and error properties
+
+The alert reads current errors from these controls and follows their subsequent error updates. Set an application-provided error on the control itself rather than adding a separate `ontario-error-message` inside it. Use an empty string to clear an application-provided error.
+
+| Control                                           | Application-provided error property               |
+| ------------------------------------------------- | ------------------------------------------------- |
+| [ontario-input](../ontario-input)                 | `errorMessage` (`error-message`)                  |
+| [ontario-textarea](../ontario-textarea)           | `errorMessage` (`error-message`)                  |
+| [ontario-dropdown-list](../ontario-dropdown-list) | `errorMessage` (`error-message`)                  |
+| [ontario-checkboxes](../ontario-checkboxes)       | `errorMessage` (`error-message`)                  |
+| [ontario-radio-buttons](../ontario-radio-buttons) | `errorMessage` (`error-message`)                  |
+| [ontario-date-input](../ontario-date-input)       | `externalErrorMessage` (`external-error-message`) |
+
+For date input, `externalErrorMessage` takes precedence over internal date validation. Clearing it can reveal an internal error that still applies; see [date input error messaging](../ontario-date-input/#error-messaging). Other controls may also provide their own validation options; consult their documentation when combining those with application validation.
+
+### Native fields and mixed forms
+
+The alert does not collect native HTML controls or standalone `ontario-error-message` components. If a form has only a native-field error, calling `show()` does not produce an entry or a visible summary. In a mixed form, the alert lists only supported ODS control errors, even when native fields are also invalid.
+
+Validate native fields in the application and associate each inline message with its field as described in [ontario-error-message](../ontario-error-message). The Next.js integrated example described below demonstrates this limitation: it lists ODS errors in the alert and focuses the native email field when that is the only remaining error. It is not an example of a summary containing every error in a mixed form.
 
 Whitespace-only control errors remain errors: the native field stays invalid, but the inline message is hidden and the alert omits the entry because it has no accessible link text. A console warning explains the omission. Supply meaningful error text or an empty string to clear the error.
 
+### Server-rendered errors
+
 When server-rendering forms, render error content from the server response for users without JavaScript. The alert reconciles supported control errors after hydration but cannot announce them before JavaScript runs. Use stable control IDs when deterministic server/client IDs are required.
+
+For example, a server-rendered error response for a native field can include ordinary HTML for both the summary and inline error. This example represents the response after server validation, not a component configuration:
+
+```html
+<section aria-labelledby="error-heading">
+	<h2 id="error-heading">There is a problem</h2>
+	<ul>
+		<li><a href="#email">Enter an email address in the correct format.</a></li>
+	</ul>
+</section>
+<h1>Apply for a service</h1>
+<form method="post">
+	<label for="email">Email address</label>
+	<p id="email-error">Enter an email address in the correct format.</p>
+	<input id="email" name="email" type="email" aria-invalid="true" aria-describedby="email-error" />
+	<button type="submit">Continue</button>
+</form>
+```
+
+The server must validate the submission, render the applicable errors and retain entered values safely. If an application also renders a client-side summary after hydration, it must coordinate the server-rendered and client-rendered content so users do not encounter duplicate summaries or announcements. This example does not add native-field support to `ontario-error-alert`.
 
 ### Next.js server-side rendering
 
@@ -166,11 +207,23 @@ async submit() {
 </Tabs>
 ```
 
+### Interactive integration example
+
+Run the Next.js example at `/components/ontario-error-alert`; its source is `packages/app-nextjs/src/app/components/ontario-error-alert/page.tsx` in the repository. It demonstrates multiple controls, submit validation, an optional live-validation toggle, correction and reset. The example does not submit data or update the page title; applications must implement submission, server-side validation and title updates themselves. See [Native fields and mixed forms](#native-fields-and-mixed-forms) for its summary limitation.
+
 ## Accessibility verification
 
 Automated evidence is in `test/ontario-error-alert.spec.tsx` and `test/ontario-error-alert.e2e.ts`. The unit tests cover error associations, invalid state, snapshots, event updates and focus. Chromium/axe tests cover alert navigation, all six supported ODS controls, form isolation, initial and late errors, dynamic controls, correction and empty states. These tests exercise behaviours relevant to WCAG 1.3.1, 1.3.2, 2.1.1, 2.4.3, 2.4.4, 3.3.1, 4.1.2 and 4.1.3; they do not establish conformance.
 
 Manual assistive technology and visual accessibility testing remains necessary before release. Record browser, operating system and assistive technology versions, along with observed speech and focus results. Verify keyboard-only use, visible and unobscured focus, contrast, forced colours, 200% text resize, 320 CSS-pixel reflow, text spacing and target size. Accessibility-owner review remains required.
+
+For each supported browser and assistive technology combination:
+
+- Submit a form with one error and then multiple supported-control errors. Check that the summary receives focus and its heading and error links are announced.
+- Activate each summary link with the keyboard and check that focus reaches the appropriate field or group. Check that the inline message and any existing hint are available from the field.
+- With the summary active, correct an error and change another error. Check that the summary updates, the change is announced without unexpectedly moving focus and the same error is not announced twice.
+- Hide the summary and validate again. Check that inline announcements are available again and that hiding the summary did not clear errors.
+- Test native-field errors separately in mixed forms: confirm their inline associations and verify the application's behaviour when no supported ODS errors remain.
 
 <!-- Auto Generated Below -->
 
