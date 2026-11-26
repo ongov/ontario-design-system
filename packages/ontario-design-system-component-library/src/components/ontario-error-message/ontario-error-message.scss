@@ -14,7 +14,8 @@
 .ontario-error-messaging {
 	display: flex;
 	align-items: flex-start;
-	margin: (spacing.$spacing-1 * -1) spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-0;
+	margin: (spacing.$spacing-1 * -1) spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	margin-bottom: var(--ontario-error-message-margin-bottom, spacing.$spacing-3);
 	color: colours.$ontario-colour-dark-red;
 	max-width: globalVariables.$standard-width;
 }

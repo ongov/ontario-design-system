@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
-import { isEmpty } from '../../utils/helper/utils';
 import { ConsoleMessageClass } from '../../utils/console-message/console-message';
 
 /**
@@ -38,7 +37,7 @@ export class OntarioErrorMessage {
 	@Watch('message')
 	validateMessage() {
 		// Warn on message changes, not every render. The owning control retains its invalid state.
-		if (this.message && isEmpty(this.message)) {
+		if (this.message && !this.message.trim()) {
 			new ConsoleMessageClass()
 				.addDesignSystemTag()
 				.addMonospaceText(' <ontario-error-message> ')
@@ -50,7 +49,7 @@ export class OntarioErrorMessage {
 	}
 
 	render() {
-		const hasMessage = !isEmpty(this.message);
+		const hasMessage = !!this.message?.trim();
 		return (
 			<Host id={this.elementId || this.element.id || undefined} hidden={!hasMessage}>
 				{hasMessage && (

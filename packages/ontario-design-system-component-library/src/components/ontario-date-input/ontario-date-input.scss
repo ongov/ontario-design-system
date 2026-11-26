@@ -10,6 +10,18 @@
 @use '../../styles/text-inputs.scss';
 @forward '../../utils/components/error-message/error-message';
 
+.ontario-fieldset__legend {
+	margin-bottom: spacing.$spacing-2;
+}
+
+.ontario-hint {
+	margin-bottom: spacing.$spacing-3;
+}
+
+ontario-error-message {
+	--ontario-error-message-margin-bottom: #{spacing.$spacing-2};
+}
+
 .ontario-date__group {
 	display: flex;
 
