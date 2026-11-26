@@ -12,6 +12,12 @@
 				border-color: #cd0000;
 			}
 
+			.integrated-error-example__live-validation {
+				display: flex;
+				align-items: baseline;
+				gap: 0.5rem;
+			}
+
 			.ontario-summary-list__row {
 				display: flex;
 				flex-direction: row;
@@ -2055,18 +2061,35 @@
 						</ontario-form-container>
 					</form>
 
+					<hr />
+
 					<section aria-labelledby="integrated-error-messaging">
 						<h2 id="integrated-error-messaging">Integrated error messaging: ODS and native controls</h2>
 						<p>
 							Submit this empty form to see inline errors for all six supported ODS controls and a native email field.
-							Correct the fields to update their errors, or reset the example to start again. No information is sent or
-							stored.
+							With live validation enabled, errors are validated when you leave a field. Submit always validates all
+							fields. Reset the example to start again. No information is sent or stored.
 						</p>
 						<p id="integrated-error-scope">
 							The summary automatically collects ODS control errors only. The native email field demonstrates the
 							standalone error component with application-managed validation, description and announcements; its error
 							is not included in the summary.
 						</p>
+						<div class="ontario-form-group">
+							<div class="integrated-error-example__live-validation">
+								<input
+									type="checkbox"
+									id="integrated-live-validation"
+									aria-describedby="integrated-live-validation-hint"
+									checked
+								/>
+								<label for="integrated-live-validation">Enable live validation</label>
+							</div>
+							<p id="integrated-live-validation-hint">
+								When disabled, errors update on submit instead of when you leave a field. Existing errors remain until
+								the next validation.
+							</p>
+						</div>
 						<ontario-error-alert form-id="integrated-error-form"></ontario-error-alert>
 						<form id="integrated-error-form" novalidate aria-describedby="integrated-error-scope">
 							<ontario-form-container>
@@ -2117,8 +2140,11 @@
 										required
 										hint-text="Enter a complete, valid date."
 									></ontario-date-input>
+									<h3>Native HTML Input Example</h3>
 									<div class="ontario-form-group">
-										<label class="ontario-label" for="integrated-native-email">Email address (native HTML input)</label>
+										<label class="ontario-label" for="integrated-native-email"
+											>Email address (native HTML input, excluded from integrated error validation)</label
+										>
 										<p class="ontario-hint" id="integrated-native-hint">For example, name@example.ca.</p>
 										<ontario-error-message id="integrated-native-error"></ontario-error-message>
 										<input
@@ -2142,23 +2168,25 @@
 						<script type="module">
 							const exampleForm = document.getElementById('integrated-error-form');
 							const exampleSummary = document.querySelector('ontario-error-alert[form-id="integrated-error-form"]');
+							const liveValidation = document.getElementById('integrated-live-validation');
 							const result = document.getElementById('integrated-error-result');
 							const nativeEmail = document.getElementById('integrated-native-email');
 							const nativeError = document.getElementById('integrated-native-error');
 							const date = document.getElementById('integrated-date');
 							const rules = [
-								['integrated-name', 'Enter your full name.'],
-								['integrated-details', 'Enter your request details.'],
-								['integrated-region', 'Select a region.'],
-								['integrated-services', 'Select at least one service.'],
-								['integrated-contact', 'Select a preferred contact method.'],
-							].map(([id, message]) => ({ control: document.getElementById(id), message }));
+								['integrated-name', 'Enter your full name.', 'inputOnBlur'],
+								['integrated-details', 'Enter your request details.', 'inputOnBlur'],
+								['integrated-region', 'Select a region.', 'dropdownOnBlur'],
+								['integrated-services', 'Select at least one service.', 'checkboxOnBlur'],
+								['integrated-contact', 'Select a preferred contact method.', 'radioOnBlur'],
+							].map(([id, message, blurEvent]) => ({ control: document.getElementById(id), message, blurEvent }));
 							await Promise.all(
 								[exampleSummary, nativeError, date, ...rules.map(({ control }) => control)].map((control) =>
 									control.componentOnReady(),
 								),
 							);
-							let attempted = false;
+							// This example manages date errors itself, rather than using the date control's built-in blur validation.
+							date.dateValidator = () => ({ dayInvalid: false, monthInvalid: false, yearInvalid: false });
 
 							function validateControl(control, message) {
 								const value = control.value;
@@ -2166,7 +2194,9 @@
 							}
 
 							function validateDate() {
-								date.externalErrorMessage = date.value ? '' : 'Enter a complete, valid requested date.';
+								const year = Number(date.value?.slice(0, 4));
+								date.externalErrorMessage =
+									date.value && year >= 999 && year <= 9999 ? '' : 'Enter a complete, valid requested date.';
 							}
 
 							function validateNativeEmail() {
@@ -2181,31 +2211,27 @@
 								return invalid;
 							}
 
-							for (const { control, message } of rules) {
-								control.addEventListener('inputOnChange', () => {
-									if (attempted) {
-										result.textContent = '';
-										validateControl(control, message);
-									}
+							for (const { control, message, blurEvent } of rules) {
+								control.addEventListener(blurEvent, () => {
+									if (!liveValidation.checked) return;
+									result.textContent = '';
+									validateControl(control, message);
 								});
 							}
-							date.addEventListener('inputOnChange', () => {
-								if (attempted) {
-									result.textContent = '';
-									validateDate();
-								}
+							date.addEventListener('inputOnBlur', () => {
+								if (!liveValidation.checked) return;
+								result.textContent = '';
+								validateDate();
 							});
-							nativeEmail.addEventListener('input', () => {
-								if (attempted) {
-									result.textContent = '';
-									nativeError.announce = true;
-									validateNativeEmail();
-								}
+							nativeEmail.addEventListener('blur', () => {
+								if (!liveValidation.checked) return;
+								result.textContent = '';
+								nativeError.announce = true;
+								validateNativeEmail();
 							});
 
 							exampleForm.addEventListener('submit', async (event) => {
 								event.preventDefault();
-								attempted = true;
 								result.textContent = '';
 								await exampleSummary.show();
 								for (const { control, message } of rules) validateControl(control, message);
@@ -2227,7 +2253,6 @@
 
 							exampleForm.addEventListener('reset', async (event) => {
 								event.preventDefault();
-								attempted = false;
 								await exampleSummary.hide();
 								for (const { control } of rules) {
 									control.value = control.tagName === 'ONTARIO-CHECKBOXES' ? [] : '';
