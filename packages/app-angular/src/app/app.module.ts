@@ -20,6 +20,7 @@ import { FrameThreeComponent } from './pages/framethree/framethree.component';
 import { FrameFourComponent } from './pages/framefour/framefour.component';
 import { FrameFiveComponent } from './pages/framefive/framefive.component';
 import { FrameSixComponent } from './pages/framesix/framesix.component';
+import { ErrorAlertComponent } from './pages/error-alert/error-alert.component';
 
 // import ngx-translate and the http loader
 import { TranslatePipe, provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
@@ -38,6 +39,7 @@ import { environment } from '../environments/environment';
 		FrameFourComponent,
 		FrameFiveComponent,
 		FrameSixComponent,
+		ErrorAlertComponent,
 		FormValueChangesDirective,
 		OntarioInputValueAccessor,
 		OntarioTextareaValueAccessor,

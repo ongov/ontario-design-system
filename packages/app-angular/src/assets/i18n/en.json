@@ -6,18 +6,21 @@
 		"/describe-role": "/fr/decrivez-role",
 		"/additional-details": "/fr/details-supplementaires",
 		"/account-creation": "/fr/creation-de-compte",
+		"/error-alert": "/fr/alerte-erreur",
 		"/fr/demarrer": "/get-started",
 		"/fr/creer-compte": "/create-account",
 		"/fr/coordonnees": "/contact-information",
 		"/fr/decrivez-role": "/describe-role",
 		"/fr/details-supplementaires": "/additional-details",
-		"/fr/creation-de-compte": "/account-creation"
+		"/fr/creation-de-compte": "/account-creation",
+		"/fr/alerte-erreur": "/error-alert"
 	},
 	"header": {
 		"appName": "Ontario Design System Angular demo",
 		"menuItems": {
 			"home": "Home",
-			"register": "Register"
+			"register": "Register",
+			"errorAlert": "Error Alert"
 		}
 	},
 	"footer": {
@@ -184,5 +187,6 @@
 		},
 		"returnLine": "You can now return to the",
 		"returnLineLink": "home page"
-	}
+	},
+	"errorAlertPage": {}
 }
