@@ -63,6 +63,9 @@ export default function Home() {
 							<Link href="/components/ontario-dropdown-list">ontario-dropdown-list</Link>
 						</li>
 						<li>
+							<Link href="/components/ontario-error-alert">ontario-error-alert</Link> (integrated form)
+						</li>
+						<li>
 							<Link href="/components/ontario-fieldset">ontario-fieldset</Link>
 						</li>
 						<li>
