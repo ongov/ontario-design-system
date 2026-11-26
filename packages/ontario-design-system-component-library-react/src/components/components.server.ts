@@ -24,6 +24,8 @@ import { OntarioCriticalAlert as OntarioCriticalAlertElement } from "@ongov/onta
 import { OntarioDateInput as OntarioDateInputElement } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
 import { OntarioDropdownList as OntarioDropdownListElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
 import { OntarioDropdownOption as OntarioDropdownOptionElement } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-option.js";
+import { OntarioErrorAlert as OntarioErrorAlertElement } from "@ongov/ontario-design-system-component-library/components/ontario-error-alert.js";
+import { OntarioErrorMessage as OntarioErrorMessageElement } from "@ongov/ontario-design-system-component-library/components/ontario-error-message.js";
 import { OntarioFieldset as OntarioFieldsetElement } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
@@ -413,7 +415,8 @@ export const OntarioDateInput: StencilReactComponent<OntarioDateInputElement, On
         maxYear: 'max-year',
         hintText: 'hint-text',
         dateOptions: 'date-options',
-        dateValidator: 'date-validator'
+        dateValidator: 'date-validator',
+        externalErrorMessage: 'external-error-message'
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioDateInput as ReactWebComponent<OntarioDateInputElement, OntarioDateInputEvents>,
@@ -460,6 +463,34 @@ export const OntarioDropdownOption: StencilReactComponent<OntarioDropdownOptionE
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioDropdownOption as ReactWebComponent<OntarioDropdownOptionElement, OntarioDropdownOptionEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioErrorAlertEvents = NonNullable<unknown>;
+
+export const OntarioErrorAlert: StencilReactComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents> = /*@__PURE__*/ createComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents>({
+    tagName: 'ontario-error-alert',
+    properties: {
+        formId: 'form-id',
+        heading: 'heading',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioErrorAlert as ReactWebComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioErrorMessageEvents = NonNullable<unknown>;
+
+export const OntarioErrorMessage: StencilReactComponent<OntarioErrorMessageElement, OntarioErrorMessageEvents> = /*@__PURE__*/ createComponent<OntarioErrorMessageElement, OntarioErrorMessageEvents>({
+    tagName: 'ontario-error-message',
+    properties: {
+        message: 'message',
+        elementId: 'element-id',
+        announce: 'announce'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioErrorMessage as ReactWebComponent<OntarioErrorMessageElement, OntarioErrorMessageEvents>,
     serializeShadowRoot
 });
 
