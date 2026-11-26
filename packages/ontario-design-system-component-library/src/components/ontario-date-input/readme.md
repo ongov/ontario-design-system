@@ -404,6 +404,8 @@ Use validation and error messaging to help users understand what needs to be cor
 
 Use `dateValidator` to return contextual errors (`DateValidatorReturnType`) for internal date validation. Set `externalErrorMessage` for an application-provided error after form submission; it takes precedence while set and clearing it restores any still-applicable internal validation error. The summary reports the displayed message and focuses the first invalid date part.
 
+Applications can import `validateDateFields` from `@ongov/ontario-design-system-component-library/date-validation` (or from the React package root) to apply the default field rules outside the component. Pass `{ year, month, day }` and optionally `language`, `minYear` and `maxYear`; the result includes the message and individual invalid-field flags. These rules check field ranges, not whether a complete date exists in the calendar, so applications should also validate calendar dates when required. An `externalErrorMessage` marks all visible date fields invalid.
+
 ### Static vs live validation
 
 Use a static `errorMessage` when validation happens on submit (for example, after a form post or submit handler check).
