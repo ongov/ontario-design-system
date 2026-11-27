@@ -20,6 +20,12 @@
   specifier instead (e.g.
   `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables`).
 
+## 9.2.3-beta.1 (2026-11-26)
+
+### Bug Fixes
+
+- **react-lib-api:** export setAssetPath for app development access 02f65a2
+
 ## 9.2.2 (2026-10-19)
 
 ### Bug Fixes
