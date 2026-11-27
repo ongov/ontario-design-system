@@ -164,6 +164,7 @@ import { OntarioStepIndicator as OntarioStepIndicatorElement, defineCustomElemen
 import { OntarioSummaryListItem as OntarioSummaryListItemElement, defineCustomElement as defineOntarioSummaryListItem } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement, defineCustomElement as defineOntarioSummaryList } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement, defineCustomElement as defineOntarioTable } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTagGroup as OntarioTagGroupElement, defineCustomElement as defineOntarioTagGroup } from "@ongov/ontario-design-system-component-library/components/ontario-tag-group.js";
 import { OntarioTag as OntarioTagElement, defineCustomElement as defineOntarioTag } from "@ongov/ontario-design-system-component-library/components/ontario-tag.js";
 import { OntarioTaskList as OntarioTaskListElement, defineCustomElement as defineOntarioTaskList } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement, defineCustomElement as defineOntarioTask } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
@@ -2011,6 +2012,17 @@ export const OntarioTag: StencilReactComponent<OntarioTagElement, OntarioTagEven
         onTagDismissed: 'tagDismissed'
     } as OntarioTagEvents,
     defineCustomElement: defineOntarioTag
+});
+
+export type OntarioTagGroupEvents = NonNullable<unknown>;
+
+export const OntarioTagGroup: StencilReactComponent<OntarioTagGroupElement, OntarioTagGroupEvents> = /*@__PURE__*/ createComponent<OntarioTagGroupElement, OntarioTagGroupEvents>({
+    tagName: 'ontario-tag-group',
+    elementClass: OntarioTagGroupElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioTagGroupEvents,
+    defineCustomElement: defineOntarioTagGroup
 });
 
 export type OntarioTaskEvents = NonNullable<unknown>;

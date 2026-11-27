@@ -35,6 +35,7 @@ import { Segment } from "./utils/components/search-box-autocomplete";
 import { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 import { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 import { TagDismissedDetail, TagToggledDetail } from "./components/ontario-tag/tag.interface";
+import { TagGroupHeadingLevel } from "./components/ontario-tag-group/ontario-tag-group";
 import { TaskStatus } from "./utils/common/task-statuses.enum";
 import { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 import { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
@@ -68,6 +69,7 @@ export { Segment } from "./utils/components/search-box-autocomplete";
 export { SummaryListActionLink, SummaryListColumnRatio, SummaryListHeadingLevel } from "./components/ontario-summary-list/ontario-summary-list-types";
 export { TableColumnOptions, TableRowOptions } from "./components/ontario-table/table.interface";
 export { TagDismissedDetail, TagToggledDetail } from "./components/ontario-tag/tag.interface";
+export { TagGroupHeadingLevel } from "./components/ontario-tag-group/ontario-tag-group";
 export { TaskStatus } from "./utils/common/task-statuses.enum";
 export { TaskHeadingLevel } from "./components/ontario-task/ontario-task";
 export { TaskListHeadingLevel } from "./components/ontario-task-list/ontario-task-list";
@@ -3584,6 +3586,42 @@ export namespace Components {
         "value"?: string;
     }
     /**
+     * Ontario Tag Group holds a set of `ontario-tag` elements. It lays them out, gives the set an accessible name and an optional heading with a count, announces when a tag is removed, and keeps keyboard focus in a sensible place after a removal.
+     * The group never removes a tag itself: the consumer removes the tag in response to its `tagDismissed` event, and the group reacts to the change in its slot.
+     */
+    interface OntarioTagGroup {
+        /**
+          * The unique identifier of the group.  If no `elementId` is passed, one will be generated.  This property is optional.
+         */
+        "elementId"?: string;
+        /**
+          * The accessible name of the group, used when there is no visible heading.  If neither `heading` nor `groupLabel` is provided, a warning is printed.  This property is optional.
+         */
+        "groupLabel"?: string;
+        /**
+          * The visible heading of the group, for example "Applied filters".  This property is optional.
+         */
+        "heading"?: string;
+        /**
+          * The heading element, set by the consumer to keep the page outline correct.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+          * @default 'h3'
+         */
+        "headingLevel": TagGroupHeadingLevel;
+        /**
+          * Hint text shown below the heading to explain the group, for example "Select a tag to remove it".  This is passed in as a string, or as a `Hint` object to render HTML content.  This property is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Appends the number of tags to the heading, for example "(6)".  This only applies when a `heading` is set.  This property is optional.
+          * @default true
+         */
+        "showCount"?: boolean;
+    }
+    /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/task-list.html
@@ -5284,6 +5322,16 @@ declare global {
         new (): HTMLOntarioTagElement;
     };
     /**
+     * Ontario Tag Group holds a set of `ontario-tag` elements. It lays them out, gives the set an accessible name and an optional heading with a count, announces when a tag is removed, and keeps keyboard focus in a sensible place after a removal.
+     * The group never removes a tag itself: the consumer removes the tag in response to its `tagDismissed` event, and the group reacts to the change in its slot.
+     */
+    interface HTMLOntarioTagGroupElement extends Components.OntarioTagGroup, HTMLStencilElement {
+    }
+    var HTMLOntarioTagGroupElement: {
+        prototype: HTMLOntarioTagGroupElement;
+        new (): HTMLOntarioTagGroupElement;
+    };
+    /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/task-list.html
@@ -5498,6 +5546,7 @@ declare global {
         "ontario-summary-list-item": HTMLOntarioSummaryListItemElement;
         "ontario-table": HTMLOntarioTableElement;
         "ontario-tag": HTMLOntarioTagElement;
+        "ontario-tag-group": HTMLOntarioTagGroupElement;
         "ontario-task": HTMLOntarioTaskElement;
         "ontario-task-list": HTMLOntarioTaskListElement;
         "ontario-textarea": HTMLOntarioTextareaElement;
@@ -9218,6 +9267,42 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * Ontario Tag Group holds a set of `ontario-tag` elements. It lays them out, gives the set an accessible name and an optional heading with a count, announces when a tag is removed, and keeps keyboard focus in a sensible place after a removal.
+     * The group never removes a tag itself: the consumer removes the tag in response to its `tagDismissed` event, and the group reacts to the change in its slot.
+     */
+    interface OntarioTagGroup {
+        /**
+          * The unique identifier of the group.  If no `elementId` is passed, one will be generated.  This property is optional.
+         */
+        "elementId"?: string;
+        /**
+          * The accessible name of the group, used when there is no visible heading.  If neither `heading` nor `groupLabel` is provided, a warning is printed.  This property is optional.
+         */
+        "groupLabel"?: string;
+        /**
+          * The visible heading of the group, for example "Applied filters".  This property is optional.
+         */
+        "heading"?: string;
+        /**
+          * The heading element, set by the consumer to keep the page outline correct.  Accepts 'h2', 'h3' or 'h4'. Default is 'h3'.
+          * @default 'h3'
+         */
+        "headingLevel"?: TagGroupHeadingLevel;
+        /**
+          * Hint text shown below the heading to explain the group, for example "Select a tag to remove it".  This is passed in as a string, or as a `Hint` object to render HTML content.  This property is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If none are passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * Appends the number of tags to the heading, for example "(6)".  This only applies when a `heading` is set.  This property is optional.
+          * @default true
+         */
+        "showCount"?: boolean;
+    }
+    /**
      * Ontario Task represents an individual task item and status within a task list.
      * For component guidance, see:
      * - https://designsystem.ontario.ca/components/detail/task-list.html
@@ -9529,6 +9614,7 @@ declare namespace LocalJSX {
         "ontario-summary-list-item": OntarioSummaryListItem;
         "ontario-table": OntarioTable;
         "ontario-tag": OntarioTag;
+        "ontario-tag-group": OntarioTagGroup;
         "ontario-task": OntarioTask;
         "ontario-task-list": OntarioTaskList;
         "ontario-textarea": OntarioTextarea;
@@ -10032,6 +10118,11 @@ declare module "@stencil/core" {
              * A non-dismissible tag toggles between selected and unselected. A dismissible tag is always shown as selected and emits an event when activated, leaving removal up to the consuming application.
              */
             "ontario-tag": LocalJSX.OntarioTag & JSXBase.HTMLAttributes<HTMLOntarioTagElement>;
+            /**
+             * Ontario Tag Group holds a set of `ontario-tag` elements. It lays them out, gives the set an accessible name and an optional heading with a count, announces when a tag is removed, and keeps keyboard focus in a sensible place after a removal.
+             * The group never removes a tag itself: the consumer removes the tag in response to its `tagDismissed` event, and the group reacts to the change in its slot.
+             */
+            "ontario-tag-group": LocalJSX.OntarioTagGroup & JSXBase.HTMLAttributes<HTMLOntarioTagGroupElement>;
             /**
              * Ontario Task represents an individual task item and status within a task list.
              * For component guidance, see:

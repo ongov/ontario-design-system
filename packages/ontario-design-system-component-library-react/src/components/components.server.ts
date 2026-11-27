@@ -164,6 +164,7 @@ import { OntarioStepIndicator as OntarioStepIndicatorElement } from "@ongov/onta
 import { OntarioSummaryListItem as OntarioSummaryListItemElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list-item.js";
 import { OntarioSummaryList as OntarioSummaryListElement } from "@ongov/ontario-design-system-component-library/components/ontario-summary-list.js";
 import { OntarioTable as OntarioTableElement } from "@ongov/ontario-design-system-component-library/components/ontario-table.js";
+import { OntarioTagGroup as OntarioTagGroupElement } from "@ongov/ontario-design-system-component-library/components/ontario-tag-group.js";
 import { OntarioTag as OntarioTagElement } from "@ongov/ontario-design-system-component-library/components/ontario-tag.js";
 import { OntarioTaskList as OntarioTaskListElement } from "@ongov/ontario-design-system-component-library/components/ontario-task-list.js";
 import { OntarioTask as OntarioTaskElement } from "@ongov/ontario-design-system-component-library/components/ontario-task.js";
@@ -2541,6 +2542,24 @@ export const OntarioTag: StencilReactComponent<OntarioTagElement, OntarioTagEven
     },
     hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.OntarioTag as ReactWebComponent<OntarioTagElement, OntarioTagEvents>,
+    serializeShadowRoot
+});
+
+export type OntarioTagGroupEvents = NonNullable<unknown>;
+
+export const OntarioTagGroup: StencilReactComponent<OntarioTagGroupElement, OntarioTagGroupEvents> = /*@__PURE__*/ createComponent<OntarioTagGroupElement, OntarioTagGroupEvents>({
+    tagName: 'ontario-tag-group',
+    properties: {
+        heading: 'heading',
+        headingLevel: 'heading-level',
+        showCount: 'show-count',
+        hintText: 'hint-text',
+        groupLabel: 'group-label',
+        elementId: 'element-id',
+        language: 'language'
+    },
+    hydrateModule: import('@ongov/ontario-design-system-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.OntarioTagGroup as ReactWebComponent<OntarioTagGroupElement, OntarioTagGroupEvents>,
     serializeShadowRoot
 });
 

@@ -3960,6 +3960,29 @@ A tag never removes itself: the consumer removes it from the list in response to
 
 
 @ProxyCmp({
+  inputs: ['elementId', 'groupLabel', 'heading', 'headingLevel', 'hintText', 'language', 'showCount']
+})
+@Component({
+  selector: 'ontario-tag-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['elementId', 'groupLabel', 'heading', 'headingLevel', 'hintText', 'language', 'showCount'],
+  standalone: false
+})
+export class OntarioTagGroup {
+  protected el: HTMLOntarioTagGroupElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OntarioTagGroup extends Components.OntarioTagGroup {}
+
+
+@ProxyCmp({
   inputs: ['deactivateLink', 'headingLevel', 'hintText', 'label', 'language', 'link', 'taskId', 'taskStatus']
 })
 @Component({

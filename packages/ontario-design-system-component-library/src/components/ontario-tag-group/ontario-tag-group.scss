@@ -1,0 +1,48 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/typography.variables' as typography;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/box-shadow.variables' as boxShadow;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
+
+:host {
+	display: block;
+	max-width: typography.$ontario-max-width-large;
+}
+
+.ontario-tag-group:focus,
+.ontario-tag-group__heading:focus {
+	box-shadow: boxShadow.$ontario-focus-box-shadow;
+	outline: 4px solid transparent;
+}
+
+.ontario-tag-group__heading {
+	@extend %h5-styles;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-4;
+	max-width: none;
+	color: colours.$ontario-colour-black;
+}
+
+.ontario-tag-group__hint {
+	display: block;
+}
+
+.ontario-tag-group__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: spacing.$spacing-4;
+}
+
+::slotted(ontario-tag) {
+	max-width: 100%;
+}
+
+.ontario-tag-group__status {
+	position: absolute;
+	width: globalFunctions.px-to-rem(1);
+	height: globalFunctions.px-to-rem(1);
+	margin: globalFunctions.px-to-rem(-1);
+	padding: spacing.$spacing-0;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+}

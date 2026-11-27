@@ -237,6 +237,7 @@
 						></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Tables" href="#tables"></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Tags" href="#tags"></ontario-in-page-navigation-item>
+						<ontario-in-page-navigation-item label="Tag group" href="#tag-group"></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Tasks" href="#tasks"></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Textareas" href="#textareas"></ontario-in-page-navigation-item>
 						<ontario-in-page-navigation-item label="Text inputs" href="#text-inputs"></ontario-in-page-navigation-item>
@@ -1439,6 +1440,32 @@
 						<ontario-tag label="Health"></ontario-tag>
 						<ontario-tag label="Education" selected></ontario-tag>
 						<ontario-tag label="Category: Filter" value="category-filter" dismissible></ontario-tag>
+						<hr />
+					</div>
+
+					<!-- Tag group -->
+					<div>
+						<h2 id="tag-group">Tag group</h2>
+						<ontario-tag-group
+							id="tag-group-demo"
+							heading="Applied filters"
+							heading-level="h3"
+							hint-text="Hint text example."
+						>
+							<ontario-tag label="Category: Health" value="health" dismissible></ontario-tag>
+							<ontario-tag label="Region: Northern Ontario" value="north" dismissible></ontario-tag>
+						</ontario-tag-group>
+						<script>
+							document
+								.getElementById('tag-group-demo')
+								.addEventListener('tagDismissed', (event) => event.target.remove());
+						</script>
+						<div class="ontario-margin-top-24-!">
+							<ontario-tag-group group-label="Topics">
+								<ontario-tag label="Health"></ontario-tag>
+								<ontario-tag label="Education" selected></ontario-tag>
+							</ontario-tag-group>
+						</div>
 						<hr />
 					</div>
 

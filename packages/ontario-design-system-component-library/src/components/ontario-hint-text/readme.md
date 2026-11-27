@@ -181,6 +181,7 @@ The ID of the hint text element, or undefined if no ID is set.
 - [ontario-input](../ontario-input)
 - [ontario-radio-buttons](../ontario-radio-buttons)
 - [ontario-search-box](../ontario-search-box)
+- [ontario-tag-group](../ontario-tag-group)
 - [ontario-task](../ontario-task)
 - [ontario-textarea](../ontario-textarea)
 
@@ -194,6 +195,7 @@ graph TD;
   ontario-input --> ontario-hint-text
   ontario-radio-buttons --> ontario-hint-text
   ontario-search-box --> ontario-hint-text
+  ontario-tag-group --> ontario-hint-text
   ontario-task --> ontario-hint-text
   ontario-textarea --> ontario-hint-text
   style ontario-hint-text fill:#f9f,stroke:#333,stroke-width:4px
