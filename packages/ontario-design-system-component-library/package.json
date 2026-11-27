@@ -103,7 +103,7 @@
 		"@stencil/sass": "^3.2.2",
 		"@stencil/vitest": "1.15.0",
 		"@types/mock-fs": "^4.13.4",
-		"@types/node": "^24.0.0",
+		"@types/node": "^26.0.0",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@types/uuid": "^11.0.0",
