@@ -1,4 +1,18 @@
 {
+	"errorAlert": {
+		"heading": {
+			"en": "There is a problem",
+			"fr": "Un problème est survenu"
+		},
+		"updated": {
+			"en": "Error updated:",
+			"fr": "Erreur mise à jour :"
+		},
+		"corrected": {
+			"en": "An error was corrected.",
+			"fr": "Une erreur a été corrigée."
+		}
+	},
 	"accessibility": {
 		"checkboxHintExpander": {
 			"en": "is available after the last checkbox item.",

@@ -13,13 +13,18 @@
 			{
 				title: getTranslation().menuItemOne,
 				href: getRoute().home,
-				linkIsActive: getRoute().homeIsActive
+				linkIsActive: getRoute().homeIsActive,
 			},
 			{
 				title: getTranslation().menuItemTwo,
 				href: getRoute().register,
-				linkIsActive: getRoute().registerIsActive
-			}
+				linkIsActive: getRoute().registerIsActive,
+			},
+			{
+				title: getTranslation().menuItemThree,
+				href: getRoute().errorAlert,
+				linkIsActive: getRoute().errorAlertIsActive,
+			},
 		]"
 		[customLanguageToggle]="useLanguage"
 	>
@@ -38,16 +43,16 @@
 			[footerLinks]="{
 				accessibilityLink: {
 					text: getTranslation().accessibility,
-					href: getTranslation().accessibilityLink
+					href: getTranslation().accessibilityLink,
 				},
 				privacyLink: {
 					text: getTranslation().privacy,
-					href: getTranslation().privacyLink
+					href: getTranslation().privacyLink,
 				},
 				contactLink: {
 					text: getTranslation().contactUs,
-					href: getTranslation().contactUsLink
-				}
+					href: getTranslation().contactUsLink,
+				},
 			}"
 		></ontario-footer>
 	</div>

@@ -177,6 +177,10 @@ For component selection guidance, see:
 
 ## Dependencies
 
+### Used by
+
+- [ontario-error-alert](../ontario-error-alert)
+
 ### Depends on
 
 - [ontario-icon-alert-information](../ontario-icon)
@@ -192,6 +196,7 @@ graph TD;
   ontario-page-alert --> ontario-icon-alert-success
   ontario-page-alert --> ontario-icon-alert-warning
   ontario-page-alert --> ontario-icon-alert-error
+  ontario-error-alert --> ontario-page-alert
   style ontario-page-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

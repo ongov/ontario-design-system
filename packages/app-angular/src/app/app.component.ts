@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
 		const appName = this.translate.instant('header.appName');
 		const menuItemOne = this.translate.instant('header.menuItems.home');
 		const menuItemTwo = this.translate.instant('header.menuItems.register');
+		const menuItemThree = this.translate.instant('header.menuItems.errorAlert');
 		const accessibility = this.translate.instant('footer.accessibility.text');
 		const accessibilityLink = this.translate.instant('footer.accessibility.link');
 		const privacy = this.translate.instant('footer.privacy.text');
@@ -56,6 +57,7 @@ export class AppComponent implements OnInit {
 			appName,
 			menuItemOne,
 			menuItemTwo,
+			menuItemThree,
 			accessibility,
 			accessibilityLink,
 			privacy,
@@ -74,14 +76,18 @@ export class AppComponent implements OnInit {
 	getRoute() {
 		const getStarted = isEnglish() ? 'get-started' : 'fr/demarrer';
 		const register = isEnglish() ? 'create-account' : 'fr/creer-compte';
+		const errorAlert = isEnglish() ? 'error-alert' : 'fr/alerte-erreur';
 		const homeIsActive = window.location.hash.includes(getStarted);
 		const registerIsActive = window.location.hash.includes(register);
+		const errorAlertIsActive = window.location.hash.includes(errorAlert);
 
 		return {
 			home: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(getStarted) : `/#/${getStarted}`,
 			register: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(register) : `/#/${register}`,
+			errorAlert: isAngularPOCEnvironment() ? this.urlGenerator.generateAppUrl(errorAlert) : `/#/${errorAlert}`,
 			homeIsActive,
 			registerIsActive,
+			errorAlertIsActive,
 		};
 	}
 

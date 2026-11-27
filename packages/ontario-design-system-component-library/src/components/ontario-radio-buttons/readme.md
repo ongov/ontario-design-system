@@ -722,21 +722,40 @@ Disabled/read-only policy source:
 | `radioOnChange`      | Emitted when a keyboard input or mouse event occurs when a radio option has been changed. | `CustomEvent<InputInteractionEvent & { checked: boolean; }>` |
 | `radioOnFocus`       | Emitted when a keyboard input event occurs when a radio option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
 
+## Methods
+
+### `focusError() => Promise<void>`
+
+Focuses the first enabled radio button so summary navigation enters the group.
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `getErrorState() => Promise<FormControlError | null>`
+
+Returns the group's current error for summary discovery without running validation.
+
+#### Returns
+
+Type: `Promise<FormControlError | null>`
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-hint-text](../ontario-hint-text)
+- [ontario-error-message](../ontario-error-message)
 - [ontario-hint-expander](../ontario-hint-expander)
-- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-radio-buttons --> ontario-hint-text
+  ontario-radio-buttons --> ontario-error-message
   ontario-radio-buttons --> ontario-hint-expander
-  ontario-radio-buttons --> ontario-icon-alert-error
+  ontario-error-message --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-radio-buttons fill:#f9f,stroke:#333,stroke-width:4px

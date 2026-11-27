@@ -24,6 +24,8 @@ import { OntarioCriticalAlert as OntarioCriticalAlertElement, defineCustomElemen
 import { OntarioDateInput as OntarioDateInputElement, defineCustomElement as defineOntarioDateInput } from "@ongov/ontario-design-system-component-library/components/ontario-date-input.js";
 import { OntarioDropdownList as OntarioDropdownListElement, defineCustomElement as defineOntarioDropdownList } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-list.js";
 import { OntarioDropdownOption as OntarioDropdownOptionElement, defineCustomElement as defineOntarioDropdownOption } from "@ongov/ontario-design-system-component-library/components/ontario-dropdown-option.js";
+import { OntarioErrorAlert as OntarioErrorAlertElement, defineCustomElement as defineOntarioErrorAlert } from "@ongov/ontario-design-system-component-library/components/ontario-error-alert.js";
+import { OntarioErrorMessage as OntarioErrorMessageElement, defineCustomElement as defineOntarioErrorMessage } from "@ongov/ontario-design-system-component-library/components/ontario-error-message.js";
 import { OntarioFieldset as OntarioFieldsetElement, defineCustomElement as defineOntarioFieldset } from "@ongov/ontario-design-system-component-library/components/ontario-fieldset.js";
 import { OntarioFooter as OntarioFooterElement, defineCustomElement as defineOntarioFooter } from "@ongov/ontario-design-system-component-library/components/ontario-footer.js";
 import { OntarioFormContainer as OntarioFormContainerElement, defineCustomElement as defineOntarioFormContainer } from "@ongov/ontario-design-system-component-library/components/ontario-form-container.js";
@@ -387,6 +389,28 @@ export const OntarioDropdownOption: StencilReactComponent<OntarioDropdownOptionE
     react: React,
     events: {} as OntarioDropdownOptionEvents,
     defineCustomElement: defineOntarioDropdownOption
+});
+
+export type OntarioErrorAlertEvents = NonNullable<unknown>;
+
+export const OntarioErrorAlert: StencilReactComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents> = /*@__PURE__*/ createComponent<OntarioErrorAlertElement, OntarioErrorAlertEvents>({
+    tagName: 'ontario-error-alert',
+    elementClass: OntarioErrorAlertElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioErrorAlertEvents,
+    defineCustomElement: defineOntarioErrorAlert
+});
+
+export type OntarioErrorMessageEvents = NonNullable<unknown>;
+
+export const OntarioErrorMessage: StencilReactComponent<OntarioErrorMessageElement, OntarioErrorMessageEvents> = /*@__PURE__*/ createComponent<OntarioErrorMessageElement, OntarioErrorMessageEvents>({
+    tagName: 'ontario-error-message',
+    elementClass: OntarioErrorMessageElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as OntarioErrorMessageEvents,
+    defineCustomElement: defineOntarioErrorMessage
 });
 
 export type OntarioFieldsetEvents = NonNullable<unknown>;

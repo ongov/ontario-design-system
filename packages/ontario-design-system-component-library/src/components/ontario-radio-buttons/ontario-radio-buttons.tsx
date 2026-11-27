@@ -1,4 +1,16 @@
-import { Component, h, Prop, State, Event, Listen, Watch, Element, EventEmitter, AttachInternals } from '@stencil/core';
+import {
+	Component,
+	h,
+	Prop,
+	State,
+	Event,
+	Listen,
+	Watch,
+	Element,
+	EventEmitter,
+	AttachInternals,
+	Method,
+} from '@stencil/core';
 import { RadioButtons } from './radio-buttons.interface';
 import { RadioOption } from './radio-option.interface';
 
@@ -21,9 +33,14 @@ import {
 	EventType,
 } from '../../utils/events/event-handler.interface';
 import { handleInputEvent } from '../../utils/events/event-handler';
-import { ErrorMessage } from '../../utils/components/error-message/error-message';
 import { ConsoleType } from '../../utils/console-message/console-message.enum';
 import { HeaderLanguageToggleEventDetails } from '../../utils/events/common-events.interface';
+import {
+	FormControlError,
+	FormErrorControl,
+	getFormControlError,
+	getFormErrorPresentation,
+} from '../../utils/common/form-error/form-error';
 
 import { default as translations } from '../../translations/global.i18n.json';
 
@@ -49,7 +66,7 @@ import { default as translations } from '../../translations/global.i18n.json';
 	shadow: true,
 	formAssociated: true,
 })
-export class OntarioRadioButtons implements RadioButtons {
+export class OntarioRadioButtons implements RadioButtons, FormErrorControl {
 	@Element() element: HTMLElement;
 	@AttachInternals() internals: ElementInternals;
 
@@ -198,6 +215,12 @@ export class OntarioRadioButtons implements RadioButtons {
 	 * Used for the `aria-describedby` value of the radio button group. This will match with the id of the hint text.
 	 */
 	@State() hintTextId: string | null | undefined;
+
+	/**
+	 * Disables the inline live alert while an active summary owns announcements.
+	 * The error remains visible and associated with the native fields.
+	 */
+	@State() private suppressErrorAnnouncement = false;
 
 	/**
 	 * The hint text options are re-assigned to the internalHintText array.
@@ -399,6 +422,30 @@ export class OntarioRadioButtons implements RadioButtons {
 		this.inputErrorOccurred.emit({ errorMessage: this.errorMessage ?? '' });
 	}
 
+	/**
+	 * Lets an active summary announce errors instead of duplicating inline alerts.
+	 */
+	@Listen('inlineErrorAnnouncementSuppressed')
+	handleInlineErrorAnnouncementSuppressed(event: CustomEvent<boolean>) {
+		this.suppressErrorAnnouncement = event.detail;
+	}
+
+	/**
+	 * Returns the group's current error for summary discovery without running validation.
+	 */
+	@Method()
+	async getErrorState(): Promise<FormControlError | null> {
+		return getFormControlError(this.element, this.errorMessage);
+	}
+
+	/**
+	 * Focuses the first enabled radio button so summary navigation enters the group.
+	 */
+	@Method()
+	async focusError(): Promise<void> {
+		this.element.shadowRoot?.querySelector<HTMLInputElement>('input:not(:disabled)')?.focus();
+	}
+
 	@Watch('value')
 	syncValueFromValueProp() {
 		if (this.internalOptions) {
@@ -416,19 +463,14 @@ export class OntarioRadioButtons implements RadioButtons {
 
 		const input = event.target as HTMLInputElement | null;
 
-		// Reset all internalOptions checked states
-		const changedOption = this.internalOptions
-			.map((x) => {
-				x.checked = false;
-				return x;
-			})
-			.find((x) => x.value === input?.value);
-		// Set the new checked state for the selected value
-		if (changedOption) changedOption.checked = !changedOption?.checked;
-		this.value = this.internalOptions.find((x) => !!x.checked)?.value ?? '';
-
-		// Set the value within the form
-		this.internals?.setFormValue?.(this.value ?? '');
+		if (eventType === EventType.Change) {
+			this.internalOptions = this.internalOptions.map((option) => ({
+				...option,
+				checked: option.value === input?.value && !!input?.checked,
+			}));
+			this.value = this.internalOptions.find((option) => option.checked)?.value ?? '';
+			this.internals?.setFormValue?.(this.value);
+		}
 
 		handleInputEvent(
 			event,
@@ -515,6 +557,7 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	componentWillLoad() {
+		this.suppressErrorAnnouncement = this.element.hasAttribute('data-error-summary-active');
 		this.updateCaptionState(this.caption);
 		this.parseOptions();
 		this.parseHintText();
@@ -525,13 +568,18 @@ export class OntarioRadioButtons implements RadioButtons {
 	}
 
 	render() {
-		const error = !!this.errorMessage;
+		const { error, errorMessageId, describedBy } = getFormErrorPresentation(
+			this.element,
+			this.errorMessage,
+			this.hintTextId,
+		);
 		return (
 			<div class={error ? 'ontario-input--error' : ''}>
-				<fieldset class="ontario-fieldset" aria-describedby={this.hintTextId}>
+				<fieldset class="ontario-fieldset" aria-describedby={describedBy}>
 					{this.captionState.getCaption(undefined, !!this.internalHintExpander)}
 					{this.internalHintText && (
 						<ontario-hint-text
+							id={this.hintTextId ?? undefined}
 							hint={this.internalHintText.hint}
 							hintContentType={this.internalHintText.hintContentType}
 							ref={(el) => (this.hintTextRef = el)}
@@ -539,7 +587,11 @@ export class OntarioRadioButtons implements RadioButtons {
 					)}
 
 					<div class="ontario-radios">
-						<ErrorMessage message={this.errorMessage} error={error} />
+						<ontario-error-message
+							id={errorMessageId}
+							message={this.errorMessage}
+							announce={!this.suppressErrorAnnouncement}
+						/>
 						{this.internalOptions?.map((radioOption) => (
 							<div class="ontario-radios__item">
 								<Input
@@ -550,6 +602,8 @@ export class OntarioRadioButtons implements RadioButtons {
 									value={radioOption.value}
 									required={!!this.required}
 									checked={!!radioOption.checked}
+									ariaInvalid={error}
+									ariaDescribedBy={errorMessageId}
 									onChange={(e) => this.handleEvent(e, EventType.Change)}
 									onBlur={(e) => this.handleEvent(e, EventType.Blur)}
 									onFocus={(e) => this.handleEvent(e, EventType.Focus)}

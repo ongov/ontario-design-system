@@ -53,6 +53,23 @@ test.describe('ontario-radio-buttons', () => {
 		await expect(radios.nth(0)).not.toBeChecked();
 		await expect(radios.nth(1)).toBeChecked();
 	});
+
+	test('does not change the selection when a radio receives or loses focus', async () => {
+		await radios.nth(0).focus();
+		await radios.nth(0).blur();
+		expect(await host.evaluate((element: HTMLOntarioRadioButtonsElement) => element.value ?? '')).toBe('');
+		await expect(radios.nth(0)).not.toBeChecked();
+		await expect(radios.nth(1)).not.toBeChecked();
+
+		await labels.nth(1).click();
+		await radios.nth(0).focus();
+		await radios.nth(0).blur();
+		expect(await host.evaluate((element: HTMLOntarioRadioButtonsElement) => element.value)).toBe('radio-option-2');
+		await expect(radios.nth(0)).not.toBeChecked();
+		await expect(radios.nth(1)).toBeChecked();
+		await expect(changeSpy).toHaveReceivedEventTimes(1);
+		await expect(radioOnChangeSpy).toHaveReceivedEventTimes(1);
+	});
 });
 
 // import { newE2EPage } from '@stencil/core/testing';

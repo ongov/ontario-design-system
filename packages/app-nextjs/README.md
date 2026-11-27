@@ -52,6 +52,8 @@ This application is intentionally small so it can act as a reference implementat
 4. Example routes under `src/app/components` provide a living catalogue of component usage patterns and double as test fixtures for automation.
 5. Playwright uses those routes to run E2E and VRT coverage, with Docker-based scripts available to keep snapshot generation aligned with CI.
 
+The [integrated error-messaging example](./src/app/components/ontario-error-alert/page.tsx) at `/components/ontario-error-alert` demonstrates application-owned submit and optional live validation, an error summary, ODS form controls, and a standalone error message for a native email input. The summary collects ODS control errors only; the native email error is not included. It does not submit data; production forms still require server-side validation.
+
 ---
 
 # Running the Project Locally

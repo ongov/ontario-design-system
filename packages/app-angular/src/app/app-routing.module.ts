@@ -7,6 +7,7 @@ import { FrameThreeComponent } from './pages/framethree/framethree.component';
 import { FrameFourComponent } from './pages/framefour/framefour.component';
 import { FrameFiveComponent } from './pages/framefive/framefive.component';
 import { FrameSixComponent } from './pages/framesix/framesix.component';
+import { ErrorAlertComponent } from './pages/error-alert/error-alert.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'get-started', pathMatch: 'full' },
@@ -41,6 +42,11 @@ const routes: Routes = [
 		data: { title: 'Account Creation | Ontario Design System Angular demo' },
 	},
 	{
+		path: 'error-alert',
+		component: ErrorAlertComponent,
+		data: { title: 'Error Alert | Ontario Design System Angular demo' },
+	},
+	{
 		path: 'fr/demarrer',
 		component: FrameOneComponent,
 		data: { title: 'Démarrer | Ontario Design System Angular demo' },
@@ -69,6 +75,11 @@ const routes: Routes = [
 		path: 'fr/creation-de-compte',
 		component: FrameSixComponent,
 		data: { title: 'Création de Compte | Ontario Design System Angular demo' },
+	},
+	{
+		path: 'fr/alerte-erreur',
+		component: ErrorAlertComponent,
+		data: { title: 'Alerte Erreur | Ontario Design System Angular demo' },
 	},
 	{ path: 'fr/:**', redirectTo: 'fr/demarrer' },
 	{ path: '**', redirectTo: 'get-started' },

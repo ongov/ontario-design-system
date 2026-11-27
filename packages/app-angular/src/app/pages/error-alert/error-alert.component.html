@@ -1,0 +1,84 @@
+<ontario-error-alert #alert id="error-summary" formId="error-summary-form"></ontario-error-alert>
+<h1>Ontario Error Alert (ontario-error-alert)</h1>
+
+<p id="error-scope">
+	Submit this empty form to see inline errors for the ODS controls and a native email field. Correct the fields to
+	update their errors, or reset the example to start again. The alert collects ODS control errors only; the native email
+	field uses the standalone error message component with application-managed validation. No information is sent or
+	stored.
+</p>
+
+<form
+	id="error-summary-form"
+	novalidate
+	aria-describedby="error-scope"
+	(submit)="onSubmit($event)"
+	(reset)="onReset($event)"
+>
+	<ontario-form-container>
+		<ontario-input
+			#name
+			id="name-control"
+			elementId="name-field"
+			name="fullName"
+			caption="Full name"
+			hintText="Enter your first and last name."
+			[required]="true"
+			[errorMessage]="errors.name ?? ''"
+			(inputOnChange)="onChange('name')"
+		></ontario-input>
+		<ontario-dropdown-list
+			#region
+			id="region-control"
+			elementId="region-field"
+			name="region"
+			caption="Region"
+			[required]="true"
+			[isEmptyStartOption]="true"
+			[options]="regionOptions"
+			[errorMessage]="errors.region ?? ''"
+			(dropdownOnChange)="onChange('region')"
+			(dropdownOnBlur)="onChange('region')"
+		></ontario-dropdown-list>
+		<ontario-radio-buttons
+			#contact
+			id="contact-method-control"
+			name="contact-method"
+			caption="How should we contact you?"
+			[required]="true"
+			[options]="contactOptions"
+			[errorMessage]="errors.contactMethod ?? ''"
+			(radioOnChange)="onChange('contactMethod')"
+			(radioOnBlur)="onChange('contactMethod')"
+		></ontario-radio-buttons>
+
+		<div class="ontario-form-group">
+			<label class="ontario-label" for="native-email">Email address (native HTML input)</label>
+			<p class="ontario-hint" id="native-email-hint">For example, name&#64;example.ca.</p>
+			<ontario-error-message
+				#nativeError
+				id="native-email-error"
+				[message]="errors.email ?? ''"
+				[announce]="announceNative"
+			></ontario-error-message>
+			<input
+				#nativeEmail
+				class="ontario-input"
+				id="native-email"
+				name="email"
+				type="email"
+				autocomplete="email"
+				required
+				[attr.aria-invalid]="errors.email ? 'true' : null"
+				[attr.aria-describedby]="errors.email ? 'native-email-hint native-email-error' : 'native-email-hint'"
+				(input)="onChange('email')"
+			/>
+		</div>
+		&nbsp;
+		<div class="error-alert-actions">
+			<ontario-button type="secondary" htmlType="reset">Reset</ontario-button>
+			<ontario-button type="primary" htmlType="submit">Submit</ontario-button>
+		</div>
+	</ontario-form-container>
+</form>
+<p id="error-result" role="status">{{ result }}</p>

@@ -124,6 +124,15 @@ const Layout = ({ children }: any) => {
 				navigate('/ontario-blockquote');
 			},
 		},
+		{
+			title: 'Error alert',
+			href: generateHashPath('/ontario-error-alert'),
+			linkIsActive: false,
+			onClickHandler: (e: Event) => {
+				e.preventDefault();
+				navigate('/ontario-error-alert');
+			},
+		},
 	]);
 
 	const determineActiveLink = (url: string) => {

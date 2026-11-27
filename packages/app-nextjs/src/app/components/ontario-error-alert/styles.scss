@@ -1,0 +1,33 @@
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/spacing.variables' as spacing;
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
+
+.integrated-error-example__live-validation {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+// Next.js SSR wraps components in display: contents elements, so ::slotted rules cannot reach them.
+#integrated-error-form {
+	ontario-input,
+	ontario-textarea,
+	ontario-dropdown-list,
+	ontario-checkboxes,
+	ontario-radio-buttons,
+	ontario-date-input {
+		display: block;
+		margin-bottom: spacing.$spacing-7;
+	}
+
+	.integrated-error-example__native {
+		border: 1px dotted colours.$ontario-greyscale-20;
+		margin-bottom: spacing.$spacing-8;
+		padding: spacing.$spacing-4;
+	}
+
+	.integrated-error-example__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: spacing.$spacing-4;
+	}
+}

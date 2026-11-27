@@ -697,21 +697,40 @@ Disabled/read-only policy source:
 | `checkboxOnFocus`    | Emitted when a keyboard input event occurs when a checkbox option has gained focus.          | `CustomEvent<InputInteractionEvent & { focused: boolean; }>` |
 | `inputErrorOccurred` | Emitted when an error message is reported to the component.                                  | `CustomEvent<{ errorMessage: string; }>`                     |
 
+## Methods
+
+### `focusError() => Promise<void>`
+
+Focuses the first enabled checkbox so summary navigation enters the group.
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `getErrorState() => Promise<FormControlError | null>`
+
+Returns the group's current error for summary discovery without running validation.
+
+#### Returns
+
+Type: `Promise<FormControlError | null>`
+
 ## Dependencies
 
 ### Depends on
 
 - [ontario-hint-text](../ontario-hint-text)
+- [ontario-error-message](../ontario-error-message)
 - [ontario-hint-expander](../ontario-hint-expander)
-- [ontario-icon-alert-error](../ontario-icon)
 
 ### Graph
 
 ```mermaid
 graph TD;
   ontario-checkboxes --> ontario-hint-text
+  ontario-checkboxes --> ontario-error-message
   ontario-checkboxes --> ontario-hint-expander
-  ontario-checkboxes --> ontario-icon-alert-error
+  ontario-error-message --> ontario-icon-alert-error
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
   style ontario-checkboxes fill:#f9f,stroke:#333,stroke-width:4px
