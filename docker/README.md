@@ -32,6 +32,12 @@ Run Next.js E2E tests:
 pnpm --filter app-nextjs run test:e2e:docker
 ```
 
+Run Angular E2E tests:
+
+```bash
+pnpm --filter app-angular run test:e2e:docker
+```
+
 Run component library VRT tests:
 
 ```bash
@@ -42,6 +48,12 @@ Run Next.js VRT tests:
 
 ```bash
 pnpm --filter app-nextjs run test:vrt:docker
+```
+
+Run Angular VRT tests:
+
+```bash
+pnpm --filter app-angular run test:vrt:docker
 ```
 
 Package script examples with forwarded Playwright args:
@@ -87,7 +99,7 @@ Run component library E2E tests:
 ./scripts/docker-compose.sh run --rm stencil-e2e-runner
 ```
 
-Run Next.js E2E tests:
+Run app E2E tests (Next.js and Angular):
 
 ```bash
 ./scripts/docker-compose.sh run --rm app-e2e-runner
@@ -99,7 +111,7 @@ Run component library VRT tests:
 ./scripts/docker-compose.sh run --rm stencil-vrt-runner
 ```
 
-Run Next.js VRT tests:
+Run app VRT tests (Next.js and Angular):
 
 ```bash
 ./scripts/docker-compose.sh run --rm app-vrt-runner
