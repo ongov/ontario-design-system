@@ -84,21 +84,43 @@ jobs:
 
       # The npm registry can take several minutes to serve freshly published versions, so
       # `pnpm add` of the new release can fail with ERR_PNPM_NO_MATCHING_VERSION right after
-      # the publish job completes. Wait (up to ~10 minutes) for the exact version to appear.
-      - name: Wait for published version on npm
+      # the publish job completes. The registry makes each package visible independently, and
+      # the React library's own dependencies (such as the component library) are resolved
+      # during the install, so wait (up to ~10 minutes) for every published package to appear.
+      # Every public package in packages/ is published at the same version on each release;
+      # keep this list in sync if a package is added or removed.
+      - name: Wait for published versions on npm
         env:
           RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          pkg="@ongov/ontario-design-system-component-library-react@${RELEASE_TAG#v}"
+          version="${RELEASE_TAG#v}"
+          pending=(
+            complete-styles
+            component-html-generator
+            component-library
+            component-library-angular
+            component-library-react
+            design-tokens
+            global-styles
+          )
           for attempt in $(seq 1 20); do
-            if npm view "$pkg" version > /dev/null 2>&1; then
-              echo "Found $pkg on the npm registry"
+            remaining=()
+            for name in "${pending[@]}"; do
+              if npm view "@ongov/ontario-design-system-${name}@${version}" version > /dev/null 2>&1; then
+                echo "Found @ongov/ontario-design-system-${name}@${version} on the npm registry"
+              else
+                remaining+=("$name")
+              fi
+            done
+            pending=("${remaining[@]}")
+            if [ "${#pending[@]}" -eq 0 ]; then
+              echo "All packages for ${version} are on the npm registry"
               exit 0
             fi
-            echo "Attempt $attempt/20: $pkg is not on the npm registry yet, retrying in 30s"
+            echo "Attempt $attempt/20: still waiting for: ${pending[*]}; retrying in 30s"
             sleep 30
           done
-          echo "::error::$pkg did not appear on the npm registry within 10 minutes"
+          echo "::error::Packages did not appear on the npm registry within 10 minutes: ${pending[*]}"
           exit 1
 
       - name: Update package.json in Docusaurus
