@@ -5,11 +5,9 @@ import { gotoSearchPage, searchBox } from './search-box-helpers';
 const fillAutocomplete = async (search: Locator, value: string) => {
 	const input = search.locator('input[type="search"]');
 
-	await expect(async () => {
-		await input.fill(value);
-		await expect(input).toHaveValue(value);
-		await expect(search.locator('ontario-search-result-item').first()).toBeVisible();
-	}).toPass();
+	await input.fill(value);
+	await expect(input).toHaveValue(value);
+	await expect(search.locator('ontario-search-result-item').first()).toBeVisible();
 };
 
 test.describe('Ontario Search Box - Next.js E2E', () => {

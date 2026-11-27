@@ -22,7 +22,6 @@ export default defineConfig({
 		preprocessorMaxWorkers: 0,
 		preprocessorOptions: {
 			scss: {
-				api: 'modern-compiler',
 				loadPaths: [path.resolve(__dirname, 'node_modules')],
 				importers: [new NodePackageImporter(workspaceRoot)],
 			},
