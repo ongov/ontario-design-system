@@ -1,3 +1,27 @@
+# 10.0.0-alpha.1 (2026-11-27)
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: remove exports wildcards causing ambiguous pkg: resolution bd27dad
+
+### Bug Fixes
+
+- **ci:** wait for published npm version before docs sync f6d5eb8
+- **component-library:** resolve duplicate sass module members across components 7c37827
+- **dependency:** include sass-embedded support for app-react 290f129
+- **react-lib-api:** export setAssetPath for app development access 02f65a2
+- **test:** adjust nextjs search box test for webkit pass 1668bf3
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** `@ongov/ontario-design-system-global-styles` no longer
+  exports wildcard SCSS paths such as `./styles/scss/1-variables/*`.
+  Deep `pkg:` imports using the literal underscored filename (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/_global.variables.scss`)
+  will no longer resolve. Switch to the canonical extensionless
+  specifier instead (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables`).
+
+Ref DS-2013, DS-1813
+
 ## 9.2.2 (2026-10-19)
 
 ### Bug Fixes
