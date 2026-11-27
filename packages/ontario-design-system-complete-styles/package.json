@@ -31,7 +31,7 @@
 		"@ongov/ontario-design-system-global-styles": "workspace:*"
 	},
 	"devDependencies": {
-		"glob": "^13.0.0",
+		"glob": "^14.0.0",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^10.0.0",
 		"gulp-clean-css": "^4.3.0",
