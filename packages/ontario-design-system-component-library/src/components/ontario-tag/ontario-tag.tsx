@@ -63,9 +63,14 @@ export class OntarioTag {
 	@Prop() dismissible?: boolean = false;
 
 	/**
-	 * Provides more context for the non-dismissible tag button, only if the label alone is not enough.
+	 * Replaces the label as the accessible name of a non-dismissible tag. Use it only if the label alone is not enough, and start it with the label text so speech input users can still activate the tag by saying its label.
+	 *
+	 * This is ignored on a dismissible tag, which is always named "Remove {label}".
 	 *
 	 * This property is optional.
+	 *
+	 * @example
+	 * <ontario-tag label="Health" aria-label-text="Health, filter results by topic"></ontario-tag>
 	 */
 	@Prop() ariaLabelText?: string;
 
