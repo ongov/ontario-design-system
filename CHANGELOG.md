@@ -20,8 +20,6 @@
   specifier instead (e.g.
   `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables`).
 
-Ref DS-2013, DS-1813
-
 ## 9.2.2 (2026-10-19)
 
 ### Bug Fixes
