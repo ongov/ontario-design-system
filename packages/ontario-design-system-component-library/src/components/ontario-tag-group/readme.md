@@ -37,6 +37,8 @@ Use `hintText` to show hint text below the heading. The hint is rendered with th
 
 The group does not create, remove, or reorder tags. The consuming application owns the list and the filter state. When a tag emits `tagDismissed`, remove it from the list; the group then updates the count, announces the removal, and moves focus to the next tag, then the previous tag, then the group heading. With no heading, focus moves to the group itself.
 
+Focus and the announcement only follow a removal made within 1 second of the `tagDismissed` event, so remove the tag in the event handler rather than after a slow request. The group follows the dismissed tag element itself, so when rendering tags from a list, give each tag a stable key such as its `value`, for example `key={f.value}` in React. Keying by index reuses the dismissed element for the next tag, and the removal is not announced.
+
 A group with no tags renders its heading with a count of 0. Remove the group from the page when there is nothing to show.
 
 ## Examples
