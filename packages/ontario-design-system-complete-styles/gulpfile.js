@@ -31,11 +31,21 @@ const compileSass = (input, outputFile, options) => {
 		sassOptions.sourceComments = true;
 	}
 
-	return src(input, { sourcemaps: options.sourcemaps })
-		.pipe(sass(sassOptions).on('error', sass.logError))
+	const sassStream = sass(sassOptions);
+	const outputStream = src(input, { sourcemaps: options.sourcemaps })
+		.pipe(sassStream)
 		.pipe(gulpif(options.compress, concat(`${outputFile}.min.css`), concat(`${outputFile}.css`)))
 		.pipe(gulpif(options.compress, minify()))
 		.pipe(dest(paths.output.theme, { sourcemaps: options.sourcemaps ? '.' : false }));
+
+	// gulp-sass logs compile errors but doesn't fail the pipeline by default; forward the
+	// error onto the returned stream so gulp treats a broken Sass compile as a build failure.
+	sassStream.on('error', (error) => {
+		sass.logError.call(sassStream, error);
+		outputStream.emit('error', error);
+	});
+
+	return outputStream;
 };
 
 task('clean:dist', async () => {
@@ -93,29 +103,19 @@ task('generate:components-import-file', async (done) => {
 	done();
 });
 
-task('sass:build', async (done) => {
-	try {
-		compileSass(paths.files.theme, 'ontario-theme', {
-			compress: false,
-			sourcemaps: true,
-		});
-		done();
-	} catch (error) {
-		done(error);
-	}
-});
+task('sass:build', () =>
+	compileSass(paths.files.theme, 'ontario-theme', {
+		compress: false,
+		sourcemaps: true,
+	}),
+);
 
-task('sass:minify', async (done) => {
-	try {
-		compileSass(paths.files.theme, 'ontario-theme', {
-			compress: true,
-			sourcemaps: false,
-		});
-		done();
-	} catch (error) {
-		done(error);
-	}
-});
+task('sass:minify', () =>
+	compileSass(paths.files.theme, 'ontario-theme', {
+		compress: true,
+		sourcemaps: false,
+	}),
+);
 
 task('sass:copy-dist', () => {
 	return src(paths.styles.all).pipe(dest(paths.output.styles));
@@ -157,11 +157,6 @@ task('generate:index', async (done) => {
 	}
 });
 
-task('watch', (done) => {
-	watch(paths.styles.dir, { ignoreInitial: false }, parallel('sass:build-minify'));
-	done();
-});
-
 task(
 	'deploy',
 	series(
@@ -183,5 +178,26 @@ task(
 		'clean:src',
 	),
 );
+
+// `src/` is regenerated from the global-styles and component-library packages on every
+// build and deleted again at the end (see 'deploy'), so there's nothing under this
+// package's own `src/` to watch. Watch the upstream sources instead and re-run the full
+// deploy pipeline whenever they change.
+task('watch', (done) => {
+	watch(
+		[
+			paths.dsGlobalStyles.src,
+			paths.dsGlobalStyles.favicons,
+			paths.dsComponentLibrary.globalStyles,
+			paths.dsComponentLibrary.commonStyles,
+			paths.dsComponentLibrary.utils,
+			paths.dsComponentLibrary.components,
+			...paths.dsComponentLibrary.assets,
+		],
+		{ ignoreInitial: false },
+		series('deploy'),
+	);
+	done();
+});
 
 task('default', series('watch'));

@@ -187,7 +187,8 @@ For component guidance, see:
 
 ### Used by
 
-- [ontario-checkboxes](../ontario-checkbox)
+- [ontario-checkbox](../ontario-checkbox)
+- [ontario-checkboxes](../ontario-checkboxes)
 - [ontario-dropdown-list](../ontario-dropdown-list)
 - [ontario-input](../ontario-input)
 - [ontario-radio-buttons](../ontario-radio-buttons)
@@ -204,6 +205,7 @@ For component guidance, see:
 graph TD;
   ontario-hint-expander --> ontario-icon-chevron-up
   ontario-hint-expander --> ontario-icon-chevron-down
+  ontario-checkbox --> ontario-hint-expander
   ontario-checkboxes --> ontario-hint-expander
   ontario-dropdown-list --> ontario-hint-expander
   ontario-input --> ontario-hint-expander

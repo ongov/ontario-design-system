@@ -1,21 +1,14 @@
 # Local Playwright Docker Runner
 
-This folder hosts the shared Playwright runner image and Docker Compose services
-used for local E2E and VRT testing.
+This folder hosts the shared Playwright runner image and Docker Compose services used for local E2E and VRT testing.
 
-The `scripts/docker-compose.sh` wrapper runs Docker Compose with the repo-local
-file.
+The `scripts/docker-compose.sh` wrapper runs Docker Compose with the repo-local file.
 
-The compose setup bind-mounts the repo. It uses an entrypoint that aligns
-container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of
-`node_modules`/`.pnpm-store` before dropping privileges.
+The compose setup bind-mounts the repo. It uses an entrypoint that aligns container UID/GID with your host (`PUID`/`PGID`) and fixes ownership of `node_modules`/`.pnpm-store` before dropping privileges.
 
 ## CI Usage
 
-GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.60.0-noble`
-job container. In CI we do not use Docker Compose or bind mounts; the workflow
-installs dependencies with pnpm and executes the existing test scripts inside
-the container.
+GitHub Actions runs Playwright tests inside the `mcr.microsoft.com/playwright:v1.60.0-noble` job container. In CI we do not use Docker Compose or bind mounts; the workflow installs dependencies with pnpm and executes the existing test scripts inside the container.
 
 ## Structure
 

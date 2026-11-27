@@ -31,6 +31,7 @@ For package-specific work, run commands inside the package, for example `cd pack
 Formatting is enforced with Prettier and `.editorconfig`: tabs for indentation, width `2`, single quotes, semicolons, trailing commas, and `printWidth: 120`. Follow existing TypeScript, Angular, React, and Stencil patterns in nearby files. Use BEM naming for SCSS classes. Keep changes narrow in scope and update package READMEs or docs when behavior changes.
 
 - **Spelling:** Use Canadian spelling for anything that does not require American spelling, including UI strings, variables, and comments. Examples: `colour`, `centre`, `behaviour`.
+- **Markdown wrapping:** Do not hard-wrap markdown files (repo docs, PR descriptions, and GitHub issues) &mdash; write each paragraph or list item as a single long line and let the renderer soft-wrap it. Code comments and commit message bodies should still be wrapped (keep commit body lines under 100 characters, per below).
 
 ## Testing Guidelines
 

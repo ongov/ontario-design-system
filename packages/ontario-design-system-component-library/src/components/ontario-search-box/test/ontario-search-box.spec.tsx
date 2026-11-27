@@ -14,6 +14,79 @@ describe('ontario-search-box', () => {
 		expect(input.getAttribute('aria-controls')).toBeNull();
 	});
 
+	it('should reflect inputMode and pattern onto the native input', async () => {
+		const page = await render(
+			`<ontario-search-box caption="Search codes" input-mode="numeric" pattern="[0-9]*"></ontario-search-box>`,
+		);
+		await page.waitForChanges();
+
+		const input = (page.root as HTMLElement).shadowRoot?.querySelector(
+			'#ontario-search-input-field',
+		) as HTMLInputElement;
+
+		expect(input.getAttribute('inputmode')).toBe('numeric');
+		expect(input.getAttribute('pattern')).toBe('[0-9]*');
+	});
+
+	describe('reset button visibility', () => {
+		const HIDDEN_CLASS = 'ontario-search__reset--hidden';
+
+		const renderSearchBox = async (attrs = '') => {
+			const page = await render(`<ontario-search-box caption="Search codes" ${attrs}></ontario-search-box>`);
+			await page.waitForChanges();
+
+			const shadowRoot = (page.root as HTMLElement).shadowRoot as ShadowRoot;
+			const input = shadowRoot.querySelector('#ontario-search-input-field') as HTMLInputElement;
+			const reset = shadowRoot.querySelector('#ontario-search-reset') as HTMLInputElement;
+
+			const type = async (value: string) => {
+				input.value = value;
+				input.dispatchEvent(new Event('input', { bubbles: true }));
+				await page.waitForChanges();
+			};
+
+			return { page, input, reset, type };
+		};
+
+		it('should hide the reset button while the field is empty', async () => {
+			const { reset } = await renderSearchBox();
+
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(true);
+		});
+
+		it('should show the reset button once a value is entered', async () => {
+			const { reset, type } = await renderSearchBox();
+
+			await type('toronto');
+
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(false);
+		});
+
+		it('should keep the reset button visible when the value does not match the pattern', async () => {
+			const { reset, type } = await renderSearchBox('input-mode="numeric" pattern="[0-9]*"');
+
+			await type('123');
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(false);
+
+			await type('123abc');
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(false);
+		});
+
+		it('should hide the reset button again and clear the value after it is clicked', async () => {
+			const { page, input, reset, type } = await renderSearchBox('pattern="[0-9]*"');
+
+			await type('123abc');
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(false);
+
+			reset.click();
+			await page.waitForChanges();
+
+			expect((page.root as HTMLElement & { value?: string }).value).toBe('');
+			expect(input.value).toBe('');
+			expect(reset.classList.contains(HIDDEN_CLASS)).toBe(true);
+		});
+	});
+
 	it('should render async suggestions in autocomplete mode', async () => {
 		const page = await render(`<ontario-search-box enable-autocomplete caption="Search cities"></ontario-search-box>`);
 		const host = page.root as unknown as {

@@ -1,5 +1,25 @@
 @use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/breakpoints.variables' as breakpoints;
 
 .ontario-button {
 	margin: spacing.$spacing-0 (spacing.$spacing-4 + spacing.$spacing-3) spacing.$spacing-5 spacing.$spacing-0;
+}
+
+// Spacing between adjacent `ontario-button` web components: 32px on desktop. Below the small breakpoint the
+// buttons stack with 24px between them. Markup with whitespace between the buttons adds a small inline gap
+// on desktop, so keep adjacent buttons free of whitespace (or wrap them in a flex container) for exact spacing.
+ontario-button + ontario-button {
+	margin-inline-start: spacing.$spacing-6;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		display: block;
+		margin-inline-start: spacing.$spacing-0;
+		margin-block-start: spacing.$spacing-5;
+	}
+}
+
+@media screen and (max-width: breakpoints.$small-breakpoint) {
+	ontario-button:has(+ ontario-button) {
+		display: block;
+	}
 }

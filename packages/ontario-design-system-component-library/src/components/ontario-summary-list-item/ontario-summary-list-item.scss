@@ -6,7 +6,7 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/font-sizes.variables' as fontSizes;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/functions/global.functions' as globalFunctions;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/2-tools/placeholder/focus.placeholders' as placeholders;
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 :host {
 	display: block;

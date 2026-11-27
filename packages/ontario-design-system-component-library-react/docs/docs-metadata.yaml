@@ -5,3 +5,8 @@ files:
       ---
       title: Next.js Server-Side Rendering (SSR)
       ---
+  framework-integrations/forms/react/readme.md:
+    frontmatter: |
+      ---
+      title: Using ODS form controls in React
+      ---

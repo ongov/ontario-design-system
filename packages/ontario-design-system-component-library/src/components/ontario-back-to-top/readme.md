@@ -14,6 +14,16 @@ Please refer to the [Ontario Design System](https://designsystem.ontario.ca/comp
 
 Once the component package has been installed (see Ontario Design System Component Library for installation instructions), the Back to Top component can be added directly into the project's code, and can be customized by updating the properties outlined [here](#properties). Please see the [examples](#examples) below for how to configure the component.
 
+The component is fixed to the bottom-right corner of the viewport by default. To position it within another container, apply positioning styles to the `ontario-back-to-top` element:
+
+```css
+ontario-back-to-top {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+}
+```
+
 ## Examples
 
 By default, the Back to Top button will have its language set to English ('en'). However, a property can be passed to set the language to French by default. For example:
@@ -58,10 +68,8 @@ By default, the Back to Top button will have its language set to English ('en').
 </Tabs>
 ```
 
-<div style={{height: '75px'}}>
-    <div class="ontario-back-to-top">
-       <OntarioBackToTop language="fr" style={{position: 'inherit', bottom: '50%', right:'65%'}}> </OntarioBackToTop>
-    </div>
+<div style={{ position: 'relative', minHeight: '6rem' }}>
+	<OntarioBackToTop language="fr" style={{ position: 'absolute', bottom: '1rem', right: '1rem' }}> </OntarioBackToTop>
 </div>
 
 Otherwise, a default Back to Top button can be used as follows:
@@ -106,10 +114,8 @@ Otherwise, a default Back to Top button can be used as follows:
 </Tabs>
 ```
 
-<div class="ontario-back-to-top'">
-    <div>
-        <OntarioBackToTop style={{position: 'inherit', bottom: '50%', right:'65%', visbility:'visible'}}> </OntarioBackToTop>
-    </div>
+<div style={{ position: 'relative', minHeight: '6rem' }}>
+	<OntarioBackToTop style={{ position: 'absolute', bottom: '1rem', right: '1rem' }}> </OntarioBackToTop>
 </div>
 
 ## Technical Note: SSR (Server-Side Rendering) Considerations

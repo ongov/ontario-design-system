@@ -13,6 +13,9 @@ export const searchBox = (page: Page) => page.locator('#autocomplete-demo ontari
  */
 export const gotoSearchPage = async (page: Page) => {
 	await page.goto('/components/ontario-search-box');
+	// @stencil/ssr first renders a placeholder inside a `display: contents` div and replaces it
+	// once the component chunk loads. After replacement, the element is a direct child.
+	await expect(page.locator('#autocomplete-demo > ontario-search-box')).toHaveCount(1);
 	await page.evaluate(() => customElements.whenDefined('ontario-search-box'));
 	await page
 		.locator('ontario-search-box')

@@ -17,8 +17,8 @@ import { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Lay
 import { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 import { Caption } from "./utils/common/input-caption/caption.interface";
 import { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
-import { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 import { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+import { CheckboxOption } from "./components/ontario-checkboxes/checkbox-option.interface";
 import { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 import { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 import { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -49,8 +49,8 @@ export { HeaderColour, HorizontalImagePositionType, HorizontalImageSizeType, Lay
 export { CardsPerRow } from "./components/ontario-card-collection/ontario-collection-card-types";
 export { Caption } from "./utils/common/input-caption/caption.interface";
 export { HintExpander } from "./components/ontario-hint-expander/hint-expander.interface";
-export { CheckboxOption } from "./components/ontario-checkbox/checkbox-option.interface";
 export { InputFocusBlurEvent, InputInputEvent, InputInteractionEvent, RadioAndCheckboxChangeEvent } from "./utils/events/event-handler.interface";
+export { CheckboxOption } from "./components/ontario-checkboxes/checkbox-option.interface";
 export { DateInputFieldType, DateInputPlaceholder, DateValidatorReturnType } from "./components/ontario-date-input/ontario-date-input-interface";
 export { DropdownOption } from "./components/ontario-dropdown-list/dropdown-option.interface";
 export { CaptionType } from "./utils/common/input-caption/input-caption.types";
@@ -225,6 +225,27 @@ export namespace Components {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+     * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface OntarioButton {
         /**
@@ -368,6 +389,81 @@ export namespace Components {
           * @default 3
          */
         "cardsPerRow": CardsPerRow;
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface OntarioCheckbox {
+        /**
+          * Whether the checkbox is checked. This is mutable and is kept in sync with user interaction.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Used to add a custom function to the checkbox onBlur event.
+         */
+        "customOnBlur"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onChange event.
+         */
+        "customOnChange"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onFocus event.
+         */
+        "customOnFocus"?: (event: globalThis.Event) => void;
+        /**
+          * The unique identifier of the checkbox. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * Set this to display an error message
+         */
+        "errorMessage"?: string;
+        /**
+          * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
+          * @example <ontario-checkbox   label="I have read and agree to the Terms and Conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Additional context here",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Used to include the ontario-hint-text component for the checkbox. This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The text to display as the checkbox label.
+          * @example <ontario-checkbox   label='{     "captionText": "I have read and agree to the Terms and Conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+         */
+        "label": Caption | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The name for the checkbox. The name value is used to reference form data after a form is submitted.
+         */
+        "name": string;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked. The component is also marked as invalid in its parent form (`valueMissing`), so native form validation blocks submission until it is checked.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The message to display when the checkbox is required and left unchecked. If not provided, a translated default message is used instead.
+         */
+        "requiredValidationMessage"?: string;
+        /**
+          * The value submitted with the form data when the checkbox is checked.
+         */
+        "value"?: string;
     }
     /**
      * Ontario Checkboxes collects one or more selections from a defined option set.
@@ -2967,6 +3063,12 @@ export namespace Components {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for postal codes or one-time codes. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` and/or `inputValidator` when constrained entry is required.
+          * @example <ontario-input   name="postal-code"   caption="Postal code"   input-mode="numeric"   pattern="[0-9]*" ></ontario-input>
+          * @default ''
+         */
+        "inputMode": string;
+        /**
           * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
          */
         "inputValidator"?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
@@ -2991,6 +3093,10 @@ export namespace Components {
           * The name assigned to the input. The name value is used to reference form data after a form is submitted.
          */
         "name": string;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level (`inputValidator`) validation.
+         */
+        "pattern"?: string;
         /**
           * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
           * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
@@ -3214,6 +3320,11 @@ export namespace Components {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode": string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -3228,6 +3339,10 @@ export namespace Components {
           * @default OntarioSearchBox.DEFAULT_MIN_CHARS
          */
         "minChars"?: number;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -3568,6 +3683,10 @@ export interface OntarioBackButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioBackButtonElement;
 }
+export interface OntarioCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOntarioCheckboxElement;
+}
 export interface OntarioCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOntarioCheckboxesElement;
@@ -3729,6 +3848,27 @@ declare global {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+     * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface HTMLOntarioButtonElement extends Components.OntarioButton, HTMLStencilElement {
     }
@@ -3771,6 +3911,39 @@ declare global {
     var HTMLOntarioCardCollectionElement: {
         prototype: HTMLOntarioCardCollectionElement;
         new (): HTMLOntarioCardCollectionElement;
+    };
+    interface HTMLOntarioCheckboxElementEventMap {
+        "checkboxOnChange": RadioAndCheckboxChangeEvent;
+        "checkboxOnBlur": InputFocusBlurEvent;
+        "checkboxOnFocus": InputFocusBlurEvent;
+        "inputErrorOccurred": { errorMessage: string };
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface HTMLOntarioCheckboxElement extends Components.OntarioCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOntarioCheckboxElementEventMap>(type: K, listener: (this: HTMLOntarioCheckboxElement, ev: OntarioCheckboxCustomEvent<HTMLOntarioCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOntarioCheckboxElementEventMap>(type: K, listener: (this: HTMLOntarioCheckboxElement, ev: OntarioCheckboxCustomEvent<HTMLOntarioCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOntarioCheckboxElement: {
+        prototype: HTMLOntarioCheckboxElement;
+        new (): HTMLOntarioCheckboxElement;
     };
     interface HTMLOntarioCheckboxesElementEventMap {
         "checkboxOnChange": RadioAndCheckboxChangeEvent;
@@ -5109,6 +5282,7 @@ declare global {
         "ontario-callout": HTMLOntarioCalloutElement;
         "ontario-card": HTMLOntarioCardElement;
         "ontario-card-collection": HTMLOntarioCardCollectionElement;
+        "ontario-checkbox": HTMLOntarioCheckboxElement;
         "ontario-checkboxes": HTMLOntarioCheckboxesElement;
         "ontario-critical-alert": HTMLOntarioCriticalAlertElement;
         "ontario-date-input": HTMLOntarioDateInputElement;
@@ -5423,6 +5597,27 @@ declare namespace LocalJSX {
      * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
      * Disabled/read-only policy source:
      * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     * ## Icons
+     * Icons can be added alongside a `label`/text content using the `leading-icon` and
+     * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+     * slotted sides needs an icon for the other to still collapse its spacing automatically.
+     * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+     * tracks the button's current text colour (including hover/focus/active state changes)
+     * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+     * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+     * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+     * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+     * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+     * remains accessible.
+     * @example <ontario-button label="Save">
+     *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+     * </ontario-button>
+     * @example <ontario-button label="Save">
+     *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+     * </ontario-button>
+     * @example <ontario-button aria-label-text="Open map">
+     *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+     * </ontario-button>
      */
     interface OntarioButton {
         /**
@@ -5566,6 +5761,97 @@ declare namespace LocalJSX {
           * @default 3
          */
         "cardsPerRow"?: CardsPerRow;
+    }
+    /**
+     * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+     * This component intentionally does not expose a `disabled` prop.
+     * For a set of related checkbox options, use `ontario-checkboxes` instead.
+     * To support accessible and understandable form completion:
+     * - keep the checkbox and submission actions available
+     * - use validation and error messaging to guide corrections
+     * For component guidance, see:
+     * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+     * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+     * Disabled/read-only policy source:
+     * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+     */
+    interface OntarioCheckbox {
+        /**
+          * Whether the checkbox is checked. This is mutable and is kept in sync with user interaction.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Used to add a custom function to the checkbox onBlur event.
+         */
+        "customOnBlur"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onChange event.
+         */
+        "customOnChange"?: (event: globalThis.Event) => void;
+        /**
+          * Used to add a custom function to the checkbox onFocus event.
+         */
+        "customOnFocus"?: (event: globalThis.Event) => void;
+        /**
+          * The unique identifier of the checkbox. This is optional - if no ID is passed, one will be generated.
+         */
+        "elementId"?: string;
+        /**
+          * Set this to display an error message
+         */
+        "errorMessage"?: string;
+        /**
+          * Used to include the ontario-hint-expander component for the checkbox. This is passed in as an object with key-value pairs.  This is optional.
+          * @example <ontario-checkbox   label="I have read and agree to the Terms and Conditions"   name="terms-and-conditions"   value="agreed"   hint-expander='{    "hint": "Additional context here",    "content": "Example hint expander content for the checkbox"   }' > </ontario-checkbox>
+         */
+        "hintExpander"?: HintExpander | string;
+        /**
+          * Used to include the ontario-hint-text component for the checkbox. This is optional.
+         */
+        "hintText"?: string | Hint;
+        /**
+          * The text to display as the checkbox label.
+          * @example <ontario-checkbox   label='{     "captionText": "I have read and agree to the Terms and Conditions",     "captionType": "default"   }'   name="terms-and-conditions"   value="agreed" ></ontario-checkbox>
+         */
+        "label"?: Caption | string;
+        /**
+          * The language of the component. This is used for translations, and is by default set through event listeners checking for a language property from the header. If no language is passed, it will default to English.
+         */
+        "language"?: Language;
+        /**
+          * The name for the checkbox. The name value is used to reference form data after a form is submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input event occurs when the checkbox has lost focus.
+         */
+        "onCheckboxOnBlur"?: (event: OntarioCheckboxCustomEvent<InputFocusBlurEvent>) => void;
+        /**
+          * Emitted when a keyboard input or mouse event occurs when the checkbox has been changed.
+         */
+        "onCheckboxOnChange"?: (event: OntarioCheckboxCustomEvent<RadioAndCheckboxChangeEvent>) => void;
+        /**
+          * Emitted when a keyboard input event occurs when the checkbox has gained focus.
+         */
+        "onCheckboxOnFocus"?: (event: OntarioCheckboxCustomEvent<InputFocusBlurEvent>) => void;
+        /**
+          * Emitted when an error message is reported to the component.
+         */
+        "onInputErrorOccurred"?: (event: OntarioCheckboxCustomEvent<{ errorMessage: string }>) => void;
+        /**
+          * This is used to determine whether the checkbox is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  When required and the checkbox is unchecked, an error state is displayed automatically. It clears once the checkbox is checked. The component is also marked as invalid in its parent form (`valueMissing`), so native form validation blocks submission until it is checked.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The message to display when the checkbox is required and left unchecked. If not provided, a translated default message is used instead.
+         */
+        "requiredValidationMessage"?: string;
+        /**
+          * The value submitted with the form data when the checkbox is checked.
+         */
+        "value"?: string;
     }
     /**
      * Ontario Checkboxes collects one or more selections from a defined option set.
@@ -8258,6 +8544,12 @@ declare namespace LocalJSX {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for postal codes or one-time codes. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` and/or `inputValidator` when constrained entry is required.
+          * @example <ontario-input   name="postal-code"   caption="Postal code"   input-mode="numeric"   pattern="[0-9]*" ></ontario-input>
+          * @default ''
+         */
+        "inputMode"?: string;
+        /**
           * Validate the validity of the input value `onBlur`.  This `async` function should return a result to trigger an error message.  Returning `undefined` or `null` will clear it.
          */
         "inputValidator"?: (value?: string) => Promise<{ errorMessage?: string } | null | undefined>;
@@ -8302,6 +8594,10 @@ declare namespace LocalJSX {
           * Emitted when a input  occurs when an input has been changed.
          */
         "onInputOnInput"?: (event: OntarioInputCustomEvent<InputInputEvent>) => void;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level (`inputValidator`) validation.
+         */
+        "pattern"?: string;
         /**
           * This is used to determine whether the input is required or not. This prop also gets passed to the InputCaption utility to display either an optional or required flag in the label. If no prop is set, it will default to false (optional).  _Please add a validation messaging using `requiredValidationMessage` if setting this property._
           * @example <ontario-input 	id="address-line-1" 	caption="Address line 1" 	required 	required-validation-message="Please enter an address, including street number and street name" 	name="address-line-1" 	hint-text="Street and number or P.O. box." ></ontario-input>
@@ -8549,6 +8845,11 @@ declare namespace LocalJSX {
          */
         "hintText"?: string | Hint;
         /**
+          * Hints to the browser which virtual keyboard layout to present, such as `numeric` for a numeric-only search query. Accepts the standard `inputmode` values (e.g. `numeric`, `decimal`, `tel`, `email`, `search`). This is a UX hint only - it does not validate or restrict input, and should be paired with `pattern` when constrained entry is required.
+          * @default ''
+         */
+        "inputMode"?: string;
+        /**
           * The language of the component. This is used for translations. If none is passed, it will default to English.
           * @default 'en'
          */
@@ -8596,6 +8897,10 @@ declare namespace LocalJSX {
           * @example <script> 	document.getElementById('ontario-search-box').addEventListener('searchOnSubmit', (event) => {  		const searchValue = event.detail; 		console.log('Search submitted with value:', searchValue);   }; 	</script>
          */
         "onSearchOnSubmit"?: (event: OntarioSearchBoxCustomEvent<string>) => void;
+        /**
+          * A regular expression the browser can use as a hint when validating input and, on some platforms, to help choose a more appropriate mobile keyboard. This is a browser hint only - it does not replace server-side or component-level validation. The search form is rendered with `novalidate` and submits through a custom handler, so a `pattern` mismatch will not block or be reported on submission; validate `value` in your own search-handling logic if constrained entry must be enforced.
+         */
+        "pattern"?: string;
         /**
           * This Function to perform a search operation. This function will be called when the search submit button is triggered. The value argument is used for as search term to use for the search operation. This parameter is optional. The performSearch prop can be set dynamically using JavaScript, allowing you to define custom search functionality when the search form is submitted.
           * @example <ontario-search-box   id="ontario-search-box"   caption='Search directory' ></ontario-search-box>  <script> window.addEventListener('load', () => { 	const searchBox = document.getElementById('ontario-search-box'); 	searchBox.performSearch = async (value) => { 			console.log('Performing search with value:', value); 	}; }); </script>
@@ -8962,6 +9267,7 @@ declare namespace LocalJSX {
         "ontario-callout": OntarioCallout;
         "ontario-card": OntarioCard;
         "ontario-card-collection": OntarioCardCollection;
+        "ontario-checkbox": OntarioCheckbox;
         "ontario-checkboxes": OntarioCheckboxes;
         "ontario-critical-alert": OntarioCriticalAlert;
         "ontario-date-input": OntarioDateInput;
@@ -9172,6 +9478,27 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-button/
              * Disabled/read-only policy source:
              * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+             * ## Icons
+             * Icons can be added alongside a `label`/text content using the `leading-icon` and
+             * `trailing-icon` named slots. Either slot (or both) can be used; only one of the two
+             * slotted sides needs an icon for the other to still collapse its spacing automatically.
+             * Prefer an `ontario-icon-*` component with `colour="inherit"`, so the icon automatically
+             * tracks the button's current text colour (including hover/focus/active state changes)
+             * instead of needing a colour set per button `type`. A raw `<svg>`/`<img>` can also be
+             * slotted in directly (e.g. for a custom icon); it is sized to 24x24px automatically.
+             * Icon-only buttons (no visible label) are detected automatically when a default-slotted
+             * element (e.g. an `ontario-icon-*` component or an SVG) is provided without a
+             * `label`/text content. In this mode, always provide `ariaLabelText` so the button
+             * remains accessible.
+             * @example <ontario-button label="Save">
+             *   <ontario-icon-add slot="leading-icon" colour="inherit" is-decorative="true"></ontario-icon-add>
+             * </ontario-button>
+             * @example <ontario-button label="Save">
+             *   <svg slot="leading-icon" aria-hidden="true" focusable="false">...</svg>
+             * </ontario-button>
+             * @example <ontario-button aria-label-text="Open map">
+             *   <ontario-icon-map colour="inherit" is-decorative="true"></ontario-icon-map>
+             * </ontario-button>
              */
             "ontario-button": LocalJSX.OntarioButton & JSXBase.HTMLAttributes<HTMLOntarioButtonElement>;
             /**
@@ -9195,6 +9522,20 @@ declare module "@stencil/core" {
              * - https://designsystem.ontario.ca/developer-docs/components/ontario-card-collection/
              */
             "ontario-card-collection": LocalJSX.OntarioCardCollection & JSXBase.HTMLAttributes<HTMLOntarioCardCollectionElement>;
+            /**
+             * Ontario Checkbox collects a single boolean selection, e.g. a terms and conditions acknowledgment.
+             * This component intentionally does not expose a `disabled` prop.
+             * For a set of related checkbox options, use `ontario-checkboxes` instead.
+             * To support accessible and understandable form completion:
+             * - keep the checkbox and submission actions available
+             * - use validation and error messaging to guide corrections
+             * For component guidance, see:
+             * - https://designsystem.ontario.ca/components/detail/checkboxes.html
+             * - https://designsystem.ontario.ca/developer-docs/components/ontario-checkbox/
+             * Disabled/read-only policy source:
+             * - https://designsystem.ontario.ca/components/detail/buttons.html#disabled-buttons
+             */
+            "ontario-checkbox": LocalJSX.OntarioCheckbox & JSXBase.HTMLAttributes<HTMLOntarioCheckboxElement>;
             /**
              * Ontario Checkboxes collects one or more selections from a defined option set.
              * This component intentionally does not expose group-level `readOnly` or `disabled` props.

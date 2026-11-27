@@ -16,12 +16,16 @@ $ontario-icon-margin-top: 0.125rem;
 $ontario-colour-back-to-top-background: #e6e6e6;
 $ontario-colour-back-to-top--active-background: #b2b2b2;
 
-.ontario-back-to-top,
-// Fractal component style coverage ↓
-.ontario-back-to-top--default {
+:host {
 	position: fixed;
 	bottom: 5%;
 	right: 2%;
+	z-index: 10000;
+}
+
+.ontario-back-to-top,
+// Fractal component style coverage ↓
+.ontario-back-to-top--default {
 	visibility: hidden;
 	opacity: 0;
 	transition: 0.1s ease-in-out;
@@ -40,7 +44,6 @@ $ontario-colour-back-to-top--active-background: #b2b2b2;
 	font-size: fontSizes.$ontario-font-size-standard-body-text;
 	font-family: fonts.$ontario-font-open-sans;
 	font-weight: fontWeights.$ontario-font-weights-semi-bold;
-	z-index: 10000;
 	cursor: pointer;
 
 	.ontario-icon {

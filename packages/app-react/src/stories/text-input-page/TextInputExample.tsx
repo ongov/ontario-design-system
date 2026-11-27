@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
+import { useRef, useEffect, SubmitEvent, SyntheticEvent, useState } from 'react';
+import { OntarioInput, OntarioButton } from '@ongov/ontario-design-system-component-library-react';
 
 import CodeHighlighter from '../../components/code-highlighter';
 
@@ -46,6 +46,40 @@ export default function TextInputExample() {
 	onFocus={defaultInputOnFocus}
 />`;
 
+	const DefaultValueInputExample = `import { OntarioInput } from '@ongov/ontario-design-system-component-library-react';
+
+	export default function UncontrolledTextInput() {
+		const inputRef = useRef<HTMLOntarioInputElement>(null);
+		const initialValue = 'Default value';
+		const [submittedName, setSubmittedName] = useState('');
+		const [hasBeenReset, setHasBeenReset] = useState(false);
+
+		const submit = (event: SubmitEvent) => {
+			event.preventDefault();
+			setSubmittedName(inputRef.current?.value ?? '');
+			setHasBeenReset(true);
+		};
+
+		const reset = (event: SyntheticEvent) => {
+			event.preventDefault();
+			if (inputRef.current) {
+				inputRef.current.value = initialValue;
+			}
+			setHasBeenReset(true);
+			setSubmittedName('');
+		};
+
+		return (
+			<form onSubmit={submit} onReset={reset}>
+				<OntarioInput ref={inputRef} caption="Name" name="name" value={initialValue} />
+				<OntarioButton type="submit">Read current value</OntarioButton>
+				<p>Current value: {submittedName}</p>
+				<OntarioButton type="reset">Reset to default</OntarioButton>
+				<p>Form has been reset to default: {hasBeenReset ? 'Yes' : 'No'}</p>
+			</form>
+		);
+	}`;
+
 	const componentRef = useRef<any>(null);
 
 	useEffect(() => {
@@ -71,6 +105,27 @@ export default function TextInputExample() {
 		}
 	};
 
+	// Default value input example form handlers and state
+	const inputRef = useRef<HTMLOntarioInputElement>(null);
+	const initialValue = 'Default value';
+	const [submittedName, setSubmittedName] = useState('');
+	const [hasBeenReset, setHasBeenReset] = useState(false);
+
+	const submit = (event: SubmitEvent) => {
+		event.preventDefault();
+		setSubmittedName(inputRef.current?.value ?? '');
+		setHasBeenReset(true);
+	};
+
+	const reset = (event: SyntheticEvent) => {
+		event.preventDefault();
+		if (inputRef.current) {
+			inputRef.current.value = initialValue;
+		}
+		setHasBeenReset(true);
+		setSubmittedName('');
+	};
+
 	return (
 		<div className="ontario-row">
 			<div className="ontario-columns ontario-large-12">
@@ -78,7 +133,6 @@ export default function TextInputExample() {
 				<div className="ontario-margin-top-24-!">
 					<OntarioInput
 						// The following 3 properties resolve a React warning about the use of the placeholder attribute on an input element
-						placeholder=""
 						onPointerEnterCapture={() => {}}
 						onPointerLeaveCapture={() => {}}
 						caption={{
@@ -146,6 +200,29 @@ export default function TextInputExample() {
 					<p>With the following markup:</p>
 
 					<CodeHighlighter codeExample={DefaultInputExample} />
+				</div>
+
+				<hr />
+				<div className="ontario-margin-top-24-!">
+					<form onSubmit={submit} onReset={reset}>
+						<OntarioInput
+							ref={inputRef}
+							caption={{
+								captionText: 'Default value input',
+								captionType: 'large',
+							}}
+							name="default-value-input"
+							value={initialValue}
+						/>
+						<OntarioButton htmlType="submit">Submit</OntarioButton>
+						<p>Submitted value: {submittedName}</p>
+						<OntarioButton htmlType="reset">Reset to default</OntarioButton>
+						<p>Form has been reset to default: {hasBeenReset ? 'Yes' : 'No'}</p>
+					</form>
+
+					<p>With the following markup:</p>
+
+					<CodeHighlighter codeExample={DefaultValueInputExample} />
 				</div>
 
 				<hr />

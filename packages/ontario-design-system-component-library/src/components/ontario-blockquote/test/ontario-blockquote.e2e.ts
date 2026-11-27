@@ -110,3 +110,23 @@ test.describe('ontario-blockquote - accessibility', () => {
 		expect(accessibilityScanResults.violations).toHaveLength(0);
 	});
 });
+
+test.describe('ontario-blockquote - French', () => {
+	// Known defect (DS-2972): the `html[lang='fr'] blockquote` rule in `ontario-blockquote.scss` can't match from inside the
+	// shadow root, so the blockquote keeps the English quotation marks on French pages.
+	// `test.fail` expects this to fail; once the defect is fixed, the run will fail and the annotation should become `test`.
+	test.fail('uses French quotation marks when the page language is French', async ({ page }) => {
+		await page.setContent(`<ontario-blockquote quote="${quoteText}"></ontario-blockquote>`);
+		await page.waitForChanges();
+		await page.evaluate(() => document.documentElement.setAttribute('lang', 'fr'));
+		await page.waitForChanges();
+
+		const quotes = await page
+			.locator('ontario-blockquote')
+			.locator('blockquote')
+			.evaluate((el) => window.getComputedStyle(el).quotes);
+
+		expect(quotes).toContain('«');
+		expect(quotes).toContain('»');
+	});
+});

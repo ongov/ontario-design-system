@@ -1,65 +1,109 @@
-// import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
-// describe('ontario-callout', () => {
-// 	it('renders', async () => {
-// 		const page = await newE2EPage();
-// 		await page.setContent('<ontario-callout></ontario-callout>');
-// 		const component = await page.find('ontario-callout');
-// 		const element = await page.find('ontario-callout >>> div');
+test.describe('ontario-callout', () => {
+	test('renders', async ({ page }) => {
+		await page.setContent('<ontario-callout></ontario-callout>');
 
-// 		expect(component).toHaveClass('hydrated');
-// 		expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--teal']);
-// 	});
+		const component = page.locator('ontario-callout');
+		const element = component.locator('div').first();
 
-// 	describe('render changes', () => {
-// 		let page: any;
-// 		let component: any;
-// 		let element: any;
+		await expect(component).toBeVisible();
+		await expect(component).toHaveClass(/hydrated/);
+		await expect(element).toHaveClass(/ontario-callout/);
+		await expect(element).toHaveClass(/ontario-border-highlight--teal/);
+	});
 
-// 		beforeEach(async () => {
-// 			page = await newE2EPage();
-// 			await page.setContent('<ontario-callout></ontario-callout>');
-// 			component = await page.find('ontario-callout');
-// 			element = await page.find('ontario-callout >>> div');
-// 		});
+	test('has no detectable accessibility violations', async ({ page }) => {
+		await page.setContent(`
+            <ontario-callout
+                heading-content="Get notified"
+                heading-content-type="string"
+            ></ontario-callout>
+        `);
 
-// 		it('renders changes to the headingType property', async () => {
-// 			component.setProperty('headingType', 'h3');
-// 			await page.waitForChanges();
+		const accessibilityScanResults = await new AxeBuilder({ page }).include('ontario-callout').analyze();
 
-// 			expect(element.firstChild.nodeName).toBe('H3');
+		expect(accessibilityScanResults.violations).toEqual([]);
+	});
 
-// 			component.setProperty('headingType', 'h4');
-// 			await page.waitForChanges();
-// 			expect(element.firstChild.nodeName).toBe('H4');
-// 		});
+	test.describe('render changes', () => {
+		test('renders changes to the headingType property', async ({ page }) => {
+			await page.setContent('<ontario-callout heading-content="Get notified"></ontario-callout>');
 
-// 		it('renders changes to the class names when the highlightColor is changed', async () => {
-// 			component.setProperty('highlightColour', 'gold');
-// 			await page.waitForChanges();
+			const component = page.locator('ontario-callout');
 
-// 			expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--gold']);
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.headingType = 'h3';
+			});
 
-// 			component.setProperty('highlightColour', 'lime');
-// 			await page.waitForChanges();
+			await expect(component.locator('h3')).toBeVisible();
 
-// 			expect(element).toHaveClasses(['ontario-callout', 'ontario-border-highlight--lime']);
-// 		});
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.headingType = 'h4';
+			});
 
-// 		it('renders changes to the HTML through the headingContentType property', async () => {
-// 			component.setProperty('headingContentType', 'string');
-// 			component.setProperty('headingContent', 'Get notified');
-// 			await page.waitForChanges();
+			await expect(component.locator('h4')).toBeVisible();
+		});
 
-// 			const heading = await page.find('ontario-callout >>> h2');
+		test('renders changes to the class names when the highlightColour is changed', async ({ page }) => {
+			await page.setContent('<ontario-callout></ontario-callout>');
 
-// 			expect(heading).toEqualHtml('<h2 class="ontario-callout__title ontario-h5">Get notified</h2>');
+			const component = page.locator('ontario-callout');
 
-// 			component.setProperty('headingContentType', 'html');
-// 			component.setProperty('headingContent', '<a href="#">Get notified</a>');
-// 			await page.waitForChanges();
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.highlightColour = 'gold';
+			});
 
-// 			expect(heading).toEqualHtml('<h2 class="ontario-callout__title ontario-h5"><a href="#">Get notified</a></h2>');
-// 		});
-// 	});
-// });
+			const goldElement = component.locator('.ontario-callout');
+			await expect(goldElement).toHaveClass(/ontario-border-highlight--gold/);
+
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.highlightColour = 'lime';
+			});
+
+			await expect(goldElement).toHaveClass(/ontario-border-highlight--lime/);
+		});
+
+		test('renders changes to the HTML through the headingContentType property', async ({ page }) => {
+			await page.setContent('<ontario-callout></ontario-callout>');
+
+			const component = page.locator('ontario-callout');
+
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.headingContentType = 'string';
+				el.headingContent = 'Get notified';
+			});
+
+			const heading = component.locator('h2');
+
+			await expect(heading).toHaveText('Get notified');
+			await expect(heading).toHaveClass(/ontario-callout__title/);
+
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.headingContentType = 'html';
+				el.headingContent = '<a href="#">Get notified</a>';
+			});
+
+			await expect(heading.locator('a')).toHaveText('Get notified');
+		});
+
+		test('has no accessibility violations after property updates', async ({ page }) => {
+			await page.setContent('<ontario-callout></ontario-callout>');
+
+			const component = page.locator('ontario-callout');
+
+			await component.evaluate((el: HTMLOntarioCalloutElement) => {
+				el.headingContentType = 'string';
+				el.headingContent = 'Get notified';
+				el.headingType = 'h3';
+				el.highlightColour = 'gold';
+			});
+
+			const results = await new AxeBuilder({ page }).include('ontario-callout').analyze();
+
+			expect(results.violations).toEqual([]);
+		});
+	});
+});

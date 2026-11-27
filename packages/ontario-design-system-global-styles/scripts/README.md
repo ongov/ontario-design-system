@@ -1,13 +1,10 @@
 # Scripts
 
-This directory contains maintenance scripts for the
-`@ongov/ontario-design-system-global-styles` package.
+This directory contains maintenance scripts for the `@ongov/ontario-design-system-global-styles` package.
 
 ## `generate-scss-exports.mjs`
 
-Regenerates SCSS-related entries in
-`packages/ontario-design-system-global-styles/package.json` under the
-`exports` field.
+Regenerates SCSS-related entries in `packages/ontario-design-system-global-styles/package.json` under the `exports` field.
 
 What it does:
 

@@ -27,8 +27,7 @@ node extract-git-issues.js --tag v1.1.0
 
 ## Docker test runner scripts
 
-These scripts work together to run local Playwright tests in Docker with stable
-permissions and reliable argument forwarding.
+These scripts work together to run local Playwright tests in Docker with stable permissions and reliable argument forwarding.
 
 ### `docker-compose.sh`
 
@@ -36,8 +35,7 @@ Wrapper around `docker compose` for this repository.
 
 - Always uses `docker/docker-compose.yml`.
 - On Linux, exports host `PUID`/`PGID` for bind-mounted file permissions.
-- For `docker compose run`, extracts Playwright arguments and passes them
-  through `PLAYWRIGHT_ARGS_B64`.
+- For `docker compose run`, extracts Playwright arguments and passes them through `PLAYWRIGHT_ARGS_B64`.
 
 Why:
 
