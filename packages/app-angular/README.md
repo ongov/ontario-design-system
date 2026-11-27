@@ -11,7 +11,7 @@ It is a proof of concept (PoC) that renders every component on its own page, mir
 - **Angular**: Framework for the app, using standalone components, lazy-loaded routes, and the built-in control flow (`@for`, `@if`).
 - **Stencil (Angular Output)**: Web components consumed as Angular components via `@stencil/angular-output-target`.
 - **Karma + Jasmine**: Angular's default unit test setup.
-- **Playwright**: End-to-end (E2E) and visual regression (VRT) tests that run against the component pages. These tests are currently set up for `ontario-button` only.
+- **Playwright**: End-to-end (E2E) and visual regression (VRT) tests that run against the component pages. These tests are currently set up for `ontario-button` and for language handling (`language-sync`).
 
 ---
 
@@ -51,6 +51,7 @@ This project is designed to:
 
 - **No server-side rendering:** the Next.js app has `client-side` and `server-side` pages for `ontario-checkbox`, `ontario-dropdown-list`, `ontario-date-input`, `ontario-radio-buttons`, and `ontario-step-indicator`. The Angular app renders the client-side version on the main route and has no server-side page.
 - **Shared `<main>`:** `ontario-in-page-navigation` does not set the `id="skip-to-main"` that the Next.js page puts on its own `<main>`, because the `<main>` is provided by the app shell.
+- **`language-sync` page:** this page has no Next.js equivalent. It renders a minimal translated `ontario-header`, page content, and `ontario-footer` (none with a `language` prop) so tests can check that they follow `<html lang>` on load and the header's language toggle afterwards. It passes a `customLanguageToggle` handler that calls `preventDefault()`, because the toggle's default `href="#"` resolves against `<base href="/">` and would navigate away from the page.
 - **Intentionally invalid values:** some pages pass invalid values on purpose, such as malformed JSON or an unknown `type`, to show how the components handle them. A few use `as any`, `as never`, or `$any()` to get past strict template type checking. `ontario-table` logs two JSON parse errors to the console for this reason, and the Next.js page does the same.
 
 ### Adding a Component Page
@@ -103,7 +104,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ### E2E and VRT tests
 
-Playwright tests live in `tests/<component-name>/`, next to the page they exercise, and reuse the same file names, routes, and element ids as `app-nextjs`. At the moment only `ontario-button` has tests (`ontario-button.e2e.ts` and `ontario-button.vrt.ts`), and more components can be added by copying the matching folder from `app-nextjs/tests`. Playwright builds the app and serves it with `serve-dist.mjs` on port 4200 (see `playwright.config.ts` and `scripts/start-angular-server.sh`). Set `SKIP_APP_BUILD=true` to reuse an existing build in `dist/`.
+Playwright tests live in `tests/<component-name>/`, next to the page they exercise, and reuse the same file names, routes, and element ids as `app-nextjs`. At the moment only `ontario-button` and `language-sync` have tests (an `.e2e.ts` and a `.vrt.ts` each). The `language-sync` tests simulate a French page by rewriting `<html lang>` in the HTML response (see `tests/language-sync/helpers.ts`), and more components can be added by copying the matching folder from `app-nextjs/tests`. Playwright builds the app and serves it with `serve-dist.mjs` on port 4200 (see `playwright.config.ts` and `scripts/start-angular-server.sh`). Set `SKIP_APP_BUILD=true` to reuse an existing build in `dist/`.
 
 Visual tests rely on pixel-perfect rendering, which varies with the operating system, browser, and fonts, so run them inside the provided Docker container, which matches the CI environment. Snapshots are saved to the `vrt-snapshots/` folder inside each component's test folder, one per browser (Chromium, Firefox, and WebKit).
 

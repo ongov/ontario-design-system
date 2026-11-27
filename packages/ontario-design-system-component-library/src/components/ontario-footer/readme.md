@@ -963,7 +963,7 @@ two-column-options='{
 
 The Ontario Footer component supports server-side rendering, with a few considerations:
 
-- **Language prop:** Pass `language` explicitly during SSR. If not provided, the component defaults to English (`'en'`).
+- **Language prop:** Pass `language` explicitly during SSR. If not provided, the component falls back to `<html lang>` in the browser (French for `fr` and `fr-CA`) and otherwise defaults to English (`'en'`). During SSR there is no document, so it defaults to English.
 - **Hydrated-only language events:** Global language events such as `setAppLanguage` and `headerLanguageToggled` only fire after hydration.
 - **Framework guidance:** For deterministic SSR output, set `language` directly in markup (for example, `<ontario-footer language="fr"></ontario-footer>`).
 

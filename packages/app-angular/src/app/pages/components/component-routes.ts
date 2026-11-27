@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 
 export const COMPONENT_ROUTES: Routes = [
 	{
+		path: 'language-sync',
+		loadComponent: () => import('./language-sync/language-sync.component').then((m) => m.LanguageSyncPageComponent),
+		title: 'language-sync | Ontario Design System Angular demo',
+	},
+	{
 		path: 'ontario-accordion',
 		loadComponent: () =>
 			import('./ontario-accordion/ontario-accordion.component').then((m) => m.OntarioAccordionPageComponent),

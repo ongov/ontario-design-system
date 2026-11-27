@@ -57,6 +57,20 @@ describe('ontario-footer', () => {
 		expect(inlineLinks?.[2].textContent?.trim()).toBe('Contact');
 	});
 
+	it('defaults to the html lang when no language is provided', async () => {
+		document.documentElement.lang = 'fr';
+
+		try {
+			const page = await render('<ontario-footer type="default"></ontario-footer>');
+			const inlineLinks = page.root?.shadowRoot?.querySelectorAll(
+				'.ontario-footer__links-container--inline .ontario-footer__link',
+			);
+			expect(inlineLinks?.[0].textContent?.trim()).toBe('Accessibilité');
+		} finally {
+			document.documentElement.removeAttribute('lang');
+		}
+	});
+
 	it('renders twoColoumn ontario-footer', async () => {
 		const page = await render(`
       <ontario-footer
