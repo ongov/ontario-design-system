@@ -172,3 +172,48 @@ test.describe('ontario-tag - accessibility', () => {
 		await expectNoAxeViolations(page, 'ontario-tag');
 	});
 });
+
+test.describe('ontario-tag - forced colours', () => {
+	// Resolves a system colour keyword to the computed value the browser uses in forced colours mode.
+	const systemColour = (page: E2EPage, keyword: string) =>
+		page.evaluate((colour) => {
+			const probe = document.createElement('div');
+			probe.style.forcedColorAdjust = 'none';
+			probe.style.color = colour;
+			document.body.append(probe);
+			const value = getComputedStyle(probe).color;
+			probe.remove();
+			return value;
+		}, keyword);
+
+	test('uses Highlight to set selected and dismissible tags apart', async ({ page }) => {
+		await page.emulateMedia({ forcedColors: 'active' });
+		await page.setContent(`
+			<ontario-tag label="Health"></ontario-tag>
+			<ontario-tag label="Education" selected></ontario-tag>
+			<ontario-tag label="Category: Filter" value="category-filter" dismissible></ontario-tag>
+		`);
+		await page.waitForChanges();
+
+		const highlight = await systemColour(page, 'Highlight');
+		const highlightText = await systemColour(page, 'HighlightText');
+
+		await expect(page.locator('ontario-tag[label="Health"]').locator('button')).not.toHaveCSS(
+			'background-color',
+			highlight,
+		);
+
+		for (const label of ['Education', 'Category: Filter']) {
+			const button = page.locator(`ontario-tag[label="${label}"]`).locator('button');
+
+			await expect(button).toHaveCSS('background-color', highlight);
+			await expect(button).toHaveCSS('border-top-color', highlight);
+			await expect(button).toHaveCSS('color', highlightText);
+		}
+
+		await expect(page.locator('ontario-tag[dismissible]').locator('ontario-icon-close')).toHaveCSS(
+			'color',
+			highlightText,
+		);
+	});
+});
