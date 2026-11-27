@@ -5,8 +5,8 @@
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/colours.variables' as colours;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/breakpoints.variables' as breakpoints;
 @use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/z-index.variables' as zIndex;
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/_global.elements.scss';
-@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/_visibility.overrides.scss';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/4-elements/global.elements';
+@use 'pkg:@ongov/ontario-design-system-global-styles/styles/scss/7-overrides/visibility.overrides';
 
 @use '../../styles/fieldsets.scss';
 @use '../../styles/labels.scss';
