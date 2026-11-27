@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"@playwright/test": "1.62.1",
 		"@stencil/ssr": "^0.4.0",
-		"@types/node": "^24.0.0",
+		"@types/node": "^26.0.0",
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
 		"eslint": "^10.0.0",
