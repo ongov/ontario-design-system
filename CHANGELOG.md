@@ -1,3 +1,76 @@
+# 10.0.0-beta.1 (2026-11-27)
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: remove exports wildcards causing ambiguous pkg: resolution bd27dad
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: remove exports wildcards causing ambiguous pkg: resolution 07d05d2
+
+### Bug Fixes
+
+- **app-nextjs:** forward slot onto the @stencil/ssr wrapper element 039adf7
+- **app-nextjs:** preserve slotted content through SSR scoped serialization 4b4a7a4
+- **back-to-top:** allow host level positioning overrides d2047b5
+- **checkbox:** keep the required error in sync with language and message changes 87b1301
+- **checkbox:** preserve consumer error messages on required checkboxes ddc593e
+- **checkbox:** recompute required validation when required changes 9628318
+- **checkbox:** show checked/focus state on heading label style 96badb9
+- **ci:** force semantic-release to use patched github plugin 8d558c8
+- **ci:** wait for every published package before docs sync 4d1fc07
+- **ci:** wait for published npm version before docs sync f6d5eb8
+- **ci:** wait for published npm version before docs sync 86b6012
+- **complete-styles:** fail build when sass compilation errors de2fba6
+- **complete-styles:** repair broken file-watching in the build process acb25f1
+- **component-library:** resolve duplicate sass module members across components 7c37827
+- **component-library:** resolve duplicate sass module members across components be77cfd
+- **dependency:** include sass-embedded support for app-react 290f129
+- **global-styles,component-library-react:** forward focus box-shadow var 9f31852
+- **input:** support pattern attribute in shared native input helper 5cc989f
+- **ontario-back-button:** keep its geometry unaffected by the icon button styles d138945
+- **ontario-button:** compensate the border in the horizontal padding of icon buttons 9d2a416
+- **ontario-button:** exclude SVG title/desc text from icon-only detection 843eed8
+- **ontario-button:** only count direct children as slotted icons 5710de3
+- **ontario-button:** remove the desktop max width d7fc2d0
+- **ontario-button:** scope the slot observer and disconnect it on removal a11a83e
+- **ontario-button:** sync icon-only state with label and use label text for aria fallback 495421d
+- **ontario-button:** use slot to allow HTML/SVG children when no label prop is set ddb1640
+- **ontario-button:** validate aria-label-text in its own method 966825d
+- **ontario-button:** vertically align slotted SVG and img elements af2e777
+- **ontario-card:** style blue header colours and fill width without an image 547b47f
+- **ontario-input:** expose inputMode and pattern props fa84f9e
+- **ontario-search-box:** expose inputMode and pattern props 645ceca
+- **ontario-search-box:** keep clear button visible when value fails pattern 0a73dc8
+- **react-lib-api:** export setAssetPath for app development access 32c7c03
+- **test:** adjust nextjs search box test for webkit pass 1668bf3
+
+### Features
+
+- **checkbox:** add standalone ontario-checkbox component d5cd0d6
+- **checkbox:** report required validity and reset with the parent form 12d2d75
+- **global-styles:** space adjacent ontario-button components b25cbd0
+- **ontario-button:** add icon slot sizing and spacing styles 0189fed
+- **ontario-button:** add leading/trailing icon slots and icon-only support 03065bd
+- **testing:** add component testing skill 5aa6535
+
+### BREAKING CHANGES
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** `@ongov/ontario-design-system-global-styles` no longer
+  exports wildcard SCSS paths such as `./styles/scss/1-variables/*`.
+  Deep `pkg:` imports using the literal underscored filename (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/_global.variables.scss`)
+  will no longer resolve. Switch to the canonical extensionless
+  specifier instead (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables`).
+
+Ref DS-2013, DS-1813
+
+- **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** `@ongov/ontario-design-system-global-styles` no longer
+  exports wildcard SCSS paths such as `./styles/scss/1-variables/*`.
+  Deep `pkg:` imports using the literal underscored filename (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/_global.variables.scss`)
+  will no longer resolve. Switch to the canonical extensionless
+  specifier instead (e.g.
+  `pkg:@ongov/ontario-design-system-global-styles/styles/scss/1-variables/global.variables`).
+
+Ref DS-2013, DS-1813
+
 # 10.0.0-alpha.1 (2026-11-27)
 
 - **@ongov/ontario-design-system-component-library, @ongov/ontario-design-system-global-styles:** fix(global-styles)!: remove exports wildcards causing ambiguous pkg: resolution bd27dad
