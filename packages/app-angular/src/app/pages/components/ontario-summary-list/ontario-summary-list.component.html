@@ -1,0 +1,183 @@
+<h1>ontario-summary-list</h1>
+<h2 id="summary-list">Summary list</h2>
+
+<ontario-summary-list caption="Personal information" headingLevel="h3">
+	<ontario-summary-list-item name="Last name" description="Smith" [actionLink]="actionLink"></ontario-summary-list-item>
+	<ontario-summary-list-item
+		name="First name"
+		description="George"
+		[actionLink]="actionLink"
+	></ontario-summary-list-item>
+	<ontario-summary-list-item
+		name="Middle name"
+		description="Not applicable"
+		[actionLink]="actionLink"
+	></ontario-summary-list-item>
+	<ontario-summary-list-item name="Sex" description="Male" [actionLink]="actionLink"></ontario-summary-list-item>
+	<ontario-summary-list-item
+		name="Place of birth"
+		description="Ottawa"
+		[actionLink]="actionLink"
+	></ontario-summary-list-item>
+</ontario-summary-list>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Contact details" headingLevel="h3" [captionActionLink]="actionLink">
+		<ontario-summary-list-item name="Email" description="gsmith@gmail.com"></ontario-summary-list-item>
+		<ontario-summary-list-item name="Phone number" description="123-456-7890"></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Mixed rows (action slot override)" headingLevel="h3">
+		<ontario-summary-list-item
+			name="Last name"
+			description="Smith"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item name="First name" description="George">
+			<a slot="action" href="#summary-list">
+				Change
+				<span class="ontario-show-for-sr"> your answer for: First name</span>
+			</a>
+		</ontario-summary-list-item>
+		<ontario-summary-list-item name="Middle name" description="Not applicable"></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Key: Value ratio 1:1" headingLevel="h3" columnRatio="1-1">
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:1"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:1"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Key: Value ratio 1:2" headingLevel="h3" columnRatio="1-2">
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:2"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:2"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Key: Value ratio 1:3" headingLevel="h3" columnRatio="1-3">
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:3"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Key: Value ratio 1:3"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Key: Value ratio 2:1" headingLevel="h3" columnRatio="2-1">
+		<ontario-summary-list-item
+			name="Key: Value ratio 2:1"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Key: Value ratio 2:1"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Key: Value ratio 2:3" headingLevel="h3" columnRatio="2-3">
+		<ontario-summary-list-item
+			name="Key: Value ratio 2:3"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Key: Value ratio 2:3"
+			description="Value"
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<div class="ontario-margin-top-24-!">
+	<ontario-summary-list caption="Full width (12-column)" headingLevel="h3" [fullWidth]="true">
+		<ontario-summary-list-item
+			name="Key"
+			description="Value content spanning the full page width — no max-width constraint."
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+		<ontario-summary-list-item
+			name="Supporting details"
+			description="Compare this row width against the 8-column examples above."
+			[actionLink]="actionLink"
+		></ontario-summary-list-item>
+	</ontario-summary-list>
+</div>
+
+<h2>Summary list item variants</h2>
+
+<ontario-summary-list caption="Row with action link" headingLevel="h3">
+	<ontario-summary-list-item
+		id="ontario-summary-list-item-with-action"
+		name="Address"
+		description="111 Wellington St."
+		[actionLink]="{ href: '/change-address' }"
+	></ontario-summary-list-item>
+</ontario-summary-list>
+
+<ontario-summary-list caption="Row without action link" headingLevel="h3">
+	<ontario-summary-list-item
+		id="ontario-summary-list-item-no-action"
+		name="Address"
+		description="111 Wellington St."
+	></ontario-summary-list-item>
+</ontario-summary-list>
+
+<ontario-summary-list caption="Row with custom action label" headingLevel="h3">
+	<ontario-summary-list-item
+		id="ontario-summary-list-item-custom-label"
+		name="Address"
+		description="111 Wellington St."
+		[actionLink]="{ href: '/edit-address', label: 'Edit' }"
+	></ontario-summary-list-item>
+</ontario-summary-list>
+
+<ontario-summary-list caption="Compact row" headingLevel="h3">
+	<ontario-summary-list-item
+		id="ontario-summary-list-item-compact"
+		name="Address"
+		description="111 Wellington St."
+		[compact]="true"
+		[actionLink]="{ href: '/change-address' }"
+	></ontario-summary-list-item>
+</ontario-summary-list>
+
+<ontario-summary-list caption="Compact row without action link" headingLevel="h3">
+	<ontario-summary-list-item
+		id="ontario-summary-list-item-compact-no-action"
+		name="Address"
+		description="111 Wellington St."
+		[compact]="true"
+	></ontario-summary-list-item>
+</ontario-summary-list>

@@ -1,71 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ComponentLibraryModule } from '@ongov/ontario-design-system-component-library-angular';
-import { RouterModule } from '@angular/router';
-import { FormValueChangesDirective } from './directives/formValue.directives';
-import { FormsModule } from '@angular/forms';
-import {
-	OntarioInputValueAccessor,
-	OntarioTextareaValueAccessor,
-	OntarioCheckboxesValueAccessor,
-	OntarioRadioButtonsValueAccessor,
-} from './directives/customValueAccessors.directives';
-import { TemporaryStorageService } from './services/temporary-storage.services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FrameOneComponent } from './pages/frameone/frameone.component';
-import { FrameTwoComponent } from './pages/frametwo/frametwo.component';
-import { FrameThreeComponent } from './pages/framethree/framethree.component';
-import { FrameFourComponent } from './pages/framefour/framefour.component';
-import { FrameFiveComponent } from './pages/framefive/framefive.component';
-import { FrameSixComponent } from './pages/framesix/framesix.component';
-
-// import ngx-translate and the http loader
-import { TranslatePipe, provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
-import { HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { provideNgxTranslateRoutes } from 'ngx-translate-routes';
-
-import { environment } from '../environments/environment';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		FrameOneComponent,
-		FrameTwoComponent,
-		FrameThreeComponent,
-		FrameFourComponent,
-		FrameFiveComponent,
-		FrameSixComponent,
-		FormValueChangesDirective,
-		OntarioInputValueAccessor,
-		OntarioTextareaValueAccessor,
-		OntarioCheckboxesValueAccessor,
-		OntarioRadioButtonsValueAccessor,
-	],
-	imports: [
-		ComponentLibraryModule,
-		BrowserModule,
-		AppRoutingModule,
-		RouterModule,
-		FormsModule,
-		HttpClientModule,
-		TranslatePipe,
-	],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	providers: [
-		TemporaryStorageService,
-		provideTranslateService({
-			fallbackLang: 'en',
-			loader: provideTranslateLoader(TranslateHttpLoader),
-		}),
-		provideNgxTranslateRoutes({
-			enableRouteTranslate: true,
-			enableTitleTranslate: true,
-		}),
-		...provideTranslateHttpLoader({ prefix: environment.translationPath, suffix: '.json' }),
-	],
+	declarations: [AppComponent],
+	imports: [BrowserModule, AppRoutingModule],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

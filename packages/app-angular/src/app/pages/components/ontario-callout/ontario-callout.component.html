@@ -1,0 +1,41 @@
+<h1>ontario-callout</h1>
+
+<h2>"heading-type" Prop Variants</h2>
+@for (type of headingTypes; track type) {
+	<h3>{{ type.toUpperCase() }}</h3>
+	<ontario-callout
+		[headingType]="type"
+		headingContentType="html"
+		[headingContent]="'<a href=\'#\'>' + type + ' heading-type</a>'"
+		[content]="'This is testing the ' + type + ' heading-type.'"
+	></ontario-callout>
+}
+
+<h2>"heading-content-type" Prop Variants</h2>
+<h3>HTML</h3>
+<ontario-callout
+	headingType="h2"
+	headingContentType="html"
+	headingContent="<a href='#'>HTML heading-content-type</a>"
+	content="<div><p>This is testing the heading-content-type with HTML content.</p></div> <div><p>This is testing the h2 heading-content-type with HTML content.</p></div>"
+></ontario-callout>
+
+<h3>String</h3>
+<ontario-callout
+	headingType="h3"
+	headingContentType="string"
+	headingContent="This is the callout"
+	content="This is testing the string heading-content-type."
+></ontario-callout>
+
+<h2>"highlight-colour" Prop Variants</h2>
+@for (colour of highlightColours; track $index) {
+	<h3>{{ colour }}</h3>
+	<ontario-callout
+		headingType="h2"
+		[highlightColour]="$any(colour.toLowerCase())"
+		headingContentType="html"
+		[headingContent]="'<a href=\'#\'>' + colour + ' highlight colour</a>'"
+		[content]="'This is testing the ' + colour.toLowerCase() + ' highlight colour.'"
+	></ontario-callout>
+}

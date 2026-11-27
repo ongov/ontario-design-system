@@ -1,0 +1,38 @@
+<h1>ontario-button</h1>
+
+<div>
+	<h2>"type" Prop Variants</h2>
+
+	<h3>Primary</h3>
+	<ontario-button
+		id="ontario-button-primary"
+		type="primary"
+		label="Primary Button"
+		ariaLabelText="Click to perform primary action"
+	></ontario-button>
+
+	<h3>Secondary</h3>
+	<ontario-button
+		id="ontario-button-secondary"
+		type="secondary"
+		label="Secondary Button"
+		(click)="showAlert()"
+	></ontario-button>
+
+	<h3>Tertiary</h3>
+	<ontario-button id="ontario-button-tertiary" type="tertiary" label="Tertiary Button"></ontario-button>
+</div>
+
+<div>
+	<h2>"htmlType" Prop — Form Integration</h2>
+
+	@if (submitted) {
+		<p id="form-submitted-message">Form submitted!</p>
+	}
+
+	<form id="ontario-button-form" (submit)="onSubmit($event)">
+		<input id="form-input" name="test-input" value="" />
+		<ontario-button id="ontario-button-submit" type="primary" htmlType="submit" label="Submit"></ontario-button>
+		<ontario-button id="ontario-button-reset" type="secondary" htmlType="reset" label="Reset"></ontario-button>
+	</form>
+</div>

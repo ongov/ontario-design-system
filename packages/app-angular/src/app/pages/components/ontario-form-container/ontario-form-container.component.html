@@ -1,0 +1,72 @@
+<h1>ontario-form-container</h1>
+
+<h2>"gap" Prop Variants</h2>
+
+<h3>Default gap</h3>
+<ontario-form-container id="ontario-form-container-default-gap" gap="default">
+	<ontario-input
+		name="default-gap-input-1"
+		[caption]="{ captionText: 'First name', captionType: 'default' }"
+	></ontario-input>
+	<ontario-input
+		name="default-gap-input-2"
+		[caption]="{ captionText: 'Last name', captionType: 'default' }"
+	></ontario-input>
+	<ontario-textarea
+		name="default-gap-textarea"
+		[caption]="{ captionText: 'Additional details', captionType: 'default' }"
+	></ontario-textarea>
+</ontario-form-container>
+
+<h3 class="ontario-margin-top-64-!">Condensed gap</h3>
+<ontario-form-container id="ontario-form-container-condensed-gap" gap="condensed">
+	<ontario-input
+		name="condensed-gap-input-1"
+		[caption]="{ captionText: 'Street address', captionType: 'default' }"
+	></ontario-input>
+	<ontario-input
+		name="condensed-gap-input-2"
+		[caption]="{ captionText: 'City', captionType: 'default' }"
+	></ontario-input>
+	<ontario-dropdown-list
+		name="condensed-gap-dropdown"
+		[caption]="{ captionText: 'Province', captionType: 'default' }"
+		[options]="provinceOptions"
+	></ontario-dropdown-list>
+</ontario-form-container>
+
+<hr />
+
+<h2>ontario-form-container Edge Cases</h2>
+
+<h3>No gap prop (should default to default spacing)</h3>
+<ontario-form-container id="ontario-form-container-no-gap-prop">
+	<ontario-input
+		name="no-gap-prop-input-1"
+		[caption]="{ captionText: 'Email address', captionType: 'default' }"
+	></ontario-input>
+	<ontario-input
+		name="no-gap-prop-input-2"
+		[caption]="{ captionText: 'Phone number', captionType: 'default' }"
+	></ontario-input>
+</ontario-form-container>
+
+<h3 class="ontario-margin-top-64-!">Invalid gap value (should fall back to default spacing)</h3>
+<ontario-form-container id="ontario-form-container-invalid-gap" [gap]="invalidGap">
+	<ontario-input
+		name="invalid-gap-input-1"
+		[caption]="{ captionText: 'Postal code', captionType: 'default' }"
+	></ontario-input>
+	<ontario-input
+		name="invalid-gap-input-2"
+		[caption]="{ captionText: 'Country', captionType: 'default' }"
+	></ontario-input>
+</ontario-form-container>
+
+<h3 class="ontario-margin-top-64-!">Single slotted child</h3>
+<ontario-form-container id="ontario-form-container-single-child" gap="condensed">
+	<ontario-input
+		name="single-child-input"
+		[caption]="{ captionText: 'Single field example', captionType: 'default' }"
+	></ontario-input>
+</ontario-form-container>

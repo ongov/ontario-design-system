@@ -1,0 +1,71 @@
+<h1>ontario-accordion</h1>
+
+<h2>"name" Prop Variant</h2>
+<ontario-accordion
+	id="ontario-accordion-name-variant"
+	name="My Accordion"
+	[accordionData]="nameVariantData"
+></ontario-accordion>
+
+<hr />
+
+<h2>"is-open" Prop Variant</h2>
+
+<h3>Open Accordion</h3>
+<ontario-accordion
+	id="ontario-accordion-open-variant"
+	name="Accordion - Open"
+	[expandCollapseButton]="openExpandCollapseButton"
+	[accordionData]="openData"
+></ontario-accordion>
+
+<hr />
+
+<h3>Closed Accordion</h3>
+<ontario-accordion
+	id="ontario-accordion-closed-variant"
+	name="Accordion - Closed"
+	[expandCollapseButton]="closedExpandCollapseButton"
+	[accordionData]="closedData"
+></ontario-accordion>
+
+<hr />
+
+<h2>"expand-collapse-button" Prop Variant</h2>
+<ontario-accordion
+	id="ontario-accordion-custom-expand-collapse"
+	name="Accordion - Closed"
+	[expandCollapseButton]="customExpandCollapseButton"
+	[accordionData]="customData"
+></ontario-accordion>
+
+<hr />
+
+<h2>Edge cases</h2>
+
+<h3>Invalid "accordion-data" prop</h3>
+<ontario-accordion
+	id="ontario-accordion-invalid-data"
+	name="Accordion - Invalid Data"
+	[accordionData]="invalidJson"
+></ontario-accordion>
+
+<hr />
+
+<h3>Empty "accordion-data" prop</h3>
+<ontario-accordion
+	id="ontario-accordion-empty-data"
+	name="Accordion - Empty Data"
+	[expandCollapseButton]="closedExpandCollapseButton"
+	[accordionData]="[]"
+></ontario-accordion>
+
+<hr />
+
+<h3>Invalid "expand-collapse-button" prop</h3>
+<ontario-accordion
+	id="ontario-accordion-invalid-expand-collapse-button"
+	name="Accordion - Invalid Button JSON"
+	[expandCollapseButton]="invalidJson"
+	[accordionData]="invalidButtonData"
+></ontario-accordion>

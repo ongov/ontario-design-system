@@ -1,0 +1,177 @@
+<h1>ontario-table</h1>
+
+<div>
+	<h2>"caption" Prop Variant</h2>
+	<ontario-table
+		id="ontario-table-caption-variant"
+		caption="Canadian provinces and their populations"
+		[tableColumns]="captionColumns"
+		[tableData]="captionData"
+	></ontario-table>
+
+	<hr />
+
+	<h2>"tableColumns" Prop Variants</h2>
+
+	<h3>Column types (numeric vs. default)</h3>
+	<ontario-table
+		id="ontario-table-column-types-variant"
+		caption="Fruit availability in the market"
+		[tableColumns]="columnTypesColumns"
+		[tableData]="columnTypesData"
+	></ontario-table>
+
+	<h3>Column colspan</h3>
+	<ontario-table
+		id="ontario-table-column-colspan-variant"
+		caption="Operating expenses for the Ministry of Advanced Education and Skills Development"
+		[tableColumns]="colspanColumns"
+		[tableData]="colspanData"
+	></ontario-table>
+
+	<hr />
+
+	<h2>"tableData" Prop Variants</h2>
+
+	<h3>With Subtotal and Footer</h3>
+	<ontario-table
+		id="ontario-table-subtotal-footer-variant"
+		caption="Operating expense"
+		[tableColumns]="subtotalFooterColumns"
+		[tableData]="subtotalFooterData"
+	></ontario-table>
+
+	<h3>With Highlight</h3>
+	<ontario-table
+		id="ontario-table-highlight-variant"
+		caption="Number of engagement sessions by business area from 2016–2020"
+		zebraStripes="enabled"
+		[tableColumns]="highlightColumns"
+		[tableData]="highlightData"
+	></ontario-table>
+
+	<h3>Cell markup (innerHTML)</h3>
+	<ontario-table
+		id="ontario-table-cell-markup-variant"
+		caption="Compliance status"
+		[tableColumns]="cellMarkupColumns"
+		[tableData]="cellMarkupData"
+	></ontario-table>
+
+	<hr />
+
+	<h2>"zebraStripes" Prop Variants</h2>
+
+	<h3>auto (4 rows - should look like no zebra stripes)</h3>
+	<ontario-table
+		id="ontario-table-zebra-auto-variant"
+		caption="Applications received by region"
+		zebraStripes="auto"
+		[tableColumns]="zebraColumns"
+		[tableData]="zebraDataFourRows"
+	></ontario-table>
+
+	<h3>auto (6 rows - should show zebra)</h3>
+	<ontario-table
+		id="ontario-table-zebra-auto-variant-2"
+		caption="Applications received by region"
+		zebraStripes="auto"
+		[tableColumns]="zebraColumns"
+		[tableData]="zebraDataSixRows"
+	></ontario-table>
+
+	<h3>`zebraStripes` enabled</h3>
+	<ontario-table
+		id="ontario-table-zebra-enabled-variant"
+		caption="Applications received by region"
+		zebraStripes="enabled"
+		[tableColumns]="zebraColumns"
+		[tableData]="zebraDataFourRows"
+	></ontario-table>
+
+	<h3>`zebraStripes` disabled</h3>
+	<ontario-table
+		id="ontario-table-zebra-disabled-variant"
+		caption="Applications received by region"
+		zebraStripes="disabled"
+		[tableColumns]="zebraColumns"
+		[tableData]="zebraDataSixRows"
+	></ontario-table>
+
+	<hr />
+
+	<h2>"condensed" Prop Variant</h2>
+	<ontario-table
+		id="ontario-table-condensed-variant"
+		caption="Service requests by type (2023)"
+		[condensed]="true"
+		[tableColumns]="condensedColumns"
+		[tableData]="condensedData"
+	></ontario-table>
+
+	<hr />
+
+	<h2>"fullWidth" Prop Variant</h2>
+	<h3>`fullWidth` enabled</h3>
+	<ontario-table
+		id="ontario-table-fullwidth-enabled-variant"
+		caption="Operating expenses by program area"
+		[fullWidth]="true"
+		[tableColumns]="fullWidthColumns"
+		[tableData]="fullWidthData"
+	></ontario-table>
+
+	<h3>`condensed` and `fullWidth` enabled</h3>
+	<ontario-table
+		id="ontario-table-fullwidth-enabled-variant"
+		caption="Operating expenses by program area"
+		[fullWidth]="true"
+		[condensed]="true"
+		[tableColumns]="fullWidthCondensedColumns"
+		[tableData]="fullWidthCondensedData"
+	></ontario-table>
+
+	<hr />
+
+	<h2>Edge/Negative cases</h2>
+
+	<h3>Invalid "tableColumns" prop (invalid JSON string)</h3>
+	<ontario-table
+		id="ontario-table-invalid-columns-json"
+		caption="Table - invalid `tableColumns` JSON"
+		[tableColumns]="invalidJson"
+		[tableData]="singleProvinceData"
+	></ontario-table>
+
+	<h3>Invalid "tableData" prop (invalid JSON string)</h3>
+	<ontario-table
+		id="ontario-table-invalid-data-json"
+		caption="Table - Invalid `tableData` JSON"
+		[tableColumns]="provincePopulationColumns"
+		[tableData]="invalidJson"
+	></ontario-table>
+
+	<h3>Empty "tableData" prop</h3>
+	<ontario-table
+		id="ontario-table-empty-data"
+		caption="Table - Empty `tableData` prop"
+		[tableColumns]="provincePopulationColumns"
+		[tableData]="emptyData"
+	></ontario-table>
+
+	<h3>Data missing keys (columns/data mismatch)</h3>
+	<ontario-table
+		id="ontario-table-missing-keys"
+		caption="Table - Missing keys"
+		[tableColumns]="missingKeysColumns"
+		[tableData]="missingKeysData"
+	></ontario-table>
+
+	<h3>Footer row appears mid-array (should render in &lt;tfoot&gt;)</h3>
+	<ontario-table
+		id="ontario-table-footer-middle"
+		caption="Table - footer `tableData` mid-array"
+		[tableColumns]="footerMiddleColumns"
+		[tableData]="footerMiddleData"
+	></ontario-table>
+</div>

@@ -1,0 +1,93 @@
+<h1>ontario-card</h1>
+
+<h2>'heading-level' Prop Variants</h2>
+@for (level of headingLevels; track level) {
+	<h3>{{ level.toUpperCase() }}</h3>
+	<ontario-card [headingLevel]="level" [label]="'Heading level ' + level" [description]="description"></ontario-card>
+}
+
+<h2>'image' Prop Variants</h2>
+<ontario-card
+	headingLevel="h2"
+	image="https://picsum.photos/200/300"
+	imageAltText="Placeholder image"
+	label="Image prop is true"
+	[description]="description"
+></ontario-card>
+
+<h2>'card-link' Prop Variants</h2>
+<ontario-card
+	headingLevel="h2"
+	cardLink="https://www.ontario.ca"
+	label="Card link prop is true"
+	[description]="description"
+></ontario-card>
+
+<h2>'layout-direction' Prop Variants</h2>
+<h3>Horizontal</h3>
+<ontario-card
+	headingLevel="h2"
+	label="Layout direction is horizontal"
+	layoutDirection="horizontal"
+	[description]="description"
+></ontario-card>
+
+<h3>Vertical</h3>
+<ontario-card
+	headingLevel="h2"
+	label="Layout direction is vertical"
+	layoutDirection="vertical"
+	[description]="description"
+></ontario-card>
+
+<h2>'header-colour' Prop Variants</h2>
+@for (item of headerColours; track item.colour) {
+	<h3>{{ item.heading }}</h3>
+	<ontario-card
+		headingLevel="h2"
+		[headerColour]="item.colour"
+		[label]="'Header colour is ' + item.colour"
+		layoutDirection="horizontal"
+		[description]="description"
+	></ontario-card>
+}
+
+<h2>'horizontal-impage-position-type' Prop Variants</h2>
+<h3>Left</h3>
+<ontario-card
+	headingLevel="h2"
+	image="https://picsum.photos/200/300"
+	horizontalImagePositionType="left"
+	label="horizontal image position type is left"
+	[description]="description"
+></ontario-card>
+
+<h3>Right</h3>
+<ontario-card
+	headingLevel="h2"
+	image="https://picsum.photos/200/300"
+	horizontalImagePositionType="right"
+	label="horizontal image position type is right"
+	[description]="description"
+></ontario-card>
+
+<h2>'horizontal-image-size-type' Prop Variants</h2>
+<h3>One-third</h3>
+<ontario-card
+	headingLevel="h2"
+	image="https://picsum.photos/200/300"
+	horizontalImagePositionType="left"
+	horizontalImageSizeType="one-third"
+	label="horizontal image size type is one-third"
+	[description]="description"
+></ontario-card>
+
+<h3>One-fourth</h3>
+<ontario-card
+	headingLevel="h2"
+	image="https://picsum.photos/200/300"
+	horizontalImagePositionType="right"
+	horizontalImageSizeType="one-fourth"
+	label="horizontal image size type is one-fourth"
+	[description]="description"
+></ontario-card>

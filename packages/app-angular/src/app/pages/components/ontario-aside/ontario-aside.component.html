@@ -1,0 +1,47 @@
+<h1>ontario-aside</h1>
+
+<h2>"heading-type" Prop Variants</h2>
+
+@for (type of headingTypes; track type) {
+	<h3>{{ type.toUpperCase() }}</h3>
+	<ontario-aside
+		[headingType]="type"
+		headingContentType="string"
+		headingContent="Quick fact:"
+		highlightColour="gold"
+		[content]="content"
+	></ontario-aside>
+}
+
+<h2>"highlight-colour" Prop Variants</h2>
+
+@for (colour of colours; track colour) {
+	<h3>{{ colour.charAt(0).toUpperCase() + colour.slice(1) }}</h3>
+	<ontario-aside
+		headingType="h4"
+		headingContentType="string"
+		headingContent="Did you know?"
+		[highlightColour]="colour"
+		[content]="content"
+	></ontario-aside>
+}
+
+<h2>"heading-content-type" Prop Variants</h2>
+
+<h3>String</h3>
+<ontario-aside
+	headingType="h2"
+	headingContentType="string"
+	headingContent="Did you know?"
+	highlightColour="teal"
+	content="Updated content"
+></ontario-aside>
+
+<h3>HTML</h3>
+<ontario-aside
+	headingType="h2"
+	headingContentType="html"
+	headingContent="Did you know? <strong>HTML</strong> in heading!"
+	highlightColour="teal"
+	content="Updated content with <strong>HTML</strong> support."
+></ontario-aside>

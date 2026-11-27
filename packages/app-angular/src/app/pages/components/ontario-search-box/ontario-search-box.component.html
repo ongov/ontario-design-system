@@ -1,0 +1,54 @@
+<h1>ontario-search-box</h1>
+
+<h2 id="search-box">Search box</h2>
+<div id="autocomplete-demo" class="ontario-row ontario-margin-top-24-!">
+	<h3 class="ontario-h4">Autocomplete with Ontario cities (async)</h3>
+	<ontario-search-box
+		elementId="ontario-search-autocomplete"
+		[enableAutocomplete]="true"
+		[minChars]="0"
+		[debounceMs]="0"
+		[caption]="autocompleteCaption"
+		hintText="Start typing to see city suggestions."
+		[getSuggestions]="getOntarioCitySuggestions"
+		[performSearch]="handleSearch"
+	></ontario-search-box>
+</div>
+
+<h2>'language' Prop Variants</h2>
+<h3>En</h3>
+<ontario-search-box elementId="search-language-en" caption="Search in English"></ontario-search-box>
+
+<h3>Fr</h3>
+<ontario-search-box elementId="search-language-fr" language="fr" caption="Recherche en français"></ontario-search-box>
+
+<h2>'required' Prop Variants</h2>
+<h3>True</h3>
+<ontario-search-box elementId="search-required-true" [required]="true" caption="Required field"></ontario-search-box>
+
+<h3>False</h3>
+<ontario-search-box elementId="search-required-false" [required]="false" caption="Optional field"></ontario-search-box>
+
+<h2>'hint-text' - Prop Variants</h2>
+<ontario-search-box
+	elementId="search-hint-text"
+	caption="Search with hint"
+	hintText="This is a simple hint string."
+></ontario-search-box>
+
+<h2>performSearch - custom function</h2>
+<ontario-search-box
+	elementId="search-custom"
+	caption="Search with custom function"
+	[performSearch]="handleCustomSearch"
+></ontario-search-box>
+
+<h2>Custom Event Handlers</h2>
+<ontario-search-box
+	elementId="search-events"
+	caption="Search with custom event handlers"
+	[customOnInput]="handleInput"
+	[customOnChange]="handleChange"
+	[customOnBlur]="handleBlur"
+	[customOnFocus]="handleFocus"
+></ontario-search-box>
